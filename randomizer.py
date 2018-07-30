@@ -536,6 +536,9 @@ class Randomizer:
     zones, max_location_name_length = self.get_zones_and_max_location_name_len(self.logic.done_item_locations)
     format_string = "    %s\n"
     
+    progression_spheres = self.calculate_playthrough_progression_spheres()
+    log_str += "Total number of progression spheres: " + str(len(progression_spheres)) + "\n\n";
+    
     # Write progress item locations.
     log_str += "### Locations that may or may not have progress items in them on this run:\n"
     for zone_name, locations_in_zone in zones.items():
