@@ -541,7 +541,6 @@ def remove_title_and_ending_videos(self):
   with open(blank_video_path, "rb") as f:
     new_data = BytesIO(f.read())
   self.replace_raw_file("files/thpdemo/title_loop.thp", new_data)
-  self.replace_raw_file("files/thpdemo/end_st_epilogue.thp", new_data)
 
 def modify_title_screen_logo(self):
   new_title_image_path = os.path.join(ASSETS_PATH, "title.png")
