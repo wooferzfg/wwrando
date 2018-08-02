@@ -238,6 +238,7 @@ class Randomizer:
     tweaks.remove_makar_kidnapping_event(self)
     tweaks.increase_player_movement_speeds(self)
     tweaks.add_chart_number_to_item_get_messages(self)
+    tweaks.shorten_auction_intro_event(self)
     
     customizer.replace_link_model(self)
     tweaks.change_starting_clothes(self)
@@ -410,6 +411,10 @@ class Randomizer:
       
       changed_files[file_path] = data
     for arc_path, arc in self.arcs_by_path.items():
+      for file_name, instantiated_file in arc.instantiated_object_files.items():
+        if file_name == "event_list.dat":
+          instantiated_file.save_changes()
+      
       arc.save_changes()
       changed_files[arc_path] = arc.data
     for jpc_path, jpc in self.jpcs_by_path.items():

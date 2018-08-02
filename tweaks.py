@@ -206,10 +206,12 @@ def allow_all_items_to_be_field_items(self):
   # Here we copy the regular item get model to the field model so that any item can be a field item.
   # We also change the code run when you touch the item so that these items play out the full item get animation with text, instead of merely popping up above the player's head like a rupee.
   # And we change the Y offsets so the items don't appear lodged inside the floor, and can be picked up easily.
+  # Also change the code run by items during the wait state, which affects the physics when shot out of Gohdan's nose for example.
   
   item_resources_list_start = address_to_offset(0x803842B0)
   field_item_resources_list_start = address_to_offset(0x803866B0)
   itemGetExecute_switch_statement_entries_list_start = address_to_offset(0x8038CA6C)
+  mode_wait_switch_statement_entries_list_start = address_to_offset(0x8038CC7C)
   
   dol_data = self.get_raw_file("sys/main.dol")
   
@@ -285,6 +287,16 @@ def allow_all_items_to_be_field_items(self):
     original_y_offset = read_u8(dol_data, item_extra_data_entry_offset+1)
     if original_y_offset == 0:
       write_u8(dol_data, item_extra_data_entry_offset+1, 0x28) # Y offset of 0x28
+  
+  
+  for item_id in range(0x20, 0x44+1):
+    # Update the switch statement cases in function mode_wait for certain items that originally used the default case (0x800F8190 - leads to calling itemActionForRupee).
+    # This default case caused items to have the physics of rupees, which causes them to shoot out too far from Gohdan's nose.
+    # We switch it to case 0x800F8160 (itemActionForArrow), which is what heart containers and heart pieces use.
+    location_of_items_switch_statement_case = mode_wait_switch_statement_entries_list_start + item_id*4
+    write_u32(dol_data, location_of_items_switch_statement_case, 0x800F8160)
+  # Also change the switch case used by items with IDs 0x4C+ to go to 800F8160 as well.
+  write_u32(dol_data, address_to_offset(0x800F8138), 0x41810028) # bgt 0x800F8160
 
 def remove_shop_item_forced_uniqueness_bit(self):
   # Some shop items have a bit set that disallows you from buying the item if you already own one of that item.
@@ -980,16 +992,14 @@ def shorten_zephos_event(self):
   link = next(actor for actor in wind_shrine_event.actors if actor.name == "Link")
   camera = next(actor for actor in wind_shrine_event.actors if actor.name == "CAMERA")
   
-  final_actions = [
-    zephos.actions[6],
-    link.actions[6],
-    camera.actions[4],
+  zephos.actions = zephos.actions[0:7]
+  link.actions = link.actions[0:7]
+  camera.actions = camera.actions[0:5]
+  wind_shrine_event.ending_flags = [
+    zephos.actions[-1].flag_id_to_set,
+    link.actions[-1].flag_id_to_set,
+    camera.actions[-1].flag_id_to_set,
   ]
-  for action in final_actions:
-    action.next_action_index = 0xFFFFFFFF
-    action.save_changes()
-  wind_shrine_event.ending_flags = [action.flag_id_to_set for action in final_actions]
-  wind_shrine_event.save_changes()
 
 def update_korl_dialogue(self):
   msg = self.bmg.messages_by_id[3443]
@@ -1171,3 +1181,21 @@ def change_starting_clothes(self):
     write_u8(dol_data, address_to_offset(should_start_with_heros_clothes_address), 0)
   else:
     write_u8(dol_data, address_to_offset(should_start_with_heros_clothes_address), 1)
+
+def shorten_auction_intro_event(self):
+  event_list = self.get_arc("files/res/Stage/Orichh/Stage.arc").get_file("event_list.dat")
+  wind_shrine_event = event_list.events_by_name["AUCTION_START"]
+  auction = next(actor for actor in wind_shrine_event.actors if actor.name == "Auction")
+  camera = next(actor for actor in wind_shrine_event.actors if actor.name == "CAMERA")
+  
+  pre_pan_delay = camera.actions[2]
+  pan_action = camera.actions[3]
+  post_pan_delay = camera.actions[4]
+  
+  # Remove the 30 frame delays before and after panning.
+  camera.actions.remove(pre_pan_delay)
+  camera.actions.remove(post_pan_delay)
+  
+  # The actual panning action cannot be skipped for some unknown reason. It would appear to work but the game would crash a little bit later.
+  # So instead we change the duration of the panning to be only 1 frame long so it appears to be skipped.
+  pan_action.get_prop("Timer").value = 1

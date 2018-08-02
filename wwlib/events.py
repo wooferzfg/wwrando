@@ -1,130 +1,323 @@
 
 from fs_helpers import *
 from io import BytesIO
+from collections import OrderedDict
 
 class EventList:
   def __init__(self, file_entry):
     self.file_entry = file_entry
     data = self.file_entry.data
     
-    self.event_list_offset = read_u32(data, 0x00)
-    self.num_events = read_u32(data, 0x04)
-    self.actor_list_offset = read_u32(data, 0x08)
-    self.num_actors = read_u32(data, 0x0C)
-    self.action_list_offset = read_u32(data, 0x10)
-    self.num_actions = read_u32(data, 0x14)
-    self.property_list_offset = read_u32(data, 0x18)
-    self.num_properties = read_u32(data, 0x1C)
+    event_list_offset = read_u32(data, 0x00)
+    num_events = read_u32(data, 0x04)
+    actor_list_offset = read_u32(data, 0x08)
+    num_actors = read_u32(data, 0x0C)
+    action_list_offset = read_u32(data, 0x10)
+    num_actions = read_u32(data, 0x14)
+    property_list_offset = read_u32(data, 0x18)
+    num_properties = read_u32(data, 0x1C)
+    self.float_list_offset = read_u32(data, 0x20)
+    num_floats = read_u32(data, 0x24)
     self.integer_list_offset = read_u32(data, 0x28)
-    self.num_integers = read_u32(data, 0x2C)
+    num_integers = read_u32(data, 0x2C)
     self.string_list_offset = read_u32(data, 0x30)
-    self.string_list_total_size = read_u32(data, 0x34)
+    string_list_total_size = read_u32(data, 0x34)
+    self.header_padding = read_bytes(data, 0x38, 8)
     
     self.events = []
     self.events_by_name = {}
-    for event_index in range(0, self.num_events):
-      offset = self.event_list_offset + event_index * Event.DATA_SIZE
+    for event_index in range(0, num_events):
+      offset = event_list_offset + event_index * Event.DATA_SIZE
       event = Event(self.file_entry, offset)
       self.events.append(event)
       if event.name in self.events_by_name:
         raise Exception("Duplicate event name: %s" % event.name)
       self.events_by_name[event.name] = event
     
-    self.actors = []
-    for actor_index in range(0, self.num_actors):
-      offset = self.actor_list_offset + actor_index * Actor.DATA_SIZE
+    all_actors = []
+    for actor_index in range(0, num_actors):
+      offset = actor_list_offset + actor_index * Actor.DATA_SIZE
       actor = Actor(self.file_entry, offset)
-      self.actors.append(actor)
+      all_actors.append(actor)
     
-    self.actions = []
-    for action_index in range(0, self.num_actions):
-      offset = self.action_list_offset + action_index * Action.DATA_SIZE
+    all_actions = []
+    for action_index in range(0, num_actions):
+      offset = action_list_offset + action_index * Action.DATA_SIZE
       action = Action(self.file_entry, offset)
-      self.actions.append(action)
+      all_actions.append(action)
     
     # Populate each events's list of actors.
     for event in self.events:
+      found_blank = False
       for actor_index in event.actor_indexes:
         if actor_index == 0xFFFFFFFF:
-          event.actors.append(None)
+          pass # Blank actor spot
+          found_blank = True
         else:
-          actor = self.actors[actor_index]
+          if found_blank:
+            raise Exception("Found a non-blank actor after a blank actor in an event's actor indexes list")
+          actor = all_actors[actor_index]
           event.actors.append(actor)
     
     # Populate each actor's list of actions.
-    for actor in self.actors:
-      initial_action = self.actions[actor.initial_action_index]
-      actor.actions.append(initial_action)
-      action = initial_action
+    for actor in all_actors:
+      actor.initial_action = all_actions[actor.initial_action_index]
+      actor.actions.append(actor.initial_action)
+      action = actor.initial_action
       while action.next_action_index != 0xFFFFFFFF:
-        action = self.actions[action.next_action_index]
-        actor.actions.append(action)
+        next_action = all_actions[action.next_action_index]
+        action.next_action = next_action
+        actor.actions.append(next_action)
+        action = next_action
     
-    self.properties = []
-    for property_index in range(0, self.num_properties):
-      offset = self.property_list_offset + property_index * Property.DATA_SIZE
+    all_properties = []
+    for property_index in range(0, num_properties):
+      offset = property_list_offset + property_index * Property.DATA_SIZE
       property = Property(self.file_entry, offset)
-      self.properties.append(property)
+      all_properties.append(property)
     
     # Populate each action's list of properties.
-    for action in self.actions:
-      if action.property_index == 0xFFFFFFFF:
+    for action in all_actions:
+      if action.first_property_index == 0xFFFFFFFF:
         continue
-      first_property = self.properties[action.property_index]
+      first_property = all_properties[action.first_property_index]
       action.properties.append(first_property)
       property = first_property
       while property.next_property_index != 0xFFFFFFFF:
-        property = self.properties[property.next_property_index]
-        action.properties.append(property)
+        next_property = all_properties[property.next_property_index]
+        property.next_property = next_property
+        action.properties.append(next_property)
+        property = next_property
     
-    self.integers = []
-    for integer_index in range(0, self.num_integers):
+    all_floats = []
+    for float_index in range(0, num_floats):
+      offset = self.float_list_offset + float_index * 4
+      float_val = read_float(data, offset)
+      all_floats.append(float_val)
+    
+    all_integers = []
+    for integer_index in range(0, num_integers):
       offset = self.integer_list_offset + integer_index * 4
       integer = read_u32(data, offset)
-      self.integers.append(integer)
+      all_integers.append(integer)
+    
+    all_strings_by_offset = OrderedDict()
+    offset = self.string_list_offset
+    while offset < self.string_list_offset+string_list_total_size:
+      string = read_str_until_null_character(data, offset)
+      all_strings_by_offset[offset-self.string_list_offset] = string
+      string_length_with_null = len(string)+1
+      offset += string_length_with_null
+      
+      # These strings are padded with null bytes to the next 8 bytes in length, so we skip the padding bytes.
+      if string_length_with_null % 8 != 0:
+        padding_bytes_to_skip = (8 - (string_length_with_null % 8))
+        
+        # To be safe ensure that the bytes we skip are actually all null bytes.
+        for i in range(padding_bytes_to_skip):
+          padding_byte = read_u8(data, offset+i)
+          assert padding_byte == 0
+        
+        offset += padding_bytes_to_skip
+    
+    # Assign each property's value.
+    for property in all_properties:
+      if property.data_type == 0:
+        property.value = []
+        for i in range(property.data_size):
+          property.value.append(all_floats[property.data_index+i])
+        if property.data_size == 1:
+          property.value = property.value[0]
+      elif property.data_type == 1:
+        property.value = []
+        for i in range(property.data_size):
+          x = all_floats[property.data_index+i*3]
+          y = all_floats[property.data_index+i*3+1]
+          z = all_floats[property.data_index+i*3+2]
+          property.value.append((x, y, z))
+        if property.data_size == 1:
+          property.value = property.value[0]
+      elif property.data_type == 3:
+        property.value = []
+        for i in range(property.data_size):
+          property.value.append(all_integers[property.data_index+i])
+        if property.data_size == 1:
+          property.value = property.value[0]
+      elif property.data_type == 4:
+        property.value = all_strings_by_offset[property.data_index]
+      else:
+        raise Exception("Reading property data type %d not implemented" % property.data_type)
   
   def save_changes(self):
     data = self.file_entry.data
     
-    write_u32(data, 0x10, self.action_list_offset)
-    write_u32(data, 0x14, self.num_actions)
-    write_u32(data, 0x18, self.property_list_offset)
-    write_u32(data, 0x1C, self.num_properties)
-    write_u32(data, 0x28, self.integer_list_offset)
-    write_u32(data, 0x2C, self.num_integers)
+    # Cut off all the data after the header first since we're completely replacing this data.
+    data.truncate(0x40)
+    data.seek(0x40)
     
-    offset = self.integer_list_offset
-    for integer in self.integers:
+    offset = 0x40
+    
+    all_events = self.events
+    all_actors = []
+    all_actions = []
+    all_properties = []
+    all_floats = []
+    all_integers = []
+    all_strings = []
+    
+    event_list_offset = offset
+    num_events = len(all_events)
+    for i, event in enumerate(all_events):
+      event.offset = offset
+      event.event_index = i
+      
+      event.save_changes()
+      offset += Event.DATA_SIZE
+      
+      all_actors += event.actors
+    
+    actor_list_offset = offset
+    num_actors = len(all_actors)
+    for i, actor in enumerate(all_actors):
+      actor.offset = offset
+      actor.actor_index = i
+      
+      offset += Actor.DATA_SIZE
+      
+      for i, action in enumerate(actor.actions):
+        all_actions.append(action)
+        if i == len(actor.actions)-1:
+          action.next_action = None
+        else:
+          action.next_action = actor.actions[i+1]
+    
+    action_list_offset = offset
+    num_actions = len(all_actions)
+    for i, action in enumerate(all_actions):
+      action.offset = offset
+      action.action_index = i
+      
+      offset += Action.DATA_SIZE
+      
+      for i, property in enumerate(action.properties):
+        all_properties.append(property)
+        if i == len(action.properties)-1:
+          property.next_property = None
+        else:
+          property.next_property = action.properties[i+1]
+    
+    property_list_offset = offset
+    num_properties = len(all_properties)
+    for i, property in enumerate(all_properties):
+      property.offset = offset
+      property.property_index = i
+      
+      offset += Property.DATA_SIZE
+      
+      if property.value.__class__ in [float, int, tuple]:
+        property.value = [property.value]
+      
+      if isinstance(property.value, str):
+        property.data_type = 4
+        # The string offset and length will be set when writing the string itself.
+        property.data_index = None
+        property.data_size = None
+        
+        all_strings.append(property.value)
+      elif isinstance(property.value, list):
+        property.data_size = len(property.value)
+        if len(property.value) == 0:
+          # Default to int for empty properties
+          first_val_class = int
+        else:
+          first_val_class = property.value[0].__class__
+        if first_val_class == float:
+          property.data_type = 0
+          property.data_index = len(all_floats)
+          
+          for float_val in property.value:
+            all_floats.append(float_val)
+        elif first_val_class == tuple:
+          property.data_type = 1
+          property.data_index = len(all_floats)
+          
+          for vector3 in property.value:
+            assert len(vector3) == 3
+            x, y, z = vector3
+            all_floats.append(x)
+            all_floats.append(y)
+            all_floats.append(z)
+        elif first_val_class == int:
+          property.data_type = 3
+          property.data_index = len(all_integers)
+          
+          for integer in property.value:
+            all_integers.append(integer)
+        else:
+          raise Exception("Unknown type of property %s: %s" % (property.name, repr(property.value)))
+      else:
+        raise Exception("Unknown type of property %s: %s" % (property.name, repr(property.value)))
+    
+    self.float_list_offset = offset
+    num_floats = len(all_floats)
+    for float_val in all_floats:
+      write_float(data, offset, float_val)
+      offset += 4
+    
+    self.integer_list_offset = offset
+    num_integers = len(all_integers)
+    for integer in all_integers:
       write_u32(data, offset, integer)
       offset += 4
-  
-  def get_property_value(self, property_index):
-    property = self.properties[property_index]
     
-    if property.data_type == 1:
-      return self.floats[property.data_index]
-    elif property.data_type == 3:
-      return self.integers[property.data_index]
-    elif property.data_type == 4:
-      string_pointer = self.string_list_offset + property.data_index
-      string = read_str(self.file_entry.data, string_pointer, property.data_size)
-      return string
-  
-  def set_property_value(self, property_index, new_value):
-    data = self.file_entry.data
+    self.string_list_offset = offset
+    for property in all_properties:
+      if property.data_type == 4:
+        string = property.value
+        write_str_with_null_byte(data, offset, string)
+        new_relative_string_offset = offset-self.string_list_offset
+        
+        string_length_with_null = len(string)+1
+        offset += string_length_with_null
+        
+        # These strings are padded to the next 8 bytes in length.
+        if string_length_with_null % 8 != 0:
+          padding_bytes_needed = (8 - (string_length_with_null % 8))
+          padding = b"\0"*padding_bytes_needed
+          write_bytes(data, offset, padding)
+          offset += padding_bytes_needed
+          string_length_with_padding = string_length_with_null + padding_bytes_needed
+        else:
+          string_length_with_padding = string_length_with_null
+        
+        property.data_index = new_relative_string_offset
+        property.data_size = string_length_with_padding
+    string_list_total_size = offset - self.string_list_offset
     
-    property = self.properties[property_index]
+    for event in all_events:
+      event.save_changes()
+    for actor in all_actors:
+      actor.save_changes()
+    for action in all_actions:
+      action.save_changes()
+    for property in all_properties:
+      property.save_changes()
     
-    if property.data_type == 1:
-      raise Exception("Saving property data type 1 not implemented")
-    elif property.data_type == 3:
-      offset = self.integer_list_offset + property.data_index * 4
-      write_u32(data, offset, new_value)
-    elif property.data_type == 4:
-      string_pointer = self.string_list_offset + property.data_index
-      write_str(self.file_entry.data, string_pointer, new_value, property.data_size)
-    else:
-      raise Exception("Saving property data type %d not implemented" % property.data_type)
+    write_u32(data, 0x00, event_list_offset)
+    write_u32(data, 0x04, num_events)
+    write_u32(data, 0x08, actor_list_offset)
+    write_u32(data, 0x0C, num_actors)
+    write_u32(data, 0x10, action_list_offset)
+    write_u32(data, 0x14, num_actions)
+    write_u32(data, 0x18, property_list_offset)
+    write_u32(data, 0x1C, num_properties)
+    write_u32(data, 0x20, self.float_list_offset)
+    write_u32(data, 0x24, num_floats)
+    write_u32(data, 0x28, self.integer_list_offset)
+    write_u32(data, 0x2C, num_integers)
+    write_u32(data, 0x30, self.string_list_offset)
+    write_u32(data, 0x34, string_list_total_size)
+    write_bytes(data, 0x38, self.header_padding)
 
 class Event:
   DATA_SIZE = 0xB0
@@ -155,6 +348,10 @@ class Event:
       flag_id = read_u32(data, offset+0x88+i*4)
       self.ending_flags.append(flag_id)
     
+    self.play_jingle = bool(read_u8(data, offset+0x94))
+    
+    self.zero_initialized_runtime_data = read_bytes(data, offset+0x95, 0x1B)
+    
     self.actors = [] # This will be populated by the event list after it reads the actors.
   
   def save_changes(self):
@@ -166,7 +363,11 @@ class Event:
     write_u32(data, self.offset+0x28, self.priority)
     
     for i in range(0x14):
-      actor_index = self.actor_indexes[i]
+      if i >= len(self.actors):
+        actor_index = 0xFFFFFFFF
+      else:
+        actor_index = self.actors[i].actor_index
+      self.actor_indexes[i] = actor_index
       write_u32(data, self.offset+0x2C+i*4, actor_index)
     write_u32(data, self.offset+0x7C, self.num_actors)
     
@@ -177,6 +378,10 @@ class Event:
     for i in range(3):
       flag_id = self.ending_flags[i]
       write_u32(data, self.offset+0x88+i*4, flag_id)
+    
+    write_u8(data, self.offset+0x94, int(self.play_jingle))
+    
+    write_bytes(data, self.offset+0x95, self.zero_initialized_runtime_data)
 
 class Actor:
   DATA_SIZE = 0x50
@@ -193,7 +398,11 @@ class Actor:
     self.staff_type = read_u32(data, offset+0x2C)
     self.initial_action_index = read_u32(data, offset+0x30)
     
-    self.actions = [] # This will be populated by the event list after it reads the actions.
+    self.zero_initialized_runtime_data = read_bytes(data, offset+0x34, 0x1C)
+    
+    # These will be populated by the event list initialization function.
+    self.actions = []
+    self.initial_action = None
   
   def save_changes(self):
     data = self.file_entry.data
@@ -203,7 +412,11 @@ class Actor:
     write_u32(data, self.offset+0x24, self.actor_index)
     write_u32(data, self.offset+0x28, self.flag_id_to_set)
     write_u32(data, self.offset+0x2C, self.staff_type)
+    
+    self.initial_action_index = self.initial_action.action_index
     write_u32(data, self.offset+0x30, self.initial_action_index)
+    
+    write_bytes(data, self.offset+0x34, self.zero_initialized_runtime_data)
 
 class Action:
   DATA_SIZE = 0x50
@@ -223,10 +436,14 @@ class Action:
       self.starting_flags.append(flag_id)
     
     self.flag_id_to_set = read_u32(data, offset+0x34)
-    self.property_index = read_u32(data, offset+0x38)
+    self.first_property_index = read_u32(data, offset+0x38)
     self.next_action_index = read_u32(data, offset+0x3C)
     
-    self.properties = [] # This will be populated by the event list after it reads the properties.
+    self.zero_initialized_runtime_data = read_bytes(data, offset+0x40, 0x10)
+    
+    # These will be populated by the event list initialization function.
+    self.properties = []
+    self.next_action = None
   
   def save_changes(self):
     data = self.file_entry.data
@@ -240,8 +457,23 @@ class Action:
       write_u32(data, self.offset+0x28+i*4, flag_id)
     
     write_u32(data, self.offset+0x34, self.flag_id_to_set)
-    write_u32(data, self.offset+0x38, self.property_index)
+    
+    if len(self.properties) == 0:
+      self.first_property_index = 0xFFFFFFFF
+    else:
+      self.first_property_index = self.properties[0].property_index
+    write_u32(data, self.offset+0x38, self.first_property_index)
+    
+    if self.next_action is None:
+      self.next_action_index = 0xFFFFFFFF
+    else:
+      self.next_action_index = self.next_action.action_index
     write_u32(data, self.offset+0x3C, self.next_action_index)
+    
+    write_bytes(data, self.offset+0x40, self.zero_initialized_runtime_data)
+  
+  def get_prop(self, prop_name):
+    return next(prop for prop in self.properties if prop.name == prop_name)
 
 class Property:
   DATA_SIZE = 0x40
@@ -258,6 +490,12 @@ class Property:
     self.data_index = read_u32(data, offset+0x28)
     self.data_size = read_u32(data, offset+0x2C)
     self.next_property_index = read_u32(data, offset+0x30)
+    
+    self.zero_initialized_runtime_data = read_bytes(data, offset+0x34, 0xC)
+    
+    # These will be populated by the event list initialization function.
+    self.next_property = None
+    self.value = None
   
   def save_changes(self):
     data = self.file_entry.data
@@ -267,4 +505,11 @@ class Property:
     write_u32(data, self.offset+0x24, self.data_type)
     write_u32(data, self.offset+0x28, self.data_index)
     write_u32(data, self.offset+0x2C, self.data_size)
+    
+    if self.next_property is None:
+      self.next_property_index = 0xFFFFFFFF
+    else:
+      self.next_property_index = self.next_property.property_index
     write_u32(data, self.offset+0x30, self.next_property_index)
+    
+    write_bytes(data, self.offset+0x34, self.zero_initialized_runtime_data)
