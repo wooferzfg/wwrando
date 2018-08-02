@@ -154,7 +154,7 @@ def randomize_progression_items(self):
       # If we're on the last accessible location but not the last item we HAVE to place an item that unlocks new locations.
       # (Otherwise we will still try to place a useful item, but failing will not result in an error.)
       must_place_useful_item = True
-    elif len(accessible_undone_locations) >= 17:
+    else:
       # If we have a lot of locations open, we don't need to be so strict with prioritizing currently useful items.
       # This can give the randomizer a chance to place things like Delivery Bag or small keys for dungeons that need x2 to do anything.
       should_place_useful_item = False
