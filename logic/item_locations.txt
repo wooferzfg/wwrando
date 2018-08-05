@@ -1291,7 +1291,7 @@ Earth Temple - Chest In Three Blocks Room:
   Need:
     Can Access Earth Temple
     & Can Play Command Melody
-    & ET Small Key x2
+    & ET Small Key x1
     & Fire Arrows
     & Power Bracelets
     # Power Bracelets necessary again to move the large black pushable box and unlock a door.
@@ -1303,7 +1303,7 @@ Earth Temple - Chest Behind Statues:
   Need:
     Can Access Earth Temple
     & Can Play Command Melody
-    & ET Small Key x2
+    & ET Small Key x1
     & Fire Arrows
     & Power Bracelets
   Original item: Joy Pendant
@@ -1314,7 +1314,7 @@ Earth Temple - Casket in Second Crypt:
   Need:
     Can Access Earth Temple
     & Can Play Command Melody
-    & ET Small Key x2
+    & ET Small Key x1
     & Fire Arrows
     & Power Bracelets
   Original item: Small Key
@@ -1325,7 +1325,7 @@ Earth Temple - Stalfos Mini-Boss Room:
   Need:
     Can Access Earth Temple
     & Can Play Command Melody
-    & ET Small Key x3
+    & ET Small Key x2
     & Fire Arrows
     & Power Bracelets
   # Need to escape: Mirror Shield
