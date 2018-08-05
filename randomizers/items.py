@@ -148,6 +148,26 @@ def randomize_progression_items(self):
   self.logic.set_location_to_item("Bomb Island - Submarine", "Empty Bottle")
   self.logic.set_location_to_item("Rock Spire Isle - Beedle's Special Shop Ship - 500 Rupee Item", "Empty Bottle")
   self.logic.set_location_to_item("Rock Spire Isle - Beedle's Special Shop Ship - 950 Rupee Item", "Empty Bottle")
+  
+  self.logic.set_location_to_item("Outset Island - Underneath Link's House", "Telescope")
+  self.logic.set_location_to_item("Windfall Island - Zunari - Stock Exotic Flower in Zunari's Shop", "Magic Armor")
+  self.logic.set_location_to_item("Windfall Island - Mrs. Marie - Give 40 Joy Pendants", "Hero's Charm")
+  
+  self.logic.set_location_to_item("Outset Island - Orca - Give 10 Knight's Crests", "Hurricane Spin")
+
+  self.logic.set_location_to_item("Eastern Fairy Island - Great Fairy", "Progressive Bomb Bag")
+  self.logic.set_location_to_item("Southern Fairy Island - Great Fairy", "Progressive Bomb Bag")
+  self.logic.set_location_to_item("Western Fairy Island - Great Fairy", "Progressive Quiver")
+  self.logic.set_location_to_item("Thorned Fairy Island - Great Fairy", "Progressive Quiver")
+  
+  self.logic.set_location_to_item("Boating Course - Cave", "Submarine Chart")
+  self.logic.set_location_to_item("Mailbox - Letter Advertising Bombs in Beedle's Shop", "Beedle's Chart")
+  self.logic.set_location_to_item("Flight Control Platform - Submarine", "Platform Chart")
+  self.logic.set_location_to_item("Cyclops Reef - Sunken Treasure", "Light Ring Chart")
+  self.logic.set_location_to_item("Overlook Island - Sunken Treasure", "Secret Cave Chart")
+  self.logic.set_location_to_item("Four-Eye Reef - Sunken Treasure", "Great Fairy Chart")
+  self.logic.set_location_to_item("Northern Triangle Island - Sunken Treasure", "Octo Chart")
+  self.logic.set_location_to_item("Windfall Island - Jail - Tingle - Second Gift", "Tingle's Chart")
 
   # Make sure locations that should have dungeon items in them have them properly placed, even if the above logic missed them for some reason.
   for location_name in self.logic.prerandomization_dungeon_item_locations:
