@@ -29,12 +29,7 @@ class Logic:
       "Triforce Shard 6",
       "Triforce Shard 7",
       "Triforce Shard 8",
-    ]),
-    ("Goddess Pearls",  [
-      "Nayru's Pearl",
-      "Din's Pearl",
-      "Farore's Pearl",
-    ]),
+    ])
   ])
   
   def __init__(self, rando):
