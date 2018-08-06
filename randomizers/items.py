@@ -149,15 +149,10 @@ def randomize_progression_items(self):
     possible_items = self.logic.filter_items_by_any_valid_location(possible_items, accessible_undone_locations)
     
     must_place_useful_item = False
-    should_place_useful_item = True
     if len(accessible_undone_locations) == 1 and len(possible_items) > 1:
       # If we're on the last accessible location but not the last item we HAVE to place an item that unlocks new locations.
       # (Otherwise we will still try to place a useful item, but failing will not result in an error.)
       must_place_useful_item = True
-    else:
-      # If we have a lot of locations open, we don't need to be so strict with prioritizing currently useful items.
-      # This can give the randomizer a chance to place things like Delivery Bag or small keys for dungeons that need x2 to do anything.
-      should_place_useful_item = False
     
     # If we wind up placing a useful item it can be a single item or a group.
     # But if we place an item that is not yet useful, we need to exclude groups.
@@ -167,15 +162,12 @@ def randomize_progression_items(self):
     if len(possible_items_when_not_placing_useful) == 0 and len(possible_items) > 0:
       possible_items_when_not_placing_useful = possible_items
     
-    if must_place_useful_item or should_place_useful_item:
+    if must_place_useful_item:
       shuffled_list = possible_items.copy()
       self.rng.shuffle(shuffled_list)
       item_name = self.logic.get_first_useful_item(shuffled_list, for_progression=True)
       if item_name is None:
-        if must_place_useful_item:
-          raise Exception("No useful progress items to place!")
-        else:
-          item_name = self.rng.choice(possible_items_when_not_placing_useful)
+        raise Exception("No useful progress items to place!")
     else:
       item_name = self.rng.choice(possible_items_when_not_placing_useful)
     
@@ -185,7 +177,11 @@ def randomize_progression_items(self):
       # And we have to select multiple different locations, one for each item in the group.
       group_name = item_name
       possible_locations_for_group = accessible_undone_locations.copy()
-      self.rng.shuffle(possible_locations_for_group)
+      heart_containers = [location for location in possible_locations_for_group if "Heart Container" in location]
+      non_heart_containers = [location for location in possible_locations_for_group if not "Heart Container" in location]
+      self.rng.shuffle(heart_containers)
+      self.rng.shuffle(non_heart_containers)
+      possible_locations_for_group = heart_containers + non_heart_containers
       self.logic.set_multiple_locations_to_group(possible_locations_for_group, group_name)
     else:
       possible_locations = self.logic.filter_locations_valid_for_item(accessible_undone_locations, item_name)
@@ -204,7 +200,9 @@ def randomize_progression_items(self):
       # This way there is still a good chance it will not choose a new location.
       possible_locations_with_weighting = []
       for location_name in possible_locations:
-        if location_name not in previously_accessible_undone_locations:
+        if "Heart Container" in location_name:
+          weight = 25
+        elif location_name not in previously_accessible_undone_locations:
           weight = 2
         else:
           weight = 1
