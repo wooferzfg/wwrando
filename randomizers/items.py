@@ -118,6 +118,7 @@ def randomize_progression_items(self):
   
   # Place progress items.
   previously_accessible_undone_locations = []
+  heart_containers_chosen = 0
   while self.logic.unplaced_progress_items:
     accessible_undone_locations = self.logic.get_accessible_remaining_locations(for_progression=True)
     
@@ -162,13 +163,23 @@ def randomize_progression_items(self):
     if len(possible_items_when_not_placing_useful) == 0 and len(possible_items) > 0:
       possible_items_when_not_placing_useful = possible_items
     
+    item_name = None
     if must_place_useful_item:
       shuffled_list = possible_items.copy()
       self.rng.shuffle(shuffled_list)
       item_name = self.logic.get_first_useful_item(shuffled_list, for_progression=True)
       if item_name is None:
         raise Exception("No useful progress items to place!")
-    else:
+    elif len(accessible_undone_locations) >= 8: # enough locations to place shards
+      num_heart_containers = heart_containers_chosen + sum("Heart Container" in location for location in accessible_undone_locations)
+      if num_heart_containers >= 6: # guarantee that every heart container will have a progress item
+        possible_group_items = [name for name in possible_items if name in self.logic.progress_item_groups]
+        self.rng.shuffle(possible_group_items)
+        group_item_name = self.logic.get_first_useful_item(possible_group_items, for_progression=True)
+        if group_item_name is not None:
+          item_name = self.rng.choice(possible_items)
+    
+    if item_name is None:
       item_name = self.rng.choice(possible_items_when_not_placing_useful)
     
     if item_name in self.logic.progress_item_groups:
@@ -200,8 +211,11 @@ def randomize_progression_items(self):
       # This way there is still a good chance it will not choose a new location.
       possible_locations_with_weighting = []
       for location_name in possible_locations:
+        if "Maze Chest" in location_name:
+          possible_locations_with_weighting = [location_name]
+          break
         if "Heart Container" in location_name:
-          weight = 25
+          weight = 100
         elif location_name not in previously_accessible_undone_locations:
           weight = 2
         else:
@@ -209,6 +223,8 @@ def randomize_progression_items(self):
         possible_locations_with_weighting += [location_name]*weight
       
       location_name = self.rng.choice(possible_locations_with_weighting)
+      if "Heart Container" in location_name:
+        heart_containers_chosen += 1
       self.logic.set_location_to_item(location_name, item_name)
     
     previously_accessible_undone_locations = accessible_undone_locations
