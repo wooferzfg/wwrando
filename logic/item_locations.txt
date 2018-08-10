@@ -1511,71 +1511,6 @@ Wind Temple - Chest Between Two Dirt Patches:
 #  Types: Tingle Statue Chest, Dungeon
 #  Paths:
 #    - kaze/Stage.arc/Chest00C
-Wind Temple - Chest in Left Alcove:
-  Need:
-    Can Access Wind Temple
-    & Can Play Command Melody
-    & Iron Boots
-    & Deku Leaf
-  Original item: Joy Pendant
-  Types: Dungeon
-  Paths:
-    - kaze/Stage.arc/Chest004
-Wind Temple - Chest In Many Cyclones Room:
-  Need:
-    Can Access Wind Temple
-    & Can Play Command Melody
-    & Iron Boots
-    & Deku Leaf
-  Original item: Dungeon Map
-  Types: Dungeon
-  Paths:
-    - kaze/Stage.arc/Chest008
-Wind Temple - Chest In Middle Of Hub Room:
-  Need:
-    Can Access Wind Temple
-    & Can Play Command Melody
-    & Iron Boots
-    & Deku Leaf
-  Original item: Compass
-  Types: Dungeon
-  Paths:
-    - kaze/Stage.arc/Chest00A
-Wind Temple - Spike Wall Room - First Chest:
-  Need:
-    Can Access Wind Temple
-    & Can Play Command Melody
-    & Iron Boots
-    & Deku Leaf
-  Original item: Small Key
-  Types: Dungeon
-  Paths:
-    - kaze/Stage.arc/Chest003
-Wind Temple - Spike Wall Room - Destroy All Cracked Floors:
-  Need:
-    Can Access Wind Temple
-    & Can Play Command Melody
-    & Iron Boots
-    & Deku Leaf
-  Original item: Treasure Chart 35
-  Types: Dungeon
-  Paths:
-    - kaze/Stage.arc/Chest007
-Wind Temple - Wizzrobe Mini-Boss Room:
-  Need:
-    Can Access Wind Temple
-    & Can Play Command Melody
-    & Iron Boots
-    & Deku Leaf
-    & WT Small Key x2
-    & Can Defeat Peahats
-    # Killing the Wizzrobe doesn't require ranged weapons because he occasionally comes down to ground level.
-    # But you also need to be able to defeat Peahats in case they were summoned.
-  # Need to escape: Hookshot & Skull Hammer
-  Original item: Hookshot
-  Types: Dungeon
-  Paths:
-    - kazeMB/Stage.arc/Chest000
 Wind Temple - Chest Behind Stone Head:
   Need:
     Can Access Wind Temple
@@ -1587,12 +1522,102 @@ Wind Temple - Chest Behind Stone Head:
   Types: Dungeon
   Paths:
     - kaze/Stage.arc/Chest006
+Wind Temple - Chest in Left Alcove:
+  Need:
+    Can Access Wind Temple
+    & Can Play Command Melody
+    & Iron Boots
+    & Deku Leaf
+  Original item: Joy Pendant
+  Types: Dungeon
+  Paths:
+    - kaze/Stage.arc/Chest004
+Wind Temple - Big Key Chest:
+  Need:
+    Can Access Wind Temple
+    & Can Play Command Melody
+    & Iron Boots
+    & Deku Leaf
+    & Can Play Wind God's Aria
+    & Can Defeat Darknuts
+  Original item: Big Key
+  Types: Dungeon
+  Paths:
+    - kaze/Stage.arc/Chest002
+Wind Temple - Chest In Many Cyclones Room:
+  Need:
+    Can Access Wind Temple
+    & Can Play Command Melody
+    & Iron Boots
+    & Deku Leaf
+    & (Can Cut Grass | Magic Meter Upgrade)
+    # Can't make it to the chest without double magic or refilling your magic.
+  Original item: Dungeon Map
+  Types: Dungeon
+  Paths:
+    - kaze/Stage.arc/Chest008
+Wind Temple - Chest In Middle Of Hub Room:
+  Need:
+    Can Access Wind Temple
+    & Can Play Command Melody
+    & Iron Boots
+    & Deku Leaf
+    & Can Cut Grass
+    # Can't make it through the many cyclones room and reach the button that opens the floor without refilling your magic.
+  Original item: Compass
+  Types: Dungeon
+  Paths:
+    - kaze/Stage.arc/Chest00A
+Wind Temple - Spike Wall Room - First Chest:
+  Need:
+    Can Access Wind Temple
+    & Can Play Command Melody
+    & Iron Boots
+    & Deku Leaf
+    & Can Cut Grass
+  Original item: Small Key
+  Types: Dungeon
+  Paths:
+    - kaze/Stage.arc/Chest003
+Wind Temple - Spike Wall Room - Destroy All Cracked Floors:
+  Need:
+    Can Access Wind Temple
+    & Can Play Command Melody
+    & Iron Boots
+    & Deku Leaf
+    & Can Cut Grass
+    # You don't need to actually kill the enemies spawned in the process of destroying all the floors to get this chest.
+  Original item: Treasure Chart 35
+  Types: Dungeon
+  Paths:
+    - kaze/Stage.arc/Chest007
+Wind Temple - Wizzrobe Mini-Boss Room:
+  Need:
+    Can Access Wind Temple
+    & Can Play Command Melody
+    & Iron Boots
+    & Deku Leaf
+    & Can Cut Grass
+    & WT Small Key x2
+    & Can Defeat Wizzrobes
+    & Can Defeat Darknuts
+    & Can Defeat Peahats
+    & Can Defeat Moblins
+    & Can Defeat Keese
+    # Killing the Wizzrobe doesn't require ranged weapons because he occasionally comes down to ground level.
+    # The Moblin isn't spawned until after the Darknut is killed, so unfortunately you can't use its spear to kill the Darknut.
+  # Need to escape: Hookshot & Skull Hammer
+  Original item: Hookshot
+  Types: Dungeon
+  Paths:
+    - kazeMB/Stage.arc/Chest000
 Wind Temple - Chest at Top of Hub Room:
   Need:
     Can Access Wind Temple
     & Can Play Command Melody
     & Iron Boots
     & Deku Leaf
+    & Can Cut Grass
   Original item: Joy Pendant
   Types: Dungeon
   Paths:
@@ -1603,31 +1628,26 @@ Wind Temple - Chest Behind Seven Armos:
     & Can Play Command Melody
     & Iron Boots
     & Deku Leaf
+    & Can Cut Grass
     & Can Defeat Armos
   Original item: Small Key
   Types: Dungeon
   Paths:
     - kaze/Stage.arc/Chest001
-Wind Temple - Big Key Chest:
-  Need:
-    Can Access Wind Temple
-    & Can Play Command Melody
-    & Iron Boots
-    & Deku Leaf
-    & Can Play Wind God's Aria
-  Original item: Big Key
-  Types: Dungeon
-  Paths:
-    - kaze/Stage.arc/Chest002
 Wind Temple - Kill All Enemies in Tall Basement Room:
   Need:
     Can Access Wind Temple
     & Can Play Command Melody
     & Iron Boots
     & Deku Leaf
+    & Can Cut Grass
     & Hookshot
+    & Can Defeat Blue Bubbles
     & WT Small Key x2
-    # Note: You might only need 1 small key in some cases, but even then the player may have used the first small key elsewhere, so we require 2 here.
+    & Can Defeat Stalfos
+    & Can Defeat Wizzrobes
+    & Can Defeat Blue Bokoblins
+    & Can Defeat Morths
   Original item: Treasure Chart 5
   Types: Dungeon
   Paths:
@@ -1643,7 +1663,9 @@ Wind Temple - Molgera Heart Container:
     & Can Play Command Melody
     & Iron Boots
     & Deku Leaf
+    & Can Cut Grass
     & Hookshot
+    & Can Defeat Blue Bubbles
     & WT Small Key x2
     & Can Play Wind God's Aria
     & WT Big Key
@@ -1808,14 +1830,21 @@ The Great Sea - Withered Trees:
     & Empty Bottle
     & Can Play Ballad of Gales
     & Deku Leaf
-    # Deku Leaf is for the tree on Cliff Plateau Islands.
+    # Deku Leaf is for the tree on Cliff Plateau Isles.
   Original item: Piece of Heart
   Types: Long Sidequest
   Paths:
     - rels/d_a_obj_ftree.rel@0237
     - rels/d_a_obj_ftree.rel@03F3
 The Great Sea - Ghost Ship:
-  Need: Ghost Ship Chart & Can Play Ballad of Gales
+  Need:
+    Ghost Ship Chart
+    & Can Play Ballad of Gales
+    & Can Defeat Wizzrobes
+    & Can Defeat Poes
+    & Can Defeat ReDeads
+    & Can Defeat Stalfos
+    # You don't necessarily have to fight redeads and stalfos, but the wizzrobe can summon them if you're not quick enough.
   Original item: Triforce Chart 4
   Types: Other Chest
   Paths:
@@ -1942,10 +1971,12 @@ Boating Course - Raft:
     - sea/Room48.arc/Chest000
 Boating Course - Cave:
   Need:
-    # Getting inside the cave requires flying with Deku Leaf or Hookshotting the pole.
-    # Hitting the 3 diamond switches inside the cave needs a ranged weapon. The imps make it difficult though.
     (Can Fly With Deku Leaf Outdoors | Hookshot)
     & Can Hit Diamond Switches at Range
+    & Can Defeat Miniblins
+    # Getting inside the cave requires flying with Deku Leaf or Hookshotting the pole.
+    # Hitting the 3 diamond switches inside the cave needs a ranged weapon.
+    # Killing the miniblins is not necessary, but hitting the switches without being able to kill them would be extremely annoying.
   Original item: Submarine Chart
   Types: Combat Secret Cave
   Paths:
@@ -1955,6 +1986,10 @@ Stone Watcher Island - Cave:
   Need:
     Power Bracelets
     & Can Defeat Armos
+    & Can Defeat Moblins
+    & Can Defeat Wizzrobes
+    & Can Defeat Blue Bokoblins
+    & Can Defeat Darknuts
     & Can Play Wind's Requiem
   Original item: Triforce Chart 7
   Types: Combat Secret Cave
@@ -1981,15 +2016,30 @@ Islet of Steel - Interior:
   Types: Other Chest
   Paths:
     - ShipD/Stage.arc/Chest000
-Islet of Steel - Lookout Platform:
-  Need: Can Defeat Wizzrobes at Range
+Islet of Steel - Lookout Platform - Defeat the Enemies:
+  Need:
+    Can Defeat Pink Bokoblins
+    & Can Defeat Wizzrobes at Range
   Original item: Skull Necklace
   Types: Platform
   Paths:
     - sea/Room30.arc/Chest000
 
 Overlook Island - Cave:
-  Need: Hookshot
+  Need:
+    Hookshot
+    & Can Defeat Stalfos
+    & Can Defeat Wizzrobes
+    & Can Defeat Red ChuChus
+    & Can Defeat Green ChuChus
+    & Can Defeat Keese
+    & Can Defeat Fire Keese
+    & Can Defeat Morths
+    & Can Defeat Kargarocs
+    & Can Defeat Green Bokoblins
+    & Can Defeat Darknuts
+    # The Armos Knights require nothing since there are bomb flowers in their room.
+    # The chuchus, keese, morths, and kargarocs don't necessarily have to be fought, but may be summoned by the wizzrobes.
   Original item: Triforce Chart 8
   Types: Combat Secret Cave
   Paths:

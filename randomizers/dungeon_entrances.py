@@ -25,7 +25,7 @@ DUNGEON_EXITS = [
   DungeonExit("kaze", 15, 0, 15, "Wind Temple", "kazeB"),
 ]
 
-def randomize_dungeon_entrances(self, dry_run=False):
+def randomize_dungeon_entrances(self):
   # First we need to check how many locations the player can access at the start of the game (excluding dungeons since they're not randomized yet).
   # If the player can't access any locations outside of dungeons, we need to limit the possibilities for what we allow the first dungeon (on DRI) to be.
   # If that first dungeon is TotG, the player can't get any items because they need bombs.
@@ -52,7 +52,10 @@ def randomize_dungeon_entrances(self, dry_run=False):
     dungeon_exit = self.rng.choice(possible_remaining_exits)
     remaining_exits.remove(dungeon_exit)
     
-    if not dry_run:
+    self.dungeon_entrances[dungeon_entrance.entrance_name] = dungeon_exit.dungeon_name
+    self.dungeon_island_locations[dungeon_exit.dungeon_name] = dungeon_entrance.island_name
+    
+    if not self.dry_run:
       # Update the dungeon this entrance takes you into.
       entrance_dzx_path = "files/res/Stage/%s/Room%d.arc" % (dungeon_entrance.stage_name, dungeon_entrance.room_num)
       entrance_dzx = self.get_arc(entrance_dzx_path).get_file("room.dzr")
@@ -61,7 +64,7 @@ def randomize_dungeon_entrances(self, dry_run=False):
       entrance_scls.room_index = dungeon_exit.room_num
       entrance_scls.spawn_id = dungeon_exit.spawn_id
       entrance_scls.save_changes()
-        
+      
       # Update the DRI spawn to not have spawn ID 5.
       # If the DRI entrance was connected to the TotG dungeon, then exiting TotG while riding KoRL would crash the game.
       entrance_spawns = entrance_dzx.entries_by_type("PLYR")
@@ -69,7 +72,7 @@ def randomize_dungeon_entrances(self, dry_run=False):
       if entrance_spawn.spawn_type == 5:
         entrance_spawn.spawn_type = 1
         entrance_spawn.save_changes()
-        
+      
       # Update the entrance you're put at when leaving the dungeon.
       exit_dzx_path = "files/res/Stage/%s/Room%d.arc" % (dungeon_exit.stage_name, dungeon_exit.room_num)
       exit_dzx = self.get_arc(exit_dzx_path).get_file("room.dzr")
@@ -78,7 +81,7 @@ def randomize_dungeon_entrances(self, dry_run=False):
       exit_scls.room_index = dungeon_entrance.room_num
       exit_scls.spawn_id = dungeon_entrance.spawn_id
       exit_scls.save_changes()
-        
+      
       # Update the wind warp out event to take you to the correct island.
       boss_stage_arc_path = "files/res/Stage/%s/Stage.arc" % dungeon_exit.boss_stage_name
       event_list = self.get_arc(boss_stage_arc_path).get_file("event_list.dat")
@@ -91,8 +94,5 @@ def randomize_dungeon_entrances(self, dry_run=False):
       room_num_prop.value = dungeon_entrance.warp_out_room_num
       spawn_id_prop = next(prop for prop in stage_change_action.properties if prop.name == "StartCode")
       spawn_id_prop.value = dungeon_entrance.warp_out_spawn_id
-    
-    self.dungeon_entrances[dungeon_entrance.entrance_name] = dungeon_exit.dungeon_name
-    self.dungeon_island_locations[dungeon_exit.dungeon_name] = dungeon_entrance.island_name
   
   self.logic.update_dungeon_entrance_macros()
