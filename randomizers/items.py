@@ -57,7 +57,6 @@ def randomize_dungeon_items(self):
     item_name for item_name in (self.logic.unplaced_progress_items + self.logic.unplaced_nonprogress_items)
     if item_name.endswith(" Small Key")
   ]
-  previously_accessible_undone_locations = []
   for item_name in small_keys_to_place:
     accessible_undone_locations = self.logic.get_accessible_remaining_locations()
     accessible_undone_locations = [
@@ -77,8 +76,6 @@ def randomize_dungeon_items(self):
     self.logic.set_prerandomization_dungeon_item_location(location_name, item_name)
     
     self.logic.add_owned_item(item_name) # Temporarily add small keys to the player's inventory while placing them.
-    
-    previously_accessible_undone_locations = accessible_undone_locations
   
   # Randomize other dungeon items, big keys, dungeon maps, and compasses.
   other_dungeon_items_to_place = [
@@ -117,7 +114,8 @@ def randomize_progression_items(self):
     raise Exception("No progress locations are accessible at the very start of the game!")
   
   # Place progress items.
-  previously_accessible_undone_locations = []
+  location_weights = {}
+  current_weight = 1
   heart_containers_chosen = 0
   while self.logic.unplaced_progress_items:
     accessible_undone_locations = self.logic.get_accessible_remaining_locations(for_progression=True)
@@ -137,6 +135,14 @@ def randomize_progression_items(self):
       
       continue # Redo this loop iteration with the dungeon item locations no longer being considered 'remaining'.
     
+    weight_changed = False
+    for location in accessible_undone_locations:
+      if location not in location_weights:
+        if not weight_changed:
+          current_weight += 0.25
+          weight_changed = True
+        location_weights[location] = current_weight
+
     possible_items = self.logic.unplaced_progress_items
     
     if not self.options.get("keylunacy"):
@@ -215,19 +221,15 @@ def randomize_progression_items(self):
           possible_locations_with_weighting = [location_name]
           break
         if "Heart Container" in location_name:
-          weight = 100
-        elif location_name not in previously_accessible_undone_locations:
-          weight = 2
+          weight = 200
         else:
-          weight = 1
+          weight = int(location_weights[location_name])
         possible_locations_with_weighting += [location_name]*weight
       
       location_name = self.rng.choice(possible_locations_with_weighting)
       if "Heart Container" in location_name:
         heart_containers_chosen += 1
       self.logic.set_location_to_item(location_name, item_name)
-    
-    previously_accessible_undone_locations = accessible_undone_locations
   
   # Make sure locations that should have dungeon items in them have them properly placed, even if the above logic missed them for some reason.
   for location_name in self.logic.prerandomization_dungeon_item_locations:
@@ -238,9 +240,6 @@ def randomize_progression_items(self):
   game_beatable = self.logic.check_requirement_met("Can Reach and Defeat Ganondorf")
   if not game_beatable:
     raise Exception("Game is not beatable on this seed! This error shouldn't happen.")
-
-
-
 
 def write_changed_items(self):
   for location_name, item_name in self.logic.done_item_locations.items():
