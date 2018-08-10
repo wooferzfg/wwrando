@@ -33,6 +33,9 @@ class WWRandomizerWindow(QMainWindow):
     self.ui = Ui_MainWindow()
     self.ui.setupUi(self)
     
+    self.dry_run_done = False
+    self.dry_run = False
+    
     self.custom_color_selector_buttons = OrderedDict()
     self.custom_colors = OrderedDict()
     self.initialize_custom_player_model_list()
@@ -143,6 +146,8 @@ class WWRandomizerWindow(QMainWindow):
     if not seed:
       self.generate_seed()
       seed = self.settings["seed"]
+      
+    self.dry_run = not self.dry_run_done
     
     self.settings["seed"] = seed
     self.ui.seed.setText(seed)
@@ -157,9 +162,9 @@ class WWRandomizerWindow(QMainWindow):
     
     max_progress_val = 20
     self.progress_dialog = RandomizerProgressDialog("Randomizing", "Initializing...", max_progress_val)
-    
+
     try:
-      rando = Randomizer(seed, clean_iso_path, output_folder, options, permalink=permalink)
+      rando = Randomizer(seed, clean_iso_path, output_folder, options, permalink=permalink, dry_run=self.dry_run)
     except TooFewProgressionLocationsError as e:
       error_message = str(e)
       self.randomization_failed(error_message)
@@ -183,9 +188,15 @@ class WWRandomizerWindow(QMainWindow):
   def randomization_complete(self):
     self.progress_dialog.reset()
     
-    text = """Randomization complete.<br><br>
-      If you get stuck, check the progression spoiler log in the output folder.<br><br>
-      If you try to load the game in Dolphin and get a black screen, you should update to the latest development build of Dolphin:<br><a href=\"https://en.dolphin-emu.org/download/\">https://en.dolphin-emu.org/download/</a>"""
+    if self.dry_run:
+      text = """Dry run complete.<br><br>
+                Check the logs to see if you like the seed.<br>
+                Click on Randomize again to actually generate the ISO file."""
+      self.dry_run_done = True
+    else:
+      text = """Randomization complete.<br><br>
+        If you get stuck, check the progression spoiler log in the output folder.<br><br>
+        If you try to load the game in Dolphin and get a black screen, you should update to the latest development build of Dolphin:<br><a href=\"https://en.dolphin-emu.org/download/\">https://en.dolphin-emu.org/download/</a>"""
     
     self.complete_dialog = QMessageBox()
     self.complete_dialog.setTextFormat(Qt.TextFormat.RichText)
@@ -293,6 +304,8 @@ class WWRandomizerWindow(QMainWindow):
     self.encode_permalink()
     
     self.update_total_progress_locations()
+    
+    self.dry_run_done = False
   
   def update_total_progress_locations(self):
     options = OrderedDict()
