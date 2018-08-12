@@ -182,7 +182,7 @@ class Randomizer:
       starting_island.randomize_starting_island(self)
     
     if self.options.get("randomize_dungeon_entrances"):
-      dungeon_entrances.randomize_dungeon_entrances(self, dry_run=self.dry_run)
+      dungeon_entrances.randomize_dungeon_entrances(self)
     
     items.randomize_items(self)
     

@@ -91,9 +91,7 @@ NONPROGRESS_ITEMS = [
   #"Sea Hearts Chart",
   #"Island Hearts Chart",
   #"IN-credible Chart",
-] + \
-  ["Piece of Heart"]*44 + \
-  ["Heart Container"]*6
+]
 
 CONSUMABLE_ITEMS = \
    1 * ["Green Rupee"] + \
@@ -102,7 +100,7 @@ CONSUMABLE_ITEMS = \
    9 * ["Red Rupee"] + \
   12 * ["Purple Rupee"] + \
   18 * ["Orange Rupee"] + \
-  30 * ["Silver Rupee"] + \
+  80 * ["Silver Rupee"] + \
   \
    9 * ["Joy Pendant"] + \
    9 * ["Skull Necklace"] + \
