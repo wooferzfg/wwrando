@@ -45,6 +45,17 @@ PROGRESS_ITEMS = [
   
   "Magic Meter Upgrade",
   
+  "Telescope",
+  "Magic Armor",
+  "Hero's Charm",
+  
+  "Hurricane Spin",
+  
+  "Progressive Bomb Bag",
+  "Progressive Bomb Bag",
+  "Progressive Quiver",
+  "Progressive Quiver",
+  
   "Ghost Ship Chart",
 ] + \
   ["Progressive Sword"]*4 + \
@@ -54,10 +65,6 @@ PROGRESS_ITEMS = [
   ["Empty Bottle"]*4
 
 NONPROGRESS_ITEMS = [
-  "Telescope",
-  "Magic Armor",
-  "Hero's Charm",
-  
   # Complimentary ID is not placed in the randomizer to avoid the player getting an overly full delivery bag.
   # If you got a progress item for your delivery bag when the bag was already full, the new item would simply never enter your inventory.
   #"Complimentary ID",
@@ -70,13 +77,6 @@ NONPROGRESS_ITEMS = [
   #"Earth Tingle Statue",
   #"Wind Tingle Statue",
   
-  "Hurricane Spin",
-  
-  "Progressive Bomb Bag",
-  "Progressive Bomb Bag",
-  "Progressive Quiver",
-  "Progressive Quiver",
-
   "Submarine Chart",
   "Beedle's Chart",
   "Platform Chart",
@@ -94,24 +94,13 @@ NONPROGRESS_ITEMS = [
 ]
 
 CONSUMABLE_ITEMS = \
-   1 * ["Green Rupee"] + \
-   2 * ["Blue Rupee"] + \
+   4 * ["Green Rupee"] + \
+   4 * ["Blue Rupee"] + \
    4 * ["Yellow Rupee"] + \
-   9 * ["Red Rupee"] + \
-  12 * ["Purple Rupee"] + \
-  18 * ["Orange Rupee"] + \
-  80 * ["Silver Rupee"] + \
-  \
-   9 * ["Joy Pendant"] + \
-   9 * ["Skull Necklace"] + \
-   1 * ["Boko Baba Seed"] + \
-   9 * ["Golden Feather"] + \
-   3 * ["Knight's Crest"] + \
-   1 * ["Red Chu Jelly"] + \
-   1 * ["Green Chu Jelly"] + \
-  \
-   1 * ["All-Purpose Bait"] + \
-   4 * ["Hyoi Pear"]
+   8 * ["Red Rupee"] + \
+  16 * ["Purple Rupee"] + \
+  64 * ["Orange Rupee"] + \
+  64 * ["Silver Rupee"]
 # (Note: Blue Chu Jelly is not included as it is specially coded and would cause issues if randomly placed as a field item.)
 
 DUNGEON_PROGRESS_ITEMS = \
