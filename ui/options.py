@@ -92,10 +92,6 @@ OPTIONS = OrderedDict([
     "randomize_starting_island",
     "Randomizes which island you start the game on."
   ),
-  (
-    "randomize_song_notes",
-    "Randomizes the notes that you need to play for each song."
-  ),
   
   (
     "swift_sail",
@@ -120,6 +116,10 @@ OPTIONS = OrderedDict([
   (
     "generate_spoiler_log",
     "Generate a text file that lists the location of every single item for this seed.\nNote that whether this is checked or not affects where items are placed in this seed."
+  ),
+  (
+    "sword_mode",
+    "Placeholder"
   ),
   
   (

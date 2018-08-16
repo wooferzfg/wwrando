@@ -186,8 +186,7 @@ class Randomizer:
       dungeon_entrances.randomize_dungeon_entrances(self)
 
     self.song_notes = None
-    if self.options.get("randomize_song_notes"):
-      songs.randomize_songs(self)
+    songs.randomize_songs(self)
     
     items.randomize_items(self)
     
