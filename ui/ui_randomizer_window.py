@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'randomizer_window.ui'
 #
-# Created: Mon Jul 30 11:38:36 2018
+# Created: Thu Aug 16 08:37:27 2018
 #      by: pyside-uic 0.2.15 running on PySide 1.2.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -135,6 +135,9 @@ class Ui_MainWindow(object):
         self.randomize_charts = QtGui.QCheckBox(self.groupBox_3)
         self.randomize_charts.setObjectName("randomize_charts")
         self.gridLayout_3.addWidget(self.randomize_charts, 1, 0, 1, 1)
+        self.randomize_song_notes = QtGui.QCheckBox(self.groupBox_3)
+        self.randomize_song_notes.setObjectName("randomize_song_notes")
+        self.gridLayout_3.addWidget(self.randomize_song_notes, 2, 0, 1, 1)
         self.verticalLayout_2.addWidget(self.groupBox_3)
         self.groupBox_2 = QtGui.QGroupBox(self.tab)
         self.groupBox_2.setObjectName("groupBox_2")
@@ -324,6 +327,7 @@ class Ui_MainWindow(object):
         self.randomize_starting_island.setText(QtGui.QApplication.translate("MainWindow", "Randomize Starting Island", None, QtGui.QApplication.UnicodeUTF8))
         self.randomize_dungeon_entrances.setText(QtGui.QApplication.translate("MainWindow", "Randomize Dungeon Entrances", None, QtGui.QApplication.UnicodeUTF8))
         self.randomize_charts.setText(QtGui.QApplication.translate("MainWindow", "Randomize Charts", None, QtGui.QApplication.UnicodeUTF8))
+        self.randomize_song_notes.setText(QtGui.QApplication.translate("MainWindow", "Randomize Song Notes", None, QtGui.QApplication.UnicodeUTF8))
         self.groupBox_2.setTitle(QtGui.QApplication.translate("MainWindow", "Convenience Tweaks", None, QtGui.QApplication.UnicodeUTF8))
         self.reveal_full_sea_chart.setText(QtGui.QApplication.translate("MainWindow", "Reveal Full Sea Chart", None, QtGui.QApplication.UnicodeUTF8))
         self.swift_sail.setText(QtGui.QApplication.translate("MainWindow", "Swift Sail", None, QtGui.QApplication.UnicodeUTF8))
