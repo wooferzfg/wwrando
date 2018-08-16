@@ -7,6 +7,7 @@ from fs_helpers import *
 def randomize_songs(self):
   offset = 3769844
   song_lengths = [3, 4, 4, 6, 6, 3]
+  self.song_notes = []
   for i in range(6):
     num_notes = song_lengths[i]
     notes = []
@@ -18,6 +19,7 @@ def randomize_songs(self):
         notes.append(255)
     if not self.dry_run:
       write_changed_song(self, offset, notes)
+    self.song_notes.append(notes)
     offset += 7
 
 def write_changed_song(self, offset, notes):

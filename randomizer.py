@@ -185,6 +185,7 @@ class Randomizer:
     if self.options.get("randomize_dungeon_entrances"):
       dungeon_entrances.randomize_dungeon_entrances(self)
 
+    self.song_notes = None
     if self.options.get("randomize_song_notes"):
       songs.randomize_songs(self)
     
@@ -596,10 +597,39 @@ class Randomizer:
         max_location_name_length = len(specific_location_name)
     
     return (zones, max_location_name_length)
+    
+  def get_song_notes(self):
+    text = ""
+    song_names = ["Wind's Requiem", "Ballad of Gales", "Command Melody", "Earth God's Lyric", "Wind God's Aria", "Song of Passing"]
+    song_lengths = [3, 4, 4, 6, 6, 3]
+    if self.song_notes is not None:
+      for i in range(6):
+        text += song_names[i] + ": "
+        cur_song = self.song_notes[i]
+        num_notes = song_lengths[i]
+        for j in range(num_notes):
+          cur_note = cur_song[j]
+          if cur_note == 0:
+            text += "Neutral"
+          elif cur_note == 1:
+            text += "Up"
+          elif cur_note == 2:
+            text += "Right"
+          elif cur_note == 3:
+            text += "Down"
+          elif cur_note == 4:
+            text += "Left"
+          if j < num_notes - 1:
+            text += ", "
+        text += "\n"
+    text += "\n"
+    return text
   
   def write_non_spoiler_log(self):
     log_str = self.get_log_header()
     
+    log_str += self.get_song_notes()
+
     progress_locations, nonprogress_locations = self.logic.get_progress_and_non_progress_locations()
     
     zones, max_location_name_length = self.get_zones_and_max_location_name_len(self.logic.done_item_locations)
@@ -642,6 +672,8 @@ class Randomizer:
   
   def write_spoiler_log(self):
     spoiler_log = self.get_log_header()
+    
+    spoiler_log += self.get_song_notes()
     
     # Write progression spheres.
     spoiler_log += "Playthrough:\n"
