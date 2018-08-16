@@ -24,6 +24,7 @@ from randomizers import items
 from randomizers import charts
 from randomizers import starting_island
 from randomizers import dungeon_entrances
+from randomizers import songs
 
 with open(os.path.join(RANDO_ROOT_PATH, "version.txt"), "r") as f:
   VERSION = f.read().strip()
@@ -183,6 +184,9 @@ class Randomizer:
     
     if self.options.get("randomize_dungeon_entrances"):
       dungeon_entrances.randomize_dungeon_entrances(self)
+
+    if self.options.get("randomize_song_notes"):
+      songs.randomize_songs(self)
     
     items.randomize_items(self)
     

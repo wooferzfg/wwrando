@@ -92,6 +92,10 @@ OPTIONS = OrderedDict([
     "randomize_starting_island",
     "Randomizes which island you start the game on."
   ),
+  (
+    "randomize_song_notes",
+    "Randomizes the notes that you need to play for each song."
+  ),
   
   (
     "swift_sail",

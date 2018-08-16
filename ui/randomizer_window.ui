@@ -270,6 +270,13 @@
              </property>
             </widget>
            </item>
+           <item row="2" column="0">
+            <widget class="QCheckBox" name="randomize_song_notes">
+             <property name="text">
+              <string>Randomize Song Notes</string>
+             </property>
+            </widget>
+           </item>
           </layout>
          </widget>
         </item>
