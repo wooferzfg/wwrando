@@ -47,13 +47,15 @@ class Randomizer:
     self.jpcs_by_path = {}
     self.raw_files_by_path = {}
     
-    if not self.dry_run:
+    if self.options.get("randomize_charts") or not self.dry_run:
       self.verify_supported_version(clean_iso_path)
       
       self.gcm = GCM(clean_iso_path)
       self.gcm.read_entire_disc()
       
       self.chart_list = self.get_arc("files/res/Msg/fmapres.arc").get_file("cmapdat.bin")
+    
+    if not self.dry_run:
       self.bmg = self.get_arc("files/res/Msg/bmgres.arc").get_file("zel_00.bmg")
     
     self.read_text_file_lists()
