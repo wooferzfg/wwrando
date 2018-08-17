@@ -162,6 +162,12 @@ def randomize_progression_items(self):
     # But if we place an item that is not yet useful, we need to exclude groups.
     # This is so that a group doesn't wind up taking every single possible remaining location while not opening up new ones.
     possible_items_when_not_placing_useful = [name for name in possible_items if name not in self.logic.progress_item_groups]
+    
+    # Avoid placing items that unlock a lot of locations until later.
+    if current_weight < 8:
+      important_items = ["Deku Leaf", "Bombs", "Power Bracelets", "Progressive Sword", "Progressive Bow", "Grappling Hook", "Hookshot", "Skull Hammer"]
+      possible_items_when_not_placing_useful = [name for name in possible_items_when_not_placing_useful if name not in important_items]
+
     # Only exception is when there's exclusively groups left to place. Then we allow groups even if they're not useful.
     if len(possible_items_when_not_placing_useful) == 0 and len(possible_items) > 0:
       possible_items_when_not_placing_useful = possible_items
