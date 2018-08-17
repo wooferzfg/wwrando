@@ -42,6 +42,7 @@ bl item_func_normal_sail__Fv
 bl item_func_wind_tact__Fv ; Wind Waker
 bl item_func_tact_song1__Fv ; Wind's Requiem
 bl item_func_tact_song2__Fv ; Ballad of Gales
+bl item_func_tact_song6__Fv ; Song of Passing
 bl item_func_pirates_omamori__Fv ; Pirate's Charm
 
 
@@ -174,12 +175,16 @@ lis r4, 0x0004
 addi r4, r4, 0x0040
 stw r4, 4 (r3)
 
-; Set a switch (1E) for having seen the cutscene before the Puppet Ganon fight.
+; Set a switch (0D) for having seen the camera panning around when you first enter Ganon's Tower.
+; Also set a switch (1C) for having seen the camera panning around looking at the 4 lights in the room where you can drop down to the maze.
+; Also set a switch (1D) for having seen the camera panning around looking at the 4 boomerang switches in the room with the warp up to Forsaken Fortress.
+; Also set a switch (1E) for having seen the cutscene before the Puppet Ganon fight.
 ; Also set a switch (12) for having seen the cutscene after the Puppet Ganon fight.
 ; Also set a switch (1F) for having seen the cutscene before the Ganondorf fight.
 lis r3, 0x803C50A8@ha ; Ganon's Tower stage info.
 addi r3, r3, 0x803C50A8@l
-lis r4, 0xC004
+lis r4, 0xF004
+addi r4, r4, 0x2000
 stw r4, 4 (r3)
 
 
@@ -253,6 +258,24 @@ bl onEventBit__11dSv_event_cFUs
 after_starting_heros_clothes:
 
 
+lis r5, skip_rematch_bosses@ha
+addi r5, r5, skip_rematch_bosses@l
+lbz r5, 0 (r5) ; Load bool of whether rematch bosses should be skipped
+cmpwi r5, 1
+bne after_skipping_rematch_bosses
+lis r3, 0x803C522C@ha
+addi r3, r3, 0x803C522C@l
+li r4, 0x3904 ; Recollection Gohma defeated
+bl onEventBit__11dSv_event_cFUs
+li r4, 0x3902 ; Recollection Kalle Demos defeated
+bl onEventBit__11dSv_event_cFUs
+li r4, 0x3901 ; Recollection Jalhalla defeated
+bl onEventBit__11dSv_event_cFUs
+li r4, 0x3A80 ; Recollection Molgera defeated
+bl onEventBit__11dSv_event_cFUs
+after_skipping_rematch_bosses:
+
+
 ; Function end stuff
 lwz r0, 0x14 (sp)
 mtlr r0
@@ -269,6 +292,9 @@ should_start_with_heros_clothes:
 .global sword_mode
 sword_mode:
 .byte 0 ; By default Start with Sword
+.global skip_rematch_bosses
+skip_rematch_bosses:
+.byte 1 ; By default skip them
 .align 2 ; Align to the next 4 bytes
 
 
@@ -1513,6 +1539,45 @@ sth r0, 0x0206 (r31)
 turn_while_swinging_return:
 lfs f0, -0x5BA8 (rtoc) ; Replace line we overwrote to branch here
 b 0x8014564C ; Return
+
+
+
+
+; This function checks if Phantom Ganon's sword should disappear.
+; Normally, both Phantom Ganon 2's and Phantom Ganon 3's swords will disappear once you've used Phantom Ganon 3's sword to destroy the door to Puppet Ganon.
+; We change it so Phantom Ganon 2's sword remains so it can lead the player through the maze.
+.global check_phantom_ganons_sword_should_disappear
+check_phantom_ganons_sword_should_disappear:
+stwu sp, -0x10 (sp)
+mflr r0
+stw r0, 0x14 (sp)
+
+; First replace the event flag check we overwrote to call this custom function.
+bl isEventBit__11dSv_event_cFUs
+
+; If the player hasn't destroyed the door with Phantom Ganon's sword yet, we don't need to do anything different so just return.
+cmpwi r3, 0
+beq check_phantom_ganons_sword_should_disappear_end
+
+; If the player has destroyed the door, check if the current stage is the Phantom Ganon maze, where Phantom Ganon 2 is fought.
+lis r3, 0x803C9D3C@ha ; Current stage name
+addi r3, r3, 0x803C9D3C@l
+lis r4, phantom_ganon_maze_stage_name@ha
+addi r4, r4, phantom_ganon_maze_stage_name@l
+bl strcmp
+; If the stage is the maze, strcmp will return 0, so we return that to tell Phantom Ganon's sword that it should not disappear.
+; If the stage is anything else, strcmp will not return 0, so Phantom Ganon's sword should disappear.
+
+check_phantom_ganons_sword_should_disappear_end:
+lwz r0, 0x14 (sp)
+mtlr r0
+addi sp, sp, 0x10
+blr
+
+.global phantom_ganon_maze_stage_name
+phantom_ganon_maze_stage_name:
+.string "GanonJ"
+.align 2 ; Align to the next 4 bytes
 
 
 
