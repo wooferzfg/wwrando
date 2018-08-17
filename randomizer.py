@@ -66,10 +66,11 @@ class Randomizer:
       "Wind's Requiem",
       "Ballad of Gales",
       "Song of Passing",
-      "Progressive Sword",
       "Hero's Shield",
       "Boat's Sail",
     ]
+    if self.options.get("sword_mode") == "Start with Sword":
+      self.starting_items.append("Progressive Sword")
     # Add starting Triforce Shards.
     num_starting_triforce_shards = int(self.options.get("num_starting_triforce_shards", 0))
     for i in range(num_starting_triforce_shards):
@@ -175,6 +176,10 @@ class Randomizer:
         tweaks.apply_patch(self, "reveal_sea_chart")
       if self.options.get("add_shortcut_warps_between_dungeons"):
         tweaks.add_inter_dungeon_warp_pots(self)
+      tweaks.update_skip_rematch_bosses_game_variable(self)
+      tweaks.update_sword_mode_game_variable(self)
+      if self.options.get("sword_mode") == "Swordless":
+        tweaks.apply_patch(self, "swordless")
     
     options_completed += 1
     yield("Randomizing...", options_completed)
@@ -247,7 +252,6 @@ class Randomizer:
     tweaks.add_chart_number_to_item_get_messages(self)
     tweaks.shorten_auction_intro_event(self)
     tweaks.disable_invisible_walls(self)
-    tweaks.update_skip_rematch_bosses(self)
     
     customizer.replace_link_model(self)
     tweaks.change_starting_clothes(self)
