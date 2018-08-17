@@ -634,8 +634,6 @@ class Randomizer:
   
   def write_non_spoiler_log(self):
     log_str = self.get_log_header()
-    
-    log_str += self.get_song_notes()
 
     progress_locations, nonprogress_locations = self.logic.get_progress_and_non_progress_locations()
     
