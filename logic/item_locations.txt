@@ -336,7 +336,7 @@ Windfall Island - Transparent Chest:
     - sea/Room11.arc/Layer3/Chest000
     - sea/Room11.arc/Layer5/Chest000
 Windfall Island - Tott:
-  Need: Wind Waker & Song of Passing
+  Need: Wind Waker
   Original item: Song of Passing
   Types: Free Gift
   Paths:
@@ -476,7 +476,7 @@ Windfall Island - Linda and Anton:
 #  Paths:
 #    - sea/Stage.arc/Event025:TACT_TEARCH3/Actor000/Action002
 Dragon Roost Island - Wind Shrine:
-  Need: Wind Waker & Wind's Requiem
+  Need: Wind Waker
   Original item: Wind's Requiem
   Types: Misc
   Paths:
@@ -989,7 +989,6 @@ Tower of the Gods - Stone Tablet:
     & TotG Small Key x1
     & Can Defeat Yellow ChuChus
     & Wind Waker
-    & Command Melody
   Original item: Command Melody
   Types: Dungeon
   Paths:
@@ -1839,7 +1838,7 @@ The Great Sea - Salvage Corp Gift:
   Paths:
     - rels/d_a_npc_sv.rel@3327
 The Great Sea - Cyclos:
-  Need: Hero's Bow & Ballad of Gales
+  Need: Hero's Bow
   Original item: Ballad of Gales
   Types: Misc
   Paths:
