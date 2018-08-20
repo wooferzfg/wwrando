@@ -252,6 +252,9 @@ class Randomizer:
     tweaks.add_chart_number_to_item_get_messages(self)
     tweaks.shorten_auction_intro_event(self)
     tweaks.disable_invisible_walls(self)
+    tweaks.increase_grapple_animation_speed(self)
+    tweaks.increase_block_moving_animation(self)
+    tweaks.increase_misc_animations(self)
     
     customizer.replace_link_model(self)
     tweaks.change_starting_clothes(self)
