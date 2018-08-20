@@ -365,9 +365,9 @@
 ; So we replace a couple places that check that event bit to instead call a custom function that returns whether the warp should be unlocked or not.
 .open "files/rels/d_a_warpdm20.rel" ; Hyrule warp object
 ; This is a rel, so overwrite the relocation addresses instead of the actual code.
-.org 0x2530
+.org 0x2530 ; Relocation for line 634
   .int check_hyrule_warp_unlocked
-.org 0x2650
+.org 0x2650 ; Relocation for line B50
   .int check_hyrule_warp_unlocked
 .close
 
@@ -386,12 +386,17 @@
 
 ; Fix the Phantom Ganon from Ganon's Tower so he doesn't disappear from the maze when the player gets Light Arrows, but instead when they open the chest at the end of the maze which originally had Light Arrows.
 ; We replace where he calls dComIfGs_checkGetItem__FUc with a custom function that checks the appropriate treasure chest open flag.
+; We only make this change for Phanton Ganon 2 (in the maze) not Phantom Ganon 3 (when you kill him with Light Arrows).
 .open "files/rels/d_a_fganon.rel" ; Phantom Ganon
 ; This is a rel, so overwrite the relocation addresses instead of the actual code.
-.org 0xDB4C ; Relocation for line 0x4D28
+.org 0xDB54 ; Relocation for line 0x4D4C in standby__FP12fganon_class
   .int check_ganons_tower_chest_opened
-.org 0xDB54 ; Relocation for line 0x4D4C
-  .int check_ganons_tower_chest_opened
+.close
+; Then there's an issue where killing Phantom Ganon 3 first and using his sword to destroy the door makes the sword dropped by Phantom Ganon 2 also disappear, which is bad because then the player wouldn't know which way to go in the maze.
+.open "files/rels/d_a_boko.rel" ; Weapons lying on the ground
+.org 0x6404 ; Relocation for line 0x2A90 in execute__8daBoko_cFv
+  ; Instead of checking if the event flag for having destroyed the door with Phantom Ganon's sword is set, call a custom function.
+  .int check_phantom_ganons_sword_should_disappear
 .close
 
 
@@ -908,5 +913,89 @@
   b 0x146C
 .org 0x3C1C ; In carry_move__FP8kb_class
   ; Remove branch for if you have no sword
+  nop
+.close
+
+
+
+
+; Refill the player's magic meter to full when they load a save.
+.open "sys/main.dol"
+.org 0x80231B08 ; In FileSelectMainNormal__10dScnName_cFv right after calling card_to_memory__10dSv_info_cFPci
+  b fully_refill_magic_meter_on_load_save
+.close
+
+
+
+
+; Allow turning while swinging on ropes.
+.open "sys/main.dol" ; In procRopeSwing__9daPy_lk_cFv
+.org 0x80145648
+  b turn_while_swinging
+.close
+
+
+
+
+; Change all treasure chests to open quickly.
+; Removes the build up music, uses the short opening event instead of the long dark room event, and use the short chest opening animation.
+; This change also fixes the bug where the player can duplicate items by using storage on the non-wooden chests.
+.open "files/rels/d_a_tbox.rel" ; Treasure chests
+.org 0x279C ; In actionOpenWait__8daTbox_cFv
+  b 0x2800
+.org 0x2870 ; In actionOpenWait__8daTbox_cFv
+  nop
+.org 0x3D2E ; File ID of the bck animation to use for chest type 1
+  .short 9 ; Was originally 8 (long chest opening anim)
+.org 0x3D3A ; File ID of the bck animation to use for chest type 2
+  .short 9 ; Was originally 8 (long chest opening anim)
+.org 0x3D46 ; File ID of the bck animation to use for chest type 3
+  .short 9 ; Was originally 8 (long chest opening anim)
+.close
+
+
+
+
+; Change the item get sound used when opening a wooden chest to the good item sound instead of the bad item sound.
+; Because of the above change where all chests were given the wooden chest event, this also affects non-wooden chests too.
+; To do this we change the code that decides what item get sound to play to ignore prm0 to Link's 010open_treasure.
+.open "sys/main.dol"
+.org 0x8012E3A4 ; In setGetItemSound__9daPy_lk_cFUsi
+  b 0x8012E3E8
+.close
+
+
+
+
+; Hide the blue main quest markers from the sea chart.
+.open "sys/main.dol"
+.org 0x801B14C4 ; checkMarkCheck1__12dMenu_Fmap_cFv
+  ; Make the function that handles early-game quest markers return instantly.
+  blr
+.org 0x801B1684 ; checkMarkCheck2__12dMenu_Fmap_cFv
+  ; Make the function that handles late-game quest markers return instantly.
+  blr
+.close
+
+
+
+
+; Fixes new game+ so that picto box related things aren't flagged as done already.
+; (Note: There are some more things the new game+ initialization function besides these ones that seem like they could potentially cause other issues, but I can't figure out exactly what they're doing, so I'm not removing them for now.)
+.open "sys/main.dol"
+.org 0x8005D78C ; reinit__10dSv_info_cFv
+  ; Don't set Lenzo's event register to 07, causing his assistant quest to be complete.
+  nop
+.org 0x8005D7A4 ; reinit__10dSv_info_cFv
+  ; Don't set the Windfall jail chest open flag, or you wouldn't be able to get the item inside it.
+  nop
+.org 0x8005D7FC ; reinit__10dSv_info_cFv
+  ; Don't put the deluxe picto box in the player's inventory.
+  nop
+.org 0x8005D81C ; reinit__10dSv_info_cFv
+  ; Don't set the bit for owning the regular picto box.
+  nop
+.org 0x8005D82C ; reinit__10dSv_info_cFv
+  ; Don't set the bit for owning the deluxe picto box.
   nop
 .close

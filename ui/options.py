@@ -117,6 +117,14 @@ OPTIONS = OrderedDict([
     "generate_spoiler_log",
     "Generate a text file that lists the location of every single item for this seed.\nNote that whether this is checked or not affects where items are placed in this seed."
   ),
+  (
+    "sword_mode",
+    "Controls whether you start with the Hero's Sword, the Hero's Sword is randomized, or if there are no swords in the entire game."
+  ),
+  (
+    "skip_rematch_bosses",
+    "Removes the door in Ganon's Tower that only unlocks when you defeat the rematch versions of Gohma, Kalle Demos, Jalhalla, and Molgera."
+  ),
   
   (
     "custom_player_model",

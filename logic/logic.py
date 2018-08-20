@@ -51,6 +51,16 @@ class Logic:
     for i in range(1, 41+1):
       self.treasure_chart_names.append("Treasure Chart %d" % i)
     
+    if self.rando.options.get("sword_mode") == "Swordless":
+      self.all_progress_items = [
+        item_name for item_name in self.all_progress_items
+        if item_name != "Progressive Sword"
+      ]
+      self.all_nonprogress_items = [
+        item_name for item_name in self.all_nonprogress_items
+        if item_name != "Hurricane Spin"
+      ]
+    
     if self.rando.options.get("progression_triforce_charts"):
       self.all_progress_items += self.triforce_chart_names
     else:
@@ -114,9 +124,11 @@ class Logic:
       if location_name.startswith("Rock Spire Isle - Beedle's Special Shop Ship - "):
         self.rock_spire_shop_ship_locations.append(location_name)
     
-    # These are needed when calculating progression spheres if dungeon entrance rando/chart rando are on.
+    # Sync the logic macros with the randomizer.
     self.update_dungeon_entrance_macros()
     self.update_chart_macros()
+    self.update_rematch_bosses_macros()
+    self.update_sword_mode_macros()
     
     for item_name in self.rando.starting_items:
       self.add_owned_item(item_name)
@@ -384,7 +396,7 @@ class Logic:
     
     # Beedle's shop does not work properly if the same item is in multiple slots of the same shop.
     # Ban the Bait Bag slot from having bait.
-    if location_name == "The Great Sea - Beedle's Shop Ship - Bait Bag" and item_name in ["All-Purpose Bait", "Hyoi Pear"]:
+    if location_name == "The Great Sea - Beedle's Shop Ship - 20 Rupee Item" and item_name in ["All-Purpose Bait", "Hyoi Pear"]:
       return False
     
     # Also ban the same item from appearing more than once in the rock spire shop ship.
@@ -495,6 +507,24 @@ class Logic:
         req_string = chart_item_name
       
       self.set_macro(chart_macro_name, req_string)
+  
+  def update_rematch_bosses_macros(self):
+    if self.rando.options.get("skip_rematch_bosses"):
+      self.set_macro("Can Unlock Ganon's Tower Four Boss Door", "Nothing")
+    else:
+      self.set_macro("Can Unlock Ganon's Tower Four Boss Door", "Can Complete All Memory Dungeons and Bosses")
+  
+  def update_sword_mode_macros(self):
+    if self.rando.options.get("sword_mode") == "Swordless":
+      self.set_macro("Can Sword Fight with Orca", "Can Sword Fight with Orca in Swordless")
+      self.set_macro("Can Defeat Phantom Ganon", "Can Defeat Phantom Ganon in Swordless")
+      self.set_macro("Can Access Hyrule", "Can Access Hyrule in Swordless")
+      self.set_macro("Can Defeat Ganondorf", "Can Defeat Ganondorf in Swordless")
+    else:
+      self.set_macro("Can Sword Fight with Orca", "Can Sword Fight with Orca Outside Swordless")
+      self.set_macro("Can Defeat Phantom Ganon", "Can Defeat Phantom Ganon Outside Swordless")
+      self.set_macro("Can Access Hyrule", "Can Access Hyrule Outside Swordless")
+      self.set_macro("Can Defeat Ganondorf", "Can Defeat Ganondorf Outside Swordless")
   
   def clean_item_name(self, item_name):
     # Remove parentheses from any item names that may have them. (Formerly Master Swords, though that's not an issue anymore.)

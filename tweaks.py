@@ -206,6 +206,7 @@ def allow_all_items_to_be_field_items(self):
   # Here we copy the regular item get model to the field model so that any item can be a field item.
   # We also change the code run when you touch the item so that these items play out the full item get animation with text, instead of merely popping up above the player's head like a rupee.
   # And we change the Y offsets so the items don't appear lodged inside the floor, and can be picked up easily.
+  # And also change the radius for items that had 0 radius so the player doesn't need to be right inside the item to pick it up.
   # Also change the code run by items during the wait state, which affects the physics when shot out of Gohdan's nose for example.
   
   item_resources_list_start = address_to_offset(0x803842B0)
@@ -281,12 +282,16 @@ def allow_all_items_to_be_field_items(self):
   
   # We also change the Y offset of the hitbox for any items that have 0 for the Y offset.
   # Without this change the item would be very difficult to pick up, the only way would be to stand on top of it and do a spin attack.
+  # And also change the radius of the hitbox for items that have 0 for the radius.
   extra_item_data_list_start = address_to_offset(0x803882B0)
   for item_id in range(0, 0xFF+1):
     item_extra_data_entry_offset = extra_item_data_list_start+4*item_id
     original_y_offset = read_u8(dol_data, item_extra_data_entry_offset+1)
     if original_y_offset == 0:
       write_u8(dol_data, item_extra_data_entry_offset+1, 0x28) # Y offset of 0x28
+    original_radius = read_u8(dol_data, item_extra_data_entry_offset+2)
+    if original_radius == 0:
+      write_u8(dol_data, item_extra_data_entry_offset+2, 0x28) # Radius of 0x28
   
   
   for item_id in range(0x20, 0x44+1):
@@ -663,16 +668,20 @@ def allow_dungeon_items_to_appear_anywhere(self):
     
     # Add item get messages for the items.
     if base_item_name == "Small Key":
-      description_format_string = "\\{1A 05 00 00 01}You got a \\{1A 06 FF 00 00 01}%s small key\\{1A 06 FF 00 00 00}!"
+      description_format_string = "\\{1A 05 00 00 01}You got %s \\{1A 06 FF 00 00 01}%s small key\\{1A 06 FF 00 00 00}!"
+      description = word_wrap_string(description_format_string % (get_indefinite_article(dungeon_name), dungeon_name))
     elif base_item_name == "Big Key":
       description_format_string = "\\{1A 05 00 00 01}You got the \\{1A 06 FF 00 00 01}%s Big Key\\{1A 06 FF 00 00 00}!"
+      description = word_wrap_string(description_format_string % dungeon_name)
     elif base_item_name == "Dungeon Map":
       description_format_string = "\\{1A 05 00 00 01}You got the \\{1A 06 FF 00 00 01}%s Dungeon Map\\{1A 06 FF 00 00 00}!"
+      description = word_wrap_string(description_format_string % dungeon_name)
     elif base_item_name == "Compass":
       description_format_string = "\\{1A 05 00 00 01}You got the \\{1A 06 FF 00 00 01}%s Compass\\{1A 06 FF 00 00 00}!"
+      description = word_wrap_string(description_format_string % dungeon_name)
     
     msg = self.bmg.add_new_message(101 + item_id)
-    msg.string = word_wrap_string(description_format_string % dungeon_name)
+    msg.string = description
     msg.text_box_type = 9 # Item get message box
     msg.initial_draw_type = 2 # Slow initial message speed
     msg.display_item_id = item_id
@@ -792,7 +801,7 @@ def fix_shop_item_y_offsets(self):
       write_float(dol_data, display_data_offset+0x10, new_y_offset)
 
 def update_shop_item_descriptions(self):
-  item_name = self.logic.done_item_locations["The Great Sea - Beedle's Shop Ship - Bait Bag"]
+  item_name = self.logic.done_item_locations["The Great Sea - Beedle's Shop Ship - 20 Rupee Item"]
   cost = 20
   msg = self.bmg.messages_by_id[3906]
   msg.string = "\\{1A 06 FF 00 00 01}%s  %d Rupees\\{1A 06 FF 00 00 00}" % (item_name, cost)
@@ -971,6 +980,9 @@ def update_fishmen_hints(self):
       continue
     if item_name not in self.progress_item_hints:
       # Charts and dungeon items don't have hints
+      continue
+    if item_name == "Bait Bag":
+      # Can't access fishmen hints until you already have the bait bag
       continue
     if len(hints) >= 3:
       # 3 hints max per seed.
@@ -1238,3 +1250,23 @@ def disable_invisible_walls(self):
   invisible_wall = next(x for x in dzx.entries_by_type("SCOB") if x.name == "Akabe")
   invisible_wall.invisible_wall_switch_index = 0xFF
   invisible_wall.save_changes()
+
+def update_skip_rematch_bosses_game_variable(self):
+  skip_rematch_bosses_address = self.custom_symbols["skip_rematch_bosses"]
+  dol_data = self.get_raw_file("sys/main.dol")
+  if self.options.get("skip_rematch_bosses"):
+    write_u8(dol_data, address_to_offset(skip_rematch_bosses_address), 1)
+  else:
+    write_u8(dol_data, address_to_offset(skip_rematch_bosses_address), 0)
+
+def update_sword_mode_game_variable(self):
+  sword_mode_address = self.custom_symbols["sword_mode"]
+  dol_data = self.get_raw_file("sys/main.dol")
+  if self.options.get("sword_mode") == "Start with Sword":
+    write_u8(dol_data, address_to_offset(sword_mode_address), 0)
+  elif self.options.get("sword_mode") == "Randomized Sword":
+    write_u8(dol_data, address_to_offset(sword_mode_address), 1)
+  elif self.options.get("sword_mode") == "Swordless":
+    write_u8(dol_data, address_to_offset(sword_mode_address), 2)
+  else:
+    raise Exception("Unknown sword mode: %s" % self.options.get("sword_mode"))

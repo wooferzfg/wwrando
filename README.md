@@ -9,7 +9,7 @@ Download it here: https://github.com/LagoLunatic/wwrando/releases/latest
 
 ### Information
 
-The randomizer only supports the North American Gamecube version of Wind Waker. (MD5: d8e4d45af2032a081a0f446384e9261b)
+The randomizer only supports the North American Gamecube version of Wind Waker. (MD5: d8e4d45af2032a081a0f446384e9261b)  
 The European and Japanese versions of Wind Waker won't work, and neither will Wind Waker HD.
 
 The randomizer guarantees that every playthrough will be completable, and that you don't need to use any glitches or tricks to beat it.
@@ -41,14 +41,18 @@ SageOfMirrors (file format documentation)
 LordNed (file format documentation)  
 CryZe (event flag documentation)  
 
-### Running the randomizer on Mac
+### Running the randomizer on Mac and Linux
 
-There are currently no official Mac builds of the randomizer, but you should be able to run the Windows builds on Mac with Wine.
+There are currently no official Mac or Linux builds of the randomizer, but you should be able to run the Windows builds with Wine.
 
-You can install Wine and run the randomizer by running these commands:  
+For Mac:   
 `brew cask install xquartz`  
 `brew install wine`  
 `sudo wine "Wind Waker Randomizer.exe"`  
+
+For Linux:  
+`sudo apt install wine64` or `sudo apt install wine32`  
+`wine Wind\ Waker\ Randomizer.exe`  
 
 ### Running the randomizer from source
 
@@ -57,3 +61,8 @@ If you want to run the latest development/beta version of the randomizer from so
 * Download and install Python 3.4.4 32-bit from here: https://www.python.org/downloads/release/python-344/ ("Windows x86 MSI installer" is the one you want)  
 * Open the wwrando folder in a command prompt and install dependencies by running: `pip install -r requirements.txt`  
 * Then run the randomizer with: `python wwrando.py`  
+
+In addition, follow this if you want to use PyInstaller to build a distributable version of the randomizer:  
+* Install one of PyInstaller's dependencies manually: `pip install pywin32-ctypes==0.1.2`  
+* Install PyInstaller: `pip install PyInstaller==3.3.1`  
+* Then to make a build in the `dist` directory: `build.bat`  
