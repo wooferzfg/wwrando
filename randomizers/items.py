@@ -161,13 +161,13 @@ def randomize_progression_items(self):
   self.logic.set_location_to_item("Northern Triangle Island - Sunken Treasure", "Octo Chart")
   self.logic.set_location_to_item("Windfall Island - Jail - Tingle - Second Gift", "Tingle's Chart")
   
-  # Put Heart Containers in the first chest that requires the dungeon item
+  # Put Heart Containers in the first Treasure Chart or Piece of Heart chest
   self.logic.set_location_to_item("Dragon Roost Cavern - Chest Across Lava Pit", "Heart Container")
   self.logic.set_location_to_item("Forbidden Woods - Climb to Top Using Boko Baba Bulbs", "Heart Container")
   self.logic.set_location_to_item("Tower of the Gods - Shoot Eye Above Skulls Room Chest", "Heart Container")
   self.logic.set_location_to_item("Forsaken Fortress - Chest Inside Lower Jail Cell", "Heart Container")
-  self.logic.set_location_to_item("Earth Temple - Chest Behind Destructible Walls", "Heart Container")
-  self.logic.set_location_to_item("Wind Temple - Chest Behind Stone Head", "Heart Container")
+  self.logic.set_location_to_item("Earth Temple - Kill All Floormasters in Foggy Room", "Heart Container")
+  self.logic.set_location_to_item("Wind Temple - Spike Wall Room - Destroy All Cracked Floors", "Heart Container")
 
   # Make sure locations that should have dungeon items in them have them properly placed, even if the above logic missed them for some reason.
   for location_name in self.logic.prerandomization_dungeon_item_locations:
