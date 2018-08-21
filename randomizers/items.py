@@ -81,19 +81,20 @@ def randomize_dungeon_items(self):
 
 def randomize_progression_items(self):
   self.logic.set_location_to_item("Windfall Island - Jail - Tingle - First Gift", "Tingle Tuner")
-  self.logic.set_location_to_item("Forsaken Fortress - Helmaroc King Heart Container", "Spoils Bag")
+  self.logic.set_location_to_item("Forsaken Fortress - Helmaroc King Heart Container", "Spoils Bag") # Normally in Pirate Ship before FF1
   self.logic.set_location_to_item("Dragon Roost Cavern - Mini-Boss", "Grappling Hook")
   self.logic.set_location_to_item("Fire Mountain - Cave - Chest", "Power Bracelets")
   self.logic.set_location_to_item("Ice Ring Isle - Cave - Chest", "Iron Boots")
   self.logic.set_location_to_item("The Great Sea - Beedle's Shop Ship - 20 Rupee Item", "Bait Bag")
   self.logic.set_location_to_item("Forbidden Woods - Mothula Mini-Boss Room", "Boomerang")
   self.logic.set_location_to_item("Wind Temple - Wizzrobe Mini-Boss Room", "Hookshot")
-  self.logic.set_location_to_item("Dragon Roost Island - Chest on Top of Boulder", "Delivery Bag")
+  self.logic.set_location_to_item("Dragon Roost Island - Chest on Top of Boulder", "Delivery Bag") # Normally given by cutscene at DRI
   self.logic.set_location_to_item("Windfall Island - Pirate Ship", "Bombs")
   self.logic.set_location_to_item("Forsaken Fortress - Phantom Ganon", "Skull Hammer")
   self.logic.set_location_to_item("Forest Haven - On Tree Branch", "Deku Leaf")
   self.logic.set_location_to_item("Earth Temple - Stalfos Mini-Boss Room", "Mirror Shield")
   
+  # Replace Triforce Charts with Shards
   self.logic.set_location_to_item("Islet of Steel - Interior", "Triforce Shard 1")
   self.logic.set_location_to_item("Private Oasis - Cabana Labyrinth - Second Chest", "Triforce Shard 2")
   self.logic.set_location_to_item("Bird's Peak Rock - Cave", "Triforce Shard 3")
@@ -103,13 +104,13 @@ def randomize_progression_items(self):
   self.logic.set_location_to_item("Stone Watcher Island - Cave", "Triforce Shard 7")
   self.logic.set_location_to_item("Overlook Island - Cave", "Triforce Shard 8")
   
-  self.logic.set_location_to_item("Greatfish Isle - Hidden Chest", "Nayru's Pearl")
+  self.logic.set_location_to_item("Greatfish Isle - Hidden Chest", "Nayru's Pearl") # Normally given by Jabun in his cave
   self.logic.set_location_to_item("Dragon Roost Cavern - Gohma Heart Container", "Din's Pearl")
   self.logic.set_location_to_item("Forbidden Woods - Kalle Demos Heart Container", "Farore's Pearl")
   
   self.logic.set_location_to_item("Tower of the Gods - Stone Tablet", "Command Melody")
-  self.logic.set_location_to_item("Dragon Roost Island - Wind Shrine", "Earth God's Lyric")
-  self.logic.set_location_to_item("The Great Sea - Cyclos", "Wind God's Aria")
+  self.logic.set_location_to_item("Dragon Roost Island - Wind Shrine", "Earth God's Lyric") # Normally given by song stone
+  self.logic.set_location_to_item("The Great Sea - Cyclos", "Wind God's Aria") # Normally given by song stone
   self.logic.set_location_to_item("Windfall Island - Tott", "Song of Passing")
   
   self.logic.set_location_to_item("Dragon Roost Island - Rito Aerie - Baito", "Note to Mom")
@@ -121,7 +122,7 @@ def randomize_progression_items(self):
 
   self.logic.set_location_to_item("Diamond Steppe Island - Warp Maze Cave - Second Chest", "Ghost Ship Chart")
   
-  self.logic.set_location_to_item("Tower of the Gods - Gohdan Heart Container", "Progressive Sword")
+  self.logic.set_location_to_item("Tower of the Gods - Gohdan Heart Container", "Progressive Sword") # Normally in Hyrule 1
   self.logic.set_location_to_item("Earth Temple - Jalhalla Heart Container", "Progressive Sword")
   self.logic.set_location_to_item("Wind Temple - Molgera Heart Container", "Progressive Sword")
   
@@ -135,12 +136,12 @@ def randomize_progression_items(self):
   self.logic.set_location_to_item("Windfall Island - Jail - Maze Chest", "Progressive Picto Box")
   self.logic.set_location_to_item("Windfall Island - Lenzo's House - Bring Forest Firefly", "Progressive Picto Box")
   
+  self.logic.set_location_to_item("Dragon Roost Island - Secret Cave", "Empty Bottle") # Replaces Medli's bottle
   self.logic.set_location_to_item("Windfall Island - Mila", "Empty Bottle")
   self.logic.set_location_to_item("Bomb Island - Submarine", "Empty Bottle")
   self.logic.set_location_to_item("Rock Spire Isle - Beedle's Special Shop Ship - 500 Rupee Item", "Empty Bottle")
-  self.logic.set_location_to_item("Rock Spire Isle - Beedle's Special Shop Ship - 950 Rupee Item", "Empty Bottle")
   
-  self.logic.set_location_to_item("Outset Island - Underneath Link's House", "Telescope")
+  self.logic.set_location_to_item("Outset Island - Underneath Link's House", "Telescope") # Normally given by Aryll
   self.logic.set_location_to_item("Windfall Island - Zunari - Stock Exotic Flower in Zunari's Shop", "Magic Armor")
   self.logic.set_location_to_item("Windfall Island - Mrs. Marie - Give 40 Joy Pendants", "Hero's Charm")
   
@@ -159,6 +160,14 @@ def randomize_progression_items(self):
   self.logic.set_location_to_item("Four-Eye Reef - Sunken Treasure", "Great Fairy Chart")
   self.logic.set_location_to_item("Northern Triangle Island - Sunken Treasure", "Octo Chart")
   self.logic.set_location_to_item("Windfall Island - Jail - Tingle - Second Gift", "Tingle's Chart")
+  
+  # Put Heart Containers in the first chest that requires the dungeon item
+  self.logic.set_location_to_item("Dragon Roost Cavern - Chest Across Lava Pit", "Heart Container")
+  self.logic.set_location_to_item("Forbidden Woods - Climb to Top Using Boko Baba Bulbs", "Heart Container")
+  self.logic.set_location_to_item("Tower of the Gods - Shoot Eye Above Skulls Room Chest", "Heart Container")
+  self.logic.set_location_to_item("Forsaken Fortress - Chest Inside Lower Jail Cell", "Heart Container")
+  self.logic.set_location_to_item("Earth Temple - Chest Behind Destructible Walls", "Heart Container")
+  self.logic.set_location_to_item("Wind Temple - Chest Behind Stone Head", "Heart Container")
 
   # Make sure locations that should have dungeon items in them have them properly placed, even if the above logic missed them for some reason.
   for location_name in self.logic.prerandomization_dungeon_item_locations:
