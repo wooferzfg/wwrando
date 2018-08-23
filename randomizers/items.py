@@ -111,7 +111,6 @@ def randomize_progression_items(self):
   self.logic.set_location_to_item("Tower of the Gods - Stone Tablet", "Command Melody")
   self.logic.set_location_to_item("Dragon Roost Island - Wind Shrine", "Earth God's Lyric") # Normally given by song stone
   self.logic.set_location_to_item("The Great Sea - Cyclos", "Wind God's Aria") # Normally given by song stone
-  self.logic.set_location_to_item("Windfall Island - Tott", "Song of Passing")
   
   self.logic.set_location_to_item("Dragon Roost Island - Rito Aerie - Baito", "Note to Mom")
   self.logic.set_location_to_item("Windfall Island - Maggie - Letter", "Maggie's Letter")
