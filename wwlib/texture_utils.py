@@ -196,21 +196,38 @@ def get_interpolated_cmpr_colors(color_0_rgb565, color_1_rgb565):
   return colors
 
 def get_best_cmpr_key_colors(all_colors):
-  # Warning: This is a naive approach to selecting key colors that results in poor quality.
-  # A proper implementation would be complicated to implement.
-  min_r = min(all_colors, key=lambda c: c[0])[0]
-  max_r = max(all_colors, key=lambda c: c[0])[0]
-  min_g = min(all_colors, key=lambda c: c[1])[1]
-  max_g = max(all_colors, key=lambda c: c[1])[1]
-  min_b = min(all_colors, key=lambda c: c[2])[2]
-  max_b = max(all_colors, key=lambda c: c[2])[2]
-  color_0 = (min_r, min_g, min_b)
-  color_1 = (max_r, max_g, max_b)
-  return (color_0, color_1)
+  max_dist = -1
+  color_1 = None
+  color_2 = None
+  for i in range(len(all_colors)):
+    curr_color_1 = all_colors[i]
+    for j in range(i+1, len(all_colors)):
+      curr_color_2 = all_colors[j]
+      curr_dist = get_color_distance_fast(curr_color_1, curr_color_2)
+      if curr_dist > max_dist:
+        max_dist = curr_dist
+        color_1 = curr_color_1
+        color_2 = curr_color_2
+  
+  if max_dist == -1:
+    return ((0, 0, 0, 0xFF), (0xFF, 0xFF, 0xFF, 0xFF))
+  else:
+    r1, g1, b1, a1 = color_1
+    color_1 = (r1, g1, b1, 0xFF)
+    r2, g2, b2, a2 = color_2
+    color_2 = (r2, g2, b2, 0xFF)
+    
+    if (r1 >> 3) == (r2 >> 3) and (g1 >> 2) == (g2 >> 2) and (b1 >> 3) == (b2 >> 3):
+      if (r1 >> 3) == 0 and (g1 >> 2) == 0 and (b1 >> 3) == 0:
+        color_2 = (0xFF, 0xFF, 0xFF, 0xFF)
+      else:
+        color_2 = (0, 0, 0, 0xFF)
+    
+    return (color_1, color_2)
 
 # Picks a color from a palette that is visually the closest to the given color.
 # Based off Aseprite's code: https://github.com/aseprite/aseprite/blob/cc7bde6cd1d9ab74c31ccfa1bf41a000150a1fb2/src/doc/palette.cpp#L226-L272
-def get_nearest_color(color, palette):
+def get_nearest_color_slow(color, palette):
   if color in palette:
     return color
   
@@ -265,6 +282,37 @@ def get_nearest_color(color, palette):
   
   return value
 
+def get_nearest_color_fast(color, palette):
+  if color in palette:
+    return color
+  
+  r, g, b, a = get_rgba(color)
+  
+  if a < 16: # Transparent
+    for indexed_color in palette:
+      if len(indexed_color) == 4 and indexed_color[3] == 0:
+        return indexed_color
+  
+  min_dist = 0x7FFFFFFF
+  best_color = palette[0]
+  
+  for indexed_color in palette:
+    curr_dist = get_color_distance_fast(color, indexed_color)
+    
+    if curr_dist < min_dist:
+      if curr_dist == 0:
+        return indexed_color
+      
+      min_dist = curr_dist
+      best_color = indexed_color
+  
+  return best_color
+
+def get_color_distance_fast(color_1, color_2):
+  dist  = abs(color_1[0] - color_2[0])
+  dist += abs(color_1[1] - color_2[1])
+  dist += abs(color_1[2] - color_2[2])
+  return dist
 
 
 def decode_palettes(palette_data, palette_format, num_colors, image_format):
@@ -704,7 +752,7 @@ def encode_image_to_cmpr_block(pixels, colors_to_color_indexes, block_x, block_y
       y_in_subblock = i // 4
       color = pixels[subblock_x+x_in_subblock,subblock_y+y_in_subblock]
       r, g, b, a = get_rgba(color)
-      if a == 0:
+      if a < 16:
         needs_transparent_color = True
       else:
         all_colors_in_subblock.append(color)
@@ -713,12 +761,12 @@ def encode_image_to_cmpr_block(pixels, colors_to_color_indexes, block_x, block_y
     color_0_rgb565 = convert_color_to_rgb565(color_0)
     color_1_rgb565 = convert_color_to_rgb565(color_1)
     
-    if needs_transparent_color and color0_rgb565 > color1_rgb565:
+    if needs_transparent_color and color_0_rgb565 > color_1_rgb565:
       color_0_rgb565, color_1_rgb565 = color_1_rgb565, color_0_rgb565
-      color_0, color_1 = color1, color0
+      color_0, color_1 = color_1, color_0
     elif color_0_rgb565 < color_1_rgb565:
       color_0_rgb565, color_1_rgb565 = color_1_rgb565, color_0_rgb565
-      color_0, color1 = color_1, color_0
+      color_0, color_1 = color_1, color_0
     
     colors = get_interpolated_cmpr_colors(color_0_rgb565, color_1_rgb565)
     colors[0] = color_0
@@ -736,7 +784,7 @@ def encode_image_to_cmpr_block(pixels, colors_to_color_indexes, block_x, block_y
       if color in colors:
         color_index = colors.index(color)
       else:
-        new_color = get_nearest_color(color, colors)
+        new_color = get_nearest_color_fast(color, colors)
         color_index = colors.index(new_color)
       color_indexes |= (color_index << ((15-i)*2))
     write_u32(new_data, subblock_offset+4, color_indexes)
