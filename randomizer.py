@@ -510,23 +510,17 @@ class Randomizer:
       
       
       if not self.options.get("keylunacy"):
-        # If the player gained access to any small keys, we need to give them the keys without counting that as a new sphere.
+        # If the player gained access to any keys, we need to give them the keys without counting that as a new sphere.
         newly_accessible_dungeon_item_locations = [
           loc for loc in locations_in_this_sphere
           if loc in self.logic.prerandomization_dungeon_item_locations
         ]
-        newly_accessible_small_key_locations = [
-          loc for loc in newly_accessible_dungeon_item_locations
-          if self.logic.prerandomization_dungeon_item_locations[loc].endswith(" Small Key")
-        ]
-        if newly_accessible_small_key_locations:
-          for small_key_location_name in newly_accessible_small_key_locations:
-            item_name = self.logic.prerandomization_dungeon_item_locations[small_key_location_name]
-            assert item_name.endswith(" Small Key")
-            
+        if newly_accessible_dungeon_item_locations:
+          for key_location_name in newly_accessible_dungeon_item_locations:
+            item_name = self.logic.prerandomization_dungeon_item_locations[key_location_name]
             logic.add_owned_item(item_name)
           
-          previously_accessible_locations += newly_accessible_small_key_locations
+          previously_accessible_locations += newly_accessible_dungeon_item_locations
           continue # Redo this loop iteration with the small key locations no longer being considered 'remaining'.
       
       
