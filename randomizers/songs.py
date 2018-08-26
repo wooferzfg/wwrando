@@ -19,6 +19,9 @@ def randomize_songs(self):
         notes.append(255)
     if not self.dry_run:
       write_changed_song(self, offset, notes)
+    for j in range(len(self.song_notes)):
+      if self.song_notes[j] == notes:
+        raise Exception("Two of the songs are the same!")
     self.song_notes.append(notes)
     offset += 7
 
