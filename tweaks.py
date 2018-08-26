@@ -1283,9 +1283,6 @@ def increase_misc_animations(self):
    # Half the number of frames camera takes to focus on an npc for a conversation (from 20 to 10)
    write_u32(dol_data, address_to_offset(0x8016DA2C), 0x3800000A) # li r0,10
 
-   # Half the number of frames zooming into first person takes (from 10 to 5)
-   write_u32(dol_data, address_to_offset(0x80170B20), 0x3BA00005) # li r29,5
-
    #increase the rotation speed on ropes (64.0 -> 100.0)
    write_float(dol_data, address_to_offset(0x803FA2E8), 100.0)
 
