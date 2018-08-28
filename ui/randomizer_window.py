@@ -197,7 +197,7 @@ class WWRandomizerWindow(QMainWindow):
     else:
       text = """Randomization complete.<br><br>
         If you get stuck, check the progression spoiler log in the output folder.<br><br>
-        If you try to load the game in Dolphin and get a black screen, you should update to the latest development build of Dolphin:<br><a href=\"https://en.dolphin-emu.org/download/\">https://en.dolphin-emu.org/download/</a>"""
+        <b>If you try to load the game in Dolphin and get a black screen, you should update to the latest development build of Dolphin:<br><a href=\"https://en.dolphin-emu.org/download/\">https://en.dolphin-emu.org/download/</a></b>"""
     
     self.complete_dialog = QMessageBox()
     self.complete_dialog.setTextFormat(Qt.TextFormat.RichText)
@@ -551,6 +551,13 @@ class WWRandomizerWindow(QMainWindow):
     metadata = customizer.get_model_metadata(custom_model_name)
     if metadata is None:
       return
+    if "error_message" in metadata:
+      error_message = "YAML syntax error when trying to read custom model metadata for model: %s\n\n%s" %(custom_model_name, metadata["error_message"])
+      print(error_message)
+      QMessageBox.critical(
+        self, "Failed to load model metadata",
+        error_message
+      )
     
     is_casual = self.get_option_value("player_in_casual_clothes")
     if is_casual:
