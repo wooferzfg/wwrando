@@ -171,7 +171,7 @@ def randomize_progression_items(self):
     possible_items_when_not_placing_useful = [name for name in possible_items if name not in self.logic.progress_item_groups]
     
     # Avoid placing items that unlock a lot of locations until later.
-    if current_weight < 8:
+    if current_weight < 5:
       important_items = ["Deku Leaf", "Bombs", "Power Bracelets", "Progressive Sword", "Progressive Bow", "Grappling Hook", "Hookshot", "Skull Hammer", "Iron Boots", "Mirror Shield", "Boomerang"]
       possible_items_when_not_placing_useful = [name for name in possible_items_when_not_placing_useful if name not in important_items]
 
