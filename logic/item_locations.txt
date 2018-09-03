@@ -515,6 +515,7 @@ Dragon Roost Island - Chest on Top of Boulder:
     | (Bait Bag & Can Buy Hyoi Pears)
     | Boomerang
     | Bombs
+    # Bombs work by getting in the ship and shooting the cannon up at the bomb flowers.
   Original item: Silver Rupee
   Types: Other Chest
   Paths:
