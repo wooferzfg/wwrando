@@ -77,8 +77,7 @@ Can Access Forest Haven:
   # Grappling over the waterfall is very difficult without killing the Boko Baba there - but only if you start grappling from the top. You can grapple from the bottom up to avoid that Boko Baba entirely, so there's no extra requirement here for swordless.
   # Can do a Wind Waker dive to get under the island.
 Can Access Dungeon Entrance In Forest Haven Sector:
-  Can Access Forest Haven
-  & Can Fly With Deku Leaf Outdoors
+  Can Fly With Deku Leaf Outdoors
   # Can jump out of the boat and use the leaf to fly to the entrance.
 Can Access Dungeon Entrance In Tower of the Gods Sector:
   Din's Pearl
@@ -86,6 +85,8 @@ Can Access Dungeon Entrance In Tower of the Gods Sector:
   & Nayru's Pearl
 Can Access Dungeon Entrance On Headstone Island:
   Power Bracelets
+  | Can Fly With Deku Leaf Outdoors
+  # Can use a grab roll clip to clip into the island. https://youtu.be/kuxJPR3Yve4
 Can Access Dungeon Entrance On Gale Isle:
   Skull Hammer
   & (Iron Boots | Wind Waker)
