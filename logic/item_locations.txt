@@ -1267,9 +1267,9 @@ Earth Temple - Transparent Chest in First Crypt:
   Need:
     Can Access Earth Temple
     & Can Get Past ET Second Room
-    & (Command Melody | Mirror Shield)
     & Skull Hammer
     & Power Bracelets
+    # You can make Medli follow you and while she is walking she will light the chest.
     # Power Bracelets necessary to move the large black pushable box and reveal a light ray.
   Original item: Small Key
   Types: Dungeon
