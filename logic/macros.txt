@@ -174,8 +174,8 @@ Can Reach and Defeat Puppet Ganon:
   & Can Defeat Darknuts
   & Can Defeat Puppet Ganon
 Can Defeat Puppet Ganon:
-  Boomerang
-  # Boomerang isn't strictly necessary to defeat Puppet Ganon but makes things significantly easier, both to cut down Puppet Ganon's strings and to defeat the keese who drop refills.
+  Nothing
+  # Don't need the Boomerang here. Can just snipe the tail.
 Can Reach and Defeat Ganondorf:
   Can Reach and Defeat Puppet Ganon
   & Grappling Hook
