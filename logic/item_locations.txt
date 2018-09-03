@@ -1380,7 +1380,7 @@ Earth Temple - Chest in Third Crypt:
     & Can Play Earth God's Lyric
     & Power Bracelets
     & Skull Hammer
-    & ET Small Key x3
+    & Can Get Past Third ET Small Key Door
     & Can Defeat Red Bubbles
     # Can skip Command Melody by throwing Medli and then aiming your shield at the statue using the reflection off her back.
     # Power Bracelets necessary again to move the large mirror under the light.
@@ -1397,7 +1397,7 @@ Earth Temple - Many Mirrors Room Right Chest:
     & Can Play Earth God's Lyric
     & Power Bracelets
     & Skull Hammer
-    & ET Small Key x3
+    & Can Get Past Third ET Small Key Door
     & Can Defeat Red Bubbles
     & Can Play Command Melody
   Original item: Purple Rupee
@@ -1412,7 +1412,7 @@ Earth Temple - Many Mirrors Room Left Chest:
     & Can Play Earth God's Lyric
     & Power Bracelets
     & Skull Hammer
-    & ET Small Key x3
+    & Can Get Past Third ET Small Key Door
     & Can Defeat Red Bubbles
     & Can Play Command Melody
   Original item: Joy Pendant
@@ -1427,7 +1427,7 @@ Earth Temple - Stalfos Crypt Room:
     & Can Play Earth God's Lyric
     & Power Bracelets
     & Skull Hammer
-    & ET Small Key x3
+    & Can Get Past Third ET Small Key Door
     & Can Defeat Red Bubbles
     & Can Play Command Melody
     & Can Defeat Stalfos
@@ -1443,7 +1443,7 @@ Earth Temple - Big Key Chest:
     & Can Play Earth God's Lyric
     & Power Bracelets
     & Skull Hammer
-    & ET Small Key x3
+    & Can Get Past Third ET Small Key Door
     & Can Defeat Red Bubbles
     & Can Play Command Melody
     & Can Defeat Blue Bubbles
@@ -1465,7 +1465,7 @@ Earth Temple - Jalhalla Heart Container:
     & Can Play Earth God's Lyric
     & Power Bracelets
     & Skull Hammer
-    & ET Small Key x3
+    & Can Get Past Third ET Small Key Door
     & Can Defeat Red Bubbles
     & (ET Big Key | Deku Leaf)
     & Can Defeat Jalhalla

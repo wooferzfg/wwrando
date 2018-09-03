@@ -521,6 +521,11 @@ Can Get Past ET Purple ChuChu Room without Reflection:
   Power Bracelets
   # Can skip using Fire Arrows. https://youtu.be/VHuO4U2ORvo
   # Power Bracelets necessary to move the large black pushable box and unlock a door.
+Can Get Past Third ET Small Key Door:
+  ET Small Key x3
+  | (Bombs & Deku Leaf)
+  | (Fire Arrows & Deku Leaf)
+  # Can get past the gate in the left room by clipping.
 Can Get Under WT Floor:
   Hookshot | Iron Boots
   # Can use an L-slide to clip out of the hub room, or you can use Iron Boots to open up the floor.
