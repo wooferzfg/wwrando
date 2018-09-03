@@ -2759,7 +2759,7 @@ Crescent Moon Island - Sunken Treasure:
     - sea/Room5.arc/ScalableObject008
     - sea/Room5.arc/ScalableObject009
 Seven-Star Isles - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 6 & Bombs
+  Need: Grappling Hook & Chart for Island 6
   # Bombs are not necessary, but it's tricky to salvage this treasure with two stationary gunboats shooting at you, so being able to destroy them makes this much easier.
   Original item: Triforce Shard 7
   Types: Sunken Treasure
@@ -2996,7 +2996,7 @@ Stone Watcher Island - Sunken Treasure:
     - sea/Room31.arc/ScalableObject008
     - sea/Room31.arc/ScalableObject009
 Southern Triangle Island - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 32 & Can Defeat Seahats
+  Need: Grappling Hook & Chart for Island 32
   # Killing the seahats isn't necessary, but makes it much easier.
   Original item: Triforce Shard 6
   Types: Sunken Treasure
