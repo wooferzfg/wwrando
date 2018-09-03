@@ -503,6 +503,9 @@ Can Get Past ET Purple ChuChu Room:
   # Can skip using Fire Arrows. https://youtu.be/VHuO4U2ORvo
   # However, to also skip Command Melody, you need Leaf and Bombs for a bomb boost.
   # If you have Mirror Shield, you don't need to bring Medli, which means you don't need Command Melody either.
+Can Get Under WT Floor:
+  Hookshot | Iron Boots
+  # Can use an L-slide to clip out of the hub room, or you can use Iron Boots to open up the floor.
 Can Enter Cabana:
   (Delivery Bag & Cabana Deed)
   | (Hookshot & Bombs & Deku Leaf)

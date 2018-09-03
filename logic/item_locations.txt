@@ -1557,15 +1557,16 @@ Wind Temple - Chest In Many Cyclones Room:
   Need:
     Can Access Wind Temple
     & Can Play Command Melody
-    & Iron Boots
     & Deku Leaf
     & (
-      (Can Cut Grass | Magic Meter Upgrade)
+      Iron Boots
       | (Hookshot & Can Defeat Blue Bubbles)
+      | Fire Arrows
     )
-    # There's 2 paths you can take:
-    # * The vanilla path requires you to refill your magic to reach the chest, so you need a way to cut grass or the magic meter upgrade.
-    # * The alternate path is to hookshot up the trees on the side path to reach the upper level of the hub room, then glide down to where the iron switch is and do the many cyclones room backwards. If you don't have the magic meter upgrade you still need to refill your magic - but there's conveniently a skull that always drops a large magic refill, so you can just barely make it.
+    # There's 3 paths you can take:
+    # * The vanilla path requires the Iron Boots to get past the room with the song stone.
+    # * The alternate path is to hookshot up the trees on the side path to reach the upper level of the hub room, then glide down to where the iron switch is and do the many cyclones room backwards.
+    # * Shoot a fire arrow at the warp pot from the hub room, then do the many cyclones room backwards.
   Original item: Dungeon Map
   Types: Dungeon
   Paths:
@@ -1574,13 +1575,8 @@ Wind Temple - Chest In Middle Of Hub Room:
   Need:
     Can Access Wind Temple
     & Can Play Command Melody
-    & Iron Boots
     & Deku Leaf
-    & (
-      Can Cut Grass
-      | (Hookshot & Can Defeat Blue Bubbles)
-    )
-    # 2 paths: Through the many cyclones room (requires refilling magic) or glide down from the upper level of the hub room.
+    & Can Get Under WT Floor
   Original item: Compass
   Types: Dungeon
   Paths:
@@ -1589,12 +1585,10 @@ Wind Temple - Spike Wall Room - First Chest:
   Need:
     Can Access Wind Temple
     & Can Play Command Melody
-    & Iron Boots
     & Deku Leaf
-    & (
-      Can Cut Grass
-      | (Hookshot & Can Defeat Blue Bubbles)
-    )
+    & Can Get Under WT Floor
+    & (Iron Boots | Bombs)
+    # Need Iron Boots to break a panel or bombs to boost onto the spikes.
   Original item: Small Key
   Types: Dungeon
   Paths:
@@ -1603,12 +1597,9 @@ Wind Temple - Spike Wall Room - Destroy All Cracked Floors:
   Need:
     Can Access Wind Temple
     & Can Play Command Melody
-    & Iron Boots
     & Deku Leaf
-    & (
-      Can Cut Grass
-      | (Hookshot & Can Defeat Blue Bubbles)
-    )
+    & Can Get Under WT Floor
+    & Iron Boots
     # You don't need to actually kill the enemies spawned in the process of destroying all the floors to get this chest.
   Original item: Treasure Chart 35
   Types: Dungeon
@@ -1618,15 +1609,11 @@ Wind Temple - Wizzrobe Mini-Boss Room:
   Need:
     Can Access Wind Temple
     & Can Play Command Melody
-    & Iron Boots
     & Deku Leaf
-    & (
-      Can Cut Grass
-      | (Hookshot & Can Defeat Blue Bubbles)
-    )
-    & WT Small Key x2
+    & Can Get Under WT Floor
     & Can Defeat Darknuts
     & Can Remove Peahat Armor
+    # Can use a roll clip from the top of the door frame to clip into the mini boss room.
     # Besides Darknuts, there are Wizzrobes, Peahats, Moblins, Keese, and Kargarocs. But if you can defeat a Darknut you can steal its sword to defeat the other enemies.
     # Unfortunately you can't do the same in reverse by stealing a Moblin's spear to kill a Darknut - the Moblin never spawns until the Darknut is defeated.
     # Killing the Wizzrobe doesn't require ranged weapons because he occasionally comes down to ground level.
@@ -1639,12 +1626,9 @@ Wind Temple - Chest at Top of Hub Room:
   Need:
     Can Access Wind Temple
     & Can Play Command Melody
-    & Iron Boots
     & Deku Leaf
-    & (
-      Can Cut Grass
-      | (Hookshot & Can Defeat Blue Bubbles)
-    )
+    & Can Get Under WT Floor
+    # After doing an L-slide, you can stand out of bounds and pick up Makar to get him under the floor.
   Original item: Joy Pendant
   Types: Dungeon
   Paths:
@@ -1653,12 +1637,8 @@ Wind Temple - Chest Behind Seven Armos:
   Need:
     Can Access Wind Temple
     & Can Play Command Melody
-    & Iron Boots
     & Deku Leaf
-    & (
-      Can Cut Grass
-      | (Hookshot & Can Defeat Blue Bubbles)
-    )
+    & Can Get Under WT Floor
     & Can Defeat Armos
   Original item: Small Key
   Types: Dungeon
@@ -1668,11 +1648,11 @@ Wind Temple - Kill All Enemies in Tall Basement Room:
   Need:
     Can Access Wind Temple
     & Can Play Command Melody
-    & Iron Boots
     & Deku Leaf
     & Hookshot
     & Can Defeat Blue Bubbles
     & WT Small Key x2
+    & Iron Boots
     & Can Defeat Stalfos
     & Can Defeat Wizzrobes
     & Can Defeat Morths
@@ -1691,11 +1671,11 @@ Wind Temple - Molgera Heart Container:
   Need:
     Can Access Wind Temple
     & Can Play Command Melody
-    & Iron Boots
     & Deku Leaf
     & Hookshot
     & Can Defeat Blue Bubbles
     & WT Small Key x2
+    & Iron Boots
     & WT Big Key
     & Can Defeat Molgera
     # Can skip needing Wind God's Aria for the song stone by sidling behind it.
