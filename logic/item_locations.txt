@@ -2074,7 +2074,8 @@ Bird's Peak Rock - Cave:
   Need:
     # Need to hit the switches with a seagull.
     # Also need to play the Wind's Requiem to get the chest to appear.
-    Bait Bag & Can Buy Hyoi Pears
+    ((Bait Bag & Can Buy Hyoi Pears)
+    | Grappling Hook)
     & Can Play Wind's Requiem
   Original item: Triforce Chart 3
   Types: Puzzle Secret Cave
