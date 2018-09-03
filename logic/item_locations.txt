@@ -925,7 +925,7 @@ Greatfish Isle - Hidden Chest:
 Tower of the Gods - Chest Behind Bombable Walls:
   Need:
     Can Access Tower of the Gods
-    & Bombs
+    # Can do a Roll Clip to skip needing Bombs. https://www.youtube.com/watch?v=dP4gG2W2cHw
   Original item: Dungeon Map
   Types: Dungeon
   Paths:
@@ -939,7 +939,8 @@ Tower of the Gods - Hop Across Floating Boxes:
 Tower of the Gods - Light Two Torches:
   Need:
     Can Access Tower of the Gods
-    & Bombs
+    & (Bombs | Hero's Sword | Deku Leaf)
+    # Can get behind the bombable walls without Bombs. https://youtu.be/dP4gG2W2cHw?t=40s
   Original item: Joy Pendant
   Types: Dungeon
   Paths:
@@ -947,7 +948,8 @@ Tower of the Gods - Light Two Torches:
 Tower of the Gods - Skulls Room Chest:
   Need:
     Can Access Tower of the Gods
-    & Bombs
+    & (Bombs | Hero's Sword | Deku Leaf)
+    # Can get behind the bombable walls without Bombs. https://youtu.be/dP4gG2W2cHw?t=40s
   Original item: Compass
   Types: Dungeon
   Paths:
@@ -955,8 +957,9 @@ Tower of the Gods - Skulls Room Chest:
 Tower of the Gods - Shoot Eye Above Skulls Room Chest:
   Need:
     Can Access Tower of the Gods
-    & Bombs
+    & (Bombs | Hero's Sword | Deku Leaf)
     & Hero's Bow
+    # Can get behind the bombable walls without Bombs. https://youtu.be/dP4gG2W2cHw?t=40s
   Original item: Treasure Chart 6
   Types: Dungeon
   Paths:
@@ -975,10 +978,10 @@ Tower of the Gods - Shoot Eye Above Skulls Room Chest:
 Tower of the Gods - First Chest Guarded by Armos Knights:
   Need:
     Can Access Tower of the Gods
-    & Bombs
-    & TotG Small Key x1
-    & Can Defeat Yellow ChuChus
+    & Can Access Second Floor of TotG
     & Hero's Bow
+    & Bombs
+    # Need Bombs for the Armos Knights.
   Original item: Joy Pendant
   Types: Dungeon
   Paths:
@@ -986,9 +989,7 @@ Tower of the Gods - First Chest Guarded by Armos Knights:
 Tower of the Gods - Stone Tablet:
   Need:
     Can Access Tower of the Gods
-    & Bombs
-    & TotG Small Key x1
-    & Can Defeat Yellow ChuChus
+    & Can Access Second Floor of TotG
     & Wind Waker
   Original item: Command Melody
   Types: Dungeon
@@ -997,15 +998,13 @@ Tower of the Gods - Stone Tablet:
 Tower of the Gods - Darknut Mini-Boss Room:
   Need:
     Can Access Tower of the Gods
-    & Bombs
-    & TotG Small Key x1
-    & Can Defeat Yellow ChuChus
+    & Can Access Second Floor of TotG
     & Wind Waker
     & (Grappling Hook | Deku Leaf)
-    & (Command Melody | Hero's Bow)
     & Can Defeat Darknuts
+    # You can use the Command Melody skip to get the statue across without needing the bridge. https://www.youtube.com/watch?v=RG98_k9ahoI
     # Note: If you already have the bow you can get the statue guy across the previous room without getting this item, which might appear to make this chest permanently missable, but in reality you can use the deactivated Armos from across the pit to keep the button pressed.
-    # Note: Normally the only way to do this would be to use Command Melody on the statue guy, but if you already have the bow you can activate the moving platforms and use the deactivated Armos from across the pit to keep the button pressed instead.
+    # Note: Normally the only way to do this would be to use the statue guy, but if you already have the bow you can activate the moving platforms and use the deactivated Armos from across the pit to keep the button pressed instead.
     # Note: You can reach this without Grappling Hook if you have Deku Leaf instead. But if you run out of MP you can get trapped and not be able to escape since there are no MP refill jars on this side of the gap. So we modify one of the pots to drop an MP refill jar.
   Original item: Hero's Bow
   Types: Dungeon
@@ -1014,12 +1013,9 @@ Tower of the Gods - Darknut Mini-Boss Room:
 Tower of the Gods - Second Chest Guarded by Armos Knights:
   Need:
     Can Access Tower of the Gods
-    & Bombs
-    & TotG Small Key x1
-    & Can Defeat Yellow ChuChus
+    & Can Access Second Floor of TotG
     & Wind Waker
     & (Grappling Hook | Deku Leaf)
-    & Command Melody
     & Hero's Bow
     & Wind's Requiem
     # Bombs are needed to kill the Armos Knights, but killing them is not necessary for any reason, since the chest appears when you play Wind's Requiem, and the door is not locked.
@@ -1030,12 +1026,9 @@ Tower of the Gods - Second Chest Guarded by Armos Knights:
 Tower of the Gods - Floating Platforms Room:
   Need:
     Can Access Tower of the Gods
-    & Bombs
-    & TotG Small Key x1
-    & Can Defeat Yellow ChuChus
+    & Can Access Second Floor of TotG
     & Wind Waker
     & (Grappling Hook | Deku Leaf)
-    & Command Melody
     & Hero's Bow
   Original item: Small Key
   Types: Dungeon
@@ -1044,12 +1037,9 @@ Tower of the Gods - Floating Platforms Room:
 Tower of the Gods - Top of Floating Platforms Room:
   Need:
     Can Access Tower of the Gods
-    & Bombs
-    & TotG Small Key x1
-    & Can Defeat Yellow ChuChus
+    & Can Access Second Floor of TotG
     & Wind Waker
     & (Grappling Hook | Deku Leaf)
-    & Command Melody
     & Hero's Bow
   Original item: Joy Pendant
   Types: Dungeon
@@ -1058,14 +1048,14 @@ Tower of the Gods - Top of Floating Platforms Room:
 Tower of the Gods - Big Key Chest:
   Need:
     Can Access Tower of the Gods
-    & Bombs
-    & Can Defeat Yellow ChuChus
+    & Can Access Second Floor of TotG
     & Wind Waker
     & (Grappling Hook | Deku Leaf)
-    & Command Melody
     & Hero's Bow
     & TotG Small Key x2
-    & Deku Leaf
+    & (Deku Leaf | Command Melody)
+    # You don't need the Command Melody for the third statue. You can leaf back and forth instead.
+    # You can also get the third statue with Command Melody if you don't have Leaf. https://www.youtube.com/watch?v=bHxnIlpDO7A
   Original item: Big Key
   Types: Dungeon
   Paths:
@@ -1083,14 +1073,13 @@ Tower of the Gods - Big Key Chest:
 Tower of the Gods - Gohdan Heart Container:
   Need:
     Can Access Tower of the Gods
-    & Bombs
-    & Can Defeat Yellow ChuChus
+    & Can Access Second Floor of TotG
     & Wind Waker
     & (Grappling Hook | Deku Leaf)
     & Command Melody
     & Hero's Bow
     & TotG Small Key x2
-    & Deku Leaf
+    & (Deku Leaf | Command Melody)
     & Can Defeat Armos
     & TotG Big Key
     & Can Defeat Gohdan
