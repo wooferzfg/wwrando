@@ -2493,8 +2493,10 @@ Horseshoe Island - Southeastern Lookout Platform:
 
 Flight Control Platform - Bird-Man Contest - First Prize:
   Need:
-    Can Fly With Deku Leaf Outdoors
-    & Magic Meter Upgrade
+    (Can Fly With Deku Leaf Outdoors
+    & Magic Meter Upgrade)
+    | Bombs
+  # Can use FCP escape to cheese the minigame. https://www.youtube.com/watch?v=nJOE7DNruVE
   Original item: Piece of Heart
   Types: Minigame
   Paths:
