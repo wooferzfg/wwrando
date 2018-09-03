@@ -491,6 +491,18 @@ Can Access Second Floor of TotG:
   | Hero's Sword
   | Deku Leaf
   # Can get behind the waterfall without needing a key. https://youtu.be/dP4gG2W2cHw?t=40s
+Can Get Past ET Second Room:
+  Can Play Command Melody
+  | Deku Leaf
+  # Can use the Command Melody with Medli or do some leaf pumps to get and forth between the platforms. https://www.youtube.com/watch?v=JRKwNhk7ffo
+Can Get Past ET Purple ChuChu Room:
+  Fire Arrows
+  | Command Melody
+  | (Deku Leaf & Bombs)
+  | Mirror Shield
+  # Can skip using Fire Arrows. https://youtu.be/VHuO4U2ORvo
+  # However, to also skip Command Melody, you need Leaf and Bombs for a bomb boost.
+  # If you have Mirror Shield, you don't need to bring Medli, which means you don't need Command Melody either.
 Can Cut Grass:
   Hero's Sword
   | Skull Hammer

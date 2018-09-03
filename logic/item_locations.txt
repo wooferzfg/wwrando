@@ -1244,7 +1244,7 @@ Headstone Island - Submarine:
 Earth Temple - Transparent Chest In Warp Pot Room:
   Need:
     Can Access Earth Temple
-    & Can Play Command Melody
+    & Can Get Past ET Second Room
   Original item: Dungeon Map
   Types: Dungeon
   Paths:
@@ -1252,7 +1252,7 @@ Earth Temple - Transparent Chest In Warp Pot Room:
 Earth Temple - Chest Behind Destructible Walls:
   Need:
     Can Access Earth Temple
-    & Can Play Command Melody
+    & Can Get Past ET Second Room
     & Can Defeat Red ChuChus
     & Can Defeat Green ChuChus
     & Can Defeat Dark ChuChus
@@ -1274,7 +1274,8 @@ Earth Temple - Chest Behind Destructible Walls:
 Earth Temple - Transparent Chest in First Crypt:
   Need:
     Can Access Earth Temple
-    & Can Play Command Melody
+    & Can Get Past ET Second Room
+    & (Command Melody | Mirror Shield)
     & Skull Hammer
     & Power Bracelets
     # Power Bracelets necessary to move the large black pushable box and reveal a light ray.
@@ -1285,9 +1286,9 @@ Earth Temple - Transparent Chest in First Crypt:
 Earth Temple - Chest In Three Blocks Room:
   Need:
     Can Access Earth Temple
-    & Can Play Command Melody
+    & Can Get Past ET Second Room
     & ET Small Key x2
-    & Fire Arrows
+    & Can Get Past ET Purple ChuChu Room
     & Power Bracelets
     & Can Defeat Floormasters
     # Power Bracelets necessary again to move the large black pushable box and unlock a door.
@@ -1299,9 +1300,9 @@ Earth Temple - Chest In Three Blocks Room:
 Earth Temple - Chest Behind Statues:
   Need:
     Can Access Earth Temple
-    & Can Play Command Melody
+    & Can Get Past ET Second Room
     & ET Small Key x2
-    & Fire Arrows
+    & Can Get Past ET Purple ChuChu Room
     & Power Bracelets
     & Can Defeat Floormasters
   Original item: Joy Pendant
@@ -1311,9 +1312,9 @@ Earth Temple - Chest Behind Statues:
 Earth Temple - Casket in Second Crypt:
   Need:
     Can Access Earth Temple
-    & Can Play Command Melody
+    & Can Get Past ET Second Room
     & ET Small Key x2
-    & Fire Arrows
+    & Can Get Past ET Purple ChuChu Room
     & Power Bracelets
     & Can Defeat Floormasters
     # The Poes don't require anything to kill and the Moblins can be tricked into hitting each other so you can steal their weapon.
@@ -1325,12 +1326,17 @@ Earth Temple - Casket in Second Crypt:
 Earth Temple - Stalfos Mini-Boss Room:
   Need:
     Can Access Earth Temple
-    & Can Play Command Melody
-    & ET Small Key x3
-    & Fire Arrows
+    & Can Get Past ET Second Room
+    & ET Small Key x2
+    & Can Get Past ET Purple ChuChu Room
     & Power Bracelets
     & Can Defeat Floormasters
-    & Can Defeat Stalfos
+    & (
+      (Deku Leaf & Bombs)
+      | (ET Small Key x3 & (Deku Leaf | Bombs | Can Defeat Stalfos))
+    )
+    # Can skip needing to use a small key, but it requires Leaf and Bombs. https://www.youtube.com/watch?v=wbROZg4Pphk
+    # Can skip Stalfos with leaf pumping or with a roll clip and bomb boost. https://www.youtube.com/watch?v=Wj2BwOURptw
   # Need to escape: Can Aim Mirror Shield
   Original item: Mirror Shield
   Types: Dungeon
@@ -1350,7 +1356,7 @@ Earth Temple - Stalfos Mini-Boss Room:
 Earth Temple - End of Foggy Room With Floormasters:
   Need:
     Can Access Earth Temple
-    & Can Play Command Melody
+    & Can Get Past ET Second Room
     & Can Aim Mirror Shield
     & Can Play Earth God's Lyric
   Original item: Small Key
@@ -1360,7 +1366,7 @@ Earth Temple - End of Foggy Room With Floormasters:
 Earth Temple - Kill All Floormasters in Foggy Room:
   Need:
     Can Access Earth Temple
-    & Can Play Command Melody
+    & Can Get Past ET Second Room
     & Can Aim Mirror Shield
     & Can Play Earth God's Lyric
     & Can Defeat Floormasters
@@ -1381,13 +1387,14 @@ Earth Temple - Kill All Floormasters in Foggy Room:
 Earth Temple - Chest in Third Crypt:
   Need:
     Can Access Earth Temple
-    & Can Play Command Melody
+    & Can Get Past ET Second Room
     & Can Aim Mirror Shield
     & Can Play Earth God's Lyric
     & Power Bracelets
     & Skull Hammer
     & ET Small Key x3
     & Can Defeat Red Bubbles
+    # Can skip Command Melody by throwing Medli and then aiming your shield at the statue using the reflection off her back.
     # Power Bracelets necessary again to move the large mirror under the light.
     # Note: Killing the Red Bubbles is not necessary, but reflecting light is quite annoying while they're still alive.
   Original item: Red Rupee
@@ -1397,13 +1404,14 @@ Earth Temple - Chest in Third Crypt:
 Earth Temple - Many Mirrors Room Right Chest:
   Need:
     Can Access Earth Temple
-    & Can Play Command Melody
+    & Can Get Past ET Second Room
     & Can Aim Mirror Shield
     & Can Play Earth God's Lyric
     & Power Bracelets
     & Skull Hammer
     & ET Small Key x3
     & Can Defeat Red Bubbles
+    & Can Play Command Melody
   Original item: Purple Rupee
   Types: Dungeon
   Paths:
@@ -1411,13 +1419,14 @@ Earth Temple - Many Mirrors Room Right Chest:
 Earth Temple - Many Mirrors Room Left Chest:
   Need:
     Can Access Earth Temple
-    & Can Play Command Melody
+    & Can Get Past ET Second Room
     & Can Aim Mirror Shield
     & Can Play Earth God's Lyric
     & Power Bracelets
     & Skull Hammer
     & ET Small Key x3
     & Can Defeat Red Bubbles
+    & Can Play Command Melody
   Original item: Joy Pendant
   Types: Dungeon
   Paths:
@@ -1425,13 +1434,14 @@ Earth Temple - Many Mirrors Room Left Chest:
 Earth Temple - Stalfos Crypt Room:
   Need:
     Can Access Earth Temple
-    & Can Play Command Melody
+    & Can Get Past ET Second Room
     & Can Aim Mirror Shield
     & Can Play Earth God's Lyric
     & Power Bracelets
     & Skull Hammer
     & ET Small Key x3
     & Can Defeat Red Bubbles
+    & Can Play Command Melody
     & Can Defeat Stalfos
   Original item: Treasure Chart 12
   Types: Dungeon
@@ -1440,13 +1450,14 @@ Earth Temple - Stalfos Crypt Room:
 Earth Temple - Big Key Chest:
   Need:
     Can Access Earth Temple
-    & Can Play Command Melody
+    & Can Get Past ET Second Room
     & Can Aim Mirror Shield
     & Can Play Earth God's Lyric
     & Power Bracelets
     & Skull Hammer
     & ET Small Key x3
     & Can Defeat Red Bubbles
+    & Can Play Command Melody
     & Can Defeat Blue Bubbles
     & Can Defeat Darknuts
   Original item: Big Key
@@ -1461,15 +1472,16 @@ Earth Temple - Big Key Chest:
 Earth Temple - Jalhalla Heart Container:
   Need:
     Can Access Earth Temple
-    & Can Play Command Melody
+    & Can Get Past ET Second Room
     & Can Aim Mirror Shield
     & Can Play Earth God's Lyric
     & Power Bracelets
     & Skull Hammer
     & ET Small Key x3
     & Can Defeat Red Bubbles
-    & ET Big Key
+    & (ET Big Key | Deku Leaf)
     & Can Defeat Jalhalla
+  # Can skip the Big Key by flying with Medli. https://www.youtube.com/watch?v=6h2qu7mKE3o
   Original item: Heart Container
   Types: Dungeon
   Paths:
