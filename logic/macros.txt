@@ -88,6 +88,7 @@ Can Access Dungeon Entrance On Headstone Island:
   Power Bracelets
 Can Access Dungeon Entrance On Gale Isle:
   Skull Hammer
+  & (Iron Boots | Wind Waker)
   # Can repatedly pull the Wind Waker to avoid needing the Iron Boots. https://www.youtube.com/watch?v=tBLBQqIAJ9Y
 
 # The below macros are used when dungeon entrances are not randomized.
