@@ -60,7 +60,7 @@ Outset Island - Great Fairy:
   Need:
     Can Cut Down Outset Trees
     & Can Fly With Deku Leaf Outdoors
-    & Can Move Boulders
+    # Can clip and leaf under the boulder. https://youtu.be/UMwVpczaSOY?t=14m45s
   Original item: 5000 Rupee Wallet
   Types: Great Fairy
   Paths:
