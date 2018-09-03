@@ -2342,7 +2342,10 @@ Bomb Island - Submarine:
     - Abship/Room2.arc/Chest000
 
 Rock Spire Isle - Cave:
-  Need: Bombs
+  Need: 
+    Bombs
+    | Deku Leaf
+    # Can skip blowing up the rocks. https://www.youtube.com/watch?v=dkRrHBKlnTk
     # The Keese in the cave can be killed with nothing but the stick in there.
   Original item: Treasure Chart 37
   Types: Combat Secret Cave
