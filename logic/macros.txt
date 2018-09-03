@@ -438,6 +438,7 @@ Can Defeat Gohma:
 Can Defeat Kalle Demos:
   Boomerang
   | Bombs
+  | Hero's Bow
   # No sword needed - Kalle Demos can be damaged with just boomerang.
   # Can also use Bombs to defeat Kalle Demos by throwing them at the right time.
 Can Defeat Gohdan:

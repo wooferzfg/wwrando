@@ -781,7 +781,7 @@ Forbidden Woods - Morth Pit:
     Can Access Forbidden Woods
     & Deku Leaf
     & Can Defeat Boko Babas
-    & Grappling Hook
+    # Can skip using the Grappling Hook since you can use leaf pumps and leaf cancels to progress without it.
   Original item: Yellow Rupee
   Types: Dungeon
   Paths:
@@ -791,7 +791,6 @@ Forbidden Woods - Vine Maze Left Chest:
     Can Access Forbidden Woods
     & Deku Leaf
     & Can Defeat Boko Babas
-    & Grappling Hook
   Original item: Compass
   Types: Dungeon
   Paths:
@@ -801,7 +800,6 @@ Forbidden Woods - Vine Maze Right Chest:
     Can Access Forbidden Woods
     & Deku Leaf
     & Can Defeat Boko Babas
-    & Grappling Hook
   Original item: Small Key
   Types: Dungeon
   Paths:
@@ -824,7 +822,6 @@ Forbidden Woods - Mothula Mini-Boss Room:
     Can Access Forbidden Woods
     & Deku Leaf
     & Can Defeat Boko Babas
-    & Grappling Hook
     & FW Small Key x1
     & Can Defeat Winged Mothulas
   # Need to escape: Can Hit Diamond Switches at Range
@@ -837,7 +834,6 @@ Forbidden Woods - Past Seeds Hanging by Vines:
     Can Access Forbidden Woods
     & Deku Leaf
     & Can Defeat Boko Babas
-    & Grappling Hook
     & FW Small Key x1
     & Can Defeat Door Flowers
     & Can Destroy Seeds Hanging by Vines
@@ -851,8 +847,7 @@ Forbidden Woods - Chest Across Red Hanging Flower:
     Can Access Forbidden Woods
     & Deku Leaf
     & Can Defeat Boko Babas
-    & Grappling Hook
-    & Boomerang
+    # Can do a ledge clip with a nut to get under the floor.
   Original item: Yellow Rupee
   Types: Dungeon
   Paths:
@@ -873,8 +868,6 @@ Forbidden Woods - Chest in Locked Tree Trunk:
     Can Access Forbidden Woods
     & Deku Leaf
     & Can Defeat Boko Babas
-    & Grappling Hook
-    & Boomerang
   Original item: Treasure Chart 15
   Types: Dungeon
   Paths:
@@ -884,8 +877,7 @@ Forbidden Woods - Big Key Chest:
     Can Access Forbidden Woods
     & Deku Leaf
     & Can Defeat Boko Babas
-    & Grappling Hook
-    & Boomerang
+    & (Boomerang | Hookshot)
   Original item: Big Key
   Types: Dungeon
   Paths:
