@@ -478,6 +478,14 @@ Can Cut Down Hanging DRC Platform:
   | Skull Hammer
   # Hookshot and Grappling Hook can also technically cut the ropes, but it's too precise to aim them.
   # Boomerang can't cut them at all.
+Can Access End of Dragon Roost Cavern:
+  DRC Small Key x1
+  & Hero's Bow
+  & (Deku Leaf | Grappling Hook)
+  # You can get to the miniboss room by either going through the dungeon normally or by cutting down the hanging platform early and riding it up.
+  # After riding the platform up, you need to be able to cross the gaps, which requires either the Deku Leaf or the Grappling Hook.
+  # Doing this lets you do the dungeon in reverse, which gets rid of any key requirements.
+  # Cutting down the platform: https://www.youtube.com/watch?v=hpI8XWWrDp0
 Can Cut Grass:
   Hero's Sword
   | Skull Hammer
