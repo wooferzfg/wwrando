@@ -2041,8 +2041,8 @@ Stone Watcher Island - Lookout Platform - Destroy the Cannons:
 
 Islet of Steel - Interior:
   Need:
-    Bombs
-    & Can Play Wind's Requiem
+    Can Play Wind's Requiem
+    # Can just swim next to the ship that blocks the entrance and let the other ships destroy it.
   Original item: Triforce Chart 1
   Types: Other Chest
   Paths:
