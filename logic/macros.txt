@@ -505,14 +505,22 @@ Can Get Past ET Second Room:
   Can Play Command Melody
   | Deku Leaf
   # Can use the Command Melody with Medli or do some leaf pumps to get and forth between the platforms. https://www.youtube.com/watch?v=JRKwNhk7ffo
-Can Get Past ET Purple ChuChu Room:
-  Fire Arrows
-  | Command Melody
-  | (Deku Leaf & Bombs)
-  | Mirror Shield
+Can Get Past ET Purple ChuChu Room with Reflection:
+  (
+    Fire Arrows
+    | Command Melody
+    | (Deku Leaf & Bombs)
+    | Mirror Shield
+  )
+  & Power Bracelets
   # Can skip using Fire Arrows. https://youtu.be/VHuO4U2ORvo
   # However, to also skip Command Melody, you need Leaf and Bombs for a bomb boost.
   # If you have Mirror Shield, you don't need to bring Medli, which means you don't need Command Melody either.
+  # Power Bracelets necessary to move the large black pushable box and unlock a door.
+Can Get Past ET Purple ChuChu Room without Reflection:
+  Power Bracelets
+  # Can skip using Fire Arrows. https://youtu.be/VHuO4U2ORvo
+  # Power Bracelets necessary to move the large black pushable box and unlock a door.
 Can Get Under WT Floor:
   Hookshot | Iron Boots
   # Can use an L-slide to clip out of the hub room, or you can use Iron Boots to open up the floor.

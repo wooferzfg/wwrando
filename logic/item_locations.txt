@@ -1280,10 +1280,8 @@ Earth Temple - Chest In Three Blocks Room:
     Can Access Earth Temple
     & Can Get Past ET Second Room
     & ET Small Key x2
-    & Can Get Past ET Purple ChuChu Room
-    & Power Bracelets
+    & Can Get Past ET Purple ChuChu Room with Reflection
     & Can Defeat Floormasters
-    # Power Bracelets necessary again to move the large black pushable box and unlock a door.
     # You need to push blocks near the Floormaster to progress in this room, which basically requires killing it.
   Original item: Compass
   Types: Dungeon
@@ -1294,8 +1292,7 @@ Earth Temple - Chest Behind Statues:
     Can Access Earth Temple
     & Can Get Past ET Second Room
     & ET Small Key x2
-    & Can Get Past ET Purple ChuChu Room
-    & Power Bracelets
+    & Can Get Past ET Purple ChuChu Room with Reflection
     & Can Defeat Floormasters
   Original item: Joy Pendant
   Types: Dungeon
@@ -1306,8 +1303,7 @@ Earth Temple - Casket in Second Crypt:
     Can Access Earth Temple
     & Can Get Past ET Second Room
     & ET Small Key x2
-    & Can Get Past ET Purple ChuChu Room
-    & Power Bracelets
+    & Can Get Past ET Purple ChuChu Room without Reflection
     & Can Defeat Floormasters
     # The Poes don't require anything to kill and the Moblins can be tricked into hitting each other so you can steal their weapon.
     # The ReDeads don't need to be killed to get the item in their room, but you do need to kill them to escape without save warping.
@@ -1320,14 +1316,14 @@ Earth Temple - Stalfos Mini-Boss Room:
     Can Access Earth Temple
     & Can Get Past ET Second Room
     & ET Small Key x2
-    & Can Get Past ET Purple ChuChu Room
-    & Power Bracelets
+    & Can Get Past ET Purple ChuChu Room without Reflection
     & Can Defeat Floormasters
     & (
-      (Deku Leaf & Bombs)
+      (Deku Leaf & (Bombs | Can Defeat Stalfos))
       | (ET Small Key x3 & (Deku Leaf | Bombs | Can Defeat Stalfos))
     )
     # Can skip needing to use a small key, but it requires Leaf and Bombs. https://www.youtube.com/watch?v=wbROZg4Pphk
+    # Can do it without Bombs by using a skull, but then you don't have enough magic to skip the Stalfos fight.
     # Can skip Stalfos with leaf pumping or with a roll clip and bomb boost. https://www.youtube.com/watch?v=Wj2BwOURptw
   # Need to escape: Can Aim Mirror Shield
   Original item: Mirror Shield
