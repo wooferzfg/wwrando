@@ -1429,8 +1429,9 @@ Earth Temple - Stalfos Crypt Room:
     & Skull Hammer
     & Can Get Past Third ET Small Key Door
     & Can Defeat Red Bubbles
-    & Can Play Command Melody
+    & (Can Play Command Melody | Deku Leaf)
     & Can Defeat Stalfos
+    # Can clip and leaf to get to this room.
   Original item: Treasure Chart 12
   Types: Dungeon
   Paths:
@@ -1445,9 +1446,10 @@ Earth Temple - Big Key Chest:
     & Skull Hammer
     & Can Get Past Third ET Small Key Door
     & Can Defeat Red Bubbles
-    & Can Play Command Melody
+    & (Can Play Command Melody | Deku Leaf)
     & Can Defeat Blue Bubbles
     & Can Defeat Darknuts
+    # Can clip and leaf to get to this room. https://www.youtube.com/watch?v=kZUQb91sozI
   Original item: Big Key
   Types: Dungeon
   Paths:
