@@ -78,11 +78,8 @@ Can Access Forest Haven:
   # Can do a Wind Waker dive to get under the island.
 Can Access Dungeon Entrance In Forest Haven Sector:
   Can Access Forest Haven
-  & Grappling Hook
   & Can Fly With Deku Leaf Outdoors
-  & (Can Cut Grass | Magic Meter Upgrade)
-  # You either need double magic or the ability to refill your magic by cutting grass to make it all the way across.
-  # Note: You don't need Grappling Hook because you can take the lower platform exit out of Forest Haven (Noob Skip), but this is not currently in the logic.
+  # Can jump out of the boat and use the leaf to fly to the entrance.
 Can Access Dungeon Entrance In Tower of the Gods Sector:
   Din's Pearl
   & Farore's Pearl
