@@ -1431,7 +1431,7 @@ Earth Temple - Stalfos Crypt Room:
     & Can Defeat Red Bubbles
     & (Can Play Command Melody | Deku Leaf)
     & Can Defeat Stalfos
-    # Can clip and leaf to get to this room.
+    # Can clip and leaf to get to this room. https://www.youtube.com/watch?v=8lFc-vXLTAA
   Original item: Treasure Chart 12
   Types: Dungeon
   Paths:
