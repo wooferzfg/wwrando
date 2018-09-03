@@ -521,6 +521,10 @@ Can Get Past ET Purple ChuChu Room without Reflection:
   Power Bracelets
   # Can skip using Fire Arrows. https://youtu.be/VHuO4U2ORvo
   # Power Bracelets necessary to move the large black pushable box and unlock a door.
+Can Get Past ET Song Stone:
+  Can Play Earth God's Lyric
+  | (Deku Leaf & Bombs)
+  # Can do a clip to get past the first song stone.
 Can Get Past Third ET Small Key Door:
   ET Small Key x3
   | (Bombs & Deku Leaf)

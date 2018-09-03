@@ -1346,7 +1346,7 @@ Earth Temple - End of Foggy Room With Floormasters:
     Can Access Earth Temple
     & Can Get Past ET Second Room
     & Can Aim Mirror Shield
-    & Can Play Earth God's Lyric
+    & Can Get Past ET Song Stone
   Original item: Small Key
   Types: Dungeon
   Paths:
@@ -1356,7 +1356,7 @@ Earth Temple - Kill All Floormasters in Foggy Room:
     Can Access Earth Temple
     & Can Get Past ET Second Room
     & Can Aim Mirror Shield
-    & Can Play Earth God's Lyric
+    & Can Get Past ET Song Stone
     & Can Defeat Floormasters
   Original item: Treasure Chart 20
   Types: Dungeon
@@ -1377,7 +1377,7 @@ Earth Temple - Chest in Third Crypt:
     Can Access Earth Temple
     & Can Get Past ET Second Room
     & Can Aim Mirror Shield
-    & Can Play Earth God's Lyric
+    & Can Get Past ET Song Stone
     & Power Bracelets
     & Skull Hammer
     & Can Get Past Third ET Small Key Door
