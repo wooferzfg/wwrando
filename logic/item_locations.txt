@@ -940,8 +940,7 @@ Tower of the Gods - Hop Across Floating Boxes:
 Tower of the Gods - Light Two Torches:
   Need:
     Can Access Tower of the Gods
-    & (Bombs | Hero's Sword | Deku Leaf)
-    # Can get behind the bombable walls without Bombs. https://youtu.be/dP4gG2W2cHw?t=40s
+    & Can Get Behind TotG Bombable Walls
   Original item: Joy Pendant
   Types: Dungeon
   Paths:
@@ -949,8 +948,7 @@ Tower of the Gods - Light Two Torches:
 Tower of the Gods - Skulls Room Chest:
   Need:
     Can Access Tower of the Gods
-    & (Bombs | Hero's Sword | Deku Leaf)
-    # Can get behind the bombable walls without Bombs. https://youtu.be/dP4gG2W2cHw?t=40s
+    & Can Get Behind TotG Bombable Walls
   Original item: Compass
   Types: Dungeon
   Paths:
@@ -958,9 +956,8 @@ Tower of the Gods - Skulls Room Chest:
 Tower of the Gods - Shoot Eye Above Skulls Room Chest:
   Need:
     Can Access Tower of the Gods
-    & (Bombs | Hero's Sword | Deku Leaf)
+    & Can Get Behind TotG Bombable Walls
     & Hero's Bow
-    # Can get behind the bombable walls without Bombs. https://youtu.be/dP4gG2W2cHw?t=40s
   Original item: Treasure Chart 6
   Types: Dungeon
   Paths:

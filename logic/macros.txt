@@ -487,6 +487,11 @@ Can Access End of Dragon Roost Cavern:
   # After riding the platform up, you need to be able to cross the gaps, which requires either the Deku Leaf or the Grappling Hook.
   # Doing this lets you do the dungeon in reverse, which gets rid of any key requirements.
   # Cutting down the platform: https://www.youtube.com/watch?v=hpI8XWWrDp0
+Can Get Behind TotG Bombable Walls:
+  Bombs
+  | Hero's Sword
+  | Deku Leaf
+  # Can get behind the bombable walls with a clip. https://youtu.be/dP4gG2W2cHw?t=40s
 Can Access Second Floor of TotG:
   (Bombs & TotG Small Key x1 & Can Defeat Yellow ChuChus)
   | Hero's Sword
