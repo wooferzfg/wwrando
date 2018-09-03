@@ -1345,7 +1345,7 @@ Earth Temple - End of Foggy Room With Floormasters:
   Need:
     Can Access Earth Temple
     & Can Get Past ET Second Room
-    & Can Aim Mirror Shield
+    & Can Get Past ET Statues
     & Can Get Past ET Song Stone
   Original item: Small Key
   Types: Dungeon
@@ -1355,7 +1355,7 @@ Earth Temple - Kill All Floormasters in Foggy Room:
   Need:
     Can Access Earth Temple
     & Can Get Past ET Second Room
-    & Can Aim Mirror Shield
+    & Can Get Past ET Statues
     & Can Get Past ET Song Stone
     & Can Defeat Floormasters
   Original item: Treasure Chart 20
