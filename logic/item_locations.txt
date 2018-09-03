@@ -1481,7 +1481,7 @@ Earth Temple - Jalhalla Heart Container:
     & Can Defeat Red Bubbles
     & (ET Big Key | Deku Leaf)
     & Can Defeat Jalhalla
-  # Can skip the Big Key by flying with Medli. https://www.youtube.com/watch?v=6h2qu7mKE3o
+  # Can skip the Big Key by flying with Medli. https://www.youtube.com/watch?v=CzRpib_BdZI
   Original item: Heart Container
   Types: Dungeon
   Paths:
@@ -1916,7 +1916,7 @@ Private Oasis - Chest at Top of Waterfall:
     - sea/Room33.arc/Chest000
 Private Oasis - Cabana Labyrinth - First Chest:
   Need:
-    Delivery Bag & Cabana Deed
+    Can Enter Cabana
     & Grappling Hook
     & Skull Hammer
   Original item: Orange Rupee
@@ -1925,7 +1925,7 @@ Private Oasis - Cabana Labyrinth - First Chest:
     - TF_04/Stage.arc/Chest001
 Private Oasis - Cabana Labyrinth - Second Chest:
   Need:
-    Delivery Bag & Cabana Deed
+    Can Enter Cabana
     & Grappling Hook
     & Skull Hammer
     & Can Play Wind's Requiem
