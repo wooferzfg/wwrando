@@ -530,9 +530,6 @@ Can Get Past Third ET Small Key Door:
   | (Bombs & Deku Leaf)
   | (Fire Arrows & Deku Leaf)
   # Can get past the gate in the left room by clipping.
-Can Get Under WT Floor:
-  Hookshot | Iron Boots
-  # Can use an L-slide to clip out of the hub room, or you can use Iron Boots to open up the floor.
 Can Enter Cabana:
   (Delivery Bag & Cabana Deed)
   | (Hookshot & Bombs & Deku Leaf)
