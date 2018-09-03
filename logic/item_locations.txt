@@ -2077,6 +2077,7 @@ Bird's Peak Rock - Cave:
     ((Bait Bag & Can Buy Hyoi Pears)
     | Grappling Hook)
     & Can Play Wind's Requiem
+    # Can clip into the island with the Grappling Hook
   Original item: Triforce Chart 3
   Types: Puzzle Secret Cave
   Paths:
