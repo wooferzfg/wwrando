@@ -433,7 +433,9 @@ Can Defeat Gohma:
   # Gohma can be killed with just the Grappling Hook since it damages her eye in the second phase.
 Can Defeat Kalle Demos:
   Boomerang
+  | Bombs
   # No sword needed - Kalle Demos can be damaged with just boomerang.
+  # Can also use Bombs to defeat Kalle Demos by throwing them at the right time.
 Can Defeat Gohdan:
   (Hero's Bow | Hookshot)
   & Bombs
