@@ -1868,10 +1868,14 @@ The Great Sea - Ghost Ship:
   Need:
     Ghost Ship Chart
     & Can Play Ballad of Gales
-    & Can Defeat Wizzrobes
-    & Can Defeat Poes
-    & Can Defeat ReDeads
-    & Can Defeat Stalfos
+    & (
+      Deku Leaf
+      | (Can Defeat Wizzrobes
+         & Can Defeat Poes
+         & Can Defeat ReDeads
+         & Can Defeat Stalfos)
+      )
+    # Can leaf pump to skip fighting any enemies.
     # You don't necessarily have to fight redeads and stalfos, but the wizzrobe can summon them if you're not quick enough.
   Original item: Triforce Chart 4
   Types: Other Chest
