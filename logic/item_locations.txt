@@ -2422,15 +2422,16 @@ Shark Island - Cave:
     - ITest63/Stage.arc/Chest000
 
 Cliff Plateau Isles - Cave:
-  Need: Can Defeat Boko Babas
-    # Technically you can kill the Boko Babas here by throwing a nut at one to stun it, then using the Grappling Hook to finish it off. But the timing is pretty precise and this is pretty obscure, so it's not in the logic.
+  Need:
+    Can Defeat Boko Babas | Grappling Hook
+    # You can kill the Boko Babas here by throwing a nut at one to stun it, then using the Grappling Hook to finish it off.
   Original item: Joy Pendant
   Types: Puzzle Secret Cave
   Paths:
     - Cave03/Stage.arc/Chest000
 Cliff Plateau Isles - Highest Isle:
   Need:
-    Can Defeat Boko Babas
+    (Can Defeat Boko Babas | Grappling Hook)
     & Deku Leaf
   Original item: Treasure Chart 25
   Types: Puzzle Secret Cave
