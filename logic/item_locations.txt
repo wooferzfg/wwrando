@@ -714,6 +714,7 @@ Dragon Roost Cavern - Gohma Heart Container:
 Forest Haven - On Tree Branch:
   Need:
     Can Access Forest Haven
+    & (Can Fly With Deku Leaf Outdoors | Grappling Hook)
   # Note: You can access this without Grappling Hook if you take the lower platform exit out of Forest Haven, fly to the pillar outside, then use the whirlwind to gain height and fly back to Forest Haven taking the middle platform exit.
   Original item: Deku Leaf
   Types: Misc
