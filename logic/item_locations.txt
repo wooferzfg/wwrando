@@ -1213,7 +1213,8 @@ Ice Ring Isle - Cave - Chest:
   Paths:
     - MiniHyo/Stage.arc/Chest000
 Ice Ring Isle - Inner Cave - Chest:
-  Need: Fire Arrows & Iron Boots
+  Need: Fire Arrows
+    # You can enter the cave without Iron Boots by using repeated Wind Waker pulls to negate the effects of the wind.
     # There are a number of enemies you need to kill here, but you can trick enemies into attacking each other and steal a weapon so no items are required.
   Original item: Orange Rupee
   Types: Puzzle Secret Cave, Combat Secret Cave
