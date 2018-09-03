@@ -973,8 +973,7 @@ Tower of the Gods - First Chest Guarded by Armos Knights:
     Can Access Tower of the Gods
     & Can Access Second Floor of TotG
     & Hero's Bow
-    & Bombs
-    # Need Bombs for the Armos Knights.
+    & Can Defeat Armos Knights
   Original item: Joy Pendant
   Types: Dungeon
   Paths:
