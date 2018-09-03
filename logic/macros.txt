@@ -90,7 +90,8 @@ Can Access Dungeon Entrance In Tower of the Gods Sector:
 Can Access Dungeon Entrance On Headstone Island:
   Power Bracelets
 Can Access Dungeon Entrance On Gale Isle:
-  Iron Boots & Skull Hammer
+  Skull Hammer
+  # Can repatedly pull the Wind Waker to avoid needing the Iron Boots. https://www.youtube.com/watch?v=tBLBQqIAJ9Y
 
 # The below macros are used when dungeon entrances are not randomized.
 # When dungeon entrances are randomized, these macros are shuffled around by the randomizer logic.
