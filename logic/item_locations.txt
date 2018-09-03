@@ -1399,7 +1399,8 @@ Earth Temple - Many Mirrors Room Right Chest:
     & Skull Hammer
     & Can Get Past Third ET Small Key Door
     & Can Defeat Red Bubbles
-    & Can Play Command Melody
+    & (Can Play Command Melody | Deku Leaf)
+    # Can leaf onto the snake head and then onto the platform to get to the switch.
   Original item: Purple Rupee
   Types: Dungeon
   Paths:
