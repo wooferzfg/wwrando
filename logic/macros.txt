@@ -154,10 +154,12 @@ Can Complete Memory Wind Temple and Molgera:
   & Can Defeat Molgera
   # You're intended to use iron boots here, but you can simply fly across the gap with deku leaf instead. No damage boosting off spikes or leaf pumping required.
 Can Complete All Memory Dungeons and Bosses:
-  Can Complete Memory Dragon Roost Cavern and Gohma
+  (Can Complete Memory Dragon Roost Cavern and Gohma
   & Can Complete Memory Forbidden Woods and Kalle Demos
   & Can Complete Memory Earth Temple and Jalhalla
-  & Can Complete Memory Wind Temple and Molgera
+  & Can Complete Memory Wind Temple and Molgera)
+  | Deku Leaf
+  # Can do Trials Skip with a Roll Clip - https://www.youtube.com/watch?v=ile_m_LBwVs
 
 Can Unlock Ganon's Tower Four Boss Door:
   # This macro is set to Nothing when the option to skip rematch bosses is enabled.
