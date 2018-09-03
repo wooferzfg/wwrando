@@ -1504,6 +1504,7 @@ Wind Temple - Chest Between Two Dirt Patches:
   Need:
     Can Access Wind Temple
     & Can Play Command Melody
+    # Can leaf pump in the room with this chest, which avoids needing the Iron Boots.
   Original item: Orange Rupee
   Types: Dungeon
   Paths:
@@ -1523,9 +1524,9 @@ Wind Temple - Chest Behind Stone Head:
   Need:
     Can Access Wind Temple
     & Can Play Command Melody
-    & Iron Boots
     & Deku Leaf
     & Hookshot
+    # Can L-slide to get behind the statue and get the chest without Iron Boots.
   Original item: Joy Pendant
   Types: Dungeon
   Paths:
@@ -1546,8 +1547,8 @@ Wind Temple - Big Key Chest:
     & Can Play Command Melody
     & Iron Boots
     & Deku Leaf
-    & Can Play Wind God's Aria
     & Can Defeat Darknuts
+    # Can skip needing Wind God's Aria for the song stone. https://youtu.be/rRYv3w8ckT4?t=2h53m45s
   Original item: Big Key
   Types: Dungeon
   Paths:
@@ -1695,9 +1696,9 @@ Wind Temple - Molgera Heart Container:
     & Hookshot
     & Can Defeat Blue Bubbles
     & WT Small Key x2
-    & Can Play Wind God's Aria
     & WT Big Key
     & Can Defeat Molgera
+    # Can skip needing Wind God's Aria for the song stone by sidling behind it.
   Original item: Heart Container
   Types: Dungeon
   Paths:
