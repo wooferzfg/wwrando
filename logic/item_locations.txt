@@ -1891,7 +1891,7 @@ Private Oasis - Cabana Labyrinth - First Chest:
   Need:
     Can Enter Cabana
     & Grappling Hook
-    & Skull Hammer
+    # Can sidle to skip needing the Skull Hammer
   Original item: Orange Rupee
   Types: Puzzle Secret Cave
   Paths:
@@ -1900,7 +1900,6 @@ Private Oasis - Cabana Labyrinth - Second Chest:
   Need:
     Can Enter Cabana
     & Grappling Hook
-    & Skull Hammer
     & Can Play Wind's Requiem
   Original item: Triforce Chart 2
   Types: Puzzle Secret Cave
