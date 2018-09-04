@@ -1280,7 +1280,7 @@ Earth Temple - Chest In Three Blocks Room:
     Can Access Earth Temple
     & Can Get Past ET Second Room
     & ET Small Key x2
-    & Can Get Past ET Purple ChuChu Room with Reflection
+    & Can Get Past ET Purple ChuChu Room
     & Can Defeat Floormasters
     # You need to push blocks near the Floormaster to progress in this room, which basically requires killing it.
   Original item: Compass
@@ -1292,7 +1292,7 @@ Earth Temple - Chest Behind Statues:
     Can Access Earth Temple
     & Can Get Past ET Second Room
     & ET Small Key x2
-    & Can Get Past ET Purple ChuChu Room with Reflection
+    & Can Get Past ET Purple ChuChu Room
     & Can Defeat Floormasters
   Original item: Joy Pendant
   Types: Dungeon
@@ -1303,7 +1303,7 @@ Earth Temple - Casket in Second Crypt:
     Can Access Earth Temple
     & Can Get Past ET Second Room
     & ET Small Key x2
-    & Can Get Past ET Purple ChuChu Room without Reflection
+    & Can Get Past ET Purple ChuChu Room
     & Can Defeat Floormasters
     # The Poes don't require anything to kill and the Moblins can be tricked into hitting each other so you can steal their weapon.
     # The ReDeads don't need to be killed to get the item in their room, but you do need to kill them to escape without save warping.
@@ -1316,7 +1316,7 @@ Earth Temple - Stalfos Mini-Boss Room:
     Can Access Earth Temple
     & Can Get Past ET Second Room
     & ET Small Key x2
-    & Can Get Past ET Purple ChuChu Room without Reflection
+    & Can Get Past ET Purple ChuChu Room
     & Can Defeat Floormasters
     & (
       (Deku Leaf & (Bombs | Can Defeat Stalfos))

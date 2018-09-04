@@ -506,36 +506,26 @@ Can Get Past ET Second Room:
   Can Play Command Melody
   | Deku Leaf
   # Can use the Command Melody with Medli or do some leaf pumps to get and forth between the platforms. https://www.youtube.com/watch?v=JRKwNhk7ffo
-Can Get Past ET Purple ChuChu Room with Reflection:
-  (
-    Fire Arrows
-    | Command Melody
-    | (Deku Leaf & Bombs)
-    | Mirror Shield
-  )
-  & Power Bracelets
-  # Can skip using Fire Arrows. https://youtu.be/VHuO4U2ORvo
-  # However, to also skip Command Melody, you need Leaf and Bombs for a bomb boost.
-  # If you have Mirror Shield, you don't need to bring Medli, which means you don't need Command Melody either.
-  # Power Bracelets necessary to move the large black pushable box and unlock a door.
-Can Get Past ET Purple ChuChu Room without Reflection:
+Can Get Past ET Purple ChuChu Room:
   Power Bracelets
   # Can skip using Fire Arrows. https://youtu.be/VHuO4U2ORvo
   # Power Bracelets necessary to move the large black pushable box and unlock a door.
 Can Get Past ET Statues:
   Can Aim Mirror Shield
-  | (Deku Leaf & Magic Meter Upgrade)
+  | (Deku Leaf & Magic Meter Upgrade & Fire Arrows)
   # Can skip the statue. https://www.youtube.com/watch?v=8Q16oykBb48
   # Can clip into the Floormasters room. https://www.youtube.com/watch?v=EO8arfhPxro
 Can Get Past ET Song Stone:
   Can Play Earth God's Lyric
-  | (Deku Leaf & Bombs)
+  | (Deku Leaf & Bombs & Hero's Sword)
   # Can do a clip to get past the first song stone. https://www.youtube.com/watch?v=m_7hucDDIfg
 Can Get Past Third ET Small Key Door:
   ET Small Key x3
-  | (Bombs & Deku Leaf)
+  | (Bombs & Deku Leaf & Hero's Sword)
   | (Fire Arrows & Deku Leaf)
+  | (Deku Leaf & Command Melody)
   # Can get past the gate in the left room by clipping.
+  # Can use Medli to clip, but then you need command melody to get her past the gate.
 Can Enter Cabana:
   (Delivery Bag & Cabana Deed)
   | (Hookshot & Bombs & Deku Leaf)
