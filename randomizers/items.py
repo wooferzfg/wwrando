@@ -212,7 +212,10 @@ def randomize_progression_items(self):
       self.rng.shuffle(heart_containers)
       self.rng.shuffle(non_heart_containers)
       possible_locations_for_group = heart_containers + non_heart_containers
-      self.logic.set_multiple_locations_to_group(possible_locations_for_group, group_name)
+      items_in_group = self.logic.progress_item_groups[group_name]
+      shuffled_items = items_in_group.copy()
+      self.rng.shuffle(shuffled_items)
+      self.logic.set_multiple_locations_to_group(possible_locations_for_group, shuffled_items, group_name)
     else:
       possible_locations = self.logic.filter_locations_valid_for_item(accessible_undone_locations, item_name)
       

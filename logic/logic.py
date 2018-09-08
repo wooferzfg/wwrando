@@ -145,13 +145,11 @@ class Logic:
     
     self.add_owned_item(item_name)
   
-  def set_multiple_locations_to_group(self, available_locations, group_name):
-    items_in_group = self.progress_item_groups[group_name]
-    
-    if len(available_locations) < len(items_in_group):
+  def set_multiple_locations_to_group(self, available_locations, group_items, group_name):    
+    if len(available_locations) < len(group_items):
       raise Exception("Not enough locations to place all items in group %s" % group_name)
     
-    for i, item_name in enumerate(items_in_group):
+    for i, item_name in enumerate(group_items):
       location_name = available_locations[i]
       self.set_location_to_item(location_name, item_name)
     
