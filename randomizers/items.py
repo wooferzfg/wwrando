@@ -232,17 +232,17 @@ def randomize_progression_items(self):
       # We weight it so newly accessible locations are more likely to be chosen.
       # This way there is still a good chance it will not choose a new location.
       possible_locations_with_weighting = []
+      possible_heart_containers = []
       for location_name in possible_locations:
-        if "Maze Chest" in location_name:
-          possible_locations_with_weighting = [location_name]
-          break
-        if "Heart Container" in location_name:
-          weight = 200
-        else:
-          weight = int(location_weights[location_name])
+        if "Maze Chest" in location_name or "Heart Container" in location_name:
+          possible_heart_containers += [location_name]
+        weight = int(location_weights[location_name])
         possible_locations_with_weighting += [location_name]*weight
       
-      location_name = self.rng.choice(possible_locations_with_weighting)
+      if len(possible_heart_containers) > 0:
+        location_name = self.rng.choice(possible_heart_containers)
+      else:
+        location_name = self.rng.choice(possible_locations_with_weighting)
       if "Heart Container" in location_name:
         heart_containers_chosen += 1
       self.logic.set_location_to_item(location_name, item_name)
