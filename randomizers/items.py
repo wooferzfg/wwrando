@@ -196,7 +196,7 @@ def randomize_progression_items(self):
         self.rng.shuffle(possible_group_items)
         group_item_name = self.logic.get_first_useful_item(possible_group_items, for_progression=True)
         if group_item_name is not None:
-          item_name = self.rng.choice(possible_items)
+          item_name = group_item_name
     
     if item_name is None:
       item_name = self.rng.choice(possible_items_when_not_placing_useful)
