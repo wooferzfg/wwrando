@@ -151,13 +151,9 @@ stw r4, 8 (r3)
 lis r4, 0x0100
 stw r4, 0xC (r3)
 
-; If the player does the early part of Dragon Roost Cavern backwards, they can walk through a door while it's still blocked off by a boulder. This softlocks the game as Link will just walk into the boulder infinitely.
-; Set a switch (5) for having destroyed the boulder in front of the door so that doesn't happen.
+; Set a switch (21) for having seen the gossip stone event in DRC where KoRL tells you about giving bait to rats.
 lis r3, 0x803C4FF4@ha ; Dragon Roost Cavern stage info.
 addi r3, r3, 0x803C4FF4@l
-li r4, 0x0020
-stw r4, 4 (r3)
-; Also set a switch (21) for having seen the gossip stone event where KoRL tells you about giving bait to rats.
 li r4, 0x0002
 stw r4, 8 (r3)
 
@@ -1670,6 +1666,30 @@ b 0x8016248C ; Return
 
 
 
+; Add a check right before playing the item get music to handle playing the special pearl item get music.
+; The vanilla game played the pearl music as part of the .stb cutscenes where you get the pearls, so the regular item get code had no reason to check for pearls originally.
+.global check_play_pearl_item_get_music
+check_play_pearl_item_get_music:
+
+lwz r3, -0x69D0 (r13) ; Replace the line we overwrote to jump here
+
+; Check if the item ID (in r0) matches any of the pearls.
+cmplwi r0, 0x69 ; Nayru's Pearl
+beq play_pearl_item_get_music
+cmplwi r0, 0x6A ; Din's Pearl
+beq play_pearl_item_get_music
+cmplwi r0, 0x6B ; Farore's Pearl
+beq play_pearl_item_get_music
+b 0x8012E3EC ; If not, return to the code that plays the normal item get music
+
+play_pearl_item_get_music:
+lis r4, 0x8000004F@ha ; BGM ID for the pearl item get music
+addi r4, r4, 0x8000004F@l
+b 0x8012E3F4 ; Jump to the code that plays the normal item get music
+
+
+
+
 .global generic_on_dungeon_bit
 generic_on_dungeon_bit:
 stwu sp, -0x10 (sp)
@@ -2125,6 +2145,206 @@ lwz r0, 0x14 (sp)
 mtlr r0
 addi sp, sp, 0x10
 blr
+
+
+
+
+.global dragon_tingle_statue_item_get_func
+dragon_tingle_statue_item_get_func:
+stwu sp, -0x10 (sp)
+mflr r0
+stw r0, 0x14 (sp)
+
+lis r3, 0x803C522C@ha
+addi r3, r3, 0x803C522C@l
+li r4, 0x6A04 ; Unused event bit we use for Dragon Tingle Statue
+bl onEventBit__11dSv_event_cFUs
+
+lwz r0, 0x14 (sp)
+mtlr r0
+addi sp, sp, 0x10
+blr
+
+
+.global forbidden_tingle_statue_item_get_func
+forbidden_tingle_statue_item_get_func:
+stwu sp, -0x10 (sp)
+mflr r0
+stw r0, 0x14 (sp)
+
+lis r3, 0x803C522C@ha
+addi r3, r3, 0x803C522C@l
+li r4, 0x6A08 ; Unused event bit we use for Forbidden Tingle Statue
+bl onEventBit__11dSv_event_cFUs
+
+lwz r0, 0x14 (sp)
+mtlr r0
+addi sp, sp, 0x10
+blr
+
+
+.global goddess_tingle_statue_item_get_func
+goddess_tingle_statue_item_get_func:
+stwu sp, -0x10 (sp)
+mflr r0
+stw r0, 0x14 (sp)
+
+lis r3, 0x803C522C@ha
+addi r3, r3, 0x803C522C@l
+li r4, 0x6A10 ; Unused event bit we use for Goddess Tingle Statue
+bl onEventBit__11dSv_event_cFUs
+
+lwz r0, 0x14 (sp)
+mtlr r0
+addi sp, sp, 0x10
+blr
+
+
+.global earth_tingle_statue_item_get_func
+earth_tingle_statue_item_get_func:
+stwu sp, -0x10 (sp)
+mflr r0
+stw r0, 0x14 (sp)
+
+lis r3, 0x803C522C@ha
+addi r3, r3, 0x803C522C@l
+li r4, 0x6A20 ; Unused event bit we use for Earth Tingle Statue
+bl onEventBit__11dSv_event_cFUs
+
+lwz r0, 0x14 (sp)
+mtlr r0
+addi sp, sp, 0x10
+blr
+
+
+.global wind_tingle_statue_item_get_func
+wind_tingle_statue_item_get_func:
+stwu sp, -0x10 (sp)
+mflr r0
+stw r0, 0x14 (sp)
+
+lis r3, 0x803C522C@ha
+addi r3, r3, 0x803C522C@l
+li r4, 0x6A40 ; Unused event bit we use for Wind Tingle Statue
+bl onEventBit__11dSv_event_cFUs
+
+lwz r0, 0x14 (sp)
+mtlr r0
+addi sp, sp, 0x10
+blr
+
+
+; This function checks if you own a certain Tingle Statue.
+; It's designed to replace the original calls to dComIfGs_isStageTbox__Fii, so it takes the same arguments as that function.
+; Argument r3 - the stage ID of the stage info to check a chest in.
+; Argument r4 - the opened flag index of the chest to check.
+; This function, instead of checking if certain chests are open, checks if the unused event bits we use for certain Tingle Statues have been set.
+.global check_tingle_statue_owned
+check_tingle_statue_owned:
+stwu sp, -0x10 (sp)
+mflr r0
+stw r0, 0x14 (sp)
+
+cmpwi r4, 0xF ; The opened flag index (argument r4) for tingle statue chests should always be 0xF.
+bne check_tingle_statue_owned_invalid
+
+; The stage ID (argument r3) determines which dungeon it's checking.
+cmpwi r3, 3
+beq check_dragon_tingle_statue_owned
+cmpwi r3, 4
+beq check_forbidden_tingle_statue_owned
+cmpwi r3, 5
+beq check_goddess_tingle_statue_owned
+cmpwi r3, 6
+beq check_earth_tingle_statue_owned
+cmpwi r3, 7
+beq check_wind_tingle_statue_owned
+b check_tingle_statue_owned_invalid
+
+check_dragon_tingle_statue_owned:
+li r4, 0x6A04 ; Unused event bit
+b check_tingle_statue_owned_event_bit
+
+check_forbidden_tingle_statue_owned:
+li r4, 0x6A08 ; Unused event bit
+b check_tingle_statue_owned_event_bit
+
+check_goddess_tingle_statue_owned:
+li r4, 0x6A10 ; Unused event bit
+b check_tingle_statue_owned_event_bit
+
+check_earth_tingle_statue_owned:
+li r4, 0x6A20 ; Unused event bit
+b check_tingle_statue_owned_event_bit
+
+check_wind_tingle_statue_owned:
+li r4, 0x6A40 ; Unused event bit
+
+check_tingle_statue_owned_event_bit:
+lis r3, 0x803C522C@ha
+addi r3, r3, 0x803C522C@l
+bl isEventBit__11dSv_event_cFUs
+b check_tingle_statue_owned_end
+
+check_tingle_statue_owned_invalid:
+; If the function call was somehow invalid, return false.
+li r3, 0
+
+check_tingle_statue_owned_end:
+lwz r0, 0x14 (sp)
+mtlr r0
+addi sp, sp, 0x10
+blr
+
+
+
+
+; Manually animate rainbow rupees to cycle through all other rupee colors.
+; In order to avoid an abrupt change from silver to green when it loops, we make the animation play forward and then backwards before looping, so it's always a smooth transition.
+.global check_animate_rainbow_rupee_color
+check_animate_rainbow_rupee_color:
+
+; Check if the color for this rupee specified in the item resources is 7 (originally unused, we use it as a marker to separate the rainbow rupee from other color rupees).
+cmpwi r0, 7
+beq animate_rainbow_rupee_color
+
+; If it's not the rainbow rupee, replace the line of code we overwrote to jump here, and then return to the regular code for normal rupees.
+lfd f1, -0x5DF0 (rtoc)
+b 0x800F93F8
+
+animate_rainbow_rupee_color:
+
+; If it is the rainbow rupee, we need to increment the current keyframe (a float) by certain value every frame.
+; (Note: The way this is coded would increase it by this value multiplied by the number of rainbow rupees being drawn. This is fine since there's only one rainbow rupee but would cause issues if we placed multiple of them. Would need to find a different place to increment the keyframe in that case, somewhere only called once per frame.)
+lis r5, rainbow_rupee_keyframe@ha
+addi r5, r5, rainbow_rupee_keyframe@l
+lfs f1, 0 (r5) ; Read current keyframe
+lfs f0, 4 (r5) ; Read amount to add to keyframe per frame
+fadds f1, f1, f0 ; Increase the keyframe value
+
+lfs f0, 8 (r5) ; Read the maximum keyframe value
+fcmpo cr0,f1,f0
+; If we're less than the max we don't need to reset the value
+blt store_rainbow_rupee_keyframe_value
+
+; If we're greater than the max, reset the current keyframe to the minimum.
+; The minimum is actually the maximum negated. This is to signify that we're playing the animation backwards.
+lfs f1, 0xC (r5)
+
+store_rainbow_rupee_keyframe_value:
+stfs f1, 0 (r5) ; Store the new keyframe value back
+
+; Take the absolute value of the keyframe. So instead of going from -6 to +6, the value we pass as the actual keyframe goes from 6 to 0 to 6.
+fabs f1, f1
+
+b 0x800F9410
+
+.global rainbow_rupee_keyframe
+rainbow_rupee_keyframe:
+.float 0.0 ; Current keyframe, acts as a global variable modified every frame
+.float 0.15 ; Amount to increment keyframe by every frame a rainbow rupee is being drawn
+.float 6.0 ; Max keyframe, when it should loop
+.float -6.0 ; Minimum keyframe
 
 
 

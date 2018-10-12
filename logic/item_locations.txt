@@ -614,6 +614,15 @@ Dragon Roost Cavern - Dark Room:
   Types: Dungeon
   Paths:
     - M_NewD2/Stage.arc/Chest004
+Dragon Roost Cavern - Tingle Chest in Hub Room:
+  Need:
+    Can Access Dragon Roost Cavern
+    & DRC Small Key x4
+    & Tingle Tuner Bombs
+  Original item: Yellow Rupee
+  Types: Tingle Chest, Dungeon
+  Paths:
+    - M_NewD2/Stage.arc/Chest00D
 Dragon Roost Cavern - Pot Room Chest:
   Need:
     Can Access Dragon Roost Cavern
@@ -642,16 +651,21 @@ Dragon Roost Cavern - Under Rope Bridge:
   Types: Dungeon
   Paths:
     - M_NewD2/Stage.arc/Chest009
-#Dragon Roost Cavern - Tingle Statue Chest:
-#  Need:
-#    Can Access Dragon Roost Cavern
-#    & DRC Small Key x4
-#    & Grappling Hook
-#    & Tingle Tuner Bombs
-#  Original item: Dragon Tingle Statue
-#  Types: Tingle Statue Chest, Dungeon
-#  Paths:
-#    - M_NewD2/Stage.arc/Chest00C
+Dragon Roost Cavern - Tingle Statue Chest:
+  Need:
+    Can Access Dragon Roost Cavern
+    & DRC Small Key x1
+    & (
+      (DRC Small Key x4 & Can Cut Down Hanging DRC Platform)
+      | Deku Leaf
+      | Ice Arrows
+    )
+    & Grappling Hook
+    & Tingle Tuner Bombs
+  Original item: Dragon Tingle Statue
+  Types: Tingle Chest, Dungeon
+  Paths:
+    - M_NewD2/Stage.arc/Chest00C
 Dragon Roost Cavern - Big Key Chest:
   Need:
     Can Access Dragon Roost Cavern
@@ -692,11 +706,6 @@ Dragon Roost Cavern - Boss Stairs Left Chest:
   Types: Dungeon
   Paths:
     - M_NewD2/Stage.arc/Chest002
-#Dragon Roost Cavern - Unused?:
-#  Need: 
-#  Original item: Yellow Rupee
-#  Paths:
-#    - M_NewD2/Stage.arc/Chest00D
 Dragon Roost Cavern - Gohma Heart Container:
   Need:
     Can Access Dragon Roost Cavern
@@ -856,17 +865,17 @@ Forbidden Woods - Chest Across Red Hanging Flower:
   Types: Dungeon
   Paths:
     - kindan/Stage.arc/Chest00D
-#Forbidden Woods - Tingle Statue Chest:
-#  Need:
-#    Can Access Forbidden Woods
-#    & Deku Leaf
-#    & Grappling Hook
-#    & Boomerang
-#    & Tingle Tuner Bombs
-#  Original item: Forbidden Tingle Statue
-#  Types: Tingle Statue Chest, Dungeon
-#  Paths:
-#    - kindan/Stage.arc/Chest00E
+Forbidden Woods - Tingle Statue Chest:
+  Need:
+    Can Access Forbidden Woods
+    & Deku Leaf
+    & Grappling Hook
+    & Boomerang
+    & Tingle Tuner Bombs
+  Original item: Forbidden Tingle Statue
+  Types: Tingle Chest, Dungeon
+  Paths:
+    - kindan/Stage.arc/Chest00E
 Forbidden Woods - Chest in Locked Tree Trunk:
   Need:
     Can Access Forbidden Woods
@@ -964,17 +973,17 @@ Tower of the Gods - Shoot Eye Above Skulls Room Chest:
   Types: Dungeon
   Paths:
     - Siren/Stage.arc/Chest006
-#Tower of the Gods - Tingle Statue Chest:
-#  Need:
-#    Can Access Tower of the Gods
-#    & Bombs
-#    & TotG Small Key x1
-#    & Can Defeat Yellow ChuChus
-#    & Tingle Tuner Bombs
-#  Original item: Goddess Tingle Statue
-#  Types: Tingle Statue Chest, Dungeon
-#  Paths:
-#    - Siren/Stage.arc/Chest00A
+Tower of the Gods - Tingle Statue Chest:
+  Need:
+    Can Access Tower of the Gods
+    & Bombs
+    & TotG Small Key x1
+    & Can Defeat Yellow ChuChus
+    & Tingle Tuner Bombs
+  Original item: Goddess Tingle Statue
+  Types: Tingle Chest, Dungeon
+  Paths:
+    - Siren/Stage.arc/Chest00A
 Tower of the Gods - First Chest Guarded by Armos Knights:
   Need:
     Can Access Tower of the Gods
@@ -1349,17 +1358,16 @@ Earth Temple - Stalfos Mini-Boss Room:
   Types: Dungeon
   Paths:
     - M_DaiMB/Stage.arc/Chest000
-#Earth Temple - Tingle Statue Chest:
-#  Need:
-#    Can Access Earth Temple
-#    & Can Play Command Melody
-#    & Mirror Shield
-#    & Deku Leaf
-#    & Tingle Tuner Bombs
-#  Original item: Earth Tingle Statue
-#  Types: Tingle Statue Chest, Dungeon
-#  Paths:
-#    - M_Dai/Stage.arc/Chest00D
+Earth Temple - Tingle Statue Chest:
+  Need:
+    Can Access Earth Temple
+    & Can Play Command Melody
+    & Can Aim Mirror Shield
+    & Tingle Tuner Bombs
+  Original item: Earth Tingle Statue
+  Types: Tingle Chest, Dungeon
+  Paths:
+    - M_Dai/Stage.arc/Chest00D
 Earth Temple - End of Foggy Room With Floormasters:
   Need:
     Can Access Earth Temple
@@ -1508,17 +1516,17 @@ Wind Temple - Chest Between Two Dirt Patches:
   Types: Dungeon
   Paths:
     - kaze/Stage.arc/Chest005
-#Wind Temple - Tingle Statue Chest:
-#  Need:
-#    Can Access Wind Temple
-#    & Can Play Command Melody
-#    & Iron Boots
-#    & Deku Leaf
-#    & Tingle Tuner Bombs
-#  Original item: Wind Tingle Statue
-#  Types: Tingle Statue Chest, Dungeon
-#  Paths:
-#    - kaze/Stage.arc/Chest00C
+Wind Temple - Tingle Statue Chest:
+  Need:
+    Can Access Wind Temple
+    & Can Play Command Melody
+    & Iron Boots
+    & Deku Leaf
+    & Tingle Tuner Bombs
+  Original item: Wind Tingle Statue
+  Types: Tingle Chest, Dungeon
+  Paths:
+    - kaze/Stage.arc/Chest00C
 Wind Temple - Chest Behind Stone Head:
   Need:
     Can Access Wind Temple
@@ -2007,7 +2015,7 @@ Boating Course - Cave:
     # Hitting the 3 diamond switches inside the cave needs a ranged weapon.
     # Killing the miniblins is not necessary, but hitting the switches without being able to kill them would be extremely annoying.
   Original item: Submarine Chart
-  Types: Combat Secret Cave
+  Types: Puzzle Secret Cave, Combat Secret Cave
   Paths:
     - SubD71/Stage.arc/Chest000
 
@@ -2215,72 +2223,78 @@ Northern Fairy Island - Submarine:
   Paths:
     - Abship/Room4.arc/Chest000
 
-#Tingle Island - Reward for 1 Tingle Statue:
+#Tingle Island - Ankle - Reward for 1 Tingle Statue:
 #  Need: 
 #  Original item: 50 Rupees, reward for finding 1 Tingle Statue
 #  Paths:
 #    - rels/d_a_npc_tc.rel@617F
-#Tingle Island - Reward for 2 Tingle Statues:
+#Tingle Island - Ankle - Reward for 2 Tingle Statues:
 #  Need: 
 #  Original item: 100 Rupees, reward for finding 2 Tingle Statues
 #  Paths:
 #    - rels/d_a_npc_tc.rel@6187
-#Tingle Island - Reward for 3 Tingle Statues:
+#Tingle Island - Ankle - Reward for 3 Tingle Statues:
 #  Need: 
 #  Original item: 150 Rupees, reward for finding 3 Tingle Statues
 #  Paths:
 #    - rels/d_a_npc_tc.rel@618F
-#Tingle Island - Reward for 4 Tingle Statues:
+#Tingle Island - Ankle - Reward for 4 Tingle Statues:
 #  Need: 
 #  Original item: 200 Rupees, reward for finding 4 Tingle Statues
 #  Paths:
 #    - rels/d_a_npc_tc.rel@6197
-#Tingle Island - Reward for 5 Tingle Statues:
+#Tingle Island - Ankle - Reward for 5 Tingle Statues:
 #  Need: 
 #  Original item: 250 Rupees, reward for finding 5 Tingle Statues
 #  Paths:
 #    - rels/d_a_npc_tc.rel@619F
-#Tingle Island - Reward for All Tingle Statues:
-#  Need: 
-#  Original item: 500 Rupees, reward for finding 5 Tingle Statues
-#  Paths:
-#    - rels/d_a_npc_tc.rel@6143
-#Tingle Island - Triforce Chart 1 Deciphered:
+Tingle Island - Ankle - Reward for All Tingle Statues:
+  Need:
+    Dragon Tingle Statue
+    & Forbidden Tingle Statue
+    & Goddess Tingle Statue
+    & Earth Tingle Statue
+    & Wind Tingle Statue
+  Original item: Rainbow Rupee
+  Types: Misc
+  Paths:
+    - rels/d_a_npc_tc.rel@6143
+#Tingle Island - Tingle - Triforce Chart 1 Deciphered:
 #  Need: 
 #  Original item: Triforce Chart 1 got deciphered
 #  Paths:
 #    - rels/d_a_npc_tc.rel@61D7
-#Tingle Island - Triforce Chart 2 Deciphered:
+#Tingle Island - Tingle - Triforce Chart 2 Deciphered:
 #  Need: 
 #  Original item: Triforce Chart 2 got deciphered
 #  Paths:
 #    - rels/d_a_npc_tc.rel@61DF
-#Tingle Island - Triforce Chart 3 Deciphered:
+#Tingle Island - Tingle - Triforce Chart 3 Deciphered:
 #  Need: 
 #  Original item: Triforce Chart 3 got deciphered
 #  Paths:
 #    - rels/d_a_npc_tc.rel@61E7
-#Tingle Island - Triforce Chart 4 Deciphered:
+#Tingle Island - Tingle - Triforce Chart 4 Deciphered:
 #  Need: 
 #  Original item: Triforce Chart 4 got deciphered
 #  Paths:
 #    - rels/d_a_npc_tc.rel@61EF
-#Tingle Island - Triforce Chart 5 Deciphered:
+#Tingle Island - Tingle - Triforce Chart 5 Deciphered:
 #  Need: 
 #  Original item: Triforce Chart 5 got deciphered
 #  Paths:
 #    - rels/d_a_npc_tc.rel@61F7
-#Tingle Island - Triforce Chart 6 Deciphered:
+#Tingle Island - Tingle - Triforce Chart 6 Deciphered:
 #  Need: 
 #  Original item: Triforce Chart 6 got deciphered
 #  Paths:
 #    - rels/d_a_npc_tc.rel@61FF
-#Tingle Island - Triforce Chart 7 Deciphered:
+#Tingle Island - Tingle - Triforce Chart 7 Deciphered:
 #  Need: 
 #  Original item: Triforce Chart 7 got deciphered
 #  Paths:
 #    - rels/d_a_npc_tc.rel@6207
-#Tingle Island - Triforce Chart 8 Deciphered:
+#Tingle Island - Tingle - Triforce Chart 8 Deciphered:
 #  Need: 
 #  Original item: Triforce Chart 8 got deciphered
 #  Paths:

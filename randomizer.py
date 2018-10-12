@@ -44,14 +44,22 @@ class TooFewProgressionLocationsError(Exception):
   pass
 
 class Randomizer:
-  def __init__(self, seed, clean_iso_path, randomized_output_folder, options, permalink=None, dry_run=False):
+  def __init__(self, seed, clean_iso_path, randomized_output_folder, options, permalink=None, cmd_line_args=[]):
     self.randomized_output_folder = randomized_output_folder
     self.options = options
     self.seed = seed
     self.permalink = permalink
-    self.dry_run = dry_run
     
-    self.integer_seed = int(hashlib.md5(self.seed.encode('utf-8')).hexdigest(), 16)
+    self.dry_run = ("-dry" in cmd_line_args)
+    self.disassemble = ("-disassemble" in cmd_line_args)
+    self.export_disc_to_folder = ("-exportfolder" in cmd_line_args)
+    self.no_logs = ("-nologs" in cmd_line_args)
+    self.bulk_test = ("-bulk" in cmd_line_args)
+    if self.bulk_test:
+      self.dry_run = True
+      self.no_logs = True
+    
+    self.integer_seed = self.convert_string_to_integer_md5(self.seed)
     self.rng = self.get_new_rng()
     
     self.arcs_by_path = {}
@@ -68,6 +76,9 @@ class Randomizer:
     
     if not self.dry_run:
       self.bmg = self.get_arc("files/res/Msg/bmgres.arc").get_file("zel_00.bmg")
+      
+      if self.disassemble:
+        self.disassemble_all_code()
     
     self.read_text_file_lists()
     
@@ -171,6 +182,18 @@ class Randomizer:
       error_message += "Progress locations with current options: %d\n\n" % num_progress_locations
       error_message += "You need to check more of the progress location options in order to give the randomizer enough space to place all the items."
       raise TooFewProgressionLocationsError(error_message)
+    
+    # We need to determine if the user's selected options result in a dungeons-only-start.
+    # Dungeons-only-start meaning that the only locations accessible at the start of the run are dungeon locations.
+    # e.g. If the user selects Dungeons, Expensive Purchases, and Sunken Treasures, the dungeon locations are the only ones the player can check first.
+    # We need to distinguish this situation because it can cause issues for the randomizer's item placement logic.
+    self.logic.temporarily_make_dungeon_entrance_macros_impossible()
+    accessible_undone_locations = self.logic.get_accessible_remaining_locations(for_progression=True)
+    if len(accessible_undone_locations) == 0:
+      self.dungeons_only_start = True
+    else:
+      self.dungeons_only_start = False
+    self.logic.update_dungeon_entrance_macros() # Reset the dungeon entrance macros.
   
   def randomize(self):
     options_completed = 0
@@ -269,6 +292,12 @@ class Randomizer:
     tweaks.increase_grapple_animation_speed(self)
     tweaks.increase_block_moving_animation(self)
     tweaks.increase_misc_animations(self)
+    tweaks.add_hint_signs(self)
+    tweaks.prevent_door_boulder_softlocks(self)
+    tweaks.update_tingle_statue_item_get_funcs(self)
+    tweaks.apply_patch(self, "tingle_chests_without_tuner")
+    tweaks.make_tingle_statue_reward_rupee_rainbow_colored(self)
+    tweaks.show_seed_hash_on_name_entry_screen(self)
     
     customizer.replace_link_model(self)
     tweaks.change_starting_clothes(self)
@@ -451,8 +480,15 @@ class Randomizer:
       jpc.save_changes()
       changed_files[jpc_path] = jpc.data
     
-    output_file_path = os.path.join(self.randomized_output_folder, "WW Random %s.iso" % self.seed)
-    self.gcm.export_iso_with_changed_files(output_file_path, changed_files)
+    if self.export_disc_to_folder:
+      output_folder_path = os.path.join(self.randomized_output_folder, "WW Random %s" % self.seed)
+      self.gcm.export_disc_to_folder_with_changed_files(output_folder_path, changed_files)
+    else:
+      output_file_path = os.path.join(self.randomized_output_folder, "WW Random %s.iso" % self.seed)
+      self.gcm.export_disc_to_iso_with_changed_files(output_file_path, changed_files)
+  
+  def convert_string_to_integer_md5(self, string):
+    return int(hashlib.md5(string.encode('utf-8')).hexdigest(), 16)
   
   def get_new_rng(self):
     rng = Random()
@@ -650,6 +686,9 @@ class Randomizer:
     return text
   
   def write_non_spoiler_log(self):
+    if self.no_logs:
+      return
+    
     log_str = self.get_log_header()
 
     progress_locations, nonprogress_locations = self.logic.get_progress_and_non_progress_locations()
@@ -696,6 +735,11 @@ class Randomizer:
       f.write(log_str)
   
   def write_spoiler_log(self):
+    if self.no_logs:
+      # We still calculate progression spheres even if we're not going to write them anywhere to catch more errors in testing.
+      self.calculate_playthrough_progression_spheres()
+      return
+    
     spoiler_log = self.get_log_header()
     
     spoiler_log += self.get_song_notes()
@@ -773,6 +817,9 @@ class Randomizer:
       f.write(spoiler_log)
   
   def write_error_log(self, error_message):
+    if self.no_logs:
+      return
+    
     error_log_str = self.get_log_header()
     
     error_log_str += error_message

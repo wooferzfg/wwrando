@@ -43,6 +43,12 @@ PROGRESS_ITEMS = [
   "Moblin's Letter",
   "Cabana Deed",
   
+  "Dragon Tingle Statue",
+  "Forbidden Tingle Statue",
+  "Goddess Tingle Statue",
+  "Earth Tingle Statue",
+  "Wind Tingle Statue",
+  
   "Magic Meter Upgrade",
   
   "Telescope",
@@ -69,14 +75,7 @@ NONPROGRESS_ITEMS = [
   # If you got a progress item for your delivery bag when the bag was already full, the new item would simply never enter your inventory.
   #"Complimentary ID",
   "Fill-Up Coupon",
-  
-  # Tingle statues don't randomize properly, they don't count as owned if you find them in a random place.
-  #"Dragon Tingle Statue",
-  #"Forbidden Tingle Statue",
-  #"Goddess Tingle Statue",
-  #"Earth Tingle Statue",
-  #"Wind Tingle Statue",
-  
+
   "Submarine Chart",
   "Beedle's Chart",
   "Platform Chart",
@@ -100,7 +99,8 @@ CONSUMABLE_ITEMS = \
    8 * ["Red Rupee"] + \
   16 * ["Purple Rupee"] + \
   64 * ["Orange Rupee"] + \
-  64 * ["Silver Rupee"]
+  48 * ["Silver Rupee"] + \
+  16 * ["Rainbow Rupee"]
 # (Note: Blue Chu Jelly is not included as it is specially coded and would cause issues if randomly placed as a field item.)
 
 DUNGEON_PROGRESS_ITEMS = \

@@ -46,8 +46,8 @@ def randomize_dungeon_items(self):
   
   # Temporarily add all progress items except for dungeon keys while we randomize them.
   items_to_temporarily_add = [
-    item_name for item_name in self.logic.unplaced_progress_items
-    if " Key" not in item_name
+    item_name for item_name in (self.logic.unplaced_progress_items + self.logic.unplaced_nonprogress_items)
+    if not self.logic.is_dungeon_item(item_name)
   ]
   for item_name in items_to_temporarily_add:
     self.logic.add_owned_item_or_item_group(item_name)
@@ -57,6 +57,7 @@ def randomize_dungeon_items(self):
     item_name for item_name in (self.logic.unplaced_progress_items + self.logic.unplaced_nonprogress_items)
     if item_name.endswith(" Small Key")
   ]
+  assert len(small_keys_to_place) > 0
   for item_name in small_keys_to_place:
     place_dungeon_item(self, item_name)
     self.logic.add_owned_item(item_name) # Temporarily add small keys to the player's inventory while placing them.
@@ -66,6 +67,7 @@ def randomize_dungeon_items(self):
     item_name for item_name in (self.logic.unplaced_progress_items + self.logic.unplaced_nonprogress_items)
     if item_name.endswith(" Big Key")
   ]
+  assert len(big_keys_to_place) > 0
   for item_name in big_keys_to_place:
     place_dungeon_item(self, item_name)
     self.logic.add_owned_item(item_name) # Temporarily add big keys to the player's inventory while placing them.
@@ -76,6 +78,7 @@ def randomize_dungeon_items(self):
     if item_name.endswith(" Dungeon Map")
     or item_name.endswith(" Compass")
   ]
+  assert len(other_dungeon_items_to_place) > 0
   for item_name in other_dungeon_items_to_place:
     place_dungeon_item(self, item_name)
   
@@ -93,11 +96,20 @@ def place_dungeon_item(self, item_name):
     loc for loc in accessible_undone_locations
     if loc not in self.logic.prerandomization_dungeon_item_locations
   ]
-  accessible_undone_locations = [
-    loc for loc in accessible_undone_locations
-    if not "Tingle Statue Chest" in self.logic.item_locations[loc]["Types"]
-  ]
+  if not self.options.get("progression_tingle_chests"):
+    accessible_undone_locations = [
+      loc for loc in accessible_undone_locations
+      if not "Tingle Chest" in self.logic.item_locations[loc]["Types"]
+    ]
   possible_locations = self.logic.filter_locations_valid_for_item(accessible_undone_locations, item_name)
+  
+  if self.dungeons_only_start and item_name == "DRC Small Key":
+    # If we're in a dungeons-only-start, we have to ban small keys from appearing in the path that sequence breaks the hanging platform.
+    # A key you need to progress appearing there can cause issues that dead-end the item placement logic when there are no locations outside DRC for the randomizer to give you other items at.
+    possible_locations = [
+      loc for loc in possible_locations
+      if not loc in ["Dragon Roost Cavern - Big Key Chest", "Dragon Roost Cavern - Tingle Statue Chest"]
+    ]
   
   if not possible_locations:
     raise Exception("No valid locations left to place dungeon items!")
@@ -151,6 +163,9 @@ def randomize_progression_items(self):
     
     # Filter out items that are not valid in any of the locations we might use.
     possible_items = self.logic.filter_items_by_any_valid_location(possible_items, accessible_undone_locations)
+    
+    if len(possible_items) == 0:
+      raise Exception("No valid locations left for any of the unplaced progress items!")
     
     # Remove duplicates from the list so items like swords and bows aren't so likely to show up early.
     unique_possible_items = []
