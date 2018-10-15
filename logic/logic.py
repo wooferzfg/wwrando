@@ -159,9 +159,9 @@ class Logic:
     if len(available_locations) < len(group_items):
       raise Exception("Not enough locations to place all items in group %s" % group_name)
 
-    for item_name in group_items:
+    for i, item_name in enumerate(group_items):
       available_locations = self.filter_locations_valid_for_item(available_locations, item_name)
-      location_name = available_locations.pop()
+      location_name = available_locations[i]
       self.set_location_to_item(location_name, item_name)
     
     self.unplaced_progress_items.remove(group_name)
