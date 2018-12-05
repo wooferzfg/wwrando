@@ -39,6 +39,8 @@ except ImportError:
   if os.path.isfile(git_commit_hash_file):
     with open(git_commit_hash_file, "r") as f:
       VERSION += "_" + f.read()[:7]
+  else:
+    VERSION += "_NOGIT"
 
 class TooFewProgressionLocationsError(Exception):
   pass
@@ -287,6 +289,9 @@ class Randomizer:
     tweaks.remove_makar_kidnapping_event(self)
     tweaks.increase_player_movement_speeds(self)
     tweaks.add_chart_number_to_item_get_messages(self)
+    tweaks.increase_grapple_animation_speed(self)
+    tweaks.increase_block_moving_animation(self)
+    tweaks.increase_misc_animations(self)
     tweaks.shorten_auction_intro_event(self)
     tweaks.disable_invisible_walls(self)
     tweaks.increase_grapple_animation_speed(self)
@@ -298,6 +303,7 @@ class Randomizer:
     tweaks.apply_patch(self, "tingle_chests_without_tuner")
     tweaks.make_tingle_statue_reward_rupee_rainbow_colored(self)
     tweaks.show_seed_hash_on_name_entry_screen(self)
+    tweaks.fix_ghost_ship_chest_crash(self)
     
     customizer.replace_link_model(self)
     tweaks.change_starting_clothes(self)

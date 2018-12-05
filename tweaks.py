@@ -615,7 +615,7 @@ def update_game_name_icon_and_banners(self):
   banner_data = self.get_raw_file("files/opening.bnr")
   write_str(banner_data, 0x1860, new_game_name, 0x40)
   
-  new_game_id = "GZLR01"
+  new_game_id = "GZLE99"
   boot_data = self.get_raw_file("sys/boot.bin")
   write_str(boot_data, 0, new_game_id, 6)
   
@@ -624,8 +624,8 @@ def update_game_name_icon_and_banners(self):
   write_str(dol_data, address_to_offset(0x80339690), new_memory_card_game_name, 21)
   
   new_image_file_path = os.path.join(ASSETS_PATH, "banner.png")
-  image_format = 5
-  palette_format = 2
+  image_format = texture_utils.ImageFormat.RGB5A3
+  palette_format = texture_utils.PaletteFormat.RGB5A3
   image_data, _, _ = texture_utils.encode_image_from_path(new_image_file_path, image_format, palette_format)
   image_data.seek(0)
   write_bytes(banner_data, 0x20, image_data.read())
@@ -1234,74 +1234,67 @@ def add_chart_number_to_item_get_messages(self):
 # Speeds up the grappling hook significantly to behave similarly to HD
 def increase_grapple_animation_speed(self):
   dol_data = self.get_raw_file("sys/main.dol")
-
+  
   # Double the velocity the grappling hook is thrown out (from 20.0 to 40.0)
   write_float(dol_data, address_to_offset(0x803F9D28), 40.0) # Grappling hook velocity
-
+  
   # Half the number of frames grappling hook extends outward in 1st person (from 40 to 20 frames)
   write_u32(dol_data, address_to_offset(0x800EDB74), 0x38030014) # addi r0,r3,20
-
+  
   # Half the number of frames grappling hook extends outward in 3rd person (from 20 to 10)
   write_u32(dol_data, address_to_offset(0x800EDEA4), 0x3803000A) # addi r0,r3,10
-
+  
   # Increase the speed in which the grappling hook falls onto it's target (from 10.0 to 20.0)
   write_float(dol_data, address_to_offset(0x803F9C44), 20.0) 
-
+  
   # Increase grappling hook speed as it wraps around it's target (from 17.0 to 25.0)
   write_float(dol_data, address_to_offset(0x803F9D60), 25.0) 
-
+  
   # Increase the counter that determines how fast to end the wrap around animation. (From +1 each frame to +6 each frame)
   write_u32(dol_data, address_to_offset(0x800EECA8), 0x38A30006) # addi r5,r3,6
 
 # Speeds up the rate in which blocks move when pushed/pulled
 def increase_block_moving_animation(self):
   dol_data = self.get_raw_file("sys/main.dol")
-
+  
   #increase Link's pulling animation from 1.0 to 1.4 (purely visual)
   write_float(dol_data, address_to_offset(0x8035DBB0), 1.4)
-
+  
   #increase Link's pushing animation from 1.0 to 1.4 (purely visual)
   write_float(dol_data, address_to_offset(0x8035DBB8), 1.4)
-
+  
   block_data = self.get_raw_file("files/rels/d_a_obj_movebox.rel")
-
-  #these 12 bytes within the rel define animation key frames for each block type
-  block_key_frames = bytes(
-      [0x00, 0x04, 0x00, 0x04,
-       0x00, 0x14, 0x00, 0x04,
-       0x00, 0x04, 0x00, 0x14
-    ])
-
-  #find each block type within the rel and update the key frames(from 20 per push/pull cycle to 12)
-  current_byte_offset = 0
-  while current_byte_offset < data_len(block_data) - 12:
-      current_data = read_bytes(block_data, current_byte_offset, 12)
-      if(current_data == block_key_frames):
-          write_u16(block_data, current_byte_offset + 4, 0x000C)
-          write_u16(block_data, current_byte_offset + 10, 0x000C)
-
-      current_byte_offset = current_byte_offset + 4
+  
+  offset = 0x54B0 # M_attr__Q212daObjMovebox5Act_c. List of various data for each type of block.
+  for i in range(13): # 13 types of blocks total.
+    write_u16(block_data, offset + 4, 12) # Reduce number frames for pushing to last from 20 to 12
+    write_u16(block_data, offset + 0xA, 12) # Reduce number frames for pulling to last from 20 to 12
+    offset += 0x9C
 
 def increase_misc_animations(self):
-   dol_data = self.get_raw_file("sys/main.dol")
-
-   #increase the animation speed that Link initiates a climb (0.8 -> 1.6)
-   write_float(dol_data, address_to_offset(0x8035D738), 1.6)
-
-   #increase speed Link climbs ladders/vines (1.2 -> 1.6)
-   write_float(dol_data, address_to_offset(0x8035DB38), 1.6)
-
-   #increase speed Link starts climbing a ladder/vine (1.0 -> 1.6)
-   write_float(dol_data, address_to_offset(0x8035DB18), 1.6)
-
-   #increase speed Links ends climbing a ladder/vine (0.9 -> 1.4)
-   write_float(dol_data, address_to_offset(0x8035DB20), 1.4)
-
-   # Half the number of frames camera takes to focus on an npc for a conversation (from 20 to 10)
-   write_u32(dol_data, address_to_offset(0x8016DA2C), 0x3800000A) # li r0,10
-
-   #increase the rotation speed on ropes (64.0 -> 100.0)
-   write_float(dol_data, address_to_offset(0x803FA2E8), 100.0)
+  dol_data = self.get_raw_file("sys/main.dol")
+  
+  #increase the animation speed that Link initiates a climb (0.8 -> 1.6)
+  write_float(dol_data, address_to_offset(0x8035D738), 1.6)
+  
+  #increase speed Link climbs ladders/vines (1.2 -> 1.6)
+  write_float(dol_data, address_to_offset(0x8035DB38), 1.6)
+  
+  #increase speed Link starts climbing a ladder/vine (1.0 -> 1.6)
+  write_float(dol_data, address_to_offset(0x8035DB18), 1.6)
+  
+  #increase speed Links ends climbing a ladder/vine (0.9 -> 1.4)
+  write_float(dol_data, address_to_offset(0x8035DB20), 1.4)
+  
+  # Half the number of frames camera takes to focus on an npc for a conversation (from 20 to 10)
+  write_u32(dol_data, address_to_offset(0x8016DA2C), 0x3800000A) # li r0,10
+  
+  # Half the number of frames zooming into first person takes (from 10 to 5)
+  #Commented out, doesn't improve speed in which first person items can be used and can cause minor visual oddities
+  #write_u32(dol_data, address_to_offset(0x80170B20), 0x3BA00005) # li r29,5 
+  
+  #increase the rotation speed on ropes (64.0 -> 100.0)
+  write_float(dol_data, address_to_offset(0x803FA2E8), 100.0)
 
 def change_starting_clothes(self):
   custom_model_metadata = customizer.get_model_metadata(self.custom_model_name)
@@ -1486,3 +1479,20 @@ def show_seed_hash_on_name_entry_screen(self):
   # (The three linebreaks we insert before "Name Entry" are so it's still in the correct spot after vertical centering happens.)
   msg = self.bmg.messages_by_id[40]
   msg.string = "\n\n\n" + msg.string + "\n\n" + "Seed hash:" + "\n" + name_1 + " " + name_2
+
+def fix_ghost_ship_chest_crash(self):
+  # There's a vanilla crash that happens if you jump attack on top of the chest in the Ghost Ship.
+  # The cause of the crash is that there are unused rooms in the Ghost Ship stage with unused chests at the same position as the used chest.
+  # When Link lands on top of the overlapping chests the game thinks Link is in one of the unused rooms.
+  # The ky_tag0 object in the Ghost Ship checks a zone bit every frame, but checking a zone bit crashes if the current room is not loaded in because the zone was never initialized.
+  # So we simply move the other two unused chests away from the real one so they're far out of bounds.
+  # (Actually deleting them would mess up the entity indexes in the logic files, so it's simpler to move them.)
+  
+  dzs = self.get_arc("files/res/Stage/PShip/Stage.arc").get_file("stage.dzs")
+  chests = dzs.entries_by_type("TRES")
+  for chest in chests:
+    if chest.room_num == 2:
+      # The chest for room 2 is the one that is actually used, so don't move this one.
+      continue
+    chest.x_pos += 2000.0
+    chest.save_changes()
