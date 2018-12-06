@@ -20,10 +20,11 @@ Can Aim Mirror Shield:
     | Deku Leaf
     | Hero's Bow
     | Hookshot
+    | Picto Box
+    | Bottle
   )
   # You need to be holding an item in your hand in order to aim your shield around. Otherwise you can only aim it behind you at an angle or straight in front of you.
-  # (Empty Bottle also works, but you would need to use the contents first so not in the logic.)
-  # (Picto Box also works, but is not included as it would be a weirder and less intuitive thing to have to use to aim the shield as you normally wouldn't need to use picto box to solve dungeon puzzles.)
+  # Empty Bottle works, but you would need to use the contents first. Not in regular logic
 Can Move Boulders:
   Bombs | Power Bracelets
 Can Defeat Door Flowers:
@@ -68,29 +69,30 @@ All 8 Triforce Shards:
   & Triforce Shard 8
 
 Tingle Tuner Bombs:
-  Tingle Tuner & TODO
+  Bombs
+  # Note: If an option to require Tingle Tuner is added, this macro should have Bombs replaced with Tingle Tuner when that option is on.
 
 Can Access Dungeon Entrance On Dragon Roost Island:
   Nothing
 Can Access Forest Haven:
-  Grappling Hook | Can Fly With Deku Leaf Outdoors | Wind Waker
+  Grappling Hook | Can Fly With Deku Leaf Outdoors | Wind Waker | (Bait Bag & Can Buy Hyoi Pears)
+  # Can Wind Waker dive to clip under the island and be brought back up by the water once under the loading zone
+  # Can also hyoi pear dive
   # Grappling over the waterfall is very difficult without killing the Boko Baba there - but only if you start grappling from the top. You can grapple from the bottom up to avoid that Boko Baba entirely, so there's no extra requirement here for swordless.
-  # Can do a Wind Waker dive to get under the island.
 Can Access Dungeon Entrance In Forest Haven Sector:
-  Can Fly With Deku Leaf Outdoors
-  # Can jump out of the boat and use the leaf to fly to the entrance.
+  Can Access Forest Haven
+  & Can Fly With Deku Leaf Outdoors
+  # Note: You don't need Grappling Hook or cutting grass by riding a cyclone up with the leaf from KoRL. Not in regular logic
 Can Access Dungeon Entrance In Tower of the Gods Sector:
   Din's Pearl
   & Farore's Pearl
   & Nayru's Pearl
 Can Access Dungeon Entrance On Headstone Island:
-  Power Bracelets
-  | Can Fly With Deku Leaf Outdoors
-  # Can use a grab roll clip to clip into the island. https://youtu.be/kuxJPR3Yve4
+  Power Bracelets | Can Fly With Deku Leaf Outdoors
+# Can clip inside the island with the leaf
 Can Access Dungeon Entrance On Gale Isle:
-  Skull Hammer
-  & (Iron Boots | Wind Waker)
-  # Can repatedly pull the Wind Waker to avoid needing the Iron Boots. https://www.youtube.com/watch?v=tBLBQqIAJ9Y
+  Skull Hammer & (Wind Waker | Iron Boots)
+# Can Enter the island with repeated wind waker pulls to skip iron boots
 
 # The below macros are used when dungeon entrances are not randomized.
 # When dungeon entrances are randomized, these macros are shuffled around by the randomizer logic.
@@ -106,17 +108,12 @@ Can Access Wind Temple:
   Can Access Dungeon Entrance On Gale Isle
 
 Can Get Past Forsaken Fortress Gate:
-  Bombs
-  | Wind Waker
-  | (Bait Bag & Can Buy Hyoi Pears)
-  # Note: It's also possible to blow up the door without bombs by using the mounted cannons, but this is not required by the logic.
-  # Note: It's also possible to get past the gate by going all the way down to Ganon's Tower, and then activating the warp up to Forsaken Fortress. But this is not currently required by the logic.
-  # Can do a Wind Waker dive to get into the island.
-  # Can also do a Hyoi Pear dive.
+  Nothing
+  # It is possible to blow up the door without bombs by using the mounted cannons. Not in regular logic
 Can Get Inside Forsaken Fortress:
-  Can Get Past Forsaken Fortress Gate & Skull Hammer
+  Nothing
   # Even though you can kill Phantom Ganon without the Skull Hammer, that only lets you access the one chest he spawns.
-  # You can't access the other chests/boss without Skull Hammer.
+  # You can use the mounted canons to destroy the door for you, then roll clip to go OoB (where the gossip stone would be if it was FF1). Then you can swim under the island and trigger the loading zone in the water. Get caught by the floormaster to get access to every chest.
 Can Reach and Defeat Phantom Ganon:
   Can Get Past Forsaken Fortress Gate
   & Can Defeat Phantom Ganon
@@ -141,7 +138,8 @@ Can Access Hyrule in Swordless:
   # This macro is swapped out in place of the above one in swordless mode.
 Can Access Ganon's Tower:
   Can Access Hyrule
-  & (Hookshot | Deku Leaf)
+  & (Hookshot | Deku Leaf | Ice Arrows)
+ # Can Moblin Slide to cross the gaps
 
 Can Complete Memory Dragon Roost Cavern and Gohma:
   Grappling Hook
@@ -159,12 +157,10 @@ Can Complete Memory Wind Temple and Molgera:
   & Can Defeat Molgera
   # You're intended to use iron boots here, but you can simply fly across the gap with deku leaf instead. No damage boosting off spikes or leaf pumping required.
 Can Complete All Memory Dungeons and Bosses:
-  (Can Complete Memory Dragon Roost Cavern and Gohma
+  Can Complete Memory Dragon Roost Cavern and Gohma
   & Can Complete Memory Forbidden Woods and Kalle Demos
   & Can Complete Memory Earth Temple and Jalhalla
-  & Can Complete Memory Wind Temple and Molgera)
-  | Deku Leaf
-  # Can do Trials Skip with a Roll Clip - https://www.youtube.com/watch?v=ile_m_LBwVs
+  & Can Complete Memory Wind Temple and Molgera
 
 Can Unlock Ganon's Tower Four Boss Door:
   # This macro is set to Nothing when the option to skip rematch bosses is enabled.
@@ -179,8 +175,8 @@ Can Reach and Defeat Puppet Ganon:
   & Can Defeat Darknuts
   & Can Defeat Puppet Ganon
 Can Defeat Puppet Ganon:
-  Nothing
-  # Don't need the Boomerang here. Can just snipe the tail.
+  Light Arrows
+  # Boomerang isn't strictly necessary to defeat Puppet Ganon but makes things significantly easier. Sniping isn't required by regular logic
 Can Reach and Defeat Ganondorf:
   Can Reach and Defeat Puppet Ganon
   & Grappling Hook
@@ -221,13 +217,13 @@ Can Farm Knight's Crests:
   # * Shark Island's cave.
   # Note: The Ice Ring, Savage, and Shark Island ones have enemies with droppable weapons in the same room as the Darknut, so in swordless you can trick the Darknut into attacking the other enemies, steal their weapon, and use it to kill the Darknut.
 Can Farm Joy Pendants:
-  Spoils Bag & Grappling Hook
+  Grappling Hook
   # Dropped by Bokoblins, which are everywhere.
 Can Farm Skull Necklaces:
-  Grappling Hook & Spoils Bag
+  Grappling Hook
   # Dropped by Moblins. The Moblins in submarines don't require any items to access.
 Can Farm Golden Feathers:
-  Grappling Hook & Spoils Bag
+  Grappling Hook
   # Dropped by Helmarocs and Peahats. Helmarocs are on platforms so you don't need anything to reach them.
 Can Farm Lots of Rupees:
   Nothing
@@ -266,6 +262,12 @@ Can Defeat Miniblins:
   | Bombs
   | Skull Hammer
   # Grappling Hook does no damage for the first few hits on each Miniblin. But once the Miniblin runs out of hearts and rupees to give you, the Grappling Hook starts doing damage and can kill it.
+Can Defeat Miniblins Easily:
+  Hero's Sword
+  | Boomerang
+  | Hero's Bow
+  | Bombs
+  | Skull Hammer
 Can Defeat Red ChuChus:
   Hero's Sword
   | Skull Hammer
@@ -279,9 +281,9 @@ Can Defeat Yellow ChuChus:
   | Bombs
   | (Deku Leaf & Hero's Sword)
   | Skull Hammer
+  | (Grappling Hook & Hero's Sword)
   # Note: Skull Hammer can stun them without taking damage if you hit the ground near them instead of hitting them directly.
-  # Note: Grappling Hook does stun it just barely long enough for you to kill it with your sword.
-  # But this is not immediately obvious and somewhat tricky to time, so maybe reserve that for a higher difficulty level.
+  # Note: Grappling Hook does stun it just barely long enough for you to kill it with your sword. Only required in glitch logic
 Can Defeat Dark ChuChus:
   Nothing
   # Simply lure them into the light rays and then pick them up and throw them. Neither Mirror Shield nor a weapon are necessary.
@@ -423,7 +425,8 @@ Can Defeat Stalfos:
 Can Defeat Floormasters:
   Hero's Sword
   | Hero's Bow
-  # Skull Hammer also works, but because of the wonky hitbox on floormasters there's a very high chance you'll miss and get taken back to the dungeon entrance, so it's not in the logic.
+  | Skull Hammer
+  # Skull Hammer is only required in glitch logic. Use jumpslashes to not get caught by the floormaster
   # Bombs also work, but it's very annoying to hit them since they throw the bombs back at you. They also go back in the ground becoming invulnerable if you get too far away.
   # Hero's Bow would only be an issue if you run out of arrows when you need to kill a ton of Floormasters - aka the Earth Temple foggy Floormaster room. But thankfully that room has tons of skulls that drop arrow refills.
 Can Defeat Morths:
@@ -431,28 +434,29 @@ Can Defeat Morths:
   | Boomerang
   | Hero's Bow
   | Hookshot
-  # Skull Hammer technically works but it's extremely annoying to hit them with. Same with bombs.
+  | Skull Hammer
+  | Bombs
+  # Bombs and Hammer were not required in usual logic
 
 Can Defeat Gohma:
   Grappling Hook
   # Gohma can be killed with just the Grappling Hook since it damages her eye in the second phase.
 Can Defeat Kalle Demos:
-  Boomerang
-  | Bombs
-  | Hero's Bow
-  # No sword needed - Kalle Demos can be damaged with just boomerang.
-  # Can also use Bombs to defeat Kalle Demos by throwing them at the right time.
+  Boomerang | Bombs | Hero's Bow
+  # No sword needed - Kalle Demos can be damaged with just boomerang/bombs/bow
+  # Can defeat him with bombs without having to cut the vines
+  # Can cut the vines early with the bow, hookshot and grappling hook. Only bow is consistent though
 Can Defeat Gohdan:
-  (Hero's Bow | Hookshot)
-  & Bombs
-  # You can use hookshot to shoot all of Gohdan's eyes instead of the bow.
+  Bombs
+  # Bombs and Hookshot can be used instead of the bow. You need a quiver for this fight however.
 Can Defeat Helmaroc King:
   Skull Hammer
   # Doesn't require a sword or anything - just the hammer both breaks his mask and damages him.
 Can Defeat Jalhalla:
-  (Can Aim Mirror Shield | Light Arrows)
+  (Can Aim Mirror Shield | (Mirror Shield & Skull Hammer) | Light Arrows)
   & Power Bracelets
   & Can Defeat Jalhalla Poes
+  # you can still shine light onto Jalhalla with the hammer in your hand (which is not taken into account by "Can Aim Mirror Shield")
   # Light Arrows also work to materialize Jalhalla.
 Can Defeat Molgera:
   Hookshot
@@ -477,59 +481,16 @@ Can Cut Down Outset Trees:
   # Fire Arrows and Bombs don't work.
   # Luring a ChuChu up the hill and having it jump on the trees doesn't work.
   # Carrying the big pig to the trees and enraging it DOES work, it can cut the trees. But this is not currently in the logic because it's obscure and slow to do.
+  # Never required by the glitch logic since you can go around those trees
 Can Cut Down Hanging DRC Platform:
   Hero's Sword
   | Bombs
   | Hero's Bow
   | Skull Hammer
-  # Hookshot and Grappling Hook can also technically cut the ropes, but it's too precise to aim them.
+  | Hookshot
+  | Grappling Hook
+  # Hookshot and Grappling Hook are not in normal logic due to being difficult
   # Boomerang can't cut them at all.
-Can Access End of Dragon Roost Cavern:
-  DRC Small Key x1
-  & Hero's Bow
-  & (Deku Leaf | Grappling Hook)
-  # You can get to the miniboss room by either going through the dungeon normally or by cutting down the hanging platform early and riding it up.
-  # After riding the platform up, you need to be able to cross the gaps, which requires either the Deku Leaf or the Grappling Hook.
-  # Doing this lets you do the dungeon in reverse, which gets rid of any key requirements.
-  # Cutting down the platform: https://www.youtube.com/watch?v=hpI8XWWrDp0
-Can Get Behind TotG Bombable Walls:
-  Bombs
-  | Hero's Sword
-  | Deku Leaf
-  # Can get behind the bombable walls with a clip. https://youtu.be/dP4gG2W2cHw?t=40s
-Can Access Second Floor of TotG:
-  (Bombs & TotG Small Key x1 & Can Defeat Yellow ChuChus)
-  | Hero's Sword
-  | Deku Leaf
-  # Can get behind the waterfall without needing a key. https://youtu.be/dP4gG2W2cHw?t=40s
-Can Get Past ET Second Room:
-  Can Play Command Melody
-  | Deku Leaf
-  # Can use the Command Melody with Medli or do some leaf pumps to get and forth between the platforms. https://www.youtube.com/watch?v=JRKwNhk7ffo
-Can Get Past ET Purple ChuChu Room:
-  Power Bracelets
-  # Can skip using Fire Arrows. https://youtu.be/VHuO4U2ORvo
-  # Power Bracelets necessary to move the large black pushable box and unlock a door.
-Can Get Past ET Statues:
-  Can Aim Mirror Shield
-  | (Deku Leaf & Magic Meter Upgrade & Fire Arrows)
-  # Can skip the statue. https://www.youtube.com/watch?v=8Q16oykBb48
-  # Can clip into the Floormasters room. https://www.youtube.com/watch?v=EO8arfhPxro
-Can Get Past ET Song Stone:
-  Can Play Earth God's Lyric
-  | (Deku Leaf & Bombs & Hero's Sword)
-  # Can do a clip to get past the first song stone. https://www.youtube.com/watch?v=m_7hucDDIfg
-Can Get Past Third ET Small Key Door:
-  ET Small Key x3
-  | (Bombs & Deku Leaf & Hero's Sword)
-  | (Fire Arrows & Deku Leaf)
-  | (Deku Leaf & Command Melody)
-  # Can get past the gate in the left room by clipping.
-  # Can use Medli to clip, but then you need command melody to get her past the gate.
-Can Enter Cabana:
-  (Delivery Bag & Cabana Deed)
-  | (Hookshot & Bombs & Deku Leaf)
-  # Can skip the Cabana Deed. https://www.youtube.com/watch?v=KeouMcEYxsA
 Can Cut Grass:
   Hero's Sword
   | Skull Hammer
@@ -543,6 +504,36 @@ Can Sword Fight with Orca in Swordless:
   Nothing
   # This macro is swapped out in place of the above one in swordless mode.
   # Swordless gives you a sword temporarily while in Orca's house, so you don't need to have found a sword item.
+Can Skip First Floor in TotG:
+  Deku Leaf | Hero's Sword | Skull Hammer | (TotG Small Key x1 & Bombs & Can Defeat Yellow ChuChus)
+  # Can clip OoB with a statue and can skip the first floor with the leaf, or with jumpslashes (requires a sword or hammer). Otherwise you need to do the first floor casually. Maybe add the superswim strat to logic?? Might be too hard.
+Can Skip Statue With Medli:
+  (Can Aim Mirror Shield & Can Play Command Melody)
+  | (Deku Leaf & Can Play Command Melody)
+  | (ET Small Key x2 & Power Bracelets & Can Defeat Floormasters & Can Aim Mirror Shield)
+  # 3 methods
+  # Do it normally
+  # Or clip OoB from the bottom: https://www.youtube.com/watch?v=E76tYpdcOJ4
+  # Or clip OoB from the top: https://www.youtube.com/watch?v=jLzssTc6ELU (there's easier but this one is done swordless) & https://www.youtube.com/watch?v=kpTImB9ITtw
+Can Skip Song Stone With Medli:
+  Can Skip Statue With Medli & Can Play Earth God's Lyric
+Can Skip Song Stone Without Medli
+  Hero's Sword & Bombs & Deku Leaf
+  #This macro is used for the one below
+Can Skip Elephant Statue:
+  (Can Skip Song Stone With Medli & Can Play Command Melody)
+  | (Can Skip Song Stone Without Medli &
+    ((Fire Arrows & (Magic Meter Upgrade | Bottle)) | Can Aim Mirror Shield)
+     )
+ # This clip: https://www.youtube.com/watch?v=EO8arfhPxro
+ # Might not need to AIM the mirror shield (maybe only mirror shield is enough), but it doesn't matter with the amount of items you need to get down here anyway
+Can Perform Spring Jump Storage:
+  Iron Boots & (Hookshot | Hero's Bow | Grappling Hook)
+ # Needs testing for doing this glitch with c-up or boomerang
+Can Enter Cabana:
+  (Cabana Deed & Delivery Bag)
+  | (Hookshot & Deku Leaf & Bombs)
+ # Can enter normally, or requires the L-Slide Clip.
 
 # The below macros are used when charts are not randomized.
 # When charts are randomized, these macros are shuffled around by the randomizer logic.

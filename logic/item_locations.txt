@@ -3,6 +3,11 @@
 #  Original item: Telescope
 #  Paths:
 #    - sea/Stage.arc/Event085:get_telescope/Actor002/Action001
+#Outset Island - Bring a Pig to Rose:
+#  Need: 
+#  Original item: Red Rupee
+#  Paths:
+#    - sea/Stage.arc/Event0B1:Get_Rupee/Actor002/Action000
 Outset Island - Underneath Link's House:
   Need: Nothing
   Original item: Orange Rupee
@@ -57,8 +62,7 @@ Outset Island - Orca - Hit 500 Times:
 #  Paths:
 #    - rels/d_a_npc_ji1.rel@42EF
 Outset Island - Great Fairy:
-  Need:
-    Can Fly With Deku Leaf Outdoors
+  Need: Can Fly With Deku Leaf Outdoors
     # You can leaf to Mesa's rooftop and then leaf to the ledge to go around the trees.
     # Can clip and leaf under the boulder. https://youtu.be/UMwVpczaSOY?t=14m45s
   Original item: 5000 Rupee Wallet
@@ -83,10 +87,8 @@ Outset Island - Dig up Black Soil:
     - sea/Room44.arc/ScalableObject03A
 Outset Island - Savage Labyrinth - Floor 30:
   Need:
-    (
-      (Can Cut Down Outset Trees & Can Fly With Deku Leaf Outdoors)
-      | Hookshot
-    )
+    (Can Fly With Deku Leaf Outdoors | Hookshot)
+#Can avoid the trees by leafing to the ledge from Mesa's house rooftop
     & Power Bracelets
     & Can Defeat Keese
     & Can Defeat Miniblins
@@ -98,14 +100,13 @@ Outset Island - Savage Labyrinth - Floor 30:
     & Can Defeat Boko Babas
     & Can Defeat Mothulas
     & Can Defeat Winged Mothulas
-    & (Hookshot
-      | (Can Defeat Wizzrobes
-         & Can Defeat Armos
-         & Can Defeat Yellow ChuChus
-         & Can Defeat Red Bubbles
-         & Can Defeat Darknuts))
-    & Can Play Wind's Requiem
-  # Can do floor skips on floors 21-30.
+    & ( Hookshot
+        | (Can Defeat Wizzrobes
+          & Can Defeat Armos
+          & Can Defeat Yellow ChuChus
+          & Can Defeat Red Bubbles
+          & Can Defeat Darknuts))
+     & Can Play Wind's Requiem
   # The following floors don't have requirements listed because you can trick enemies into hitting each other, pick up one of their dropped weapons, and kill the enemies with the weapon:
   # * Floor 4 (4x Green Bokoblins)
   # * Floor 9 (4x Green Bokoblins, 2x Fire Keese)
@@ -114,6 +115,7 @@ Outset Island - Savage Labyrinth - Floor 30:
   # * Floor 18 (4x Blue Bokoblins, 4x Green ChuChus)
   # * Floor 19 (2x Green Bokoblins, 3x Mothulas)
   # * Floor 27 (2x Green Bokoblins, 1x Darknut)
+  # You can skip floors 21 to 30 with the hookshot
   Original item: Triforce Chart 6
   Types: Combat Secret Cave
   Paths:
@@ -121,19 +123,21 @@ Outset Island - Savage Labyrinth - Floor 30:
 Outset Island - Savage Labyrinth - Floor 50:
   Need:
     Can Access Other Location "Outset Island - Savage Labyrinth - Floor 30"
-    & Can Aim Mirror Shield
+    & Mirror Shield
     & Can Defeat ReDeads
     & Can Defeat Blue Bubbles
     & Can Defeat Dark ChuChus
     & Can Defeat Poes
     & Can Defeat Stalfos
-    & Skull Hammer
+    & (Hookshot | Skull Hammer)
   # 2 of the 3 Wizzrobes on floor 48 never seem to come down to ground level, but it doesn't matter since you can throw the swords the Darknuts drop at them to kill them.
   # The following floors don't have requirements listed because you can trick enemies into hitting each other, pick up one of their dropped weapons, and kill the enemies with the weapon:
   # * Floor 37 (2x Moblins, 3x ReDeads)
   # * Floor 39 (2x Moblins, 5x Poes)
   # * Floor 45 (16x Bokoblins)
   # * Floor 47 (3x Moblins, 2x Darknuts)
+  # Aiming the mirror shield isn't required because you can break the statue on floor 30 by backwalking
+  # You can skip floors 41 to 50 with hookshot (skipping the hammer requirement)
   Original item: Piece of Heart
   Types: Combat Secret Cave
   Paths:
@@ -398,6 +402,27 @@ Windfall Island - Zunari - Stock Exotic Flower in Zunari's Shop:
     - rels/d_a_npc_rsh1.rel@3117
     - rels/d_a_npc_rsh1.rel@338F
     - CustomSymbol:zunari_magic_armor_slot_item_id
+#Windfall Island - Kane - Place Shop Guru Statue on Gate: # Too obscure to randomize
+#  Need: Rescued Aryll & Delivery Bag
+#  Original item: Purple Rupee
+#  Paths:
+#    - rels/d_a_npc_people.rel@C21B
+#Windfall Island - Kane - Place Postman Statue on Gate: # Too obscure to randomize
+#  Need: Rescued Aryll & Delivery Bag
+#  Original item: Purple Rupee
+#  Paths:
+#    - rels/d_a_npc_people.rel@C21F
+#Windfall Island - Kane - Place Six Flags on Gate: # Too obscure to randomize
+#  # Pinwheel counts as a flag
+#  Need: Rescued Aryll & Delivery Bag
+#  Original item: Red Rupee
+#  Paths:
+#    - rels/d_a_npc_people.rel@C223
+#Windfall Island - Kane - Place Six Idols on Gate: # Too obscure to randomize
+#  Need: Rescued Aryll & Delivery Bag
+#  Original item: Red Rupee
+#  Paths:
+#    - rels/d_a_npc_people.rel@C227
 Windfall Island - Mila:
   Need: Rescued Aryll
   Original item: Empty Bottle
@@ -438,6 +463,11 @@ Windfall Island - Sinking Ships - Under 20 Shots Prize:
 #  Types: Minigame
 #  Paths:
 #    - rels/d_a_npc_people.rel@5BDF
+#Windfall Island - Dampa's Piggy Sitting Minigame (Unused):
+#  Need: 
+#  Original item: Red Rupee
+#  Paths:
+#    - rels/d_a_npc_people.rel@5BC3
 Windfall Island - Pompie and Vera:
   Need:
     # Need to snap a photo of Lenzo and Minenco in Lenzo's house.
@@ -517,7 +547,9 @@ Dragon Roost Island - Chest on Top of Boulder:
     | (Bait Bag & Can Buy Hyoi Pears)
     | Boomerang
     | Bombs
+    | (Can Fly With Leaf Outdoors & Hero's Sword)
     # Bombs work by getting in the ship and shooting the cannon up at the bomb flowers.
+    # With the leaf you can glide over to the bombs and jumpslash to make one explode (does hammer work instead of sword? TODO)
   Original item: Silver Rupee
   Types: Other Chest
   Paths:
@@ -538,12 +570,11 @@ Dragon Roost Island - Rito Aerie - Baito:
     - Atorizk/Stage.arc/Event003:GETMOTHERLETTER/Actor000/Action000
 Dragon Roost Island - Secret Cave:
   Need:
-    Can Move Boulders
-    & Can Defeat Keese
-    & Can Defeat Red ChuChus
+    Can Defeat Keese
+  # Don't need to move the boulder since you can use a bomb flower to destroy it with good movement
   # 4 Keese and 3 pots - it doesn't seem possible to kill all 4 without having 4 pots.
   # 2 Mothulas and 5 pots - picking up and throwing the pots can be tricky with them charging at you, but each only takes one pot to kill, so you have 3 extra chances to mess up.
-  # 3 Red ChuChus and 2 pots - it's possible to hit multiple with one pot so this is doable, but it's too tricky.
+  # 3 Red ChuChus and 2 pots - it's possible to hit multiple with one pot so this is doable, not in regular logic but is in glitch logic
   # 3 Blue Bokoblins and 4 pots - you can get them to drop their sticks and then kill them with the stick.
   Original item: Purple Rupee
   Types: Combat Secret Cave
@@ -576,9 +607,9 @@ Dragon Roost Cavern - Boarded Up Chest:
 Dragon Roost Cavern - Chest Across Lava Pit:
   Need:
     Can Access Dragon Roost Cavern
-    & (DRC Small Key x2 | Can Access End of Dragon Roost Cavern)
+    & DRC Small Key x2
     & (Grappling Hook | Deku Leaf | Hookshot)
-  # Note: It's possible to throw a burning stick across the pit, then stand at the very very edge of the cliff and hookshot the chest to get across.
+  # Note: It's also possible to throw a burning stick across the pit, then stand at the very very edge of the cliff and hookshot the chest to get across. This is pretty precise, not in regular logic
   # Note: In swordless, you can throw a burning stick across the lava pit, then grapple across.
   Original item: Treasure Chart 11
   Types: Dungeon
@@ -587,7 +618,7 @@ Dragon Roost Cavern - Chest Across Lava Pit:
 Dragon Roost Cavern - Rat Room:
   Need:
     Can Access Dragon Roost Cavern
-    & (DRC Small Key x2 | Can Access End of Dragon Roost Cavern)
+    & DRC Small Key x2
   Original item: Compass
   Types: Dungeon
   Paths:
@@ -595,7 +626,7 @@ Dragon Roost Cavern - Rat Room:
 Dragon Roost Cavern - Rat Room Boarded Up Chest:
   Need:
     Can Access Dragon Roost Cavern
-    & (DRC Small Key x2 | Can Access End of Dragon Roost Cavern)
+    & DRC Small Key x2
   Original item: Small Key
   Types: Dungeon
   Paths:
@@ -603,7 +634,7 @@ Dragon Roost Cavern - Rat Room Boarded Up Chest:
 Dragon Roost Cavern - Bird's Nest:
   Need:
     Can Access Dragon Roost Cavern
-    & (DRC Small Key x3 | Can Access End of Dragon Roost Cavern)
+    & DRC Small Key x3
   Original item: Small Key
   Types: Dungeon
   Paths:
@@ -611,15 +642,27 @@ Dragon Roost Cavern - Bird's Nest:
 Dragon Roost Cavern - Dark Room:
   Need:
     Can Access Dragon Roost Cavern
-    & (DRC Small Key x4 | Can Access End of Dragon Roost Cavern)
+    & 
+     (DRC Small Key x4 | (DRC Small Key x1 & Hero's Bow & (Bombs | Fire Arrows)))
+ # You can shoot the hanging platform in the main room with the bow and then perform a precise jump to get to the bridge without leaf. Then you can go backwards through the dungeon for this chest if you have a way to break the wooden wall
   Original item: Joy Pendant
   Types: Dungeon
   Paths:
     - M_NewD2/Stage.arc/Chest004
+Dragon Roost Cavern - Tingle Chest in Hub Room:
+  Need:
+    Can Access Dragon Roost Cavern
+    & (DRC Small Key x4 | (DRC Small Key x1 & Hero's Bow))
+    & Tingle Tuner Bombs
+ # Can perform the bow shots just like above
+  Original item: Yellow Rupee
+  Types: Tingle Chest, Dungeon
+  Paths:
+    - M_NewD2/Stage.arc/Chest00D
 Dragon Roost Cavern - Pot Room Chest:
   Need:
     Can Access Dragon Roost Cavern
-    & (DRC Small Key x4 | Can Access End of Dragon Roost Cavern)
+    & (DRC Small Key x4 | (DRC Small Key x1 & Hero's Bow))
   Original item: Treasure Chart 39
   Types: Dungeon
   Paths:
@@ -627,7 +670,7 @@ Dragon Roost Cavern - Pot Room Chest:
 Dragon Roost Cavern - Mini-Boss:
   Need:
     Can Access Dragon Roost Cavern
-    & (DRC Small Key x4 | Can Access End of Dragon Roost Cavern)
+    & (DRC Small Key x4 | (DRC Small Key x1 & Hero's Bow))
   # Need to escape: Grappling Hook | Can Fly With Deku Leaf Outdoors
   Original item: Grappling Hook
   Types: Dungeon
@@ -637,23 +680,32 @@ Dragon Roost Cavern - Mini-Boss:
 Dragon Roost Cavern - Under Rope Bridge:
   Need:
     Can Access Dragon Roost Cavern
-    & (DRC Small Key x4 | Can Access End of Dragon Roost Cavern)
-    & (Grappling Hook | Can Fly With Deku Leaf Outdoors)
+    & (
+      (DRC Small Key x4 & (Grappling Hook | Can Fly With Deku Leaf Outdoors))
+      | (DRC Small Key x1 & Hero's Bow)
+    )
   # The ropes holding up the bridge can be cut with a stick - note that it takes three spin attacks instead of one.
   Original item: Joy Pendant
   Types: Dungeon
   Paths:
     - M_NewD2/Stage.arc/Chest009
-#Dragon Roost Cavern - Tingle Statue Chest:
-#  Need:
-#    Can Access Dragon Roost Cavern
-#    & DRC Small Key x4
-#    & Grappling Hook
-#    & Tingle Tuner Bombs
-#  Original item: Dragon Tingle Statue
-#  Types: Tingle Statue Chest, Dungeon
-#  Paths:
-#    - M_NewD2/Stage.arc/Chest00C
+Dragon Roost Cavern - Tingle Statue Chest:
+  Need:
+    Can Access Dragon Roost Cavern
+    & DRC Small Key x1
+    & (
+      (DRC Small Key x4 & Can Cut Down Hanging DRC Platform)
+      | Deku Leaf
+      | Ice Arrows
+      | Hero's Bow
+    )
+    & Grappling Hook
+    & Tingle Tuner Bombs
+ # Shooting the hanging platform with the bow creates a platform to access that chest without leaf or ice arrows
+  Original item: Dragon Tingle Statue
+  Types: Tingle Chest, Dungeon
+  Paths:
+    - M_NewD2/Stage.arc/Chest00C
 Dragon Roost Cavern - Big Key Chest:
   Need:
     Can Access Dragon Roost Cavern
@@ -662,6 +714,7 @@ Dragon Roost Cavern - Big Key Chest:
       (DRC Small Key x4 & Can Cut Down Hanging DRC Platform)
       | Deku Leaf
       | Ice Arrows
+      | Hero's Bow
     )
     & Grappling Hook
   # You can sneak into the gap at the bottom of the second room of DRC to get this chest early.
@@ -675,7 +728,7 @@ Dragon Roost Cavern - Big Key Chest:
 Dragon Roost Cavern - Boss Stairs Right Chest:
   Need:
     Can Access Dragon Roost Cavern
-    & (DRC Small Key x4 | Can Access End of Dragon Roost Cavern)
+    & (DRC Small Key x4 | (DRC Small Key x1 & Hero's Bow))
     & (Grappling Hook | Deku Leaf | Hookshot | Ice Arrows)
     # Hookshot can reach the torches on the other side of the lava.
     # Ice Arrows can create a platform in the lava.
@@ -686,7 +739,7 @@ Dragon Roost Cavern - Boss Stairs Right Chest:
 Dragon Roost Cavern - Boss Stairs Left Chest:
   Need:
     Can Access Dragon Roost Cavern
-    & (DRC Small Key x4 | Can Access End of Dragon Roost Cavern)
+    & (DRC Small Key x4 | (DRC Small Key x1 & Hero's Bow))
     & (Grappling Hook | Deku Leaf | Hookshot | Ice Arrows)
     # Hookshot can reach the torches on the other side of the lava.
     # Ice Arrows can create a platform in the lava.
@@ -694,18 +747,14 @@ Dragon Roost Cavern - Boss Stairs Left Chest:
   Types: Dungeon
   Paths:
     - M_NewD2/Stage.arc/Chest002
-#Dragon Roost Cavern - Unused?:
-#  Need: 
-#  Original item: Yellow Rupee
-#  Paths:
-#    - M_NewD2/Stage.arc/Chest00D
 Dragon Roost Cavern - Gohma Heart Container:
   Need:
     Can Access Dragon Roost Cavern
-    & (DRC Small Key x4 | Can Access End of Dragon Roost Cavern)
-    & (DRC Big Key | Deku Leaf)
+    & (DRC Small Key x4 | (DRC Small Key x1 & Hero's Bow))
+    & Grappling Hook
     & Can Defeat Gohma
-    # Can skip the Big Key with a clip. https://youtu.be/wJ0RFB2tIDA
+    & (DRC Big Key | Deku Leaf)
+ # Can Perform a Boss Key Skip with the leaf
   Original item: Heart Container
   Types: Dungeon
   Paths:
@@ -716,8 +765,8 @@ Dragon Roost Cavern - Gohma Heart Container:
 Forest Haven - On Tree Branch:
   Need:
     Can Access Forest Haven
-    & (Can Fly With Deku Leaf Outdoors | Grappling Hook)
-  # Note: You can access this without Grappling Hook if you take the lower platform exit out of Forest Haven, fly to the pillar outside, then use the whirlwind to gain height and fly back to Forest Haven taking the middle platform exit.
+    & (Grappling Hook | Can Fly With Deku Leaf Outdoors)
+  # Note: You can access this without Grappling Hook if you take the lower platform exit out of Forest Haven, fly to the pillar outside, then use the whirlwind to gain height and fly back to Forest Haven taking the middle platform exit. Not in regular logic
   Original item: Deku Leaf
   Types: Misc
   Paths:
@@ -733,7 +782,7 @@ Forest Haven - Small Island Chest:
   Need:
     Can Access Forest Haven
     & Can Fly With Deku Leaf Outdoors
-  # Note: You don't need Grappling Hook because you can take the lower platform exit out of Forest Haven, fly to the pillar outside, then fly east to this small island (Noob Skip). You can just barely make it without double magic meter as long as your magic meter is full. But this is not currently in the logic.
+  # Note: You don't need Grappling Hook because you can take the lower platform exit out of Forest Haven, fly to the pillar outside, then fly east to this small island (Noob Skip). You can just barely make it without double magic meter as long as your magic meter is full.
   Original item: Treasure Chart 3
   Types: Other Chest
   Paths:
@@ -781,7 +830,7 @@ Forbidden Woods - Morth Pit:
     Can Access Forbidden Woods
     & Deku Leaf
     & Can Defeat Boko Babas
-    # Can skip using the Grappling Hook since you can use leaf pumps and leaf cancels to progress without it.
+ # Can Skip the grappling hook requirement with precise leaf pumps
   Original item: Yellow Rupee
   Types: Dungeon
   Paths:
@@ -847,22 +896,20 @@ Forbidden Woods - Chest Across Red Hanging Flower:
     Can Access Forbidden Woods
     & Deku Leaf
     & Can Defeat Boko Babas
-    # Can do a ledge clip with a nut to get under the floor.
+ # Can skip the boomerang by clipping down to the basement by ledge clipping with the nut
   Original item: Yellow Rupee
   Types: Dungeon
   Paths:
     - kindan/Stage.arc/Chest00D
-#Forbidden Woods - Tingle Statue Chest:
-#  Need:
-#    Can Access Forbidden Woods
-#    & Deku Leaf
-#    & Grappling Hook
-#    & Boomerang
-#    & Tingle Tuner Bombs
-#  Original item: Forbidden Tingle Statue
-#  Types: Tingle Statue Chest, Dungeon
-#  Paths:
-#    - kindan/Stage.arc/Chest00E
+Forbidden Woods - Tingle Statue Chest:
+  Need:
+    Can Access Forbidden Woods
+    & Deku Leaf
+    & Tingle Tuner Bombs
+  Original item: Forbidden Tingle Statue
+  Types: Tingle Chest, Dungeon
+  Paths:
+    - kindan/Stage.arc/Chest00E
 Forbidden Woods - Chest in Locked Tree Trunk:
   Need:
     Can Access Forbidden Woods
@@ -878,6 +925,7 @@ Forbidden Woods - Big Key Chest:
     & Deku Leaf
     & Can Defeat Boko Babas
     & (Boomerang | Hookshot)
+ # You can clip inside with the hookshot
   Original item: Big Key
   Types: Dungeon
   Paths:
@@ -887,9 +935,8 @@ Forbidden Woods - Double Mothula Room:
     Can Access Forbidden Woods
     & Deku Leaf
     & Can Defeat Boko Babas
-    & (Can Defeat Door Flowers | Grappling Hook)
     & Can Defeat Mothulas
-  # This room is locked by 2 door flowers, but if you have grappling hook you can reach a nut on the floor above and bring it down to destroy them both with it.
+  # This room is locked by 2 door flowers, but you can reach a nut on the floor above by leaf pumping and bring it down to destroy them both with it.
   Original item: Joy Pendant
   Types: Dungeon
   Paths:
@@ -899,7 +946,6 @@ Forbidden Woods - Kalle Demos Heart Container:
     Can Access Forbidden Woods
     & Deku Leaf
     & Can Defeat Boko Babas
-    & (Can Defeat Door Flowers | Grappling Hook)
     & Can Defeat Mothulas
     & FW Big Key
     & Can Defeat Kalle Demos
@@ -921,7 +967,7 @@ Greatfish Isle - Hidden Chest:
 Tower of the Gods - Chest Behind Bombable Walls:
   Need:
     Can Access Tower of the Gods
-    # Can do a Roll Clip to skip needing Bombs. https://www.youtube.com/watch?v=dP4gG2W2cHw
+ # Can do a Roll Clip to skip needing Bombs. https://www.youtube.com/watch?v=dP4gG2W2cHw
   Original item: Dungeon Map
   Types: Dungeon
   Paths:
@@ -935,7 +981,8 @@ Tower of the Gods - Hop Across Floating Boxes:
 Tower of the Gods - Light Two Torches:
   Need:
     Can Access Tower of the Gods
-    & Can Get Behind TotG Bombable Walls
+    & (Can Skip First Floor in TotG | Bombs)
+ #Can clip OoB in the F1 skip spot and maneuver behind the bombable walls with leaf or sword
   Original item: Joy Pendant
   Types: Dungeon
   Paths:
@@ -943,7 +990,7 @@ Tower of the Gods - Light Two Torches:
 Tower of the Gods - Skulls Room Chest:
   Need:
     Can Access Tower of the Gods
-    & Can Get Behind TotG Bombable Walls
+    & (Can Skip First Floor in TotG | Bombs)
   Original item: Compass
   Types: Dungeon
   Paths:
@@ -951,27 +998,26 @@ Tower of the Gods - Skulls Room Chest:
 Tower of the Gods - Shoot Eye Above Skulls Room Chest:
   Need:
     Can Access Tower of the Gods
-    & Can Get Behind TotG Bombable Walls
-    & Hero's Bow
+    & Can Skip First Floor in TotG
+    & (Hero's Bow | (Bombs & Deku Leaf))
+ # Can clip OoB with bombs and leaf to get the chest early (hard)
   Original item: Treasure Chart 6
   Types: Dungeon
   Paths:
     - Siren/Stage.arc/Chest006
-#Tower of the Gods - Tingle Statue Chest:
-#  Need:
-#    Can Access Tower of the Gods
-#    & Bombs
-#    & TotG Small Key x1
-#    & Can Defeat Yellow ChuChus
-#    & Tingle Tuner Bombs
-#  Original item: Goddess Tingle Statue
-#  Types: Tingle Statue Chest, Dungeon
-#  Paths:
-#    - Siren/Stage.arc/Chest00A
+Tower of the Gods - Tingle Statue Chest:
+  Need:
+    Can Access Tower of the Gods
+    & Can Skip First Floor in TotG
+    & Tingle Tuner Bombs
+  Original item: Goddess Tingle Statue
+  Types: Tingle Chest, Dungeon
+  Paths:
+    - Siren/Stage.arc/Chest00A
 Tower of the Gods - First Chest Guarded by Armos Knights:
   Need:
     Can Access Tower of the Gods
-    & Can Access Second Floor of TotG
+    & Can Skip First Floor in TotG
     & Hero's Bow
     & Can Defeat Armos Knights
   Original item: Joy Pendant
@@ -981,7 +1027,7 @@ Tower of the Gods - First Chest Guarded by Armos Knights:
 Tower of the Gods - Stone Tablet:
   Need:
     Can Access Tower of the Gods
-    & Can Access Second Floor of TotG
+    & Can Skip First Floor in TotG
     & Wind Waker
   Original item: Command Melody
   Types: Dungeon
@@ -990,13 +1036,12 @@ Tower of the Gods - Stone Tablet:
 Tower of the Gods - Darknut Mini-Boss Room:
   Need:
     Can Access Tower of the Gods
-    & Can Access Second Floor of TotG
+    & Can Skip First Floor in TotG
     & Wind Waker
     & (Grappling Hook | Deku Leaf)
     & Can Defeat Darknuts
-    # You can use the Command Melody skip to get the statue across without needing the bridge. https://www.youtube.com/watch?v=RG98_k9ahoI
     # Note: If you already have the bow you can get the statue guy across the previous room without getting this item, which might appear to make this chest permanently missable, but in reality you can use the deactivated Armos from across the pit to keep the button pressed.
-    # Note: Normally the only way to do this would be to use the statue guy, but if you already have the bow you can activate the moving platforms and use the deactivated Armos from across the pit to keep the button pressed instead.
+    # Cosmo Hop skips the Command Melody
     # Note: You can reach this without Grappling Hook if you have Deku Leaf instead. But if you run out of MP you can get trapped and not be able to escape since there are no MP refill jars on this side of the gap. So we modify one of the pots to drop an MP refill jar.
   Original item: Hero's Bow
   Types: Dungeon
@@ -1005,11 +1050,12 @@ Tower of the Gods - Darknut Mini-Boss Room:
 Tower of the Gods - Second Chest Guarded by Armos Knights:
   Need:
     Can Access Tower of the Gods
-    & Can Access Second Floor of TotG
+    & Can Skip First Floor in TotG
     & Wind Waker
-    & (Grappling Hook | Deku Leaf)
+    & ((Grappling Hook & Bombs) | Deku Leaf)
     & Hero's Bow
-    & Wind's Requiem
+    & Can Play Wind's Requiem
+    # Can skip the bombs requirement with leaf by clipping OoB: https://www.youtube.com/watch?v=mCekpipiP4c&feature=youtu.be&t=135
     # Bombs are needed to kill the Armos Knights, but killing them is not necessary for any reason, since the chest appears when you play Wind's Requiem, and the door is not locked.
   Original item: Treasure Chart 30
   Types: Dungeon
@@ -1018,7 +1064,7 @@ Tower of the Gods - Second Chest Guarded by Armos Knights:
 Tower of the Gods - Floating Platforms Room:
   Need:
     Can Access Tower of the Gods
-    & Can Access Second Floor of TotG
+    & Can Skip First Floor in TotG
     & Wind Waker
     & (Grappling Hook | Deku Leaf)
     & Hero's Bow
@@ -1029,7 +1075,7 @@ Tower of the Gods - Floating Platforms Room:
 Tower of the Gods - Top of Floating Platforms Room:
   Need:
     Can Access Tower of the Gods
-    & Can Access Second Floor of TotG
+    & Can Skip First Floor in TotG
     & Wind Waker
     & (Grappling Hook | Deku Leaf)
     & Hero's Bow
@@ -1040,14 +1086,14 @@ Tower of the Gods - Top of Floating Platforms Room:
 Tower of the Gods - Big Key Chest:
   Need:
     Can Access Tower of the Gods
-    & Can Access Second Floor of TotG
+    & Can Skip First Floor in TotG
     & Wind Waker
-    & (Grappling Hook | Deku Leaf)
+    & ((Grappling Hook & Can Play Command Melody) | Deku Leaf)
     & Hero's Bow
     & TotG Small Key x2
-    & (Deku Leaf | Command Melody)
-    # You don't need the Command Melody for the third statue. You can leaf back and forth instead.
-    # You can also get the third statue with Command Melody if you don't have Leaf. https://www.youtube.com/watch?v=bHxnIlpDO7A
+ #You can get this with only one small key, but assuming worst case you need 2
+ # You don't need the Command Melody for the third statue. You can leaf back and forth instead.
+ # You can also get the third statue with Command Melody if you don't have Leaf. https://www.youtube.com/watch?v=bHxnIlpDO7A
   Original item: Big Key
   Types: Dungeon
   Paths:
@@ -1065,16 +1111,14 @@ Tower of the Gods - Big Key Chest:
 Tower of the Gods - Gohdan Heart Container:
   Need:
     Can Access Tower of the Gods
-    & Can Access Second Floor of TotG
+    & Can Skip First Floor in TotG
     & Wind Waker
-    & (Grappling Hook | Deku Leaf)
-    & Command Melody
     & Hero's Bow
     & TotG Small Key x2
-    & (Deku Leaf | Command Melody)
-    & Can Defeat Armos
+    & ((Grappling Hook & Can Play Command Melody) | Deku Leaf)
     & TotG Big Key
     & Can Defeat Gohdan
+ # You can defeat the Armos in the bk room with pots (tricky)
   Original item: Heart Container
   Types: Dungeon
   Paths:
@@ -1095,10 +1139,8 @@ Forsaken Fortress - Phantom Ganon:
   Paths:
     - sea/Room1.arc/Chest000
 Forsaken Fortress - Chest Outside Upper Jail Cell:
-  Need:
-    # Instead of using Deku Leaf to fly over to the chest, you could also use the Hookshot on the chest.
-    Can Get Inside Forsaken Fortress
-    & (Deku Leaf | Hookshot)
+  Need: Can Get Inside Forsaken Fortress
+ # Get caught by the floormaster to get this chest without leaf or hookshot. Not in regular logic.
   Original item: Dungeon Map
   Types: Dungeon
   Paths:
@@ -1138,14 +1180,12 @@ Forsaken Fortress - Helmaroc King Heart Container:
   Need:
     Can Get Inside Forsaken Fortress
     & Skull Hammer
-    & (Deku Leaf | Hookshot)
-    & Can Reach and Defeat Phantom Ganon
+    & (Can Reach and Defeat Phantom Ganon | Grappling Hook)
     & Can Defeat Helmaroc King
-    # The reason you need to be able to defeat Phantom Ganon is because his fight triggers even if you skip him and try to go straight to Helmaroc King.
+    # The reason you need to be able to defeat Phantom Ganon is because his fight triggers even if you skip him and try to go straight to Helmaroc King. If you have the grappling hook you can skip the trigger however (glitch)
     # There's a cannon that makes sidling across a gap difficult, but you don't need bombs because you can just kill the searchlight operator Bokoblin instead to get rid of the cannon simultaneously.
-    # Note: It is possible to get up there without Deku Leaf.
+    # Note: It is possible to get up there without Deku Leaf. Not in regular logic
     # To do it, go to the southwest room, and jump on top of the wooden bedposts. Then jump diagonally onto the corner of the platform with the Bokoblin and the Skull Hammer pegs on it.
-    # If adding difficulty options, take that trick into account.
   Original item: Heart Container
   Types: Dungeon
   Paths:
@@ -1156,7 +1196,8 @@ Forsaken Fortress - Helmaroc King Heart Container:
 
 
 Mother and Child Isles - Inside Mother Isle:
-  Need: Can Play Ballad of Gales
+  Need: Wind Waker
+ # Can superswim clip inside. There are other ways we would need to add to logic if starting without Wind Waker gets implemented
   Original item: Fire and Ice Arrows
   Types: Other Chest
   Paths:
@@ -1205,9 +1246,9 @@ Ice Ring Isle - Cave - Chest:
   Paths:
     - MiniHyo/Stage.arc/Chest000
 Ice Ring Isle - Inner Cave - Chest:
-  Need: Fire Arrows
-    # You can enter the cave without Iron Boots by using repeated Wind Waker pulls to negate the effects of the wind.
+  Need: Fire Arrows & (Iron Boots | Wind Waker)
     # There are a number of enemies you need to kill here, but you can trick enemies into attacking each other and steal a weapon so no items are required.
+    # Can get in the cave without boots with repeated wind waker pulls
   Original item: Orange Rupee
   Types: Puzzle Secret Cave, Combat Secret Cave
   Paths:
@@ -1236,20 +1277,20 @@ Headstone Island - Submarine:
 Earth Temple - Transparent Chest In Warp Pot Room:
   Need:
     Can Access Earth Temple
-    & Can Get Past ET Second Room
+    & (Deku Leaf | Can Play Command Melody)
+  # Can skip the command melody with leaf pumps
+    & (Can Play Command Melody | Mirror Shield)
   Original item: Dungeon Map
   Types: Dungeon
   Paths:
     - M_Dai/Stage.arc/Chest000
 Earth Temple - Chest Behind Destructible Walls:
-  Need:
+  Need
     Can Access Earth Temple
-    & Can Get Past ET Second Room
-    & Can Defeat Red ChuChus
-    & Can Defeat Green ChuChus
-    & Can Defeat Dark ChuChus
+    & (Deku Leaf | Can Play Command Melody)
     & Skull Hammer
     & Mirror Shield
+ # hammer kills chus
   Original item: Joy Pendant
   Types: Dungeon
   Paths:
@@ -1266,11 +1307,11 @@ Earth Temple - Chest Behind Destructible Walls:
 Earth Temple - Transparent Chest in First Crypt:
   Need:
     Can Access Earth Temple
-    & Can Get Past ET Second Room
+    & (Deku Leaf | Can Play Command Melody)
     & Skull Hammer
     & Power Bracelets
-    # You can make Medli follow you and while she is walking she will light the chest.
     # Power Bracelets necessary to move the large black pushable box and reveal a light ray.
+    # you can get the chest without command melody by calling Medli and make her light the chest (tricky)
   Original item: Small Key
   Types: Dungeon
   Paths:
@@ -1278,10 +1319,15 @@ Earth Temple - Transparent Chest in First Crypt:
 Earth Temple - Chest In Three Blocks Room:
   Need:
     Can Access Earth Temple
-    & Can Get Past ET Second Room
-    & ET Small Key x2
-    & Can Get Past ET Purple ChuChu Room
+    & ((Deku Leaf & Can Aim Mirror Shield) | Can Play Command Melody)
+ # Aiming the mirror shield required for the chest, not to get past this room
+    & Can Defeat Green Chus
     & Can Defeat Floormasters
+    & Power Bracelets
+    & ET Small Key x2
+    # You can skip the chu staircase with no item, skipping the fire arrow requirement
+    # Only one key is required, but assuming worst case
+    # Power Bracelets necessary again to move the large black pushable box and unlock a door.
     # You need to push blocks near the Floormaster to progress in this room, which basically requires killing it.
   Original item: Compass
   Types: Dungeon
@@ -1290,10 +1336,11 @@ Earth Temple - Chest In Three Blocks Room:
 Earth Temple - Chest Behind Statues:
   Need:
     Can Access Earth Temple
-    & Can Get Past ET Second Room
-    & ET Small Key x2
-    & Can Get Past ET Purple ChuChu Room
+    & ((Deku Leaf & Mirror Shield) | Can Play Command Melody)
+    & Can Defeat Green Chus
     & Can Defeat Floormasters
+    & Power Bracelets
+    & ET Small Key x2
   Original item: Joy Pendant
   Types: Dungeon
   Paths:
@@ -1301,10 +1348,11 @@ Earth Temple - Chest Behind Statues:
 Earth Temple - Casket in Second Crypt:
   Need:
     Can Access Earth Temple
-    & Can Get Past ET Second Room
-    & ET Small Key x2
-    & Can Get Past ET Purple ChuChu Room
+    & (Deku Leaf | Can Play Command Melody)
+    & Can Defeat Green Chus
     & Can Defeat Floormasters
+    & Power Bracelets
+    & ET Small Key x2
     # The Poes don't require anything to kill and the Moblins can be tricked into hitting each other so you can steal their weapon.
     # The ReDeads don't need to be killed to get the item in their room, but you do need to kill them to escape without save warping.
   Original item: Small Key
@@ -1314,39 +1362,36 @@ Earth Temple - Casket in Second Crypt:
 Earth Temple - Stalfos Mini-Boss Room:
   Need:
     Can Access Earth Temple
-    & Can Get Past ET Second Room
-    & ET Small Key x2
-    & Can Get Past ET Purple ChuChu Room
+    & (Deku Leaf | Can Play Command Melody)
+    & (Can Defeat Stalfos | Deku Leaf | Hookshot | Bombs)
+ # Miniboss skip logic
+    & Can Defeat Green Chus
     & Can Defeat Floormasters
-    & (
-      (Deku Leaf & (Bombs | Can Defeat Stalfos))
-      | (ET Small Key x3 & (Deku Leaf | Bombs | Can Defeat Stalfos))
-    )
-    # Can skip needing to use a small key, but it requires Leaf and Bombs. https://www.youtube.com/watch?v=wbROZg4Pphk
-    # Can do it without Bombs by using a skull, but then you don't have enough magic to skip the Stalfos fight.
-    # Can skip Stalfos with leaf pumping or with a roll clip and bomb boost. https://www.youtube.com/watch?v=Wj2BwOURptw
+    & Power Bracelets
+    & (ET Small Key x3 | (ET Small Key x2 & Deku Leaf))
+  # Small Key skip logic
   # Need to escape: Can Aim Mirror Shield
   Original item: Mirror Shield
   Types: Dungeon
   Paths:
     - M_DaiMB/Stage.arc/Chest000
-#Earth Temple - Tingle Statue Chest:
-#  Need:
-#    Can Access Earth Temple
-#    & Can Play Command Melody
-#    & Mirror Shield
-#    & Deku Leaf
-#    & Tingle Tuner Bombs
-#  Original item: Earth Tingle Statue
-#  Types: Tingle Statue Chest, Dungeon
-#  Paths:
-#    - M_Dai/Stage.arc/Chest00D
+Earth Temple - Tingle Statue Chest:
+  Need:
+    Can Access Earth Temple
+    & (Deku Leaf | Can Skip Statue With Medli)
+    & Tingle Tuner Bombs
+ #Skipping past the main statue without Medli only requires the leaf.
+ #Tingle Tuner Bombs can beat chus
+  Original item: Earth Tingle Statue
+  Types: Tingle Chest, Dungeon
+  Paths:
+    - M_Dai/Stage.arc/Chest00D
 Earth Temple - End of Foggy Room With Floormasters:
   Need:
     Can Access Earth Temple
-    & Can Get Past ET Second Room
-    & Can Get Past ET Statues
-    & Can Get Past ET Song Stone
+    & (Deku Leaf | Can Play Command Melody)
+    & Can Defeat Green Chus
+    & Can Skip Elephant Statue
   Original item: Small Key
   Types: Dungeon
   Paths:
@@ -1354,9 +1399,9 @@ Earth Temple - End of Foggy Room With Floormasters:
 Earth Temple - Kill All Floormasters in Foggy Room:
   Need:
     Can Access Earth Temple
-    & Can Get Past ET Second Room
-    & Can Get Past ET Statues
-    & Can Get Past ET Song Stone
+    & (Deku Leaf | Can Play Command Melody)
+    & Can Defeat Green Chus
+    & Can Skip Elephant Statue
     & Can Defeat Floormasters
   Original item: Treasure Chart 20
   Types: Dungeon
@@ -1375,16 +1420,16 @@ Earth Temple - Kill All Floormasters in Foggy Room:
 Earth Temple - Chest in Third Crypt:
   Need:
     Can Access Earth Temple
-    & Can Get Past ET Second Room
-    & Can Aim Mirror Shield
-    & Can Get Past ET Song Stone
+    & (Deku Leaf | Can Play Command Melody)
+    & Can Skip Song Stone With Medli
     & Power Bracelets
     & Skull Hammer
-    & Can Get Past Third ET Small Key Door
-    & Can Defeat Red Bubbles
-    # Can skip Command Melody by throwing Medli and then aiming your shield at the statue using the reflection off her back.
+    & (Deku Leaf | ET Small Key x3)
+  # Small Key skip logic
+    & (Can Play Command Melody | Can Aim Mirror Shield)
+  # To skip mirror shield, use command melody to make Medli fly on top of the mirror and break the statue from there
     # Power Bracelets necessary again to move the large mirror under the light.
-    # Note: Killing the Red Bubbles is not necessary, but reflecting light is quite annoying while they're still alive.
+    # Note: Killing the Red Bubbles is not necessary
   Original item: Red Rupee
   Types: Dungeon
   Paths:
@@ -1392,15 +1437,12 @@ Earth Temple - Chest in Third Crypt:
 Earth Temple - Many Mirrors Room Right Chest:
   Need:
     Can Access Earth Temple
-    & Can Get Past ET Second Room
-    & Can Aim Mirror Shield
-    & Can Play Earth God's Lyric
+    & (Deku Leaf | Can Play Command Melody)
+    & Can Skip Song Stone With Medli
     & Power Bracelets
     & Skull Hammer
-    & Can Get Past Third ET Small Key Door
-    & Can Defeat Red Bubbles
-    & (Can Play Command Melody | Deku Leaf)
-    # Can get to the switch without Command Melody. https://www.youtube.com/watch?v=YOlRXTfTmO4
+    & (Deku Leaf | ET Small Key x3)
+    & (Can Play Command Melody | Can Aim Mirror Shield)
   Original item: Purple Rupee
   Types: Dungeon
   Paths:
@@ -1408,14 +1450,12 @@ Earth Temple - Many Mirrors Room Right Chest:
 Earth Temple - Many Mirrors Room Left Chest:
   Need:
     Can Access Earth Temple
-    & Can Get Past ET Second Room
-    & Can Aim Mirror Shield
-    & Can Play Earth God's Lyric
+    & (Deku Leaf | Can Play Command Melody)
+    & Can Skip Song Stone With Medli
     & Power Bracelets
     & Skull Hammer
-    & Can Get Past Third ET Small Key Door
-    & Can Defeat Red Bubbles
-    & Can Play Command Melody
+    & (Deku Leaf | ET Small Key x3)
+    & (Can Play Command Melody | Can Aim Mirror Shield)
   Original item: Joy Pendant
   Types: Dungeon
   Paths:
@@ -1423,16 +1463,13 @@ Earth Temple - Many Mirrors Room Left Chest:
 Earth Temple - Stalfos Crypt Room:
   Need:
     Can Access Earth Temple
-    & Can Get Past ET Second Room
-    & Can Aim Mirror Shield
-    & Can Play Earth God's Lyric
+    & (Deku Leaf | Can Play Command Melody)
+    & Can Skip Song Stone With Medli
     & Power Bracelets
     & Skull Hammer
-    & Can Get Past Third ET Small Key Door
-    & Can Defeat Red Bubbles
-    & (Can Play Command Melody | Deku Leaf)
+    & (Deku Leaf | ET Small Key x3)
+    & (Can Play Command Melody | Can Aim Mirror Shield)
     & Can Defeat Stalfos
-    # Can clip and leaf to get to this room. https://www.youtube.com/watch?v=8lFc-vXLTAA
   Original item: Treasure Chart 12
   Types: Dungeon
   Paths:
@@ -1440,17 +1477,14 @@ Earth Temple - Stalfos Crypt Room:
 Earth Temple - Big Key Chest:
   Need:
     Can Access Earth Temple
-    & Can Get Past ET Second Room
-    & Can Aim Mirror Shield
-    & Can Play Earth God's Lyric
+    & (Deku Leaf | Can Play Command Melody)
+    & Can Skip Song Stone With Medli
     & Power Bracelets
     & Skull Hammer
-    & Can Get Past Third ET Small Key Door
-    & Can Defeat Red Bubbles
-    & (Can Play Command Melody | Deku Leaf)
+    & (Deku Leaf | ET Small Key x3)
+    & (Can Play Command Melody | Can Aim Mirror Shield)
     & Can Defeat Blue Bubbles
-    & Can Defeat Darknuts
-    # Can clip and leaf to get to this room. https://www.youtube.com/watch?v=kZUQb91sozI
+# The Skull Hammer beats the Darknut
   Original item: Big Key
   Types: Dungeon
   Paths:
@@ -1463,16 +1497,15 @@ Earth Temple - Big Key Chest:
 Earth Temple - Jalhalla Heart Container:
   Need:
     Can Access Earth Temple
-    & Can Get Past ET Second Room
-    & Can Aim Mirror Shield
-    & Can Play Earth God's Lyric
+    & (Deku Leaf | Can Play Command Melody)
+    & Can Skip Song Stone With Medli
     & Power Bracelets
     & Skull Hammer
-    & Can Get Past Third ET Small Key Door
-    & Can Defeat Red Bubbles
+    & (Deku Leaf | ET Small Key x3)
+    & (Can Play Command Melody | Can Aim Mirror Shield)
     & (ET Big Key | Deku Leaf)
+ # Can Skip the BK with a Medli roll clip
     & Can Defeat Jalhalla
-  # Can skip the Big Key by flying with Medli. https://www.youtube.com/watch?v=CzRpib_BdZI
   Original item: Heart Container
   Types: Dungeon
   Paths:
@@ -1494,29 +1527,28 @@ Wind Temple - Chest Between Two Dirt Patches:
   Need:
     Can Access Wind Temple
     & Can Play Command Melody
-    # Can leaf pump in the room with this chest, which avoids needing the Iron Boots.
+ # Can leaf pump in the room with this chest, which avoids needing the Iron Boots.
+ # To progress past room 2 without the deku leaf, use the command melody and make Makar fly above the rotating gate, and step on one of the switches on the other side
   Original item: Orange Rupee
   Types: Dungeon
   Paths:
     - kaze/Stage.arc/Chest005
-#Wind Temple - Tingle Statue Chest:
-#  Need:
-#    Can Access Wind Temple
-#    & Can Play Command Melody
-#    & Iron Boots
-#    & Deku Leaf
-#    & Tingle Tuner Bombs
-#  Original item: Wind Tingle Statue
-#  Types: Tingle Statue Chest, Dungeon
-#  Paths:
-#    - kaze/Stage.arc/Chest00C
+Wind Temple - Tingle Statue Chest:
+  Need:
+    Can Access Wind Temple
+    & Can Play Command Melody
+    & (Can Perform Spring Jump Storage | Deku Leaf)
+    & Tingle Tuner Bombs
+  Original item: Wind Tingle Statue
+  Types: Tingle Chest, Dungeon
+  Paths:
+    - kaze/Stage.arc/Chest00C
 Wind Temple - Chest Behind Stone Head:
   Need:
     Can Access Wind Temple
     & Can Play Command Melody
-    & Deku Leaf
-    & Hookshot
-    # Can L-slide to get behind the statue and get the chest without Iron Boots.
+    & ((Hookshot & Iron Boots) | Deku Leaf)
+ # With just the deku leaf, you can maneuver all the way up to the warp pot via the casual path, and roll clip OoB from a door frame
   Original item: Joy Pendant
   Types: Dungeon
   Paths:
@@ -1525,8 +1557,8 @@ Wind Temple - Chest in Left Alcove:
   Need:
     Can Access Wind Temple
     & Can Play Command Melody
-    & Deku Leaf
-    # Can skip Iron Boots by backflipping onto the wall as it goes up.
+    & (Can Perform Spring Jump Storage | Deku Leaf)
+ # You can get past the rotating gate without iron boots by backflipping onto it while it's going up
   Original item: Joy Pendant
   Types: Dungeon
   Paths:
@@ -1535,9 +1567,10 @@ Wind Temple - Big Key Chest:
   Need:
     Can Access Wind Temple
     & Can Play Command Melody
-    & Deku Leaf
+    & (Can Perform Spring Jump Storage | Deku Leaf)
+    & (Can Play Wind God's Aria | Deku Leaf)
+ # Can skip needing Wind God's Aria for the song stone. https://youtu.be/rRYv3w8ckT4?t=2h53m45s
     & Can Defeat Darknuts
-    # Can skip needing Wind God's Aria for the song stone. https://youtu.be/rRYv3w8ckT4?t=2h53m45s
   Original item: Big Key
   Types: Dungeon
   Paths:
@@ -1547,7 +1580,7 @@ Wind Temple - Chest In Many Cyclones Room:
     Can Access Wind Temple
     & Can Play Command Melody
     & Deku Leaf
-    # The vanilla path only requires the Deku Leaf to get past the room with the song stone.
+ # Can backflip onto a cyclone and ride it up with the leaf to get this chest with little magic
   Original item: Dungeon Map
   Types: Dungeon
   Paths:
@@ -1556,8 +1589,9 @@ Wind Temple - Chest In Middle Of Hub Room:
   Need:
     Can Access Wind Temple
     & Can Play Command Melody
-    & Deku Leaf
-    # Can do a roll clip on a door frame to get under the floor.
+    & ((Iron Boots & (Fire Arrows | Hookshot)) | Deku Leaf)
+ # "Can Perform Spring Jump Storage" becomes "Iron Boots" because with requiring fire arrows or hookshot then spring jump storage becomes automatically possible
+ # With deku leaf, you can leaf to a door frame and roll clip through to skip iron boots. You can still get this without leaf by sniping the warp pot and using the iron boots on the switch or clipping with hookshot
   Original item: Compass
   Types: Dungeon
   Paths:
@@ -1566,8 +1600,7 @@ Wind Temple - Spike Wall Room - First Chest:
   Need:
     Can Access Wind Temple
     & Can Play Command Melody
-    & Deku Leaf
-    # Can do a precise leaf grab to get to the chest.
+    & ((Iron Boots & (Fire Arrows | Hookshot)) | Deku Leaf)
   Original item: Small Key
   Types: Dungeon
   Paths:
@@ -1576,9 +1609,8 @@ Wind Temple - Spike Wall Room - Destroy All Cracked Floors:
   Need:
     Can Access Wind Temple
     & Can Play Command Melody
-    & Deku Leaf
-    & Iron Boots
-    # You don't need to actually kill the enemies spawned in the process of destroying all the floors to get this chest.
+    & (Iron Boots & (Fire Arrows | Hookshot | Deku Leaf))
+    # You actually need iron boots for this one, and spring jump storage is avoided with leaf
   Original item: Treasure Chart 35
   Types: Dungeon
   Paths:
@@ -1587,10 +1619,11 @@ Wind Temple - Wizzrobe Mini-Boss Room:
   Need:
     Can Access Wind Temple
     & Can Play Command Melody
-    & Deku Leaf
+    & ((Can Perform Spring Jump Storage & (Fire Arrows | Hookshot)) | Deku Leaf)
+    & (WT Small Key x2 | Deku Leaf)
+ # Can skip the locked door with a roll clip with leaf
     & Can Defeat Darknuts
     & Can Remove Peahat Armor
-    # Can use a roll clip from the top of the door frame to clip into the mini boss room.
     # Besides Darknuts, there are Wizzrobes, Peahats, Moblins, Keese, and Kargarocs. But if you can defeat a Darknut you can steal its sword to defeat the other enemies.
     # Unfortunately you can't do the same in reverse by stealing a Moblin's spear to kill a Darknut - the Moblin never spawns until the Darknut is defeated.
     # Killing the Wizzrobe doesn't require ranged weapons because he occasionally comes down to ground level.
@@ -1604,7 +1637,7 @@ Wind Temple - Chest at Top of Hub Room:
     Can Access Wind Temple
     & Can Play Command Melody
     & Deku Leaf
-    # After doing an L-slide, you can stand out of bounds and pick up Makar to get him under the floor.
+ # To skip iron boots: play the command melody to put Makar near any of the doors, while you are at the warp pot level, leaf to the door frame of that door. Roll clip OoB and land behind the door. Pick up Makar and place him OoB. Use command melody to make him go under the gate, skipping iron boots
   Original item: Joy Pendant
   Types: Dungeon
   Paths:
@@ -1623,10 +1656,10 @@ Wind Temple - Kill All Enemies in Tall Basement Room:
   Need:
     Can Access Wind Temple
     & Can Play Command Melody
-    & Deku Leaf
+    & (Iron Boots | Deku Leaf)
+ # Hookshot is required (see below). With hookshot, you can get to the bottom floor without leaf (using the weird hookshot clip)
     & Hookshot
     & WT Small Key x2
-    & Iron Boots
     & Can Defeat Stalfos
     & Can Defeat Wizzrobes
     & Can Defeat Morths
@@ -1645,13 +1678,13 @@ Wind Temple - Molgera Heart Container:
   Need:
     Can Access Wind Temple
     & Can Play Command Melody
+    & Iron Boots
     & Deku Leaf
     & Hookshot
     & WT Small Key x2
-    & Iron Boots
     & WT Big Key
     & Can Defeat Molgera
-    # Can skip needing Wind God's Aria for the song stone by sidling behind it.
+ # Can skip WGA by sidling behind the song stone
   Original item: Heart Container
   Types: Dungeon
   Paths:
@@ -1812,7 +1845,6 @@ The Great Sea - Withered Trees:
   Need:
     Can Access Forest Haven
     & Empty Bottle
-    & Can Play Ballad of Gales
     & Can Access Other Location "Cliff Plateau Isles - Highest Isle"
   Original item: Piece of Heart
   Types: Long Sidequest
@@ -1822,15 +1854,12 @@ The Great Sea - Withered Trees:
 The Great Sea - Ghost Ship:
   Need:
     Ghost Ship Chart
-    & Can Play Ballad of Gales
-    & (
-      Deku Leaf
-      | (Can Defeat Wizzrobes
-         & Can Defeat Poes
-         & Can Defeat ReDeads
-         & Can Defeat Stalfos)
+    & (Deku Leaf |
+       (Can Defeat Wizzrobes
+       & Can Defeat Poes
+       & Can Defeat ReDeads
+       & Can Defeat Stalfos)
       )
-    # Can leaf pump to skip fighting any enemies.
     # You don't necessarily have to fight redeads and stalfos, but the wizzrobe can summon them if you're not quick enough.
   Original item: Triforce Chart 4
   Types: Other Chest
@@ -1851,6 +1880,11 @@ The Great Sea - Ghost Ship:
 #  Original item: Purple Rupee
 #  Paths:
 #    - rels/d_a_npc_ah.rel@1773
+#The Great Sea - Fishman (Unused):
+#  Need: 
+#  Original item: Silver Rupee
+#  Paths:
+#    - sea/Stage.arc/Event0D2:SO_GET_RUPEE/Actor002/Action000
 
 #Nintendo Gallery - Carlov 1 (Unused):
 #  Need: 
@@ -1871,16 +1905,16 @@ Private Oasis - Chest at Top of Waterfall:
     - sea/Room33.arc/Chest000
 Private Oasis - Cabana Labyrinth - First Chest:
   Need:
-    Can Enter Cabana
+    Can Enter the Cabana
     & Grappling Hook
-    # Can sidle to skip needing the Skull Hammer
+ # You don't need skull hammer because you can sidle past one of the gates
   Original item: Orange Rupee
   Types: Puzzle Secret Cave
   Paths:
     - TF_04/Stage.arc/Chest001
 Private Oasis - Cabana Labyrinth - Second Chest:
   Need:
-    Can Enter Cabana
+    Can Enter the Cabana
     & Grappling Hook
     & Can Play Wind's Requiem
   Original item: Triforce Chart 2
@@ -1913,8 +1947,8 @@ Spectacle Island - Target Shooting - Second Prize:
 #    - rels/d_a_npc_kg2.rel@210F
 
 Needle Rock Isle - Chest:
-  Need: Bait Bag & Can Buy Hyoi Pears
-    # Note: It might be theoretically possible to hit the switch at the top with a fire arrow's explosion, but it's not easy.
+  Need: (Bait Bag & Can Buy Hyoi Pears) | Fire Arrows
+    # Note: It is possible to hit the switch at the top with a fire arrow's explosion
   Original item: Piece of Heart
   Types: Other Chest
   Paths:
@@ -1926,7 +1960,8 @@ Needle Rock Isle - Cave:
   Paths:
     - SubD42/Stage.arc/Chest000
 Needle Rock Isle - Golden Gunboat:
-  Need: Bombs & Grappling Hook
+  Need: Grappling Hook
+ # You can bait the battleships into defeat the golden gunboat for you
   Original item: Triforce Chart 5
   Types: Gunboat
   Paths:
@@ -1959,12 +1994,12 @@ Boating Course - Cave:
   Need:
     (Can Fly With Deku Leaf Outdoors | Hookshot)
     & Can Hit Diamond Switches at Range
-    & Can Defeat Miniblins
+    & Can Defeat Miniblins Easily
     # Getting inside the cave requires flying with Deku Leaf or Hookshotting the pole.
     # Hitting the 3 diamond switches inside the cave needs a ranged weapon.
     # Killing the miniblins is not necessary, but hitting the switches without being able to kill them would be extremely annoying.
   Original item: Submarine Chart
-  Types: Combat Secret Cave
+  Types: Puzzle Secret Cave, Combat Secret Cave
   Paths:
     - SubD71/Stage.arc/Chest000
 
@@ -1994,9 +2029,8 @@ Stone Watcher Island - Lookout Platform - Destroy the Cannons:
     - sea/Room31.arc/Chest000
 
 Islet of Steel - Interior:
-  Need:
-    Can Play Wind's Requiem
-    # Can just swim next to the ship that blocks the entrance and let the other ships destroy it.
+  Need: Can Play Wind's Requiem
+ # You can make the canons and battleships hit each other to enter this place early
   Original item: Triforce Chart 1
   Types: Other Chest
   Paths:
@@ -2021,6 +2055,7 @@ Overlook Island - Cave:
     & Can Defeat Morths
     & Can Defeat Kargarocs
     & Can Defeat Darknuts
+    & Can Play Wind's Requiem
     # The Armos Knights require nothing since there are bomb flowers in their room.
     # The chuchus, keese, morths, and kargarocs don't necessarily have to be fought, but may be summoned by the wizzrobes.
     # One of the rooms has Green Bokoblins but you can trick them into attacking each other to steal a weapon.
@@ -2033,10 +2068,9 @@ Bird's Peak Rock - Cave:
   Need:
     # Need to hit the switches with a seagull.
     # Also need to play the Wind's Requiem to get the chest to appear.
-    ((Bait Bag & Can Buy Hyoi Pears)
-    | Grappling Hook)
+    ((Bait Bag & Can Buy Hyoi Pears) | Grappling Hook)
     & Can Play Wind's Requiem
-    # Can clip into the island with the Grappling Hook
+ # Can clip inside with grappling hook
   Original item: Triforce Chart 3
   Types: Puzzle Secret Cave
   Paths:
@@ -2068,7 +2102,8 @@ Pawprint Isle - Chuchu Cave - Scale the Wall:
     - TyuTyu/Stage.arc/Chest000
 Pawprint Isle - Wizzrobe Cave:
   Need:
-    Hookshot
+    (Hookshot | (Can Play Wind's Requiem & Bombs & Deku Leaf))
+ # Can bomb boost up onto the chu head structure to get more height, and get a jump after sliding to access the cave without hookshot
     & Can Defeat Wizzrobes at Range
     & Can Defeat Fire Keese
     & Can Defeat Magtails
@@ -2091,7 +2126,8 @@ Pawprint Isle - Lookout Platform - Defeat the Enemies:
     - sea/Room12.arc/Chest000
 
 Thorned Fairy Island - Great Fairy:
-  Need: Skull Hammer
+  Need: Skull Hammer | (Hookshot & Bombs)
+ # You can L-Slide clip into every fairy fountain
   Original item: 99 Arrow Quiver
   Types: Great Fairy
   Paths:
@@ -2111,7 +2147,7 @@ Thorned Fairy Island - Southwestern Lookout Platform - Defeat the Enemies:
     - sea/Room28.arc/Chest001
 
 Eastern Fairy Island - Great Fairy:
-  Need: Can Move Boulders
+  Need: Can Move Boulders | (Hookshot & Bombs)
   Original item: 60 Bomb Bomb Bag
   Types: Great Fairy
   Paths:
@@ -2125,7 +2161,7 @@ Eastern Fairy Island - Lookout Platform - Defeat the Cannons and Enemies:
     - sea/Room19.arc/Chest000
 
 Western Fairy Island - Great Fairy:
-  Need: Skull Hammer
+  Need: Skull Hammer | (Hookshot & Bombs)
   Original item: 60 Arrow Quiver
   Types: Great Fairy
   Paths:
@@ -2138,7 +2174,8 @@ Western Fairy Island - Lookout Platform:
     - sea/Room15.arc/Chest000
 
 Southern Fairy Island - Great Fairy:
-  Need: Bombs | Fire Arrows # Can either blow up or burn the blockade
+  Need: (Bombs | Fire Arrows)
+ # Can either blow up or burn the blockade
   Original item: 99 Bomb Bomb Bag
   Types: Great Fairy
   Paths:
@@ -2174,72 +2211,78 @@ Northern Fairy Island - Submarine:
   Paths:
     - Abship/Room4.arc/Chest000
 
-#Tingle Island - Reward for 1 Tingle Statue:
+#Tingle Island - Ankle - Reward for 1 Tingle Statue:
 #  Need: 
 #  Original item: 50 Rupees, reward for finding 1 Tingle Statue
 #  Paths:
 #    - rels/d_a_npc_tc.rel@617F
-#Tingle Island - Reward for 2 Tingle Statues:
+#Tingle Island - Ankle - Reward for 2 Tingle Statues:
 #  Need: 
 #  Original item: 100 Rupees, reward for finding 2 Tingle Statues
 #  Paths:
 #    - rels/d_a_npc_tc.rel@6187
-#Tingle Island - Reward for 3 Tingle Statues:
+#Tingle Island - Ankle - Reward for 3 Tingle Statues:
 #  Need: 
 #  Original item: 150 Rupees, reward for finding 3 Tingle Statues
 #  Paths:
 #    - rels/d_a_npc_tc.rel@618F
-#Tingle Island - Reward for 4 Tingle Statues:
+#Tingle Island - Ankle - Reward for 4 Tingle Statues:
 #  Need: 
 #  Original item: 200 Rupees, reward for finding 4 Tingle Statues
 #  Paths:
 #    - rels/d_a_npc_tc.rel@6197
-#Tingle Island - Reward for 5 Tingle Statues:
+#Tingle Island - Ankle - Reward for 5 Tingle Statues:
 #  Need: 
 #  Original item: 250 Rupees, reward for finding 5 Tingle Statues
 #  Paths:
 #    - rels/d_a_npc_tc.rel@619F
-#Tingle Island - Reward for All Tingle Statues:
-#  Need: 
-#  Original item: 500 Rupees, reward for finding 5 Tingle Statues
-#  Paths:
-#    - rels/d_a_npc_tc.rel@6143
-#Tingle Island - Triforce Chart 1 Deciphered:
+Tingle Island - Ankle - Reward for All Tingle Statues:
+  Need:
+    Dragon Tingle Statue
+    & Forbidden Tingle Statue
+    & Goddess Tingle Statue
+    & Earth Tingle Statue
+    & Wind Tingle Statue
+  Original item: Rainbow Rupee
+  Types: Misc
+  Paths:
+    - rels/d_a_npc_tc.rel@6143
+#Tingle Island - Tingle - Triforce Chart 1 Deciphered:
 #  Need: 
 #  Original item: Triforce Chart 1 got deciphered
 #  Paths:
 #    - rels/d_a_npc_tc.rel@61D7
-#Tingle Island - Triforce Chart 2 Deciphered:
+#Tingle Island - Tingle - Triforce Chart 2 Deciphered:
 #  Need: 
 #  Original item: Triforce Chart 2 got deciphered
 #  Paths:
 #    - rels/d_a_npc_tc.rel@61DF
-#Tingle Island - Triforce Chart 3 Deciphered:
+#Tingle Island - Tingle - Triforce Chart 3 Deciphered:
 #  Need: 
 #  Original item: Triforce Chart 3 got deciphered
 #  Paths:
 #    - rels/d_a_npc_tc.rel@61E7
-#Tingle Island - Triforce Chart 4 Deciphered:
+#Tingle Island - Tingle - Triforce Chart 4 Deciphered:
 #  Need: 
 #  Original item: Triforce Chart 4 got deciphered
 #  Paths:
 #    - rels/d_a_npc_tc.rel@61EF
-#Tingle Island - Triforce Chart 5 Deciphered:
+#Tingle Island - Tingle - Triforce Chart 5 Deciphered:
 #  Need: 
 #  Original item: Triforce Chart 5 got deciphered
 #  Paths:
 #    - rels/d_a_npc_tc.rel@61F7
-#Tingle Island - Triforce Chart 6 Deciphered:
+#Tingle Island - Tingle - Triforce Chart 6 Deciphered:
 #  Need: 
 #  Original item: Triforce Chart 6 got deciphered
 #  Paths:
 #    - rels/d_a_npc_tc.rel@61FF
-#Tingle Island - Triforce Chart 7 Deciphered:
+#Tingle Island - Tingle - Triforce Chart 7 Deciphered:
 #  Need: 
 #  Original item: Triforce Chart 7 got deciphered
 #  Paths:
 #    - rels/d_a_npc_tc.rel@6207
-#Tingle Island - Triforce Chart 8 Deciphered:
+#Tingle Island - Tingle - Triforce Chart 8 Deciphered:
 #  Need: 
 #  Original item: Triforce Chart 8 got deciphered
 #  Paths:
@@ -2252,14 +2295,15 @@ Tingle Island - Big Octo:
     - sea/Room17.arc/ScalableObject001
 
 Diamond Steppe Island - Warp Maze Cave - First Chest:
-  Need: Hookshot
-    # No need to kill the Floormasters.
+  Need: (Wind Waker | (Deku Leaf & Magic Meter Upgrade) | Hookshot)
+ # Can superswim clip inside with Wind Waker, don't need anything else
+ # No need to kill the Floormasters.
   Original item: Joy Pendant
   Types: Puzzle Secret Cave
   Paths:
     - WarpD/Stage.arc/Chest001
 Diamond Steppe Island - Warp Maze Cave - Second Chest:
-  Need: Hookshot
+  Need: (Wind Waker | (Deku Leaf & Magic Meter Upgrade) | Hookshot)
     # No need to kill the Floormasters.
   Original item: Ghost Ship Chart
   Types: Puzzle Secret Cave
@@ -2296,10 +2340,8 @@ Bomb Island - Submarine:
     - Abship/Room2.arc/Chest000
 
 Rock Spire Isle - Cave:
-  Need: 
-    Bombs
-    | Deku Leaf
-    # Can skip blowing up the rocks. https://www.youtube.com/watch?v=dkRrHBKlnTk
+  Need: Bombs | Can Fly With Deku Leaf Outdoors
+    # Can skip the bombs with precise leaf pumps
     # The Keese in the cave can be killed with nothing but the stick in there.
   Original item: Treasure Chart 37
   Types: Combat Secret Cave
@@ -2354,7 +2396,8 @@ Rock Spire Isle - Center Lookout Platform:
   Paths:
     - sea/Room16.arc/Chest002
 Rock Spire Isle - Gunboat:
-  Need: Bombs & Grappling Hook
+  Need: Grappling Hook
+ # You can manipulate the gunboats to hit each other to get this without bombs
   Original item: Piece of Heart
   Types: Gunboat
   Paths:
@@ -2376,9 +2419,8 @@ Shark Island - Cave:
     - ITest63/Stage.arc/Chest000
 
 Cliff Plateau Isles - Cave:
-  Need:
-    Can Defeat Boko Babas | Grappling Hook
-    # You can kill the Boko Babas here by throwing a nut at one to stun it, then using the Grappling Hook to finish it off.
+  Need: (Can Defeat Boko Babas | Grappling Hook)
+    # You can kill the Boko Babas here by throwing a nut at one to stun it, then using the Grappling Hook to finish it off. Not in regular logic (precise timing)
   Original item: Joy Pendant
   Types: Puzzle Secret Cave
   Paths:
@@ -2405,7 +2447,8 @@ Crescent Moon Island - Chest:
   Paths:
     - sea/Room5.arc/Chest000
 Crescent Moon Island - Submarine:
-  Need: Can Defeat Miniblins
+  Need: (Can Defeat Miniblins | Deku Leaf)
+    # Can skip submarines with leaf pumps
     # You only need to defeat the very first Miniblin, then wait out the timer.
   Original item: Treasure Chart 9
   Types: Submarine
@@ -2446,10 +2489,9 @@ Horseshoe Island - Southeastern Lookout Platform:
 
 Flight Control Platform - Bird-Man Contest - First Prize:
   Need:
-    (Can Fly With Deku Leaf Outdoors
-    & Magic Meter Upgrade)
-    | Bombs
-  # Can use FCP escape to cheese the minigame. https://www.youtube.com/watch?v=nJOE7DNruVE
+    (Can Fly With Deku Leaf Outdoors & Magic Meter Upgrade)
+    | (Bombs & (Hero's Sword | Skull Hammer) & Song of Passing)
+ # Can cheese the minigame with song of passing by bomb boosting out of the minigame area
   Original item: Piece of Heart
   Types: Minigame
   Paths:
@@ -2461,12 +2503,13 @@ Flight Control Platform - Bird-Man Contest - First Prize:
 #    - rels/d_a_npc_bmcon1.rel@2B9F
 Flight Control Platform - Submarine:
   Need:
-    Can Defeat Wizzrobes
+    Deku Leaf | (Can Defeat Wizzrobes
     & Can Defeat Red ChuChus
     & Can Defeat Green ChuChus
     & Can Defeat Miniblins
     & Can Defeat Wizzrobes at Range
-  Original item: Platform Chart
+  Original item: Platform Chart)
+ # Can skip submarines by leaf pumping
   Types: Submarine
   Paths:
     - Abship/Room6.arc/Chest000
@@ -2604,11 +2647,12 @@ Four-Eye Reef - Destroy the Cannons and Gunboats:
   Paths:
     - sea/Room8.arc/Chest000
 
-Five-Eye Reef - Destroy the Cannons and Gunboats:
+Five-Eye Reef - Destroy the Cannons:
   Need:
     # The cannons and gunboats at the eye reefs don't appear until Phantom Ganon is dead.
+    # Unlike the other eye reefs, this one has only cannons and no gunboats.
     Can Reach and Defeat Phantom Ganon
-    & Bombs
+    & Can Destroy Cannons
     & Can Fly With Deku Leaf Outdoors
   Original item: Treasure Chart 41
   Types: Eye Reef Chest
@@ -2644,27 +2688,6 @@ Six-Eye Reef - Submarine:
   Types: Submarine
   Paths:
     - Abship/Room1.arc/Chest000
-
-#unknown - unknown npc 1:
-#  Need: 
-#  Original item: Red Rupee
-#  Paths:
-#    - rels/d_a_npc_people.rel@5BC3
-#unknown - unknown npc 2:
-#  Need: 
-#  Original item: Purple Rupee
-#  Paths:
-#    - rels/d_a_npc_people.rel@5BDF
-#unknown - The Great Sea - unknown event 2:
-#  Need: 
-#  Original item: Red Rupee
-#  Paths:
-#    - sea/Stage.arc/Event0B1:Get_Rupee/Actor002/Action000
-#unknown - The Great Sea - unknown event 3:
-#  Need: 
-#  Original item: Silver Rupee
-#  Paths:
-#    - sea/Stage.arc/Event0D2:SO_GET_RUPEE/Actor002/Action000
 
 Forsaken Fortress - Sunken Treasure:
   Need: Grappling Hook & Chart for Island 1
@@ -2712,7 +2735,7 @@ Crescent Moon Island - Sunken Treasure:
     - sea/Room5.arc/ScalableObject008
     - sea/Room5.arc/ScalableObject009
 Seven-Star Isles - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 6
+  Need: Grappling Hook & Chart for Island 6 & Bombs
   # Bombs are not necessary, but it's tricky to salvage this treasure with two stationary gunboats shooting at you, so being able to destroy them makes this much easier.
   Original item: Triforce Shard 7
   Types: Sunken Treasure
@@ -2949,7 +2972,7 @@ Stone Watcher Island - Sunken Treasure:
     - sea/Room31.arc/ScalableObject008
     - sea/Room31.arc/ScalableObject009
 Southern Triangle Island - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 32
+  Need: Grappling Hook & Chart for Island 32 & Can Defeat Seahats
   # Killing the seahats isn't necessary, but makes it much easier.
   Original item: Triforce Shard 6
   Types: Sunken Treasure

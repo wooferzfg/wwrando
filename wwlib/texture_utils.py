@@ -2,58 +2,81 @@
 from PIL import Image
 from io import BytesIO
 import colorsys
+from enum import Enum
 
 from fs_helpers import *
 
 class TooManyColorsError(Exception):
   pass
 
+class ImageFormat(Enum):
+  I4     =   0
+  I8     =   1
+  IA4    =   2
+  IA8    =   3
+  RGB565 =   4
+  RGB5A3 =   5
+  RGBA32 =   6
+  C4     =   8
+  C8     =   9
+  C14X2  = 0xA
+  CMPR   = 0xE
+
+class PaletteFormat(Enum):
+  IA8    = 0
+  RGB565 = 1
+  RGB5A3 = 2
+
 BLOCK_WIDTHS = {
-    0: 8,
-    1: 8,
-    2: 8,
-    3: 4,
-    4: 4,
-    5: 4,
-    6: 4,
-    8: 8,
-    9: 8,
-  0xA: 4,
-  0xE: 8,
+  ImageFormat.I4    : 8,
+  ImageFormat.I8    : 8,
+  ImageFormat.IA4   : 8,
+  ImageFormat.IA8   : 4,
+  ImageFormat.RGB565: 4,
+  ImageFormat.RGB5A3: 4,
+  ImageFormat.RGBA32: 4,
+  ImageFormat.C4    : 8,
+  ImageFormat.C8    : 8,
+  ImageFormat.C14X2 : 4,
+  ImageFormat.CMPR  : 8,
 }
 BLOCK_HEIGHTS = {
-    0: 8,
-    1: 4,
-    2: 4,
-    3: 4,
-    4: 4,
-    5: 4,
-    6: 4,
-    8: 8,
-    9: 4,
-  0xA: 4,
-  0xE: 8,
+  ImageFormat.I4    : 8,
+  ImageFormat.I8    : 4,
+  ImageFormat.IA4   : 4,
+  ImageFormat.IA8   : 4,
+  ImageFormat.RGB565: 4,
+  ImageFormat.RGB5A3: 4,
+  ImageFormat.RGBA32: 4,
+  ImageFormat.C4    : 8,
+  ImageFormat.C8    : 4,
+  ImageFormat.C14X2 : 4,
+  ImageFormat.CMPR  : 8,
 }
 BLOCK_DATA_SIZES = {
-    0: 32,
-    1: 32,
-    2: 32,
-    3: 32,
-    4: 32,
-    5: 32,
-    6: 64,
-    8: 32,
-    9: 32,
-  0xA: 32,
-  0xE: 32,
+  ImageFormat.I4    : 32,
+  ImageFormat.I8    : 32,
+  ImageFormat.IA4   : 32,
+  ImageFormat.IA8   : 32,
+  ImageFormat.RGB565: 32,
+  ImageFormat.RGB5A3: 32,
+  ImageFormat.RGBA32: 64,
+  ImageFormat.C4    : 32,
+  ImageFormat.C8    : 32,
+  ImageFormat.C14X2 : 32,
+  ImageFormat.CMPR  : 32,
 }
 
-IMAGE_FORMATS_THAT_USE_PALETTES = [8, 9, 0xA]
+IMAGE_FORMATS_THAT_USE_PALETTES = [
+  ImageFormat.C4,
+  ImageFormat.C8,
+  ImageFormat.C14X2,
+]
 
 MAX_COLORS_FOR_IMAGE_FORMAT = {
-  0x8: 1<<4, # C4
-  0x9: 1<<8, # C8
-  0xA: 1<<14, # C14X2
+  ImageFormat.C4   : 1<<4, # C4
+  ImageFormat.C8   : 1<<8, # C8
+  ImageFormat.C14X2: 1<<14, # C14X2
 }
 
 
@@ -160,14 +183,19 @@ def convert_color_to_ia8(color):
   return ia8
 
 def convert_i4_to_color(i4):
-  r = g = b = i4*0x11
-  a = 255
+  r = g = b = a = i4*0x11
   
   return (r, g, b, a)
 
+def convert_color_to_i4(color):
+  r, g, b, a = get_rgba(color)
+  assert r == g == b == a
+  i4 = 0
+  i4 |= ((r >> 4) & 0xF)
+  return i4
+
 def convert_i8_to_color(i8):
-  r = g = b = i8
-  a = 255
+  r = g = b = a = i8
   
   return (r, g, b, a)
 
@@ -323,11 +351,11 @@ def decode_palettes(palette_data, palette_format, num_colors, image_format):
   offset = 0
   for i in range(num_colors):
     raw_color = read_u16(palette_data, offset)
-    if palette_format == 0:
+    if palette_format == PaletteFormat.IA8:
       color = convert_ia8_to_color(raw_color)
-    elif palette_format == 1:
+    elif palette_format == PaletteFormat.RGB565:
       color = convert_rgb565_to_color(raw_color)
-    elif palette_format == 2:
+    elif palette_format == PaletteFormat.RGB5A3:
       color = convert_rgb5a3_to_color(raw_color)
     colors.append(color)
     offset += 2
@@ -361,11 +389,11 @@ def generate_new_palettes_from_image(image, image_format, palette_format):
   return (encoded_colors, colors_to_color_indexes)
 
 def encode_color(color, palette_format):
-  if palette_format == 0:
+  if palette_format == PaletteFormat.IA8:
     raw_color = convert_color_to_ia8(color)
-  elif palette_format == 1:
+  elif palette_format == PaletteFormat.RGB565:
     raw_color = convert_color_to_rgb565(color)
-  elif palette_format == 2:
+  elif palette_format == PaletteFormat.RGB5A3:
     raw_color = convert_color_to_rgb5a3(color)
   
   return raw_color
@@ -425,27 +453,27 @@ def decode_image(image_data, palette_data, image_format, palette_format, num_col
   return image
 
 def decode_block(image_format, image_data, offset, block_data_size, colors):
-  if image_format == 0:
+  if image_format == ImageFormat.I4:
     return decode_i4_block(image_format, image_data, offset, block_data_size, colors)
-  elif image_format == 1:
+  elif image_format == ImageFormat.I8:
     return decode_i8_block(image_format, image_data, offset, block_data_size, colors)
-  elif image_format == 2:
+  elif image_format == ImageFormat.IA4:
     return decode_ia4_block(image_format, image_data, offset, block_data_size, colors)
-  elif image_format == 3:
+  elif image_format == ImageFormat.IA8:
     return decode_ia8_block(image_format, image_data, offset, block_data_size, colors)
-  elif image_format == 4:
+  elif image_format == ImageFormat.RGB565:
     return decode_rgb565_block(image_format, image_data, offset, block_data_size, colors)
-  elif image_format == 5:
+  elif image_format == ImageFormat.RGB5A3:
     return decode_rgb5a3_block(image_format, image_data, offset, block_data_size, colors)
-  elif image_format == 6:
+  elif image_format == ImageFormat.RGBA32:
     return decode_rgba32_block(image_format, image_data, offset, block_data_size, colors)
-  elif image_format == 8:
+  elif image_format == ImageFormat.C4:
     return decode_c4_block(image_format, image_data, offset, block_data_size, colors)
-  elif image_format == 9:
+  elif image_format == ImageFormat.C8:
     return decode_c8_block(image_format, image_data, offset, block_data_size, colors)
-  elif image_format == 0xA:
+  elif image_format == ImageFormat.C14X2:
     return decode_c14x2_block(image_format, image_data, offset, block_data_size, colors)
-  elif image_format == 0xE:
+  elif image_format == ImageFormat.CMPR:
     return decode_cmpr_block(image_format, image_data, offset, block_data_size, colors)
   else:
     raise Exception("Unknown image format: %X" % image_format)
@@ -539,7 +567,11 @@ def decode_c4_block(image_format, image_data, offset, block_data_size, colors):
     byte = read_u8(image_data, offset+byte_index)
     for nibble_index in range(2):
       color_index = (byte >> (1-nibble_index)*4) & 0xF
-      color = colors[color_index]
+      if color_index >= len(colors):
+        # This block bleeds past the edge of the image
+        color = None
+      else:
+        color = colors[color_index]
       
       pixel_color_data.append(color)
   
@@ -550,7 +582,7 @@ def decode_c8_block(image_format, image_data, offset, block_data_size, colors):
   
   for i in range(block_data_size):
     color_index = read_u8(image_data, offset+i)
-    if color_index == 0xFF:
+    if color_index >= len(colors):
       # This block bleeds past the edge of the image
       color = None
     else:
@@ -565,7 +597,7 @@ def decode_c14x2_block(image_format, image_data, offset, block_data_size, colors
   
   for i in range(block_data_size//2):
     color_index = read_u16(image_data, offset+i*2) & 0x3FFF
-    if color_index == 0x3FFF:
+    if color_index >= len(colors):
       # This block bleeds past the edge of the image
       color = None
     else:
@@ -605,10 +637,11 @@ def decode_cmpr_block(image_format, image_data, offset, block_data_size, colors)
 
 
 def encode_image_from_path(new_image_file_path, image_format, palette_format):
-  image = Image.open(new_image_file_path).convert("RGBA")
+  image = Image.open(new_image_file_path)
   return encode_image(image, image_format, palette_format)
 
 def encode_image(image, image_format, palette_format):
+  image = image.convert("RGBA")
   image_width, image_height = image.size
   
   encoded_colors, colors_to_color_indexes = generate_new_palettes_from_image(image, image_format, palette_format)
@@ -644,28 +677,73 @@ def encode_image(image, image_format, palette_format):
   return (new_image_data, new_palette_data, encoded_colors)
 
 def encode_image_to_block(image_format, pixels, colors_to_color_indexes, block_x, block_y, block_width, block_height, image_width, image_height):
-  if image_format == 4:
+  if image_format == ImageFormat.I4:
+    return encode_image_to_i4_block(pixels, colors_to_color_indexes, block_x, block_y, block_width, block_height, image_width, image_height)
+  elif image_format == ImageFormat.I8:
+    raise Exception("Unimplemented image format: %s" % ImageFormat(image_format).name)
+  elif image_format == ImageFormat.IA4:
+    raise Exception("Unimplemented image format: %s" % ImageFormat(image_format).name)
+  elif image_format == ImageFormat.IA8:
+    raise Exception("Unimplemented image format: %s" % ImageFormat(image_format).name)
+  elif image_format == ImageFormat.RGB565:
     return encode_image_to_rgb563_block(pixels, colors_to_color_indexes, block_x, block_y, block_width, block_height, image_width, image_height)
-  elif image_format == 5:
+  elif image_format == ImageFormat.RGB5A3:
     return encode_image_to_rgb5a3_block(pixels, colors_to_color_indexes, block_x, block_y, block_width, block_height, image_width, image_height)
-  elif image_format == 6:
+  elif image_format == ImageFormat.RGBA32:
     return encode_image_to_rgba32_block(pixels, colors_to_color_indexes, block_x, block_y, block_width, block_height, image_width, image_height)
-  elif image_format == 8:
+  elif image_format == ImageFormat.C4:
     return encode_image_to_c4_block(pixels, colors_to_color_indexes, block_x, block_y, block_width, block_height, image_width, image_height)
-  elif image_format == 9:
+  elif image_format == ImageFormat.C8:
     return encode_image_to_c8_block(pixels, colors_to_color_indexes, block_x, block_y, block_width, block_height, image_width, image_height)
-  elif image_format == 0xE:
+  elif image_format == ImageFormat.C14X2:
+    raise Exception("Unimplemented image format: %s" % ImageFormat(image_format).name)
+  elif image_format == ImageFormat.CMPR:
     return encode_image_to_cmpr_block(pixels, colors_to_color_indexes, block_x, block_y, block_width, block_height, image_width, image_height)
   else:
     raise Exception("Unknown image format: %X" % image_format)
 
+def encode_image_to_i4_block(pixels, colors_to_color_indexes, block_x, block_y, block_width, block_height, image_width, image_height):
+  new_data = BytesIO()
+  offset = 0
+  
+  for y in range(block_y, block_y+block_height):
+    for x in range(block_x, block_x+block_width, 2):
+      if x >= image_width or y >= image_height:
+        # This block bleeds past the edge of the image
+        color_1_i4 = 0xF
+      else:
+        color_1 = pixels[x,y]
+        color_1_i4 = convert_color_to_i4(color_1)
+        assert 0 <= color_1_i4 <= 0xF
+      
+      if x >= image_width or y >= image_height:
+        # This block bleeds past the edge of the image
+        color_2_i4 = 0xF
+      else:
+        color_2 = pixels[x+1,y]
+        color_2_i4 = convert_color_to_i4(color_2)
+        assert 0 <= color_2_i4 <= 0xF
+      
+      byte = ((color_1_i4 & 0xF) << 4) | (color_2_i4 & 0xF)
+      
+      write_u8(new_data, offset, byte)
+      offset += 1
+  
+  new_data.seek(0)
+  return new_data.read()
+  
 def encode_image_to_rgb563_block(pixels, colors_to_color_indexes, block_x, block_y, block_width, block_height, image_width, image_height):
   new_data = BytesIO()
   offset = 0
   for y in range(block_y, block_y+block_height):
     for x in range(block_x, block_x+block_width):
-      color = pixels[x,y]
-      rgb565 = convert_color_to_rgb565(color)
+      if x >= image_width or y >= image_height:
+        # This block bleeds past the edge of the image
+        rgb565 = 0xFFFF
+      else:
+        color = pixels[x,y]
+        rgb565 = convert_color_to_rgb565(color)
+      
       write_u16(new_data, offset, rgb565)
       offset += 2
   
@@ -677,8 +755,13 @@ def encode_image_to_rgb5a3_block(pixels, colors_to_color_indexes, block_x, block
   offset = 0
   for y in range(block_y, block_y+block_height):
     for x in range(block_x, block_x+block_width):
-      color = pixels[x,y]
-      rgb5a3 = convert_color_to_rgb5a3(color)
+      if x >= image_width or y >= image_height:
+        # This block bleeds past the edge of the image
+        rgb5a3 = 0xFFFF
+      else:
+        color = pixels[x,y]
+        rgb5a3 = convert_color_to_rgb5a3(color)
+      
       write_u16(new_data, offset, rgb5a3)
       offset += 2
   
@@ -690,8 +773,13 @@ def encode_image_to_rgba32_block(pixels, colors_to_color_indexes, block_x, block
   for i in range(16):
     x = block_x + (i % block_width)
     y = block_y + (i // block_width)
-    color = pixels[x, y]
-    r, g, b, a = color
+    if x >= image_width or y >= image_height:
+      # This block bleeds past the edge of the image
+      r = g = b = a = 0xFF
+    else:
+      color = pixels[x, y]
+      r, g, b, a = color
+    
     write_u8(new_data, (i*2), a)
     write_u8(new_data, (i*2)+1, r)
     write_u8(new_data, (i*2)+32, g)
@@ -706,12 +794,21 @@ def encode_image_to_c4_block(pixels, colors_to_color_indexes, block_x, block_y, 
   
   for y in range(block_y, block_y+block_height):
     for x in range(block_x, block_x+block_width, 2):
-      color_1 = pixels[x,y]
-      color_1_index = colors_to_color_indexes[color_1]
-      assert 0 <= color_1_index <= 0xF
-      color_2 = pixels[x,y]
-      color_2_index = colors_to_color_indexes[color_2]
-      assert 0 <= color_2_index <= 0xF
+      if x >= image_width or y >= image_height:
+        # This block bleeds past the edge of the image
+        color_1_index = 0xF
+      else:
+        color_1 = pixels[x,y]
+        color_1_index = colors_to_color_indexes[color_1]
+        assert 0 <= color_1_index <= 0xF
+      
+      if x >= image_width or y >= image_height:
+        # This block bleeds past the edge of the image
+        color_2_index = 0xF
+      else:
+        color_2 = pixels[x+1,y]
+        color_2_index = colors_to_color_indexes[color_2]
+        assert 0 <= color_2_index <= 0xF
       
       byte = ((color_1_index & 0xF) << 4) | (color_2_index & 0xF)
       
@@ -750,7 +847,13 @@ def encode_image_to_cmpr_block(pixels, colors_to_color_indexes, block_x, block_y
     for i in range(16):
       x_in_subblock = i % 4
       y_in_subblock = i // 4
-      color = pixels[subblock_x+x_in_subblock,subblock_y+y_in_subblock]
+      x = subblock_x+x_in_subblock
+      y = subblock_y+y_in_subblock
+      if x >= image_width or y >= image_height:
+        # This block bleeds past the edge of the image
+        continue
+      
+      color = pixels[x,y]
       r, g, b, a = get_rgba(color)
       if a < 16:
         needs_transparent_color = True
@@ -779,7 +882,13 @@ def encode_image_to_cmpr_block(pixels, colors_to_color_indexes, block_x, block_y
     for i in range(16):
       x_in_subblock = i % 4
       y_in_subblock = i // 4
-      color = pixels[subblock_x+x_in_subblock,subblock_y+y_in_subblock]
+      x = subblock_x+x_in_subblock
+      y = subblock_y+y_in_subblock
+      if x >= image_width or y >= image_height:
+        # This block bleeds past the edge of the image
+        continue
+      
+      color = pixels[x,y]
       
       if color in colors:
         color_index = colors.index(color)

@@ -10,7 +10,7 @@ from random import Random
 from fs_helpers import *
 from wwlib import texture_utils
 from wwlib.rarc import RARC
-from paths import ASSETS_PATH, ASM_PATH
+from paths import ASSETS_PATH, ASM_PATH, SEEDGEN_PATH
 import customizer
 
 ORIGINAL_FREE_SPACE_RAM_ADDRESS = 0x803FCFA8
@@ -193,11 +193,14 @@ def make_all_text_instant(self):
     )
     
     # Get rid of wait+dismiss commands
-    msg.string = re.sub(
-      r"\\\{1A 07 00 00 04 [0-9a-f]{2} [0-9a-f]{2}\}",
-      "",
-      msg.string, 0, re.IGNORECASE
-    )
+    # Exclude message 7726, for Maggie's Father throwing rupees at you. He only spawns the rupees past a certain frame of his animation, so if you skipped past the text too quickly you wouldn't get any rupees.
+    # Exclude message 2488, for Orca talking to you after you learn the Hurricane Spin. Without the wait+dismiss he would wind up repeating some of his lines once.
+    if msg.message_id != 7726 and msg.message_id != 2488:
+      msg.string = re.sub(
+        r"\\\{1A 07 00 00 04 [0-9a-f]{2} [0-9a-f]{2}\}",
+        "",
+        msg.string, 0, re.IGNORECASE
+      )
     
     # Get rid of wait+dismiss (prompt) commands
     msg.string = re.sub(
@@ -613,7 +616,7 @@ def update_game_name_icon_and_banners(self):
   banner_data = self.get_raw_file("files/opening.bnr")
   write_str(banner_data, 0x1860, new_game_name, 0x40)
   
-  new_game_id = "GZLR01"
+  new_game_id = "GZLE99"
   boot_data = self.get_raw_file("sys/boot.bin")
   write_str(boot_data, 0, new_game_id, 6)
   
@@ -622,8 +625,8 @@ def update_game_name_icon_and_banners(self):
   write_str(dol_data, address_to_offset(0x80339690), new_memory_card_game_name, 21)
   
   new_image_file_path = os.path.join(ASSETS_PATH, "banner.png")
-  image_format = 5
-  palette_format = 2
+  image_format = texture_utils.ImageFormat.RGB5A3
+  palette_format = texture_utils.PaletteFormat.RGB5A3
   image_data, _, _ = texture_utils.encode_image_from_path(new_image_file_path, image_format, palette_format)
   image_data.seek(0)
   write_bytes(banner_data, 0x20, image_data.read())
@@ -1105,7 +1108,7 @@ def add_pirate_ship_to_windfall(self):
 WarpPotData = namedtuple("WarpPotData", 'stage_name room_num x y z y_rot event_reg_index')
 INTER_DUNGEON_WARP_DATA = [
   [
-    WarpPotData("M_NewD2", 2, 2178, 0, 488, 0x8000, 2), # DRC
+    WarpPotData("M_NewD2", 2, 2185, 0, 590, 0xA000, 2), # DRC
     WarpPotData("kindan", 1, 986, 3956.43, 9588, 0xB929, 2), # FW
     WarpPotData("Siren", 6, 277, 229.42, -6669, 0xC000, 2), # TotG
   ],
@@ -1229,6 +1232,73 @@ def add_chart_number_to_item_get_messages(self):
       msg = self.bmg.messages_by_id[101 + item_id]
       msg.string = msg.string.replace("a \\{1A 06 FF 00 00 01}Triforce Chart", "\\{1A 06 FF 00 00 01}%s" % item_name)
 
+
+# Speeds up the grappling hook significantly to behave similarly to HD
+def increase_grapple_animation_speed(self):
+  dol_data = self.get_raw_file("sys/main.dol")
+  
+  # Double the velocity the grappling hook is thrown out (from 20.0 to 40.0)
+  write_float(dol_data, address_to_offset(0x803F9D28), 40.0) # Grappling hook velocity
+  
+  # Half the number of frames grappling hook extends outward in 1st person (from 40 to 20 frames)
+  write_u32(dol_data, address_to_offset(0x800EDB74), 0x38030014) # addi r0,r3,20
+  
+  # Half the number of frames grappling hook extends outward in 3rd person (from 20 to 10)
+  write_u32(dol_data, address_to_offset(0x800EDEA4), 0x3803000A) # addi r0,r3,10
+  
+  # Increase the speed in which the grappling hook falls onto it's target (from 10.0 to 20.0)
+  write_float(dol_data, address_to_offset(0x803F9C44), 20.0) 
+  
+  # Increase grappling hook speed as it wraps around it's target (from 17.0 to 25.0)
+  write_float(dol_data, address_to_offset(0x803F9D60), 25.0) 
+  
+  # Increase the counter that determines how fast to end the wrap around animation. (From +1 each frame to +6 each frame)
+  write_u32(dol_data, address_to_offset(0x800EECA8), 0x38A30006) # addi r5,r3,6
+
+# Speeds up the rate in which blocks move when pushed/pulled
+def increase_block_moving_animation(self):
+  dol_data = self.get_raw_file("sys/main.dol")
+  
+  #increase Link's pulling animation from 1.0 to 1.4 (purely visual)
+  write_float(dol_data, address_to_offset(0x8035DBB0), 1.4)
+  
+  #increase Link's pushing animation from 1.0 to 1.4 (purely visual)
+  write_float(dol_data, address_to_offset(0x8035DBB8), 1.4)
+  
+  block_data = self.get_raw_file("files/rels/d_a_obj_movebox.rel")
+  
+  offset = 0x54B0 # M_attr__Q212daObjMovebox5Act_c. List of various data for each type of block.
+  for i in range(13): # 13 types of blocks total.
+    write_u16(block_data, offset + 4, 12) # Reduce number frames for pushing to last from 20 to 12
+    write_u16(block_data, offset + 0xA, 12) # Reduce number frames for pulling to last from 20 to 12
+    offset += 0x9C
+
+def increase_misc_animations(self):
+  dol_data = self.get_raw_file("sys/main.dol")
+  
+  #increase the animation speed that Link initiates a climb (0.8 -> 1.6)
+  write_float(dol_data, address_to_offset(0x8035D738), 1.6)
+  
+  #increase speed Link climbs ladders/vines (1.2 -> 1.6)
+  write_float(dol_data, address_to_offset(0x8035DB38), 1.6)
+  
+  #increase speed Link starts climbing a ladder/vine (1.0 -> 1.6)
+  write_float(dol_data, address_to_offset(0x8035DB18), 1.6)
+  
+  #increase speed Links ends climbing a ladder/vine (0.9 -> 1.4)
+  write_float(dol_data, address_to_offset(0x8035DB20), 1.4)
+  
+  # Half the number of frames camera takes to focus on an npc for a conversation (from 20 to 10)
+  write_u32(dol_data, address_to_offset(0x8016DA2C), 0x3800000A) # li r0,10
+  
+  # Half the number of frames zooming into first person takes (from 10 to 5)
+  #Commented out, doesn't improve speed in which first person items can be used and can cause minor visual oddities
+  #write_u32(dol_data, address_to_offset(0x80170B20), 0x3BA00005) # li r29,5 
+  
+  #increase the rotation speed on ropes (64.0 -> 100.0)
+  write_float(dol_data, address_to_offset(0x803FA2E8), 100.0)
+
+
 def change_starting_clothes(self):
   custom_model_metadata = customizer.get_model_metadata(self.custom_model_name)
   disable_casual_clothes = custom_model_metadata.get("disable_casual_clothes", False)
@@ -1243,20 +1313,16 @@ def change_starting_clothes(self):
 def shorten_auction_intro_event(self):
   event_list = self.get_arc("files/res/Stage/Orichh/Stage.arc").get_file("event_list.dat")
   wind_shrine_event = event_list.events_by_name["AUCTION_START"]
-  auction = next(actor for actor in wind_shrine_event.actors if actor.name == "Auction")
   camera = next(actor for actor in wind_shrine_event.actors if actor.name == "CAMERA")
   
   pre_pan_delay = camera.actions[2]
   pan_action = camera.actions[3]
   post_pan_delay = camera.actions[4]
   
-  # Remove the 30 frame delays before and after panning.
-  camera.actions.remove(pre_pan_delay)
+  # Remove the 200 frame long panning action and the 30 frame delay after panning.
+  # We don't remove the 30 frame delay before panning, because of the intro is completely removed or only a couple frames long, there is a race condition where the timer entity may not be finished being asynchronously created until the intro is over. If this happens the auction entity will have no reference to the timer entity, causing a crash later on.
+  camera.actions.remove(pan_action)
   camera.actions.remove(post_pan_delay)
-  
-  # The actual panning action cannot be skipped for some unknown reason. It would appear to work but the game would crash a little bit later.
-  # So instead we change the duration of the panning to be only 1 frame long so it appears to be skipped.
-  pan_action.get_prop("Timer").value = 1
 
 def disable_invisible_walls(self):
   # Remove some invisible walls to allow sequence breaking.
@@ -1299,3 +1365,137 @@ def update_text_for_swordless(self):
   msg = self.bmg.messages_by_id[1590]
   msg.string = "\\{1A 05 00 00 00}! Do not run! Trust in the\n"
   msg.string += "power of the Skull Hammer!"
+
+def add_hint_signs(self):
+  # Add a hint sign to the second room of DRC with an arrow pointing to the passage to the Big Key Chest.
+  new_message_id = 847
+  msg = self.bmg.add_new_message(new_message_id)
+  msg.string = "\\{1A 05 00 00 15}" # Right arrow
+  msg.text_box_type = 2 # Wooden sign message box
+  msg.initial_draw_type = 1 # Instant initial message speed
+  msg.text_alignment = 3 # Centered text alignment
+  
+  dzx = self.get_arc("files/res/Stage/M_NewD2/Room2.arc").get_file("room.dzr")
+  bomb_flowers = [actor for actor in dzx.entries_by_type_and_layer("ACTR", None) if actor.name == "BFlower"]
+  bomb_flowers[1].name = "Kanban"
+  bomb_flowers[1].params = new_message_id
+  bomb_flowers[1].y_rot = 0x2000
+  bomb_flowers[1].save_changes()
+
+def prevent_door_boulder_softlocks(self):
+  # DRC has a couple of doors that are blocked by boulders on one side.
+  # This is an issue if the player sequence breaks and goes backwards - when they open the door Link will be stuck walking into the boulder forever and the player will have no control.
+  # To avoid this, add an event trigger on the back side of those doors that causes the boulder to disappear when the player touches it.
+  # This allows us to keep the boulder when the player goes forward through the dungeon, but not backwards.
+  
+  # Add a new dummy event that doesn't do anything.
+  event_list = self.get_arc("files/res/Stage/M_NewD2/Stage.arc").get_file("event_list.dat")
+  dummy_event = event_list.add_event("dummy_event")
+  event_list.save_changes()
+  
+  # Add a new EVNT entry for the dummy event.
+  dzs = self.get_arc("files/res/Stage/M_NewD2/Stage.arc").get_file("stage.dzs")
+  dummy_evnt = dzs.add_entity("EVNT")
+  dummy_evnt.name = dummy_event.name
+  dzs.save_changes()
+  dummy_evnt_index = dzs.entries_by_type("EVNT").index(dummy_evnt)
+  
+  # Add a TagEv (event trigger region) on the other side of the first door blocked by a boulder.
+  boulder_destroyed_switch_index = 5
+  dzr = self.get_arc("files/res/Stage/M_NewD2/Room13.arc").get_file("room.dzr")
+  tag_ev = dzr.add_entity("SCOB", layer=None)
+  tag_ev.name = "TagEv"
+  tag_ev.params = 0x00FF00FF
+  tag_ev.event_trigger_seen_switch_index = boulder_destroyed_switch_index
+  tag_ev.event_trigger_evnt_index = dummy_evnt_index
+  tag_ev.x_pos = 2635
+  tag_ev.y_pos = 0
+  tag_ev.z_pos = 227
+  tag_ev.auxilary_param = 0
+  tag_ev.y_rot = 0xC000
+  tag_ev.auxilary_param_2 = 0xFFFF
+  tag_ev.scale_x = 32
+  tag_ev.scale_y = 16
+  tag_ev.scale_z = 16
+  dzr.save_changes()
+  
+  # Add a TagEv (event trigger region) on the other side of the second door blocked by a boulder.
+  boulder_destroyed_switch_index = 6
+  dzr = self.get_arc("files/res/Stage/M_NewD2/Room14.arc").get_file("room.dzr")
+  tag_ev = dzr.add_entity("SCOB", layer=None)
+  tag_ev.name = "TagEv"
+  tag_ev.params = 0x00FF00FF
+  tag_ev.event_trigger_seen_switch_index = boulder_destroyed_switch_index
+  tag_ev.event_trigger_evnt_index = dummy_evnt_index
+  tag_ev.x_pos = -4002
+  tag_ev.y_pos = 1950
+  tag_ev.z_pos = -2156
+  tag_ev.auxilary_param = 0
+  tag_ev.y_rot = 0xA000
+  tag_ev.auxilary_param_2 = 0xFFFF
+  tag_ev.scale_x = 32
+  tag_ev.scale_y = 16
+  tag_ev.scale_z = 16
+  dzr.save_changes()
+
+def update_tingle_statue_item_get_funcs(self):
+  dol_data = self.get_raw_file("sys/main.dol")
+  item_get_funcs_list = address_to_offset(0x803888C8)
+  
+  for tingle_statue_item_id in [0xA3, 0xA4, 0xA5, 0xA6, 0xA7]:
+    item_get_func_offset = item_get_funcs_list + tingle_statue_item_id*4
+    item_name = self.item_names[tingle_statue_item_id]
+    custom_symbol_name = item_name.lower().replace(" ", "_") + "_item_get_func"
+    write_u32(dol_data, item_get_func_offset, self.custom_symbols[custom_symbol_name])
+
+def make_tingle_statue_reward_rupee_rainbow_colored(self):
+  # Change the color index of the special 500 rupee to be 7 - this is a special value (originally unused) we use to indicate to our custom code that it's the special rupee, and so it should have its color animated.
+  
+  item_resources_list_start = address_to_offset(0x803842B0)
+  dol_data = self.get_raw_file("sys/main.dol")
+  
+  item_id = self.item_name_to_id["Rainbow Rupee"]
+  rainbow_rupee_item_resource_offset = item_resources_list_start + item_id*0x24
+  
+  write_u8(dol_data, rainbow_rupee_item_resource_offset+0x14, 7)
+
+def show_seed_hash_on_name_entry_screen(self):
+  # Add some text to the name entry screen which has two random character names that vary based on the permalink (so the seed and settings both change it).
+  # This is so two players intending to play the same seed can verify if they really are on the same seed or not.
+  
+  if not self.permalink:
+    return
+  
+  integer_seed = self.convert_string_to_integer_md5(self.permalink)
+  temp_rng = Random()
+  temp_rng.seed(integer_seed)
+  
+  with open(os.path.join(SEEDGEN_PATH, "names.txt")) as f:
+    all_names = f.read().splitlines()
+  valid_names = [name for name in all_names if len(name) <= 5]
+  
+  name_1, name_2 = temp_rng.sample(valid_names, 2)
+  name_1 = name_1.capitalize()
+  name_2 = name_2.capitalize()
+  
+  # Since actually adding new text to the UI would be very difficult, instead hijack the "Name Entry" text, and put the seed hash after several linebreaks.
+  # (The three linebreaks we insert before "Name Entry" are so it's still in the correct spot after vertical centering happens.)
+  msg = self.bmg.messages_by_id[40]
+  msg.string = "\n\n\n" + msg.string + "\n\n" + "Seed hash:" + "\n" + name_1 + " " + name_2
+
+def fix_ghost_ship_chest_crash(self):
+  # There's a vanilla crash that happens if you jump attack on top of the chest in the Ghost Ship.
+  # The cause of the crash is that there are unused rooms in the Ghost Ship stage with unused chests at the same position as the used chest.
+  # When Link lands on top of the overlapping chests the game thinks Link is in one of the unused rooms.
+  # The ky_tag0 object in the Ghost Ship checks a zone bit every frame, but checking a zone bit crashes if the current room is not loaded in because the zone was never initialized.
+  # So we simply move the other two unused chests away from the real one so they're far out of bounds.
+  # (Actually deleting them would mess up the entity indexes in the logic files, so it's simpler to move them.)
+  
+  dzs = self.get_arc("files/res/Stage/PShip/Stage.arc").get_file("stage.dzs")
+  chests = dzs.entries_by_type("TRES")
+  for chest in chests:
+    if chest.room_num == 2:
+      # The chest for room 2 is the one that is actually used, so don't move this one.
+      continue
+    chest.x_pos += 2000.0
+    chest.save_changes()

@@ -1,6 +1,7 @@
 
-from PySide.QtGui import *
-from PySide.QtCore import *
+from PySide2.QtGui import *
+from PySide2.QtCore import *
+from PySide2.QtWidgets import *
 
 from ui.ui_randomizer_window import Ui_MainWindow
 from ui.options import OPTIONS, NON_PERMALINK_OPTIONS
@@ -13,6 +14,7 @@ import traceback
 import string
 import struct
 import base64
+import colorsys
 
 import yaml
 try:
@@ -27,11 +29,15 @@ from logic.logic import Logic
 
 class WWRandomizerWindow(QMainWindow):
   VALID_SEED_CHARACTERS = "-_'%%.%s%s" % (string.ascii_letters, string.digits)
+  MAX_SEED_LENGTH = 42 # Limited by maximum length of game name in banner
   
-  def __init__(self):
+  def __init__(self, cmd_line_args=[]):
     super(WWRandomizerWindow, self).__init__()
     self.ui = Ui_MainWindow()
     self.ui.setupUi(self)
+    
+    self.cmd_line_args = cmd_line_args
+    self.bulk_test = ("-bulk" in cmd_line_args)
     
     self.custom_color_selector_buttons = OrderedDict()
     self.custom_color_selector_hex_inputs = OrderedDict()
@@ -121,6 +127,7 @@ class WWRandomizerWindow(QMainWindow):
     seed = str(seed)
     seed = seed.strip()
     seed = "".join(char for char in seed if char in self.VALID_SEED_CHARACTERS)
+    seed = seed[:self.MAX_SEED_LENGTH]
     return seed
   
   def randomize(self):
@@ -159,8 +166,28 @@ class WWRandomizerWindow(QMainWindow):
     max_progress_val = 20
     self.progress_dialog = RandomizerProgressDialog("Randomizing", "Initializing...", max_progress_val)
     
+    if self.bulk_test:
+      failures_done = 0
+      total_done = 0
+      for i in range(100):
+        temp_seed = str(i)
+        try:
+          rando = Randomizer(temp_seed, clean_iso_path, output_folder, options, permalink=permalink, cmd_line_args=self.cmd_line_args)
+          randomizer_generator = rando.randomize()
+          while True:
+            next_option_description, options_finished = next(randomizer_generator)
+            if options_finished == -1:
+              break
+        except Exception as e:
+          stack_trace = traceback.format_exc()
+          error_message = "Error on seed " + temp_seed + ":\n" + str(e) + "\n\n" + stack_trace
+          print(error_message)
+          failures_done += 1
+        total_done += 1
+        print("%d/%d seeds failed" % (failures_done, total_done))
+    
     try:
-      rando = Randomizer(seed, clean_iso_path, output_folder, options, permalink=permalink)
+      rando = Randomizer(seed, clean_iso_path, output_folder, options, permalink=permalink, cmd_line_args=self.cmd_line_args)
     except TooFewProgressionLocationsError as e:
       error_message = str(e)
       self.randomization_failed(error_message)
@@ -276,7 +303,9 @@ class WWRandomizerWindow(QMainWindow):
           self.custom_colors[custom_color_name] = custom_colors_from_settings[custom_color_name]
       for custom_color_name, color in self.custom_colors.items():
         option_name = "custom_color_" + custom_color_name
-        self.set_color(option_name, color)
+        self.set_color(option_name, color, update_preview=False)
+    
+    self.update_model_preview()
   
   def save_settings(self):
     with open(self.settings_path, "w") as f:
@@ -518,6 +547,7 @@ class WWRandomizerWindow(QMainWindow):
     
     if custom_model_names:
       self.ui.custom_player_model.addItem("Random")
+      self.ui.custom_player_model.addItem("Random (exclude Link)")
     else:
       self.ui.custom_player_model.setEnabled(False)
   
@@ -530,7 +560,8 @@ class WWRandomizerWindow(QMainWindow):
       while hlayout.count():
         item = hlayout.takeAt(0)
         widget = item.widget()
-        widget.deleteLater()
+        if widget:
+          widget.deleteLater()
     self.custom_color_selector_buttons = OrderedDict()
     self.custom_color_selector_hex_inputs = OrderedDict()
     
@@ -539,12 +570,25 @@ class WWRandomizerWindow(QMainWindow):
     if metadata is None:
       return
     if "error_message" in metadata:
-      error_message = "YAML syntax error when trying to read custom model metadata for model: %s\n\n%s" %(custom_model_name, metadata["error_message"])
+      error_message = "Syntax error when trying to read metadata.txt for custom model: %s\n\n%s" %(custom_model_name, metadata["error_message"])
       print(error_message)
       QMessageBox.critical(
         self, "Failed to load model metadata",
         error_message
       )
+    
+    model_author = metadata.get("author", None)
+    model_comment = metadata.get("comment", None)
+    comment_lines = []
+    if model_author:
+      comment_lines.append("Model author: %s" % model_author)
+    if model_comment:
+      comment_lines.append("Model author comment: %s" % model_comment)
+    self.ui.custom_model_comment.setText("\n".join(comment_lines))
+    if len(comment_lines) <= 0:
+      self.ui.custom_model_comment.hide()
+    else:
+      self.ui.custom_model_comment.show()
     
     is_casual = self.get_option_value("player_in_casual_clothes")
     if is_casual:
@@ -567,7 +611,7 @@ class WWRandomizerWindow(QMainWindow):
       color_hex_code_input.setFixedWidth(52)
       hlayout.addWidget(color_hex_code_input)
       color_selector_button = QPushButton(self.ui.tab_2)
-      color_selector_button.setText("")
+      color_selector_button.setText("Click to set color")
       color_selector_button.setObjectName(option_name)
       hlayout.addWidget(color_selector_button)
       
@@ -579,7 +623,16 @@ class WWRandomizerWindow(QMainWindow):
       
       self.ui.custom_colors_layout.addLayout(hlayout)
       
-      self.set_color(option_name, default_color)
+      self.set_color(option_name, default_color, update_preview=False)
+    
+    if len(custom_colors) == 0:
+      # Need to push the preview over to the right even when there are no colors to do it, so add a spacer.
+      hlayout = QHBoxLayout()
+      hspacer = QSpacerItem(20, 40, QSizePolicy.Expanding, QSizePolicy.Minimum)
+      hlayout.addItem(hspacer)
+      self.ui.custom_colors_layout.addLayout(hlayout)
+    
+    self.update_model_preview()
   
   def reset_color_selectors_to_model_default_colors(self):
     custom_model_name = self.get_option_value("custom_player_model")
@@ -600,7 +653,11 @@ class WWRandomizerWindow(QMainWindow):
       if self.custom_colors[custom_color_name] != default_color:
         any_color_changed = True
       option_name = "custom_color_" + custom_color_name
-      self.set_color(option_name, default_color)
+      self.set_color(option_name, default_color, update_preview=False)
+    
+    if any_color_changed:
+      self.update_model_preview()
+    
     return any_color_changed
   
   def disable_invalid_cosmetic_options(self):
@@ -618,7 +675,7 @@ class WWRandomizerWindow(QMainWindow):
       else:
         self.ui.player_in_casual_clothes.setEnabled(True)
   
-  def set_color(self, option_name, color):
+  def set_color(self, option_name, color, update_preview=True):
     if not (isinstance(color, list) and len(color) == 3):
       color = [255, 255, 255]
     
@@ -632,8 +689,24 @@ class WWRandomizerWindow(QMainWindow):
       color_button.setStyleSheet("")
       hex_input.setText("")
     else:
-      color_button.setStyleSheet("background-color: rgb(%d, %d, %d)" % tuple(color))
       hex_input.setText("%02X%02X%02X" % tuple(color))
+      
+      r, g, b = color
+      
+      # Depending on the value of the background color of the button, we need to make the text color either black or white for contrast.
+      h, s, v = colorsys.rgb_to_hsv(r/255, g/255, b/255)
+      if v > 0.5:
+        text_color = (0, 0, 0)
+      else:
+        text_color = (255, 255, 255)
+      
+      color_button.setStyleSheet(
+        "background-color: rgb(%d, %d, %d);" % (r, g, b) + \
+        "color: rgb(%d, %d, %d);" % text_color,
+      )
+    
+    if update_preview:
+      self.update_model_preview()
   
   def open_custom_color_chooser(self):
     option_name = self.sender().objectName()
@@ -677,6 +750,38 @@ class WWRandomizerWindow(QMainWindow):
       # If the hex code is invalid reset the text to the correct hex code for the current color.
       self.set_color(option_name, self.custom_colors[color_name])
   
+  def update_model_preview(self):
+    custom_model_name = self.get_option_value("custom_player_model")
+    custom_model_metadata = customizer.get_model_metadata(custom_model_name)
+    disable_casual_clothes = custom_model_metadata.get("disable_casual_clothes", False)
+    if self.get_option_value("player_in_casual_clothes") and not disable_casual_clothes:
+      prefix = "casual"
+    else:
+      prefix = "hero"
+    
+    try:
+      preview_image = customizer.get_model_preview_image(custom_model_name, prefix, self.custom_colors)
+    except Exception as e:
+      stack_trace = traceback.format_exc()
+      error_message = "Failed to load model preview image for model %s.\nError:\n" % (custom_model_name) + str(e) + "\n\n" + stack_trace
+      print(error_message)
+      QMessageBox.critical(
+        self, "Failed to load model preview",
+        error_message
+      )
+      return
+    
+    if preview_image is None:
+      self.ui.custom_model_preview_label.hide()
+      return
+    
+    self.ui.custom_model_preview_label.show()
+    
+    data = preview_image.tobytes('raw', 'BGRA')
+    qimage = QImage(data, preview_image.size[0], preview_image.size[1], QImage.Format_ARGB32)
+    scaled_pixmap = QPixmap.fromImage(qimage).scaled(225, 350, Qt.KeepAspectRatio, Qt.SmoothTransformation)
+    self.ui.custom_model_preview_label.setPixmap(scaled_pixmap)
+  
   def open_about(self):
     text = """Wind Waker Randomizer Version %s<br><br>
       Created by LagoLunatic<br><br>
@@ -693,6 +798,12 @@ class WWRandomizerWindow(QMainWindow):
   def keyPressEvent(self, event):
     if event.key() == Qt.Key_Escape:
       self.close()
+  
+  def closeEvent(self, event):
+    # Need to wait for the update checker before exiting, or the program will crash when closing.
+    self.update_checker_thread.quit()
+    self.update_checker_thread.wait()
+    event.accept()
 
 class RandomizerProgressDialog(QProgressDialog):
   def __init__(self, title, description, max_val):
