@@ -87,8 +87,8 @@ Outset Island - Dig up Black Soil:
     - sea/Room44.arc/ScalableObject03A
 Outset Island - Savage Labyrinth - Floor 30:
   Need:
+    # Can avoid the trees by leafing to the ledge from Mesa's house rooftop
     (Can Fly With Deku Leaf Outdoors | Hookshot)
-#Can avoid the trees by leafing to the ledge from Mesa's house rooftop
     & Power Bracelets
     & Can Defeat Keese
     & Can Defeat Miniblins
@@ -547,7 +547,7 @@ Dragon Roost Island - Chest on Top of Boulder:
     | (Bait Bag & Can Buy Hyoi Pears)
     | Boomerang
     | Bombs
-    | (Can Fly With Leaf Outdoors & Hero's Sword)
+    | (Can Fly With Deku Leaf Outdoors & Hero's Sword)
     # Bombs work by getting in the ship and shooting the cannon up at the bomb flowers.
     # With the leaf you can glide over to the bombs and jumpslash to make one explode (does hammer work instead of sword? TODO)
   Original item: Silver Rupee
@@ -1278,19 +1278,19 @@ Earth Temple - Transparent Chest In Warp Pot Room:
   Need:
     Can Access Earth Temple
     & (Deku Leaf | Can Play Command Melody)
-  # Can skip the command melody with leaf pumps
     & (Can Play Command Melody | Mirror Shield)
+    # Can skip the command melody with leaf pumps
   Original item: Dungeon Map
   Types: Dungeon
   Paths:
     - M_Dai/Stage.arc/Chest000
 Earth Temple - Chest Behind Destructible Walls:
-  Need
+  Need:
     Can Access Earth Temple
     & (Deku Leaf | Can Play Command Melody)
     & Skull Hammer
     & Mirror Shield
- # hammer kills chus
+    # hammer kills chus
   Original item: Joy Pendant
   Types: Dungeon
   Paths:
@@ -1320,11 +1320,11 @@ Earth Temple - Chest In Three Blocks Room:
   Need:
     Can Access Earth Temple
     & ((Deku Leaf & Can Aim Mirror Shield) | Can Play Command Melody)
- # Aiming the mirror shield required for the chest, not to get past this room
-    & Can Defeat Green Chus
+    & Can Defeat Green ChuChus
     & Can Defeat Floormasters
     & Power Bracelets
     & ET Small Key x2
+    # Aiming the mirror shield required for the chest, not to get past this room
     # You can skip the chu staircase with no item, skipping the fire arrow requirement
     # Only one key is required, but assuming worst case
     # Power Bracelets necessary again to move the large black pushable box and unlock a door.
@@ -1337,7 +1337,7 @@ Earth Temple - Chest Behind Statues:
   Need:
     Can Access Earth Temple
     & ((Deku Leaf & Mirror Shield) | Can Play Command Melody)
-    & Can Defeat Green Chus
+    & Can Defeat Green ChuChus
     & Can Defeat Floormasters
     & Power Bracelets
     & ET Small Key x2
@@ -1349,7 +1349,7 @@ Earth Temple - Casket in Second Crypt:
   Need:
     Can Access Earth Temple
     & (Deku Leaf | Can Play Command Melody)
-    & Can Defeat Green Chus
+    & Can Defeat Green ChuChus
     & Can Defeat Floormasters
     & Power Bracelets
     & ET Small Key x2
@@ -1364,13 +1364,13 @@ Earth Temple - Stalfos Mini-Boss Room:
     Can Access Earth Temple
     & (Deku Leaf | Can Play Command Melody)
     & (Can Defeat Stalfos | Deku Leaf | Hookshot | Bombs)
- # Miniboss skip logic
-    & Can Defeat Green Chus
+    & Can Defeat Green ChuChus
     & Can Defeat Floormasters
     & Power Bracelets
     & (ET Small Key x3 | (ET Small Key x2 & Deku Leaf))
-  # Small Key skip logic
-  # Need to escape: Can Aim Mirror Shield
+    # Miniboss skip logic
+    # Small Key skip logic
+    # Need to escape: Can Aim Mirror Shield
   Original item: Mirror Shield
   Types: Dungeon
   Paths:
@@ -1390,7 +1390,7 @@ Earth Temple - End of Foggy Room With Floormasters:
   Need:
     Can Access Earth Temple
     & (Deku Leaf | Can Play Command Melody)
-    & Can Defeat Green Chus
+    & Can Defeat Green ChuChus
     & Can Skip Elephant Statue
   Original item: Small Key
   Types: Dungeon
@@ -1400,7 +1400,7 @@ Earth Temple - Kill All Floormasters in Foggy Room:
   Need:
     Can Access Earth Temple
     & (Deku Leaf | Can Play Command Melody)
-    & Can Defeat Green Chus
+    & Can Defeat Green ChuChus
     & Can Skip Elephant Statue
     & Can Defeat Floormasters
   Original item: Treasure Chart 20
@@ -1425,9 +1425,9 @@ Earth Temple - Chest in Third Crypt:
     & Power Bracelets
     & Skull Hammer
     & (Deku Leaf | ET Small Key x3)
-  # Small Key skip logic
     & (Can Play Command Melody | Can Aim Mirror Shield)
-  # To skip mirror shield, use command melody to make Medli fly on top of the mirror and break the statue from there
+    # Small Key skip logic
+    # To skip mirror shield, use command melody to make Medli fly on top of the mirror and break the statue from there
     # Power Bracelets necessary again to move the large mirror under the light.
     # Note: Killing the Red Bubbles is not necessary
   Original item: Red Rupee
@@ -1504,8 +1504,8 @@ Earth Temple - Jalhalla Heart Container:
     & (Deku Leaf | ET Small Key x3)
     & (Can Play Command Melody | Can Aim Mirror Shield)
     & (ET Big Key | Deku Leaf)
- # Can Skip the BK with a Medli roll clip
     & Can Defeat Jalhalla
+    # Can Skip the BK with a Medli roll clip
   Original item: Heart Container
   Types: Dungeon
   Paths:
@@ -1569,8 +1569,8 @@ Wind Temple - Big Key Chest:
     & Can Play Command Melody
     & (Can Perform Spring Jump Storage | Deku Leaf)
     & (Can Play Wind God's Aria | Deku Leaf)
- # Can skip needing Wind God's Aria for the song stone. https://youtu.be/rRYv3w8ckT4?t=2h53m45s
     & Can Defeat Darknuts
+    # Can skip needing Wind God's Aria for the song stone. https://youtu.be/rRYv3w8ckT4?t=2h53m45s
   Original item: Big Key
   Types: Dungeon
   Paths:
@@ -1621,9 +1621,9 @@ Wind Temple - Wizzrobe Mini-Boss Room:
     & Can Play Command Melody
     & ((Can Perform Spring Jump Storage & (Fire Arrows | Hookshot)) | Deku Leaf)
     & (WT Small Key x2 | Deku Leaf)
- # Can skip the locked door with a roll clip with leaf
     & Can Defeat Darknuts
     & Can Remove Peahat Armor
+    # Can skip the locked door with a roll clip with leaf
     # Besides Darknuts, there are Wizzrobes, Peahats, Moblins, Keese, and Kargarocs. But if you can defeat a Darknut you can steal its sword to defeat the other enemies.
     # Unfortunately you can't do the same in reverse by stealing a Moblin's spear to kill a Darknut - the Moblin never spawns until the Darknut is defeated.
     # Killing the Wizzrobe doesn't require ranged weapons because he occasionally comes down to ground level.
@@ -1657,12 +1657,12 @@ Wind Temple - Kill All Enemies in Tall Basement Room:
     Can Access Wind Temple
     & Can Play Command Melody
     & (Iron Boots | Deku Leaf)
- # Hookshot is required (see below). With hookshot, you can get to the bottom floor without leaf (using the weird hookshot clip)
     & Hookshot
     & WT Small Key x2
     & Can Defeat Stalfos
     & Can Defeat Wizzrobes
     & Can Defeat Morths
+    # Hookshot is required (see below). With hookshot, you can get to the bottom floor without leaf (using the weird hookshot clip)
     # There's a Green Bokoblin and a Blue Bokoblin here, but you can use hookshot to make them fall off the platform to the ground - which will kill the one higher up, and for the lower one you can throw pots at it to steal its weapon.
     # Technically you could then use the weapon stolen from a Bokoblin to defeat all the other enemies here, but the issue with that is that if you kill both the Bokoblins, then exit and re-enter the room, you could no longer do this because they don't respawn. Same with the Stalfos and their maces.
   Original item: Treasure Chart 5
@@ -1905,7 +1905,7 @@ Private Oasis - Chest at Top of Waterfall:
     - sea/Room33.arc/Chest000
 Private Oasis - Cabana Labyrinth - First Chest:
   Need:
-    Can Enter the Cabana
+    Can Enter Cabana
     & Grappling Hook
  # You don't need skull hammer because you can sidle past one of the gates
   Original item: Orange Rupee
@@ -1914,7 +1914,7 @@ Private Oasis - Cabana Labyrinth - First Chest:
     - TF_04/Stage.arc/Chest001
 Private Oasis - Cabana Labyrinth - Second Chest:
   Need:
-    Can Enter the Cabana
+    Can Enter Cabana
     & Grappling Hook
     & Can Play Wind's Requiem
   Original item: Triforce Chart 2
@@ -2103,7 +2103,6 @@ Pawprint Isle - Chuchu Cave - Scale the Wall:
 Pawprint Isle - Wizzrobe Cave:
   Need:
     (Hookshot | (Can Play Wind's Requiem & Bombs & Deku Leaf))
- # Can bomb boost up onto the chu head structure to get more height, and get a jump after sliding to access the cave without hookshot
     & Can Defeat Wizzrobes at Range
     & Can Defeat Fire Keese
     & Can Defeat Magtails
@@ -2112,6 +2111,7 @@ Pawprint Isle - Wizzrobe Cave:
     & Can Defeat Yellow ChuChus
     & Can Defeat Red Bubbles
     & Can Remove Peahat Armor
+    # Can bomb boost up onto the chu head structure to get more height, and get a jump after sliding to access the cave without hookshot
     # For the last wave, you can get the Moblin to attack the Bokoblin, take the Bokoblin's stick, and use that to kill the Moblin, Bokoblin, Morths, Keese, Kargarocs, and Peahats with armor removed. (You can also use the stick to steal the Moblin's spear and use that.)
   Original item: Silver Rupee
   Types: Combat Secret Cave

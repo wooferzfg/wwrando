@@ -21,7 +21,7 @@ Can Aim Mirror Shield:
     | Hero's Bow
     | Hookshot
     | Picto Box
-    | Bottle
+    | Empty Bottle
   )
   # You need to be holding an item in your hand in order to aim your shield around. Otherwise you can only aim it behind you at an angle or straight in front of you.
   # Empty Bottle works, but you would need to use the contents first. Not in regular logic
@@ -517,13 +517,13 @@ Can Skip Statue With Medli:
   # Or clip OoB from the top: https://www.youtube.com/watch?v=jLzssTc6ELU (there's easier but this one is done swordless) & https://www.youtube.com/watch?v=kpTImB9ITtw
 Can Skip Song Stone With Medli:
   Can Skip Statue With Medli & Can Play Earth God's Lyric
-Can Skip Song Stone Without Medli
+Can Skip Song Stone Without Medli:
   Hero's Sword & Bombs & Deku Leaf
   #This macro is used for the one below
 Can Skip Elephant Statue:
   (Can Skip Song Stone With Medli & Can Play Command Melody)
   | (Can Skip Song Stone Without Medli &
-    ((Fire Arrows & (Magic Meter Upgrade | Bottle)) | Can Aim Mirror Shield)
+    ((Fire Arrows & (Magic Meter Upgrade | Empty Bottle)) | Can Aim Mirror Shield)
      )
  # This clip: https://www.youtube.com/watch?v=EO8arfhPxro
  # Might not need to AIM the mirror shield (maybe only mirror shield is enough), but it doesn't matter with the amount of items you need to get down here anyway
