@@ -2507,8 +2507,8 @@ Flight Control Platform - Submarine:
     & Can Defeat Red ChuChus
     & Can Defeat Green ChuChus
     & Can Defeat Miniblins
-    & Can Defeat Wizzrobes at Range
-  Original item: Platform Chart)
+    & Can Defeat Wizzrobes at Range)
+  Original item: Platform Chart
  # Can skip submarines by leaf pumping
   Types: Submarine
   Paths:
