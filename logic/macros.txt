@@ -501,7 +501,7 @@ Can Skip Song Stone Without Medli:
   Hero's Sword & Bombs & Deku Leaf
   #This macro is used for the one below
 Can Skip Elephant Statue:
-  (Can Skip Song Stone With Medli & Can Play Command Melody)
+  (Can Skip Song Stone With Medli & (Can Play Command Melody | Can Aim Mirror Shield))
   | (Can Skip Song Stone Without Medli &
     ((Fire Arrows & (Magic Meter Upgrade | Empty Bottle)) | Can Aim Mirror Shield)
      )
