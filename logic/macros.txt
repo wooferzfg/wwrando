@@ -141,30 +141,10 @@ Can Access Ganon's Tower:
   & (Hookshot | Deku Leaf | Ice Arrows)
  # Can Moblin Slide to cross the gaps
 
-Can Complete Memory Dragon Roost Cavern and Gohma:
-  Grappling Hook
-  & Deku Leaf
-  & Can Defeat Gohma
-Can Complete Memory Forbidden Woods and Kalle Demos:
-  Deku Leaf
-  & Can Defeat Kalle Demos
-Can Complete Memory Earth Temple and Jalhalla:
-  Can Defeat Jalhalla
-  # Mirror Shield is not needed in the hallway leading up to Jalhalla because you can lure the Purple Chuchus into the light.
-  # It's not needed for Jalhalla because Light Arrows work in their place.
-Can Complete Memory Wind Temple and Molgera:
-  Deku Leaf
-  & Can Defeat Molgera
-  # You're intended to use iron boots here, but you can simply fly across the gap with deku leaf instead. No damage boosting off spikes or leaf pumping required.
-Can Complete All Memory Dungeons and Bosses:
-  Can Complete Memory Dragon Roost Cavern and Gohma
-  & Can Complete Memory Forbidden Woods and Kalle Demos
-  & Can Complete Memory Earth Temple and Jalhalla
-  & Can Complete Memory Wind Temple and Molgera
-
 Can Unlock Ganon's Tower Four Boss Door:
   # This macro is set to Nothing when the option to skip rematch bosses is enabled.
-  Can Complete All Memory Dungeons and Bosses
+  # In Glitched logic, you can skip the trials using the leaf with a hang roll clip
+  Deku Leaf
 Can Reach Ganon's Tower Phantom Ganon Room:
   Can Access Ganon's Tower
   & Can Unlock Ganon's Tower Four Boss Door
@@ -453,7 +433,7 @@ Can Defeat Helmaroc King:
   Skull Hammer
   # Doesn't require a sword or anything - just the hammer both breaks his mask and damages him.
 Can Defeat Jalhalla:
-  (Can Aim Mirror Shield | (Mirror Shield & Skull Hammer) | Light Arrows)
+  (Can Aim Mirror Shield | Light Arrows)
   & Power Bracelets
   & Can Defeat Jalhalla Poes
   # you can still shine light onto Jalhalla with the hammer in your hand (which is not taken into account by "Can Aim Mirror Shield")
@@ -505,7 +485,7 @@ Can Sword Fight with Orca in Swordless:
   # This macro is swapped out in place of the above one in swordless mode.
   # Swordless gives you a sword temporarily while in Orca's house, so you don't need to have found a sword item.
 Can Skip First Floor in TotG:
-  Deku Leaf | Hero's Sword | Skull Hammer | (TotG Small Key x1 & Bombs & Can Defeat Yellow ChuChus)
+  Deku Leaf | Hero's Sword | Skull Hammer | (TotG Small Key x1 & Bombs)
   # Can clip OoB with a statue and can skip the first floor with the leaf, or with jumpslashes (requires a sword or hammer). Otherwise you need to do the first floor casually. Maybe add the superswim strat to logic?? Might be too hard.
 Can Skip Statue With Medli:
   (Can Aim Mirror Shield & Can Play Command Melody)

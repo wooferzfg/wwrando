@@ -239,9 +239,9 @@ Windfall Island - Mrs. Marie - Give 40 Joy Pendants:
 #    - rels/d_a_npc_ho.rel@0C6B
 Windfall Island - Lenzo's House - Left Chest:
   Need:
-    # Need Wind's Requiem to activate the Windmill
+    # You need to activate the Windmill, but you don't need the Wind's Requiem because pressing the switch with storage skips it
     # Need Picto Box because Lenzo will not unlock his upper door until you talk to him after obtaining it
-    Can Play Wind's Requiem 
+    Wind Waker
     & Picto Box
   Original item: Treasure Chart 29
   Types: Short Sidequest, Other Chest
@@ -249,9 +249,9 @@ Windfall Island - Lenzo's House - Left Chest:
     - Ocmera/Stage.arc/Chest000
 Windfall Island - Lenzo's House - Right Chest:
   Need:
-    # Need Wind's Requiem to activate the Windmill
+    # You need to activate the Windmill, but you don't need the Wind's Requiem because pressing the switch with storage skips it
     # Need Picto Box because Lenzo will not unlock his upper door until you talk to him after obtaining it
-    Can Play Wind's Requiem 
+    Wind Waker
     & Picto Box
   Original item: Purple Rupee
   Types: Short Sidequest, Other Chest
@@ -322,8 +322,8 @@ Windfall Island - Cafe Bar - Postman:
     - Opub/Stage.arc/Event00E:Get_Mo3_Ltr/Actor002/Action001
 Windfall Island - Kreeb:
   Need:
-    # Need to activate the windmill and light up the lighthouse for him to give this to you.
-    Can Play Wind's Requiem
+    # You need to activate the Windmill, but you don't need the Wind's Requiem because pressing the switch with storage skips it
+    Wind Waker
     & Fire Arrows
   Original item: Piece of Heart
   Types: Short Sidequest
@@ -331,8 +331,8 @@ Windfall Island - Kreeb:
     - rels/d_a_npc_people.rel@C55B
 Windfall Island - Transparent Chest:
   Need:
-    # Need to activate the windmill, light up the lighthouse, and then get to the chest either by flying or with hookshot.
-    Can Play Wind's Requiem
+    # You need to activate the Windmill, but you don't need the Wind's Requiem because pressing the switch with storage skips it. Light up the lighthouse, and then get to the chest either by flying or with hookshot.
+    Wind Waker
     & Fire Arrows
     & (Can Fly With Deku Leaf Outdoors | Hookshot)
   Original item: Piece of Heart
@@ -471,9 +471,9 @@ Windfall Island - Sinking Ships - Under 20 Shots Prize:
 Windfall Island - Pompie and Vera:
   Need:
     # Need to snap a photo of Lenzo and Minenco in Lenzo's house.
-    # Need Wind's Requiem to activate the Windmill.
+    # You need to activate the Windmill, but you don't need the Wind's Requiem because pressing the switch with storage skips it
     # Need Picto Box because Lenzo will not unlock his upper door until you talk to him after obtaining it
-    Can Play Wind's Requiem 
+    Wind Waker
     & Picto Box
   Original item: Treasure Chart 24
   Types: Short Sidequest
@@ -767,6 +767,7 @@ Forest Haven - On Tree Branch:
     Can Access Forest Haven
     & (Grappling Hook | Can Fly With Deku Leaf Outdoors)
   # Note: You can access this without Grappling Hook if you take the lower platform exit out of Forest Haven, fly to the pillar outside, then use the whirlwind to gain height and fly back to Forest Haven taking the middle platform exit. Not in regular logic
+  # Note (azer67): I'm not sure this is true. Unless the void-out exists in rando, there's no way you can get enough height from a tornado
   Original item: Deku Leaf
   Types: Misc
   Paths:
@@ -1557,8 +1558,9 @@ Wind Temple - Chest in Left Alcove:
   Need:
     Can Access Wind Temple
     & Can Play Command Melody
-    & (Can Perform Spring Jump Storage | Deku Leaf)
+    & Deku Leaf
  # You can get past the rotating gate without iron boots by backflipping onto it while it's going up
+ # You need the deku leaf in order to rotate the gate, as well as in order to go through the cyclone room
   Original item: Joy Pendant
   Types: Dungeon
   Paths:
@@ -1567,8 +1569,7 @@ Wind Temple - Big Key Chest:
   Need:
     Can Access Wind Temple
     & Can Play Command Melody
-    & (Can Perform Spring Jump Storage | Deku Leaf)
-    & (Can Play Wind God's Aria | Deku Leaf)
+    & Deku Leaf
     & Can Defeat Darknuts
     # Can skip needing Wind God's Aria for the song stone. https://youtu.be/rRYv3w8ckT4?t=2h53m45s
   Original item: Big Key
@@ -1619,7 +1620,7 @@ Wind Temple - Wizzrobe Mini-Boss Room:
   Need:
     Can Access Wind Temple
     & Can Play Command Melody
-    & ((Can Perform Spring Jump Storage & (Fire Arrows | Hookshot)) | Deku Leaf)
+    & ((Iron Boots & (Fire Arrows | Hookshot)) | Deku Leaf)
     & (WT Small Key x2 | Deku Leaf)
     & Can Defeat Darknuts
     & Can Remove Peahat Armor
