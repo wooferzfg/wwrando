@@ -557,7 +557,9 @@ Dragon Roost Island - Chest on Top of Boulder:
 Dragon Roost Island - Fly Across Platforms Around Island:
   Need:
     Can Fly With Deku Leaf Outdoors
-    & (Can Cut Grass | Magic Meter Upgrade)
+    & (Can Cut Grass | Magic Meter Upgrade | (Empty Bottle & Can Get Fairies))
+    # You need more magic than the standard magic bar gives you. You either need to be able to cut grass, or have soup, or have double magic. Soup isn't in regular logic.
+    # Green and Blue Potion would also work, but as of now getting fairies requires nothing so it's better
   Original item: Orange Rupee
   Types: Other Chest
   Paths:
@@ -1379,6 +1381,7 @@ Earth Temple - Stalfos Mini-Boss Room:
 Earth Temple - Tingle Statue Chest:
   Need:
     Can Access Earth Temple
+    & (Deku Leaf | Can Play Command Melody)
     & (Deku Leaf | Can Skip Statue With Medli)
     & Tingle Tuner Bombs
  #Skipping past the main statue without Medli only requires the leaf.
@@ -1422,13 +1425,17 @@ Earth Temple - Chest in Third Crypt:
   Need:
     Can Access Earth Temple
     & (Deku Leaf | Can Play Command Melody)
-    & Can Skip Song Stone With Medli
     & Power Bracelets
     & Skull Hammer
     & (Deku Leaf | ET Small Key x3)
     & (Can Play Command Melody | Can Aim Mirror Shield)
-    # Small Key skip logic
+    & (
+        (Can Skip Song Stone With Medli & (Can Play Command Melody | Mirror Shield))
+        | (Can Skip Song Stone Without Medli & Mirror Shield & (Magic Meter Upgrade | (Empty Bottle & Can Get Fairies)))
+    )
+    # You can skip the small key with just the leaf with a grab roll clip
     # To skip mirror shield, use command melody to make Medli fly on top of the mirror and break the statue from there
+    # To break the elephant statue without Medli, do this: https://www.youtube.com/watch?v=vv_-_KzuAA8
     # Power Bracelets necessary again to move the large mirror under the light.
     # Note: Killing the Red Bubbles is not necessary
   Original item: Red Rupee
