@@ -1,19 +1,36 @@
 
 ### About
 
-This is an ISO patcher for The Legend of Zelda: The Wind Waker based on [wwrando](https://github.com/LagoLunatic/wwrando).
+This is an ISO patcher for The Legend of Zelda: The Wind Waker based on [wwrando](https://github.com/LagoLunatic/wwrando)
+Given the specific use of this program, I used brainfubar's fork of WWRando as a reference since he was going for a similar yet different end result.
 
-It aims to create a happy middle ground between the vanilla experience and the wwrando experience. That is to say:
-* You can change your character skin
-* Items remain in their original locations
-* All cutscenes and events remain in place
-* Certain changes/enhancements provided by wwrando are not included
 
-If you're looking for something closer to wwrando, but not totally random, check out https://github.com/wooferzfg/wwrando/tree/vanilla?files=1.
+The goal is to add features found in wwrando to an otherwise vanilla ISO.
+
+All cosmetic changes are available, but "casual" outfits will only be seen before getting the tunic or during New Game+
+Gecko codes can override tunic if desired.
+
+You can toggle the following on/off:
+*Swift Sail replaces sail
+*Instant Text Boxes
+*Faster Block Moving
+*Faster Grapple Hook
+*Faster Rolling Speed
+*Faster Crawling, Climbing, NPC chat zoom
+*Tingle Chests Without Tuner
+*Invert Camera to match HD
+*Reveal Full Sea Chart when making a new file
+
+You can apply the widescreen patch
+
+
+
+If you're looking for only skin customization check out brainfubar's release: https://github.com/brainfubar/wwrando
 
 ### Download
 
-See the [releases page](https://github.com/brainfubar/wwrando/releases) to download zip files containing the program and assets. Both 32-bit and 64-bit versions are available.
+See the [releases page](https://github.com/WideBoner/wwrando/releases) to download zip files containing the program and assets.
+Source works, builds fail to read from ASM path not sure why.
 
 ### Information
 
