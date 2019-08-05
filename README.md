@@ -11,15 +11,15 @@ All cosmetic changes are available, but "casual" outfits will only be seen befor
 Gecko codes can override tunic if desired.
 
 You can toggle the following on/off:
-*Swift Sail replaces sail
-*Instant Text Boxes
-*Faster Block Moving
-*Faster Grapple Hook
-*Faster Rolling Speed
-*Faster Crawling, Climbing, NPC chat zoom
-*Tingle Chests Without Tuner
-*Invert Camera to match HD
-*Reveal Full Sea Chart when making a new file
+* Swift Sail replaces sail
+* Instant Text Boxes
+* Faster Block Moving
+* Faster Grapple Hook
+* Faster Rolling Speed
+* Faster Crawling, Climbing, NPC chat zoom
+* Tingle Chests Without Tuner
+* Invert Camera to match HD
+* Reveal Full Sea Chart when making a new file
 
 You can apply the widescreen patch
 
