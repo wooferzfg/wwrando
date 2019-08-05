@@ -1,3 +1,4 @@
+
 from PySide2.QtGui import *
 from PySide2.QtCore import *
 from PySide2.QtWidgets import *
@@ -5,13 +6,9 @@ from PySide2.QtWidgets import *
 from wwr_ui.ui_randomizer_window import Ui_MainWindow
 from wwr_ui.options import OPTIONS, NON_PERMALINK_OPTIONS
 from wwr_ui.update_checker import check_for_updates, LATEST_RELEASE_DOWNLOAD_PAGE_URL
-from wwr_ui.inventory import INVENTORY_ITEMS, REGULAR_ITEMS, PROGRESSIVE_ITEMS
-from wwr_ui.packedbits import PackedBitsReader, PackedBitsWriter
 
 import random
-import collections
 from collections import OrderedDict
-
 import os
 import traceback
 import string
@@ -26,7 +23,7 @@ except ImportError:
   from yaml import Dumper
 
 from randomizer import Randomizer, VERSION, TooFewProgressionLocationsError, InvalidCleanISOError
-from paths import ASSETS_PATH, SEEDGEN_PATH, IS_RUNNING_FROM_SOURCE
+from paths import ASSETS_PATH, SEEDGEN_PATH
 import customizer
 from logic.logic import Logic
 
@@ -34,7 +31,7 @@ class WWRandomizerWindow(QMainWindow):
   VALID_SEED_CHARACTERS = "-_'%%.%s%s" % (string.ascii_letters, string.digits)
   MAX_SEED_LENGTH = 42 # Limited by maximum length of game name in banner
   
-  def __init__(self, cmd_line_args=OrderedDict()):
+  def __init__(self, cmd_line_args=[]):
     super(WWRandomizerWindow, self).__init__()
     self.ui = Ui_MainWindow()
     self.ui.setupUi(self)
@@ -46,18 +43,6 @@ class WWRandomizerWindow(QMainWindow):
     self.custom_color_selector_hex_inputs = OrderedDict()
     self.custom_colors = OrderedDict()
     self.initialize_custom_player_model_list()
-    
-    self.ui.add_gear.clicked.connect(self.add_to_starting_gear)
-    self.randomized_gear_model = QStringListModel()
-    self.randomized_gear_model.setStringList(INVENTORY_ITEMS.copy())
-    
-    self.filtered_rgear = ModelFilterOut()
-    self.filtered_rgear.setSourceModel(self.randomized_gear_model)
-    
-    self.ui.randomized_gear.setModel(self.filtered_rgear)
-    self.ui.remove_gear.clicked.connect(self.remove_from_starting_gear)
-    self.starting_gear_model = QStringListModel()
-    self.ui.starting_gear.setModel(self.starting_gear_model)
     
     self.preserve_default_settings()
     
@@ -81,12 +66,8 @@ class WWRandomizerWindow(QMainWindow):
         widget.clicked.connect(self.update_settings)
       elif isinstance(widget, QComboBox):
         widget.currentIndexChanged.connect(self.update_settings)
-      elif isinstance(widget, QListView):
-        pass
       else:
         raise Exception("Option widget is invalid: %s" % option_name)
-    
-    self.ui.generate_seed_button.clicked.connect(self.generate_seed)
     
     self.ui.randomize_button.clicked.connect(self.randomize)
     self.ui.reset_settings_to_default.clicked.connect(self.reset_settings_to_default)
@@ -101,22 +82,16 @@ class WWRandomizerWindow(QMainWindow):
     
     self.update_settings()
     
-    self.setWindowTitle("Wind Waker Randomizer %s" % VERSION)
+    self.setWindowTitle("Wind Waker Editor %s" % VERSION)
     
     icon_path = os.path.join(ASSETS_PATH, "icon.ico")
     self.setWindowIcon(QIcon(icon_path))
     
-    # Hide unfinished options from the GUI (still accessible via settings.txt).
-    self.ui.randomize_bgm.hide()
-    
     self.show()
     
-    if not IS_RUNNING_FROM_SOURCE:
-      self.update_checker_thread = UpdateCheckerThread()
-      self.update_checker_thread.finished_checking_for_updates.connect(self.show_update_check_results)
-      self.update_checker_thread.start()
-    else:
-      self.ui.update_checker_label.setText("(Running from source, skipping release update check.)")
+    self.update_checker_thread = UpdateCheckerThread()
+    self.update_checker_thread.finished_checking_for_updates.connect(self.show_update_check_results)
+    self.update_checker_thread.start()
   
   def generate_seed(self):
     random.seed(None)
@@ -153,30 +128,6 @@ class WWRandomizerWindow(QMainWindow):
     seed = seed[:self.MAX_SEED_LENGTH]
     return seed
   
-  def append_row(self, model, value):
-    model.insertRow(model.rowCount())
-    newrow = model.index(model.rowCount() - 1, 0)
-    model.setData(newrow, value)
-  
-  def move_selected_rows(self, source, dest):
-    selection = source.selectionModel().selectedIndexes()
-    # Remove starting from the last so the previous indices remain valid
-    selection.sort(reverse = True, key = lambda x: x.row())
-    for item in selection:
-      value = item.data()
-      source.model().removeRow(item.row())
-      self.append_row(dest.model(), value)
-  
-  def add_to_starting_gear(self):
-    self.move_selected_rows(self.ui.randomized_gear, self.ui.starting_gear)
-    self.ui.starting_gear.model().sort(0)
-    self.update_settings()
-  
-  def remove_from_starting_gear(self):
-    self.move_selected_rows(self.ui.starting_gear, self.ui.randomized_gear)
-    self.ui.randomized_gear.model().sourceModel().sort(0)
-    self.update_settings()
-  
   def randomize(self):
     clean_iso_path = self.settings["clean_iso_path"].strip()
     output_folder = self.settings["output_folder"].strip()
@@ -211,7 +162,7 @@ class WWRandomizerWindow(QMainWindow):
     permalink = self.ui.permalink.text()
     
     max_progress_val = 20
-    self.progress_dialog = RandomizerProgressDialog("Randomizing", "Initializing...", max_progress_val)
+    self.progress_dialog = RandomizerProgressDialog("Patching", "Initializing...", max_progress_val)
     
     if self.bulk_test:
       failures_done = 0
@@ -241,7 +192,7 @@ class WWRandomizerWindow(QMainWindow):
       return
     except Exception as e:
       stack_trace = traceback.format_exc()
-      error_message = "Randomization failed with error:\n" + str(e) + "\n\n" + stack_trace
+      error_message = "Patching failed with error:\n" + str(e) + "\n\n" + stack_trace
       self.randomization_failed(error_message)
       return
     
@@ -258,12 +209,11 @@ class WWRandomizerWindow(QMainWindow):
   def randomization_complete(self):
     self.progress_dialog.reset()
     
-    text = """Randomization complete.<br><br>
-      If you get stuck, check the progression spoiler log in the output folder."""
+    text = "Patching complete."
     
     self.complete_dialog = QMessageBox()
     self.complete_dialog.setTextFormat(Qt.TextFormat.RichText)
-    self.complete_dialog.setWindowTitle("Randomization complete")
+    self.complete_dialog.setWindowTitle("Patching complete")
     self.complete_dialog.setText(text)
     self.complete_dialog.setWindowIcon(self.windowIcon())
     self.complete_dialog.show()
@@ -362,7 +312,6 @@ class WWRandomizerWindow(QMainWindow):
     self.settings["output_folder"] = self.ui.output_folder.text()
     self.settings["seed"] = self.ui.seed.text()
     
-    self.ensure_valid_combination_of_options()
     self.disable_invalid_cosmetic_options()
     
     for option_name in OPTIONS:
@@ -372,17 +321,6 @@ class WWRandomizerWindow(QMainWindow):
     self.save_settings()
     
     self.encode_permalink()
-    
-    self.update_total_progress_locations()
-  
-  def update_total_progress_locations(self):
-    options = OrderedDict()
-    for option_name in OPTIONS:
-      options[option_name] = self.get_option_value(option_name)
-    num_progress_locations = Logic.get_num_progression_locations_static(self.cached_item_locations, options)
-    
-    text = "Where Should Progress Items Appear? (Selected: %d Possible Progression Locations)" % num_progress_locations
-    self.ui.groupBox.setTitle(text)
   
   def permalink_modified(self):
     permalink = self.ui.permalink.text()
@@ -412,7 +350,9 @@ class WWRandomizerWindow(QMainWindow):
     permalink += seed.encode("ascii")
     permalink += b"\0"
     
-    bitswriter = PackedBitsWriter()
+    option_bytes = []
+    current_byte = 0
+    current_bit_index = 0
     for option_name in OPTIONS:
       if option_name in NON_PERMALINK_OPTIONS:
         continue
@@ -421,26 +361,29 @@ class WWRandomizerWindow(QMainWindow):
       
       widget = getattr(self.ui, option_name)
       if isinstance(widget, QAbstractButton):
-        bitswriter.write(int(value), 1)
+        if current_bit_index >= 8:
+          option_bytes.append(current_byte)
+          current_bit_index = 0
+          current_byte = 0
+        
+        current_byte |= (int(value) << current_bit_index)
+        current_bit_index += 1
       elif isinstance(widget, QComboBox):
+        if current_bit_index > 0:
+          # End the current bitfield byte.
+          option_bytes.append(current_byte)
+          current_bit_index = 0
+          current_byte = 0
+        
         value = widget.currentIndex()
         assert 0 <= value <= 255
-        bitswriter.write(value, 8)
-      elif widget == self.ui.starting_gear:
-        # randomized_gear is a complement of starting_gear
-        for i in range(len(REGULAR_ITEMS)):
-          bit = REGULAR_ITEMS[i] in value
-          bitswriter.write(bit, 1)
-        unique_progressive_items = list(set(PROGRESSIVE_ITEMS))
-        unique_progressive_items.sort()
-        for item in unique_progressive_items:
-          # No Progressive Sword and there's no more than
-          # 3 of any other Progressive item so two bits per item
-          bitswriter.write(value.count(item), 2)
+        option_bytes.append(value)
     
-    bitswriter.flush()
+    if current_bit_index > 0:
+      # End the current bitfield byte.
+      option_bytes.append(current_byte)
     
-    for byte in bitswriter.bytes:
+    for byte in option_bytes:
       permalink += struct.pack(">B", byte)
     base64_encoded_permalink = base64.b64encode(permalink).decode("ascii")
     self.ui.permalink.setText(base64_encoded_permalink)
@@ -466,40 +409,38 @@ class WWRandomizerWindow(QMainWindow):
     
     option_bytes = struct.unpack(">" + "B"*len(options_bytes), options_bytes)
     
-    bitsreader = PackedBitsReader(option_bytes)
+    current_byte_index = 0
+    current_bit_index = 0
     for option_name in OPTIONS:
       if option_name in NON_PERMALINK_OPTIONS:
         continue
       
+      if current_bit_index >= 8:
+        current_byte_index += 1
+        current_bit_index = 0
+      
       widget = getattr(self.ui, option_name)
       if isinstance(widget, QAbstractButton):
-        boolean_value = bitsreader.read(1)
+        current_byte = option_bytes[current_byte_index]
+        current_bit = ((current_byte >> current_bit_index) & 1)
+        current_bit_index += 1
+        
+        boolean_value = bool(current_bit)
         self.set_option_value(option_name, boolean_value)
       elif isinstance(widget, QComboBox):
-        index = bitsreader.read(8)
+        if current_bit_index > 0:
+          # End the current bitfield byte.
+          current_byte_index += 1
+          current_bit_index = 0
+        current_byte = option_bytes[current_byte_index]
+        
+        index = current_byte
         if index >= widget.count() or index < 0:
           index = 0
         value = widget.itemText(index)
         self.set_option_value(option_name, value)
-      elif widget == self.ui.starting_gear:
-        # Reset model with only the regular items
-        self.randomized_gear_model.setStringList(REGULAR_ITEMS.copy())
-        self.starting_gear_model.setStringList([])
-        for i in range(len(REGULAR_ITEMS)):
-          starting = bitsreader.read(1)
-          if starting == 1:
-            self.ui.randomized_gear.selectionModel().select(self.randomized_gear_model.index(i), QItemSelectionModel.Select)
-        self.move_selected_rows(self.ui.randomized_gear, self.ui.starting_gear)
-        # Progressive items are all after regular items
-        unique_progressive_items = list(set(PROGRESSIVE_ITEMS))
-        unique_progressive_items.sort()
-        for item in unique_progressive_items:
-          amount = bitsreader.read(2)
-          randamount = PROGRESSIVE_ITEMS.count(item) - amount
-          for i in range(amount):
-            self.append_row(self.starting_gear_model, item)
-          for i in range(randamount):
-            self.append_row(self.randomized_gear_model, item)
+        current_byte_index += 1
+        current_bit_index = 0
     
     self.update_settings()
   
@@ -551,13 +492,6 @@ class WWRandomizerWindow(QMainWindow):
       return widget.isChecked()
     elif isinstance(widget, QComboBox):
       return widget.itemText(widget.currentIndex())
-    elif isinstance(widget, QListView):
-      if widget.model() == None:
-        return []
-      model = widget.model();
-      if isinstance(model, ModelFilterOut):
-        model = model.sourceModel()
-      return [model.data(model.index(i)) for i in range(model.rowCount())]
     else:
       print("Option widget is invalid: %s" % option_name)
   
@@ -578,13 +512,6 @@ class WWRandomizerWindow(QMainWindow):
         index_of_value = 0
       
       widget.setCurrentIndex(index_of_value)
-    elif isinstance(widget, QListView):
-      if widget.model() != None:
-        model = widget.model()
-        if isinstance(model, QSortFilterProxyModel):
-          model = model.sourceModel()
-        model.setStringList(new_value)
-        model.sort(0)
     else:
       print("Option widget is invalid: %s" % option_name)
   
@@ -737,67 +664,6 @@ class WWRandomizerWindow(QMainWindow):
     
     return any_color_changed
   
-  def ensure_valid_combination_of_options(self):
-    items_to_filter_out = []
-    should_enable_options = {}
-    for option_name in OPTIONS:
-      should_enable_options[option_name] = True
-    
-    if not self.get_option_value("progression_dungeons"):
-      # Race mode places required items on dungeon bosses.
-      should_enable_options["race_mode"] = False
-    
-    sword_mode = self.get_option_value("sword_mode")
-    if sword_mode == "Swordless":
-      items_to_filter_out += ["Hurricane Spin"]
-    if sword_mode == "Swordless" or sword_mode == "Randomized Sword":
-      items_to_filter_out += 3 * ["Progressive Sword"]
-    
-    if self.get_option_value("race_mode"):
-      num_possible_rewards = 8 - int(self.get_option_value("num_starting_triforce_shards"))
-      potential_boss_rewards = []
-      
-      if sword_mode == "Start with Sword":
-        potential_boss_rewards += 3 * ["Progressive Sword"]
-      elif sword_mode == "Randomized Sword":
-        num_possible_rewards += 4
-      
-      potential_boss_rewards += 3 * ["Progressive Bow"] + ["Hookshot"]
-      while num_possible_rewards < 4:
-        cur_reward = potential_boss_rewards.pop(0)
-        items_to_filter_out += [cur_reward]
-        num_possible_rewards += 1
-    
-    self.filtered_rgear.setFilterStrings(items_to_filter_out)
-    
-    starting_gear = self.get_option_value("starting_gear")
-    randomized_gear = self.get_option_value("randomized_gear")
-    
-    for item in items_to_filter_out:
-      if item in randomized_gear:
-        randomized_gear.remove(item)
-      elif item in starting_gear:
-        starting_gear.remove(item)
-    randomized_gear += items_to_filter_out
-    
-    self.set_option_value("starting_gear", starting_gear)
-    self.set_option_value("randomized_gear", randomized_gear)
-    
-    compare = lambda x, y: collections.Counter(x) == collections.Counter(y)
-    all_gear = self.get_option_value("starting_gear") + self.get_option_value("randomized_gear");
-    
-    if not compare(all_gear, INVENTORY_ITEMS):
-      for opt in ["randomized_gear", "starting_gear"]:
-        self.set_option_value(opt, self.default_settings[opt])
-    
-    for option_name in OPTIONS:
-      widget = getattr(self.ui, option_name)
-      if should_enable_options[option_name]:
-        widget.setEnabled(True)
-      else:
-        widget.setEnabled(False)
-        widget.setChecked(False)
-  
   def disable_invalid_cosmetic_options(self):
     custom_model_name = self.get_option_value("custom_player_model")
     metadata = customizer.get_model_metadata(custom_model_name)
@@ -927,14 +793,16 @@ class WWRandomizerWindow(QMainWindow):
     self.ui.custom_model_preview_label.setPixmap(scaled_pixmap)
   
   def open_about(self):
-    text = """Wind Waker Randomizer Version %s<br><br>
-      Created by LagoLunatic<br><br>
-      Report issues here:<br><a href=\"https://github.com/LagoLunatic/wwrando/issues\">https://github.com/LagoLunatic/wwrando/issues</a><br><br>
-      Source code:<br><a href=\"https://github.com/LagoLunatic/wwrando\">https://github.com/LagoLunatic/wwrando</a>""" % VERSION
+    text = """Wind Waker Skin Edit Version %s<br><br>
+      Original App by LagoLunatic<br>
+      <a href=\"https://github.com/LagoLunatic/wwrando\">https://github.com/LagoLunatic/wwrando</a><br>
+      Skin Edit fork by BRAINFUBAR<br><br>
+      Report issues here:<br><a href=\"https://github.com/brainfubar/wwrando/issues\">https://github.com/brainfubar/wwrando/issues</a><br><br>
+      Source code:<br><a href=\"https://github.com/brainfubar/wwrando\">https://github.com/brainfubar/wwrando</a>""" % VERSION
     
     self.about_dialog = QMessageBox()
     self.about_dialog.setTextFormat(Qt.TextFormat.RichText)
-    self.about_dialog.setWindowTitle("Wind Waker Randomizer")
+    self.about_dialog.setWindowTitle("Wind Waker Skin Edit")
     self.about_dialog.setText(text)
     self.about_dialog.setWindowIcon(self.windowIcon())
     self.about_dialog.show()
@@ -944,31 +812,10 @@ class WWRandomizerWindow(QMainWindow):
       self.close()
   
   def closeEvent(self, event):
-    if not IS_RUNNING_FROM_SOURCE:
-      # Need to wait for the update checker before exiting, or the program will crash when closing.
-      self.update_checker_thread.quit()
-      self.update_checker_thread.wait()
+    # Need to wait for the update checker before exiting, or the program will crash when closing.
+    self.update_checker_thread.quit()
+    self.update_checker_thread.wait()
     event.accept()
-
-class ModelFilterOut(QSortFilterProxyModel):
-  def __init__(self):
-    super(ModelFilterOut, self).__init__()
-    self.filter_strings = []
-  
-  def setFilterStrings(self, fstr):
-    self.filter_strings = fstr
-    self.invalidateFilter()
-  
-  def filterAcceptsRow(self, sourceRow, sourceParent):
-    index0 = self.sourceModel().index(sourceRow, 0, sourceParent)
-    data = self.sourceModel().data(index0)
-    num_occurrences = self.filter_strings.count(data)
-    for i in range(sourceRow):
-      cur_index = self.sourceModel().index(i, 0, sourceParent)
-      cur_data = self.sourceModel().data(cur_index)
-      if cur_data == data:
-        num_occurrences -= 1
-    return num_occurrences <= 0
 
 class RandomizerProgressDialog(QProgressDialog):
   def __init__(self, title, description, max_val):

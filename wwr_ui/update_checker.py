@@ -6,8 +6,8 @@ from distutils.version import LooseVersion
 
 from randomizer import VERSION
 
-LATEST_RELEASE_DOWNLOAD_PAGE_URL = "https://github.com/LagoLunatic/wwrando/releases/latest"
-LATEST_RELEASE_API_URL = "https://api.github.com/repos/lagolunatic/wwrando/releases/latest"
+LATEST_RELEASE_DOWNLOAD_PAGE_URL = "https://github.com/brainfubar/wwrando/releases/latest"
+LATEST_RELEASE_API_URL = "https://api.github.com/repos/brainfubar/wwrando/releases/latest"
 
 def check_for_updates():
   try:
@@ -15,7 +15,7 @@ def check_for_updates():
       data = json.loads(page.read().decode())
       
       latest_version_name = data["tag_name"]
-      if latest_version_name[0] == "v":
+      if latest_version_name[0] in "p":
         latest_version_name = latest_version_name[1:]
       
       if "-BETA" in VERSION:
@@ -25,7 +25,7 @@ def check_for_updates():
         else:
           return None
       else:
-        if LooseVersion(latest_version_name) > LooseVersion(VERSION):
+        if LooseVersion(latest_version_name) > LooseVersion(VERSION[1:]):
           return latest_version_name
         else:
           return None
