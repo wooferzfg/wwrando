@@ -76,6 +76,8 @@ class Logic:
     # Sync the logic macros with the randomizer.
     self.update_entrance_connection_macros()
     self.update_chart_macros()
+    self.update_rematch_bosses_macros()
+    self.update_sword_mode_macros()
     
     
     # Initialize item related attributes.
@@ -484,7 +486,7 @@ class Logic:
         continue
       if "Minigame" in types and not options.get("progression_minigames"):
         continue
-      if "Battlesquid" in types and not options.get("progression_battlesquid"):
+      if "Sinking Ships" in types and not options.get("progression_sinking_ships"):
         continue
       if "Free Gift" in types and not options.get("progression_free_gifts"):
         continue
@@ -676,6 +678,24 @@ class Logic:
       
       self.set_macro(chart_macro_name, req_string)
   
+  def update_rematch_bosses_macros(self):
+    if self.rando.options.get("skip_rematch_bosses"):
+      self.set_macro("Can Unlock Ganon's Tower Four Boss Door", "Nothing")
+    else:
+      self.set_macro("Can Unlock Ganon's Tower Four Boss Door", "Can Complete All Memory Dungeons and Bosses")
+  
+  def update_sword_mode_macros(self):
+    if self.rando.options.get("sword_mode") == "Swordless":
+      self.set_macro("Can Sword Fight with Orca", "Can Sword Fight with Orca in Swordless")
+      self.set_macro("Can Defeat Phantom Ganon", "Can Defeat Phantom Ganon in Swordless")
+      self.set_macro("Can Get Past Hyrule Barrier", "Can Get Past Hyrule Barrier in Swordless")
+      self.set_macro("Can Defeat Ganondorf", "Can Defeat Ganondorf in Swordless")
+    else:
+      self.set_macro("Can Sword Fight with Orca", "Can Sword Fight with Orca Outside Swordless")
+      self.set_macro("Can Defeat Phantom Ganon", "Can Defeat Phantom Ganon Outside Swordless")
+      self.set_macro("Can Get Past Hyrule Barrier", "Can Get Past Hyrule Barrier Outside Swordless")
+      self.set_macro("Can Defeat Ganondorf", "Can Defeat Ganondorf Outside Swordless")
+  
   def clean_item_name(self, item_name):
     # Remove parentheses from any item names that may have them. (Formerly Master Swords, though that's not an issue anymore.)
     return item_name.replace("(", "").replace(")", "")
@@ -798,8 +818,6 @@ class Logic:
       return self.check_small_key_req(req_name)
     elif req_name.startswith("Can Access Other Location \""):
       return self.check_other_location_requirement(req_name)
-    elif req_name.startswith("Option \""):
-      return self.check_option_enabled_requirement(req_name)
     elif req_name in self.all_cleaned_item_names:
       return req_name in self.currently_owned_items
     elif req_name in self.macros:
@@ -864,8 +882,6 @@ class Logic:
       other_location_name = match.group(1)
       requirement_expression = self.item_locations[other_location_name]["Need"]
       item_names += self.get_item_names_from_logical_expression_req(requirement_expression)
-    elif req_name.startswith("Option \""):
-      pass
     elif req_name in self.all_cleaned_item_names:
       item_names.append(req_name)
     elif req_name in self.macros:
@@ -931,38 +947,6 @@ class Logic:
     
     requirement_expression = self.item_locations[other_location_name]["Need"]
     return self.check_logical_expression_req(requirement_expression)
-  
-  def check_option_enabled_requirement(self, req_name):
-    positive_boolean_match = re.search(r"^Option \"([^\"]+)\" Enabled$", req_name)
-    negative_boolean_match = re.search(r"^Option \"([^\"]+)\" Disabled$", req_name)
-    positive_dropdown_match = re.search(r"^Option \"([^\"]+)\" Is \"([^\"]+)\"$", req_name)
-    negative_dropdown_match = re.search(r"^Option \"([^\"]+)\" Is Not \"([^\"]+)\"$", req_name)
-    positive_list_match = re.search(r"^Option \"([^\"]+)\" Contains \"([^\"]+)\"$", req_name)
-    negative_list_match = re.search(r"^Option \"([^\"]+)\" Does Not Contain \"([^\"]+)\"$", req_name)
-    if positive_boolean_match:
-      option_name = positive_boolean_match.group(1)
-      return not not self.rando.options.get(option_name)
-    elif negative_boolean_match:
-      option_name = negative_boolean_match.group(1)
-      return not self.rando.options.get(option_name)
-    elif positive_dropdown_match:
-      option_name = positive_dropdown_match.group(1)
-      value = positive_dropdown_match.group(2)
-      return self.rando.options.get(option_name) == value
-    elif negative_dropdown_match:
-      option_name = negative_dropdown_match.group(1)
-      value = negative_dropdown_match.group(2)
-      return self.rando.options.get(option_name) != value
-    elif positive_list_match:
-      option_name = positive_list_match.group(1)
-      value = positive_list_match.group(2)
-      return value in self.rando.options.get(option_name, [])
-    elif negative_list_match:
-      option_name = negative_list_match.group(1)
-      value = negative_list_match.group(2)
-      return value not in self.rando.options.get(option_name, [])
-    else:
-      raise Exception("Invalid option check requirement: %s" % req_name)
   
   def chart_name_for_location(self, location_name):
     reqs = self.item_locations[location_name]["Need"]

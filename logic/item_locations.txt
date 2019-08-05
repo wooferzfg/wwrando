@@ -107,8 +107,6 @@ Outset Island - Savage Labyrinth - Floor 30:
     & Can Defeat Red Bubbles
     & Can Defeat Darknuts
     & Can Play Wind's Requiem
-    & (Grappling Hook | Hero's Sword | Skull Hammer)
-  # The last condition for having grappling hook or a melee weapon is to avoid cases where your only weapon for damaging most enemies is bow or bombs and you run out of arrows or bombs. Grappling hook can be used to steal ammo from enemies.
   # The following floors don't have requirements listed because you can trick enemies into hitting each other, pick up one of their dropped weapons, and kill the enemies with the weapon:
   # * Floor 4 (4x Green Bokoblins)
   # * Floor 9 (4x Green Bokoblins, 2x Fire Keese)
@@ -399,6 +397,12 @@ Windfall Island - 80 Rupee Auction:
 #  Original item: Town Flower
 #  Paths:
 #    - rels/d_a_npc_rsh1.rel@30DF
+Windfall Island - Sam - Decorate the Town:
+  Need: Rescued Aryll & Delivery Bag
+  Original item: Piece of Heart
+  Types: Long Sidequest
+  Paths:
+    - rels/d_a_npc_people.rel@C54B
 Windfall Island - Zunari - Stock Exotic Flower in Zunari's Shop:
   Need: Rescued Aryll & Delivery Bag
   Original item: Magic Armor
@@ -407,12 +411,6 @@ Windfall Island - Zunari - Stock Exotic Flower in Zunari's Shop:
     - rels/d_a_npc_rsh1.rel@3117
     - rels/d_a_npc_rsh1.rel@338F
     - CustomSymbol:zunari_magic_armor_slot_item_id
-Windfall Island - Sam - Decorate the Town:
-  Need: Rescued Aryll & Delivery Bag
-  Original item: Piece of Heart
-  Types: Long Sidequest
-  Paths:
-    - rels/d_a_npc_people.rel@C54B
 #Windfall Island - Kane - Place Shop Guru Statue on Gate: # Too obscure to randomize
 #  Need: Rescued Aryll & Delivery Bag
 #  Original item: Purple Rupee
@@ -440,30 +438,30 @@ Windfall Island - Mila:
   Types: Short Sidequest
   Paths:
     - sea/Stage.arc/Event084:get_empty_btl/Actor002/Action001
-Windfall Island - Battlesquid - First Prize:
+Windfall Island - Sinking Ships - First Prize:
   Need: Nothing
   Original item: Piece of Heart
-  Types: Battlesquid
+  Types: Sinking Ships
   Paths:
     - rels/d_a_npc_kg1.rel@2C28
-Windfall Island - Battlesquid - Second Prize:
+Windfall Island - Sinking Ships - Second Prize:
   Need: Nothing
   Original item: Treasure Chart 7
-  Types: Battlesquid
+  Types: Sinking Ships
   Paths:
     - rels/d_a_npc_kg1.rel@2C29
-#Windfall Island - Battlesquid - Prize 3+:
+#Windfall Island - Sinking Ships - Prize 3+:
 #  Need: Nothing
 #  Original item: Purple Rupee
 #  Paths:
 #    - rels/d_a_npc_kg1.rel@2C2A
-Windfall Island - Battlesquid - Under 20 Shots Prize:
+Windfall Island - Sinking Ships - Under 20 Shots Prize:
   Need: Nothing
   Original item: Treasure Chart 23
-  Types: Battlesquid
+  Types: Sinking Ships
   Paths:
     - rels/d_a_npc_kg1.rel@2C2C
-#Windfall Island - Battlesquid - Under 20 Shots Prize 2+:
+#Windfall Island - Sinking Ships - Under 20 Shots Prize 2+:
 #  Need: Nothing
 #  Original item: Orange Rupee
 #  Paths:
@@ -1998,19 +1996,19 @@ Private Oasis - Big Octo:
   Paths:
     - sea/Room33.arc/ScalableObject015
 
-Spectacle Island - Barrel Shooting - First Prize:
+Spectacle Island - Target Shooting - First Prize:
   Need: Nothing
   Original item: Piece of Heart
   Types: Minigame
   Paths:
     - rels/d_a_npc_kg2.rel@20FF
-Spectacle Island - Barrel Shooting - Second Prize:
+Spectacle Island - Target Shooting - Second Prize:
   Need: Nothing
   Original item: Treasure Chart 17
   Types: Minigame
   Paths:
     - rels/d_a_npc_kg2.rel@2107
-#Spectacle Island - Barrel Shooting - Prize 3+:
+#Spectacle Island - Target Shooting - Prize 3+:
 #  Need: 
 #  Original item: Orange Rupee
 #  Paths:
