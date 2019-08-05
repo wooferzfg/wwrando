@@ -13,140 +13,120 @@ stw r0, 0x14 (sp)
 bl init__10dSv_save_cFv ; To call this custom func we overwrote a call to init__10dSv_save_cFv, so call that now.
 
 
-lis r5, sword_mode@ha
-addi r5, r5, sword_mode@l
-lbz r5, 0 (r5)
-cmpwi r5, 0 ; Start with Sword
-beq start_with_sword
-cmpwi r5, 2 ; Swordless
-beq break_barrier_for_swordless
-b after_sword_mode_initialization
+; lis r5, sword_mode@ha
+; addi r5, r5, sword_mode@l
+; lbz r5, 0 (r5)
+; cmpwi r5, 0 ; Start with Sword
+; beq start_with_sword
+; cmpwi r5, 2 ; Swordless
+; beq break_barrier_for_swordless
+; b after_sword_mode_initialization
 
-start_with_sword:
-bl item_func_sword__Fv
-b after_sword_mode_initialization
+; start_with_sword:
+; bl item_func_sword__Fv
+; b after_sword_mode_initialization
 
-break_barrier_for_swordless:
-lis r3, 0x803C522C@ha
-addi r3, r3, 0x803C522C@l
-li r4, 0x2C02 ; BARRIER_DOWN
-bl onEventBit__11dSv_event_cFUs
-li r4, 0x3B08 ; Another event flag set by the barrier. This one seems to have no effect, but set it anyway just to be safe.
-bl onEventBit__11dSv_event_cFUs
+; break_barrier_for_swordless:
+; lis r3, 0x803C522C@ha
+; addi r3, r3, 0x803C522C@l
+; li r4, 0x2C02 ; BARRIER_DOWN
+; bl onEventBit__11dSv_event_cFUs
+; li r4, 0x3B08 ; Another event flag set by the barrier. This one seems to have no effect, but set it anyway just to be safe.
+; bl onEventBit__11dSv_event_cFUs
 
-after_sword_mode_initialization:
-
-bl item_func_shield__Fv
-bl item_func_normal_sail__Fv
-bl item_func_wind_tact__Fv ; Wind Waker
-bl item_func_tact_song1__Fv ; Wind's Requiem
-bl item_func_tact_song2__Fv ; Ballad of Gales
-bl item_func_tact_song6__Fv ; Song of Passing
-bl item_func_pirates_omamori__Fv ; Pirate's Charm
-
-; Start the player with 30 bombs and arrows. (But not the ability to actually use them.)
-; This change is so we can remove the code that sets your current bombs/arrows to 30 when you first get the bombs/bow.
-; That code would be bad if the player got a bomb bag/quiver upgrade beforehand, as then that code would reduce the max.
-lis r3, 0x803C4C71@ha
-addi r3, r3, 0x803C4C71@l
-li r4, 30
-stb r4, 0 (r3) ; Current arrows
-stb r4, 1 (r3) ; Current bombs
-stb r4, 6 (r3) ; Max arrows
-stb r4, 7 (r3) ; Max bombs
-
-; Start the player with a magic meter so items that use it work correctly.
-lis r3, 0x803C4C1B@ha
-addi r3, r3, 0x803C4C1B@l
-li r4, 16 ; 16 is the normal starting size of the magic meter.
-stb r4, 0 (r3) ; Max magic meter
-stb r4, 1 (r3) ; Current magic meter
-
-; Give user-selected custom starting items
-bl init_starting_gear
+; after_sword_mode_initialization:
 
 
-lis r3, 0x803C522C@ha
-addi r3, r3, 0x803C522C@l
-li r4, 0x3510 ; HAS_SEEN_INTRO
-bl onEventBit__11dSv_event_cFUs
-li r4, 0x0280 ; SAW_TETRA_IN_FOREST_OF_FAIRIES
-bl onEventBit__11dSv_event_cFUs
-li r4, 0x0520 ; GOSSIP_STONE_AT_FF1 (Causes Aryll and the pirates to disappear from Outset)
-bl onEventBit__11dSv_event_cFUs
-li r4, 0x2E01 ; WATCHED_MEETING_KORL_CUTSCENE (Necessary for Windfall music to play when warping there)
-bl onEventBit__11dSv_event_cFUs
-li r4, 0x0F80 ; KORL_UNLOCKED_AND_SPAWN_ON_WINDFALL
-bl onEventBit__11dSv_event_cFUs
-li r4, 0x0908 ; SAIL_INTRODUCTION_TEXT_AND_MAP_UNLOCKED
-bl onEventBit__11dSv_event_cFUs
-li r4, 0x2A08 ; ENTER_KORL_FOR_THE_FIRST_TIME_AND_SPAWN_ANYWHERE
-bl onEventBit__11dSv_event_cFUs
-li r4, 0x0902 ; SAW_DRAGON_ROOST_ISLAND_INTRO
-bl onEventBit__11dSv_event_cFUs
-li r4, 0x1F40 ; SAW_QUILL_CUTSCENE_ON_DRI
-bl onEventBit__11dSv_event_cFUs
-li r4, 0x0A80 ; KORL_DINS_PEARL_TEXT_ALLOWING_YOU_TO_ENTER_HIM
-bl onEventBit__11dSv_event_cFUs
-li r4, 0x0901 ; TRIGGERED_MAP_FISH
-bl onEventBit__11dSv_event_cFUs
-li r4, 0x0A20 ; WATCHED_FOREST_HAVEN_INTRO_CUTSCENE
-bl onEventBit__11dSv_event_cFUs
-li r4, 0x1801 ; WATCHED_DEKU_TREE_CUTSCENE
-bl onEventBit__11dSv_event_cFUs
-li r4, 0x0A08 ; TALKED_TO_KORL_AFTER_LEAVING_FH
-bl onEventBit__11dSv_event_cFUs
-li r4, 0x0808 ; Needed so that exiting the pirate ship takes you to Windfall instead of the tutorial
-bl onEventBit__11dSv_event_cFUs
-li r4, 0x1F02 ; TALKED_TO_KORL_AFTER_GETTING_BOMBS
-bl onEventBit__11dSv_event_cFUs
-li r4, 0x2F20 ; Talked to KoRL after getting Nayru's Pearl
-bl onEventBit__11dSv_event_cFUs
-li r4, 0x3840 ; TALKED_TO_KORL_POST_TOWER_CUTSCENE
-bl onEventBit__11dSv_event_cFUs
-li r4, 0x2D04 ; MASTER_SWORD_CUTSCENE
-bl onEventBit__11dSv_event_cFUs
-li r4, 0x3802 ; COLORS_IN_HYRULE
-bl onEventBit__11dSv_event_cFUs
-li r4, 0x2D01 ; ANIMATION_SET_2 (Saw cutscene before Helmaroc King where Aryll is rescued)
-bl onEventBit__11dSv_event_cFUs
-li r4, 0x2D02 ; TETRA_TO_ZELDA_CUTSCENE
-bl onEventBit__11dSv_event_cFUs
-li r4, 0x3201 ; KoRL told you about the sages
-bl onEventBit__11dSv_event_cFUs
-li r4, 0x3380 ; KoRL told you about the Triforce shards
-bl onEventBit__11dSv_event_cFUs
-li r4, 0x1001 ; WATCHED_FIRE_AND_ICE_ARROWS_CUTSCENE
-bl onEventBit__11dSv_event_cFUs
-li r4, 0x2E04 ; MEDLI_IN_EARTH_TEMPLE_ENTRANCE
-bl onEventBit__11dSv_event_cFUs
-li r4, 0x2920 ; MEDLI_IN_EARTH_TEMPLE
-bl onEventBit__11dSv_event_cFUs
-li r4, 0x1620 ; Medli is in dungeon mode and can be lifted/called
-bl onEventBit__11dSv_event_cFUs
-li r4, 0x3304 ; Saw event where Medli calls to you from within jail
-bl onEventBit__11dSv_event_cFUs
-li r4, 0x2910 ; MAKAR_IN_WIND_TEMPLE
-bl onEventBit__11dSv_event_cFUs
-li r4, 0x1610 ; Makar is in dungeon mode and can be lifted/called
-bl onEventBit__11dSv_event_cFUs
-li r4, 0x3440 ; Saw event where Makar calls to you from within jail
-bl onEventBit__11dSv_event_cFUs
-li r4, 0x3A20 ; Fishman and KoRL talked about Forsaken Fortress after you beat Molgera
-bl onEventBit__11dSv_event_cFUs
-li r4, 0x2D08 ; HYRULE_3_WARP_CUTSCENE
-bl onEventBit__11dSv_event_cFUs
-li r4, 0x3980 ; HYRULE_3_ELECTRICAL_BARRIER_CUTSCENE_1
-bl onEventBit__11dSv_event_cFUs
-li r4, 0x3B02 ; Saw cutscene before Puppet Ganon fight
-bl onEventBit__11dSv_event_cFUs
-li r4, 0x4002 ; Saw cutscene before Ganondorf fight
-bl onEventBit__11dSv_event_cFUs
+; bl item_func_shield__Fv
+; bl item_func_normal_sail__Fv
+; bl item_func_wind_tact__Fv ; Wind Waker
+; bl item_func_tact_song1__Fv ; Wind's Requiem
+; bl item_func_tact_song2__Fv ; Ballad of Gales
+; bl item_func_tact_song6__Fv ; Song of Passing
+; bl item_func_pirates_omamori__Fv ; Pirate's Charm
 
-lis r3, 0x803C5D60@ha
-addi r3, r3, 0x803C5D60@l
-li r4, 0x0310 ; Saw event where Grandma gives you the Hero's Clothes
-bl onEventBit__11dSv_event_cFUs
+
+; lis r3, 0x803C522C@ha
+; addi r3, r3, 0x803C522C@l
+; li r4, 0x3510 ; HAS_SEEN_INTRO
+; bl onEventBit__11dSv_event_cFUs
+; li r4, 0x0280 ; SAW_TETRA_IN_FOREST_OF_FAIRIES
+; bl onEventBit__11dSv_event_cFUs
+; li r4, 0x0520 ; GOSSIP_STONE_AT_FF1 (Causes Aryll and the pirates to disappear from Outset)
+; bl onEventBit__11dSv_event_cFUs
+; li r4, 0x2E01 ; WATCHED_MEETING_KORL_CUTSCENE (Necessary for Windfall music to play when warping there)
+; bl onEventBit__11dSv_event_cFUs
+; li r4, 0x0F80 ; KORL_UNLOCKED_AND_SPAWN_ON_WINDFALL
+; bl onEventBit__11dSv_event_cFUs
+; li r4, 0x0908 ; SAIL_INTRODUCTION_TEXT_AND_MAP_UNLOCKED
+; bl onEventBit__11dSv_event_cFUs
+; li r4, 0x2A08 ; ENTER_KORL_FOR_THE_FIRST_TIME_AND_SPAWN_ANYWHERE
+; bl onEventBit__11dSv_event_cFUs
+; li r4, 0x0902 ; SAW_DRAGON_ROOST_ISLAND_INTRO
+; bl onEventBit__11dSv_event_cFUs
+; li r4, 0x1F40 ; SAW_QUILL_CUTSCENE_ON_DRI
+; bl onEventBit__11dSv_event_cFUs
+; li r4, 0x0A80 ; KORL_DINS_PEARL_TEXT_ALLOWING_YOU_TO_ENTER_HIM
+; bl onEventBit__11dSv_event_cFUs
+; li r4, 0x0901 ; TRIGGERED_MAP_FISH
+; bl onEventBit__11dSv_event_cFUs
+; li r4, 0x0A20 ; WATCHED_FOREST_HAVEN_INTRO_CUTSCENE
+; bl onEventBit__11dSv_event_cFUs
+; li r4, 0x1801 ; WATCHED_DEKU_TREE_CUTSCENE
+; bl onEventBit__11dSv_event_cFUs
+; li r4, 0x0A08 ; TALKED_TO_KORL_AFTER_LEAVING_FH
+; bl onEventBit__11dSv_event_cFUs
+; li r4, 0x0808 ; Needed so that exiting the pirate ship takes you to Windfall instead of the tutorial
+; bl onEventBit__11dSv_event_cFUs
+; li r4, 0x1F02 ; TALKED_TO_KORL_AFTER_GETTING_BOMBS
+; bl onEventBit__11dSv_event_cFUs
+; li r4, 0x2F20 ; Talked to KoRL after getting Nayru's Pearl
+; bl onEventBit__11dSv_event_cFUs
+; li r4, 0x3840 ; TALKED_TO_KORL_POST_TOWER_CUTSCENE
+; bl onEventBit__11dSv_event_cFUs
+; li r4, 0x2D04 ; MASTER_SWORD_CUTSCENE
+; bl onEventBit__11dSv_event_cFUs
+; li r4, 0x3802 ; COLORS_IN_HYRULE
+; bl onEventBit__11dSv_event_cFUs
+; li r4, 0x2D01 ; ANIMATION_SET_2 (Saw cutscene before Helmaroc King where Aryll is rescued)
+; bl onEventBit__11dSv_event_cFUs
+; li r4, 0x2D02 ; TETRA_TO_ZELDA_CUTSCENE
+; bl onEventBit__11dSv_event_cFUs
+; li r4, 0x3201 ; KoRL told you about the sages
+; bl onEventBit__11dSv_event_cFUs
+; li r4, 0x3380 ; KoRL told you about the Triforce shards
+; bl onEventBit__11dSv_event_cFUs
+; li r4, 0x1001 ; WATCHED_FIRE_AND_ICE_ARROWS_CUTSCENE
+; bl onEventBit__11dSv_event_cFUs
+; li r4, 0x2E04 ; MEDLI_IN_EARTH_TEMPLE_ENTRANCE
+; bl onEventBit__11dSv_event_cFUs
+; li r4, 0x2920 ; MEDLI_IN_EARTH_TEMPLE
+; bl onEventBit__11dSv_event_cFUs
+; li r4, 0x1620 ; Medli is in dungeon mode and can be lifted/called
+; bl onEventBit__11dSv_event_cFUs
+; li r4, 0x3304 ; Saw event where Medli calls to you from within jail
+; bl onEventBit__11dSv_event_cFUs
+; li r4, 0x2910 ; MAKAR_IN_WIND_TEMPLE
+; bl onEventBit__11dSv_event_cFUs
+; li r4, 0x1610 ; Makar is in dungeon mode and can be lifted/called
+; bl onEventBit__11dSv_event_cFUs
+; li r4, 0x3440 ; Saw event where Makar calls to you from within jail
+; bl onEventBit__11dSv_event_cFUs
+; li r4, 0x3A20 ; Fishman and KoRL talked about Forsaken Fortress after you beat Molgera
+; bl onEventBit__11dSv_event_cFUs
+; li r4, 0x2D08 ; HYRULE_3_WARP_CUTSCENE
+; bl onEventBit__11dSv_event_cFUs
+; li r4, 0x3980 ; HYRULE_3_ELECTRICAL_BARRIER_CUTSCENE_1
+; bl onEventBit__11dSv_event_cFUs
+; li r4, 0x3B02 ; Saw cutscene before Puppet Ganon fight
+; bl onEventBit__11dSv_event_cFUs
+; li r4, 0x4002 ; Saw cutscene before Ganondorf fight
+; bl onEventBit__11dSv_event_cFUs
+
+; lis r3, 0x803C5D60@ha
+; addi r3, r3, 0x803C5D60@l
+; li r4, 0x0310 ; Saw event where Grandma gives you the Hero's Clothes
+; bl onEventBit__11dSv_event_cFUs
 
 
 ; Set four switch bits (0, 1, 3, 7) for several events that happen in the Fairy Woods on Outset.
@@ -155,106 +135,124 @@ bl onEventBit__11dSv_event_cFUs
 ; Also set the switch (8) for having unclogged the pond, since that boulder doesn't respond to normal bombs which would be odd.
 ; Also set the the switch (1E) for having seen the intro to the interior of the Forest Haven, where the camera pans up.
 ; Also set the the switch (13) for having seen the camera panning towards the treasure chest in Windfall Town Jail.
-lis r3, 0x803C5114@ha
-addi r3, r3, 0x803C5114@l
-lis r4, 0x4008
-addi r4, r4, 0x038B
-stw r4, 4 (r3)
+; lis r3, 0x803C5114@ha
+; addi r3, r3, 0x803C5114@l
+; lis r4, 0x4008
+; addi r4, r4, 0x038B
+; stw r4, 4 (r3)
 
-; Set two switch bits (3E and 3F) for having unlocked the song tablets in the Earth and Wind Temple entrances.
-lis r4, 0xC000
-stw r4, 8 (r3)
+; ; Set two switch bits (3E and 3F) for having unlocked the song tablets in the Earth and Wind Temple entrances.
+; lis r4, 0xC000
+; stw r4, 8 (r3)
 
-; Set a switch bit (19) for the event on Greatfish Isle so that the endless night never starts.
-lis r3, 0x803C4F88@ha ; Sea stage info.
-addi r3, r3, 0x803C4F88@l
-lis r4, 0x0200
-stw r4, 4 (r3)
-; Also set a switch bit (3F) for having seen the Windfall Island intro scene.
-lis r4, 0x8000
-stw r4, 8 (r3)
-; Also set a switch bit (58) for having seen the short event when you enter Forsaken Fortress 2 for the first time.
-; Also set a switch (0x50) for having seen the event where the camera pans around the Flight Control Platform.
-lis r4, 0x0101
-stw r4, 0xC (r3)
+; ; Set a switch bit (19) for the event on Greatfish Isle so that the endless night never starts.
+; lis r3, 0x803C4F88@ha ; Sea stage info.
+; addi r3, r3, 0x803C4F88@l
+; lis r4, 0x0200
+; stw r4, 4 (r3)
+; ; Also set a switch bit (3F) for having seen the Windfall Island intro scene.
+; lis r4, 0x8000
+; stw r4, 8 (r3)
+; ; Also set a switch bit (58) for having seen the short event when you enter Forsaken Fortress 2 for the first time.
+; ; Also set a switch (0x50) for having seen the event where the camera pans around the Flight Control Platform.
+; lis r4, 0x0101
+; stw r4, 0xC (r3)
 
-; Set a switch (21) for having seen the gossip stone event in DRC where KoRL tells you about giving bait to rats.
-; Also set a switch (09) for having seen the event where the camera pans up to Valoo when you go outside.
-; Also set a switch (46) for having seen the event where the camera pans around when you first enter DRC.
-lis r3, 0x803C4FF4@ha ; Dragon Roost Cavern stage info.
-addi r3, r3, 0x803C4FF4@l
-li r4, 0x0200
-stw r4, 4 (r3)
-li r4, 0x0002
-stw r4, 8 (r3)
-li r4, 0x0040
-stw r4, 0xC (r3)
+; ; Set a switch (21) for having seen the gossip stone event in DRC where KoRL tells you about giving bait to rats.
+; ; Also set a switch (09) for having seen the event where the camera pans up to Valoo when you go outside.
+; ; Also set a switch (46) for having seen the event where the camera pans around when you first enter DRC.
+; lis r3, 0x803C4FF4@ha ; Dragon Roost Cavern stage info.
+; addi r3, r3, 0x803C4FF4@l
+; li r4, 0x0200
+; stw r4, 4 (r3)
+; li r4, 0x0002
+; stw r4, 8 (r3)
+; li r4, 0x0040
+; stw r4, 0xC (r3)
 
-; Set a switch (36) for having seen the event where the camera pans around the first room when you first enter FW.
-lis r3, 0x803C5018@ha ; Forbidden Woods stage info.
-addi r3, r3, 0x803C5018@l
-lis r4, 0x0040
-stw r4, 8 (r3)
+; ; Set a switch (36) for having seen the event where the camera pans around the first room when you first enter FW.
+; lis r3, 0x803C5018@ha ; Forbidden Woods stage info.
+; addi r3, r3, 0x803C5018@l
+; lis r4, 0x0040
+; stw r4, 8 (r3)
 
-; Set a switch (2D) for having seen the event where the camera pans around when you go outside at the top of TotG.
-; Also set a switch (63) for having seen the event where the camera pans around the first room when you first enter TotG.
-lis r3, 0x803C503C@ha ; Tower of the Gods stage info.
-addi r3, r3, 0x803C503C@l
-li r4, 0x2000
-stw r4, 8 (r3)
-li r4, 0x0008
-stw r4, 0x10 (r3)
+; ; Set a switch (2D) for having seen the event where the camera pans around when you go outside at the top of TotG.
+; ; Also set a switch (63) for having seen the event where the camera pans around the first room when you first enter TotG.
+; lis r3, 0x803C503C@ha ; Tower of the Gods stage info.
+; addi r3, r3, 0x803C503C@l
+; li r4, 0x2000
+; stw r4, 8 (r3)
+; li r4, 0x0008
+; stw r4, 0x10 (r3)
 
-; Set a switch (2A) for having seen the gossip stone event where KoRL tells you Medli shows up on the compass.
-lis r3, 0x803C5060@ha ; Earth Temple stage info.
-addi r3, r3, 0x803C5060@l
-li r4, 0x0400
-stw r4, 8 (r3)
+; ; Set a switch (2A) for having seen the gossip stone event where KoRL tells you Medli shows up on the compass.
+; lis r3, 0x803C5060@ha ; Earth Temple stage info.
+; addi r3, r3, 0x803C5060@l
+; li r4, 0x0400
+; stw r4, 8 (r3)
 
-; Set a switch (12) for having seen the camera moving around event when you first enter Hyrule.
-; Also set a switch (6) for having completed the Triforce pushable blocks puzzle.
-lis r3, 0x803C50CC@ha ; Hyrule stage info.
-addi r3, r3, 0x803C50CC@l
-lis r4, 0x0004
-addi r4, r4, 0x0040
-stw r4, 4 (r3)
+; ; Set a switch (12) for having seen the camera moving around event when you first enter Hyrule.
+; ; Also set a switch (6) for having completed the Triforce pushable blocks puzzle.
+; lis r3, 0x803C50CC@ha ; Hyrule stage info.
+; addi r3, r3, 0x803C50CC@l
+; lis r4, 0x0004
+; addi r4, r4, 0x0040
+; stw r4, 4 (r3)
 
-; Set a switch (0D) for having seen the camera panning around when you first enter Ganon's Tower.
-; Also set a switch (1C) for having seen the camera panning around looking at the 4 lights in the room where you can drop down to the maze.
-; Also set a switch (1D) for having seen the camera panning around looking at the 4 boomerang switches in the room with the warp up to Forsaken Fortress.
-; Also set a switch (1E) for having seen the cutscene before the Puppet Ganon fight.
-; Also set a switch (12) for having seen the cutscene after the Puppet Ganon fight.
-; Also set a switch (1F) for having seen the cutscene before the Ganondorf fight.
-lis r3, 0x803C50A8@ha ; Ganon's Tower stage info.
-addi r3, r3, 0x803C50A8@l
-lis r4, 0xF004
-addi r4, r4, 0x2000
-stw r4, 4 (r3)
-
-
-li r3, 3 ; DRC stage ID
-li r4, 5 ; Seen the boss intro bit index
-bl generic_on_dungeon_bit
-li r3, 4 ; FW stage ID
-li r4, 5 ; Seen the boss intro bit index
-bl generic_on_dungeon_bit
-li r3, 5 ; TotG stage ID
-li r4, 5 ; Seen the boss intro bit index
-bl generic_on_dungeon_bit
-li r3, 6 ; ET stage ID
-li r4, 5 ; Seen the boss intro bit index
-bl generic_on_dungeon_bit
-li r3, 7 ; WT stage ID
-li r4, 5 ; Seen the boss intro bit index
-bl generic_on_dungeon_bit
+; ; Set a switch (0D) for having seen the camera panning around when you first enter Ganon's Tower.
+; ; Also set a switch (1C) for having seen the camera panning around looking at the 4 lights in the room where you can drop down to the maze.
+; ; Also set a switch (1D) for having seen the camera panning around looking at the 4 boomerang switches in the room with the warp up to Forsaken Fortress.
+; ; Also set a switch (1E) for having seen the cutscene before the Puppet Ganon fight.
+; ; Also set a switch (12) for having seen the cutscene after the Puppet Ganon fight.
+; ; Also set a switch (1F) for having seen the cutscene before the Ganondorf fight.
+; lis r3, 0x803C50A8@ha ; Ganon's Tower stage info.
+; addi r3, r3, 0x803C50A8@l
+; lis r4, 0xF004
+; addi r4, r4, 0x2000
+; stw r4, 4 (r3)
 
 
-; Make the game think the player has previously owned every type of spoil and bait so they don't get the item get animation the first time they pick each type up.
-lis r3, 0x803C4C9C@ha
-addi r3, r3, 0x803C4C9C@l
-li r4, 0xFF
-stb r4, 0 (r3) ; 803C4C9C, bitfield of what spoils bag items you've ever owned
-stb r4, 1 (r3) ; 803C4C9D, bitfield of what bait bag items you've ever owned
+; li r3, 3 ; DRC stage ID
+; li r4, 5 ; Seen the boss intro bit index
+; bl generic_on_dungeon_bit
+; li r3, 4 ; FW stage ID
+; li r4, 5 ; Seen the boss intro bit index
+; bl generic_on_dungeon_bit
+; li r3, 5 ; TotG stage ID
+; li r4, 5 ; Seen the boss intro bit index
+; bl generic_on_dungeon_bit
+; li r3, 6 ; ET stage ID
+; li r4, 5 ; Seen the boss intro bit index
+; bl generic_on_dungeon_bit
+; li r3, 7 ; WT stage ID
+; li r4, 5 ; Seen the boss intro bit index
+; bl generic_on_dungeon_bit
+
+
+; ; Start the player with 30 bombs and arrows. (But not the ability to actually use them.)
+; ; This change is so we can remove the code that sets your current bombs/arrows to 30 when you first get the bombs/bow.
+; ; That code would be bad if the player got a bomb bag/quiver upgrade beforehand, as then that code would reduce the max.
+; lis r3, 0x803C
+; addi r3, r3, 0x4C71
+; li r4, 30
+; stb r4, 0 (r3) ; Current arrows
+; stb r4, 1 (r3) ; Current bombs
+; stb r4, 6 (r3) ; Max arrows
+; stb r4, 7 (r3) ; Max bombs
+
+; ; Start the player with a magic meter so items that use it work correctly.
+; lis r3, 0x803C
+; addi r3, r3, 0x4C1B
+; li r4, 16 ; 16 is the normal starting size of the magic meter.
+; stb r4, 0 (r3) ; Max magic meter
+; stb r4, 1 (r3) ; Current magic meter
+
+; ; Make the game think the player has previously owned every type of spoil and bait so they don't get the item get animation the first time they pick each type up.
+; lis r3, 0x803C4C9C@ha
+; addi r3, r3, 0x803C4C9C@l
+; li r4, 0xFF
+; stb r4, 0 (r3) ; 803C4C9C, bitfield of what spoils bag items you've ever owned
+; stb r4, 1 (r3) ; 803C4C9D, bitfield of what bait bag items you've ever owned
 
 ; Give the player the number of Triforce Shards they want to start with.
 lis r5, num_triforce_shards_to_start_with@ha
@@ -278,16 +276,16 @@ bl onEventBit__11dSv_event_cFUs
 after_starting_triforce_shards:
 
 
-lis r5, should_start_with_heros_clothes@ha
-addi r5, r5, should_start_with_heros_clothes@l
-lbz r5, 0 (r5) ; Load bool of whether player should start with Hero's clothes
-cmpwi r5, 1
-bne after_starting_heros_clothes
-lis r3, 0x803C522C@ha
-addi r3, r3, 0x803C522C@l
-li r4, 0x2A80 ; HAS_HEROS_CLOTHES
-bl onEventBit__11dSv_event_cFUs
-after_starting_heros_clothes:
+; lis r5, should_start_with_heros_clothes@ha
+; addi r5, r5, should_start_with_heros_clothes@l
+; lbz r5, 0 (r5) ; Load bool of whether player should start with Hero's clothes
+; cmpwi r5, 1
+; bne after_starting_heros_clothes
+; lis r3, 0x803C522C@ha
+; addi r3, r3, 0x803C522C@l
+; li r4, 0x2A80 ; HAS_HEROS_CLOTHES
+; bl onEventBit__11dSv_event_cFUs
+; after_starting_heros_clothes:
 
 
 lis r5, skip_rematch_bosses@ha
@@ -307,36 +305,8 @@ li r4, 0x3A80 ; Recollection Molgera defeated
 bl onEventBit__11dSv_event_cFUs
 after_skipping_rematch_bosses:
 
+
 ; Function end stuff
-lwz r0, 0x14 (sp)
-mtlr r0
-addi sp, sp, 0x10
-blr
-
-
-; This function reads from an array of user-selected starting item IDs and adds them to your inventory.
-.global init_starting_gear
-init_starting_gear:
-stwu sp, -0x10 (sp)
-mflr r0
-stw r0, 0x14 (sp)
-stw r31, 0xC (sp)
-
-lis r31, starting_gear@ha
-addi r31, r31, starting_gear@l
-lbz r3, 0 (r31)
-b init_starting_gear_check_continue_loop
-
-init_starting_gear_begin_loop:
-bl convert_progressive_item_id
-bl execItemGet__FUc
-lbzu r3, 1(r31)
-init_starting_gear_check_continue_loop:
-cmplwi r3, 255
-bne+ init_starting_gear_begin_loop
-
-end_init_starting_gear:
-lwz r31, 0xC (sp)
 lwz r0, 0x14 (sp)
 mtlr r0
 addi sp, sp, 0x10
@@ -355,12 +325,6 @@ sword_mode:
 .global skip_rematch_bosses
 skip_rematch_bosses:
 .byte 1 ; By default skip them
-
-.global starting_gear
-starting_gear:
-.space 47, 0xFF ; Allocate space for up to 47 additional items (when changing this also update the constant in tweaks.py)
-.byte 0xFF
-
 .align 2 ; Align to the next 4 bytes
 
 
@@ -512,7 +476,7 @@ cmpwi r4, 30
 beq convert_progressive_quiver_id_to_60_arrow_quiver
 cmpwi r4, 60
 beq convert_progressive_quiver_id_to_99_arrow_quiver
-li r3, 0xAF ; Invalid quiver state; this shouldn't happen so just return the base quiver ID
+li r3, 0xAF ; Invalid bomb bag state; this shouldn't happen so just return the base bomb bag ID
 b convert_progressive_item_id_func_end
 
 convert_progressive_quiver_id_to_60_arrow_quiver:
@@ -1475,58 +1439,58 @@ medli_possible_et_spawn_positions:
 ; Custom function that gives a goddess pearl and also places it in the statue's hands automatically, and raises TotG if the player has all 3 pearls.
 .global give_pearl_and_raise_totg_if_necessary
 give_pearl_and_raise_totg_if_necessary:
-stwu sp, -0x10 (sp)
-mflr r0
-stw r0, 0x14 (sp)
-stw r31, 0xC (sp)
-mr r31, r4 ; Preserve argument r4, which has the pearl index to give
+; stwu sp, -0x10 (sp)
+; mflr r0
+; stw r0, 0x14 (sp)
+; stw r31, 0xC (sp)
+; mr r31, r4 ; Preserve argument r4, which has the pearl index to give
 
-bl onSymbol__20dSv_player_collect_cFUc ; Replace the call we overwrote to jump here, which gives the player a specific pearl
+; bl onSymbol__20dSv_player_collect_cFUc ; Replace the call we overwrote to jump here, which gives the player a specific pearl
 
-lis r3, 0x803C522C@ha ; Event flag bitfield, will be needed several times
-addi r3, r3, 0x803C522C@l
+; lis r3, 0x803C522C@ha ; Event flag bitfield, will be needed several times
+; addi r3, r3, 0x803C522C@l
 
-; Check the pearl index to know which event flag to set for the pearl being placed
-cmpwi r31, 0
-beq place_nayrus_pearl
-cmpwi r31, 1
-beq place_dins_pearl
-cmpwi r31, 2
-beq place_farores_pearl
-b check_should_raise_totg
+; ; Check the pearl index to know which event flag to set for the pearl being placed
+; cmpwi r31, 0
+; beq place_nayrus_pearl
+; cmpwi r31, 1
+; beq place_dins_pearl
+; cmpwi r31, 2
+; beq place_farores_pearl
+; b check_should_raise_totg
 
 place_nayrus_pearl:
-li r4, 0x1410 ; Placed Nayru's Pearl
-bl onEventBit__11dSv_event_cFUs
-b check_should_raise_totg
+; li r4, 0x1410 ; Placed Nayru's Pearl
+; bl onEventBit__11dSv_event_cFUs
+; b check_should_raise_totg
 
 place_dins_pearl:
-li r4, 0x1480 ; Placed Din's Pearl
-bl onEventBit__11dSv_event_cFUs
-b check_should_raise_totg
+; li r4, 0x1480 ; Placed Din's Pearl
+; bl onEventBit__11dSv_event_cFUs
+; b check_should_raise_totg
 
 place_farores_pearl:
-li r4, 0x1440 ; Placed Farore's Pearl
-bl onEventBit__11dSv_event_cFUs
+; li r4, 0x1440 ; Placed Farore's Pearl
+; bl onEventBit__11dSv_event_cFUs
 
 check_should_raise_totg:
-lis r5, 0x803C4CC7@ha ; Bitfield of the player's currently owned pearls
-addi r5, r5, 0x803C4CC7@l
-lbz r4, 0 (r5)
-cmpwi r4, 7
-bne after_raising_totg ; Only raise TotG if the player owns all 3 pearls
+; lis r5, 0x803C4CC7@ha ; Bitfield of the player's currently owned pearls
+; addi r5, r5, 0x803C4CC7@l
+; lbz r4, 0 (r5)
+; cmpwi r4, 7
+; bne after_raising_totg ; Only raise TotG if the player owns all 3 pearls
 
-li r4, 0x1E40 ; TOWER_OF_THE_GODS_RAISED
-bl onEventBit__11dSv_event_cFUs
-li r4, 0x2E80 ; PEARL_TOWER_CUTSCENE
-bl onEventBit__11dSv_event_cFUs
+; li r4, 0x1E40 ; TOWER_OF_THE_GODS_RAISED
+; bl onEventBit__11dSv_event_cFUs
+; li r4, 0x2E80 ; PEARL_TOWER_CUTSCENE
+; bl onEventBit__11dSv_event_cFUs
 after_raising_totg:
 
-lwz r31, 0xC (sp)
-lwz r0, 0x14 (sp)
-mtlr r0
-addi sp, sp, 0x10
-blr
+; lwz r31, 0xC (sp)
+; lwz r0, 0x14 (sp)
+; mtlr r0
+; addi sp, sp, 0x10
+; blr
 
 
 
@@ -1608,8 +1572,8 @@ fully_refill_magic_meter_on_load_save:
 
 lis r3, 0x803C4C1B@ha
 addi r3, r3, 0x803C4C1B@l
-lbz r4, 0 (r3) ; Load max magic meter
-stb r4, 1 (r3) ; Store to current magic meter
+; lbz r4, 0 (r3) ; Load max magic meter
+; stb r4, 1 (r3) ; Store to current magic meter
 
 lwz r3, 0x428 (r22) ; Replace the line we overwrote to branch here
 b 0x80231B0C ; Return

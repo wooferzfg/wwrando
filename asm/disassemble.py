@@ -3,13 +3,10 @@ from subprocess import call
 import tempfile
 import os
 import re
-from io import BytesIO
 
 from fs_helpers import *
-from wwlib.yaz0 import Yaz0
+from wwlib.yaz0_decomp import Yaz0Decompressor
 from wwlib.rel import REL
-from paths import ASM_PATH
-from tweaks import offset_to_address
 
 def disassemble_all_code(self):
   if not os.path.isfile(r"C:\devkitPro\devkitPPC\bin\powerpc-eabi-objdump.exe"):
@@ -36,7 +33,7 @@ def disassemble_all_code(self):
     else:
       data = self.gcm.read_file_data(file_path)
       if try_read_str(data, 0, 4) == "Yaz0":
-        data = Yaz0.decompress(data)
+        data = Yaz0Decompressor.decompress(data)
     
     basename, file_ext = os.path.splitext(basename_with_ext)
     
@@ -53,12 +50,7 @@ def disassemble_all_code(self):
     disassemble_file(bin_path, asm_path)
     
     if is_rel:
-      demangled_map_path = os.path.join(ASM_PATH, "maps-out", basename + ".map.out")
-      if os.path.isfile(demangled_map_path):
-        with open(demangled_map_path, "rb") as f:
-          rel_map_data = BytesIO(f.read())
-      else:
-        rel_map_data = self.gcm.read_file_data("files/maps/" + basename + ".map")
+      rel_map_data = self.gcm.read_file_data("files/maps/" + basename + ".map")
       rel_map_data.seek(0)
       rel_map_data = rel_map_data.read()
       
@@ -157,7 +149,7 @@ def add_relocations_and_symbols_to_rel(asm_path, rel_path, main_symbols, rel_map
       else:
         current_section_index = None
         current_section = None
-    symbol_entry_match = re.search(r"^  [0-9a-f]{8} [0-9a-f]{6} ([0-9a-f]{8})(?:  \d)? (.+?) \t", line, re.IGNORECASE)
+    symbol_entry_match = re.search(r"^  [0-9a-f]{8} [0-9a-f]{6} ([0-9a-f]{8})  \d (\S+)", line, re.IGNORECASE)
     if current_section is not None and symbol_entry_match:
       current_section_offset = current_section.offset
       if current_section_offset == 0:
@@ -224,37 +216,25 @@ def add_symbols_to_main(asm_path, main_symbols):
     for line in f:
       line = line.rstrip("\r\n")
       
-      match = re.search(r"^\s+([0-9a-f]+)(:\s.+)$", line, re.IGNORECASE)
+      match = re.search(r"^\s+([0-9a-f]+):\s", line, re.IGNORECASE)
       #print(match)
       if match:
         offset = int(match.group(1), 16)
-        address = offset_to_address(offset)
-        if address is not None:
-          if address in main_symbols:
-            symbol_name = main_symbols[address]
-            out_str += "; SYMBOL: %08X    %s\n" % (address, symbol_name)
-          
-          # Convert the displayed main.dol offset to an address in RAM.
-          line_after_offset = match.group(2)
-          line = "%08X%s" % (address, line_after_offset)
+        address = convert_offset_to_address(offset)
+        if address in main_symbols:
+          symbol_name = main_symbols[address]
+          out_str += "; FUNCSTART: %08X    %s\n" % (address, symbol_name)
       
-      match = re.search(r"^(.+ \t(?:bl|b|beq|bne|blt|bgt|ble|bge)\s+0x)([0-9a-f]+)$", line, re.IGNORECASE)
+      match = re.search(r"\s(bl|b|beq|bne|blt|bgt|ble|bge)\s+0x([0-9a-f]+)", line, re.IGNORECASE)
       #print(match)
+      out_str += line
       if match:
-        line_before_offset = match.group(1)
         offset = int(match.group(2), 16)
-        address = offset_to_address(offset)
-        if address is not None:
-          line = "%s%08X" % (line_before_offset, address)
-          out_str += line
-          if address in main_symbols:
-            symbol_name = main_symbols[address]
-            #print(symbol_name)
-            out_str += "      ; %08X    %s" % (address, symbol_name)
-        else:
-          out_str += line
-      else:
-        out_str += line
+        address = convert_offset_to_address(offset)
+        if address in main_symbols:
+          symbol_name = main_symbols[address]
+          #print(symbol_name)
+          out_str += "      ; %08X    %s" % (address, symbol_name)
       out_str += "\n"
       if line.endswith("blr"):
         out_str += "\n" # Separate functions
@@ -278,17 +258,15 @@ def get_list_of_all_rels(self):
 
 def get_main_symbols(self):
   main_symbols = {}
-  demangled_map_path = os.path.join(ASM_PATH, "maps-out", "framework.map.out")
-  if os.path.isfile(demangled_map_path):
-    with open(demangled_map_path, "rb") as f:
-      framework_map_contents = BytesIO(f.read())
-  else:
-    framework_map_contents = self.gcm.read_file_data("files/maps/framework.map")
+  framework_map_contents = self.gcm.read_file_data("files/maps/framework.map")
   framework_map_contents.seek(0)
   framework_map_contents = framework_map_contents.read().decode("ascii")
-  matches = re.findall(r"^  [0-9a-f]{8} [0-9a-f]{6} ([0-9a-f]{8})(?:  \d)? (.+?) \t", framework_map_contents, re.IGNORECASE | re.MULTILINE)
+  matches = re.findall(r"^  [0-9a-f]{8} [0-9a-f]{6} ([0-9a-f]{8})  \d (\S+)", framework_map_contents, re.IGNORECASE | re.MULTILINE)
   for match in matches:
     address, name = match
     address = int(address, 16)
     main_symbols[address] = name
   return main_symbols
+
+def convert_offset_to_address(offset):
+  return offset - 0x2620 + 0x800056E0
