@@ -1,6 +1,8 @@
 
 ### About
 
+NO RANDOMIZATION!
+
 This is an ISO patcher for The Legend of Zelda: The Wind Waker based on [wwrando](https://github.com/LagoLunatic/wwrando)
 Given the specific use of this program, I used brainfubar's fork of WWRando as a reference since he was going for a similar yet different end result.
 
