@@ -216,8 +216,9 @@ def convert_i4_to_color(i4):
 
 def convert_color_to_i4(color):
   r, g, b, a = get_rgba(color)
-  assert r == g == b
-  i4 = ((a >> 4) & 0xF)
+  assert r == g == b == a
+  i4 = 0
+  i4 |= ((r >> 4) & 0xF)
   return i4
 
 def convert_i8_to_color(i8):
@@ -929,7 +930,7 @@ def encode_image_to_cmpr_block(pixels, colors_to_color_indexes, block_x, block_y
   new_data.seek(0)
   return new_data.read()
 
-def color_exchange(image, base_color, replacement_color, mask_path=None, validate_mask_colors=True):
+def color_exchange(image, base_color, replacement_color, mask_path=None):
   if mask_path:
     mask_image = Image.open(mask_path).convert("RGBA")
     mask_pixels = mask_image.load()
@@ -955,21 +956,8 @@ def color_exchange(image, base_color, replacement_color, mask_path=None, validat
   pixels = image.load()
   for x in range(image.width):
     for y in range(image.height):
-      if mask_path:
-        if validate_mask_colors:
-          if mask_pixels[x, y] == (255, 0, 0, 255):
-            # Red, masked
-            pass
-          elif mask_pixels[x, y] == (255, 255, 255, 255):
-            # White, unmasked
-            continue
-          elif mask_pixels[x, y][3] != 0:
-            # Not red or white and also not completely transparent, so this is an invalid color.
-            r, g, b, a = mask_pixels[x, y]
-            raise Exception("Invalid color %02X%02X%02X%02X in mask %s" % (r, g, b, a, mask_path))
-        else:
-          if mask_pixels[x, y] != (255, 0, 0, 255):
-            continue
+      if mask_path and mask_pixels[x, y] != (255, 0, 0, 255):
+        continue
       
       r, g, b, a = pixels[x, y]
       h, s, v = colorsys.rgb_to_hsv(r/255, g/255, b/255)
