@@ -14,11 +14,6 @@ from wwlib.rarc import RARC
 from paths import ASSETS_PATH, ASM_PATH, SEEDGEN_PATH
 import customizer
 
-try:
-  from keys.seed_key import SEED_KEY
-except ImportError:
-  SEED_KEY = ""
-
 ORIGINAL_FREE_SPACE_RAM_ADDRESS = 0x803FCFA8
 ORIGINAL_DOL_SIZE = 0x3A52C0
 
@@ -72,8 +67,6 @@ DOL_SECTION_SIZES = [
   0x05220,
 ]
 
-MAXIMUM_ADDITIONAL_STARTING_ITEMS = 47
-
 def address_to_offset(address):
   # Takes an address in one of the sections of main.dol and converts it to an offset within main.dol.
   for section_index in range(len(DOL_SECTION_OFFSETS)):
@@ -86,20 +79,6 @@ def address_to_offset(address):
       return offset
   
   raise Exception("Unknown address: %08X" % address)
-
-def offset_to_address(offset):
-  # Takes an offset in main.dol and converts it to a RAM address, assuming it is part of main.dol that gets loaded into RAM.
-  for section_index in range(len(DOL_SECTION_OFFSETS)):
-    section_offset = DOL_SECTION_OFFSETS[section_index]
-    section_address = DOL_SECTION_ADDRESSES[section_index]
-    section_size = DOL_SECTION_SIZES[section_index]
-    
-    if section_offset <= offset < section_offset+section_size:
-      address = offset - section_offset + section_address
-      return address
-  
-  # Return None when the offset is not inside of any section.
-  return None
 
 def split_pointer_into_high_and_low_half_for_hardcoding(pointer):
   high_halfword = (pointer & 0xFFFF0000) >> 16
@@ -217,12 +196,12 @@ def make_all_text_instant(self):
     # Get rid of wait+dismiss commands
     # Exclude message 7726, for Maggie's Father throwing rupees at you. He only spawns the rupees past a certain frame of his animation, so if you skipped past the text too quickly you wouldn't get any rupees.
     # Exclude message 2488, for Orca talking to you after you learn the Hurricane Spin. Without the wait+dismiss he would wind up repeating some of his lines once.
-    if msg.message_id != 7726 and msg.message_id != 2488:
-      msg.string = re.sub(
-        r"\\\{1A 07 00 00 04 [0-9a-f]{2} [0-9a-f]{2}\}",
-        "",
-        msg.string, 0, re.IGNORECASE
-      )
+    # if msg.message_id != 7726 and msg.message_id != 2488:
+      # msg.string = re.sub(
+        # r"\\\{1A 07 00 00 04 [0-9a-f]{2} [0-9a-f]{2}\}",
+        # "",
+        # msg.string, 0, re.IGNORECASE
+      # )
     
     # Get rid of wait+dismiss (prompt) commands
     msg.string = re.sub(
@@ -231,7 +210,10 @@ def make_all_text_instant(self):
       msg.string, 0, re.IGNORECASE
     )
   
-  # Also change the B button to act as a hold-to-skip button during dialogue.
+  # # Also change the B button to act as a hold-to-skip button during dialogue.
+  apply_patch(self, "b_button_skips_text")
+  
+def b_skips(self):
   apply_patch(self, "b_button_skips_text")
 
 def fix_deku_leaf_model(self):
@@ -628,19 +610,19 @@ def modify_title_screen_logo(self):
   new_subtitle_image_path = os.path.join(ASSETS_PATH, "subtitle.png")
   tlogoe_arc = self.get_arc("files/res/Object/TlogoE.arc")
   
-  title_image = tlogoe_arc.get_file("logo_zelda_main.bti")
-  title_image.replace_image_from_path(new_title_image_path)
-  title_image.save_changes()
+  # title_image = tlogoe_arc.get_file("logo_zelda_main.bti")
+  # title_image.replace_image_from_path(new_title_image_path)
+  # title_image.save_changes()
   
-  subtitle_model = tlogoe_arc.get_file("subtitle_start_anim_e.bdl")
-  subtitle_image = subtitle_model.tex1.textures_by_name["logo_sub_e"][0]
-  subtitle_image.replace_image_from_path(new_subtitle_image_path)
-  subtitle_model.save_changes()
+  # subtitle_model = tlogoe_arc.get_file("subtitle_start_anim_e.bdl")
+  # subtitle_image = subtitle_model.tex1.textures_by_name["logo_sub_e"][0]
+  # subtitle_image.replace_image_from_path(new_subtitle_image_path)
+  # subtitle_model.save_changes()
   
-  subtitle_glare_model = tlogoe_arc.get_file("subtitle_kirari_e.bdl")
-  subtitle_glare_image = subtitle_glare_model.tex1.textures_by_name["logo_sub_e"][0]
-  subtitle_glare_image.replace_image_from_path(new_subtitle_image_path)
-  subtitle_glare_model.save_changes()
+  # subtitle_glare_model = tlogoe_arc.get_file("subtitle_kirari_e.bdl")
+  # subtitle_glare_image = subtitle_glare_model.tex1.textures_by_name["logo_sub_e"][0]
+  # subtitle_glare_image.replace_image_from_path(new_subtitle_image_path)
+  # subtitle_glare_model.save_changes()
   
   # Move where the subtitle is drawn downwards a bit so the word "the" doesn't get covered up by the main logo.
   title_data = self.get_raw_file("files/rels/d_a_title.rel")
@@ -654,16 +636,16 @@ def modify_title_screen_logo(self):
   write_u16(data, 0x162, 0x106) # Increase Y pos by 16 pixels (0xF6 -> 0x106)
 
 def update_game_name_icon_and_banners(self):
-  new_game_name = "Wind Waker Randomized %s" % self.seed
+  new_game_name = "Wind Waker %s" % self.seed
   banner_data = self.get_raw_file("files/opening.bnr")
   write_str(banner_data, 0x1860, new_game_name, 0x40)
   
-  new_game_id = "GZLE99"
+  new_game_id = "GZLE01"
   boot_data = self.get_raw_file("sys/boot.bin")
   write_str(boot_data, 0, new_game_id, 6)
   
   dol_data = self.get_raw_file("sys/main.dol")
-  new_memory_card_game_name = "Wind Waker Randomizer"
+  new_memory_card_game_name = "Wind Waker"
   write_str(dol_data, address_to_offset(0x80339690), new_memory_card_game_name, 21)
   
   new_image_file_path = os.path.join(ASSETS_PATH, "banner.png")
@@ -909,8 +891,8 @@ def update_auction_item_names(self):
   msg = self.bmg.messages_by_id[7443]
   msg.string = "\\{1A 06 FF 00 00 01}%s" % item_name
 
-def update_battlesquid_item_names(self):
-  item_name = self.logic.done_item_locations["Windfall Island - Battlesquid - First Prize"]
+def update_sinking_ships_item_names(self):
+  item_name = self.logic.done_item_locations["Windfall Island - Sinking Ships - First Prize"]
   msg = self.bmg.messages_by_id[7520]
   msg.string = "\\{1A 05 01 00 8E}Hoorayyy! Yayyy! Yayyy!\nOh, thank you, Mr. Sailor!\n\n\n"
   msg.string += word_wrap_string(
@@ -918,7 +900,7 @@ def update_battlesquid_item_names(self):
     max_line_length=43
   )
   
-  item_name = self.logic.done_item_locations["Windfall Island - Battlesquid - Second Prize"]
+  item_name = self.logic.done_item_locations["Windfall Island - Sinking Ships - Second Prize"]
   msg = self.bmg.messages_by_id[7521]
   msg.string = "\\{1A 05 01 00 8E}Hoorayyy! Yayyy! Yayyy!\nOh, thank you so much, Mr. Sailor!\n\n\n"
   msg.string += word_wrap_string(
@@ -927,7 +909,7 @@ def update_battlesquid_item_names(self):
   )
   
   # The high score one doesn't say the item name in text anywhere, so no need to update it.
-  #item_name = self.logic.done_item_locations["Windfall Island - Battlesquid - 20 Shots or Less Prize"]
+  #item_name = self.logic.done_item_locations["Windfall Island - Sinking Ships - 20 Shots or Less Prize"]
   #msg = self.bmg.messages_by_id[7523]
 
 def update_item_names_in_letter_advertising_rock_spire_shop(self):
@@ -971,8 +953,27 @@ def update_savage_labyrinth_hint_tablet(self):
   floor_30_is_progress = (floor_30_item_name in self.logic.all_progress_items)
   floor_50_is_progress = (floor_50_item_name in self.logic.all_progress_items)
   
-  floor_30_item_name = get_hint_item_name(floor_30_item_name)
-  floor_50_item_name = get_hint_item_name(floor_50_item_name)
+  if self.options.get("progression_triforce_charts"):
+    if floor_30_item_name.startswith("Triforce Chart"):
+      floor_30_item_name = "Triforce Chart"
+    if floor_50_item_name.startswith("Triforce Chart"):
+      floor_50_item_name = "Triforce Chart"
+  
+  if self.options.get("progression_treasure_charts"):
+    if floor_30_item_name.startswith("Treasure Chart"):
+      floor_30_item_name = "Treasure Chart"
+    if floor_50_item_name.startswith("Treasure Chart"):
+      floor_50_item_name = "Treasure Chart"
+  
+  if self.options.get("progression_dungeons"):
+    if floor_30_item_name.endswith("Small Key"):
+      floor_30_item_name = "Small Key"
+    if floor_30_item_name.endswith("Big Key"):
+      floor_30_item_name = "Big Key"
+    if floor_50_item_name.endswith("Small Key"):
+      floor_50_item_name = "Small Key"
+    if floor_50_item_name.endswith("Big Key"):
+      floor_50_item_name = "Big Key"
   
   if floor_30_is_progress and not floor_30_item_name in self.progress_item_hints:
     raise Exception("Could not find progress item hint for item: %s" % floor_30_item_name)
@@ -1008,45 +1009,28 @@ def update_savage_labyrinth_hint_tablet(self):
     max_line_length=43
   )
 
-def update_randomly_chosen_hints(self):
+def update_fishmen_hints(self):
   hints = []
   unique_items_given_hint_for = []
   possible_item_locations = list(self.logic.done_item_locations.keys())
   self.rng.shuffle(possible_item_locations)
-  num_fishman_hints = 15
-  desired_num_hints = 1 + num_fishman_hints
-  min_num_hints_needed = 1 + 1
-  while True:
-    if not possible_item_locations:
-      if len(hints) >= min_num_hints_needed:
-        break
-      elif len(hints) >= 1:
-        # Succeeded at making at least 1 hint but not enough to reach the minimum.
-        # So duplicate the hint(s) we DID make to fill up the missing slots.
-        unique_hints = hints.copy()
-        while len(hints) < min_num_hints_needed:
-          hints += unique_hints
-        hints = hints[:min_num_hints_needed]
-        break
-      else:
-        raise Exception("No valid items to give hints for")
-    
-    location_name = possible_item_locations.pop()
-    if location_name in self.race_mode_required_locations:
-      # You already know which boss locations have a required item and which don't in race mode by looking at the sea chart.
-      continue
-    
+  for location_name in possible_item_locations:
     item_name = self.logic.done_item_locations[location_name]
     if item_name not in self.logic.all_progress_items:
       continue
-    if self.logic.is_dungeon_item(item_name) and not self.options.get("keylunacy"):
+    if self.logic.is_dungeon_item(item_name):
       continue
-    
-    item_name = get_hint_item_name(item_name)
+    if item_name in unique_items_given_hint_for:
+      # Don't give hints for 2 instances of the same item (e.g. empty bottle, progressive bow, etc).
+      continue
+    if item_name not in self.progress_item_hints:
+      # Charts and dungeon items don't have hints
+      continue
     if item_name == "Bait Bag":
       # Can't access fishmen hints until you already have the bait bag
       continue
-    if len(hints) >= desired_num_hints:
+    if len(hints) >= 3:
+      # 3 hints max per seed.
       break
     
     zone_name, specific_location_name = self.logic.split_location_name_by_zone(location_name)
@@ -1059,43 +1043,13 @@ def update_randomly_chosen_hints(self):
       island_name = self.dungeon_and_cave_island_locations[zone_name]
       island_hint_name = self.island_name_hints[island_name]
     elif zone_name in self.island_name_hints:
-      island_name = zone_name
-      island_hint_name = self.island_name_hints[island_name]
+      island_hint_name = self.island_name_hints[zone_name]
     elif zone_name in self.logic.DUNGEON_NAMES.values():
       continue
     else:
       continue
     
-    if (item_name, island_name) in unique_items_given_hint_for: # Don't give hint for same type of item in same zone
-      continue
-    
     item_hint_name = self.progress_item_hints[item_name]
-    
-    hints.append((item_hint_name, island_hint_name))
-    
-    unique_items_given_hint_for.append((item_name, island_name))
-    
-  update_big_octo_great_fairy_item_name_hint(self, hints[0])
-  update_fishmen_hints(self, hints[1:])
-
-def get_hint_item_name(item_name):
-  if item_name.startswith("Triforce Chart"):
-    return "Triforce Chart"
-  if item_name.startswith("Treasure Chart"):
-    return "Treasure Chart"
-  if item_name.endswith("Small Key"):
-    return "Small Key"
-  if item_name.endswith("Big Key"):
-    return "Big Key"
-  return item_name
-
-def update_fishmen_hints(self, hints):
-  islands = list(range(1, 49+1))
-  for fishman_hint_number in range(len(islands)):
-    item_hint_name, island_hint_name = hints[fishman_hint_number % len(hints)]
-    
-    fishman_island_number = self.rng.choice(islands)
-    islands.remove(fishman_island_number)
     
     hint_lines = []
     hint_lines.append(
@@ -1114,25 +1068,16 @@ def update_fishmen_hints(self, hints):
       hint_line = word_wrap_string(hint_line)
       hint_line = pad_string_to_next_4_lines(hint_line)
       hint += hint_line
+    hints.append(hint)
+    
+    unique_items_given_hint_for.append(item_name)
+  
+  for fishman_island_number in range(1, 49+1):
+    hint = self.rng.choice(hints)
     
     msg_id = 13026 + fishman_island_number
     msg = self.bmg.messages_by_id[msg_id]
     msg.string = hint
-
-def update_big_octo_great_fairy_item_name_hint(self, hint):
-  item_hint_name, island_hint_name = hint
-  self.bmg.messages_by_id[12015].string = word_wrap_string(
-    "\\{1A 06 FF 00 00 05}In \\{1A 06 FF 00 00 01}%s\\{1A 06 FF 00 00 05}, you will find an item." % island_hint_name,
-    max_line_length=43
-  )
-  self.bmg.messages_by_id[12016].string = word_wrap_string(
-    "\\{1A 06 FF 00 00 05}...\\{1A 06 FF 00 00 01}%s\\{1A 06 FF 00 00 05} which may help you on your quest." % item_hint_name.capitalize(),
-    max_line_length=43
-  )
-  self.bmg.messages_by_id[12017].string = word_wrap_string(
-    "\\{1A 06 FF 00 00 05}When you find you have need of such an item, you must journey to that place.",
-    max_line_length=43
-  )
 
 def shorten_zephos_event(self):
   # Make the Zephos event end when the player gets the item from the shrine, before Zephos actually appears.
@@ -1305,9 +1250,6 @@ def remove_makar_kidnapping_event(self):
 def increase_player_movement_speeds(self):
   dol_data = self.get_raw_file("sys/main.dol")
   
-  # Double crawling speed
-  write_float(dol_data, address_to_offset(0x8035DB94), 3.0*2)
-  
   # Change rolling so that it scales from 20.0 to 26.0 speed depending on the player's speed when they roll.
   # (In vanilla, it scaled from 0.5 to 26.0 instead.)
   write_float(dol_data, address_to_offset(0x8035D3D0), 6.0/17.0) # Rolling speed multiplier on walking speed
@@ -1326,6 +1268,7 @@ def add_chart_number_to_item_get_messages(self):
 # Speeds up the grappling hook significantly to behave similarly to HD
 def increase_grapple_animation_speed(self):
   dol_data = self.get_raw_file("sys/main.dol")
+  
   
   # Double the velocity the grappling hook is thrown out (from 20.0 to 40.0)
   write_float(dol_data, address_to_offset(0x803F9D28), 40.0) # Grappling hook velocity
@@ -1365,6 +1308,9 @@ def increase_block_moving_animation(self):
 
 def increase_misc_animations(self):
   dol_data = self.get_raw_file("sys/main.dol")
+  
+  # Double crawling speed
+  write_float(dol_data, address_to_offset(0x8035DB94), 3.0*2)
   
   #increase the animation speed that Link initiates a climb (0.8 -> 1.6)
   write_float(dol_data, address_to_offset(0x8035D738), 1.6)
@@ -1444,22 +1390,6 @@ def update_sword_mode_game_variable(self):
     write_u8(dol_data, address_to_offset(sword_mode_address), 2)
   else:
     raise Exception("Unknown sword mode: %s" % self.options.get("sword_mode"))
-
-def update_starting_gear(self):
-  starting_gear = self.options.get("starting_gear")
-  if len(starting_gear) > MAXIMUM_ADDITIONAL_STARTING_ITEMS:
-    raise Exception("Tried to start with more starting items than the maximum number that was allocated")
-  starting_gear_array_address = self.custom_symbols["starting_gear"]
-  dol_data = self.get_raw_file("sys/main.dol")
-  normal_items = 0
-  for i in range(len(starting_gear)):
-    item_id = self.item_name_to_id[starting_gear[i]]
-    write_u8(dol_data,
-             address_to_offset(starting_gear_array_address + i),
-             item_id)
-  write_u8(dol_data,
-           address_to_offset(starting_gear_array_address + len(starting_gear)),
-           0xFF)
 
 def update_text_for_swordless(self):
   msg = self.bmg.messages_by_id[1128]
@@ -1572,11 +1502,7 @@ def show_seed_hash_on_name_entry_screen(self):
   if not self.permalink:
     return
   
-  if self.options.get("generate_spoiler_log"):
-    integer_seed = self.convert_string_to_integer_md5(self.permalink)
-  else:
-    # When no spoiler log is generated, the seed key also affects randomization, not just the data in the permalink.
-    integer_seed = self.convert_string_to_integer_md5(self.permalink + SEED_KEY)
+  integer_seed = self.convert_string_to_integer_md5(self.permalink)
   temp_rng = Random()
   temp_rng.seed(integer_seed)
   
@@ -1813,9 +1739,26 @@ def add_chest_in_place_of_master_sword(self):
     new_actor.auxilary_param_2 = orig_actor.auxilary_param_2
     new_actor.enemy_number = orig_actor.enemy_number
   
+  layer_5_scobs = ms_chamber_dzr.entries_by_type_and_layer("SCOB", 5)
+  orig_tag_ev = next(x for x in layer_5_scobs if x.name == "TagEv")
+  
+  new_tag_ev = ms_chamber_dzr.add_entity("SCOB", layer=None)
+  new_tag_ev.name = orig_tag_ev.name
+  new_tag_ev.params = orig_tag_ev.params
+  new_tag_ev.x_pos = orig_tag_ev.x_pos
+  new_tag_ev.y_pos = orig_tag_ev.y_pos
+  new_tag_ev.z_pos = orig_tag_ev.z_pos
+  new_tag_ev.auxilary_param = orig_tag_ev.auxilary_param
+  new_tag_ev.y_rot = orig_tag_ev.y_rot
+  new_tag_ev.auxilary_param_2 = orig_tag_ev.auxilary_param_2
+  new_tag_ev.scale_x = orig_tag_ev.scale_x
+  new_tag_ev.scale_y = orig_tag_ev.scale_y
+  new_tag_ev.scale_z = orig_tag_ev.scale_z
+  
   # Remove the entities on layer 5 that are no longer necessary.
   for orig_actor in layer_5_actors:
     ms_chamber_dzr.remove_entity(orig_actor, "ACTR", layer=5)
+  ms_chamber_dzr.remove_entity(orig_tag_ev, "SCOB", layer=5)
   
   
   # Add the chest.
@@ -1842,6 +1785,37 @@ def add_chest_in_place_of_master_sword(self):
   spawn.z_pos = -4240.7
   
   ms_chamber_dzr.save_changes()
+  
+  
+  # Modify the intro event to shorten it.
+  event_list = self.get_arc("files/res/Stage/kenroom/Stage.arc").get_file("event_list.dat")
+  battle_start_event = event_list.events_by_name["btl_of_swroom"]
+  camera = next(actor for actor in battle_start_event.actors if actor.name == "CAMERA")
+  link = next(actor for actor in battle_start_event.actors if actor.name == "Link")
+  message = next(actor for actor in battle_start_event.actors if actor.name == "MESSAGE")
+  flame_wall = next(actor for actor in battle_start_event.actors if actor.name == "Yswdr00")
+  timekeeper = next(actor for actor in battle_start_event.actors if actor.name == "TIMEKEEPER")
+  zelda = next(actor for actor in battle_start_event.actors if actor.name == "p_zelda")
+  
+  # Remove the message actor that creates text boxes of Ganondorf speaking to Link.
+  battle_start_event.actors.remove(message)
+  
+  # Change the conditions for other actions to start to not depend on the now-removed message actor.
+  camera.actions[7].starting_flags[0] = -1
+  link.actions[12].starting_flags[0] = -1
+  flame_wall.actions[1].starting_flags[0] = 120 # Starts right before Link jumps in surprise
+  timekeeper.actions[8].starting_flags[0] = -1
+  
+  # Remove Zelda.
+  battle_start_event.actors.remove(zelda)
+  
+  # Cut out the unnecessary sections of the event.
+  camera.actions = camera.actions[7:]
+  timekeeper.actions = timekeeper.actions[8:]
+  link.actions[5].starting_flags[0] = -1 # Remove condition to start based on a removed camera action
+  link.actions = link.actions[5:6+1] + link.actions[11:]
+  
+  # TODO: The darknuts respawn if you re-enter the room, they should stay permanently dead.
 
 def update_beedle_spoil_selling_text(self):
   # Update Beedle's dialogue when you try to sell something to him so he mentions he doesn't want Blue Chu Jelly.
@@ -1875,16 +1849,3 @@ def remove_phantom_ganon_requirement_from_eye_reefs(self):
       if (gunboat.auxilary_param & 0xFF) == 0x2A: # Switch 2A is Phantom Ganon being dead.
         gunboat.auxilary_param = (gunboat.auxilary_param & 0xFF00) | 0xFF
         gunboat.save_changes()
-
-def test_room(self):
-  apply_patch(self, "test_room")
-  
-  dol_data = self.get_raw_file("sys/main.dol")
-  
-  stage_name_ptr = self.custom_symbols["test_room_stage_name"]
-  room_index_ptr = self.custom_symbols["test_room_room_index"]
-  spawn_id_ptr = self.custom_symbols["test_room_spawn_id"]
-  
-  write_str(dol_data, address_to_offset(stage_name_ptr), self.test_room_args["stage"], 8)
-  write_u8(dol_data, address_to_offset(room_index_ptr), self.test_room_args["room"])
-  write_u8(dol_data, address_to_offset(spawn_id_ptr), self.test_room_args["spawn"])

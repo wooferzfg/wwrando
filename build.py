@@ -4,7 +4,7 @@ import os
 
 from randomizer import VERSION_WITHOUT_COMMIT
 
-base_name = "Wind Waker Randomizer"
+base_name = "Wind Waker Patcher"
 base_name_with_version = base_name + " " + VERSION_WITHOUT_COMMIT
 
 import struct

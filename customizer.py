@@ -12,8 +12,6 @@ from wwlib.texture_utils import *
 from wwlib import texture_utils
 from paths import ASSETS_PATH
 
-MAX_ALLOWED_LINK_ARC_FILE_SIZE_IN_MEGABYTES = 1.45
-
 def get_model_metadata(custom_model_name):
   if custom_model_name == "Random":
     return {}
@@ -125,9 +123,6 @@ def replace_link_model(self):
   
   with open(custom_link_arc_path, "rb") as f:
     custom_link_arc_data = BytesIO(f.read())
-  custom_link_arc_size_in_mb = data_len(custom_link_arc_data) / (1024 * 1024)
-  if custom_link_arc_size_in_mb > MAX_ALLOWED_LINK_ARC_FILE_SIZE_IN_MEGABYTES+0.005:
-    raise Exception("The chosen custom player model's filesize is too large and may cause crashes or other issues in game.\nMax size: %.2fMB\nSelected model size: %.2fMB" % (MAX_ALLOWED_LINK_ARC_FILE_SIZE_IN_MEGABYTES, custom_link_arc_size_in_mb))
   self.replace_arc("files/res/Object/Link.arc", custom_link_arc_data)
   
   # The texture shown on the wall when reflecting light with the mirror shield is separate from Link.arc.
@@ -290,7 +285,7 @@ def get_model_preview_image(custom_model_name, prefix, selected_colors):
     mask_path = custom_model_metadata["preview_" + prefix + "_color_mask_paths"][custom_color_basename]
     check_valid_mask_path(mask_path)
     
-    preview_image = texture_utils.color_exchange(preview_image, base_color, custom_color, mask_path=mask_path, validate_mask_colors=False)
+    preview_image = texture_utils.color_exchange(preview_image, base_color, custom_color, mask_path=mask_path)
   
   return preview_image
 
@@ -305,19 +300,6 @@ def check_valid_mask_path(mask_path):
   
   if given_filename != true_filename:
     raise Exception("Color mask path's actual capitalization differs from the capitalization given in metadata.txt.\nGiven: %s, actual: %s" % (given_filename, true_filename))
-
-def get_default_colors(self):
-  custom_model_metadata = get_model_metadata(self.custom_model_name)
-  disable_casual_clothes = custom_model_metadata.get("disable_casual_clothes", False)
-  
-  if self.options.get("player_in_casual_clothes") and not disable_casual_clothes:
-    prefix = "casual"
-  else:
-    prefix = "hero"
-  
-  custom_colors = custom_model_metadata.get(prefix + "_custom_colors", {})
-  
-  return custom_colors
 
 class YamlOrderedDictLoader(yaml.SafeLoader):
   pass
