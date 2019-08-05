@@ -31,7 +31,7 @@ If you're looking for only skin customization check out brainfubar's release: ht
 
 ### Download
 
-See the [releases page](https://github.com/WideBoner/wwrando/releases) to download zip files containing the program and assets.
+Release exe coming soon.
 Source works, builds fail to read from ASM path not sure why.
 
 ### Information
