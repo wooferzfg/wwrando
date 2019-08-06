@@ -81,5 +81,5 @@ SageOfMirrors (file format documentation)
 LordNed (file format documentation)  
 CryZe (event flag documentation)  
 
-brainfubar for stripped wwrando this was based on: https://github.com/brainfubar/wwrando
+brainfubar for stripped wwrando this was based on: https://github.com/brainfubar/wwrando  
 JarheadHME for helping get releases working and updating :)
