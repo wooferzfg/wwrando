@@ -144,9 +144,9 @@ class Randomizer:
         tweaks.increase_misc_animations(self)
       if self.options.get("tingle_chests_without_tuner"):
         tweaks.apply_patch(self, "tingle_chests_without_tuner")
-      # if self.options.get("update_game_name_icon_and_banners"):
-        # tweaks.update_game_name_icon_and_banners(self)
-        # tweaks.modify_title_screen_logo(self)
+      if self.options.get("KORL_control"):
+        tweaks.apply_patch(self, "KORL_control")
+
 
     
     options_completed += 1
