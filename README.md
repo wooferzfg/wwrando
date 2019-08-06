@@ -35,7 +35,7 @@ You can also apply the Female pronoun patch: http://slothsoft.tumblr.com/post/36
 ### Download
 
 Beta release available now, has not been fully tested yet. (64-bit only right now)  
-KORL has no funnel, I forgot to turn it back on. You can sail anywhere as soon as you get the sail until I make it an option.
+KORL has no funnel, I forgot to turn it back on. You can go anywhere as soon as you get the sail until I make it an option.
 
 https://github.com/WideBoner/betterww/releases
 
