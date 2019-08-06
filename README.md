@@ -78,3 +78,5 @@ Hypatia (textures)
 SageOfMirrors (file format documentation)  
 LordNed (file format documentation)  
 CryZe (event flag documentation)  
+
+JarheadHME for helping get releases working and updating :)
