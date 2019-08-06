@@ -25,7 +25,7 @@ You can toggle the following on/off:
 * Invert Camera to match HD
 * Reveal Full Sea Chart when making a new file  
 
-* Enables swinging on ropes like HD - NO TOGGLE (just on enabled by default atm)  
+* Enables turning while swinging on ropes like HD - NO TOGGLE (just on enabled by default atm)  
 
 You can apply the widescreen patch from here: https://www.dropbox.com/s/5huyf6r3drynq1c/The%20Legend%20of%20Zelda%20The%20Wind%20Waker%20Widescreen.zip?dl=1
 
