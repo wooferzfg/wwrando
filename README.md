@@ -25,9 +25,9 @@ You can toggle the following on/off:
 * Invert Camera to match HD
 * Reveal Full Sea Chart when making a new file
 
-You can apply the widescreen patch
+You can apply the widescreen patch from here: https://www.dropbox.com/s/5huyf6r3drynq1c/The%20Legend%20of%20Zelda%20The%20Wind%20Waker%20Widescreen.zip?dl=1
 
-
+You can also apply the Female pronoun patch: http://slothsoft.tumblr.com/post/36097890951/the-legend-of-zelda-the-wind-waker-pronoun
 
 If you're looking for only skin customization check out brainfubar's release: https://github.com/brainfubar/wwrando
 
@@ -41,6 +41,8 @@ https://github.com/WideBoner/betterww/releases
 
 This program only supports the North American Gamecube version of Wind Waker. (MD5: d8e4d45af2032a081a0f446384e9261b)  
 The European and Japanese versions of Wind Waker won't work, and neither will Wind Waker HD.
+
+This works on real Gamecube/Wii as well as Dolphin.
 
 If you're going to play on emulator, you should use the latest development version of Dolphin which can be found at the top of this page: https://dolphin-emu.org/download/
 
