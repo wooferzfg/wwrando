@@ -188,6 +188,16 @@
                  </property>
                 </widget>
                </item>
+              <item row="15" column="0">
+                <widget class="QCheckBox" name="KORL_control">
+                 <property name="text">
+                  <string>Free-Roam Boat</string>
+                 </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
               <item row="6" column="0">
                 <widget class="QCheckBox" name="instant_text_boxes">
                  <property name="text">

@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'randomizer_window.ui',
 # licensing of 'randomizer_window.ui' applies.
 #
-# Created: Mon Aug  5 17:44:21 2019
+# Created: Mon Aug  5 22:49:51 2019
 #      by: pyside2-uic  running on PySide2 5.11.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -92,6 +92,10 @@ class Ui_MainWindow(object):
         self.reveal_full_sea_chart.setChecked(True)
         self.reveal_full_sea_chart.setObjectName("reveal_full_sea_chart")
         self.gridLayout.addWidget(self.reveal_full_sea_chart, 14, 0, 1, 1)
+        self.KORL_control = QtWidgets.QCheckBox(self.tab)
+        self.KORL_control.setChecked(True)
+        self.KORL_control.setObjectName("KORL_control")
+        self.gridLayout.addWidget(self.KORL_control, 15, 0, 1, 1)
         self.instant_text_boxes = QtWidgets.QCheckBox(self.tab)
         self.instant_text_boxes.setChecked(True)
         self.instant_text_boxes.setObjectName("instant_text_boxes")
@@ -210,6 +214,7 @@ class Ui_MainWindow(object):
         self.tingle_chests_without_tuner.setText(QtWidgets.QApplication.translate("MainWindow", "Tingle Chests Without Tuner", None, -1))
         self.invert_camera_x_axis.setText(QtWidgets.QApplication.translate("MainWindow", "Invert camera", None, -1))
         self.reveal_full_sea_chart.setText(QtWidgets.QApplication.translate("MainWindow", "Reveal Sea Chart", None, -1))
+        self.KORL_control.setText(QtWidgets.QApplication.translate("MainWindow", "Free-Roam Boat", None, -1))
         self.instant_text_boxes.setText(QtWidgets.QApplication.translate("MainWindow", "Instant Text Boxes", None, -1))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QtWidgets.QApplication.translate("MainWindow", "ISO Settings", None, -1))
         self.label_for_custom_player_model.setText(QtWidgets.QApplication.translate("MainWindow", "Player Model", None, -1))

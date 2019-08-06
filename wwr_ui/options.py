@@ -50,6 +50,10 @@ OPTIONS = OrderedDict([
     "reveal_full_sea_chart",
     "Reveals the whole sea chart during file creation, does not apply to existing saves."
   ),
+  (
+    "KORL_control",
+    "King of Red Lions will not stop you from veering off course, allows possible sequence breaks."
+  ),
 ])
 
 NON_PERMALINK_OPTIONS = [
