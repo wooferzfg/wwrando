@@ -33,8 +33,9 @@ If you're looking for only skin customization check out brainfubar's release: ht
 
 ### Download
 
-Release exe coming soon.
-Source works, builds fail to read from ASM path not sure why.
+Beta release available now, has not been fully tested yet. (64-bit only right now)
+
+https://github.com/WideBoner/betterww/releases
 
 ### Information
 
