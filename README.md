@@ -29,7 +29,6 @@ You can apply the widescreen patch from here: https://www.dropbox.com/s/5huyf6r3
 
 You can also apply the Female pronoun patch: http://slothsoft.tumblr.com/post/36097890951/the-legend-of-zelda-the-wind-waker-pronoun
 
-If you're looking for only skin customization check out brainfubar's release: https://github.com/brainfubar/wwrando
 
 ### Download
 
@@ -82,4 +81,5 @@ SageOfMirrors (file format documentation)
 LordNed (file format documentation)  
 CryZe (event flag documentation)  
 
+brainfubar for stripped wwrando this was based on: https://github.com/brainfubar/wwrando
 JarheadHME for helping get releases working and updating :)
