@@ -25,6 +25,8 @@ You can toggle the following on/off:
 * Invert Camera to match HD
 * Reveal Full Sea Chart when making a new file
 
+* Enables swinging on ropes like HD - NOT a toggle
+
 You can apply the widescreen patch from here: https://www.dropbox.com/s/5huyf6r3drynq1c/The%20Legend%20of%20Zelda%20The%20Wind%20Waker%20Widescreen.zip?dl=1
 
 You can also apply the Female pronoun patch: http://slothsoft.tumblr.com/post/36097890951/the-legend-of-zelda-the-wind-waker-pronoun
