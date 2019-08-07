@@ -130,5 +130,5 @@ LordNed (file format documentation)
 CryZe (event flag documentation)  
 
 betterww:  
-brainfubar (His [fork](https://github.com/brainfubar/wwrando) of wwrando was a basis for this)  
+brainfubar (His [fork](https://github.com/brainfubar/wwrando) of wwrando was used to make this)  
 JarheadHME (help getting releases working and updating)
