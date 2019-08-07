@@ -5,7 +5,7 @@ Better Wind Waker
 
 This is an ISO patcher for The Legend of Zelda: The Wind Waker based on [LagoLunatic's wwrando](https://github.com/LagoLunatic/wwrando), and [brainfubar's fork](https://github.com/brainfubar/wwrando).  
 
-The goal is to add features coded in for wwrando to an otherwise vanilla ISO. No randomization. Intended for casual gameplay.  
+This patcher adds features coded in for wwrando to a Wind Waker ISO with no randomization. Intended for casual gameplay.  
 
 Allows you to customize Link, but casual outfits will only be seen before getting the tunic or during New Game+  
 
