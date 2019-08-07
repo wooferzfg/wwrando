@@ -26,6 +26,14 @@ You can toggle the following on/off:
 
 Enables turning while swinging on ropes like HD - no toggle, just on enabled by default atm 
   
+### Custom Player Models  
+  
+Models can be found here:  
+https://github.com/Sage-of-Mirrors/Custom-Wind-Waker-Player-Models  
+https://gamebanana.com/games/6173  
+https://discord.gg/r2963mt (WIP models, learn to make your own)  
+
+
 ### Other Tweaks
   
 You can apply the widescreen patch from here: https://www.dropbox.com/s/5huyf6r3drynq1c/The%20Legend%20of%20Zelda%20The%20Wind%20Waker%20Widescreen.zip?dl=1  
