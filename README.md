@@ -14,15 +14,15 @@ The goal is to add features found in wwrando to an otherwise vanilla ISO. Intend
 Allows you to customize Link, but casual outfits will only be seen before getting the tunic or during New Game+  
 
 You can toggle the following on/off:
-* Swift Sail replaces sail
-* Instant Text Boxes
-* Faster Block Moving
-* Faster Grapple Hook
-* Faster Rolling Speed
-* Faster Crawling, Climbing, NPC chat zoom
-* Tingle Chests Without Tuner
-* Invert Camera to match HD
-* Reveal Full Sea Chart when making a new file  
+* Swift sail replaces sail
+* Instant text boxes
+* Faster block moving
+* Faster grapple hook
+* Faster rolling speed
+* Faster crawling, climbing, NPC chat zoom
+* Tingle chests without tuner
+* Invert camera to match HD
+* Reveal full sea chart when making a new file  
 
 Enables turning while swinging on ropes like HD - no toggle, just enabled by default atm. 
   
