@@ -87,6 +87,7 @@ SageOfMirrors (file format documentation)
 LordNed (file format documentation)  
 CryZe (event flag documentation)  
 
-betterww:
+betterww:  
+
 brainfubar (wwrando this was based on: https://github.com/brainfubar/wwrando)
 JarheadHME (help get releases working and updating)
