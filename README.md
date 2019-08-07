@@ -79,7 +79,6 @@ https://discord.gg/r2963mt
 ### Credits
 
 wwrando:  
-
 The randomizer was created and programmed by LagoLunatic, with help from:  
 MelonSpeedruns (game design, graphic design)  
 Hypatia (textures)  
@@ -88,6 +87,5 @@ LordNed (file format documentation)
 CryZe (event flag documentation)  
 
 betterww:  
-
 brainfubar (wwrando this was based on: https://github.com/brainfubar/wwrando)
 JarheadHME (help get releases working and updating)
