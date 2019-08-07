@@ -7,8 +7,6 @@ This is an ISO patcher for The Legend of Zelda: The Wind Waker based on [LagoLun
 
 This patcher adds features coded in for the Wind Waker Randomizer to a Wind Waker ISO without the randomization. Intended to make a more enjoyable gameplay experience reflecting many changes made for Wind Waker HD.  
 
-Allows you to customize Link, but casual outfits will only be seen before getting the tunic or during New Game+  
-
 You can toggle the following on/off:
 * Swift Sail replaces Sail
 * Instant text boxes
@@ -20,7 +18,9 @@ You can toggle the following on/off:
 * Invert camera to match HD
 * Reveal full sea chart when making a new file  
 
-Enables turning while swinging on ropes like HD - no toggle, enabled by default atm. 
+Enables turning while swinging on ropes like HD - no toggle, enabled by default atm.  
+Allows you to customize Link, but casual outfits will only be seen before getting the tunic or during New Game+  
+
   
 ### Custom Player Models  
   
