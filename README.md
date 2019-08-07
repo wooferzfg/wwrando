@@ -3,8 +3,8 @@
 
 Better Wind Waker  
   
-This is an ISO patcher for The Legend of Zelda: The Wind Waker based on [wwrando](https://github.com/LagoLunatic/wwrando).  
-I used brainfubar's fork of wwrando as a reference since he was going for a similar yet different end result.  
+This is an ISO patcher for The Legend of Zelda: The Wind Waker based on [LagoLunatic's Wind Waker Randomizer](https://github.com/LagoLunatic/wwrando).  
+I used [brainfubar's fork](https://github.com/brainfubar/wwrando) of wwrando as a reference since he was going for a similar yet different end result.  
   
   NO RANDOMIZATION!
 
@@ -36,9 +36,9 @@ https://discord.gg/r2963mt (WIP models, learn to make your own)
 
 ### Other Tweaks
   
-You can apply the widescreen patch from here: https://www.dropbox.com/s/5huyf6r3drynq1c/The%20Legend%20of%20Zelda%20The%20Wind%20Waker%20Widescreen.zip?dl=1  
+You can apply the [Widescreen Patch](https://www.dropbox.com/s/5huyf6r3drynq1c/The%20Legend%20of%20Zelda%20The%20Wind%20Waker%20Widescreen.zip?dl=1)  
 
-You can also apply the Female pronoun patch: http://slothsoft.tumblr.com/post/36097890951/the-legend-of-zelda-the-wind-waker-pronoun  
+You can apply the [Female Pronoun Patch](http://slothsoft.tumblr.com/post/36097890951/the-legend-of-zelda-the-wind-waker-pronoun)  
 
 Gecko codes you may want:  
   
@@ -132,5 +132,5 @@ LordNed (file format documentation)
 CryZe (event flag documentation)  
 
 betterww:  
-brainfubar (wwrando this was based on: https://github.com/brainfubar/wwrando)  
+brainfubar (wwrando this was based on)  
 JarheadHME (help getting releases working and updating)
