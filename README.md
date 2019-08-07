@@ -24,7 +24,7 @@ You can toggle the following on/off:
 * Invert Camera to match HD
 * Reveal Full Sea Chart when making a new file  
 
-Enables turning while swinging on ropes like HD - no toggle, just enabled by default atm 
+Enables turning while swinging on ropes like HD - no toggle, just enabled by default atm. 
   
 ### Custom Player Models  
   
