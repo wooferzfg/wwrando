@@ -38,7 +38,7 @@ https://discord.gg/r2963mt (WIP models, learn to make your own)
   
 You can apply the widescreen patch from here: https://www.dropbox.com/s/5huyf6r3drynq1c/The%20Legend%20of%20Zelda%20The%20Wind%20Waker%20Widescreen.zip?dl=1  
 
-You can also apply the Female pronoun patch to suit your skin: http://slothsoft.tumblr.com/post/36097890951/the-legend-of-zelda-the-wind-waker-pronoun  
+You can also apply the Female pronoun patch: http://slothsoft.tumblr.com/post/36097890951/the-legend-of-zelda-the-wind-waker-pronoun  
 
 Gecko codes you may want:  
   
