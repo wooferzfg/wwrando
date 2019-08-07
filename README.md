@@ -11,7 +11,7 @@ Given the specific use of this program, I used brainfubar's fork of wwrando as a
 
 The goal is to add features found in wwrando to an otherwise vanilla ISO.
 
-All cosmetic changes are available, but "casual" outfits will only be seen before getting the tunic or during New Game+
+Allows you to use customs models for Link, but "casual" outfits will only be seen before getting the tunic or during New Game+  
 Gecko codes can override tunic if desired.
 
 You can toggle the following on/off:
@@ -26,10 +26,12 @@ You can toggle the following on/off:
 * Reveal Full Sea Chart when making a new file  
 
 * Enables turning while swinging on ropes like HD - NO TOGGLE (just on enabled by default atm)  
+  
+### Other Tweaks
+  
+You can apply the widescreen patch from here: https://www.dropbox.com/s/5huyf6r3drynq1c/The%20Legend%20of%20Zelda%20The%20Wind%20Waker%20Widescreen.zip?dl=1  
 
-You can apply the widescreen patch from here: https://www.dropbox.com/s/5huyf6r3drynq1c/The%20Legend%20of%20Zelda%20The%20Wind%20Waker%20Widescreen.zip?dl=1
-
-You can also apply the Female pronoun patch: http://slothsoft.tumblr.com/post/36097890951/the-legend-of-zelda-the-wind-waker-pronoun
+You can also apply the Female pronoun patch: http://slothsoft.tumblr.com/post/36097890951/the-legend-of-zelda-the-wind-waker-pronoun  
 
 
 ### Download
@@ -76,12 +78,13 @@ https://discord.gg/r2963mt
 
 ### Credits
 
+wwrando:  
 The randomizer was created and programmed by LagoLunatic, with help from:  
 MelonSpeedruns (game design, graphic design)  
 Hypatia (textures)  
 SageOfMirrors (file format documentation)  
 LordNed (file format documentation)  
 CryZe (event flag documentation)  
-
-brainfubar for stripped wwrando this was based on: https://github.com/brainfubar/wwrando  
-JarheadHME for helping get releases working and updating :)
+betterww:
+brainfubar (wwrando this was based on: https://github.com/brainfubar/wwrando)
+JarheadHME (help get releases working and updating)
