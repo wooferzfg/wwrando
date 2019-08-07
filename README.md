@@ -14,7 +14,7 @@ The goal is to add features found in wwrando to an otherwise vanilla ISO. Intend
 Allows you to customize Link, but casual outfits will only be seen before getting the tunic or during New Game+  
 
 You can toggle the following on/off:
-* Swift sail replaces sail
+* Swift Sail replaces Sail
 * Instant text boxes
 * Faster block moving
 * Faster grapple hook
