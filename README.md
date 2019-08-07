@@ -1,12 +1,12 @@
 
 ### About
 
-Better Wind Waker.
-
-NO RANDOMIZATION!
-
+Better Wind Waker  
+  
 This is an ISO patcher for The Legend of Zelda: The Wind Waker based on [wwrando](https://github.com/LagoLunatic/wwrando).
-Given the specific use of this program, I used brainfubar's fork of wwrando as a reference since he was going for a similar yet different end result.
+Given the specific use of this program, I used brainfubar's fork of wwrando as a reference since he was going for a similar yet different end result.  
+  
+  NO RANDOMIZATION!
 
 
 The goal is to add features found in wwrando to an otherwise vanilla ISO.
