@@ -18,11 +18,11 @@ You can toggle the following on/off:
 * Tingle chests without tuner 
 * Turning while swinging on ropes
 * Reveal full sea chart 
-* Free-Roam Boat  
-* No Song Replays  
-* Invert Camera  
-* Remove Intro Video  
-* Faster Ballad of Gales  
+* Free-roam boat  
+* No song replays  
+* Invert camera  
+* Remove intro video  
+* Faster ballad of gales  
  
 
   
