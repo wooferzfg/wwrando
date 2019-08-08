@@ -43,9 +43,7 @@ You can apply the [Widescreen Patch](https://www.dropbox.com/s/5huyf6r3drynq1c/T
 You can apply the [Female Pronoun Patch](http://slothsoft.tumblr.com/post/36097890951/the-legend-of-zelda-the-wind-waker-pronoun)  
 
 Gecko codes you may want:  
-  
-Skip the intro when starting a new game:  
-04233AE0 3800002C  
+
   
 Second set of equipped items:  
 283ED84A FFFB0004  
