@@ -10,12 +10,12 @@
 
 
 ; nop out a couple lines so the long intro movie is skipped.
-; .open "sys/main.dol"
-; .org 0x80232C78
-  ; nop
-; .org 0x80232C88
-  ; nop
-; .close
+.open "sys/main.dol"
+.org 0x80232C78
+  nop
+.org 0x80232C88
+  nop
+.close
 
 
 
@@ -671,7 +671,7 @@
 
 
 
-; Modify the code for warping with the Ballad of Gales to get rid of the cutscene that accompanies it.
+; ; Modify the code for warping with the Ballad of Gales to get rid of the cutscene that accompanies it.
 ; .open "files/rels/d_a_ship.rel"
 ; .org 0x7A10
   ; ; Get rid of the line that checks if KoRL has reached a high enough Y pos to start the warp yet.
@@ -934,11 +934,11 @@
 
 
 
-; Allow turning while swinging on ropes.
-.open "sys/main.dol" ; In procRopeSwing__9daPy_lk_cFv
-.org 0x80145648
-  b turn_while_swinging
-.close
+; ; Allow turning while swinging on ropes.
+; .open "sys/main.dol" ; In procRopeSwing__9daPy_lk_cFv
+; .org 0x80145648
+  ; b turn_while_swinging
+; .close
 
 
 

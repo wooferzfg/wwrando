@@ -1,10 +1,3 @@
-; 8005D618 is where the game calls the new game save init function.
-; We replace this call with a call to our custom save init function.
-.open "sys/main.dol"
-.org 0x8005D618
-  bl init_save_with_tweaks
-.close
-
 
 
 ; Modify King of Red Lions's code so he doesn't stop you when you veer off the path he wants you to go on.
