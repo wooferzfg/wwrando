@@ -146,6 +146,16 @@ class Randomizer:
         tweaks.apply_patch(self, "tingle_chests_without_tuner")
       if self.options.get("KORL_control"):
         tweaks.apply_patch(self, "KORL_control")
+      if self.options.get("song_no_replay"):
+        tweaks.apply_patch(self, "song_no_replay")
+      if self.options.get("swing_turn"):
+        tweaks.apply_patch(self, "swing_turn")
+      if self.options.get("remove_title_and_ending_videos"):
+        tweaks.remove_title_and_ending_videos(self)
+      if self.options.get("ballad"):
+        tweaks.apply_patch(self, "ballad")
+		
+		
 
 
     
@@ -168,7 +178,6 @@ class Randomizer:
     tweaks.apply_patch(self, "necessary_fixes")
     #tweaks.skip_wakeup_intro_and_start_at_dock(self)
     #tweaks.add_inter_dungeon_warp_pots(self)
-    #tweaks.remove_title_and_ending_videos(self)
     # tweaks.make_all_text_instant(self)
     # tweaks.b_skips(self)
     # tweaks.modify_title_screen_logo(self)
@@ -180,6 +189,7 @@ class Randomizer:
     # tweaks.increase_misc_animations(self)
     tweaks.make_tingle_statue_reward_rupee_rainbow_colored(self)
     customizer.replace_link_model(self)
+    # tweaks.change_starting_clothes(self)
     customizer.change_player_clothes_color(self)
   
   def verify_supported_version(self, clean_iso_path):
