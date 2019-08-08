@@ -15,8 +15,8 @@ You can toggle the following on/off:
 * Faster rolling speed
 * Faster crawling, climbing, NPC chat zoom
 * Tingle chests without tuner
-* Invert camera to match HD
-* Reveal full sea chart when making a new file  
+* Invert camera
+* Reveal full sea chart  
 
 Enables turning while swinging on ropes like HD - no toggle, enabled by default atm.  
 Allows you to customize Link, but casual outfits will only be seen before getting the tunic or during New Game+  
