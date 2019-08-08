@@ -168,10 +168,10 @@
                  </property>
                 </widget>
                </item>
-              <item row="13" column="0">
+              <item row="17" column="0">
                 <widget class="QCheckBox" name="invert_camera_x_axis">
                  <property name="text">
-                  <string>Invert camera</string>
+                  <string>Invert Camera</string>
                  </property>
                  <property name="checked">
                   <bool>true</bool>
@@ -192,6 +192,46 @@
                 <widget class="QCheckBox" name="KORL_control">
                  <property name="text">
                   <string>Free-Roam Boat</string>
+                 </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              <item row="16" column="0">
+                <widget class="QCheckBox" name="song_no_replay">
+                 <property name="text">
+                  <string>No Song Replays</string>
+                 </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              <item row="13" column="0">
+                <widget class="QCheckBox" name="swing_turn">
+                 <property name="text">
+                  <string>Turn While Swinging/Grappling</string>
+                 </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              <item row="18" column="0">
+                <widget class="QCheckBox" name="remove_title_and_ending_videos">
+                 <property name="text">
+                  <string>Remove Intro Video</string>
+                 </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              <item row="19" column="0">
+                <widget class="QCheckBox" name="ballad">
+                 <property name="text">
+                  <string>Faster Ballad of Gales</string>
                  </property>
                  <property name="checked">
                   <bool>true</bool>

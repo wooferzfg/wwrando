@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'randomizer_window.ui',
 # licensing of 'randomizer_window.ui' applies.
 #
-# Created: Mon Aug  5 22:49:51 2019
+# Created: Thu Aug  8 14:32:49 2019
 #      by: pyside2-uic  running on PySide2 5.11.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -87,7 +87,7 @@ class Ui_MainWindow(object):
         self.invert_camera_x_axis = QtWidgets.QCheckBox(self.tab)
         self.invert_camera_x_axis.setChecked(True)
         self.invert_camera_x_axis.setObjectName("invert_camera_x_axis")
-        self.gridLayout.addWidget(self.invert_camera_x_axis, 13, 0, 1, 1)
+        self.gridLayout.addWidget(self.invert_camera_x_axis, 17, 0, 1, 1)
         self.reveal_full_sea_chart = QtWidgets.QCheckBox(self.tab)
         self.reveal_full_sea_chart.setChecked(True)
         self.reveal_full_sea_chart.setObjectName("reveal_full_sea_chart")
@@ -96,6 +96,22 @@ class Ui_MainWindow(object):
         self.KORL_control.setChecked(True)
         self.KORL_control.setObjectName("KORL_control")
         self.gridLayout.addWidget(self.KORL_control, 15, 0, 1, 1)
+        self.song_no_replay = QtWidgets.QCheckBox(self.tab)
+        self.song_no_replay.setChecked(True)
+        self.song_no_replay.setObjectName("song_no_replay")
+        self.gridLayout.addWidget(self.song_no_replay, 16, 0, 1, 1)
+        self.swing_turn = QtWidgets.QCheckBox(self.tab)
+        self.swing_turn.setChecked(True)
+        self.swing_turn.setObjectName("swing_turn")
+        self.gridLayout.addWidget(self.swing_turn, 13, 0, 1, 1)
+        self.remove_title_and_ending_videos = QtWidgets.QCheckBox(self.tab)
+        self.remove_title_and_ending_videos.setChecked(True)
+        self.remove_title_and_ending_videos.setObjectName("remove_title_and_ending_videos")
+        self.gridLayout.addWidget(self.remove_title_and_ending_videos, 18, 0, 1, 1)
+        self.ballad = QtWidgets.QCheckBox(self.tab)
+        self.ballad.setChecked(True)
+        self.ballad.setObjectName("ballad")
+        self.gridLayout.addWidget(self.ballad, 19, 0, 1, 1)
         self.instant_text_boxes = QtWidgets.QCheckBox(self.tab)
         self.instant_text_boxes.setChecked(True)
         self.instant_text_boxes.setObjectName("instant_text_boxes")
@@ -212,9 +228,13 @@ class Ui_MainWindow(object):
         self.increase_block_moving_animation.setText(QtWidgets.QApplication.translate("MainWindow", "Faster Block Moving", None, -1))
         self.increase_misc_animations.setText(QtWidgets.QApplication.translate("MainWindow", "Faster Crawling, Climbing, NPC zoom", None, -1))
         self.tingle_chests_without_tuner.setText(QtWidgets.QApplication.translate("MainWindow", "Tingle Chests Without Tuner", None, -1))
-        self.invert_camera_x_axis.setText(QtWidgets.QApplication.translate("MainWindow", "Invert camera", None, -1))
+        self.invert_camera_x_axis.setText(QtWidgets.QApplication.translate("MainWindow", "Invert Camera", None, -1))
         self.reveal_full_sea_chart.setText(QtWidgets.QApplication.translate("MainWindow", "Reveal Sea Chart", None, -1))
         self.KORL_control.setText(QtWidgets.QApplication.translate("MainWindow", "Free-Roam Boat", None, -1))
+        self.song_no_replay.setText(QtWidgets.QApplication.translate("MainWindow", "No Song Replays", None, -1))
+        self.swing_turn.setText(QtWidgets.QApplication.translate("MainWindow", "Turn While Swinging/Grappling", None, -1))
+        self.remove_title_and_ending_videos.setText(QtWidgets.QApplication.translate("MainWindow", "Remove Intro Video", None, -1))
+        self.ballad.setText(QtWidgets.QApplication.translate("MainWindow", "Faster Ballad of Gales", None, -1))
         self.instant_text_boxes.setText(QtWidgets.QApplication.translate("MainWindow", "Instant Text Boxes", None, -1))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QtWidgets.QApplication.translate("MainWindow", "ISO Settings", None, -1))
         self.label_for_custom_player_model.setText(QtWidgets.QApplication.translate("MainWindow", "Player Model", None, -1))

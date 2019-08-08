@@ -52,7 +52,23 @@ OPTIONS = OrderedDict([
   ),
   (
     "KORL_control",
-    "King of Red Lions will not stop you from veering off course, allows possible sequence breaks."
+    "King of Red Lions will not stop you from veering off course."
+  ),
+  (
+    "song_no_replay",
+    "Remove song replays, where Link plays a fancy animation to conduct the song after the player plays it."
+  ),
+  (
+    "swing_turn",
+    "Allow turning while swinging on ropes and using the grappling hook."
+  ),
+  (
+    "remove_title_and_ending_videos",
+    "Remove the huge video files that play during the intro and ending."
+  ),
+  (
+    "ballad",
+    "Makes the cutscene shorter for Ballad of Gales transportation."
   ),
 ])
 
