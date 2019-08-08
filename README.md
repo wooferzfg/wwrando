@@ -88,7 +88,7 @@ Blur off:
 
 ### Download
 
-Beta release available now, has not been fully tested yet. (64-bit only right now)
+Beta release available now, no issues are known. (64-bit only right now)
 
 https://github.com/WideBoner/betterww/releases
 
