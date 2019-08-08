@@ -20,10 +20,12 @@ You can toggle the following on/off:
 * Reveal full sea chart  
 
 Enables turning while swinging on ropes like HD - no toggle, enabled by default atm.  
-Allows you to customize Link, but casual outfits will only be seen before getting the tunic or during New Game+  
+ 
 
   
 ### Custom Player Models  
+
+Allows you to customize Link, but casual outfits will only be seen before getting the tunic or during New Game+  
   
 Models can be found here:  
 https://github.com/Sage-of-Mirrors/Custom-Wind-Waker-Player-Models  
