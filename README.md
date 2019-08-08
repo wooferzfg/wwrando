@@ -9,17 +9,20 @@ This patcher adds features from the Wind Waker Randomizer to a Wind Waker ISO wi
 Intended to make a more enjoyable casual experience reflecting many changes made for Wind Waker HD.  
 
 You can toggle the following on/off:
-* Swift Sail replaces Sail
-* Instant text boxes
-* Faster block moving
-* Faster grapple hook
-* Faster rolling speed
-* Faster crawling, climbing, NPC chat zoom
-* Tingle chests without tuner
-* Invert camera
-* Reveal full sea chart  
-
-Enables turning while swinging on ropes like HD - no toggle, enabled by default atm.  
+* Swift Sail replaces Sail  
+* Instant text boxes  
+* Faster block moving  
+* Faster grapple hook  
+* Faster rolling speed  
+* Faster crawling, climbing, NPC chat zoom  
+* Tingle chests without tuner 
+* Enables turning while swinging on ropes like HD  
+* Reveal full sea chart 
+* Free-Roam Boat  
+* No Song Replays  
+* Invert Camera  
+* Remove Intro Video  
+* Faster Ballad of Gales  
  
 
   
