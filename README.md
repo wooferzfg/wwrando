@@ -16,7 +16,7 @@ You can toggle the following on/off:
 * Faster rolling speed  
 * Faster crawling, climbing, NPC chat zoom  
 * Tingle chests without tuner 
-* Turning while swinging on ropes
+* Turn while swinging or grappling
 * Reveal full sea chart 
 * Free-roam boat  
 * No song replays  
