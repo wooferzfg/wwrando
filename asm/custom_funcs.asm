@@ -2574,7 +2574,7 @@ b 0x800F9410
 .global rainbow_rupee_keyframe
 rainbow_rupee_keyframe:
 .float 0.0 ; Current keyframe, acts as a global variable modified every frame
-.float 0.15 ; Amount to increment keyframe by every frame a rainbow rupee is being drawn
+.float 0.04 ; Amount to increment keyframe by every frame a rainbow rupee is being drawn
 .float 6.0 ; Max keyframe, when it should loop
 .float -6.0 ; Minimum keyframe
 
