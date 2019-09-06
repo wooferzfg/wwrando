@@ -42,7 +42,9 @@ You can apply the [Widescreen Patch](https://www.dropbox.com/s/5huyf6r3drynq1c/T
 
 You can apply the [Female Pronoun Patch](http://slothsoft.tumblr.com/post/36097890951/the-legend-of-zelda-the-wind-waker-pronoun)  
 
-Gecko codes you may want:  
+If using Dolphin you can use [Hypatia's HD Texture Pack](https://onthegreatsea.tumblr.com/DOWNLOADS)
+
+Gecko codes you may want to use:  
 
   
 Second set of equipped items:  
