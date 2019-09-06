@@ -28,7 +28,7 @@ You can toggle the following on/off:
   
 ### Custom Player Models  
 
-Allows you to customize Link, but casual outfits will only be seen before getting the tunic or during New Game+  
+Allows you to customize Link, but "casual" outfits will only be seen before getting the tunic or during New Game+  
   
 Models can be found here:  
 https://github.com/Sage-of-Mirrors/Custom-Wind-Waker-Player-Models  
