@@ -35,6 +35,11 @@ https://github.com/Sage-of-Mirrors/Custom-Wind-Waker-Player-Models
 https://gamebanana.com/games/6173  
 https://discord.gg/r2963mt (WIP models, learn to make your own)  
 
+### Download
+
+Beta release available now, no issues are known. (64-bit only right now)
+
+https://github.com/WideBoner/betterww/releases
 
 ### Other Tweaks
   
@@ -84,13 +89,6 @@ Unrestricted Camera:
 Blur off:  
 043FCB9C 00000000  
 
-
-
-### Download
-
-Beta release available now, no issues are known. (64-bit only right now)
-
-https://github.com/WideBoner/betterww/releases
 
 ### Information
 
