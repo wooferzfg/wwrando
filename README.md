@@ -26,7 +26,7 @@ You can toggle the following on/off:
  
 
   
-### Custom Player Models  
+**Custom Player Models**  
 
 Allows you to customize Link, but "casual" outfits will only be seen before getting the tunic or during New Game+  
   
