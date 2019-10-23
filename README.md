@@ -93,33 +93,11 @@ Blur off:
 ### Information
 
 This program only supports the North American Gamecube version of Wind Waker. (MD5: d8e4d45af2032a081a0f446384e9261b)  
-The European and Japanese versions of Wind Waker won't work, and neither will Wind Waker HD.
 
-This works on real Gamecube/Wii as well as Dolphin.
+This works on Gamecube/Wii/Dolphin.
 
 If you're going to play on emulator, you should use the latest development version of Dolphin which can be found at the top of this page: https://dolphin-emu.org/download/
 
-### Running from source
-
-Download and install git from here: https://git-scm.com/downloads  
-Then clone this repository with git by running this in a command prompt:  
-`git clone https://github.com/LagoLunatic/wwrando.git`  
-
-Download and install Python 3.6.6 from here: https://www.python.org/downloads/release/python-366/  
-"Windows x86-64 executable installer" is the one you want if you're on Windows, "macOS 64-bit installer" if you're on Mac.  
-
-Open the wwrando folder in a command prompt and install dependencies by running:  
-`py -3.6 -m pip install -r requirements.txt` (on Windows)  
-`python3 -m pip install -r requirements.txt` (on Mac)  
-
-Then run the randomizer with:  
-`py -3.6 wwrando.py` (on Windows)  
-`python3 wwrando.py` (on Mac)  
-
-In addition, follow this if you want to use PyInstaller to build a distributable version of the randomizer:  
-* Install one of PyInstaller's dependencies manually: `py -3.6 -m pip install pywin32-ctypes==0.2.0`  
-* Install PyInstaller: `py -3.6 -m pip install PyInstaller==3.4`  
-* Then to make a build in the `dist` directory: `build.bat`  
 
 ### Credits
 
