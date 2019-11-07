@@ -16,7 +16,7 @@ OPTIONS = OrderedDict([
   ),
   (
     "instant_text_boxes",
-    "Text appears instantly.<br>Also, the B button is changed to instantly skip through text as long as you hold it down."
+    "Text appears instantly and the B button will skip through text when held down."
   ),
   (
     "swift_sail",
@@ -44,7 +44,7 @@ OPTIONS = OrderedDict([
   ),
   (
     "invert_camera_x_axis",
-    "Changes camera to control like it does in HD."
+    "Inverts the camera X-axis (left-right) like in HD."
   ),
   (
     "reveal_full_sea_chart",
@@ -52,7 +52,7 @@ OPTIONS = OrderedDict([
   ),
   (
     "KORL_control",
-    "King of Red Lions will not stop you from veering off course."
+    "King of Red Lions will not stop you from veering off course, but will keep you within the map. Can cause sequence breaks."
   ),
   (
     "song_no_replay",
@@ -69,6 +69,18 @@ OPTIONS = OrderedDict([
   (
     "ballad",
     "Makes the cutscene shorter for Ballad of Gales transportation."
+  ),
+  (
+    "titlelogo",
+    "Change the title screen logo to gold."
+  ),
+  (
+    "memorylogo",
+    "Change the memory card logo to gold."
+  ),
+  (
+    "brisk_sail",
+    "Make windy boy go fast. 1.5x faster Swift Sail. Overwrites Swift Sail if checked."
   ),
 ])
 

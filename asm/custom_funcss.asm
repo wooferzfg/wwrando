@@ -2,6 +2,88 @@
 .open "sys/main.dol"
 .org 0x803FCFA8
 
+.global init_save_with_tweaks
+init_save_with_tweaks:
+; Function start stuff
+stwu sp, -0x10 (sp)
+mflr r0
+stw r0, 0x14 (sp)
+
+
+bl init__10dSv_save_cFv ; To call this custom func we overwrote a call to init__10dSv_save_cFv, so call that now.
+
+; Give user-selected custom starting items
+bl init_starting_gear
+
+lis r3, 0x803C5D60@ha
+addi r3, r3, 0x803C5D60@l
+li r4, 0x0310 ; Saw event where Grandma gives you the Hero's Clothes
+bl onEventBit__11dSv_event_cFUs
+
+lis r5, should_start_with_heros_clothes@ha
+addi r5, r5, should_start_with_heros_clothes@l
+lbz r5, 0 (r5) ; Load bool of whether player should start with Hero's clothes
+cmpwi r5, 1
+bne after_starting_heros_clothes
+lis r3, 0x803C522C@ha
+addi r3, r3, 0x803C522C@l
+li r4, 0x2A80 ; HAS_HEROS_CLOTHES
+bl onEventBit__11dSv_event_cFUs
+after_starting_heros_clothes:
+
+; Function end stuff
+lwz r0, 0x14 (sp)
+mtlr r0
+addi sp, sp, 0x10
+blr
+
+
+; This function reads from an array of user-selected starting item IDs and adds them to your inventory.
+.global init_starting_gear
+init_starting_gear:
+stwu sp, -0x10 (sp)
+mflr r0
+stw r0, 0x14 (sp)
+stw r31, 0xC (sp)
+
+lis r31, starting_gear@ha
+addi r31, r31, starting_gear@l
+lbz r3, 0 (r31)
+b init_starting_gear_check_continue_loop
+
+init_starting_gear_begin_loop:
+bl convert_progressive_item_id
+; bl execItemGet__FUc
+lbzu r3, 1(r31)
+init_starting_gear_check_continue_loop:
+cmplwi r3, 255
+bne+ init_starting_gear_begin_loop
+
+end_init_starting_gear:
+lwz r31, 0xC (sp)
+lwz r0, 0x14 (sp)
+mtlr r0
+addi sp, sp, 0x10
+blr
+
+
+.global should_start_with_heros_clothes
+should_start_with_heros_clothes:
+.byte 1 ; By default start with the Hero's Clothes
+.global sword_mode
+sword_mode:
+.byte 0 ; By default Start with Sword
+.global skip_rematch_bosses
+skip_rematch_bosses:
+.byte 1 ; By default skip them
+
+.global starting_gear
+starting_gear:
+.space 47, 0xFF ; Allocate space for up to 47 additional items (when changing this also update the constant in tweaks.py)
+.byte 0xFF
+
+.align 2 ; Align to the next 4 bytes
+
 ; Updates the current wind direction to match KoRL's direction.
 .global set_wind_dir_to_ship_dir
 set_wind_dir_to_ship_dir:

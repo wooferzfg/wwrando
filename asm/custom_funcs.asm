@@ -1542,6 +1542,53 @@ ship_idle_deceleration:
 .float 2.0 ; Max deceleration, 1.0 in vanilla
 .float 0.1 ; Min deceleration, 0.05 in vanilla
 
+.global slow_down_ship_when_stopping2
+slow_down_ship_when_stopping2:
+stwu sp, -0x10 (sp)
+mflr r0
+stw r0, 0x14 (sp)
+
+lis r4, ship_stopping_deceleration2@ha
+addi r4, r4, ship_stopping_deceleration2@l
+lfs f3, 0 (r4) ; Max deceleration per frame
+lfs f4, 4 (r4) ; Min deceleration per frame
+
+bl cLib_addCalc__FPfffff
+
+lwz r0, 0x14 (sp)
+mtlr r0
+addi sp, sp, 0x10
+blr
+
+ship_stopping_deceleration2:
+.float 3.0 ; Max deceleration, 1.0 in vanilla
+.float 0.2 ; Min deceleration, 0.1 in vanilla
+
+
+
+
+.global slow_down_ship_when_idle2
+slow_down_ship_when_idle2:
+stwu sp, -0x10 (sp)
+mflr r0
+stw r0, 0x14 (sp)
+
+lis r4, ship_idle_deceleration2@ha
+addi r4, r4, ship_idle_deceleration2@l
+lfs f3, 0 (r4) ; Max deceleration per frame
+lfs f4, 4 (r4) ; Min deceleration per frame
+
+bl cLib_addCalc__FPfffff
+
+lwz r0, 0x14 (sp)
+mtlr r0
+addi sp, sp, 0x10
+blr
+
+ship_idle_deceleration2:
+.float 4.0 ; Max deceleration, 1.0 in vanilla
+.float 0.2 ; Min deceleration, 0.05 in vanilla
+
 
 
 

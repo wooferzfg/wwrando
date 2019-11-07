@@ -152,8 +152,15 @@ class Randomizer:
         tweaks.apply_patch(self, "swing_turn")
       if self.options.get("remove_title_and_ending_videos"):
         tweaks.remove_title_and_ending_videos(self)
+        tweaks.apply_patch(self, "skipintro")
       if self.options.get("ballad"):
         tweaks.apply_patch(self, "ballad")
+      if self.options.get("titlelogo"):
+        tweaks.modify_title_screen_logo(self)
+      if self.options.get("memorylogo"):
+        tweaks.update_game_name_icon_and_banners(self)
+      if self.options.get("brisk_sail"):
+        tweaks.make_sail_behave_like_brisk_sail(self)
 		
 		
 
@@ -381,10 +388,10 @@ class Randomizer:
       changed_files[jpc_path] = jpc.data
     
     if self.export_disc_to_folder:
-      output_folder_path = os.path.join(self.randomized_output_folder, "WW %s" % self.seed)
+      output_folder_path = os.path.join(self.randomized_output_folder, "%s" % self.seed)
       self.gcm.export_disc_to_folder_with_changed_files(output_folder_path, changed_files)
     else:
-      output_file_path = os.path.join(self.randomized_output_folder, "WW %s.iso" % self.seed)
+      output_file_path = os.path.join(self.randomized_output_folder, "%s.iso" % self.seed)
       self.gcm.export_disc_to_iso_with_changed_files(output_file_path, changed_files)
   
   def convert_string_to_integer_md5(self, string):

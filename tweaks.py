@@ -469,6 +469,48 @@ def make_sail_behave_like_swift_sail(self):
   sail_itemget_tex_image = sail_itemget_model.tex1.textures_by_name["Vho"][0]
   sail_itemget_tex_image.replace_image_from_path(new_sail_itemget_tex_image_path)
   sail_itemget_model.save_changes()
+  
+def make_sail_behave_like_brisk_sail(self):
+  # Causes the wind direction to always change to face the direction KoRL is facing as long as the sail is out.
+  # Also doubles KoRL's speed.
+  # And changes the textures to match the swift sail from HD.
+  
+  ship_data = self.get_raw_file("files/rels/d_a_ship.rel")
+  # Change the relocation for line B9FC, which originally called setShipSailState.
+  write_u32(ship_data, 0x11C94, self.custom_symbols["set_wind_dir_to_ship_dir"])
+  
+  write_float(ship_data, 0xDBE8, 55.0*3) # Sailing speed
+  write_float(ship_data, 0xDBC0, 80.0*3) # Initial speed
+  
+  # Also increase deceleration when the player is stopping or is knocked out of the ship.
+  apply_patch(self, "brisk_sail")
+  
+  # Update the pause menu name for the sail.
+  msg = self.bmg.messages_by_id[463]
+  msg.string = "Brisk Sail"
+  
+  new_sail_tex_image_path = os.path.join(ASSETS_PATH, "brisk sail texture.png")
+  new_sail_icon_image_path = os.path.join(ASSETS_PATH, "brisk sail icon.png")
+  new_sail_itemget_tex_image_path = os.path.join(ASSETS_PATH, "brisk sail item get texture.png")
+  
+  # Modify the sail's texture while sailing.
+  ship_arc = self.get_arc("files/res/Object/Ship.arc")
+  sail_image = ship_arc.get_file("new_ho1.bti")
+  sail_image.replace_image_from_path(new_sail_tex_image_path)
+  sail_image.save_changes()
+  
+  # Modify the sail's item icon.
+  itemicon_arc = self.get_arc("files/res/Msg/itemicon.arc")
+  sail_icon_image = itemicon_arc.get_file("sail_00.bti")
+  sail_icon_image.replace_image_from_path(new_sail_icon_image_path)
+  sail_icon_image.save_changes()
+  
+  # Modify the sail's item get texture.
+  sail_itemget_arc = self.get_arc("files/res/Object/Vho.arc")
+  sail_itemget_model = sail_itemget_arc.get_file("vho.bdl")
+  sail_itemget_tex_image = sail_itemget_model.tex1.textures_by_name["Vho"][0]
+  sail_itemget_tex_image.replace_image_from_path(new_sail_itemget_tex_image_path)
+  sail_itemget_model.save_changes()
 
 def add_ganons_tower_warp_to_ff2(self):
   # Normally the warp object from Forsaken Fortress down to Ganon's Tower only appears in FF3.
@@ -610,14 +652,14 @@ def modify_title_screen_logo(self):
   new_subtitle_image_path = os.path.join(ASSETS_PATH, "subtitle.png")
   tlogoe_arc = self.get_arc("files/res/Object/TlogoE.arc")
   
-  # title_image = tlogoe_arc.get_file("logo_zelda_main.bti")
-  # title_image.replace_image_from_path(new_title_image_path)
-  # title_image.save_changes()
+  title_image = tlogoe_arc.get_file("logo_zelda_main.bti")
+  title_image.replace_image_from_path(new_title_image_path)
+  title_image.save_changes()
   
-  # subtitle_model = tlogoe_arc.get_file("subtitle_start_anim_e.bdl")
-  # subtitle_image = subtitle_model.tex1.textures_by_name["logo_sub_e"][0]
-  # subtitle_image.replace_image_from_path(new_subtitle_image_path)
-  # subtitle_model.save_changes()
+  subtitle_model = tlogoe_arc.get_file("subtitle_start_anim_e.bdl")
+  subtitle_image = subtitle_model.tex1.textures_by_name["logo_sub_e"][0]
+  subtitle_image.replace_image_from_path(new_subtitle_image_path)
+  subtitle_model.save_changes()
   
   # subtitle_glare_model = tlogoe_arc.get_file("subtitle_kirari_e.bdl")
   # subtitle_glare_image = subtitle_glare_model.tex1.textures_by_name["logo_sub_e"][0]
@@ -636,9 +678,9 @@ def modify_title_screen_logo(self):
   write_u16(data, 0x162, 0x106) # Increase Y pos by 16 pixels (0xF6 -> 0x106)
 
 def update_game_name_icon_and_banners(self):
-  new_game_name = "Wind Waker %s" % self.seed
+  # new_game_name = "%s" % self.seed
   banner_data = self.get_raw_file("files/opening.bnr")
-  write_str(banner_data, 0x1860, new_game_name, 0x40)
+  # write_str(banner_data, 0x1860, new_game_name, 0x40)
   
   new_game_id = "GZLE01"
   boot_data = self.get_raw_file("sys/boot.bin")
@@ -1315,7 +1357,7 @@ def increase_misc_animations(self):
   #increase the animation speed that Link initiates a climb (0.8 -> 1.6)
   write_float(dol_data, address_to_offset(0x8035D738), 1.6)
   
-  #increase speed Link climbs ladders/vines (1.2 -> 1.6)
+  # # #increase speed Link climbs ladders/vines (1.2 -> 1.6)
   write_float(dol_data, address_to_offset(0x8035DB38), 1.6)
   
   #increase speed Link starts climbing a ladder/vine (1.0 -> 1.6)
@@ -1333,6 +1375,7 @@ def increase_misc_animations(self):
   
   #increase the rotation speed on ropes (64.0 -> 100.0)
   write_float(dol_data, address_to_offset(0x803FA2E8), 100.0)
+  
 
 
 def change_starting_clothes(self):

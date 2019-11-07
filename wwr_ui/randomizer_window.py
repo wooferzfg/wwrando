@@ -55,7 +55,7 @@ class WWRandomizerWindow(QMainWindow):
     self.ui.seed.editingFinished.connect(self.update_settings)
     self.ui.clean_iso_path_browse_button.clicked.connect(self.browse_for_clean_iso)
     self.ui.output_folder_browse_button.clicked.connect(self.browse_for_output_folder)
-    self.ui.permalink.textEdited.connect(self.permalink_modified)
+    # self.ui.permalink.textEdited.connect(self.permalink_modified)
     
     self.ui.custom_player_model.currentIndexChanged.connect(self.custom_model_changed)
     self.ui.player_in_casual_clothes.clicked.connect(self.custom_model_changed)
@@ -82,7 +82,7 @@ class WWRandomizerWindow(QMainWindow):
     
     self.update_settings()
     
-    self.setWindowTitle("Wind Waker Editor %s" % VERSION)
+    self.setWindowTitle("Better Wind Waker %s" % VERSION)
     
     icon_path = os.path.join(ASSETS_PATH, "icon.ico")
     self.setWindowIcon(QIcon(icon_path))
@@ -338,72 +338,73 @@ class WWRandomizerWindow(QMainWindow):
     self.encode_permalink()
   
   def encode_permalink(self):
-    seed = self.settings["seed"]
-    seed = self.sanitize_seed(seed)
-    if not seed:
-      self.ui.permalink.setText("")
-      return
+    # seed = self.settings["seed"]
+    # seed = self.sanitize_seed(seed)
+    # if not seed:
+      # self.ui.permalink.setText("")
+      # return
     
-    permalink = b""
-    permalink += VERSION.encode("ascii")
-    permalink += b"\0"
-    permalink += seed.encode("ascii")
-    permalink += b"\0"
+    # permalink = b""
+    # permalink += VERSION.encode("ascii")
+    # permalink += b"\0"
+    # permalink += seed.encode("ascii")
+    # permalink += b"\0"
     
-    option_bytes = []
-    current_byte = 0
-    current_bit_index = 0
-    for option_name in OPTIONS:
-      if option_name in NON_PERMALINK_OPTIONS:
-        continue
+    # option_bytes = []
+    # current_byte = 0
+    # current_bit_index = 0
+    # for option_name in OPTIONS:
+      # if option_name in NON_PERMALINK_OPTIONS:
+        # continue
       
-      value = self.settings[option_name]
+      # value = self.settings[option_name]
       
-      widget = getattr(self.ui, option_name)
-      if isinstance(widget, QAbstractButton):
-        if current_bit_index >= 8:
-          option_bytes.append(current_byte)
-          current_bit_index = 0
-          current_byte = 0
+      # widget = getattr(self.ui, option_name)
+      # if isinstance(widget, QAbstractButton):
+        # if current_bit_index >= 8:
+          # option_bytes.append(current_byte)
+          # current_bit_index = 0
+          # current_byte = 0
         
-        current_byte |= (int(value) << current_bit_index)
-        current_bit_index += 1
-      elif isinstance(widget, QComboBox):
-        if current_bit_index > 0:
-          # End the current bitfield byte.
-          option_bytes.append(current_byte)
-          current_bit_index = 0
-          current_byte = 0
+        # current_byte |= (int(value) << current_bit_index)
+        # current_bit_index += 1
+      # elif isinstance(widget, QComboBox):
+        # if current_bit_index > 0:
+          # # End the current bitfield byte.
+          # option_bytes.append(current_byte)
+          # current_bit_index = 0
+          # current_byte = 0
         
-        value = widget.currentIndex()
-        assert 0 <= value <= 255
-        option_bytes.append(value)
+        # value = widget.currentIndex()
+        # assert 0 <= value <= 255
+        # option_bytes.append(value)
     
-    if current_bit_index > 0:
-      # End the current bitfield byte.
-      option_bytes.append(current_byte)
+    # if current_bit_index > 0:
+      # # End the current bitfield byte.
+      # option_bytes.append(current_byte)
     
-    for byte in option_bytes:
-      permalink += struct.pack(">B", byte)
-    base64_encoded_permalink = base64.b64encode(permalink).decode("ascii")
-    self.ui.permalink.setText(base64_encoded_permalink)
+    # for byte in option_bytes:
+      # permalink += struct.pack(">B", byte)
+    # base64_encoded_permalink = base64.b64encode(permalink).decode("ascii")
+    # self.ui.permalink.setText(base64_encoded_permalink)
+    return
   
-  def decode_permalink(self, base64_encoded_permalink):
-    base64_encoded_permalink = base64_encoded_permalink.strip()
-    if not base64_encoded_permalink:
+  def decode_permalink(self):
+    # base64_encoded_permalink = base64_encoded_permalink.strip()
+    # if not base64_encoded_permalink:
       # Empty
-      return
+    return
     
-    permalink = base64.b64decode(base64_encoded_permalink)
-    given_version_num, seed, options_bytes = permalink.split(b"\0", 2)
-    given_version_num = given_version_num.decode("ascii")
-    seed = seed.decode("ascii")
-    if given_version_num != VERSION:
-      QMessageBox.critical(
-        self, "Invalid permalink",
-        "The permalink you pasted is for version %s of the randomizer, it cannot be used with the version you are currently using (%s)." % (given_version_num, VERSION)
-      )
-      return
+    # permalink = base64.b64decode(base64_encoded_permalink)
+    # given_version_num, seed, options_bytes = permalink.split(b"\0", 2)
+    # given_version_num = given_version_num.decode("ascii")
+    # seed = seed.decode("ascii")
+    # if given_version_num != VERSION:
+      # QMessageBox.critical(
+        # self, "Invalid permalink",
+        # "The permalink you pasted is for version %s of the randomizer, it cannot be used with the version you are currently using (%s)." % (given_version_num, VERSION)
+      # )
+      # return
     
     self.ui.seed.setText(seed)
     
@@ -793,16 +794,16 @@ class WWRandomizerWindow(QMainWindow):
     self.ui.custom_model_preview_label.setPixmap(scaled_pixmap)
   
   def open_about(self):
-    text = """Wind Waker Skin Edit Version %s<br><br>
+    text = """Better Wind Waker Version %s<br><br>
       Original App by LagoLunatic<br>
       <a href=\"https://github.com/LagoLunatic/wwrando\">https://github.com/LagoLunatic/wwrando</a><br>
-      Skin Edit fork by BRAINFUBAR<br><br>
-      Report issues here:<br><a href=\"https://github.com/brainfubar/wwrando/issues\">https://github.com/brainfubar/wwrando/issues</a><br><br>
-      Source code:<br><a href=\"https://github.com/brainfubar/wwrando\">https://github.com/brainfubar/wwrando</a>""" % VERSION
+      BetterWW fork by WideBoner<br><br>
+      Report issues here:<br><a href=\"https://github.com/WideBoner/wwrando/issues\">https://github.com/WideBoner/wwrando/issues</a><br><br>
+      Source code:<br><a href=\"https://github.com/WideBoner/wwrando\">https://github.com/WideBoner/wwrando</a>""" % VERSION
     
     self.about_dialog = QMessageBox()
     self.about_dialog.setTextFormat(Qt.TextFormat.RichText)
-    self.about_dialog.setWindowTitle("Wind Waker Skin Edit")
+    self.about_dialog.setWindowTitle("Better Wind Waker")
     self.about_dialog.setText(text)
     self.about_dialog.setWindowIcon(self.windowIcon())
     self.about_dialog.show()
