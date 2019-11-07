@@ -161,6 +161,10 @@ class Randomizer:
         tweaks.update_game_name_icon_and_banners(self)
       if self.options.get("brisk_sail"):
         tweaks.make_sail_behave_like_brisk_sail(self)
+      if self.options.get("brisk_sail2"):
+        tweaks.make_sail_behave_like_brisk_sail2(self)
+      if self.options.get("swift_sail2"):
+        tweaks.make_sail_behave_like_swift_sail2(self)
 		
 		
 

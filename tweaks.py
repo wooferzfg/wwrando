@@ -470,6 +470,25 @@ def make_sail_behave_like_swift_sail(self):
   sail_itemget_tex_image.replace_image_from_path(new_sail_itemget_tex_image_path)
   sail_itemget_model.save_changes()
   
+def make_sail_behave_like_swift_sail2(self):
+  # Causes the wind direction to always change to face the direction KoRL is facing as long as the sail is out.
+  # Also doubles KoRL's speed.
+  # And changes the textures to match the swift sail from HD.
+  
+  ship_data = self.get_raw_file("files/rels/d_a_ship.rel")
+  # Change the relocation for line B9FC, which originally called setShipSailState.
+  write_u32(ship_data, 0x11C94, self.custom_symbols["set_wind_dir_to_ship_dir"])
+  
+  write_float(ship_data, 0xDBE8, 55.0*2) # Sailing speed
+  write_float(ship_data, 0xDBC0, 80.0*2) # Initial speed
+  
+  # Also increase deceleration when the player is stopping or is knocked out of the ship.
+  apply_patch(self, "swift_sail")
+  
+  # Update the pause menu name for the sail.
+  msg = self.bmg.messages_by_id[463]
+  msg.string = "Swift Sail"
+  
 def make_sail_behave_like_brisk_sail(self):
   # Causes the wind direction to always change to face the direction KoRL is facing as long as the sail is out.
   # Also doubles KoRL's speed.
@@ -512,6 +531,26 @@ def make_sail_behave_like_brisk_sail(self):
   sail_itemget_tex_image.replace_image_from_path(new_sail_itemget_tex_image_path)
   sail_itemget_model.save_changes()
 
+  
+def make_sail_behave_like_brisk_sail2(self):
+  # Causes the wind direction to always change to face the direction KoRL is facing as long as the sail is out.
+  # Also doubles KoRL's speed.
+  # And changes the textures to match the swift sail from HD.
+  
+  ship_data = self.get_raw_file("files/rels/d_a_ship.rel")
+  # Change the relocation for line B9FC, which originally called setShipSailState.
+  write_u32(ship_data, 0x11C94, self.custom_symbols["set_wind_dir_to_ship_dir"])
+  
+  write_float(ship_data, 0xDBE8, 55.0*3) # Sailing speed
+  write_float(ship_data, 0xDBC0, 80.0*3) # Initial speed
+  
+  # Also increase deceleration when the player is stopping or is knocked out of the ship.
+  apply_patch(self, "brisk_sail")
+  
+  # Update the pause menu name for the sail.
+  msg = self.bmg.messages_by_id[463]
+  msg.string = "Brisk Sail"
+  
 def add_ganons_tower_warp_to_ff2(self):
   # Normally the warp object from Forsaken Fortress down to Ganon's Tower only appears in FF3.
   # But we changed Forsaken Fortress to remain permanently as FF2.
