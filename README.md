@@ -111,5 +111,5 @@ CryZe (event flag documentation)
 
 betterww:  
 brainfubar (His [fork](https://github.com/brainfubar/wwrando) of wwrando was used to make this)  
-MelonSpeedrun (Original design for Brisk Sail)
+MelonSpeedruns (Original design for Brisk Sail)
 JarheadHME (help getting releases working and updating)
