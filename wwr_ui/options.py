@@ -82,6 +82,14 @@ OPTIONS = OrderedDict([
     "brisk_sail",
     "Make windy boy go fast. 1.5x faster Swift Sail. Overwrites Swift Sail if checked."
   ),
+  (
+    "brisk_sail2",
+    "Pick this INSTEAD if you want to use Hypatia's HD textures and not have sail replaced by low res textures."
+  ),
+  (
+    "swift_sail2",
+    "Pick this INSTEAD if you want to use Hypatia's HD textures and not have sail replaced by low res textures."
+  ),
 ])
 
 NON_PERMALINK_OPTIONS = [
