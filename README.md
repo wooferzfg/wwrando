@@ -37,8 +37,6 @@ https://discord.gg/r2963mt (WIP models, learn to make your own)
 
 ### Download
 
-Beta release available now, no issues are known. (64-bit only right now)
-
 https://github.com/WideBoner/betterww/releases
 
 ### Other Tweaks
