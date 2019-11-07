@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>650</width>
-    <height>665</height>
+    <height>670</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -442,7 +442,7 @@
     <item>
      <widget class="QLabel" name="update_checker_label">
       <property name="text">
-       <string>Checking for updates to the randomizer...</string>
+       <string>Checking for updates Better Wind Waker...</string>
       </property>
       <property name="openExternalLinks">
        <bool>true</bool>
