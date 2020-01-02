@@ -47,10 +47,10 @@ You can apply the [Female Pronoun Patch](http://slothsoft.tumblr.com/post/360978
 
 If using Dolphin you can use [Hypatia's HD Texture Pack](https://onthegreatsea.tumblr.com/DOWNLOADS)
 
-Gecko codes you may want to use:  
+Gecko codes you may want to use (by Ralf and wiiztec on gbatemp forums)  
 
   
-Second set of equipped items:  
+Second set of equipped items  
 283ED84A FFFB0004  
 A8000000 00000000  
 C0000000 0000000B  
@@ -69,22 +69,25 @@ A1462EA2 38A00000
 E0000000 80008000  
 (D-pad down to switch)  
   
-Hero Mode:  
+Hero Mode  
 040C7D4C 60000000  
 C21F169C 00000003  
 8061000C 74648000  
 41820008 1C630002  
 60000000 00000000  
 (Take double damage, no heart drops)  
+
+No Heart Beeping Noise  
+042A2F78 480000CC
   
-Items don't disappear:  
+Items don't disappear  
 040F6E38 38600000  
   
-Unrestricted Camera:  
+Unrestricted Camera  
 04356D34 45000000  
 04356D48 42B00000  
   
-Blur off:  
+Blur off  
 043FCB9C 00000000  
 
 
