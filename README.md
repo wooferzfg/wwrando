@@ -47,7 +47,7 @@ You can apply the [Female Pronoun Patch](http://slothsoft.tumblr.com/post/360978
 
 If using Dolphin you can use [Hypatia's HD Texture Pack](https://onthegreatsea.tumblr.com/DOWNLOADS)
 
-Gecko codes you may want to use (by Ralf and wiiztec on gbatemp forums)  
+**Gecko codes you may want to use (by Ralf and wiiztec on gbatemp forums)**  
 
   
 Second set of equipped items  
