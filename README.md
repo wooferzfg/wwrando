@@ -15,7 +15,7 @@ You can toggle the following on/off:
 * Faster grapple hook  
 * Faster rolling speed  
 * Faster crawling, climbing, NPC chat zoom  
-* Tingle chests without Tingle Tuner 
+* Tingle chests without tingle tuner 
 * Turn while swinging or grappling
 * Reveal full sea chart 
 * Free-roam boat  
