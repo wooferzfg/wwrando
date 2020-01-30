@@ -49,47 +49,14 @@ You can apply the [Female Pronoun Patch](http://slothsoft.tumblr.com/post/360978
 If using Dolphin you can use [Hypatia's HD Texture Pack](https://onthegreatsea.tumblr.com/DOWNLOADS)
 
 **Gecko codes you may want to use (by Ralf and wiiztec)**  
-
+Included is an optional file with these Gecko codes that I personally like to use:  
   
-Second set of equipped items  
-283ED84A FFFB0004  
-A8000000 00000000  
-C0000000 0000000B  
-3D80803C 618CA7DB  
-892C0000 A14C0001  
-80A62EA8 2C050000  
-4082001C 99262EA1  
-B1462EA2 89262EA5  
-A1462EA6 38A00001  
-48000018 99262EA5  
-B1462EA6 89262EA1  
-A1462EA2 38A00000  
-992C0000 B14C0001  
-90A62EA8 4E800020  
-04205734 60000000  
-E0000000 80008000  
-(D-pad down to switch)  
-  
-Hero Mode  
-040C7D4C 60000000  
-C21F169C 00000003  
-8061000C 74648000  
-41820008 1C630002  
-60000000 00000000  
-(Take double damage, no heart drops)  
-
+Second set of equipped items (D-pad down to switch)   
+Hero Mode (Take double damage, no heart drops)  
 No Heart Beeping Noise  
-042A2F78 480000CC
-  
 Items don't disappear  
-040F6E38 38600000  
-  
 Unrestricted Camera  
-04356D34 45000000  
-04356D48 42B00000  
-  
 Blur off  
-043FCB9C 00000000  
 
 
 ### Information
