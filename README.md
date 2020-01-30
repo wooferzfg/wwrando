@@ -3,10 +3,12 @@
 
 Better Wind Waker  
 
-This is an ISO patcher for The Legend of Zelda: The Wind Waker based on [LagoLunatic's wwrando](https://github.com/LagoLunatic/wwrando), and [brainfubar's fork](https://github.com/brainfubar/wwrando).  
+This is an ISO patcher for The Legend of Zelda: The Wind Waker based on [LagoLunatic's wwrando](https://github.com/LagoLunatic/wwrando).
 
 **This adds features from the Wind Waker Randomizer to an ISO without randomization.**  
 Intended to make a more enjoyable casual experience reflecting many changes made for Wind Waker HD.  
+
+*The download button on this page is for source code, not the application.* [Download the program here](https://github.com/WideBoner/betterww/releases).  
 
 You can toggle the following on/off:
 * Swift Sail replaces Sail  
@@ -111,6 +113,6 @@ LordNed (file format documentation)
 CryZe (event flag documentation)  
 
 betterww:  
-brainfubar (His [fork](https://github.com/brainfubar/wwrando) of wwrando was used to make this)  
+brainfubar (His fork of wwrando was used to make this)  
 MelonSpeedruns (Original design for Brisk Sail)  
 JarheadHME (Help getting releases working and updating)
