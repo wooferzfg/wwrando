@@ -36,6 +36,7 @@ Models can be found here:
 https://github.com/Sage-of-Mirrors/Custom-Wind-Waker-Player-Models  
 https://gamebanana.com/games/6173  
 https://discord.gg/r2963mt (WIP models, learn to make your own)  
+Add them to the models folder.
 
 ### Download
 
