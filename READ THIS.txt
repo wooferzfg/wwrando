@@ -1,0 +1,4 @@
+You've downloaded the source code for betterww.
+If you're looking for the program and not just code visit:
+
+https://github.com/WideBoner/betterww/releases
