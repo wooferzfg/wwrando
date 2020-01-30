@@ -36,10 +36,6 @@ Models can be found here:
 Customize character using skins from the [github repository](https://github.com/Sage-of-Mirrors/Custom-Wind-Waker-Player-Models), [GameBanana](https://gamebanana.com/games/6173), or the [ WW Randomizer Discord](https://discord.gg/r2963mt)  
 Add them to the models folder.
 
-### Download
-
-https://github.com/WideBoner/betterww/releases
-
 ### Other Tweaks
   
 You can apply the [Widescreen Patch](https://www.dropbox.com/s/5huyf6r3drynq1c/The%20Legend%20of%20Zelda%20The%20Wind%20Waker%20Widescreen.zip?dl=1) before running this  
@@ -57,6 +53,10 @@ Included is an optional file with these Gecko codes that I personally like to us
 * Items don't disappear  
 * Unrestricted Camera  
 * Blur off  
+
+### Download
+
+https://github.com/WideBoner/betterww/releases
 
 
 ### Information
