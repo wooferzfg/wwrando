@@ -51,12 +51,12 @@ If using Dolphin you can use [Hypatia's HD Texture Pack](https://onthegreatsea.t
 **Gecko codes you may want to use (by Ralf and wiiztec)**  
 Included is an optional file with these Gecko codes that I personally like to use:  
   
-Second set of equipped items (D-pad down to switch)   
-Hero Mode (Take double damage, no heart drops)  
-No Heart Beeping Noise  
-Items don't disappear  
-Unrestricted Camera  
-Blur off  
+* Second set of equipped items (D-pad down to switch)   
+* Hero Mode (Take double damage, no heart drops)  
+* No Heart Beeping Noise  
+* Items don't disappear  
+* Unrestricted Camera  
+* Blur off  
 
 
 ### Information
