@@ -33,9 +33,7 @@ You can toggle the following on/off:
 Allows you to customize Link, but "casual" outfits will only be seen before getting the tunic or during New Game+  
   
 Models can be found here:  
-https://github.com/Sage-of-Mirrors/Custom-Wind-Waker-Player-Models  
-https://gamebanana.com/games/6173  
-https://discord.gg/r2963mt (WIP models, learn to make your own)  
+Customize character using skins from the [github repository](https://github.com/Sage-of-Mirrors/Custom-Wind-Waker-Player-Models), [GameBanana](https://gamebanana.com/games/6173), or the [ WW Randomizer Discord](https://discord.gg/r2963mt)  
 Add them to the models folder.
 
 ### Download
