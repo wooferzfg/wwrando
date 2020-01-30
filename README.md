@@ -9,7 +9,7 @@ This is an ISO patcher for The Legend of Zelda: The Wind Waker based on [LagoLun
 Intended to make a more enjoyable casual experience reflecting many changes made for Wind Waker HD.  
 
 *The download button above is for source code, not the application.*  
-**[Download the program here](https://github.com/WideBoner/betterww/releases).**  
+**[Download the program here](https://github.com/WideBoner/betterww/releases)**  
 
 You can toggle the following on/off:
 * Swift Sail replaces Sail  
