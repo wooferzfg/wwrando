@@ -114,6 +114,6 @@ LordNed (file format documentation)
 CryZe (event flag documentation)  
 
 betterww:  
-brainfubar (His fork of wwrando was used to make this)  
+brainfubar (His fork of wwrando was used to make this, it was a huge help. Sadly he deleted his work from this site)  
 MelonSpeedruns (Original design for Brisk Sail)  
 JarheadHME (Help getting releases working and updating)
