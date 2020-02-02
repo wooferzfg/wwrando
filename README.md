@@ -49,9 +49,9 @@ Included is an optional file with these Gecko codes that I like to use:
   
 * Second set of equipped items (D-pad down to switch)   
 * Hero Mode (Take double damage, no heart drops)  
-* No Heart Beeping Noise  
 * Items don't disappear  
 * Unrestricted Camera  
+* No Heart Beeping Noise  
 * Blur off  
 
 ### Download
