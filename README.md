@@ -26,7 +26,7 @@ You can toggle the following on/off:
 * Invert camera  
 * Remove intro video  
 * Faster ballad of gales  
-* Brisk Sail for even faster sailing
+* Brisk Sail (even faster sail)
 
   
 **Custom Player Models**  
