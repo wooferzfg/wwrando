@@ -31,7 +31,7 @@ You can toggle the following on/off:
   
 **Custom Player Models**  
 
-Allows you to customize Link, but "casual" outfits will only be seen before getting the tunic or during Second Quest 
+Allows you to customize Link, but "casual" outfits will only be seen before getting the tunic or if playing Second Quest 
   
 Models can be found on [the github repository](https://github.com/Sage-of-Mirrors/Custom-Wind-Waker-Player-Models), on [GameBanana](https://gamebanana.com/games/6173), or the [ WW Randomizer Discord](https://discord.gg/r2963mt)  
 Add them to the models folder.
