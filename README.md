@@ -52,18 +52,8 @@ Included is an optional file with these Gecko codes that I like to use:
 * Unrestricted Camera  
 * No Heart Beeping Noise  
 * Blur off  
-This is an ISO patcher for The Legend of Zelda: The Wind Waker based on [wwrando](https://github.com/LagoLunatic/wwrando).
 
-### Download
-It aims to create a happy middle ground between the vanilla experience and the wwrando experience. That is to say:
-* You can change your character skin
-* Items remain in their original locations
-* All cutscenes and events remain in place
-* Certain changes/enhancements provided by wwrando are not included
 
-If you're looking for something closer to wwrando, but not totally random, check out https://github.com/wooferzfg/wwrando/tree/vanilla?files=1.
-
-https://github.com/WideBoner/betterww/releases
 ### Download
 
 See the [releases page](https://github.com/brainfubar/wwrando/releases) to download zip files containing the program and assets. Both 32-bit and 64-bit versions are available.
