@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'randomizer_window.ui',
 # licensing of 'randomizer_window.ui' applies.
 #
-# Created: Wed Nov  6 19:14:16 2019
+# Created: Thu Nov  7 15:27:08 2019
 #      by: pyside2-uic  running on PySide2 5.11.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -13,7 +13,7 @@ from PySide2 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(650, 665)
+        MainWindow.resize(650, 670)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
@@ -132,6 +132,14 @@ class Ui_MainWindow(object):
         self.brisk_sail.setChecked(True)
         self.brisk_sail.setObjectName("brisk_sail")
         self.gridLayout.addWidget(self.brisk_sail, 22, 0, 1, 1)
+        self.brisk_sail2 = QtWidgets.QCheckBox(self.tab)
+        self.brisk_sail2.setChecked(True)
+        self.brisk_sail2.setObjectName("brisk_sail2")
+        self.gridLayout.addWidget(self.brisk_sail2, 22, 1, 1, 1)
+        self.swift_sail2 = QtWidgets.QCheckBox(self.tab)
+        self.swift_sail2.setChecked(True)
+        self.swift_sail2.setObjectName("swift_sail2")
+        self.gridLayout.addWidget(self.swift_sail2, 5, 1, 1, 1)
         self.label_81 = QtWidgets.QLabel(self.tab)
         self.label_81.setText("")
         self.label_81.setObjectName("label_81")
@@ -260,12 +268,14 @@ class Ui_MainWindow(object):
         self.memorylogo.setText(QtWidgets.QApplication.translate("MainWindow", "Change Memory Card/Dolphin Logo", None, -1))
         self.titlelogo.setText(QtWidgets.QApplication.translate("MainWindow", "Change Title Screen Logo", None, -1))
         self.brisk_sail.setText(QtWidgets.QApplication.translate("MainWindow", "Brisk Sail", None, -1))
+        self.brisk_sail2.setText(QtWidgets.QApplication.translate("MainWindow", "Brisk Sail for HD texture pack", None, -1))
+        self.swift_sail2.setText(QtWidgets.QApplication.translate("MainWindow", "Swift Sail for HD texture pack", None, -1))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QtWidgets.QApplication.translate("MainWindow", "Game Settings", None, -1))
         self.label_for_custom_player_model.setText(QtWidgets.QApplication.translate("MainWindow", "Player Model", None, -1))
         self.player_in_casual_clothes.setText(QtWidgets.QApplication.translate("MainWindow", "Casual Clothes", None, -1))
         self.disable_custom_player_voice.setText(QtWidgets.QApplication.translate("MainWindow", "Disable Custom Voice", None, -1))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QtWidgets.QApplication.translate("MainWindow", "Cosmetic", None, -1))
-        self.update_checker_label.setText(QtWidgets.QApplication.translate("MainWindow", "Checking for updates to the randomizer...", None, -1))
+        self.update_checker_label.setText(QtWidgets.QApplication.translate("MainWindow", "Checking for updates Better Wind Waker...", None, -1))
         self.about_button.setText(QtWidgets.QApplication.translate("MainWindow", "About", None, -1))
         self.reset_settings_to_default.setText(QtWidgets.QApplication.translate("MainWindow", "Reset All Settings to Default", None, -1))
         self.randomize_button.setText(QtWidgets.QApplication.translate("MainWindow", "Apply Patch", None, -1))
