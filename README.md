@@ -78,6 +78,7 @@ LordNed (file format documentation)
 CryZe (event flag documentation)  
 
 betterww:  
+LagoLunatic (This is a modification of code written by him)
 brainfubar (His wwrando fork was used to make this)  
 MelonSpeedruns (Original design for Brisk Sail)  
 JarheadHME (Help getting releases working and updating)
