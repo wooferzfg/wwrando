@@ -20,7 +20,7 @@ You can toggle the following on/off:
 * Tingle chests without tingle tuner 
 * Turn while swinging or grappling
 * Reveal full sea chart 
-* Free-roam boat  
+* Unrestricted boat  
 * No song replays  
 * Invert camera  
 * Remove intro video  
