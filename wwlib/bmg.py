@@ -89,7 +89,7 @@ class BMGSection:
     align_data_to_nearest(self.data, 0x20)
     
     self.size = data_len(self.data)
-    write_str(self.data, 0, self.magic, 4)
+    write_magic_str(self.data, 0, self.magic, 4)
     write_u32(self.data, 4, self.size)
   
   def read_inf1(self):
@@ -233,9 +233,9 @@ class Message:
         self.string += "\\{%02X %02X" % (byte, control_code_size)
         
         for i in range(control_code_size-2):
-          contrl_code_data_byte = read_u8(string_pool_data, byte_offset)
+          control_code_data_byte = read_u8(string_pool_data, byte_offset)
           byte_offset += 1
-          self.string += " %02X" % contrl_code_data_byte
+          self.string += " %02X" % control_code_data_byte
         self.string += "}"
       else:
         # Normal character.

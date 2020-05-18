@@ -13,6 +13,7 @@ class GCM:
     self.files_by_path_lowercase = {}
     self.dirs_by_path = {}
     self.dirs_by_path_lowercase = {}
+    self.changed_files = {}
   
   def read_entire_disc(self):
     self.iso_file = open(self.iso_path, "rb")
@@ -42,11 +43,13 @@ class GCM:
       self.file_entries.append(file_entry)
     
     root_file_entry = self.file_entries[0]
+    root_file_entry.file_path = "files"
     self.read_directory(root_file_entry, "files")
   
   def read_directory(self, directory_file_entry, dir_path):
     assert directory_file_entry.is_dir
     self.dirs_by_path[dir_path] = directory_file_entry
+    directory_file_entry.dir_path = dir_path
     
     i = directory_file_entry.file_index + 1
     while i < directory_file_entry.next_fst_index:
@@ -59,6 +62,7 @@ class GCM:
       if file_entry.is_dir:
         assert directory_file_entry.file_index == file_entry.parent_fst_index
         subdir_path = dir_path + "/" + file_entry.name
+        file_entry.file_path = subdir_path
         self.read_directory(file_entry, subdir_path)
         i = file_entry.next_fst_index
       else:
@@ -68,14 +72,14 @@ class GCM:
         i += 1
   
   def read_system_data(self):
-    self.files_by_path["sys/boot.bin"] = SystemFile(0, 0x440)
-    self.files_by_path["sys/bi2.bin"] = SystemFile(0x440, 0x2000)
+    self.files_by_path["sys/boot.bin"] = SystemFile(0, 0x440, "boot.bin")
+    self.files_by_path["sys/bi2.bin"] = SystemFile(0x440, 0x2000, "bi2.bin")
     
     apploader_header_size = 0x20
     apploader_size = read_u32(self.iso_file, 0x2440 + 0x14)
     apploader_trailer_size = read_u32(self.iso_file, 0x2440 + 0x18)
     apploader_full_size = apploader_header_size + apploader_size + apploader_trailer_size
-    self.files_by_path["sys/apploader.img"] = SystemFile(0x2440, apploader_full_size)
+    self.files_by_path["sys/apploader.img"] = SystemFile(0x2440, apploader_full_size, "apploader.img")
     
     dol_offset = read_u32(self.iso_file, 0x420)
     main_dol_size = 0
@@ -91,9 +95,17 @@ class GCM:
       section_end_offset = section_offset + section_size
       if section_end_offset > main_dol_size:
         main_dol_size = section_end_offset
-    self.files_by_path["sys/main.dol"] = SystemFile(dol_offset, main_dol_size)
+    self.files_by_path["sys/main.dol"] = SystemFile(dol_offset, main_dol_size, "main.dol")
     
-    self.files_by_path["sys/fst.bin"] = SystemFile(self.fst_offset, self.fst_size)
+    self.files_by_path["sys/fst.bin"] = SystemFile(self.fst_offset, self.fst_size, "fst.bin")
+    
+    self.system_files = [
+      self.files_by_path["sys/boot.bin"],
+      self.files_by_path["sys/bi2.bin"],
+      self.files_by_path["sys/apploader.img"],
+      self.files_by_path["sys/main.dol"],
+      self.files_by_path["sys/fst.bin"],
+    ]
   
   def read_file_data(self, file_path):
     file_path = file_path.lower()
@@ -109,6 +121,17 @@ class GCM:
     
     return data
   
+  def read_file_raw_data(self, file_path):
+    file_path = file_path.lower()
+    if file_path not in self.files_by_path_lowercase:
+      raise Exception("Could not find file: " + file_path)
+    
+    file_entry = self.files_by_path_lowercase[file_path]
+    with open(self.iso_path, "rb") as iso_file:
+      data = read_bytes(iso_file, file_entry.file_data_offset, file_entry.file_size)
+    
+    return data
+  
   def get_dir_file_entry(self, dir_path):
     dir_path = dir_path.lower()
     if dir_path not in self.dirs_by_path_lowercase:
@@ -117,29 +140,48 @@ class GCM:
     file_entry = self.dirs_by_path_lowercase[dir_path]
     return file_entry
   
-  def export_disc_to_folder_with_changed_files(self, output_folder_path, changed_files):
-    self.changed_files = changed_files
+  def import_all_files_from_disk(self, input_directory):
+    num_files_overwritten = 0
+    
+    for file_path, file_entry in self.files_by_path.items():
+      full_file_path = os.path.join(input_directory, file_path)
+      if os.path.isfile(full_file_path):
+        with open(full_file_path, "rb") as f:
+          self.changed_files[file_path] = BytesIO(f.read())
+          num_files_overwritten += 1
+    
+    return num_files_overwritten
+  
+  def export_disc_to_folder_with_changed_files(self, output_folder_path):
     for file_path, file_entry in self.files_by_path.items():
       full_file_path = os.path.join(output_folder_path, file_path)
       dir_name = os.path.dirname(full_file_path)
       if not os.path.isdir(dir_name):
         os.makedirs(dir_name)
       
-      file_data = self.get_changed_file_data(file_path)
-      with open(full_file_path, "wb") as f:
-        file_data.seek(0)
-        f.write(file_data.read())
+      if file_path in self.changed_files:
+        file_data = self.changed_files[file_path]
+        with open(full_file_path, "wb") as f:
+          file_data.seek(0)
+          f.write(file_data.read())
+      else:
+        # Need to avoid reading enormous files all at once
+        size_remaining = file_entry.file_size
+        offset_in_file = 0
+        with open(full_file_path, "wb") as f:
+          while size_remaining > 0:
+            size_to_read = min(size_remaining, MAX_DATA_SIZE_TO_READ_AT_ONCE)
+            
+            with open(self.iso_path, "rb") as iso_file:
+              data = read_bytes(iso_file, file_entry.file_data_offset + offset_in_file, size_to_read)
+            f.write(data)
+            
+            size_remaining -= size_to_read
+            offset_in_file += size_to_read
   
-  def export_disc_to_iso_with_changed_files(self, output_file_path, changed_files):
-    self.changed_files = changed_files
-    
-    # Check the changed_files dict for files that didn't originally exist, and add them.
-    for file_path in self.changed_files:
-      if file_path.lower() in self.files_by_path_lowercase:
-        # Existing file
-        continue
-      
-      self.add_new_file(file_path)
+  def export_disc_to_iso_with_changed_files(self, output_file_path):
+    if os.path.realpath(self.iso_path) == os.path.realpath(output_file_path):
+      raise Exception("Input ISO path and output ISO path are the same. Aborting.")
     
     self.output_iso = open(output_file_path, "wb")
     try:
@@ -153,7 +195,6 @@ class GCM:
     finally:
       self.output_iso.close()
       self.output_iso = None
-      self.changed_files = None
   
   def get_changed_file_data(self, file_path):
     if file_path in self.changed_files:
@@ -161,7 +202,7 @@ class GCM:
     else:
       return self.read_file_data(file_path)
   
-  def add_new_file(self, file_path):
+  def add_new_file(self, file_path, file_data=None):
     assert file_path.lower() not in self.files_by_path_lowercase
     
     dirname = os.path.dirname(file_path)
@@ -170,10 +211,30 @@ class GCM:
     new_file = FileEntry()
     new_file.name = basename
     new_file.file_path = file_path
+    # file_data_offset is used for ordering the files in the new ISO, so we give it a huge value so new files are placed after vanilla files.
+    new_file.file_data_offset = (1<<32)
+    new_file.file_size = None # No original file size.
     
     parent_dir = self.get_dir_file_entry(dirname)
     parent_dir.children.append(new_file)
     new_file.parent = parent_dir
+    
+    if file_data is None:
+      self.changed_files[file_path] = None
+    else:
+      self.changed_files[file_path] = file_data
+    
+    self.files_by_path[file_path] = new_file
+    self.files_by_path_lowercase[file_path.lower()] = new_file
+  
+  def delete_file(self, file_entry):
+    parent_dir = file_entry.parent
+    parent_dir.children.remove(file_entry)
+    
+    del self.files_by_path[file_entry.file_path]
+    del self.files_by_path_lowercase[file_entry.file_path.lower()]
+    if file_entry.file_path in self.changed_files:
+      del self.changed_files[file_entry.file_path]
   
   def pad_output_iso_by(self, amount):
     self.output_iso.write(b"\0"*amount)
@@ -280,10 +341,15 @@ class GCM:
     self.output_iso.seek(file_data_start_offset)
     self.align_output_iso_to_nearest(4)
     
-    for file_entry in self.file_entries:
-      if file_entry.is_dir:
-        continue
-      
+    # Instead of writing the file data in the order of file entries, write them in the order they were written in the vanilla ISO.
+    # This increases the speed the game loads file for some unknown reason.
+    file_entries_by_data_order = [
+      file_entry for file_entry in self.file_entries
+      if not file_entry.is_dir
+    ]
+    file_entries_by_data_order.sort(key=lambda fe: fe.file_data_offset)
+    
+    for file_entry in file_entries_by_data_order:
       current_file_start_offset = self.output_iso.tell()
       
       if file_entry.file_path in self.changed_files:
@@ -314,6 +380,8 @@ class GCM:
         file_size = file_entry.file_size
       write_u32(self.output_iso, file_entry_offset+8, file_size)
       
+      # Note: The file_data_offset and file_size fields of the FileEntry must not be updated, they refer only to the offset and size of the file data in the input ISO, not this output ISO.
+      
       self.output_iso.seek(current_file_start_offset + file_size)
       
       self.align_output_iso_to_nearest(4)
@@ -323,6 +391,7 @@ class FileEntry:
     self.file_index = None
     
     self.is_dir = False
+    self.is_system_file = False
   
   def read(self, file_index, iso_file, file_entry_offset, fnt_offset):
     self.file_index = file_index
@@ -349,6 +418,12 @@ class FileEntry:
       self.name = read_str_until_null_character(iso_file, fnt_offset + self.name_offset)
 
 class SystemFile:
-  def __init__(self, file_data_offset, file_size):
+  def __init__(self, file_data_offset, file_size, name):
     self.file_data_offset = file_data_offset
     self.file_size = file_size
+    
+    self.name = name
+    self.file_path = "sys/" + name
+    
+    self.is_dir = False
+    self.is_system_file = True

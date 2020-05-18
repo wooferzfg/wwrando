@@ -1,6 +1,8 @@
 
 from fs_helpers import *
 
+from data_tables import DataTables
+
 class DZx: # DZR or DZS, same format
   def __init__(self, file_entry):
     self.file_entry = file_entry
@@ -48,16 +50,25 @@ class DZx: # DZR or DZS, same format
     return entity
   
   def remove_entity(self, entity, chunk_type, layer=None):
-    chunk_to_remove_entity_from = None
-    for chunk in self.chunks:
-      if chunk_type == chunk.chunk_type and layer == chunk.layer:
-        chunk_to_remove_entity_from = chunk
-        break
+    assert hasattr(entity, "name")
     
-    if chunk_to_remove_entity_from is None:
-      raise Exception("Could not find chunk of type %s on layer %s" % (chunk_type, layer))
+    # Instead of actually removing the entity from the list, simply set its name to the empty string.
+    # This will cause the game to not load any actor there, so it's effectively removing it.
+    # The benefit of this is that removing an entity from the list shifts down the entity indexes of all entities after it in the list, which has the potential to screw up paths to entities in item_locations.txt and enemy locations.txt.
+    entity.name = ""
+    entity.save_changes()
     
-    chunk_to_remove_entity_from.entries.remove(entity)
+    # Below is the old code that actually removed the entity from the list.
+    #chunk_to_remove_entity_from = None
+    #for chunk in self.chunks:
+    #  if chunk_type == chunk.chunk_type and layer == chunk.layer:
+    #    chunk_to_remove_entity_from = chunk
+    #    break
+    #
+    #if chunk_to_remove_entity_from is None:
+    #  raise Exception("Could not find chunk of type %s on layer %s" % (chunk_type, layer))
+    #
+    #chunk_to_remove_entity_from.entries.remove(entity)
   
   def save_changes(self):
     data = self.file_entry.data
@@ -69,7 +80,7 @@ class DZx: # DZR or DZS, same format
     
     for chunk in self.chunks:
       chunk.offset = offset
-      write_str(data, chunk.offset, chunk.fourcc, 4)
+      write_magic_str(data, chunk.offset, chunk.fourcc, 4)
       write_u32(data, chunk.offset+4, len(chunk.entries))
       write_u32(data, chunk.offset+8, 0) # Placeholder for first entry offset
       offset += 0xC
@@ -182,22 +193,57 @@ class Chunk:
 
 class ChunkEntry:
   PARAMS = {}
+  IS_ACTOR_CHUNK = False
   
-  def __getattr__(self, name):
-    if name in self.PARAMS:
-      mask = self.PARAMS[name]
-      amount_to_shift = self.get_lowest_set_bit(mask)
-      return ((self.params & mask) >> amount_to_shift)
+  def __getattr__(self, attr_name):
+    if attr_name in ["name"]:
+      return super(self.__class__, self).__getattribute__(attr_name)
+    
+    if self.IS_ACTOR_CHUNK:
+      if self.name in DataTables.actor_name_to_class_name:
+        class_name = DataTables.actor_name_to_class_name[self.name]
+        if class_name is None:
+          raise Exception("Unknown actor name: \"%s\"" % self.name)
+        else:
+          param_fields = DataTables.actor_parameters[class_name]
+      else:
+        param_fields = {}
     else:
-      return super(self.__class__, self).__getattribute__(name)
+      param_fields = self.PARAMS
+    
+    if attr_name in param_fields:
+      params_bitfield_name, mask = param_fields[attr_name]
+      amount_to_shift = self.get_lowest_set_bit(mask)
+      return ((getattr(self, params_bitfield_name) & mask) >> amount_to_shift)
+    else:
+      return super(self.__class__, self).__getattribute__(attr_name)
   
-  def __setattr__(self, name, value):
-    if name in self.PARAMS:
-      mask = self.PARAMS[name]
-      amount_to_shift = self.get_lowest_set_bit(mask)
-      self.params = (self.params & (~mask)) | ((value << amount_to_shift) & mask)
+  def __setattr__(self, attr_name, value):
+    if attr_name in ["name"]:
+      self.__dict__[attr_name] = value
+    
+    if self.IS_ACTOR_CHUNK and hasattr(self, "name"):
+      if self.name in DataTables.actor_name_to_class_name:
+        class_name = DataTables.actor_name_to_class_name[self.name]
+        if class_name is None:
+          raise Exception("Unknown actor name: \"%s\"" % self.name)
+        else:
+          param_fields = DataTables.actor_parameters[class_name]
+      else:
+        param_fields = {}
     else:
-      self.__dict__[name] = value
+      param_fields = self.PARAMS
+    
+    if attr_name in param_fields:
+      params_bitfield_name, mask = param_fields[attr_name]
+      amount_to_shift = self.get_lowest_set_bit(mask)
+      new_params_value = (getattr(self, params_bitfield_name) & (~mask)) | ((value << amount_to_shift) & mask)
+      super().__setattr__(params_bitfield_name, new_params_value)
+    else:
+      if self.IS_ACTOR_CHUNK and attr_name not in ["offset", "file_entry", "name", "params", "x_pos", "y_pos", "z_pos", "aux_params_1", "y_rot", "aux_params_2", "enemy_number", "scale_x", "scale_y", "scale_z", "padding"]:
+        raise Exception("Tried to set unknown actor parameter \"%s\" for actor class %s (actor name: %s)" % (attr_name, self.actor_class_name, self.name))
+      
+      self.__dict__[attr_name] = value
   
   @staticmethod
   def get_lowest_set_bit(integer):
@@ -209,96 +255,18 @@ class ChunkEntry:
     if lowest_set_bit_index is None:
       raise Exception("Invalid mask: %08X" % mask)
     return lowest_set_bit_index
-
-class TRES(ChunkEntry):
-  DATA_SIZE = 0x20
   
-  PARAMS = {
-    "chest_type":              0x00F00000,
-    "appear_condition_switch": 0x000FF000,
-    "opened_flag":             0x00000F80,
-    "behavior_type":           0x0000007F,
-  }
-  
-  def __init__(self, file_entry):
-    self.file_entry = file_entry
+  @property
+  def actor_class_name(self):
+    if not self.IS_ACTOR_CHUNK:
+      raise Exception("Tried to get the actor class name of an entity in a non-actor DZx chunk")
     
-    self.name = None
-    self.params = 0xFF000000
-    self.x_pos = 0
-    self.y_pos = 0
-    self.z_pos = 0
-    self.room_num = 0
-    self.y_rot = 0
-    self.item_id = 0
-    self.flag_id = 0xFF
-    self.padding = 0xFFFF
-  
-  def read(self, offset):
-    self.offset = offset
-    data = self.file_entry.data
-    
-    self.name = read_str(data, offset, 8)
-    
-    self.params = read_u32(data, offset+8)
-    
-    self.x_pos = read_float(data, offset+0x0C)
-    self.y_pos = read_float(data, offset+0x10)
-    self.z_pos = read_float(data, offset+0x14)
-    self.room_num = read_u16(data, offset+0x18)
-    self.y_rot = read_u16(data, offset+0x1A)
-    
-    self.item_id = read_u8(data, offset+0x1C)
-    self.flag_id = read_u8(data, offset+0x1D)
-    
-    self.padding = read_u16(data, offset + 0x1E)
-    
-  def save_changes(self):
-    data = self.file_entry.data
-    
-    write_str(data, self.offset, self.name, 8)
-    
-    write_u32(data, self.offset+0x08, self.params)
-    
-    write_float(data, self.offset+0x0C, self.x_pos)
-    write_float(data, self.offset+0x10, self.y_pos)
-    write_float(data, self.offset+0x14, self.z_pos)
-    write_u16(data, self.offset+0x18, self.room_num)
-    write_u16(data, self.offset+0x1A, self.y_rot)
-    
-    write_u8(data, self.offset+0x1C, self.item_id)
-    write_u8(data, self.offset+0x1D, self.flag_id)
-    
-    write_u16(data, self.offset+0x1E, self.padding)
+    return DataTables.actor_name_to_class_name[self.name]
 
 class SCOB(ChunkEntry):
   DATA_SIZE = 0x24
   
-  PARAMS = {
-    "salvage_type":               0xF0000000,
-    "salvage_chart_index_plus_1": 0x0FF00000,
-    "salvage_item_id":            0x00000FF0,
-    
-    "buried_pig_item_id":         0x000000FF,
-    
-    "invisible_wall_switch_index": 0x000000FF,
-    
-    "event_trigger_seen_switch_index": 0x0000FF00,
-    "event_trigger_evnt_index":        0xFF000000,
-  }
-  
-  SALVAGE_NAMES = [
-    "Salvage",
-    "SwSlvg",
-    "Salvag2",
-    "SalvagN",
-    "SalvagE",
-    "SalvFM",
-  ]
-  
-  BURIED_PIG_ITEM_NAMES = [
-    "TagKb",
-  ]
+  IS_ACTOR_CHUNK = True
   
   def __init__(self, file_entry):
     self.file_entry = file_entry
@@ -308,9 +276,9 @@ class SCOB(ChunkEntry):
     self.x_pos = 0
     self.y_pos = 0
     self.z_pos = 0
-    self.auxilary_param = 0
+    self.aux_params_1 = 0
     self.y_rot = 0
-    self.auxilary_param_2 = 0
+    self.aux_params_2 = 0
     self.enemy_number = 0xFFFF
     self.scale_x = 10
     self.scale_y = 10
@@ -329,11 +297,11 @@ class SCOB(ChunkEntry):
     self.y_pos = read_float(data, offset + 0x10)
     self.z_pos = read_float(data, offset + 0x14)
     
-    self.auxilary_param = read_u16(data, offset + 0x18)
+    self.aux_params_1 = read_u16(data, offset + 0x18)
     
     self.y_rot = read_u16(data, offset + 0x1A)
     
-    self.auxilary_param_2 = read_u16(data, offset + 0x1C)
+    self.aux_params_2 = read_u16(data, offset + 0x1C)
     self.enemy_number = read_u16(data, offset + 0x1E)
     
     self.scale_x = read_u8(data, offset + 0x20)
@@ -351,87 +319,20 @@ class SCOB(ChunkEntry):
     write_float(data, self.offset+0x0C, self.x_pos)
     write_float(data, self.offset+0x10, self.y_pos)
     write_float(data, self.offset+0x14, self.z_pos)
-    write_u16(data, self.offset+0x18, self.auxilary_param)
+    write_u16(data, self.offset+0x18, self.aux_params_1)
     write_u16(data, self.offset+0x1A, self.y_rot)
-    write_u16(data, self.offset+0x1C, self.auxilary_param_2)
+    write_u16(data, self.offset+0x1C, self.aux_params_2)
     write_u16(data, self.offset+0x1E, self.enemy_number)
     
     write_u8(data, self.offset+0x20, self.scale_x)
     write_u8(data, self.offset+0x21, self.scale_y)
     write_u8(data, self.offset+0x22, self.scale_z)
     write_u8(data, self.offset+0x23, self.padding)
-  
-  def is_salvage(self):
-    return self.name in self.SALVAGE_NAMES
-  
-  @property
-  def salvage_duplicate_id(self):
-    return (self.auxilary_param_2 & 0x0003)
-  
-  @salvage_duplicate_id.setter
-  def salvage_duplicate_id(self, value):
-    self.auxilary_param_2 = (self.auxilary_param_2 & (~0x0003)) | (value&0x0003)
-  
-  def is_buried_pig_item(self):
-    return self.name in self.BURIED_PIG_ITEM_NAMES
 
 class ACTR(ChunkEntry):
   DATA_SIZE = 0x20
   
-  PARAMS = {
-    "item_id":   0x000000FF,
-    "item_flag": 0x0000FF00,
-    
-    "boss_item_stage_id": 0x000000FF,
-    # The below boss_item_id parameter did not exist for boss items in the vanilla game.
-    # The randomizer adds it so that boss items can be randomized and are not just always heart containers.
-    "boss_item_id":       0x0000FF00,
-    
-    "bridge_rpat_index": 0x00FF0000,
-    
-    "pot_item_id":   0x0000003F,
-    "pot_item_flag": 0x007F0000,
-    
-    "pirate_ship_door_type": 0x0000FF00,
-    
-    "warp_pot_type":            0x0000000F,
-    "warp_pot_event_reg_index": 0x000000F0,
-    "warp_pot_dest_1":          0x0000FF00,
-    "warp_pot_dest_2":          0x00FF0000,
-    "warp_pot_dest_3":          0xFF000000,
-    
-    "wizzrobe_prereq_switch_index": 0x00FF0000,
-    
-    "cannon_appear_condition_switch": 0x0000FF00,
-    
-    "grass_type":           0x00000030,
-    "grass_subtype":        0x0000000F,
-    "grass_item_drop_type": 0x00000FC0,
-  }
-  
-  ITEM_NAMES = [
-    "item",
-    "itemFLY",
-  ]
-  
-  BOSS_ITEM_NAMES = [
-    "Bitem",
-  ]
-  
-  POT_NAMES = [
-    "kotubo",
-    "ootubo1",
-    "Kmtub",
-    "Ktaru",
-    "Ostool",
-    "Odokuro",
-    "Okioke",
-    "Kmi02",
-    "Ptubo",
-    "KkibaB",
-    "Kmi00",
-    "Hbox2S",
-  ]
+  IS_ACTOR_CHUNK = True
   
   def __init__(self, file_entry):
     self.file_entry = file_entry
@@ -441,9 +342,9 @@ class ACTR(ChunkEntry):
     self.x_pos = 0
     self.y_pos = 0
     self.z_pos = 0
-    self.auxilary_param = 0
+    self.aux_params_1 = 0
     self.y_rot = 0
-    self.auxilary_param_2 = 0
+    self.aux_params_2 = 0
     self.enemy_number = 0xFFFF
   
   def read(self, offset):
@@ -458,11 +359,11 @@ class ACTR(ChunkEntry):
     self.y_pos = read_float(data, offset + 0x10)
     self.z_pos = read_float(data, offset + 0x14)
     
-    self.auxilary_param = read_u16(data, offset + 0x18)
+    self.aux_params_1 = read_u16(data, offset + 0x18)
     
     self.y_rot = read_u16(data, offset + 0x1A)
     
-    self.auxilary_param_2 = read_u16(data, offset + 0x1C)
+    self.aux_params_2 = read_u16(data, offset + 0x1C)
     self.enemy_number = read_u16(data, offset + 0x1E)
   
   def save_changes(self):
@@ -476,86 +377,24 @@ class ACTR(ChunkEntry):
     write_float(data, self.offset+0x10, self.y_pos)
     write_float(data, self.offset+0x14, self.z_pos)
     
-    write_u16(data, self.offset+0x18, self.auxilary_param)
+    write_u16(data, self.offset+0x18, self.aux_params_1)
     
     write_u16(data, self.offset+0x1A, self.y_rot)
     
-    write_u16(data, self.offset+0x1C, self.auxilary_param_2)
+    write_u16(data, self.offset+0x1C, self.aux_params_2)
     write_u16(data, self.offset+0x1E, self.enemy_number)
-  
-  def is_item(self):
-    return self.name in self.ITEM_NAMES
-  
-  def is_boss_item(self):
-    return self.name in self.BOSS_ITEM_NAMES
-  
-  def is_pot(self):
-    return self.name in self.POT_NAMES
 
-class PLYR(ChunkEntry):
-  DATA_SIZE = 0x20
-  
-  PARAMS = {
-    "room_num":        0x0000003F,
-    "unknown_param_1": 0x00000040,
-    "unknown_param_2": 0x00000080,
-    "unknown_param_3": 0x00000F00,
-    "spawn_type":      0x0000F000,
-    "unknown_param_4": 0x00FF0000,
-    "event_index":     0xFF000000,
-  }
-  
+class TRES(ACTR):
+  pass
+
+class PLYR(ACTR):
   def __init__(self, file_entry):
-    self.file_entry = file_entry
+    super(PLYR, self).__init__(file_entry)
     
     self.name = "Link"
-    
-    self.params = 0xFFFF0000
-    
-    self.x_pos = 0
-    self.y_pos = 0
-    self.z_pos = 0
-    self.unknown2 = 0
-    self.y_rot = 0
-    
-    self.unknown3 = 0xFF
-    self.spawn_id = 0
-    self.unknown4 = 0xFFFF
-  
-  def read(self, offset):
-    self.offset = offset
-    data = self.file_entry.data
-    
-    self.name = read_str(data, offset, 8)
-    
-    self.params = read_u32(data, offset + 8)
-    
-    self.x_pos = read_float(data, offset + 0x0C)
-    self.y_pos = read_float(data, offset + 0x10)
-    self.z_pos = read_float(data, offset + 0x14)
-    self.unknown2 = read_u16(data, offset + 0x18)
-    self.y_rot = read_u16(data, offset + 0x1A)
-    
-    self.unknown3 = read_u8(data, offset + 0x1C)
-    self.spawn_id = read_u8(data, offset + 0x1D)
-    self.unknown4 = read_u16(data, offset + 0x1E)
-  
-  def save_changes(self):
-    data = self.file_entry.data
-    
-    write_str(data, self.offset, self.name, 8)
-    
-    write_u32(data, self.offset+0x08, self.params)
-    
-    write_float(data, self.offset+0x0C, self.x_pos)
-    write_float(data, self.offset+0x10, self.y_pos)
-    write_float(data, self.offset+0x14, self.z_pos)
-    write_u16(data, self.offset+0x18, self.unknown2)
-    write_u16(data, self.offset+0x1A, self.y_rot)
-    
-    write_u8(data, self.offset+0x1C, self.unknown3)
-    write_u8(data, self.offset+0x1D, self.spawn_id)
-    write_u16(data, self.offset+0x1E, self.unknown4)
+    self.unknown_param_4 = 0xFF
+    self.event_index = 0xFF
+    self.unknown_param_5 = 0xFF
 
 class SCLS(ChunkEntry):
   DATA_SIZE = 0xC
@@ -591,6 +430,13 @@ class SCLS(ChunkEntry):
 class STAG(ChunkEntry):
   DATA_SIZE = 0x14
   
+  PARAMS = {
+    "unknown_2":            ("params", 0x0003),
+    "unknown_3":            ("params", 0x0004),
+    "loaded_particle_bank": ("params", 0x07F8),
+    "unknown_4":            ("params", 0xF800),
+  }
+  
   def __init__(self, file_entry):
     self.file_entry = file_entry
   
@@ -606,12 +452,7 @@ class STAG(ChunkEntry):
     self.is_dungeon = is_dungeon_and_stage_id & 1
     self.stage_id = is_dungeon_and_stage_id >> 1
     
-    loaded_particle_bank_and_unknown = read_u16(data, offset+0xA)
-    self.unknown_2            = ((loaded_particle_bank_and_unknown & 0x0003))
-    self.unknown_3            = ((loaded_particle_bank_and_unknown & 0x0004) >> 2)
-    self.loaded_particle_bank = ((loaded_particle_bank_and_unknown & 0x07F8) >> 3)
-    self.unknown_4            = ((loaded_particle_bank_and_unknown & 0xF800) >> 0xB)
-    
+    self.params = read_u16(data, offset+0xA)
     self.property_index = read_u16(data, offset+0xC)
     self.unknown_5 = read_u8(data, offset+0xE)
     self.unknown_6 = read_u8(data, offset+0xF)
@@ -629,13 +470,7 @@ class STAG(ChunkEntry):
     is_dungeon_and_stage_id = (self.stage_id << 1) | (self.is_dungeon & 1)
     write_u16(data, self.offset+8, is_dungeon_and_stage_id)
     
-    loaded_particle_bank_and_unknown = 0
-    loaded_particle_bank_and_unknown |= ((self.unknown_2                  ) & 0x0003)
-    loaded_particle_bank_and_unknown |= ((self.unknown_3            <<   2) & 0x0004)
-    loaded_particle_bank_and_unknown |= ((self.loaded_particle_bank <<   3) & 0x07F8)
-    loaded_particle_bank_and_unknown |= ((self.unknown_4            << 0xB) & 0xF800)
-    write_u16(data, self.offset+0xA, loaded_particle_bank_and_unknown)
-    
+    write_u16(data, self.offset+0xA, self.params)
     write_u16(data, self.offset+0xC, self.property_index)
     write_u8(data, self.offset+0xE, self.unknown_5)
     write_u8(data, self.offset+0xF, self.unknown_6)
@@ -647,7 +482,15 @@ class FILI(ChunkEntry):
   DATA_SIZE = 8
   
   PARAMS = {
-    "wind_type": 0x000C0000,
+    "unknown_1":                ("params", 0x0000007F),
+    "draw_depth":               ("params", 0x00007F80),
+    "unknown_2":                ("params", 0x00038000),
+    "wind_type":                ("params", 0x000C0000),
+    "is_weather":               ("params", 0x00100000),
+    "loaded_particle_bank":     ("params", 0x1FE00000),
+    "unknown_3":                ("params", 0x20000000),
+    "can_play_song_of_passing": ("params", 0x40000000),
+    "unknown_4":                ("params", 0x80000000),
   }
   
   def __init__(self, file_entry):
@@ -784,31 +627,34 @@ class RPAT(ChunkEntry):
     
     self.num_points = 0
     self.next_path_index = 0xFFFF
-    self.unknown = 0xFF
+    self.unknown_1 = 0xFF
     self.is_loop = 0
-    self.padding = 0xFFFF
+    self.unknown_2 = 0xFF
+    self.unknown_3 = 0xFF
     self.first_waypoint_offset = 0
   
   def read(self, offset):
     self.offset = offset
     data = self.file_entry.data
     
-    self.num_points = read_u16(data, self.offset)
-    self.next_path_index = read_u16(data, self.offset+2)
-    self.unknown = read_u8(data, self.offset+4)
-    self.is_loop = read_u8(data, self.offset+5)
-    self.padding = read_u16(data, self.offset+6)
-    self.first_waypoint_offset = read_u32(data, self.offset+8)
+    self.num_points = read_u16(data, self.offset+0x00)
+    self.next_path_index = read_u16(data, self.offset+0x02)
+    self.unknown_1 = read_u8(data, self.offset+0x04)
+    self.is_loop = read_u8(data, self.offset+0x05)
+    self.unknown_2 = read_u8(data, self.offset+0x06)
+    self.unknown_3 = read_u8(data, self.offset+0x07)
+    self.first_waypoint_offset = read_u32(data, self.offset+0x08)
   
   def save_changes(self):
     data = self.file_entry.data
     
-    write_u16(data, self.offset, self.num_points)
-    write_u16(data, self.offset+2, self.next_path_index)
-    write_u8(data, self.offset+4, self.unknown)
-    write_u8(data, self.offset+5, self.is_loop)
-    write_u16(data, self.offset+6, self.padding)
-    write_u32(data, self.offset+8, self.first_waypoint_offset)
+    write_u16(data, self.offset+0x00, self.num_points)
+    write_u16(data, self.offset+0x02, self.next_path_index)
+    write_u8(data, self.offset+0x04, self.unknown_1)
+    write_u8(data, self.offset+0x05, self.is_loop)
+    write_u8(data, self.offset+0x06, self.unknown_2)
+    write_u8(data, self.offset+0x07, self.unknown_3)
+    write_u32(data, self.offset+0x08, self.first_waypoint_offset)
 
 class RPPN(ChunkEntry):
   DATA_SIZE = 0x10
@@ -816,7 +662,10 @@ class RPPN(ChunkEntry):
   def __init__(self, file_entry):
     self.file_entry = file_entry
     
-    self.unknown = 0xFFFFFFFF
+    self.unknown_1 = 0xFF
+    self.unknown_2 = 0xFF
+    self.unknown_3 = 0xFF
+    self.action_type = 0xFF
     self.x_pos = 0
     self.y_pos = 0
     self.z_pos = 0
@@ -825,67 +674,36 @@ class RPPN(ChunkEntry):
     self.offset = offset
     data = self.file_entry.data
     
-    self.unknown = read_u32(data, self.offset)
-    self.x_pos = read_float(data, self.offset+4)
-    self.y_pos = read_float(data, self.offset+8)
-    self.z_pos = read_float(data, self.offset+0xC)
+    self.unknown_1 = read_u8(data, self.offset+0x00)
+    self.unknown_2 = read_u8(data, self.offset+0x01)
+    self.unknown_3 = read_u8(data, self.offset+0x02)
+    self.action_type = read_u8(data, self.offset+0x03)
+    self.x_pos = read_float(data, self.offset+0x04)
+    self.y_pos = read_float(data, self.offset+0x08)
+    self.z_pos = read_float(data, self.offset+0x0C)
   
   def save_changes(self):
     data = self.file_entry.data
     
-    write_u32(data, self.offset, self.unknown)
-    write_float(data, self.offset+4, self.x_pos)
-    write_float(data, self.offset+8, self.y_pos)
-    write_float(data, self.offset+0xC, self.z_pos)
+    write_u8(data, self.offset+0x00, self.unknown_1)
+    write_u8(data, self.offset+0x01, self.unknown_2)
+    write_u8(data, self.offset+0x02, self.unknown_3)
+    write_u8(data, self.offset+0x03, self.action_type)
+    write_float(data, self.offset+0x04, self.x_pos)
+    write_float(data, self.offset+0x08, self.y_pos)
+    write_float(data, self.offset+0x0C, self.z_pos)
 
-class TGOB(ChunkEntry):
-  DATA_SIZE = 0x20
-  
-  def __init__(self, file_entry):
-    self.file_entry = file_entry
-    
-    self.name = None
-    self.params = 0
-    self.x_pos = 0
-    self.y_pos = 0
-    self.z_pos = 0
-    self.x_rot = 0
-    self.y_rot = 0
-    self.z_rot = 0
-    self.padding = 0xFFFF
-  
-  def read(self, offset):
-    self.offset = offset
-    data = self.file_entry.data
-    
-    self.name = read_str(data, offset, 8)
-    
-    self.params = read_u32(data, offset + 8)
-    
-    self.x_pos = read_float(data, offset + 0x0C)
-    self.y_pos = read_float(data, offset + 0x10)
-    self.z_pos = read_float(data, offset + 0x14)
-    self.x_rot = read_u16(data, offset + 0x18)
-    self.y_rot = read_u16(data, offset + 0x1A)
-    self.z_rot = read_u16(data, offset + 0x1C)
-    
-    self.padding = read_u16(data, offset + 0x1E)
-  
-  def save_changes(self):
-    data = self.file_entry.data
-    
-    write_str(data, self.offset, self.name, 8)
-    
-    write_u32(data, self.offset+0x08, self.params)
-    
-    write_float(data, self.offset+0x0C, self.x_pos)
-    write_float(data, self.offset+0x10, self.y_pos)
-    write_float(data, self.offset+0x14, self.z_pos)
-    write_u16(data, self.offset+0x18, self.x_rot)
-    write_u16(data, self.offset+0x1A, self.y_rot)
-    write_u16(data, self.offset+0x1C, self.z_rot)
-    
-    write_u16(data, self.offset+0x1E, self.padding)
+class TGOB(ACTR):
+  pass
+
+class TGSC(SCOB):
+  pass
+
+class DOOR(SCOB):
+  pass
+
+class TGDR(SCOB):
+  pass
 
 class EVNT(ChunkEntry):
   DATA_SIZE = 0x18
@@ -993,6 +811,37 @@ class _2DMA(ChunkEntry):
     
     write_u8(data, self.offset+0x37, self.padding)
 
+class MULT(ChunkEntry):
+  DATA_SIZE = 0xC
+  
+  def __init__(self, file_entry):
+    self.file_entry = file_entry
+    
+    self.x_pos = 0.0
+    self.z_pos = 0.0
+    self.y_rot = 0
+    self.room_index = 0
+    self.unknown_1 = 0
+  
+  def read(self, offset):
+    self.offset = offset
+    data = self.file_entry.data
+    
+    self.x_pos = read_float(data, offset)
+    self.z_pos = read_float(data, offset+4)
+    self.y_rot = read_u16(data, offset+8)
+    self.room_index = read_u8(data, offset+0xA)
+    self.unknown_1 = read_u8(data, offset+0xB)
+    
+  def save_changes(self):
+    data = self.file_entry.data
+    
+    write_float(data, self.offset, self.x_pos)
+    write_float(data, self.offset+4, self.z_pos)
+    write_u16(data, self.offset+8, self.y_rot)
+    write_u8(data, self.offset+0xA, self.room_index)
+    write_u8(data, self.offset+0xB, self.unknown_1)
+
 class DummyEntry(ChunkEntry):
   def __init__(self, file_entry):
     self.file_entry = file_entry
@@ -1022,12 +871,6 @@ class RCAM(DummyEntry):
 
 class RARO(DummyEntry):
   DATA_SIZE = 0x14
-
-class TGDR(DummyEntry):
-  DATA_SIZE = 0x24
-
-class MULT(DummyEntry):
-  DATA_SIZE = 0xC
 
 class DMAP(DummyEntry):
   DATA_SIZE = 0x10

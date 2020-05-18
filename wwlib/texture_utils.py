@@ -12,6 +12,12 @@ try:
 except ImportError:
   PY_FAST_BTI_INSTALLED = False
 
+try:
+  import pyfasttextureutils
+  PY_FAST_TEXTURE_UTILS_INSTALLED = True
+except ImportError:
+  PY_FAST_TEXTURE_UTILS_INSTALLED = False
+
 class TooManyColorsError(Exception):
   pass
 
@@ -91,9 +97,9 @@ GREYSCALE_PALETTE_FORMATS = [
 ]
 
 MAX_COLORS_FOR_IMAGE_FORMAT = {
-  ImageFormat.C4   : 1<<4, # C4
-  ImageFormat.C8   : 1<<8, # C8
-  ImageFormat.C14X2: 1<<14, # C14X2
+  ImageFormat.C4   : 1<<4,
+  ImageFormat.C8   : 1<<8,
+  ImageFormat.C14X2: 1<<14,
 }
 
 
@@ -121,6 +127,9 @@ def swizzle_5_bit_to_8_bit(v):
 def swizzle_6_bit_to_8_bit(v):
   # 00123456 -> 12345612
   return (v << 2) | (v >> 4)
+
+def convert_rgb_to_greyscale(r, g, b):
+  return round(((r * 30) + (g * 59) + (b * 11)) / 100)
 
 def convert_rgb565_to_color(rgb565):
   r = ((rgb565 >> 11) & 0x1F)
@@ -193,10 +202,18 @@ def convert_ia4_to_color(ia4):
   low_nibble = ia4 & 0xF
   high_nibble = (ia4 >> 4) & 0xF
   
-  r = g = b = low_nibble*0x11
-  a = high_nibble*0x11
+  r = g = b = swizzle_4_bit_to_8_bit(low_nibble)
+  a = swizzle_4_bit_to_8_bit(high_nibble)
   
   return (r, g, b, a)
+
+def convert_color_to_ia4(color):
+  r, g, b, a = get_rgba(color)
+  l = convert_rgb_to_greyscale(r, g, b)
+  ia4 = 0x00
+  ia4 |= ((l >> 4) & 0xF)
+  ia4 |= (a & 0xF0)
+  return ia4
 
 def convert_ia8_to_color(ia8):
   low_byte = ia8 & 0xFF
@@ -209,27 +226,33 @@ def convert_ia8_to_color(ia8):
 
 def convert_color_to_ia8(color):
   r, g, b, a = get_rgba(color)
-  assert r == g == b
+  l = convert_rgb_to_greyscale(r, g, b)
   ia8 = 0x0000
-  ia8 |= (r & 0xFF)
-  ia8 |= ((a & 0xFF) << 8)
+  ia8 |= l & 0x00FF
+  ia8 |= (a << 8) & 0xFF00
   return ia8
 
 def convert_i4_to_color(i4):
-  r = g = b = a = i4*0x11
+  r = g = b = a = swizzle_4_bit_to_8_bit(i4)
   
   return (r, g, b, a)
 
 def convert_color_to_i4(color):
   r, g, b, a = get_rgba(color)
-  assert r == g == b
-  i4 = ((a >> 4) & 0xF)
+  l = convert_rgb_to_greyscale(r, g, b)
+  i4 = ((l >> 4) & 0xF)
   return i4
 
 def convert_i8_to_color(i8):
   r = g = b = a = i8
   
   return (r, g, b, a)
+
+def convert_color_to_i8(color):
+  r, g, b, a = get_rgba(color)
+  l = convert_rgb_to_greyscale(r, g, b)
+  i8 = l & 0xFF
+  return i8
 
 def get_interpolated_cmpr_colors(color_0_rgb565, color_1_rgb565):
   color_0 = convert_rgb565_to_color(color_0_rgb565)
@@ -378,6 +401,70 @@ def get_color_distance_fast(color_1, color_2):
   return dist
 
 
+# Generates a palette with a certain number of colors or less based on an image (color quantization).
+def create_limited_palette_from_image(image, max_colors):
+  pixels = image.load()
+  
+  # (2**depth) will be max_colors.
+  if max_colors == 16:
+    depth = 4
+  elif max_colors == 256:
+    depth = 8
+  elif max_colors == 16384:
+    depth = 14
+  else:
+    raise Exception("Unsupported maximum number of colors to generate a palette for: %d" % max_colors)
+  
+  all_pixel_colors = []
+  for y in range(0, image.height):
+    for x in range(0, image.width):
+      color = pixels[x, y]
+      all_pixel_colors.append(color)
+  
+  palette = split_colors_into_buckets(all_pixel_colors, depth)
+  
+  return palette
+
+def split_colors_into_buckets(all_pixel_colors, depth):
+  if depth == 0:
+    return [average_colors_together(all_pixel_colors)]
+  
+  r_range = max(r for r,g,b,a in all_pixel_colors) - min(r for r,g,b,a in all_pixel_colors)
+  g_range = max(g for r,g,b,a in all_pixel_colors) - min(g for r,g,b,a in all_pixel_colors)
+  b_range = max(b for r,g,b,a in all_pixel_colors) - min(b for r,g,b,a in all_pixel_colors)
+  
+  channel_index_with_highest_range = 0
+  if g_range >= r_range and g_range >= b_range:
+    channel_index_with_highest_range = 1
+  elif r_range >= g_range and r_range >= b_range:
+    channel_index_with_highest_range = 0
+  elif b_range >= r_range and b_range >= g_range:
+    channel_index_with_highest_range = 2
+  
+  all_pixel_colors.sort(key=lambda color: color[channel_index_with_highest_range])
+  median_index = (len(all_pixel_colors)+1)//2
+  
+  palette = []
+  palette += split_colors_into_buckets(all_pixel_colors[:median_index], depth-1)
+  palette += split_colors_into_buckets(all_pixel_colors[median_index:], depth-1)
+  return palette
+
+def average_colors_together(colors):
+  r_sum = sum(r for r,g,b,a in colors)
+  g_sum = sum(g for r,g,b,a in colors)
+  b_sum = sum(b for r,g,b,a in colors)
+  a_sum = sum(a for r,g,b,a in colors)
+  
+  average_color = (
+    r_sum//len(colors),
+    g_sum//len(colors),
+    b_sum//len(colors),
+    a_sum//len(colors),
+  )
+  
+  return average_color
+
+
 def decode_palettes(palette_data, palette_format, num_colors, image_format):
   if not isinstance(image_format, ImageFormat):
     raise Exception("Invalid image format: %s" % image_format)
@@ -388,16 +475,21 @@ def decode_palettes(palette_data, palette_format, num_colors, image_format):
   offset = 0
   for i in range(num_colors):
     raw_color = read_u16(palette_data, offset)
-    if palette_format == PaletteFormat.IA8:
-      color = convert_ia8_to_color(raw_color)
-    elif palette_format == PaletteFormat.RGB565:
-      color = convert_rgb565_to_color(raw_color)
-    elif palette_format == PaletteFormat.RGB5A3:
-      color = convert_rgb5a3_to_color(raw_color)
+    color = decode_color(raw_color, palette_format)
     colors.append(color)
     offset += 2
   
   return colors
+
+def decode_color(raw_color, palette_format):
+  if palette_format == PaletteFormat.IA8:
+    color = convert_ia8_to_color(raw_color)
+  elif palette_format == PaletteFormat.RGB565:
+    color = convert_rgb565_to_color(raw_color)
+  elif palette_format == PaletteFormat.RGB5A3:
+    color = convert_rgb5a3_to_color(raw_color)
+  
+  return color
 
 def generate_new_palettes_from_image(image, image_format, palette_format):
   if image_format not in IMAGE_FORMATS_THAT_USE_PALETTES:
@@ -417,11 +509,20 @@ def generate_new_palettes_from_image(image, image_format, palette_format):
         colors_to_color_indexes[color] = encoded_colors.index(encoded_color)
   
   if len(encoded_colors) > MAX_COLORS_FOR_IMAGE_FORMAT[image_format]:
-    raise TooManyColorsError(
-      "Maximum number of colors supported by image format %s is %d, but replacement image has %d colors" % (
-        image_format.name, MAX_COLORS_FOR_IMAGE_FORMAT[image_format], len(encoded_colors)
-      )
-    )
+    # If the image has more colors than the selected image format can support, we automatically reduce the number of colors.
+    limited_palette = create_limited_palette_from_image(image, MAX_COLORS_FOR_IMAGE_FORMAT[image_format])
+    
+    encoded_colors = []
+    colors_to_color_indexes = {}
+    for y in range(height):
+      for x in range(width):
+        color = pixels[x,y]
+        new_color = get_nearest_color_fast(color, limited_palette)
+        encoded_color = encode_color(new_color, palette_format)
+        if encoded_color not in encoded_colors:
+          encoded_colors.append(encoded_color)
+        if color not in colors_to_color_indexes:
+          colors_to_color_indexes[color] = encoded_colors.index(encoded_color)
   
   return (encoded_colors, colors_to_color_indexes)
 
@@ -683,7 +784,9 @@ def decode_cmpr_block(image_format, image_data, offset, block_data_size, colors)
 
 def encode_image_from_path(new_image_file_path, image_format, palette_format, mipmap_count=1):
   image = Image.open(new_image_file_path)
-  return encode_image(image, image_format, palette_format, mipmap_count=mipmap_count)
+  image_width, image_height = image.size
+  new_image_data, new_palette_data, encoded_colors = encode_image(image, image_format, palette_format, mipmap_count=mipmap_count)
+  return (new_image_data, new_palette_data, encoded_colors, image_width, image_height)
 
 def encode_image(image, image_format, palette_format, mipmap_count=1):
   image = image.convert("RGBA")
@@ -751,11 +854,11 @@ def encode_image_to_block(image_format, pixels, colors_to_color_indexes, block_x
   if image_format == ImageFormat.I4:
     return encode_image_to_i4_block(pixels, colors_to_color_indexes, block_x, block_y, block_width, block_height, image_width, image_height)
   elif image_format == ImageFormat.I8:
-    raise Exception("Unimplemented image format: %s" % ImageFormat(image_format).name)
+    return encode_image_to_i8_block(pixels, colors_to_color_indexes, block_x, block_y, block_width, block_height, image_width, image_height)
   elif image_format == ImageFormat.IA4:
-    raise Exception("Unimplemented image format: %s" % ImageFormat(image_format).name)
+    return encode_image_to_ia4_block(pixels, colors_to_color_indexes, block_x, block_y, block_width, block_height, image_width, image_height)
   elif image_format == ImageFormat.IA8:
-    raise Exception("Unimplemented image format: %s" % ImageFormat(image_format).name)
+    return encode_image_to_ia8_block(pixels, colors_to_color_indexes, block_x, block_y, block_width, block_height, image_width, image_height)
   elif image_format == ImageFormat.RGB565:
     return encode_image_to_rgb563_block(pixels, colors_to_color_indexes, block_x, block_y, block_width, block_height, image_width, image_height)
   elif image_format == ImageFormat.RGB5A3:
@@ -767,7 +870,7 @@ def encode_image_to_block(image_format, pixels, colors_to_color_indexes, block_x
   elif image_format == ImageFormat.C8:
     return encode_image_to_c8_block(pixels, colors_to_color_indexes, block_x, block_y, block_width, block_height, image_width, image_height)
   elif image_format == ImageFormat.C14X2:
-    raise Exception("Unimplemented image format: %s" % ImageFormat(image_format).name)
+    return encode_image_to_c14x2_block(pixels, colors_to_color_indexes, block_x, block_y, block_width, block_height, image_width, image_height)
   elif image_format == ImageFormat.CMPR:
     return encode_image_to_cmpr_block(pixels, colors_to_color_indexes, block_x, block_y, block_width, block_height, image_width, image_height)
   else:
@@ -802,7 +905,67 @@ def encode_image_to_i4_block(pixels, colors_to_color_indexes, block_x, block_y, 
   
   new_data.seek(0)
   return new_data.read()
+
+def encode_image_to_i8_block(pixels, colors_to_color_indexes, block_x, block_y, block_width, block_height, image_width, image_height):
+  new_data = BytesIO()
+  offset = 0
   
+  for y in range(block_y, block_y+block_height):
+    for x in range(block_x, block_x+block_width):
+      if x >= image_width or y >= image_height:
+        # This block bleeds past the edge of the image
+        i8 = 0xFF
+      else:
+        color = pixels[x,y]
+        i8 = convert_color_to_i8(color)
+        assert 0 <= i8 <= 0xFF
+      
+      write_u8(new_data, offset, i8)
+      offset += 1
+  
+  new_data.seek(0)
+  return new_data.read()
+
+def encode_image_to_ia4_block(pixels, colors_to_color_indexes, block_x, block_y, block_width, block_height, image_width, image_height):
+  new_data = BytesIO()
+  offset = 0
+  
+  for y in range(block_y, block_y+block_height):
+    for x in range(block_x, block_x+block_width):
+      if x >= image_width or y >= image_height:
+        # This block bleeds past the edge of the image
+        ia4 = 0xFF
+      else:
+        color = pixels[x,y]
+        ia4 = convert_color_to_ia4(color)
+        assert 0 <= ia4 <= 0xFF
+      
+      write_u8(new_data, offset, ia4)
+      offset += 1
+  
+  new_data.seek(0)
+  return new_data.read()
+
+def encode_image_to_ia8_block(pixels, colors_to_color_indexes, block_x, block_y, block_width, block_height, image_width, image_height):
+  new_data = BytesIO()
+  offset = 0
+  
+  for y in range(block_y, block_y+block_height):
+    for x in range(block_x, block_x+block_width):
+      if x >= image_width or y >= image_height:
+        # This block bleeds past the edge of the image
+        ia8 = 0xFF
+      else:
+        color = pixels[x,y]
+        ia8 = convert_color_to_ia8(color)
+        assert 0 <= ia8 <= 0xFFFF
+      
+      write_u16(new_data, offset, ia8)
+      offset += 2
+  
+  new_data.seek(0)
+  return new_data.read()
+
 def encode_image_to_rgb563_block(pixels, colors_to_color_indexes, block_x, block_y, block_width, block_height, image_width, image_height):
   new_data = BytesIO()
   offset = 0
@@ -892,6 +1055,7 @@ def encode_image_to_c4_block(pixels, colors_to_color_indexes, block_x, block_y, 
 def encode_image_to_c8_block(pixels, colors_to_color_indexes, block_x, block_y, block_width, block_height, image_width, image_height):
   new_data = BytesIO()
   offset = 0
+  
   for y in range(block_y, block_y+block_height):
     for x in range(block_x, block_x+block_width):
       if x >= image_width or y >= image_height:
@@ -900,8 +1064,28 @@ def encode_image_to_c8_block(pixels, colors_to_color_indexes, block_x, block_y, 
       else:
         color = pixels[x,y]
         color_index = colors_to_color_indexes[color]
+      
       write_u8(new_data, offset, color_index)
       offset += 1
+  
+  new_data.seek(0)
+  return new_data.read()
+
+def encode_image_to_c14x2_block(pixels, colors_to_color_indexes, block_x, block_y, block_width, block_height, image_width, image_height):
+  new_data = BytesIO()
+  offset = 0
+  
+  for y in range(block_y, block_y+block_height):
+    for x in range(block_x, block_x+block_width):
+      if x >= image_width or y >= image_height:
+        # This block bleeds past the edge of the image
+        color_index = 0x3FFF
+      else:
+        color = pixels[x,y]
+        color_index = colors_to_color_indexes[color]
+      
+      write_u16(new_data, offset, color_index)
+      offset += 2
   
   new_data.seek(0)
   return new_data.read()
@@ -977,10 +1161,57 @@ def encode_image_to_cmpr_block(pixels, colors_to_color_indexes, block_x, block_y
 def color_exchange(image, base_color, replacement_color, mask_path=None, validate_mask_colors=True, ignore_bright=False):
   if mask_path:
     mask_image = Image.open(mask_path).convert("RGBA")
-    mask_pixels = mask_image.load()
-    
     if image.size != mask_image.size:
       raise Exception("Mask image is not the same size as the texture.")
+  
+  if PY_FAST_TEXTURE_UTILS_INSTALLED:
+    image_bytes = image.tobytes()
+    
+    if mask_path:
+      mask_bytes = mask_image.tobytes()
+    else:
+      mask_bytes = None
+    
+    try:
+      new_image_bytes = pyfasttextureutils.color_exchange(
+        image_bytes, base_color, replacement_color,
+        mask_bytes, validate_mask_colors, ignore_bright
+      )
+    except Exception as e:
+      if str(e) == "Invalid color color in mask, only red (FF0000) and white (FFFFFF) should be present":
+        # The exception given by PyFastTextureUtils for invalid colors is too vague. We list out all invalid colors when this happens with Python code instead.
+        invalid_colors = []
+        mask_pixels = mask_image.load()
+        for x in range(image.width):
+          for y in range(image.height):
+            if mask_pixels[x, y] == (255, 0, 0, 255):
+              # Red
+              continue
+            elif mask_pixels[x, y] == (255, 255, 255, 255):
+              # White
+              continue
+            elif mask_pixels[x, y][3] == 0:
+              # Completely transparent
+              continue
+            else:
+              if mask_pixels[x, y] not in invalid_colors:
+                invalid_colors.append(mask_pixels[x, y])
+        invalid_colors_str = ", ".join("%02X%02X%02X%02X" % color for color in invalid_colors)
+        new_err_message = "Mask %s has invalid colors in it. Only pure red (FF0000FF) and pure white (FFFFFFFF) are allowed.\n\nAll invalid colors in the mask are: %s" % (mask_path, invalid_colors_str)
+        e.args = (new_err_message,)
+        raise
+      else:
+        raise
+    
+    new_image = Image.frombytes(image.mode, (image.width, image.height), new_image_bytes)
+    return new_image
+  
+  # When recoloring via native Python code, explicitly make a copy of the image and modify that.
+  # This is for consistency with the C function, which has to return a copy.
+  image = image.copy()
+  
+  if mask_path:
+    mask_pixels = mask_image.load()
   
   base_r, base_g, base_b = base_color
   base_h, base_s, base_v = colorsys.rgb_to_hsv(base_r/255, base_g/255, base_b/255)
@@ -1008,7 +1239,10 @@ def color_exchange(image, base_color, replacement_color, mask_path=None, validat
           elif mask_pixels[x, y] == (255, 255, 255, 255):
             # White, unmasked
             continue
-          elif mask_pixels[x, y][3] != 0:
+          elif mask_pixels[x, y][3] == 0:
+            # Completely transparent, unmasked
+            continue
+          else:
             # Not red or white and also not completely transparent, so this is an invalid color.
             r, g, b, a = mask_pixels[x, y]
             raise Exception("Invalid color %02X%02X%02X%02X in mask %s" % (r, g, b, a, mask_path))
@@ -1028,7 +1262,7 @@ def color_exchange(image, base_color, replacement_color, mask_path=None, validat
       
       if s == 0:
         # Prevent issues when recoloring black/white/grey parts of a texture where the base color is not black/white/grey.
-        s = 100
+        s = base_s
       
       new_h = replacement_h
       new_s = s + s_change

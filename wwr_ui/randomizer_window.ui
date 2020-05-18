@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>650</width>
-    <height>670</height>
+    <width>800</width>
+    <height>695</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -116,7 +116,7 @@
                </widget>
               </item>
               <item row="5" column="0">
-                <widget class="QCheckBox" name="swift_sail">
+                <widget class="QRadioButton" name="swift_sail">
                  <property name="text">
                   <string>Swift Sail</string>
                  </property>
@@ -125,7 +125,7 @@
                  </property>
                 </widget>
                </item>
-              <item row="9" column="0">
+              <item row="10" column="0">
                 <widget class="QCheckBox" name="increase_player_movement_speeds">
                  <property name="text">
                   <string>Faster Rolling Speed</string>
@@ -135,7 +135,7 @@
                  </property>
                 </widget>
                </item>
-              <item row="8" column="0">
+              <item row="9" column="0">
                 <widget class="QCheckBox" name="increase_grapple_animation_speed">
                  <property name="text">
                   <string>Faster Grapple Hook</string>
@@ -145,7 +145,7 @@
                  </property>
                 </widget>
                </item>
-              <item row="7" column="0">
+              <item row="8" column="0">
                 <widget class="QCheckBox" name="increase_block_moving_animation">
                  <property name="text">
                   <string>Faster Block Moving</string>
@@ -155,7 +155,7 @@
                  </property>
                 </widget>
                </item>
-              <item row="10" column="0">
+              <item row="11" column="0">
                 <widget class="QCheckBox" name="increase_misc_animations">
                  <property name="text">
                   <string>Faster Crawling, Climbing, NPC zoom</string>
@@ -165,7 +165,7 @@
                  </property>
                 </widget>
                </item>
-              <item row="12" column="0">
+              <item row="13" column="0">
                 <widget class="QCheckBox" name="tingle_chests_without_tuner">
                  <property name="text">
                   <string>Tingle Chests Without Tuner</string>
@@ -175,7 +175,7 @@
                  </property>
                 </widget>
                </item>
-              <item row="17" column="0">
+              <item row="18" column="0">
                 <widget class="QCheckBox" name="invert_camera_x_axis">
                  <property name="text">
                   <string>Invert Camera</string>
@@ -185,7 +185,7 @@
                  </property>
                 </widget>
                </item>
-              <item row="19" column="0">
+              <item row="20" column="0">
                 <widget class="QCheckBox" name="reveal_full_sea_chart">
                  <property name="text">
                   <string>Reveal Sea Chart</string>
@@ -195,10 +195,10 @@
                  </property>
                 </widget>
                </item>
-              <item row="15" column="0">
+              <item row="19" column="0">
                 <widget class="QCheckBox" name="KORL_control">
                  <property name="text">
-                  <string>Free-Roam Boat</string>
+                  <string>Unrestricted Boat</string>
                  </property>
                  <property name="checked">
                   <bool>true</bool>
@@ -215,7 +215,7 @@
                  </property>
                 </widget>
                </item>
-              <item row="13" column="0">
+              <item row="14" column="0">
                 <widget class="QCheckBox" name="swing_turn">
                  <property name="text">
                   <string>Turn While Swinging/Grappling</string>
@@ -225,7 +225,7 @@
                  </property>
                 </widget>
                </item>
-              <item row="18" column="0">
+              <item row="17" column="0">
                 <widget class="QCheckBox" name="remove_title_and_ending_videos">
                  <property name="text">
                   <string>Remove Intro Video</string>
@@ -235,7 +235,7 @@
                  </property>
                 </widget>
                </item>
-              <item row="14" column="0">
+              <item row="15" column="0">
                 <widget class="QCheckBox" name="ballad">
                  <property name="text">
                   <string>Faster Ballad of Gales</string>
@@ -245,7 +245,7 @@
                  </property>
                 </widget>
                </item>
-              <item row="6" column="0">
+              <item row="7" column="0">
                 <widget class="QCheckBox" name="instant_text_boxes">
                  <property name="text">
                   <string>Instant Text Boxes</string>
@@ -255,7 +255,7 @@
                  </property>
                 </widget>
                </item>
-              <item row="20" column="0">
+              <item row="23" column="0">
                 <widget class="QCheckBox" name="memorylogo">
                  <property name="text">
                   <string>Change Memory Card/Dolphin Logo</string>
@@ -265,7 +265,7 @@
                  </property>
                 </widget>
                </item>
-              <item row="21" column="0">
+              <item row="22" column="0">
                 <widget class="QCheckBox" name="titlelogo">
                  <property name="text">
                   <string>Change Title Screen Logo</string>
@@ -275,8 +275,8 @@
                  </property>
                 </widget>
                </item>
-              <item row="22" column="0">
-                <widget class="QCheckBox" name="brisk_sail">
+              <item row="6" column="0">
+                <widget class="QRadioButton" name="brisk_sail">
                  <property name="text">
                   <string>Brisk Sail</string>
                  </property>
@@ -285,8 +285,8 @@
                  </property>
                 </widget>
                </item>
-              <item row="22" column="1">
-                <widget class="QCheckBox" name="brisk_sail2">
+              <item row="6" column="1">
+                <widget class="QRadioButton" name="brisk_sail2">
                  <property name="text">
                   <string>Brisk Sail for HD texture pack</string>
                  </property>
@@ -295,8 +295,18 @@
                  </property>
                 </widget>
                </item>
+              <item row="21" column="0">
+                <widget class="QCheckBox" name="randomize_enemy_palettes">
+                 <property name="text">
+                  <string>Random Enemy Colors</string>
+                 </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
               <item row="5" column="1">
-                <widget class="QCheckBox" name="swift_sail2">
+                <widget class="QRadioButton" name="swift_sail2">
                  <property name="text">
                   <string>Swift Sail for HD texture pack</string>
                  </property>
@@ -305,7 +315,7 @@
                  </property>
                 </widget>
                </item>
-              <item row="23" column="0">
+              <item row="24" column="0">
                <widget class="QLabel" name="label_8">
                 <property name="text">
                  <string></string>
@@ -337,6 +347,38 @@
                 </item>
                </layout>
               </item>
+              <item row="1" column="0">
+               <layout class="QHBoxLayout" name="horizontalLayout_12">
+                <item>
+                 <widget class="QLabel" name="label_for_custom_color_preset">
+                  <property name="text">
+                   <string>Color Preset</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QComboBox" name="custom_color_preset"/>
+                </item>
+               </layout>
+              </item>
+              <item row="1" column="1">
+               <layout class="QHBoxLayout" name="horizontalLayout_11">
+                <item>
+                 <widget class="QPushButton" name="randomize_all_custom_colors_together">
+                  <property name="text">
+                   <string>Randomize Colors Orderly</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="randomize_all_custom_colors_separately">
+                  <property name="text">
+                   <string>Randomize Colors Chaotically</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
               <item row="0" column="1">
                <layout class="QHBoxLayout" name="horizontalLayout_7">
                 <item>
@@ -350,6 +392,13 @@
                  <widget class="QCheckBox" name="disable_custom_player_voice">
                   <property name="text">
                    <string>Disable Custom Voice</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="disable_custom_player_items">
+                  <property name="text">
+                   <string>Disable Custom Items</string>
                   </property>
                  </widget>
                 </item>
@@ -412,7 +461,7 @@
                   <property name="sizeHint" stdset="0">
                    <size>
                     <width>20</width>
-                    <height>20</height>
+                    <height>40</height>
                    </size>
                   </property>
                  </spacer>
@@ -434,7 +483,7 @@
       <property name="minimumSize">
        <size>
         <width>0</width>
-        <height>18</height>
+        <height>24</height>
        </size>
       </property>
       <property name="text">

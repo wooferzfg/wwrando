@@ -80,21 +80,37 @@ OPTIONS = OrderedDict([
   ),
   (
     "brisk_sail",
-    "Make windy boy go fast. 1.5x faster Swift Sail. Overwrites Swift Sail if checked."
+    "Make windy boy go fast. 1.5x faster Swift Sail."
   ),
   (
     "brisk_sail2",
-    "Pick this INSTEAD if you want to use Hypatia's HD textures and not have sail replaced by low res textures."
+    "Pick this if you want to use Hypatia's HD textures and not have sail replaced by low res textures."
   ),
   (
     "swift_sail2",
-    "Pick this INSTEAD if you want to use Hypatia's HD textures and not have sail replaced by low res textures."
+    "Pick this if you want to use Hypatia's HD textures and not have sail replaced by low res textures."
+  ),
+  (
+    "disable_custom_player_voice",
+    "If the chosen custom model comes with custom voice files, you can check this option to turn them off and simply use Link's normal voice instead."
+  ),
+  (
+    "disable_custom_player_items",
+    "If the chosen custom model comes with custom item models, you can check this option to turn them off and simply use Link's normal item models instead."
+  ),
+  (
+    "randomize_enemy_palettes",
+    "Gives all the enemies in the game random colors.",
   ),
 ])
 
 NON_PERMALINK_OPTIONS = [
-  "custom_player_model",
+						
   "invert_camera_x_axis",
-  "player_in_casual_clothes",
+  "custom_player_model",
+  # "player_in_casual_clothes",
   "disable_custom_player_voice",
+  "disable_custom_player_items",
+  # "disable_custom_boat",
+  # "custom_color_preset",			
 ]

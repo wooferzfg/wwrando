@@ -12,6 +12,13 @@ class Yaz0:
   prev_flag = False
   
   @staticmethod
+  def check_is_compressed(comp_data):
+    if try_read_str(comp_data, 0, 4) != "Yaz0":
+      return False
+    
+    return True
+  
+  @staticmethod
   def decompress(comp_data):
     if try_read_str(comp_data, 0, 4) != "Yaz0":
       print("File is not compressed.")
@@ -66,7 +73,7 @@ class Yaz0:
   @staticmethod
   def compress(uncomp_data):
     comp_data = BytesIO()
-    write_str(comp_data, 0, "Yaz0", 4)
+    write_magic_str(comp_data, 0, "Yaz0", 4)
     
     uncomp_size = data_len(uncomp_data)
     write_u32(comp_data, 4, uncomp_size)
