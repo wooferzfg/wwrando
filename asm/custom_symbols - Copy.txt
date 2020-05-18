@@ -89,11 +89,6 @@ sys/main.dol:
   doc_bandam_blue_potion_slot_item_id: 0x803FE479
   hurricane_spin_item_resource_arc_name: 0x803FE47C
   deluxe_picto_box_item_func_fix_equipped_picto_box: 0x803FE484
-  stalfos_kill_lower_body_when_upper_body_light_arrowed: 0x803FE4B8
-  miniblin_set_death_switch_when_light_arrowed: 0x803FE500
-  poe_fix_light_arrows_bug: 0x803FE534
-  magtail_respawn_when_head_light_arrowed: 0x803FE5F4
-  check_player_in_casual_clothes: 0x803FE634
   test_room_stage_name: 0x8022D034
   test_room_starting_items_list: 0x8022D03C
   test_room_spawn_id: 0x800531E3
