@@ -7,12 +7,22 @@ from io import BytesIO
 import glob
 from PIL import Image
 
-from fs_helpers import *
+from fs_helpers import data_len
 from wwlib.texture_utils import *
 from wwlib import texture_utils
 from paths import ASSETS_PATH
 
-MAX_ALLOWED_LINK_ARC_FILE_SIZE_IN_MEGABYTES = 1.45
+ORIG_LINK_ARC_FILE_SIZE_IN_BYTES  = 1308608
+ORIG_LKANM_ARC_FILE_SIZE_IN_BYTES = 1842464
+ORIG_LKD00_ARC_FILE_SIZE_IN_BYTES = 1228256
+ORIG_LKD01_ARC_FILE_SIZE_IN_BYTES = 1149280
+ORIG_SHIP_ARC_FILE_SIZE_IN_BYTES  =  191520
+# Allow the above arcs combined to increase in filesize by at most 0.202 mebibytes.
+# In other words, the same amount of increase as when the 1.24MiB original Link.arc is increased to 1.44MiB.
+MAX_ALLOWED_TOTAL_ARC_FILE_SIZE_SUM_INCREASE_IN_BYTES = 1525678 - ORIG_LINK_ARC_FILE_SIZE_IN_BYTES
+
+class InvalidColorError(Exception):
+  pass
 
 def get_model_metadata(custom_model_name):
   if custom_model_name == "Random":
@@ -30,9 +40,20 @@ def get_model_metadata(custom_model_name):
     if not os.path.isfile(metadata_path):
       return {}
     
+    use_old_color_format = False
     try:
       with open(metadata_path) as f:
-        metadata = yaml.load(f, YamlOrderedDictLoader)
+        metadata_str = f.read()
+      
+      # Automatically convert any tabs in the metadata to two spaces since pyyaml doesn't like tabs.
+      metadata_str = metadata_str.replace("\t", "  ")
+      
+      old_format_match = re.search(r"^ +\S[^:]*: +[0-9A-F]{6}$", metadata_str, re.IGNORECASE | re.MULTILINE)
+      new_format_match = re.search(r"^ +\S[^:]*: +0x[0-9A-F]{6}$", metadata_str, re.IGNORECASE | re.MULTILINE)
+      if old_format_match and not new_format_match:
+        use_old_color_format = True
+      
+      metadata = yaml.load(metadata_str, YamlOrderedDictLoader)
     except Exception as e:
       error_message = str(e)
       return {
@@ -60,22 +81,10 @@ def get_model_metadata(custom_model_name):
         prefix = key.split("_")[0]
         
         for custom_color_name, hex_color in value.items():
-          if isinstance(hex_color, int):
-            hex_color_string = "%06d" % hex_color
-          elif isinstance(hex_color, str):
-            hex_color_string = hex_color
-          else:
-            error_message = "Custom color \"%s\" has an invalid base color specified in metadata.txt: \"%s\"" % (custom_color_name, hex_color)
-            return {
-              "error_message": error_message,
-            }
-          
-          match = re.search(r"^([0-9A-F]{2})([0-9A-F]{2})([0-9A-F]{2})$", hex_color_string, re.IGNORECASE)
-          if match:
-            r, g, b = int(match.group(1), 16), int(match.group(2), 16), int(match.group(3), 16)
-            value[custom_color_name] = [r, g, b]
-          else:
-            error_message = "Custom color \"%s\" has an invalid base color specified in metadata.txt: \"%s\"" % (custom_color_name, hex_color_string)
+          try:
+            value[custom_color_name] = parse_hex_color(hex_color, use_old_color_format)
+          except InvalidColorError as e:
+            error_message = "Custom color \"%s\" has an invalid base color specified in metadata.txt: \"%s\"" % (custom_color_name, repr(hex_color))
             return {
               "error_message": error_message,
             }
@@ -92,8 +101,48 @@ def get_model_metadata(custom_model_name):
           for i in range(1, 9+1):
             mouth_mask_path = os.path.join(color_masks_path, "mouths", "mouthS3TC.%d_%s.png" % (i, custom_color_name))
             metadata["mouth_color_mask_paths"][i][custom_color_name] = mouth_mask_path
+      
+      if key in ["hero_color_presets", "casual_color_presets"]:
+        prefix = key.split("_")[0]
+        
+        for preset_name, preset in value.items():
+          for custom_color_name, hex_color in preset.items():
+            try:
+              preset[custom_color_name] = parse_hex_color(hex_color, use_old_color_format)
+            except InvalidColorError as e:
+              error_message = "Color preset \"%s\"'s color \"%s\" has an invalid base color specified in metadata.txt: \"%s\"" % (preset_name, custom_color_name, repr(hex_color))
+              return {
+                "error_message": error_message,
+              }
     
     return metadata
+
+def parse_hex_color(hex_color, use_old_color_format):
+  if use_old_color_format:
+    return parse_hex_color_old_format(hex_color)
+  
+  if isinstance(hex_color, int) and (0x000000 <= hex_color <= 0xFFFFFF):
+    r = (hex_color & 0xFF0000) >> 16
+    g = (hex_color & 0x00FF00) >> 8
+    b = (hex_color & 0x0000FF) >> 0
+    return [r, g, b]
+  else:
+    raise InvalidColorError()
+  
+def parse_hex_color_old_format(hex_color):
+  if isinstance(hex_color, int):
+    hex_color_string = "%06d" % hex_color
+  elif isinstance(hex_color, str):
+    hex_color_string = hex_color
+  else:
+    raise InvalidColorError()
+
+  match = re.search(r"^([0-9A-F]{2})([0-9A-F]{2})([0-9A-F]{2})$", hex_color_string, re.IGNORECASE)
+  if match:
+    r, g, b = int(match.group(1), 16), int(match.group(2), 16), int(match.group(3), 16)
+    return [r, g, b]
+  else:
+    raise InvalidColorError()
 
 def get_all_custom_model_names():
   custom_model_names = []
@@ -137,39 +186,89 @@ def replace_link_model(self):
   if not os.path.isfile(custom_link_arc_path):
     raise Exception("Custom model is missing Link.arc: %s" % custom_model_path)
   
+  orig_sum_of_changed_arc_sizes = 0
+  new_sum_of_changed_arc_sizes = 0
+  checked_arc_names = []
+  
   with open(custom_link_arc_path, "rb") as f:
     custom_link_arc_data = BytesIO(f.read())
-  custom_link_arc_size_in_mb = data_len(custom_link_arc_data) / (1024 * 1024)
-  if custom_link_arc_size_in_mb > MAX_ALLOWED_LINK_ARC_FILE_SIZE_IN_MEGABYTES+0.005:
-    raise Exception("The chosen custom player model's filesize is too large and may cause crashes or other issues in game.\nMax size: %.2fMB\nSelected model size: %.2fMB" % (MAX_ALLOWED_LINK_ARC_FILE_SIZE_IN_MEGABYTES, custom_link_arc_size_in_mb))
   orig_link_arc = self.get_arc("files/res/Object/Link.arc")
   self.replace_arc("files/res/Object/Link.arc", custom_link_arc_data)
   custom_link_arc = self.get_arc("files/res/Object/Link.arc")
   
-  # Revert all BCK animations in Link.arc to the original ones.
-  # This is because BCK animations can change gameplay, which we don't want to allow cosmetic mods to do.
-  for orig_file_entry in orig_link_arc.file_entries:
-    basename, file_ext = os.path.splitext(orig_file_entry.name)
-    if file_ext == ".bck":
-      custom_file_entry = custom_link_arc.get_file_entry(orig_file_entry.name)
-      custom_file_entry.data = orig_file_entry.data
+  revert_bck_files_in_arc_to_original(orig_link_arc, custom_link_arc)
   
-  # Replace Link's animations.
-  lkanm_path = custom_model_path + "LkAnm.arc"
-  if os.path.isfile(lkanm_path):
-    with open(lkanm_path, "rb") as f:
-      custom_lkanm_arc_data = BytesIO(f.read())
-    orig_lkanm_arc = self.get_arc("files/res/Object/LkAnm.arc")
-    self.replace_arc("files/res/Object/LkAnm.arc", custom_lkanm_arc_data)
-    custom_lkanm_arc = self.get_arc("files/res/Object/LkAnm.arc")
+  if self.options.get("disable_custom_player_items"):
+    revert_item_models_in_arc_to_original(orig_link_arc, custom_link_arc)
+  
+  orig_sum_of_changed_arc_sizes += ORIG_LINK_ARC_FILE_SIZE_IN_BYTES
+  custom_link_arc.save_changes()
+  new_sum_of_changed_arc_sizes += data_len(custom_link_arc.data)
+  checked_arc_names.append("Link.arc")
+  check_changed_archives_over_filesize_limit(orig_sum_of_changed_arc_sizes, new_sum_of_changed_arc_sizes, checked_arc_names)
+  
+  
+  def replace_animation_arc(anim_arc_name, orig_anim_arc_file_size, revert_totals_after=False):
+    nonlocal orig_sum_of_changed_arc_sizes
+    nonlocal new_sum_of_changed_arc_sizes
     
-    # Revert all BCK animations in LkAnm.arc to the original ones.
-    # This is because BCK animations can change gameplay, which we don't want to allow cosmetic mods to do.
-    for orig_file_entry in orig_lkanm_arc.file_entries:
-      basename, file_ext = os.path.splitext(orig_file_entry.name)
-      if file_ext == ".bck":
-        custom_file_entry = custom_lkanm_arc.get_file_entry(orig_file_entry.name)
-        custom_file_entry.data = orig_file_entry.data
+    anim_arc_path = custom_model_path + anim_arc_name
+    if os.path.isfile(anim_arc_path):
+      with open(anim_arc_path, "rb") as f:
+        custom_anim_arc_data = BytesIO(f.read())
+      orig_anim_arc = self.get_arc("files/res/Object/" + anim_arc_name)
+      self.replace_arc("files/res/Object/" + anim_arc_name, custom_anim_arc_data)
+      custom_anim_arc = self.get_arc("files/res/Object/" + anim_arc_name)
+      
+      revert_bck_files_in_arc_to_original(orig_anim_arc, custom_anim_arc)
+      
+      orig_sum_of_changed_arc_sizes += orig_anim_arc_file_size
+      custom_anim_arc.save_changes()
+      new_sum_of_changed_arc_sizes += data_len(custom_anim_arc.data)
+      checked_arc_names.append(anim_arc_name)
+      check_changed_archives_over_filesize_limit(orig_sum_of_changed_arc_sizes, new_sum_of_changed_arc_sizes, checked_arc_names)
+      
+      if revert_totals_after:
+        # For LkD00, it's not actually always loaded, since only one of the two Link cutscene animation arcs are ever loaded at a given time.
+        # So we stop including LkD00's size in the total as soon as we've checked its size.
+        # We uncount LkD00 specifically because in the randomizer, LkD01 is always loaded. LkD00 is only relevant for the first half of the vanilla game.
+        orig_sum_of_changed_arc_sizes -= orig_anim_arc_file_size
+        new_sum_of_changed_arc_sizes -= data_len(custom_anim_arc.data)
+        checked_arc_names.remove(anim_arc_name)
+  
+  # Replace Link's gameplay animations.
+  replace_animation_arc("LkAnm.arc", ORIG_LKANM_ARC_FILE_SIZE_IN_BYTES)
+  
+  # Replace Link's cutscene animations.
+  replace_animation_arc("LkD00.arc", ORIG_LKD00_ARC_FILE_SIZE_IN_BYTES, revert_totals_after=True)
+  replace_animation_arc("LkD01.arc", ORIG_LKD01_ARC_FILE_SIZE_IN_BYTES)
+  
+  # Replace KoRL.
+  ship_path = custom_model_path + "Ship.arc"
+  if os.path.isfile(ship_path):
+    with open(ship_path, "rb") as f:
+      custom_ship_arc_data = BytesIO(f.read())
+    orig_ship_arc = self.get_arc("files/res/Object/Ship.arc")
+    self.replace_arc("files/res/Object/Ship.arc", custom_ship_arc_data)
+    custom_ship_arc = self.get_arc("files/res/Object/Ship.arc")
+    
+    revert_bck_files_in_arc_to_original(orig_ship_arc, custom_ship_arc)
+    
+    orig_sum_of_changed_arc_sizes += ORIG_SHIP_ARC_FILE_SIZE_IN_BYTES
+    custom_ship_arc.save_changes()
+    new_sum_of_changed_arc_sizes += data_len(custom_ship_arc.data)
+    checked_arc_names.append("Ship.arc")
+    check_changed_archives_over_filesize_limit(orig_sum_of_changed_arc_sizes, new_sum_of_changed_arc_sizes, checked_arc_names)
+    
+    orig_sail_tex = orig_ship_arc.get_file_entry("new_ho1.bti")
+    custom_sail_tex = custom_ship_arc.get_file_entry("new_ho1.bti")
+    orig_sail_tex_data = orig_sail_tex.data
+    custom_sail_tex_data = custom_sail_tex.data
+    orig_sail_tex_data.seek(0)
+    custom_sail_tex_data.seek(0)
+    if custom_sail_tex_data.read() != orig_sail_tex_data.read() or orig_sail_tex.image_format != custom_sail_tex.image_format:
+      # Don't allow the swift sail tweak to replace this custom texture with the swift sail texture.
+      self.using_custom_sail_texture = True
   
   # The texture shown on the wall when reflecting light with the mirror shield is separate from Link.arc.
   mirror_shield_reflection_image_path = custom_model_path + "shmref.bti"
@@ -196,6 +295,34 @@ def replace_link_model(self):
           ganont_aw_data = BytesIO(f.read())
         self.replace_raw_file("files/Audiores/Banks/GanonT_0.aw", ganont_aw_data)
 
+def revert_bck_files_in_arc_to_original(orig_arc, custom_arc):
+  # Revert all BCK animations in a custom arc to the original ones.
+  # This is because BCK animations can change gameplay, which we don't want to allow cosmetic mods to do.
+  for orig_file_entry in orig_arc.file_entries:
+    basename, file_ext = os.path.splitext(orig_file_entry.name)
+    if file_ext == ".bck":
+      custom_file_entry = custom_arc.get_file_entry(orig_file_entry.name)
+      custom_file_entry.data = orig_file_entry.data
+
+def revert_item_models_in_arc_to_original(orig_arc, custom_arc):
+  # Optionally revert all item models to the original ones.
+  # Hero's Charm, Power Bracelets, Iron Boots, and Magic Armor shell are excluded, since the vanilla ones wouldn't fit well on custom models.
+  for orig_file_entry in orig_arc.file_entries:
+    basename, file_ext = os.path.splitext(orig_file_entry.name)
+    if file_ext == ".bdl" and basename not in ["cl", "katsura", "hands", "yamu", "pring", "hboots", "ymgcs00"]:
+      custom_file_entry = custom_arc.get_file_entry(orig_file_entry.name)
+      custom_file_entry.data = orig_file_entry.data
+
+def check_changed_archives_over_filesize_limit(orig_sum_of_changed_arc_sizes, new_sum_of_changed_arc_sizes, checked_arc_names):
+  # Validate the filesize didn't increase enough to cause memory issues.
+  max_sum_of_changed_arc_sizes = orig_sum_of_changed_arc_sizes + MAX_ALLOWED_TOTAL_ARC_FILE_SIZE_SUM_INCREASE_IN_BYTES
+  if new_sum_of_changed_arc_sizes > max_sum_of_changed_arc_sizes:
+    error_message = "The chosen custom player model's filesize is too large and may cause crashes or other issues in game.\n\n"
+    error_message += "Archives: %s\n" % (", ".join(checked_arc_names))
+    error_message += "Max combined size of the above archives: %.2fMiB\n" % (max_sum_of_changed_arc_sizes / (1024*1024))
+    error_message += "Combined size of selected model's archives: %.2fMiB\n" % (new_sum_of_changed_arc_sizes / (1024*1024))
+    raise Exception(error_message)
+
 def change_player_clothes_color(self):
   custom_model_metadata = get_model_metadata(self.custom_model_name)
   disable_casual_clothes = custom_model_metadata.get("disable_casual_clothes", False)
@@ -214,6 +341,9 @@ def change_player_clothes_color(self):
   
   first_texture = link_main_textures[0]
   link_main_image = first_texture.render()
+  
+  hitomi_textures = link_main_model.tex1.textures_by_name["hitomi"]
+  hitomi_image = hitomi_textures[0].render()
   
   hands_model = link_arc.get_file("hands.bdl")
   hands_textures = hands_model.tex1.textures_by_name["handsS3TC"]
@@ -258,8 +388,6 @@ def change_player_clothes_color(self):
     
     # Recolor the pupils.
     replaced_any_pupils_for_this_color = False
-    hitomi_textures = link_main_model.tex1.textures_by_name["hitomi"]
-    hitomi_image = hitomi_textures[0].render()
     
     hitomi_mask_path = custom_model_metadata["hitomi_" + prefix + "_color_mask_paths"][custom_color_basename]
     if os.path.isfile(hitomi_mask_path) or custom_color_basename == hitomi_color_name:
@@ -267,7 +395,7 @@ def change_player_clothes_color(self):
       
       if os.path.isfile(hitomi_mask_path):
         check_valid_mask_path(hitomi_mask_path)
-        hitomi_image = texture_utils.color_exchange(hitomi_image, base_color, custom_color, ignore_bright=True, mask_path=hitomi_mask_path)
+        hitomi_image = texture_utils.color_exchange(hitomi_image, base_color, custom_color, mask_path=hitomi_mask_path)
       elif custom_color_basename == hitomi_color_name:
         hitomi_image = texture_utils.color_exchange(hitomi_image, base_color, custom_color, ignore_bright=True)
       
@@ -316,13 +444,12 @@ def change_player_clothes_color(self):
         if i not in all_mouth_textures:
           all_mouth_textures[i] = link_main_model.tex1.textures_by_name["mouthS3TC.%d" % i]
           all_mouth_images[i] = all_mouth_textures[i][0].render()
-        mouth_image = all_mouth_images[i]
         
         if os.path.isfile(mouth_mask_path):
           check_valid_mask_path(mouth_mask_path)
-          mouth_image = texture_utils.color_exchange(mouth_image, base_color, custom_color, mask_path=mouth_mask_path)
+          all_mouth_images[i] = texture_utils.color_exchange(all_mouth_images[i], base_color, custom_color, mask_path=mouth_mask_path)
         elif custom_color_basename == mouth_color_name:
-          mouth_image = texture_utils.color_exchange(mouth_image, base_color, custom_color)
+          all_mouth_images[i] = texture_utils.color_exchange(all_mouth_images[i], base_color, custom_color)
     
     # Recolor the hands.
     hands_mask_path = custom_model_metadata["hands_" + prefix + "_color_mask_paths"][custom_color_basename]

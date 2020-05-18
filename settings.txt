@@ -1,38 +1,50 @@
-clean_iso_path: D:/Gamecube ISO/Legend of Zelda, The - The Wind Waker (USA).iso
+clean_iso_path: D:/Gamecube ISO/ALOZ Wind Waker Widescreen.iso
 output_folder: D:/Desktop
 seed: creamyd
-custom_player_model: Linka
-player_in_casual_clothes: true
-disable_custom_player_voice: false
+custom_player_model: Vacation Link
+player_in_casual_clothes: false
+disable_custom_player_voice: true
 custom_colors:
+  Hair:
+  - 255
+  - 239
+  - 16
   Skin:
   - 247
   - 219
   - 156
-  Eyes:
-  - 79
-  - 142
-  - 143
-  Eye White:
-  - 185
-  - 149
-  - 255
-  Hair:
+  Arms:
   - 247
-  - 213
-  - 56
-  Dress:
-  - 67
-  - 121
-  - 190
-  Leggings and Shirt:
-  - 101
-  - 73
-  - 106
-  Shoes:
-  - 67
-  - 121
-  - 190
+  - 219
+  - 156
+  Undershirt:
+  - 247
+  - 219
+  - 156
+  Shirt:
+  - 198
+  - 57
+  - 41
+  Crab:
+  - 255
+  - 255
+  - 214
+  Glasses:
+  - 255
+  - 165
+  - 8
+  Lenses:
+  - 0
+  - 0
+  - 0
+  Shorts:
+  - 255
+  - 165
+  - 8
+  Boots:
+  - 132
+  - 74
+  - 41
 instant_text_boxes: true
 swift_sail: true
 increase_player_movement: true
@@ -43,16 +55,20 @@ increase_misc_animations: true
 remove_title_and_ending_videos: true
 tingle_chests_without_tuner: true
 invert_camera_x_axis: false
-reveal_full_sea_chart: true
+reveal_full_sea_chart: false
 update_game_name_icon_and_banners: false
-KORL_control: true
+KORL_control: false
 song_no_replay: true
 swing_turn: true
 ballad: true
 logo: true
 modify_title_screen_logo: true
-titlelogo: true
+titlelogo: false
 memorylogo: true
 brisk_sail: false
 brisk_sail2: false
 swift_sail2: false
+disable_custom_player_items: false
+custom_color_preset: Custom
+disable_custom_boat: false
+randomize_enemy_palettes: false

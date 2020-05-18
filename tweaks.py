@@ -9,155 +9,157 @@ import copy
 from random import Random
 
 from fs_helpers import *
+from asm import patcher
 from wwlib import texture_utils
 from wwlib.rarc import RARC
+from wwlib.rel import REL, RELSection, RELRelocation, RELRelocationType
 from paths import ASSETS_PATH, ASM_PATH, SEEDGEN_PATH
 import customizer
 
 ORIGINAL_FREE_SPACE_RAM_ADDRESS = 0x803FCFA8
 ORIGINAL_DOL_SIZE = 0x3A52C0
 
-# These are from main.dol. Hardcoded since it's easier than reading them from the dol.
-DOL_SECTION_OFFSETS = [
-  # Text sections
-  0x0100,
-  0x2620,
-  ORIGINAL_DOL_SIZE, # Custom .text2 section
+# # These are from main.dol. Hardcoded since it's easier than reading them from the dol.
+# DOL_SECTION_OFFSETS = [
+  # # Text sections
+  # 0x0100,
+  # 0x2620,
+  # ORIGINAL_DOL_SIZE, # Custom .text2 section
   
-  # Data sections
-  0x3355C0,
-  0x335620,
-  0x335680,
-  0x335820,
-  0x335840,
-  0x36E580,
-  0x39F960,
-  0x3A00A0,
-]
-DOL_SECTION_ADDRESSES = [
-  # Text sections
-  0x80003100,
-  0x800056E0,
-  ORIGINAL_FREE_SPACE_RAM_ADDRESS, # Custom .text2 section
+  # # Data sections
+  # 0x3355C0,
+  # 0x335620,
+  # 0x335680,
+  # 0x335820,
+  # 0x335840,
+  # 0x36E580,
+  # 0x39F960,
+  # 0x3A00A0,
+# ]
+# DOL_SECTION_ADDRESSES = [
+  # # Text sections
+  # 0x80003100,
+  # 0x800056E0,
+  # ORIGINAL_FREE_SPACE_RAM_ADDRESS, # Custom .text2 section
   
-  # Data sections
-  0x80005620,
-  0x80005680,
-  0x80338680,
-  0x80338820,
-  0x80338840,
-  0x80371580,
-  0x803F60E0,
-  0x803F7D00,
-]
-DOL_SECTION_SIZES = [
-  # Text sections
-  0x002520,
-  0x332FA0,
-  -1, # Custom .text2 section. Placeholder since we don't know the size until the patch has been applied.
+  # # Data sections
+  # 0x80005620,
+  # 0x80005680,
+  # 0x80338680,
+  # 0x80338820,
+  # 0x80338840,
+  # 0x80371580,
+  # 0x803F60E0,
+  # 0x803F7D00,
+# ]
+# DOL_SECTION_SIZES = [
+  # # Text sections
+  # 0x002520,
+  # 0x332FA0,
+  # -1, # Custom .text2 section. Placeholder since we don't know the size until the patch has been applied.
   
-  # Data sections
-  0x00060,
-  0x00060,
-  0x001A0,
-  0x00020,
-  0x38D40,
-  0x313E0,
-  0x00740,
-  0x05220,
-]
+  # # Data sections
+  # 0x00060,
+  # 0x00060,
+  # 0x001A0,
+  # 0x00020,
+  # 0x38D40,
+  # 0x313E0,
+  # 0x00740,
+  # 0x05220,
+# ]
 
-def address_to_offset(address):
-  # Takes an address in one of the sections of main.dol and converts it to an offset within main.dol.
-  for section_index in range(len(DOL_SECTION_OFFSETS)):
-    section_offset = DOL_SECTION_OFFSETS[section_index]
-    section_address = DOL_SECTION_ADDRESSES[section_index]
-    section_size = DOL_SECTION_SIZES[section_index]
+# def address_to_offset(address):
+  # # Takes an address in one of the sections of main.dol and converts it to an offset within main.dol.
+  # for section_index in range(len(DOL_SECTION_OFFSETS)):
+    # section_offset = DOL_SECTION_OFFSETS[section_index]
+    # section_address = DOL_SECTION_ADDRESSES[section_index]
+    # section_size = DOL_SECTION_SIZES[section_index]
     
-    if section_address <= address < section_address+section_size:
-      offset = address - section_address + section_offset
-      return offset
+    # if section_address <= address < section_address+section_size:
+      # offset = address - section_address + section_offset
+      # return offset
   
-  raise Exception("Unknown address: %08X" % address)
+  # raise Exception("Unknown address: %08X" % address)
 
-def split_pointer_into_high_and_low_half_for_hardcoding(pointer):
-  high_halfword = (pointer & 0xFFFF0000) >> 16
-  low_halfword = pointer & 0xFFFF
+# def split_pointer_into_high_and_low_half_for_hardcoding(pointer):
+  # high_halfword = (pointer & 0xFFFF0000) >> 16
+  # low_halfword = pointer & 0xFFFF
   
-  if low_halfword >= 0x8000:
-    # If the low halfword has the highest bit set, it will be considered a negative number.
-    # Therefore we need to add 1 to the high halfword (equivalent to adding 0x10000) to compensate for the low halfword being negated.
-    high_halfword = high_halfword+1
+  # if low_halfword >= 0x8000:
+    # # If the low halfword has the highest bit set, it will be considered a negative number.
+    # # Therefore we need to add 1 to the high halfword (equivalent to adding 0x10000) to compensate for the low halfword being negated.
+    # high_halfword = high_halfword+1
   
-  return high_halfword, low_halfword
+  # return high_halfword, low_halfword
 
-def apply_patch(self, patch_name):
-  with open(os.path.join(ASM_PATH, patch_name + "_diff.txt")) as f:
-    diffs = yaml.safe_load(f)
+# def apply_patch(self, patch_name):
+  # with open(os.path.join(ASM_PATH, patch_name + "_diff.txt")) as f:
+    # diffs = yaml.safe_load(f)
   
-  for file_path, diffs_for_file in diffs.items():
-    data = self.get_raw_file(file_path)
-    for org_address, new_bytes in diffs_for_file.items():
-      if file_path == "sys/main.dol":
-        if org_address == ORIGINAL_FREE_SPACE_RAM_ADDRESS:
-          add_custom_functions_to_free_space(self, new_bytes)
-          continue
-        else:
-          offset = address_to_offset(org_address)
-      else:
-        offset = org_address
+  # for file_path, diffs_for_file in diffs.items():
+    # data = self.get_raw_file(file_path)
+    # for org_address, new_bytes in diffs_for_file.items():
+      # if file_path == "sys/main.dol":
+        # if org_address == ORIGINAL_FREE_SPACE_RAM_ADDRESS:
+          # add_custom_functions_to_free_space(self, new_bytes)
+          # continue
+        # else:
+          # offset = address_to_offset(org_address)
+      # else:
+        # offset = org_address
       
-      write_and_pack_bytes(data, offset, new_bytes, "B"*len(new_bytes))
+      # write_and_pack_bytes(data, offset, new_bytes, "B"*len(new_bytes))
 
-def add_custom_functions_to_free_space(self, new_bytes):
-  dol_data = self.get_raw_file("sys/main.dol")
+# def add_custom_functions_to_free_space(self, new_bytes):
+  # dol_data = self.get_raw_file("sys/main.dol")
   
-  # First write our custom code to the end of the dol file.
-  patch_length = len(new_bytes)
-  write_and_pack_bytes(dol_data, ORIGINAL_DOL_SIZE, new_bytes, "B"*len(new_bytes))
+  # # First write our custom code to the end of the dol file.
+  # patch_length = len(new_bytes)
+  # write_and_pack_bytes(dol_data, ORIGINAL_DOL_SIZE, new_bytes, "B"*len(new_bytes))
   
-  # Next add a new text section to the dol (Text2).
-  write_u32(dol_data, 0x08, ORIGINAL_DOL_SIZE) # Write file offset of new Text2 section (which will be the original end of the file, where we put the patch)
-  write_u32(dol_data, 0x50, ORIGINAL_FREE_SPACE_RAM_ADDRESS) # Write loading address of the new Text2 section
-  write_u32(dol_data, 0x98, patch_length) # Write length of the new Text2 section
+  # # Next add a new text section to the dol (Text2).
+  # write_u32(dol_data, 0x08, ORIGINAL_DOL_SIZE) # Write file offset of new Text2 section (which will be the original end of the file, where we put the patch)
+  # write_u32(dol_data, 0x50, ORIGINAL_FREE_SPACE_RAM_ADDRESS) # Write loading address of the new Text2 section
+  # write_u32(dol_data, 0x98, patch_length) # Write length of the new Text2 section
   
-  # Update the constant for how large the .text2 section is so that addresses in this section can be converted properly by address_to_offset.
-  global DOL_SECTION_SIZES
-  DOL_SECTION_SIZES[2] = patch_length
+  # # Update the constant for how large the .text2 section is so that addresses in this section can be converted properly by address_to_offset.
+  # global DOL_SECTION_SIZES
+  # DOL_SECTION_SIZES[2] = patch_length
   
-  # Next we need to change a hardcoded pointer to where free space begins. Otherwise the game will overwrite the custom code.
-  padded_patch_length = ((patch_length + 3) & ~3) # Pad length of patch to next 4 just in case
-  new_start_pointer_for_default_thread = ORIGINAL_FREE_SPACE_RAM_ADDRESS + padded_patch_length # New free space pointer after our custom code
-  high_halfword, low_halfword = split_pointer_into_high_and_low_half_for_hardcoding(new_start_pointer_for_default_thread)
-  # Now update the asm instructions that load this hardcoded pointer.
-  write_u32(dol_data, address_to_offset(0x80307954), 0x3C600000 | high_halfword)
-  write_u32(dol_data, address_to_offset(0x8030795C), 0x38030000 | low_halfword)
-  # We also update another pointer which seems like it should remain at 0x10000 later in RAM from the pointer we updated.
-  # (This pointer was originally 0x8040CFA8.)
-  # Updating this one may not actually be necessary to update, but this is to be safe.
-  new_end_pointer_for_default_thread = new_start_pointer_for_default_thread + 0x10000
-  high_halfword, low_halfword = split_pointer_into_high_and_low_half_for_hardcoding(new_end_pointer_for_default_thread)
-  write_u32(dol_data, address_to_offset(0x8030794C), 0x3C600000 | high_halfword)
-  write_u32(dol_data, address_to_offset(0x80307950), 0x38030000 | low_halfword)
-  write_u32(dol_data, address_to_offset(0x80301854), 0x3C600000 | high_halfword)
-  write_u32(dol_data, address_to_offset(0x80301858), 0x38630000 | low_halfword)
-  high_halfword = (new_end_pointer_for_default_thread & 0xFFFF0000) >> 16
-  low_halfword = new_end_pointer_for_default_thread & 0xFFFF
-  write_u32(dol_data, address_to_offset(0x80003278), 0x3C200000 | high_halfword)
-  write_u32(dol_data, address_to_offset(0x8000327C), 0x60210000 | low_halfword)
+  # # Next we need to change a hardcoded pointer to where free space begins. Otherwise the game will overwrite the custom code.
+  # padded_patch_length = ((patch_length + 3) & ~3) # Pad length of patch to next 4 just in case
+  # new_start_pointer_for_default_thread = ORIGINAL_FREE_SPACE_RAM_ADDRESS + padded_patch_length # New free space pointer after our custom code
+  # high_halfword, low_halfword = split_pointer_into_high_and_low_half_for_hardcoding(new_start_pointer_for_default_thread)
+  # # Now update the asm instructions that load this hardcoded pointer.
+  # write_u32(dol_data, address_to_offset(0x80307954), 0x3C600000 | high_halfword)
+  # write_u32(dol_data, address_to_offset(0x8030795C), 0x38030000 | low_halfword)
+  # # We also update another pointer which seems like it should remain at 0x10000 later in RAM from the pointer we updated.
+  # # (This pointer was originally 0x8040CFA8.)
+  # # Updating this one may not actually be necessary to update, but this is to be safe.
+  # new_end_pointer_for_default_thread = new_start_pointer_for_default_thread + 0x10000
+  # high_halfword, low_halfword = split_pointer_into_high_and_low_half_for_hardcoding(new_end_pointer_for_default_thread)
+  # write_u32(dol_data, address_to_offset(0x8030794C), 0x3C600000 | high_halfword)
+  # write_u32(dol_data, address_to_offset(0x80307950), 0x38030000 | low_halfword)
+  # write_u32(dol_data, address_to_offset(0x80301854), 0x3C600000 | high_halfword)
+  # write_u32(dol_data, address_to_offset(0x80301858), 0x38630000 | low_halfword)
+  # high_halfword = (new_end_pointer_for_default_thread & 0xFFFF0000) >> 16
+  # low_halfword = new_end_pointer_for_default_thread & 0xFFFF
+  # write_u32(dol_data, address_to_offset(0x80003278), 0x3C200000 | high_halfword)
+  # write_u32(dol_data, address_to_offset(0x8000327C), 0x60210000 | low_halfword)
   
-  # Original thread start pointer: 803FCFA8 (must be updated)
-  # Original stack end pointer (r1): 8040CFA8 (must be updated)
-  # Original rtoc pointer (r2): 803FFD00 (must NOT be updated)
-  # Original read-write small data area pointer (r13): 803FE0E0 (must NOT be updated)
+  # # Original thread start pointer: 803FCFA8 (must be updated)
+  # # Original stack end pointer (r1): 8040CFA8 (must be updated)
+  # # Original rtoc pointer (r2): 803FFD00 (must NOT be updated)
+  # # Original read-write small data area pointer (r13): 803FE0E0 (must NOT be updated)
 
 def set_new_game_starting_spawn_id(self, spawn_id):
-  dol_data = self.get_raw_file("sys/main.dol")
-  write_u8(dol_data, address_to_offset(0x80058BAF), spawn_id)
+											  
+  self.dol.write_data(write_u8, 0x80058BAF, spawn_id)
 
 def set_new_game_starting_room_index(self, room_index):
-  dol_data = self.get_raw_file("sys/main.dol")
-  write_u8(dol_data, address_to_offset(0x80058BA7), room_index)
+											  
+  self.dol.write_data(write_u8, 0x80058BA7, room_index)
 
 def change_ship_starting_island(self, starting_island_room_index):
   island_dzx = self.get_arc("files/res/Stage/sea/Room%d.arc" % starting_island_room_index).get_file("room.dzr")
@@ -211,10 +213,10 @@ def make_all_text_instant(self):
     )
   
   # # Also change the B button to act as a hold-to-skip button during dialogue.
-  apply_patch(self, "b_button_skips_text")
+  patcher.apply_patch(self, "b_button_skips_text")
   
 def b_skips(self):
-  apply_patch(self, "b_button_skips_text")
+  patcher.apply_patch(self, "b_button_skips_text")
 
 def fix_deku_leaf_model(self):
   # The Deku Leaf is a unique object not used for other items. It's easy to change what item it gives you, but the visual model cannot be changed.
@@ -433,15 +435,20 @@ def make_sail_behave_like_swift_sail(self):
   # Also doubles KoRL's speed.
   # And changes the textures to match the swift sail from HD.
   
-  ship_data = self.get_raw_file("files/rels/d_a_ship.rel")
-  # Change the relocation for line B9FC, which originally called setShipSailState.
-  write_u32(ship_data, 0x11C94, self.custom_symbols["set_wind_dir_to_ship_dir"])
+  # Apply the asm patch.
+																				  
+																				
   
-  write_float(ship_data, 0xDBE8, 55.0*2) # Sailing speed
-  write_float(ship_data, 0xDBC0, 80.0*2) # Initial speed
+														
+														
   
-  # Also increase deceleration when the player is stopping or is knocked out of the ship.
-  apply_patch(self, "swift_sail")
+																						 
+  patcher.apply_patch(self, "swift_sail")
+  
+  # Double the speed.
+  ship_rel = self.get_rel("files/rels/d_a_ship.rel")
+  ship_rel.write_data(write_float, 0xDBE8, 55.0*2) # Sailing speed
+  ship_rel.write_data(write_float, 0xDBC0, 80.0*2) # Initial speed
   
   # Update the pause menu name for the sail.
   msg = self.bmg.messages_by_id[463]
@@ -450,73 +457,14 @@ def make_sail_behave_like_swift_sail(self):
   new_sail_tex_image_path = os.path.join(ASSETS_PATH, "swift sail texture.png")
   new_sail_icon_image_path = os.path.join(ASSETS_PATH, "swift sail icon.png")
   new_sail_itemget_tex_image_path = os.path.join(ASSETS_PATH, "swift sail item get texture.png")
+  																				
   
-  # Modify the sail's texture while sailing.
-  ship_arc = self.get_arc("files/res/Object/Ship.arc")
-  sail_image = ship_arc.get_file("new_ho1.bti")
-  sail_image.replace_image_from_path(new_sail_tex_image_path)
-  sail_image.save_changes()
-  
-  # Modify the sail's item icon.
-  itemicon_arc = self.get_arc("files/res/Msg/itemicon.arc")
-  sail_icon_image = itemicon_arc.get_file("sail_00.bti")
-  sail_icon_image.replace_image_from_path(new_sail_icon_image_path)
-  sail_icon_image.save_changes()
-  
-  # Modify the sail's item get texture.
-  sail_itemget_arc = self.get_arc("files/res/Object/Vho.arc")
-  sail_itemget_model = sail_itemget_arc.get_file("vho.bdl")
-  sail_itemget_tex_image = sail_itemget_model.tex1.textures_by_name["Vho"][0]
-  sail_itemget_tex_image.replace_image_from_path(new_sail_itemget_tex_image_path)
-  sail_itemget_model.save_changes()
-  
-def make_sail_behave_like_swift_sail2(self):
-  # Causes the wind direction to always change to face the direction KoRL is facing as long as the sail is out.
-  # Also doubles KoRL's speed.
-  # And changes the textures to match the swift sail from HD.
-  
-  ship_data = self.get_raw_file("files/rels/d_a_ship.rel")
-  # Change the relocation for line B9FC, which originally called setShipSailState.
-  write_u32(ship_data, 0x11C94, self.custom_symbols["set_wind_dir_to_ship_dir"])
-  
-  write_float(ship_data, 0xDBE8, 55.0*2) # Sailing speed
-  write_float(ship_data, 0xDBC0, 80.0*2) # Initial speed
-  
-  # Also increase deceleration when the player is stopping or is knocked out of the ship.
-  apply_patch(self, "swift_sail")
-  
-  # Update the pause menu name for the sail.
-  msg = self.bmg.messages_by_id[463]
-  msg.string = "Swift Sail"
-  
-def make_sail_behave_like_brisk_sail(self):
-  # Causes the wind direction to always change to face the direction KoRL is facing as long as the sail is out.
-  # Also doubles KoRL's speed.
-  # And changes the textures to match the swift sail from HD.
-  
-  ship_data = self.get_raw_file("files/rels/d_a_ship.rel")
-  # Change the relocation for line B9FC, which originally called setShipSailState.
-  write_u32(ship_data, 0x11C94, self.custom_symbols["set_wind_dir_to_ship_dir"])
-  
-  write_float(ship_data, 0xDBE8, 55.0*3) # Sailing speed
-  write_float(ship_data, 0xDBC0, 80.0*3) # Initial speed
-  
-  # Also increase deceleration when the player is stopping or is knocked out of the ship.
-  apply_patch(self, "brisk_sail")
-  
-  # Update the pause menu name for the sail.
-  msg = self.bmg.messages_by_id[463]
-  msg.string = "Brisk Sail"
-  
-  new_sail_tex_image_path = os.path.join(ASSETS_PATH, "brisk sail texture.png")
-  new_sail_icon_image_path = os.path.join(ASSETS_PATH, "brisk sail icon.png")
-  new_sail_itemget_tex_image_path = os.path.join(ASSETS_PATH, "brisk sail item get texture.png")
-  
-  # Modify the sail's texture while sailing.
-  ship_arc = self.get_arc("files/res/Object/Ship.arc")
-  sail_image = ship_arc.get_file("new_ho1.bti")
-  sail_image.replace_image_from_path(new_sail_tex_image_path)
-  sail_image.save_changes()
+  if not self.using_custom_sail_texture:
+    # Modify the sail's texture while sailing (only if the custom player model didn't already change the sail texture).
+    ship_arc = self.get_arc("files/res/Object/Ship.arc")
+    sail_image = ship_arc.get_file("new_ho1.bti")
+    sail_image.replace_image_from_path(new_sail_tex_image_path)
+    sail_image.save_changes()
   
   # Modify the sail's item icon.
   itemicon_arc = self.get_arc("files/res/Msg/itemicon.arc")
@@ -531,26 +479,147 @@ def make_sail_behave_like_brisk_sail(self):
   sail_itemget_tex_image.replace_image_from_path(new_sail_itemget_tex_image_path)
   sail_itemget_model.save_changes()
 
-  
-def make_sail_behave_like_brisk_sail2(self):
+
+def make_sail_behave_like_swift_sail2(self):
   # Causes the wind direction to always change to face the direction KoRL is facing as long as the sail is out.
   # Also doubles KoRL's speed.
   # And changes the textures to match the swift sail from HD.
   
-  ship_data = self.get_raw_file("files/rels/d_a_ship.rel")
-  # Change the relocation for line B9FC, which originally called setShipSailState.
-  write_u32(ship_data, 0x11C94, self.custom_symbols["set_wind_dir_to_ship_dir"])
+  # Apply the asm patch.
+																				  
+																				
   
-  write_float(ship_data, 0xDBE8, 55.0*3) # Sailing speed
-  write_float(ship_data, 0xDBC0, 80.0*3) # Initial speed
+														
+														
   
-  # Also increase deceleration when the player is stopping or is knocked out of the ship.
-  apply_patch(self, "brisk_sail")
+																						 
+  patcher.apply_patch(self, "swift_sail")
+  
+  # Double the speed.
+  ship_rel = self.get_rel("files/rels/d_a_ship.rel")
+  ship_rel.write_data(write_float, 0xDBE8, 55.0*2) # Sailing speed
+  ship_rel.write_data(write_float, 0xDBC0, 80.0*2) # Initial speed
+  
+  # Update the pause menu name for the sail.
+  msg = self.bmg.messages_by_id[463]
+  msg.string = "Swift Sail"
+  
+  # new_sail_tex_image_path = os.path.join(ASSETS_PATH, "swift sail texture.png")
+  # new_sail_icon_image_path = os.path.join(ASSETS_PATH, "swift sail icon.png")
+  # new_sail_itemget_tex_image_path = os.path.join(ASSETS_PATH, "swift sail item get texture.png")
+  																				
+  
+  # if not self.using_custom_sail_texture:
+    # Modify the sail's texture while sailing (only if the custom player model didn't already change the sail texture).
+    # ship_arc = self.get_arc("files/res/Object/Ship.arc")
+    # sail_image = ship_arc.get_file("new_ho1.bti")
+    # sail_image.replace_image_from_path(new_sail_tex_image_path)
+    # sail_image.save_changes()
+  
+  # Modify the sail's item icon.
+  # itemicon_arc = self.get_arc("files/res/Msg/itemicon.arc")
+  # sail_icon_image = itemicon_arc.get_file("sail_00.bti")
+  # sail_icon_image.replace_image_from_path(new_sail_icon_image_path)
+  # sail_icon_image.save_changes()
+  
+  # Modify the sail's item get texture.
+  # sail_itemget_arc = self.get_arc("files/res/Object/Vho.arc")
+  # sail_itemget_model = sail_itemget_arc.get_file("vho.bdl")
+  # sail_itemget_tex_image = sail_itemget_model.tex1.textures_by_name["Vho"][0]
+  # sail_itemget_tex_image.replace_image_from_path(new_sail_itemget_tex_image_path)
+  # sail_itemget_model.save_changes()
+
+def make_sail_behave_like_brisk_sail(self):
+  # Causes the wind direction to always change to face the direction KoRL is facing as long as the sail is out.
+  # Also doubles KoRL's speed.
+  # And changes the textures to match the swift sail from HD.
+  
+  # Apply the asm patch.
+																				 
+																						 
+  patcher.apply_patch(self, "brisk_sail")
+  
+  # Double the speed.
+  ship_rel = self.get_rel("files/rels/d_a_ship.rel")
+  ship_rel.write_data(write_float, 0xDBE8, 55.0*2) # Sailing speed
+  ship_rel.write_data(write_float, 0xDBC0, 80.0*2) # Initial speed
   
   # Update the pause menu name for the sail.
   msg = self.bmg.messages_by_id[463]
   msg.string = "Brisk Sail"
   
+  new_sail_tex_image_path = os.path.join(ASSETS_PATH, "brisk sail texture.png")
+  new_sail_icon_image_path = os.path.join(ASSETS_PATH, "brisk sail icon.png")
+  new_sail_itemget_tex_image_path = os.path.join(ASSETS_PATH, "brisk sail item get texture.png")
+  																				
+  
+  if not self.using_custom_sail_texture:
+    # Modify the sail's texture while sailing (only if the custom player model didn't already change the sail texture).
+    ship_arc = self.get_arc("files/res/Object/Ship.arc")
+    sail_image = ship_arc.get_file("new_ho1.bti")
+    sail_image.replace_image_from_path(new_sail_tex_image_path)
+    sail_image.save_changes()
+  
+  # Modify the sail's item icon.
+  itemicon_arc = self.get_arc("files/res/Msg/itemicon.arc")
+  sail_icon_image = itemicon_arc.get_file("sail_00.bti")
+  sail_icon_image.replace_image_from_path(new_sail_icon_image_path)
+  sail_icon_image.save_changes()
+  
+  # Modify the sail's item get texture.
+  sail_itemget_arc = self.get_arc("files/res/Object/Vho.arc")
+  sail_itemget_model = sail_itemget_arc.get_file("vho.bdl")
+  sail_itemget_tex_image = sail_itemget_model.tex1.textures_by_name["Vho"][0]
+  sail_itemget_tex_image.replace_image_from_path(new_sail_itemget_tex_image_path)
+  sail_itemget_model.save_changes()
+
+
+
+def make_sail_behave_like_brisk_sail2(self):
+  # Causes the wind direction to always change to face the direction KoRL is facing as long as the sail is out.
+  # Also doubles KoRL's speed.
+  # And changes the textures to match the swift sail from HD.
+  
+  # Apply the asm patch.
+																				 
+																						 
+  patcher.apply_patch(self, "brisk_sail")
+  
+  # Double the speed.
+  ship_rel = self.get_rel("files/rels/d_a_ship.rel")
+  ship_rel.write_data(write_float, 0xDBE8, 55.0*2) # Sailing speed
+  ship_rel.write_data(write_float, 0xDBC0, 80.0*2) # Initial speed
+  
+  # Update the pause menu name for the sail.
+  msg = self.bmg.messages_by_id[463]
+  msg.string = "Brisk Sail"
+  
+  # new_sail_tex_image_path = os.path.join(ASSETS_PATH, "brisk sail texture.png")
+  # new_sail_icon_image_path = os.path.join(ASSETS_PATH, "brisk sail icon.png")
+  # new_sail_itemget_tex_image_path = os.path.join(ASSETS_PATH, "brisk sail item get texture.png")
+  																				
+  
+  # if not self.using_custom_sail_texture:
+    # # Modify the sail's texture while sailing (only if the custom player model didn't already change the sail texture).
+    # ship_arc = self.get_arc("files/res/Object/Ship.arc")
+    # sail_image = ship_arc.get_file("new_ho1.bti")
+    # sail_image.replace_image_from_path(new_sail_tex_image_path)
+    # sail_image.save_changes()
+  
+  # # Modify the sail's item icon.
+  # itemicon_arc = self.get_arc("files/res/Msg/itemicon.arc")
+  # sail_icon_image = itemicon_arc.get_file("sail_00.bti")
+  # sail_icon_image.replace_image_from_path(new_sail_icon_image_path)
+  # sail_icon_image.save_changes()
+  
+  # # Modify the sail's item get texture.
+  # sail_itemget_arc = self.get_arc("files/res/Object/Vho.arc")
+  # sail_itemget_model = sail_itemget_arc.get_file("vho.bdl")
+  # sail_itemget_tex_image = sail_itemget_model.tex1.textures_by_name["Vho"][0]
+  # sail_itemget_tex_image.replace_image_from_path(new_sail_itemget_tex_image_path)
+  # sail_itemget_model.save_changes()
+
+
 def add_ganons_tower_warp_to_ff2(self):
   # Normally the warp object from Forsaken Fortress down to Ganon's Tower only appears in FF3.
   # But we changed Forsaken Fortress to remain permanently as FF2.
@@ -700,16 +769,16 @@ def modify_title_screen_logo(self):
   subtitle_image.replace_image_from_path(new_subtitle_image_path)
   subtitle_model.save_changes()
   
-  # subtitle_glare_model = tlogoe_arc.get_file("subtitle_kirari_e.bdl")
-  # subtitle_glare_image = subtitle_glare_model.tex1.textures_by_name["logo_sub_e"][0]
-  # subtitle_glare_image.replace_image_from_path(new_subtitle_image_path)
-  # subtitle_glare_model.save_changes()
+  subtitle_glare_model = tlogoe_arc.get_file("subtitle_kirari_e.bdl")
+  subtitle_glare_image = subtitle_glare_model.tex1.textures_by_name["logo_sub_e"][0]
+  subtitle_glare_image.replace_image_from_path(new_subtitle_image_path)
+  subtitle_glare_model.save_changes()
   
   # Move where the subtitle is drawn downwards a bit so the word "the" doesn't get covered up by the main logo.
-  title_data = self.get_raw_file("files/rels/d_a_title.rel")
-  y_pos = read_float(title_data, 0x1F44)
+  title_rel = self.get_rel("files/rels/d_a_title.rel")
+  y_pos = title_rel.read_data(read_float, 0x1F44)
   y_pos -= 13.0
-  write_float(title_data, 0x1F44, y_pos)
+  title_rel.write_data(write_float, 0x1F44, y_pos)
   
   # Move the sparkle particle effect down a bit to fit the taller logo better.
   # (This has the side effect of also moving down the clouds below the ship, but this is not noticeable.)
@@ -717,22 +786,25 @@ def modify_title_screen_logo(self):
   write_u16(data, 0x162, 0x106) # Increase Y pos by 16 pixels (0xF6 -> 0x106)
 
 def update_game_name_icon_and_banners(self):
-  # new_game_name = "%s" % self.seed
+  new_game_name = "Wind Waker Randomized %s" % self.seed
   banner_data = self.get_raw_file("files/opening.bnr")
-  # write_str(banner_data, 0x1860, new_game_name, 0x40)
+  write_str(banner_data, 0x1860, new_game_name, 0x40)
   
   new_game_id = "GZLE01"
   boot_data = self.get_raw_file("sys/boot.bin")
-  write_str(boot_data, 0, new_game_id, 6)
+  write_magic_str(boot_data, 0, new_game_id, 6)
   
-  dol_data = self.get_raw_file("sys/main.dol")
-  new_memory_card_game_name = "Wind Waker"
-  write_str(dol_data, address_to_offset(0x80339690), new_memory_card_game_name, 21)
+											  
+  new_memory_card_game_name = "Wind Waker Randomizer"
+  self.dol.write_data(write_magic_str, 0x80339690, new_memory_card_game_name, 21)
   
   new_image_file_path = os.path.join(ASSETS_PATH, "banner.png")
   image_format = texture_utils.ImageFormat.RGB5A3
   palette_format = texture_utils.PaletteFormat.RGB5A3
-  image_data, _, _ = texture_utils.encode_image_from_path(new_image_file_path, image_format, palette_format)
+  image_data, _, _, image_width, image_height = texture_utils.encode_image_from_path(new_image_file_path, image_format, palette_format)
+  assert image_width == 96
+  assert image_height == 32
+  assert data_len(image_data) == 0x1800
   image_data.seek(0)
   write_bytes(banner_data, 0x20, image_data.read())
   
@@ -747,7 +819,6 @@ def update_game_name_icon_and_banners(self):
   memory_card_banner = cardicon_arc.get_file("ipl_banner.bti")
   memory_card_banner.replace_image_from_path(memory_card_banner_file_path)
   memory_card_banner.save_changes()
-
 def allow_dungeon_items_to_appear_anywhere(self):
   dol_data = self.get_raw_file("sys/main.dol")
   item_get_funcs_list = address_to_offset(0x803888C8)
@@ -1187,10 +1258,24 @@ def update_korl_dialogue(self):
 
 def set_num_starting_triforce_shards(self):
   num_starting_triforce_shards = int(self.options.get("num_starting_triforce_shards", 0))
-  num_shards_address = self.custom_symbols["num_triforce_shards_to_start_with"]
-  dol_data = self.get_raw_file("sys/main.dol")
-  write_u8(dol_data, address_to_offset(num_shards_address), num_starting_triforce_shards)
+  num_shards_address = self.main_custom_symbols["num_triforce_shards_to_start_with"]
+											  
+  self.dol.write_data(write_u8, num_shards_address, num_starting_triforce_shards)
 
+def set_starting_health(self):
+  heart_pieces = self.options.get("starting_pohs")
+  heart_containers = self.options.get("starting_hcs") * 4
+  base_health = 12
+
+  starting_health = base_health + heart_containers + heart_pieces
+  
+  starting_quarter_hearts_address = self.main_custom_symbols["starting_quarter_hearts"]
+
+  self.dol.write_data(write_u16, starting_quarter_hearts_address, starting_health)
+
+def give_double_magic(self):
+  starting_magic_address = self.main_custom_symbols["starting_magic"]
+  self.dol.write_data(write_u8, starting_magic_address, 32)
 def add_pirate_ship_to_windfall(self):
   windfall_dzx = self.get_arc("files/res/Stage/sea/Room11.arc").get_file("room.dzr")
   
@@ -1329,12 +1414,13 @@ def remove_makar_kidnapping_event(self):
   dzx.save_changes()
 
 def increase_player_movement_speeds(self):
-  dol_data = self.get_raw_file("sys/main.dol")
+  # Double crawling speed.
+  self.dol.write_data(write_float, 0x8035DB94, 3.0*2)
   
   # Change rolling so that it scales from 20.0 to 26.0 speed depending on the player's speed when they roll.
-  # (In vanilla, it scaled from 0.5 to 26.0 instead.)
-  write_float(dol_data, address_to_offset(0x8035D3D0), 6.0/17.0) # Rolling speed multiplier on walking speed
-  write_float(dol_data, address_to_offset(0x8035D3D4), 20.0) # Rolling base speed
+  # In vanilla, it scaled from 0.5 to 26.0 instead.
+  self.dol.write_data(write_float, 0x8035D3D0, 6.0/17.0) # Rolling speed multiplier on walking speed
+  self.dol.write_data(write_float, 0x8035D3D4, 20.0) # Rolling base speed
 
 def add_chart_number_to_item_get_messages(self):
   for item_id, item_name in self.item_names.items():
@@ -1348,86 +1434,101 @@ def add_chart_number_to_item_get_messages(self):
 
 # Speeds up the grappling hook significantly to behave similarly to HD
 def increase_grapple_animation_speed(self):
-  dol_data = self.get_raw_file("sys/main.dol")
+											  
   
   
   # Double the velocity the grappling hook is thrown out (from 20.0 to 40.0)
-  write_float(dol_data, address_to_offset(0x803F9D28), 40.0) # Grappling hook velocity
+  # Instead of reading 20.0 from 803F9D28, read 40.0 from 803F9DAC.
+  # (We can't just change the float value itself because it's used for multiple things.)
+  self.dol.write_data(write_s16, 0x800EE0E4+2, 0x803F9DAC-0x803FFD00)
   
   # Half the number of frames grappling hook extends outward in 1st person (from 40 to 20 frames)
-  write_u32(dol_data, address_to_offset(0x800EDB74), 0x38030014) # addi r0,r3,20
+  self.dol.write_data(write_u32, 0x800EDB74, 0x38030014) # addi r0,r3,20
   
   # Half the number of frames grappling hook extends outward in 3rd person (from 20 to 10)
-  write_u32(dol_data, address_to_offset(0x800EDEA4), 0x3803000A) # addi r0,r3,10
+  self.dol.write_data(write_u32, 0x800EDEA4, 0x3803000A) # addi r0,r3,10
   
   # Increase the speed in which the grappling hook falls onto it's target (from 10.0 to 20.0)
-  write_float(dol_data, address_to_offset(0x803F9C44), 20.0) 
+  # Instead of reading 10.0 from 803F9C44, read 20.0 from 803F9D28.
+  # (We can't just change the float value itself because it's used for multiple things.)
+  self.dol.write_data(write_s16, 0x800EEC40+2, 0x803F9D28-0x803FFD00)
   
-  # Increase grappling hook speed as it wraps around it's target (from 17.0 to 25.0)
-  write_float(dol_data, address_to_offset(0x803F9D60), 25.0) 
+  # Increase grappling hook speed as it wraps around its target (from 17.0 to 25.0)
+  # (Only read in one spot, so we can change the value directly.)
+  self.dol.write_data(write_float, 0x803F9D60, 25.0)
   
   # Increase the counter that determines how fast to end the wrap around animation. (From +1 each frame to +6 each frame)
-  write_u32(dol_data, address_to_offset(0x800EECA8), 0x38A30006) # addi r5,r3,6
+  self.dol.write_data(write_u32, 0x800EECA8, 0x38A30006) # addi r5,r3,6
 
 # Speeds up the rate in which blocks move when pushed/pulled
 def increase_block_moving_animation(self):
-  dol_data = self.get_raw_file("sys/main.dol")
+											  
   
-  #increase Link's pulling animation from 1.0 to 1.4 (purely visual)
-  write_float(dol_data, address_to_offset(0x8035DBB0), 1.4)
+  # Increase Link's pushing animation speed from 1.0 to 1.4
+  # Note that this causes a softlock when opening a specific door in Forsaken Fortress - see fix_forsaken_fortress_door_softlock for more details.
+  self.dol.write_data(write_float, 0x8035DBB0, 1.4)
   
-  #increase Link's pushing animation from 1.0 to 1.4 (purely visual)
-  write_float(dol_data, address_to_offset(0x8035DBB8), 1.4)
+  # Increase Link's pulling animation speed from 1.0 to 1.4
+  self.dol.write_data(write_float, 0x8035DBB8, 1.4)
   
-  block_data = self.get_raw_file("files/rels/d_a_obj_movebox.rel")
+  block_rel = self.get_rel("files/rels/d_a_obj_movebox.rel")
   
   offset = 0x54B0 # M_attr__Q212daObjMovebox5Act_c. List of various data for each type of block.
   for i in range(13): # 13 types of blocks total.
-    write_u16(block_data, offset + 4, 12) # Reduce number frames for pushing to last from 20 to 12
-    write_u16(block_data, offset + 0xA, 12) # Reduce number frames for pulling to last from 20 to 12
+    block_rel.write_data(write_u16, offset + 0x04, 12) # Reduce number frames for pushing to last from 20 to 12
+    block_rel.write_data(write_u16, offset + 0x0A, 12) # Reduce number frames for pulling to last from 20 to 12
     offset += 0x9C
 
 def increase_misc_animations(self):
-  dol_data = self.get_raw_file("sys/main.dol")
+											  
   
-  # Double crawling speed
-  write_float(dol_data, address_to_offset(0x8035DB94), 3.0*2)
+						 
+															 
   
-  #increase the animation speed that Link initiates a climb (0.8 -> 1.6)
-  write_float(dol_data, address_to_offset(0x8035D738), 1.6)
+  # Increase the animation speed that Link initiates a climb (0.8 -> 1.6)
+  self.dol.write_data(write_float, 0x8035D738, 1.6)
   
-  # # #increase speed Link climbs ladders/vines (1.2 -> 1.6)
-  write_float(dol_data, address_to_offset(0x8035DB38), 1.6)
+  # Increase speed Link climbs ladders/vines (1.2 -> 1.6)
+  self.dol.write_data(write_float, 0x8035DB38, 1.6)
   
-  #increase speed Link starts climbing a ladder/vine (1.0 -> 1.6)
-  write_float(dol_data, address_to_offset(0x8035DB18), 1.6)
+  # Increase speed Link starts climbing a ladder/vine (1.0 -> 1.6)
+  self.dol.write_data(write_float, 0x8035DB18, 1.6)
   
-  #increase speed Links ends climbing a ladder/vine (0.9 -> 1.4)
-  write_float(dol_data, address_to_offset(0x8035DB20), 1.4)
+  # Increase speed Links ends climbing a ladder/vine (0.9 -> 1.4)
+  self.dol.write_data(write_float, 0x8035DB20, 1.4)
   
   # Half the number of frames camera takes to focus on an npc for a conversation (from 20 to 10)
-  write_u32(dol_data, address_to_offset(0x8016DA2C), 0x3800000A) # li r0,10
+  self.dol.write_data(write_u32, 0x8016DA2C, 0x3800000A) # li r0,10
   
-  # Half the number of frames zooming into first person takes (from 10 to 5)
-  #Commented out, doesn't improve speed in which first person items can be used and can cause minor visual oddities
-  #write_u32(dol_data, address_to_offset(0x80170B20), 0x3BA00005) # li r29,5 
+																			
+																												   
+																			 
   
-  #increase the rotation speed on ropes (64.0 -> 100.0)
-  write_float(dol_data, address_to_offset(0x803FA2E8), 100.0)
+													   
+															 
   
-
 
 def change_starting_clothes(self):
   custom_model_metadata = customizer.get_model_metadata(self.custom_model_name)
   disable_casual_clothes = custom_model_metadata.get("disable_casual_clothes", False)
   
-  should_start_with_heros_clothes_address = self.custom_symbols["should_start_with_heros_clothes"]
-  dol_data = self.get_raw_file("sys/main.dol")
+  should_start_with_heros_clothes_address = self.main_custom_symbols["should_start_with_heros_clothes"]
+											  
   if self.options.get("player_in_casual_clothes") and not disable_casual_clothes:
-    write_u8(dol_data, address_to_offset(should_start_with_heros_clothes_address), 0)
+    self.dol.write_data(write_u8, should_start_with_heros_clothes_address, 0)
   else:
-    write_u8(dol_data, address_to_offset(should_start_with_heros_clothes_address), 1)
+    self.dol.write_data(write_u8, should_start_with_heros_clothes_address, 1)
 
+def check_hide_ship_sail(self):
+  # Allow the custom model author to specify if they want the ship's sail to be hidden.
+  # The reason simply changing the texture to be transparent doesn't work is that even when fully transparent, it will still be rendered over the white lines the ship makes when parting the sea in front of it.
+  custom_model_metadata = customizer.get_model_metadata(self.custom_model_name)
+  hide_ship_sail = custom_model_metadata.get("hide_ship_sail", False)
+  
+  if hide_ship_sail:
+    # Make the sail's draw function return immediately to hide it.
+    sail_draw_func_address = 0x800E93B8 # daHo_packet_c::draw(void)
+    self.dol.write_data(write_u32, sail_draw_func_address, 0x4E800020) # blr
 def shorten_auction_intro_event(self):
   event_list = self.get_arc("files/res/Stage/Orichh/Stage.arc").get_file("event_list.dat")
   wind_shrine_event = event_list.events_by_name["AUCTION_START"]
@@ -1569,13 +1670,13 @@ def update_tingle_statue_item_get_funcs(self):
 def make_tingle_statue_reward_rupee_rainbow_colored(self):
   # Change the color index of the special 500 rupee to be 7 - this is a special value (originally unused) we use to indicate to our custom code that it's the special rupee, and so it should have its color animated.
   
-  item_resources_list_start = address_to_offset(0x803842B0)
-  dol_data = self.get_raw_file("sys/main.dol")
+  item_resources_list_start = 0x803842B0
+											  
   
   item_id = self.item_name_to_id["Rainbow Rupee"]
-  rainbow_rupee_item_resource_offset = item_resources_list_start + item_id*0x24
+  rainbow_rupee_item_resource_addr = item_resources_list_start + item_id*0x24
   
-  write_u8(dol_data, rainbow_rupee_item_resource_offset+0x14, 7)
+  self.dol.write_data(write_u8, rainbow_rupee_item_resource_addr+0x14, 7)
 
 def show_seed_hash_on_name_entry_screen(self):
   # Add some text to the name entry screen which has two random character names that vary based on the permalink (so the seed and settings both change it).
