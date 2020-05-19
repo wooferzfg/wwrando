@@ -59,11 +59,6 @@ In addition, follow this if you want to use PyInstaller to build a distributable
 
 This works on Gamecube/Wii/Dolphin.
 The European and Japanese versions of Wind Waker won't work, and neither will Wind Waker HD.
-### Discord Server
-
-If you're going to play on emulator, you should use the latest development version of Dolphin which can be found at the top of this page: https://dolphin-emu.org/download/
-If you have any questions or are looking for people to play/race with, why not join the official Wind Waker Randomizer Discord server?  
-https://discord.gg/r2963mt
 
 ### Credits
 
