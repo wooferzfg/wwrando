@@ -30,7 +30,6 @@ You can toggle the following on/off:
 You can apply the [Widescreen Patch](https://www.dropbox.com/s/5huyf6r3drynq1c/The%20Legend%20of%20Zelda%20The%20Wind%20Waker%20Widescreen.zip?dl=1) before using this  
 
 You can apply the [Gender neutral](http://www.romhacking.net/hacks/2906/) or [Female](https://gamebanana.com/gamefiles/11342) pronoun patch to match your customization before using this  
-### Information
 
 If using Dolphin you can use [Hypatia's HD Texture Pack](https://onthegreatsea.tumblr.com/DOWNLOADS)
 
