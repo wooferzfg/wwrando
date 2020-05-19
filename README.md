@@ -42,7 +42,6 @@ Add them to the models folder.
 If you're looking for something closer to wwrando, but not totally random, check out https://github.com/wooferzfg/wwrando/tree/vanilla?files=1.
 
 ### Other Tweaks
-### Download
 
 You can apply the [Widescreen Patch](https://www.dropbox.com/s/5huyf6r3drynq1c/The%20Legend%20of%20Zelda%20The%20Wind%20Waker%20Widescreen.zip?dl=1) before using this  
 See the [releases page](https://github.com/brainfubar/wwrando/releases) to download zip files containing the program and assets. Both 32-bit and 64-bit versions are available.
@@ -51,8 +50,6 @@ You can apply the [Gender neutral](http://www.romhacking.net/hacks/2906/) or [Fe
 ### Information
 
 If using Dolphin you can use [Hypatia's HD Texture Pack](https://onthegreatsea.tumblr.com/DOWNLOADS)
-This program only supports the North American Gamecube version of Wind Waker. (MD5: d8e4d45af2032a081a0f446384e9261b)  
-The European and Japanese versions of Wind Waker won't work, and neither will Wind Waker HD.
 
 **Gecko codes you may want to use (by Ralf and wiiztec)**  
 Included is an optional file with these Gecko codes that I like to use:  
@@ -64,6 +61,7 @@ If you're going to play on emulator, you should use the latest development versi
 * Unrestricted Camera  
 * No Heart Beeping Noise  
 * Blur off  
+
 ### Running from source
 
 Download and install git from here: https://git-scm.com/downloads  
