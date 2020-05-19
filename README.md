@@ -25,22 +25,6 @@ You can toggle the following on/off:
 * Faster ballad of gales  
 * Brisk Sail (faster swift sail)
 
-### About
-
-**Custom Player Models**  
-This is an ISO patcher for The Legend of Zelda: The Wind Waker based on [wwrando](https://github.com/LagoLunatic/wwrando).
-
-Allows you to customize Link, but "casual" outfits will only be seen before getting the tunic or if playing Second Quest 
-It aims to create a happy middle ground between the vanilla experience and the wwrando experience. That is to say:
-* You can change your character skin
-* Items remain in their original locations
-* All cutscenes and events remain in place
-* Certain changes/enhancements provided by wwrando are not included
-
-Models can be found on [the github repository](https://github.com/Sage-of-Mirrors/Custom-Wind-Waker-Player-Models), on [GameBanana](https://gamebanana.com/games/6173), or the [ WW Randomizer Discord](https://discord.gg/r2963mt)  
-Add them to the models folder.
-If you're looking for something closer to wwrando, but not totally random, check out https://github.com/wooferzfg/wwrando/tree/vanilla?files=1.
-
 ### Other Tweaks
 
 You can apply the [Widescreen Patch](https://www.dropbox.com/s/5huyf6r3drynq1c/The%20Legend%20of%20Zelda%20The%20Wind%20Waker%20Widescreen.zip?dl=1) before using this  
