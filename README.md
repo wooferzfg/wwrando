@@ -10,6 +10,7 @@ Intended to make a more enjoyable casual experience reflecting many quality of l
 
 You can toggle the following on/off:
 * Swift Sail replaces Sail  
+* Brisk Sail (faster swift sail)
 * Instant text boxes  
 * Faster block moving  
 * Faster grapple hook  
@@ -17,13 +18,14 @@ You can toggle the following on/off:
 * Faster crawling, climbing, NPC chat zoom  
 * Tingle chests without tingle tuner 
 * Turn while swinging or grappling
-* Reveal full sea chart 
-* Unrestricted boat  
-* No song replays  
-* Invert camera  
-* Remove intro video  
 * Faster ballad of gales  
-* Brisk Sail (faster swift sail)
+* No song replays  
+* Remove intro video  
+* Invert camera  
+* Unrestricted boat  
+* Reveal full sea chart 
+* Random Enemy Colors
+
 
 ### Other Tweaks
 
