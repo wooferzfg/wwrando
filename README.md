@@ -36,7 +36,6 @@ If using Dolphin you can use [Hypatia's HD Texture Pack](https://onthegreatsea.t
 
 **Gecko codes you may want to use (by Ralf and wiiztec)**  
 Included is an optional file with these Gecko codes that I like to use:  
-If you're going to play on emulator, you should use the latest development version of Dolphin which can be found at the top of this page: https://dolphin-emu.org/download/
 
 * Second set of equipped items (D-pad down to switch)   
 * Hero Mode (Take double damage, no heart drops)  
@@ -53,9 +52,6 @@ See the [releases page](https://github.com/brainfubar/wwrando/releases) to downl
 
 This program only supports the North American Gamecube version of Wind Waker. (MD5: d8e4d45af2032a081a0f446384e9261b)  
 In addition, follow this if you want to use PyInstaller to build a distributable version of the randomizer:  
-* Install one of PyInstaller's dependencies manually: `py -3.6 -m pip install pywin32-ctypes==0.2.0`  
-* Install PyInstaller: `py -3.6 -m pip install PyInstaller==3.4`  
-* Then to make a build in the `dist` directory: `build.bat`  
 
 This works on Gamecube/Wii/Dolphin.
 The European and Japanese versions of Wind Waker won't work, and neither will Wind Waker HD.
