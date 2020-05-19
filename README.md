@@ -28,7 +28,6 @@ You can toggle the following on/off:
 ### Other Tweaks
 
 You can apply the [Widescreen Patch](https://www.dropbox.com/s/5huyf6r3drynq1c/The%20Legend%20of%20Zelda%20The%20Wind%20Waker%20Widescreen.zip?dl=1) before using this  
-See the [releases page](https://github.com/brainfubar/wwrando/releases) to download zip files containing the program and assets. Both 32-bit and 64-bit versions are available.
 
 You can apply the [Gender neutral](http://www.romhacking.net/hacks/2906/) or [Female](https://gamebanana.com/gamefiles/11342) pronoun patch to match your customization before using this  
 ### Information
@@ -46,25 +45,11 @@ If you're going to play on emulator, you should use the latest development versi
 * No Heart Beeping Noise  
 * Blur off  
 
-### Running from source
-
-Download and install git from here: https://git-scm.com/downloads  
-Then clone this repository with git by running this in a command prompt:  
-`git clone https://github.com/LagoLunatic/wwrando.git`  
-
-### Download
-Download and install Python 3.6.6 from here: https://www.python.org/downloads/release/python-366/  
-"Windows x86-64 executable installer" is the one you want if you're on Windows, "macOS 64-bit installer" if you're on Mac.  
+### Download  
 
 See the [releases page](https://github.com/brainfubar/wwrando/releases) to download zip files containing the program and assets. Both 32-bit and 64-bit versions are available.
-Open the wwrando folder in a command prompt and install dependencies by running:  
-`py -3.6 -m pip install -r requirements.txt` (on Windows)  
-`python3 -m pip install -r requirements.txt` (on Mac)  
 
 ### Information
-Then run the randomizer with:  
-`py -3.6 wwrando.py` (on Windows)  
-`python3 wwrando.py` (on Mac)  
 
 This program only supports the North American Gamecube version of Wind Waker. (MD5: d8e4d45af2032a081a0f446384e9261b)  
 In addition, follow this if you want to use PyInstaller to build a distributable version of the randomizer:  
