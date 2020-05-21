@@ -46,13 +46,17 @@ class Logic:
     ]),
   ])
   
-  def __init__(self, rando):
+  def __init__(self, rando, existing_item_locations, existing_macros):
     self.rando = rando
     self.requirement_met_cache = {}
 
     # Initialize location related attributes.
-    self.item_locations = Logic.load_and_parse_item_locations()
-    self.load_and_parse_macros()
+    if existing_item_locations is None:
+        self.item_locations = Logic.load_and_parse_item_locations()
+        self.load_and_parse_macros()
+    else:
+        self.item_locations = existing_item_locations
+        self.macros = existing_macros
     
     self.locations_by_zone_name = OrderedDict()
     for location_name in self.item_locations:
