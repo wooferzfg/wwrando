@@ -44,7 +44,7 @@ class WWRandomizerWindow(QMainWindow):
     self.randomizer_thread = None
     
     self.cmd_line_args = cmd_line_args
-    self.bulk_test = ("-bulk" in cmd_line_args)
+    self.bulk_test = True
     self.no_ui_test = ("-noui" in cmd_line_args)
     self.profiling = ("-profile" in cmd_line_args)
     
