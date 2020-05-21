@@ -83,7 +83,7 @@ class Randomizer:
     self.disassemble = ("-disassemble" in cmd_line_args)
     self.export_disc_to_folder = ("-exportfolder" in cmd_line_args)
     self.no_logs = ("-nologs" in cmd_line_args)
-    self.bulk_test = ("-bulk" in cmd_line_args)
+    self.bulk_test = True
     if self.bulk_test:
       self.dry_run = True
       self.no_logs = True
