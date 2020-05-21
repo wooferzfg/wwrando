@@ -258,7 +258,7 @@ class WWRandomizerWindow(QMainWindow):
     if self.bulk_test:
       failures_done = 0
       total_done = 0
-      for i in range(100):
+      for i in range(1000):
         temp_seed = str(i)
         try:
           rando = Randomizer(temp_seed, clean_iso_path, output_folder, options, permalink=permalink, cmd_line_args=self.cmd_line_args)
@@ -274,6 +274,19 @@ class WWRandomizerWindow(QMainWindow):
           failures_done += 1
         total_done += 1
         print("%d/%d seeds failed" % (failures_done, total_done))
+    
+      print("Sphere Item Count, Sphere Location Count")
+      for i in range(len(Randomizer.sphere_item_counts)):
+        print(str(Randomizer.sphere_item_counts[i]) + ", " + str(Randomizer.sphere_location_counts[i]))
+      print("Location Name, Items, Small Keys, Big Keys")
+      for location_name in Randomizer.location_counts:
+        print(location_name + ", " + str(Randomizer.location_counts[location_name]) + ", " + str(Randomizer.small_key_counts[location_name]) + ", " + str(Randomizer.big_key_counts[location_name]))
+      print("Location Name, Useful Items")
+      for location_name in Randomizer.useful_location_counts:
+        print(location_name + ", " + str(Randomizer.useful_location_counts[location_name]))
+      print("Zone Name, Useful Items")
+      for zone_name in Randomizer.zone_counts:
+        print(zone_name + ", " + str(Randomizer.zone_counts[zone_name]))
     
     try:
       rando = Randomizer(seed, clean_iso_path, output_folder, options, permalink=permalink, cmd_line_args=self.cmd_line_args)

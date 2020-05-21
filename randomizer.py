@@ -73,6 +73,15 @@ class InvalidCleanISOError(Exception):
   pass
 
 class Randomizer:
+  useful_location_counts = {}
+  location_counts = {}
+  small_key_counts = {}
+  big_key_counts = {}
+  current_location_counts = {}
+  zone_counts = {}
+  sphere_item_counts = []
+  sphere_location_counts = []
+
   def __init__(self, seed, clean_iso_path, randomized_output_folder, options, permalink=None, cmd_line_args=OrderedDict()):
     self.randomized_output_folder = randomized_output_folder
     self.options = options
@@ -303,7 +312,7 @@ class Randomizer:
     self.custom_model_name = "Link"
     self.using_custom_sail_texture = False
     
-    self.logic = Logic(self)
+    self.logic = Logic(self, None, None)
     
     num_progress_locations = self.logic.get_num_progression_locations()
     max_race_mode_banned_locations = self.logic.get_max_race_mode_banned_locations()
@@ -444,8 +453,7 @@ class Randomizer:
     yield("Writing logs...", options_completed)
     
     if self.randomize_items:
-      if not self.options.get("do_not_generate_spoiler_log"):
-        self.write_spoiler_log()
+      self.write_spoiler_log()
       self.write_non_spoiler_log()
     
     yield("Done", -1)
@@ -850,11 +858,29 @@ class Randomizer:
   def calculate_playthrough_progression_spheres(self):
     progression_spheres = []
     
-    logic = Logic(self)
+    logic = Logic(self, None, None)
+
+    progress_locations, _ = logic.get_progress_and_non_progress_locations()
+    zones, _ = self.get_zones_and_max_location_name_len(progress_locations)
+    for loc in progress_locations:
+        if not loc in self.location_counts:
+            self.useful_location_counts[loc] = 0
+            self.location_counts[loc] = 0
+            self.small_key_counts[loc] = 0
+            self.big_key_counts[loc] = 0
+            
+        self.current_location_counts[loc] = False
+    for zone_name in zones:
+        if not zone_name in self.zone_counts:
+            self.zone_counts[zone_name] = 0
+
     previously_accessible_locations = []
+    previously_accessible_items = []
+    locations_count = 0
+    i = 0
     game_beatable = False
+    progress_items_in_this_sphere = OrderedDict()
     while logic.unplaced_progress_items:
-      progress_items_in_this_sphere = OrderedDict()
       
       accessible_locations = logic.get_accessible_remaining_locations()
       locations_in_this_sphere = [
@@ -881,18 +907,38 @@ class Randomizer:
             assert item_name.endswith(" Small Key")
             
             logic.add_owned_item(item_name)
+            previously_accessible_items.append(item_name)
+            self.small_key_counts[small_key_location_name] += 1
           
           previously_accessible_locations += newly_accessible_small_key_locations
           continue # Redo this loop iteration with the small key locations no longer being considered 'remaining'.
       
+      previously_accessible_progress = [loc for loc in previously_accessible_locations if loc in progress_locations]
+      if len(progress_items_in_this_sphere) > 0:
+        if len(self.sphere_item_counts) > i:
+          self.sphere_item_counts[i] += len(previously_accessible_items)
+          self.sphere_location_counts[i] += len(previously_accessible_progress) - locations_count
+        else:
+          self.sphere_item_counts.append(len(previously_accessible_items))
+          self.sphere_location_counts.append(len(previously_accessible_progress) - locations_count)
+        locations_count = len(previously_accessible_progress)
+        previously_accessible_items = []
+        i += 1
       
       # Hide duplicated progression items (e.g. Empty Bottles) when they are placed in non-progression locations to avoid confusion and inconsistency.
       locations_in_this_sphere = logic.filter_locations_for_progression(locations_in_this_sphere)
       
+      progress_items_in_this_sphere = OrderedDict()
+
       for location_name in locations_in_this_sphere:
         item_name = self.logic.done_item_locations[location_name]
         if item_name in logic.all_progress_items:
           progress_items_in_this_sphere[location_name] = item_name
+          previously_accessible_items.append(item_name)
+          if "Big Key" in item_name:
+            self.big_key_counts[location_name] += 1
+          else:
+            self.location_counts[location_name] += 1
       
       if not game_beatable:
         game_beatable = logic.check_requirement_met("Can Reach and Defeat Ganondorf")
@@ -921,7 +967,65 @@ class Randomizer:
         ])
         progression_spheres.append(final_progression_sphere)
     
+    previously_accessible_progress = [loc for loc in previously_accessible_locations if loc in progress_locations]
+    if len(self.sphere_item_counts) > i:
+      self.sphere_item_counts[i] += len(previously_accessible_items)
+      self.sphere_location_counts[i] += len(previously_accessible_progress) - locations_count
+    else:
+      self.sphere_item_counts.append(len(previously_accessible_items))
+      self.sphere_location_counts.append(len(previously_accessible_progress) - locations_count)
+    
+    for loc in progress_locations:
+      if self.location_is_useful(loc):
+        self.useful_location_counts[loc] += 1
+        self.current_location_counts[loc] = True
+    
+    for zone_name, locations_in_zone in zones.items():
+        if any(loc for (loc, _) in locations_in_zone if self.current_location_counts[loc]):
+          self.zone_counts[zone_name] += 1
+    
     return progression_spheres
+  
+  def location_is_useful(self, potential_location_name):
+    item_name = self.logic.done_item_locations[potential_location_name]
+    if not item_name in self.logic.all_progress_items:
+      return False
+    
+    logic = Logic(self, self.logic.item_locations, self.logic.macros)
+
+    progress_locations, _ = logic.get_progress_and_non_progress_locations()
+    previously_accessible_locations = []
+
+    logic.add_owned_item_or_item_group("Triforce Shards")
+    
+    while logic.unplaced_progress_items:
+      
+      accessible_locations = logic.get_accessible_remaining_locations()
+      locations_in_this_sphere = [
+        loc for loc in accessible_locations
+        if loc not in previously_accessible_locations
+      ]
+      
+      if not locations_in_this_sphere:
+        break
+      
+      progress_items_in_this_sphere = OrderedDict()
+
+      for location_name in locations_in_this_sphere:
+        item_name = self.logic.done_item_locations[location_name]
+        if item_name in logic.all_progress_items and not location_name == potential_location_name:
+          progress_items_in_this_sphere[location_name] = item_name
+     
+      for location_name, item_name in progress_items_in_this_sphere.items():
+        logic.add_owned_item(item_name)
+      for group_name, item_names in logic.progress_item_groups.items():
+        entire_group_is_owned = all(item_name in logic.currently_owned_items for item_name in item_names)
+        if entire_group_is_owned and group_name in logic.unplaced_progress_items:
+          logic.unplaced_progress_items.remove(group_name)
+      
+      previously_accessible_locations = accessible_locations
+    
+    return not logic.check_requirement_met("Can Reach and Defeat Ganondorf")
   
   def get_log_header(self):
     header = ""
