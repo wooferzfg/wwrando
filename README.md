@@ -55,7 +55,7 @@ Included is an optional file with these Gecko codes that I like to use:
 
 ### Download  
 
-See the [releases page](https://github.com/brainfubar/wwrando/releases) to download zip files containing the program and assets. Both 32-bit and 64-bit versions are available.
+See the [releases page](https://github.com/WideBoner/betterww/releases) to download zip files containing the program and assets. Both 32-bit and 64-bit versions are available.
 
 ### Information
 
