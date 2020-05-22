@@ -24,7 +24,16 @@ You can toggle the following on/off:
 * Invert camera  
 * Unrestricted boat  
 * Reveal full sea chart 
-* Random Enemy Colors
+* Random Enemy Colors  
+
+
+**Custom Player Models**  
+
+Allows you to customize Link, but "casual" outfits will only be seen before getting the tunic or if playing Second Quest
+
+Models can be found on [the github repository](https://github.com/Sage-of-Mirrors/Custom-Wind-Waker-Player-Models), on [GameBanana](https://gamebanana.com/games/6173), or the [ WW Randomizer Discord](https://discord.gg/r2963mt)  
+Add them to the models folder.
+If you're looking for something closer to wwrando, but not totally random, check out https://github.com/wooferzfg/wwrando/tree/vanilla?files=1.  
 
 
 ### Other Tweaks
