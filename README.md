@@ -63,8 +63,6 @@ See the [releases page](https://github.com/WideBoner/betterww/releases) to downl
 ### Information
 
 This program only supports the North American Gamecube version of Wind Waker. (MD5: d8e4d45af2032a081a0f446384e9261b)  
-In addition, follow this if you want to use PyInstaller to build a distributable version of the randomizer:  
-
 This works on Gamecube/Wii/Dolphin.
 The European and Japanese versions of Wind Waker won't work, and neither will Wind Waker HD.
 
