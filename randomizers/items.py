@@ -7,36 +7,50 @@ import tweaks
 
 def randomize_items(self):
   print("Randomizing items...")
-  
+
+  dungeon_num_race_mode = "0"
+
   if self.options.get("race_mode"):
     randomize_boss_rewards(self)
-  
+    dungeon_num_race_mode = self.options.get("num_dungeon_race_mode")
+
   if not self.options.get("keylunacy"):
     randomize_dungeon_items(self)
-  
+
+  if(dungeon_num_race_mode!="0"):                                               #If it is changed from the default state
+      if(dungeon_num_race_mode=="Random"):                                          #If it is Random
+          dungeon_num_race_mode = Random.randint(1,6)                                   #Make Random
+      else:                                                                         #Otherwise
+          dungeon_num_race_mode = int(dungeon_num_race_mode)                            #Get the int value of the string
+  else:                                                                         #Otherwise
+      dungeon_num_race_mode = 4                                                     #Set to default 4
+
   randomize_progression_items(self)
-  
+
   # Place unique non-progress items.
   while self.logic.unplaced_nonprogress_items:
-    accessible_undone_locations = self.logic.get_accessible_remaining_locations()
-    
-    item_name = self.rng.choice(self.logic.unplaced_nonprogress_items)
-    
-    possible_locations = self.logic.filter_locations_valid_for_item(accessible_undone_locations, item_name)
-    
-    if not possible_locations:
-      raise Exception("No valid locations left to place non-progress items!")
-    
-    location_name = self.rng.choice(possible_locations)
-    self.logic.set_location_to_item(location_name, item_name)
-  
+    try:
+        accessible_undone_locations = self.logic.get_accessible_remaining_locations()
+
+        item_name = self.rng.choice(self.logic.unplaced_nonprogress_items)
+
+        possible_locations = self.logic.filter_locations_valid_for_item(accessible_undone_locations, item_name)
+
+        if not possible_locations:
+          raise Exception("No valid locations left to place non-progress items!")
+
+        location_name = self.rng.choice(possible_locations)
+        self.logic.set_location_to_item(location_name, item_name)
+    except:
+        break
+
   accessible_undone_locations = self.logic.get_accessible_remaining_locations()
   inaccessible_locations = [loc for loc in self.logic.remaining_item_locations if loc not in accessible_undone_locations]
   if inaccessible_locations:
     print("Inaccessible locations:")
     for location_name in inaccessible_locations:
       print(location_name)
-  
+
   # Fill remaining unused locations with consumables (Rupees, spoils, and bait).
   locations_to_place_consumables_at = self.logic.remaining_item_locations.copy()
   for location_name in locations_to_place_consumables_at:
@@ -45,24 +59,24 @@ def randomize_items(self):
       possible_items = self.logic.filter_items_valid_for_location(self.logic.duplicatable_consumable_items, location_name)
       if len(possible_items) == 0:
         raise Exception("No valid consumable items for location %s" % location_name)
-    
+
     item_name = self.rng.choice(possible_items)
     self.logic.set_location_to_item(location_name, item_name)
 
 def randomize_boss_rewards(self):
   if not self.options.get("progression_dungeons"):
     raise Exception("Cannot randomize boss rewards when progress items are not allowed in dungeons.")
-  
+
   boss_reward_items = []
-  total_num_rewards = 4
-  
+  total_num_rewards = dungeon_num_race_mode
+
   unplaced_progress_items_degrouped = []
   for item_name in self.logic.unplaced_progress_items:
     if item_name in self.logic.progress_item_groups:
       unplaced_progress_items_degrouped += self.logic.progress_item_groups[item_name]
     else:
       unplaced_progress_items_degrouped.append(item_name)
-  
+
   # Try to make all the rewards be Triforce Shards.
   # May not be possible if the player chose to start with too many shards.
   num_additional_rewards_needed = total_num_rewards
@@ -72,7 +86,7 @@ def randomize_boss_rewards(self):
   ]
   self.rng.shuffle(triforce_shards)
   boss_reward_items += triforce_shards[0:num_additional_rewards_needed]
-  
+
   # If we still need more rewards, use sword upgrades.
   # May still not fill up all 4 slots if the player starts with 8 shards and a sword.
   num_additional_rewards_needed = total_num_rewards - len(boss_reward_items)
@@ -82,7 +96,7 @@ def randomize_boss_rewards(self):
       if item_name == "Progressive Sword"
     ]
     boss_reward_items += sword_upgrades[0:num_additional_rewards_needed]
-  
+
   # If we still need more rewards, use bow upgrades.
   # May still not fill up all 4 slots if the player starts with 8 shards and is in swordless mode.
   num_additional_rewards_needed = total_num_rewards - len(boss_reward_items)
@@ -92,19 +106,37 @@ def randomize_boss_rewards(self):
       if item_name == "Progressive Bow"
     ]
     boss_reward_items += bow_upgrades[0:num_additional_rewards_needed]
-  
+
   self.rng.shuffle(boss_reward_items)
-  
+
   # If we STILL need more rewards, use the hookshot.
   num_additional_rewards_needed = total_num_rewards - len(boss_reward_items)
   if num_additional_rewards_needed > 0:
     assert "Hookshot" in unplaced_progress_items_degrouped
     # Need to make sure hookshot is at the start of the list since it's more picky about which bosses can drop it.
     boss_reward_items.insert(0, "Hookshot")
-  
+
+# If we STILL need more rewards, use the iron boots.
+  num_additional_rewards_needed = total_num_rewards - len(boss_reward_items)
+  if num_additional_rewards_needed > 0:
+    assert "Iron Boots" in unplaced_progress_items_degrouped
+    # Need to make sure iron boots are at the start of the list since it's equally as picky as hookshot about which bosses can drop it.
+    boss_reward_items.insert(0, "Iron Boots")
+
+# If we STILL need more rewards, use the power bracelets.
+  num_additional_rewards_needed = total_num_rewards - len(boss_reward_items)
+  if num_additional_rewards_needed > 0:
+    assert "Power Bracelets" in unplaced_progress_items_degrouped
+    # Need to make sure power bracelets are towards the start of the list since it's picky about which bosses can drop it.
+    #But they cannot be first because then it would lock out WT in special cases for 6 dungeon race mode.
+    boss_reward_items.insert(2, "Power Bracelets")
+
+    #Code and Logic made in consideration and with conversation with ji_m and DGod63.
+    #This branch however will be maintained by Zach the DualVission, to his disgression and desire.
+
   if len(boss_reward_items) != total_num_rewards:
     raise Exception("Number of boss reward items is incorrect: " + ", ".join(boss_reward_items))
-  
+
   # Remove any Triforce Shards we're about to use from the progress item group, and add them as ungrouped progress items instead.
   for group_name, group_item_names in self.logic.progress_item_groups.items():
     items_to_remove_from_group = [
@@ -116,19 +148,19 @@ def randomize_boss_rewards(self):
     if group_name in self.logic.unplaced_progress_items:
       for item_name in items_to_remove_from_group:
         self.logic.unplaced_progress_items.append(item_name)
-    
+
     if len(self.logic.progress_item_groups[group_name]) == 0:
       if group_name in self.logic.unplaced_progress_items:
         self.logic.unplaced_progress_items.remove(group_name)
-  
+
   possible_boss_locations = [
     loc for loc in self.logic.remaining_item_locations
     if self.logic.item_locations[loc]["Original item"] == "Heart Container"
   ]
-  
+
   if len(possible_boss_locations) != 6:
     raise Exception("Number of boss item locations is incorrect: " + ", ".join(possible_boss_locations))
-  
+
   # Decide what reward item to place in each boss location.
   for item_name in boss_reward_items:
     possible_boss_locations_for_this_item = possible_boss_locations.copy()
@@ -137,7 +169,17 @@ def randomize_boss_rewards(self):
         loc for loc in possible_boss_locations_for_this_item
         if loc not in ["Wind Temple - Molgera Heart Container"]
       ]
-    
+     if item_name == "Iron Boots":
+      possible_boss_locations_for_this_item = [
+        loc for loc in possible_boss_locations_for_this_item
+        if loc not in ["Wind Temple - Molgera Heart Container"]
+      ]
+    if item_name == "Power Bracelets":
+      possible_boss_locations_for_this_item = [
+        loc for loc in possible_boss_locations_for_this_item
+        if loc not in ["Earth Temple - Jalhalla Heart Container"]
+      ]
+
     if self.dungeons_only_start and "Dragon Roost Cavern - Gohma Heart Container" in possible_boss_locations_for_this_item:
       location_name = "Dragon Roost Cavern - Gohma Heart Container"
     elif self.dungeons_only_start and "Forbidden Woods - Kalle Demos Heart Container" in possible_boss_locations_for_this_item:
@@ -147,15 +189,15 @@ def randomize_boss_rewards(self):
     possible_boss_locations.remove(location_name)
     self.logic.set_prerandomization_item_location(location_name, item_name)
     self.race_mode_required_locations.append(location_name)
-    
+
     dungeon_name, _ = self.logic.split_location_name_by_zone(location_name)
     self.race_mode_required_dungeons.append(dungeon_name)
-  
+
   banned_dungeons = []
   for boss_location_name in possible_boss_locations:
     dungeon_name, _ = self.logic.split_location_name_by_zone(boss_location_name)
     banned_dungeons.append(dungeon_name)
-  
+
   for location_name in self.logic.item_locations:
     zone_name, _ = self.logic.split_location_name_by_zone(location_name)
     if self.logic.is_dungeon_location(location_name) and zone_name in banned_dungeons:
@@ -171,7 +213,7 @@ def randomize_boss_rewards(self):
 
 def randomize_dungeon_items(self):
   # Places dungeon-specific items first so all the dungeon locations don't get used up by other items.
-  
+
   # Temporarily add all progress items except for dungeon keys while we randomize them.
   items_to_temporarily_add = [
     item_name for item_name in (self.logic.unplaced_progress_items + self.logic.unplaced_nonprogress_items)
@@ -179,7 +221,7 @@ def randomize_dungeon_items(self):
   ]
   for item_name in items_to_temporarily_add:
     self.logic.add_owned_item_or_item_group(item_name)
-  
+
   if self.dungeons_only_start:
     # Choose a random location out of the 6 easiest locations to access in DRC.
     # This location will not have the big key, dungeon map, or compass on this seed. (But can still have small keys/non-dungeon items.)
@@ -192,7 +234,7 @@ def randomize_dungeon_items(self):
       "Dragon Roost Cavern - Rat Room Boarded Up Chest",
       "Dragon Roost Cavern - Bird's Nest",
     ])
-  
+
   # Randomize small keys.
   small_keys_to_place = [
     item_name for item_name in (self.logic.unplaced_progress_items + self.logic.unplaced_nonprogress_items)
@@ -202,7 +244,7 @@ def randomize_dungeon_items(self):
   for item_name in small_keys_to_place:
     place_dungeon_item(self, item_name)
     self.logic.add_owned_item(item_name) # Temporarily add small keys to the player's inventory while placing them.
-  
+
   # Randomize big keys.
   big_keys_to_place = [
     item_name for item_name in (self.logic.unplaced_progress_items + self.logic.unplaced_nonprogress_items)
@@ -212,17 +254,17 @@ def randomize_dungeon_items(self):
   for item_name in big_keys_to_place:
     place_dungeon_item(self, item_name)
     self.logic.add_owned_item(item_name) # Temporarily add big keys to the player's inventory while placing them.
-  
+
   # Randomize dungeon maps and compasses.
   other_dungeon_items_to_place = [
     item_name for item_name in (self.logic.unplaced_progress_items + self.logic.unplaced_nonprogress_items)
-    if item_name.endswith(" Dungeon Map")
-    or item_name.endswith(" Compass")
+    if item_name.endswith(" Compass")
+    #or item_name.endswith(" Dungeon Map")
   ]
   assert len(other_dungeon_items_to_place) > 0
   for item_name in other_dungeon_items_to_place:
     place_dungeon_item(self, item_name)
-  
+
   # Remove the items we temporarily added.
   for item_name in items_to_temporarily_add:
     self.logic.remove_owned_item_or_item_group(item_name)
@@ -243,7 +285,7 @@ def place_dungeon_item(self, item_name):
       if not "Tingle Chest" in self.logic.item_locations[loc]["Types"]
     ]
   possible_locations = self.logic.filter_locations_valid_for_item(accessible_undone_locations, item_name)
-  
+
   if self.dungeons_only_start and item_name == "DRC Small Key":
     # If we're in a dungeons-only-start, we have to ban small keys from appearing in the path that sequence breaks the hanging platform.
     # A key you need to progress appearing there can cause issues that dead-end the item placement logic when there are no locations outside DRC for the randomizer to give you other items at.
@@ -259,10 +301,10 @@ def place_dungeon_item(self, item_name):
       loc for loc in possible_locations
       if loc != self.drc_failsafe_location
     ]
-  
+
   if not possible_locations:
     raise Exception("No valid locations left to place dungeon items!")
-  
+
   location_name = self.rng.choice(possible_locations)
   self.logic.set_prerandomization_item_location(location_name, item_name)
 
@@ -270,16 +312,16 @@ def randomize_progression_items(self):
   accessible_undone_locations = self.logic.get_accessible_remaining_locations(for_progression=True)
   if len(accessible_undone_locations) == 0:
     raise Exception("No progress locations are accessible at the very start of the game!")
-  
+
   # Place progress items.
   location_weights = {}
   current_weight = 1
   while self.logic.unplaced_progress_items:
     accessible_undone_locations = self.logic.get_accessible_remaining_locations(for_progression=True)
-    
+
     if not accessible_undone_locations:
       raise Exception("No locations left to place progress items!")
-    
+
     # If the player gained access to any predetermined item locations, we need to give them those items.
     newly_accessible_predetermined_item_locations = [
       loc for loc in accessible_undone_locations
@@ -289,18 +331,18 @@ def randomize_progression_items(self):
       for predetermined_item_location_name in newly_accessible_predetermined_item_locations:
         predetermined_item_name = self.logic.prerandomization_item_locations[predetermined_item_location_name]
         self.logic.set_location_to_item(predetermined_item_location_name, predetermined_item_name)
-      
+
       continue # Redo this loop iteration with the predetermined item locations no longer being considered 'remaining'.
-    
+
     for location in accessible_undone_locations:
       if location not in location_weights:
         location_weights[location] = current_weight
       elif location_weights[location] > 1:
         location_weights[location] -= 1;
     current_weight += 1
-    
+
     possible_items = self.logic.unplaced_progress_items.copy()
-    
+
     # Don't randomly place items that already had their location predetermined.
     unfound_prerand_locs = [
       loc for loc in self.logic.prerandomization_item_locations
@@ -311,23 +353,23 @@ def randomize_progression_items(self):
       if prerand_item not in self.logic.all_progress_items:
         continue
       possible_items.remove(prerand_item)
-    
+
     if len(possible_items) == 0:
       raise Exception("Only items left to place are predetermined items at inaccessible locations!")
-    
+
     # Filter out items that are not valid in any of the locations we might use.
     possible_items = self.logic.filter_items_by_any_valid_location(possible_items, accessible_undone_locations)
-    
+
     if len(possible_items) == 0:
       raise Exception("No valid locations left for any of the unplaced progress items!")
-    
+
     # Remove duplicates from the list so items like swords and bows aren't so likely to show up early.
     unique_possible_items = []
     for item_name in possible_items:
       if item_name not in unique_possible_items:
         unique_possible_items.append(item_name)
     possible_items = unique_possible_items
-    
+
     must_place_useful_item = False
     should_place_useful_item = True
     if len(accessible_undone_locations) == 1 and len(possible_items) > 1:
@@ -338,7 +380,7 @@ def randomize_progression_items(self):
       # If we have a lot of locations open, we don't need to be so strict with prioritizing currently useful items.
       # This can give the randomizer a chance to place things like Delivery Bag or small keys for dungeons that need x2 to do anything.
       should_place_useful_item = False
-    
+
     # If we wind up placing a useful item it can be a single item or a group.
     # But if we place an item that is not yet useful, we need to exclude groups that are not useful.
     # This is so that a group doesn't wind up taking every single possible remaining location while not opening up new ones.
@@ -348,7 +390,7 @@ def randomize_progression_items(self):
     # Only exception is when there's exclusively groups left to place. Then we allow groups even if they're not useful.
     if len(possible_items_when_not_placing_useful) == 0 and len(possible_items) > 0:
       possible_items_when_not_placing_useful = possible_items
-    
+
     if must_place_useful_item or should_place_useful_item:
       shuffled_list = possible_items.copy()
       self.rng.shuffle(shuffled_list)
@@ -361,9 +403,9 @@ def randomize_progression_items(self):
           # Instead we choose an item that isn't useful yet by itself, but has a high usefulness fraction.
           # In other words, which item has the smallest number of other items needed before it becomes useful?
           # We'd prefer to place an item which is 1/2 of what you need to access a new location over one which is 1/5 for example.
-          
+
           item_by_usefulness_fraction = self.logic.get_items_by_usefulness_fraction(possible_items_when_not_placing_useful)
-          
+
           # We want to limit it to choosing items at the maximum usefulness fraction.
           # Since the values we have are the denominator of the fraction, we actually call min() instead of max().
           max_usefulness = min(item_by_usefulness_fraction.values())
@@ -371,11 +413,11 @@ def randomize_progression_items(self):
             item_name for item_name, usefulness in item_by_usefulness_fraction.items()
             if usefulness == max_usefulness
           ]
-          
+
           item_name = self.rng.choice(items_at_max_usefulness)
     else:
       item_name = self.rng.choice(possible_items_when_not_placing_useful)
-    
+
     if self.options.get("race_mode"):
       locations_filtered = [
         loc for loc in accessible_undone_locations
@@ -389,7 +431,7 @@ def randomize_progression_items(self):
         accessible_undone_locations = locations_filtered
       else:
         raise Exception("Failed to prevent progress items from appearing in unchosen dungeons for race mode.")
-    
+
     if item_name in self.logic.progress_item_groups:
       # If we're placing an entire item group, we use different logic for deciding the location.
       # We do not weight towards newly accessible locations.
@@ -400,7 +442,7 @@ def randomize_progression_items(self):
       self.logic.set_multiple_locations_to_group(possible_locations_for_group, group_name)
     else:
       possible_locations = self.logic.filter_locations_valid_for_item(accessible_undone_locations, item_name)
-      
+
       # Try to prevent chains of charts that lead to sunken treasures with more charts in them.
       # If the only locations we have available are sunken treasures we don't have much choice though, so still allow it then.
       if item_name.startswith("Treasure Chart") or item_name.startswith("Triforce Chart"):
@@ -410,23 +452,23 @@ def randomize_progression_items(self):
         ]
         if possible_locations_without_sunken_treasures:
           possible_locations = possible_locations_without_sunken_treasures
-      
+
       # We weight it so newly accessible locations are more likely to be chosen.
       # This way there is still a good chance it will not choose a new location.
       possible_locations_with_weighting = []
       for location_name in possible_locations:
         weight = location_weights[location_name]
         possible_locations_with_weighting += [location_name]*weight
-      
+
       location_name = self.rng.choice(possible_locations_with_weighting)
       self.logic.set_location_to_item(location_name, item_name)
-  
+
   # Make sure locations that should have predetermined items in them have them properly placed, even if the above logic missed them for some reason.
   for location_name in self.logic.prerandomization_item_locations:
     if location_name in self.logic.remaining_item_locations:
       dungeon_item_name = self.logic.prerandomization_item_locations[location_name]
       self.logic.set_location_to_item(location_name, dungeon_item_name)
-  
+
   game_beatable = self.logic.check_requirement_met("Can Reach and Defeat Ganondorf")
   if not game_beatable:
     raise Exception("Game is not beatable on this seed! This error shouldn't happen.")
@@ -442,7 +484,7 @@ def write_changed_items(self):
 
 def change_item(self, path, item_name):
   item_id = self.item_name_to_id[item_name]
-  
+
   rel_match = re.search(r"^(rels/[^.]+\.rel)@([0-9A-F]{4})$", path)
   main_dol_match = re.search(r"^main.dol@(8[0-9A-F]{7})$", path)
   custom_symbol_match = re.search(r"^CustomSymbol:(.+)$", path)
@@ -450,7 +492,7 @@ def change_item(self, path, item_name):
   event_match = re.search(r"^([^/]+/[^/]+\.arc)/Event([0-9A-F]{3}):[^/]+/Actor([0-9A-F]{3})/Action([0-9A-F]{3})$", path)
   scob_match = re.search(r"^([^/]+/[^/]+\.arc)(?:/Layer([0-9a-b]))?/ScalableObject([0-9A-F]{3})$", path)
   actor_match = re.search(r"^([^/]+/[^/]+\.arc)(?:/Layer([0-9a-b]))?/Actor([0-9A-F]{3})$", path)
-  
+
   if rel_match:
     rel_path = rel_match.group(1)
     offset = int(rel_match.group(2), 16)
@@ -517,7 +559,7 @@ def change_chest_item(self, arc_path, chest_index, layer, item_id):
 def change_event_item(self, arc_path, event_index, actor_index, action_index, item_id):
   event_list = self.get_arc(arc_path).get_file("event_list.dat")
   action = event_list.events[event_index].actors[actor_index].actions[action_index]
-  
+
   if 0x6D <= item_id <= 0x72: # Song
     action.name = "059get_dance"
     action.properties[0].value = [item_id-0x6D]
@@ -547,5 +589,5 @@ def change_actor_item(self, arc_path, actor_index, layer, item_id):
     actr.item_id = item_id
   else:
     raise Exception("%s/ACTR%03X is not an item" % (arc_path, actor_index))
-  
+
   actr.save_changes()

@@ -90,8 +90,8 @@ OPTIONS = OrderedDict([
     "progression_island_puzzles",
     "This controls whether various island puzzles can contain progress items (e.g. chests hidden in unusual places).<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
-  
-  
+
+
   (
     "keylunacy",
     "Allows dungeon keys (as well as maps and compasses) to appear anywhere in the game, not just in the dungeon they're for."
@@ -108,8 +108,8 @@ OPTIONS = OrderedDict([
     "randomize_starting_island",
     "Randomizes which island you start the game on."
   ),
-  
-  
+
+
   (
     "swift_sail",
     "Sailing speed is doubled and the direction of the wind is always at your back as long as the sail is out."
@@ -148,7 +148,11 @@ OPTIONS = OrderedDict([
   ),
   (
     "race_mode",
-    "In Race Mode, 4 random dungeon bosses will drop required items (e.g. Triforce Shards). Nothing in the other 2 dungeons will ever be required.\nYou can see which islands have the required dungeons on them by opening the sea chart and checking which islands have blue quest markers.",
+    "In Race Mode, random dungeon bosses will drop required items (e.g. Triforce Shards). Nothing in the other dungeons will ever be required.\nYou can see which islands have the required dungeons on them by which islands have blue quest markers on the sea chart.",
+  ),
+  (
+    "num_dungeon_race_mode",
+    "This effects the number of dungeons the player will have to complete if Race Mode is enabled."
   ),
   (
     "randomize_music",
@@ -166,8 +170,8 @@ OPTIONS = OrderedDict([
     "remove_title_and_ending_videos",
     "Removes the two prerendered videos that play if you wait on the title screen and after you beat the game. (Decreases randomized ISO's filesize by about 600MB.)\nIf you keep these videos in, they won't reflect your custom player model or colors.",
   ),
-  
-  
+
+
   (
     "custom_player_model",
     "Replaces Link's model with a custom player model.\nThese are loaded from the /models folder."
