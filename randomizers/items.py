@@ -131,7 +131,7 @@ def randomize_boss_rewards(self):
     #But they cannot be first because then it would lock out WT in special cases for 6 dungeon race mode.
     boss_reward_items.insert(2, "Power Bracelets")
 
-    #Code and Logic made in consideration and with conversation with ji_m and DGod63.
+    #Code and Logic made in consideration and with conversation with j_im and DGod63.
     #This branch however will be maintained by Zach the DualVission, to his disgression and desire.
 
   if len(boss_reward_items) != total_num_rewards:
@@ -169,7 +169,7 @@ def randomize_boss_rewards(self):
         loc for loc in possible_boss_locations_for_this_item
         if loc not in ["Wind Temple - Molgera Heart Container"]
       ]
-     if item_name == "Iron Boots":
+    if item_name == "Iron Boots":
       possible_boss_locations_for_this_item = [
         loc for loc in possible_boss_locations_for_this_item
         if loc not in ["Wind Temple - Molgera Heart Container"]
