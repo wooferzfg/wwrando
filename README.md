@@ -44,6 +44,7 @@ MelonSpeedruns (game design suggestions, graphic design)
 TrogWW (additional programming)  
 nbouteme (additional programming)  
 wooferzfg (additional programming)  
+Zach the DualVission (v_im modifications)
 
 ### Running the randomizer from source
 
