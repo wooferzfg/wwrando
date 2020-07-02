@@ -5,7 +5,7 @@ from PySide2.QtWidgets import *
 from wwr_ui.ui_randomizer_window import Ui_MainWindow
 from wwr_ui.options import OPTIONS, NON_PERMALINK_OPTIONS, HIDDEN_OPTIONS, POTENTIALLY_UNBEATABLE_OPTIONS
 from wwr_ui.update_checker import check_for_updates, LATEST_RELEASE_DOWNLOAD_PAGE_URL
-from wwr_ui.inventory import INVENTORY_ITEMS, REGULAR_ITEMS, PROGRESSIVE_ITEMS
+from wwr_ui.inventory import INVENTORY_ITEMS, REGULAR_ITEMS, PROGRESSIVE_ITEMS, DUNGEON_NONPROGRESS_ITEMS
 from wwr_ui.packedbits import PackedBitsReader, PackedBitsWriter
 
 import random
@@ -491,6 +491,9 @@ class WWRandomizerWindow(QMainWindow):
         for i in range(len(REGULAR_ITEMS)):
           bit = REGULAR_ITEMS[i] in value
           bitswriter.write(bit, 1)
+        for i in range(len(DUNGEON_NONPROGRESS_ITEMS)):
+          bit = DUNGEON_NONPROGRESS_ITEMS[i] in value
+          bitswriter.write(bit, 1)
         unique_progressive_items = list(set(PROGRESSIVE_ITEMS))
         unique_progressive_items.sort()
         for item in unique_progressive_items:
@@ -552,6 +555,10 @@ class WWRandomizerWindow(QMainWindow):
         self.randomized_gear_model.setStringList(REGULAR_ITEMS.copy())
         self.starting_gear_model.setStringList([])
         for i in range(len(REGULAR_ITEMS)):
+          starting = bitsreader.read(1)
+          if starting == 1:
+            self.ui.randomized_gear.selectionModel().select(self.randomized_gear_model.index(i), QItemSelectionModel.Select)
+        for i in range(len(DUNGEON_NONPROGRESS_ITEMS)):
           starting = bitsreader.read(1)
           if starting == 1:
             self.ui.randomized_gear.selectionModel().select(self.randomized_gear_model.index(i), QItemSelectionModel.Select)

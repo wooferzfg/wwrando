@@ -42,4 +42,12 @@ PROGRESSIVE_ITEMS = \
   ["Progressive Sword"]     * 3
 PROGRESSIVE_ITEMS.sort()
 
-INVENTORY_ITEMS = REGULAR_ITEMS + PROGRESSIVE_ITEMS
+DUNGEON_NONPROGRESS_ITEMS = \
+  ["DRC Dungeon Map", "DRC Compass"] + \
+  ["FW Dungeon Map", "FW Compass"] + \
+  ["TotG Dungeon Map", "TotG Compass"] + \
+  ["FF Dungeon Map", "FF Compass"] + \
+  ["ET Dungeon Map", "ET Compass"] + \
+  ["WT Dungeon Map", "WT Compass"]
+
+INVENTORY_ITEMS = REGULAR_ITEMS + PROGRESSIVE_ITEMS + DUNGEON_NONPROGRESS_ITEMS

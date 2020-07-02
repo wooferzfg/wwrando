@@ -1,87 +1,87 @@
 Tingle Tuner:
-  an electronical device
+  the gift from a fairy
 Wind Waker:
-  the wand of the wind conductor
+  the blessed baton
 Spoils Bag:
-  a storage for collectibles
+  the sac of trophies
 Grappling Hook:
-  an item to swing across platforms
+  the rope and barb
 Power Bracelets:
-  the strength to lift heavy rocks
+  strength
 Iron Boots:
-  a very heavy item
+  the very heavy items
 Bait Bag:
-  a storage for food
+  the sac of treats
 Boomerang:
-  an item that always comes back to you
+  the throwing weapon
 Hookshot:
-  an item that reels
+  the spring-powered hook
 Delivery Bag:
-  a storage for letters
+  the mail carrier
 Bombs:
-  an explosive item
+  explosives
 Skull Hammer:
-  the hammer of the dead
+  the heavy hitter
 Deku Leaf:
-  a magic leaf
+  the magic glider
 Hero's Shield:
-  a basic defensive item
+  the heirloom
 Mirror Shield:
-  a defensive item that reflects light
+  the polished protection
 Triforce Shard 1:
-  a piece of the power of the gods
+  a shard of Courage
 Triforce Shard 2:
-  a piece of the power of the gods
+  a shard of Courage
 Triforce Shard 3:
-  a piece of the power of the gods
+  a shard of Courage
 Triforce Shard 4:
-  a piece of the power of the gods
+  a shard of Courage
 Triforce Shard 5:
-  a piece of the power of the gods
+  a shard of Courage
 Triforce Shard 6:
-  a piece of the power of the gods
+  a shard of Courage
 Triforce Shard 7:
-  a piece of the power of the gods
+  a shard of Courage
 Triforce Shard 8:
-  a piece of the power of the gods
+  a shard of Courage
 Nayru's Pearl:
-  a blue jewel
+  the Wise jewel
 Din's Pearl:
-  a red jewel
+  the Brawn jewel
 Farore's Pearl:
-  a green jewel
+  the Grit jewel
 Wind's Requiem:
-  the song of wind
+  the remembrance of air
 Ballad of Gales:
-  the song of gales
+  the poem of travels
 Command Melody:
-  the song of command
+  the tune of control
 Earth God's Lyric:
-  the song of earth's god
+  the prayer to Laruto
 Wind God's Aria:
-  the song of wind's god
+  the opera of Fado
 Song of Passing:
-  the song of time
+  the call of transition
 Boat's Sail:
-  the wind follower
+  the clothe of Frost
 Note to Mom:
-  the writings of a letter sorter
+  the writings of a part-timer
 Maggie's Letter:
-  the writings of a woman
+  the words of a lover
 Moblin's Letter:
-  the writings of a creature
+  the confessions of a monster
 Cabana Deed:
-  a pass for a private residence
+  the title to your private residence
 Magic Meter Upgrade:
-  an upgrade for your magic
+  the essence of charm
 Ghost Ship Chart:
-  the chart of fears
+  a grim map
 Progressive Sword:
-  an upgrade for your blade
+  a blade's whetstone
 Progressive Bow:
-  an upgrade for your bow
+  an arrow's tip
 Progressive Wallet:
-  an upgrade for your Rupee bag
+  a coin pouch
 Progressive Picto Box:
   an upgrade for your camera
 Empty Bottle:

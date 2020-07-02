@@ -255,14 +255,16 @@ def randomize_dungeon_items(self):
     self.logic.add_owned_item(item_name) # Temporarily add big keys to the player's inventory while placing them.
 
   # Randomize dungeon maps and compasses.
+  '''
   other_dungeon_items_to_place = [
     item_name for item_name in (self.logic.unplaced_progress_items + self.logic.unplaced_nonprogress_items)
     if item_name.endswith(" Compass")
-    #or item_name.endswith(" Dungeon Map")
+    or item_name.endswith(" Dungeon Map")
   ]
   assert len(other_dungeon_items_to_place) > 0
   for item_name in other_dungeon_items_to_place:
     place_dungeon_item(self, item_name)
+  '''
 
   # Remove the items we temporarily added.
   for item_name in items_to_temporarily_add:
