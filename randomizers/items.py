@@ -8,22 +8,11 @@ import tweaks
 def randomize_items(self):
   print("Randomizing items...")
 
-  dungeon_num_race_mode = "0"
-
   if self.options.get("race_mode"):
     randomize_boss_rewards(self)
-    dungeon_num_race_mode = self.options.get("num_dungeon_race_mode")
 
   if not self.options.get("keylunacy"):
     randomize_dungeon_items(self)
-
-  if(dungeon_num_race_mode!="0"):                                               #If it is changed from the default state
-      if(dungeon_num_race_mode=="Random"):                                          #If it is Random
-          dungeon_num_race_mode = Random.randint(1,6)                                   #Make Random
-      else:                                                                         #Otherwise
-          dungeon_num_race_mode = int(dungeon_num_race_mode)                            #Get the int value of the string
-  else:                                                                         #Otherwise
-      dungeon_num_race_mode = 4                                                     #Set to default 4
 
   randomize_progression_items(self)
 
@@ -66,6 +55,16 @@ def randomize_items(self):
 def randomize_boss_rewards(self):
   if not self.options.get("progression_dungeons"):
     raise Exception("Cannot randomize boss rewards when progress items are not allowed in dungeons.")
+
+  dungeon_num_race_mode = "0"
+  dungeon_num_race_mode = self.options.get("num_dungeon_race_mode")
+  if(dungeon_num_race_mode!="0"):                                               #If it is changed from the default state
+      if(dungeon_num_race_mode=="Random"):                                          #If it is Random
+          dungeon_num_race_mode = Random.randint(1,6)                                   #Make Random
+      else:                                                                         #Otherwise
+          dungeon_num_race_mode = int(dungeon_num_race_mode)                            #Get the int value of the string
+  else:                                                                         #Otherwise
+      dungeon_num_race_mode = 4                                                     #Set to default 4
 
   boss_reward_items = []
   total_num_rewards = dungeon_num_race_mode
