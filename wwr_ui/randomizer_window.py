@@ -70,6 +70,7 @@ class WWRandomizerWindow(QMainWindow):
 
     self.ui.starting_pohs.valueChanged.connect(self.update_health_label)
     self.ui.starting_hcs.valueChanged.connect(self.update_health_label)
+    self.ui.starting_bh.valueChanged.connect(self.update_health_label)
 
     self.load_settings()
 

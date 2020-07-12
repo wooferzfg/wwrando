@@ -28,7 +28,7 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>978</width>
+         <width>1036</width>
          <height>614</height>
         </rect>
        </property>
@@ -303,6 +303,30 @@
                <string>Additional Randomization Options</string>
               </property>
               <layout class="QGridLayout" name="gridLayout_3">
+               <item row="2" column="2">
+                <widget class="QCheckBox" name="randomize_starting_island">
+                 <property name="text">
+                  <string>Randomize Starting Island</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QCheckBox" name="compass_map_pool_with_keys">
+                 <property name="text">
+                  <string>Pool Dungeon Items with Keys</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="3">
+                <widget class="QCheckBox" name="randomize_enemy_palettes">
+                 <property name="enabled">
+                  <bool>true</bool>
+                 </property>
+                 <property name="text">
+                  <string>Randomize Enemy Palettes</string>
+                 </property>
+                </widget>
+               </item>
                <item row="0" column="0">
                 <layout class="QHBoxLayout" name="layout_for_sword">
                  <item>
@@ -333,111 +357,12 @@
                  </item>
                 </layout>
                </item>
-               <item row="2" column="0">
-                <widget class="QCheckBox" name="randomize_charts">
-                 <property name="text">
-                  <string>Randomize Charts</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="1">
-                <widget class="QCheckBox" name="randomize_starting_island">
-                 <property name="text">
-                  <string>Randomize Starting Island</string>
-                 </property>
-                </widget>
-               </item>
                <item row="1" column="0">
                 <widget class="QCheckBox" name="keylunacy">
                  <property name="text">
                   <string>Key-Lunacy</string>
                  </property>
                 </widget>
-               </item>
-               <item row="1" column="2">
-                <layout class="QHBoxLayout" name="layout_for_starting_triforce_shards">
-                 <item>
-                  <widget class="QLabel" name="label_for_num_starting_triforce_shards">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="text">
-                    <string>Starting Triforce Shards</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QComboBox" name="num_starting_triforce_shards">
-                   <property name="maximumSize">
-                    <size>
-                     <width>84</width>
-                     <height>16777215</height>
-                    </size>
-                   </property>
-                   <item>
-                    <property name="text">
-                     <string>0</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>1</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>2</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>3</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>4</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>5</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>6</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>7</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>8</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>Random</string>
-                    </property>
-                  </item>
-                   <item>
-                    <property name="text">
-                     <string>Mirror Dungeon Number</string>
-                    </property>
-                  </item>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QWidget" name="widget" native="true"/>
-                 </item>
-                </layout>
                </item>
                <item row="1" column="1">
                 <widget class="QCheckBox" name="race_mode">
@@ -489,37 +414,14 @@
                  </item>
                 </layout>
                </item>
-               <item row="2" column="3">
-                <widget class="QCheckBox" name="randomize_music">
-                 <property name="enabled">
-                  <bool>false</bool>
-                 </property>
+               <item row="2" column="1">
+                <widget class="QCheckBox" name="randomize_charts">
                  <property name="text">
-                  <string>Randomize Music</string>
+                  <string>Randomize Charts</string>
                  </property>
                 </widget>
                </item>
-               <item row="2" column="2">
-                <widget class="QCheckBox" name="randomize_enemy_palettes">
-                 <property name="enabled">
-                  <bool>true</bool>
-                 </property>
-                 <property name="text">
-                  <string>Randomize Enemy Palettes</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="3">
-                <widget class="QCheckBox" name="randomize_enemies">
-                 <property name="enabled">
-                  <bool>false</bool>
-                 </property>
-                 <property name="text">
-                  <string>Randomize Enemy Locations</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="3">
+               <item row="1" column="2">
                 <layout class="QHBoxLayout" name="layout_for_num_dungeon_race_mode">
                  <item>
                   <widget class="QLabel" name="label_for_num_dungeon_race_mode">
@@ -543,7 +445,7 @@
                     </size>
                    </property>
                    <property name="currentText">
-                    <string>4</string>
+                    <string>1</string>
                    </property>
                    <item>
                     <property name="text">
@@ -579,11 +481,99 @@
                     <property name="text">
                      <string>Random</string>
                     </property>
-                  </item>
+                   </item>
                   </widget>
                  </item>
                  <item>
                   <widget class="QWidget" name="widget_9" native="true"/>
+                 </item>
+                </layout>
+               </item>
+               <item row="1" column="3">
+                <layout class="QHBoxLayout" name="layout_for_starting_triforce_shards">
+                 <item>
+                  <widget class="QLabel" name="label_for_num_starting_triforce_shards">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="text">
+                    <string>Starting Triforce Shards</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QComboBox" name="num_starting_triforce_shards">
+                   <property name="maximumSize">
+                    <size>
+                     <width>84</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="currentText">
+                    <string>0</string>
+                   </property>
+                   <item>
+                    <property name="text">
+                     <string>0</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>1</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>2</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>3</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>4</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>5</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>6</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>7</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>8</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Random</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Mirror Dungeon Number</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QWidget" name="widget" native="true"/>
                  </item>
                 </layout>
                </item>
@@ -678,8 +668,14 @@
               <layout class="QGridLayout" name="gridLayout_6">
                <item row="0" column="1">
                 <widget class="QCheckBox" name="disable_tingle_chests_with_tingle_bombs">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
                  <property name="text">
                   <string>Tingle Bombs Don't Open Tingle Chests</string>
+                 </property>
+                 <property name="checked">
+                  <bool>true</bool>
                  </property>
                 </widget>
                </item>
@@ -694,10 +690,30 @@
                 </widget>
                </item>
                <item row="0" column="2">
+                <widget class="QCheckBox" name="randomize_enemies">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                 <property name="text">
+                  <string>Randomize Enemy Locations</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="4">
                 <widget class="QWidget" name="widget_3" native="true"/>
                </item>
-               <item row="0" column="3">
+               <item row="0" column="5">
                 <widget class="QWidget" name="widget_4" native="true"/>
+               </item>
+               <item row="0" column="3">
+                <widget class="QCheckBox" name="randomize_music">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                 <property name="text">
+                  <string>Randomize Music</string>
+                 </property>
+                </widget>
                </item>
               </layout>
              </widget>
@@ -817,6 +833,26 @@
             <item>
              <layout class="QHBoxLayout" name="layout_for_starting_health">
               <item>
+               <widget class="QLabel" name="label_for_base_health">
+                <property name="text">
+                 <string>Base Health</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSpinBox" name="starting_bh">
+                <property name="minimum">
+                 <number>1</number>
+                </property>
+                <property name="maximum">
+                 <number>3</number>
+                </property>
+                <property name="value">
+                 <number>3</number>
+                </property>
+               </widget>
+              </item>
+              <item>
                <widget class="QLabel" name="label_for_heart_container">
                 <property name="text">
                  <string>Heart Containers</string>
@@ -825,6 +861,15 @@
               </item>
               <item>
                <widget class="QSpinBox" name="starting_hcs">
+                <property name="enabled">
+                 <bool>true</bool>
+                </property>
+                <property name="baseSize">
+                 <size>
+                  <width>0</width>
+                  <height>0</height>
+                 </size>
+                </property>
                 <property name="layoutDirection">
                  <enum>Qt::LeftToRight</enum>
                 </property>
