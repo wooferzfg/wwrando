@@ -194,8 +194,9 @@ class WWRandomizerWindow(QMainWindow):
   def update_health_label(self):
     pohs = self.ui.starting_pohs.value()
     hcs = self.ui.starting_hcs.value() * 4
+    bh = self.ui.starting_bh.value() * 4
 
-    health = hcs + pohs + 12
+    health = hcs + pohs + bh
     pieces = health % 4
 
     text = "Current Starting Health: %d hearts" % (health // 4) # full hearts
@@ -920,7 +921,10 @@ class WWRandomizerWindow(QMainWindow):
       items_to_filter_out += 3 * ["Progressive Sword"]
 
     if self.get_option_value("race_mode"):
-      num_possible_rewards = 8 - int(self.get_option_value("num_starting_triforce_shards"))
+      try:
+        num_possible_rewards = 8 - int(self.get_option_value("num_starting_triforce_shards"))
+      except:
+        num_possible_rewards = 8
       potential_boss_rewards = []
 
       if sword_mode == "Start with Sword":

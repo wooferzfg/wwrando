@@ -373,7 +373,7 @@
                   <widget class="QComboBox" name="num_starting_triforce_shards">
                    <property name="maximumSize">
                     <size>
-                     <width>40</width>
+                     <width>84</width>
                      <height>16777215</height>
                     </size>
                    </property>
@@ -422,6 +422,16 @@
                      <string>8</string>
                     </property>
                    </item>
+                   <item>
+                    <property name="text">
+                     <string>Random</string>
+                    </property>
+                  </item>
+                   <item>
+                    <property name="text">
+                     <string>Mirror Dungeon Number</string>
+                    </property>
+                  </item>
                   </widget>
                  </item>
                  <item>
@@ -528,7 +538,7 @@
                   <widget class="QComboBox" name="num_dungeon_race_mode">
                    <property name="maximumSize">
                     <size>
-                     <width>40</width>
+                     <width>84</width>
                      <height>16777215</height>
                     </size>
                    </property>
@@ -569,7 +579,7 @@
                     <property name="text">
                      <string>Random</string>
                     </property>
-                   </item>
+                  </item>
                   </widget>
                  </item>
                  <item>

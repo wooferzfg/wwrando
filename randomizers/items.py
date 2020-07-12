@@ -56,16 +56,7 @@ def randomize_boss_rewards(self):
   if not self.options.get("progression_dungeons"):
     raise Exception("Cannot randomize boss rewards when progress items are not allowed in dungeons.")
 
-  dungeon_num_race_mode = "0"
-  dungeon_num_race_mode = self.options.get("num_dungeon_race_mode")
-  if(dungeon_num_race_mode!="0"):                                               #If it is changed from the default state
-      if(dungeon_num_race_mode=="Random"):                                          #If it is Random
-          dungeon_num_race_mode = Random.randint(1,6)                                   #Make Random
-      else:                                                                         #Otherwise
-          dungeon_num_race_mode = int(dungeon_num_race_mode)                            #Get the int value of the string
-  else:                                                                         #Otherwise
-      dungeon_num_race_mode = 4                                                     #Set to default 4
-
+  dungeon_num_race_mode = tweaks.dungeon_number(self)
   boss_reward_items = []
   total_num_rewards = dungeon_num_race_mode
 
@@ -115,12 +106,19 @@ def randomize_boss_rewards(self):
     # Need to make sure hookshot is at the start of the list since it's more picky about which bosses can drop it.
     boss_reward_items.insert(0, "Hookshot")
 
+# If we STILL need more rewards, use the boomerang.
+  num_additional_rewards_needed = total_num_rewards - len(boss_reward_items)
+  if num_additional_rewards_needed > 0:
+    assert "Boomerang" in unplaced_progress_items_degrouped
+    # Need to make sure iron boots are at the start of the list since it's equally as picky as hookshot about which bosses can drop it.
+    boss_reward_items.insert(0, "Boomerang")
+
 # If we STILL need more rewards, use the iron boots.
   num_additional_rewards_needed = total_num_rewards - len(boss_reward_items)
   if num_additional_rewards_needed > 0:
     assert "Iron Boots" in unplaced_progress_items_degrouped
     # Need to make sure iron boots are at the start of the list since it's equally as picky as hookshot about which bosses can drop it.
-    boss_reward_items.insert(0, "Iron Boots")
+    boss_reward_items.insert(1, "Iron Boots")
 
 # If we STILL need more rewards, use the power bracelets.
   num_additional_rewards_needed = total_num_rewards - len(boss_reward_items)
@@ -178,6 +176,11 @@ def randomize_boss_rewards(self):
         loc for loc in possible_boss_locations_for_this_item
         if loc not in ["Earth Temple - Jalhalla Heart Container"]
       ]
+      if item_name == "Boomerang":
+        possible_boss_locations_for_this_item = [
+          loc for loc in possible_boss_locations_for_this_item
+          if loc not in ["Forbidden Woods - Kalle Demos Heart Container"]
+        ]
 
     if self.dungeons_only_start and "Dragon Roost Cavern - Gohma Heart Container" in possible_boss_locations_for_this_item:
       location_name = "Dragon Roost Cavern - Gohma Heart Container"
@@ -255,16 +258,17 @@ def randomize_dungeon_items(self):
     self.logic.add_owned_item(item_name) # Temporarily add big keys to the player's inventory while placing them.
 
   # Randomize dungeon maps and compasses.
-  '''
-  other_dungeon_items_to_place = [
-    item_name for item_name in (self.logic.unplaced_progress_items + self.logic.unplaced_nonprogress_items)
-    if item_name.endswith(" Compass")
-    or item_name.endswith(" Dungeon Map")
-  ]
-  assert len(other_dungeon_items_to_place) > 0
-  for item_name in other_dungeon_items_to_place:
-    place_dungeon_item(self, item_name)
-  '''
+  #'''
+  if self.options.get("compass_map_pool_with_keys"):
+      other_dungeon_items_to_place = [
+        item_name for item_name in (self.logic.unplaced_progress_items + self.logic.unplaced_nonprogress_items)
+        if item_name.endswith(" Compass")
+        or item_name.endswith(" Dungeon Map")
+      ]
+      if (len(other_dungeon_items_to_place) > 0):
+          for item_name in other_dungeon_items_to_place:
+            place_dungeon_item(self, item_name)
+  #'''
 
   # Remove the items we temporarily added.
   for item_name in items_to_temporarily_add:

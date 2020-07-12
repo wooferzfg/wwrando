@@ -155,6 +155,10 @@ OPTIONS = OrderedDict([
     "This effects the number of dungeons the player will have to complete if Race Mode is enabled."
   ),
   (
+    "compass_map_pool_with_keys",
+    "If enabled, the unhad dungeon maps and compasses will be included in items to find for dungeon completion like a small or big key.\nOtherwise, it will be placed like any other unique non-progressive items."
+  ),
+  (
     "randomize_music",
     "Shuffles around all the music in the game. This affects background music, combat music, fanfares, etc.",
   ),
@@ -207,6 +211,10 @@ OPTIONS = OrderedDict([
   (
     "starting_hcs",
     "Amount of extra heart containers that you start with."
+  ),
+  (
+    "starting_bh",
+    "Amount of base hearts the player has.\nThis will effect full completion by reducing the total heart count."
   ),
   (
     "remove_music",

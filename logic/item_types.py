@@ -15,7 +15,7 @@ PROGRESS_ITEMS = [
   "Deku Leaf",
   "Hero's Shield",
   "Mirror Shield",
-  
+
   "Triforce Shard 1",
   "Triforce Shard 2",
   "Triforce Shard 3",
@@ -24,33 +24,33 @@ PROGRESS_ITEMS = [
   "Triforce Shard 6",
   "Triforce Shard 7",
   "Triforce Shard 8",
-  
+
   "Nayru's Pearl",
   "Din's Pearl",
   "Farore's Pearl",
-  
+
   "Wind's Requiem",
   "Ballad of Gales",
   "Command Melody",
   "Earth God's Lyric",
   "Wind God's Aria",
   "Song of Passing",
-  
+
   "Boat's Sail",
-  
+
   "Note to Mom",
   "Maggie's Letter",
   "Moblin's Letter",
   "Cabana Deed",
-  
+
   "Dragon Tingle Statue",
   "Forbidden Tingle Statue",
   "Goddess Tingle Statue",
   "Earth Tingle Statue",
   "Wind Tingle Statue",
-  
+
   "Magic Meter Upgrade",
-  
+
   "Ghost Ship Chart",
 ] + \
   ["Progressive Sword"]*4 + \
@@ -63,19 +63,19 @@ NONPROGRESS_ITEMS = [
   "Telescope",
   "Magic Armor",
   "Hero's Charm",
-  
+
   # Complimentary ID is not placed in the randomizer to avoid the player getting an overly full delivery bag.
   # If you got a progress item for your delivery bag when the bag was already full, the new item would simply never enter your inventory.
   #"Complimentary ID",
   "Fill-Up Coupon",
-  
+
   "Hurricane Spin",
-  
+
   "Progressive Bomb Bag",
   "Progressive Bomb Bag",
   "Progressive Quiver",
   "Progressive Quiver",
-  
+
   "Submarine Chart",
   "Beedle's Chart",
   "Platform Chart",
@@ -84,7 +84,7 @@ NONPROGRESS_ITEMS = [
   "Great Fairy Chart",
   "Octo Chart",
   "Tingle's Chart",
-  
+
   # These three charts are inaccurate in the randomizer so they're not placed.
   # If a way to update them is found they should be placed.
   #"Sea Hearts Chart",

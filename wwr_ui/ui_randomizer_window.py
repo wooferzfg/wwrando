@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'randomizer_window.ui'
 ##
-## Created by: Qt User Interface Compiler version 5.15.0
+## Created by: Qt User Interface Compiler version 5.14.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -275,8 +275,10 @@ class Ui_MainWindow(object):
         self.num_starting_triforce_shards.addItem("")
         self.num_starting_triforce_shards.addItem("")
         self.num_starting_triforce_shards.addItem("")
+        self.num_starting_triforce_shards.addItem("")
+        self.num_starting_triforce_shards.addItem("")
         self.num_starting_triforce_shards.setObjectName(u"num_starting_triforce_shards")
-        self.num_starting_triforce_shards.setMaximumSize(QSize(40, 16777215))
+        self.num_starting_triforce_shards.setMaximumSize(QSize(84, 16777215))
 
         self.layout_for_starting_triforce_shards.addWidget(self.num_starting_triforce_shards)
 
@@ -354,7 +356,7 @@ class Ui_MainWindow(object):
         self.num_dungeon_race_mode.addItem("")
         self.num_dungeon_race_mode.addItem("")
         self.num_dungeon_race_mode.setObjectName(u"num_dungeon_race_mode")
-        self.num_dungeon_race_mode.setMaximumSize(QSize(40, 16777215))
+        self.num_dungeon_race_mode.setMaximumSize(QSize(84, 16777215))
 
         self.layout_for_num_dungeon_race_mode.addWidget(self.num_dungeon_race_mode)
 
@@ -800,6 +802,8 @@ class Ui_MainWindow(object):
         self.num_starting_triforce_shards.setItemText(6, QCoreApplication.translate("MainWindow", u"6", None))
         self.num_starting_triforce_shards.setItemText(7, QCoreApplication.translate("MainWindow", u"7", None))
         self.num_starting_triforce_shards.setItemText(8, QCoreApplication.translate("MainWindow", u"8", None))
+        self.num_starting_triforce_shards.setItemText(9, QCoreApplication.translate("MainWindow", u"Random", None))
+        self.num_starting_triforce_shards.setItemText(10, QCoreApplication.translate("MainWindow", u"Mirror Dungeon Number", None))
 
         self.race_mode.setText(QCoreApplication.translate("MainWindow", u"Race Mode", None))
         self.label_for_randomize_entrances.setText(QCoreApplication.translate("MainWindow", u"Randomize Entrances", None))

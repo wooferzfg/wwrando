@@ -8,6 +8,7 @@ from random import Random
 from collections import OrderedDict
 import hashlib
 import yaml
+import tweaks
 
 from fs_helpers import *
 from wwlib.yaz0 import Yaz0
@@ -165,7 +166,7 @@ class Randomizer:
     if self.options.get("sword_mode") == "Start with Sword":
       self.starting_items.append("Progressive Sword")
     # Add starting Triforce Shards.
-    num_starting_triforce_shards = int(self.options.get("num_starting_triforce_shards", 0))
+    num_starting_triforce_shards = tweaks.triforce_number(self)
     for i in range(num_starting_triforce_shards):
       self.starting_items.append("Triforce Shard %d" % (i+1))
 
