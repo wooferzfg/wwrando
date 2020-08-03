@@ -31,7 +31,7 @@ class Ui_MainWindow(object):
         self.scroll_for_main.setWidgetResizable(True)
         self.content_for_main_scroll = QWidget()
         self.content_for_main_scroll.setObjectName(u"content_for_main_scroll")
-        self.content_for_main_scroll.setGeometry(QRect(0, 0, 1036, 614))
+        self.content_for_main_scroll.setGeometry(QRect(0, 0, 1036, 650))
         self.verticalLayout_4 = QVBoxLayout(self.content_for_main_scroll)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
@@ -91,6 +91,45 @@ class Ui_MainWindow(object):
 
 
         self.verticalLayout_2.addLayout(self.grid_for_paths)
+
+        self.horizontalLayout = QHBoxLayout()
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer_2)
+
+        self.label_for_logic = QLabel(self.tab_for_settings)
+        self.label_for_logic.setObjectName(u"label_for_logic")
+        self.label_for_logic.setEnabled(True)
+        self.label_for_logic.setMaximumSize(QSize(489, 16777215))
+
+        self.horizontalLayout.addWidget(self.label_for_logic)
+
+        self.logic_mod = QComboBox(self.tab_for_settings)
+        self.logic_mod.addItem("")
+        self.logic_mod.addItem("")
+        self.logic_mod.addItem("")
+        self.logic_mod.addItem("")
+        self.logic_mod.addItem("")
+        self.logic_mod.setObjectName(u"logic_mod")
+        self.logic_mod.setMinimumSize(QSize(70, 0))
+
+        self.horizontalLayout.addWidget(self.logic_mod)
+
+        self.horizontalSpacer_4 = QSpacerItem(5, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer_4)
+
+        self.horizontalSpacer_3 = QSpacerItem(5, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer_3)
+
+        self.horizontalSpacer = QSpacerItem(5, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer)
+
+
+        self.verticalLayout_2.addLayout(self.horizontalLayout)
 
         self.group_for_locations = QGroupBox(self.tab_for_settings)
         self.group_for_locations.setObjectName(u"group_for_locations")
@@ -769,6 +808,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         self.tab_for_main.setCurrentIndex(0)
+        self.logic_mod.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -782,6 +822,13 @@ class Ui_MainWindow(object):
         self.label_for_seed.setText(QCoreApplication.translate("MainWindow", u"Seed (optional)", None))
         self.generate_seed_button.setText(QCoreApplication.translate("MainWindow", u"New seed", None))
         self.clean_iso_path_browse_button.setText(QCoreApplication.translate("MainWindow", u"Browse", None))
+        self.label_for_logic.setText(QCoreApplication.translate("MainWindow", u"Logic Type", None))
+        self.logic_mod.setItemText(0, QCoreApplication.translate("MainWindow", u"Glitchless \u2013 Beginner", None))
+        self.logic_mod.setItemText(1, QCoreApplication.translate("MainWindow", u"Glitchless \u2013 Standard", None))
+        self.logic_mod.setItemText(2, QCoreApplication.translate("MainWindow", u"Glitched \u2013 Trivial", None))
+        self.logic_mod.setItemText(3, QCoreApplication.translate("MainWindow", u"Glitched \u2013 Moderate", None))
+        self.logic_mod.setItemText(4, QCoreApplication.translate("MainWindow", u"Glitched \u2013 No Logic", None))
+
         self.group_for_locations.setTitle(QCoreApplication.translate("MainWindow", u"Where Should Progress Items Appear?", None))
         self.progression_platforms_rafts.setText(QCoreApplication.translate("MainWindow", u"Lookout Platforms and Rafts", None))
         self.progression_long_sidequests.setText(QCoreApplication.translate("MainWindow", u"Long Sidequests", None))

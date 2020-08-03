@@ -66,7 +66,8 @@ class WWRandomizerWindow(QMainWindow):
 
     self.preserve_default_settings()
 
-    self.cached_item_locations = Logic.load_and_parse_item_locations()
+    logic_mod = self.get_option_value("logic_mod")
+    self.cached_item_locations = Logic.load_and_parse_item_locations(logic=logic_mod)          #dv_logic find
 
     self.ui.starting_pohs.valueChanged.connect(self.update_health_label)
     self.ui.starting_hcs.valueChanged.connect(self.update_health_label)
@@ -437,6 +438,12 @@ class WWRandomizerWindow(QMainWindow):
     for option_name in OPTIONS:
       options[option_name] = self.get_option_value(option_name)
     num_progress_locations = Logic.get_num_progression_locations_static(self.cached_item_locations, options)
+    if(self.get_option_value("race_mode")):
+      try:
+        num_remove = 84 - int(self.get_option_value("num_dungeon_race_mode"))*14
+      except:
+        num_remove = 14*5
+      num_progress_locations -= num_remove
 
     text = "Where Should Progress Items Appear? (Selected: %d Possible Progression Locations)" % num_progress_locations
     self.ui.group_for_locations.setTitle(text)
@@ -914,6 +921,8 @@ class WWRandomizerWindow(QMainWindow):
     if not self.get_option_value("progression_dungeons"):
       # Race mode places required items on dungeon bosses.
       should_enable_options["race_mode"] = False
+      should_enable_options["num_dungeon_race_mode"] = False
+      self.set_option_value("num_dungeon_race_mode","4")
 
     sword_mode = self.get_option_value("sword_mode")
     if sword_mode == "Swordless":
@@ -933,11 +942,21 @@ class WWRandomizerWindow(QMainWindow):
       elif sword_mode == "Randomized Sword":
         num_possible_rewards += 4
 
-      potential_boss_rewards += 3 * ["Progressive Bow"] + ["Hookshot"]
-      while num_possible_rewards < 4:
+      num_boss_rewards = 0
+      try:
+        num_boss_rewards = int(self.get_option_value("num_dungeon_race_mode"))
+      except:
+        num_boss_rewards = 6
+
+      potential_boss_rewards += 3 * ["Progressive Bow"] + ["Hookshot"] + ["Boomerang"] + ["Iron Boots"] + ["Power Bracelets"]
+      while num_possible_rewards < num_boss_rewards:
         cur_reward = potential_boss_rewards.pop(0)
         items_to_filter_out += [cur_reward]
         num_possible_rewards += 1
+
+    else:
+      should_enable_options["num_dungeon_race_mode"] = False
+      self.set_option_value("num_dungeon_race_mode","4")
 
     self.filtered_rgear.setFilterStrings(items_to_filter_out)
 
@@ -967,7 +986,10 @@ class WWRandomizerWindow(QMainWindow):
         widget.setEnabled(True)
       else:
         widget.setEnabled(False)
-        widget.setChecked(False)
+        try:
+          widget.setChecked(False)
+        except:
+          pass
 
     # Disable options that produce unbeatable seeds when not running from source.
     if not IS_RUNNING_FROM_SOURCE:

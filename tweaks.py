@@ -7,6 +7,7 @@ from collections import namedtuple
 from collections import OrderedDict
 import copy
 from random import Random
+import random
 
 from fs_helpers import *
 from asm import patcher
@@ -25,7 +26,22 @@ try:
 except ImportError:
   SEED_KEY = ""
 
-def get_hash(self,salt=True):
+def modify_logic_data(argument=[],definition=[]):
+  mode = definition["Mode"]
+  try:
+    if(mode=="o"):
+      argument["Need"] = definition["Need"]
+      argument["Types"] = definition["Types"]
+    elif(mode=="a"):
+      argument["Need"] += ("\n"+definition["Need"])
+      argument["Types"] += (", "+definition["Types"])
+  except:
+    print("\nYAML formating is incorrect for: {}.\nPlease correct this before a seed can be generated.".format(definition))
+    raise LookupError
+  #print(str(definition))
+  return argument
+
+def get_hash(self,salt=True,pepper=True):
   hash_offset = 0
   for option_names in OPTIONS:
     if option_names in NON_PERMALINK_OPTIONS:
@@ -39,12 +55,15 @@ def get_hash(self,salt=True):
   if(salt==True):
     hash_str = hash_base + str(SEED_KEY)
   else:
-    hash_str = hash_base + "DV_hash"
-  hash_fin = hash(hash_str) + hash_offset
-  if(salt==True):
+    hash_str = hash_base + "_DV_hash"
+  random.seed(hash_str)
+  hash1 = random.randint(0,100000)
+  hash_fin = hash1 + hash_offset
+  if(pepper==True):
     pass
   else:
-    hash_fin = hash(hash_fin)
+    random.seed(hash_fin)
+    hash_fin = random.randint(0,100000)
   return hash_fin
 
 def inRange(input,min,max):
@@ -1070,7 +1089,7 @@ def dungeon_number(self):
   return dungeon_num_race_mode                                                  #Return the required dungeon number
 
 def triforce_number(self):
-  hash1 = get_hash(self)
+  hash1 = get_hash(self,pepper=False)
   hash2 = get_hash(self,salt=False)
   try:
     if(type(starting_triforce)==int):
@@ -1108,7 +1127,11 @@ def set_num_starting_triforce_shards(self):
 def set_starting_health(self):
   heart_pieces = self.options.get("starting_pohs")
   heart_containers = self.options.get("starting_hcs") * 4
-  base_health = inRange(self.options.get("starting_bh"),1,3) * 4
+  base_health = self.options.get("starting_bh") * 4
+  if(base_health>=1):
+    pass
+  else:
+    base_health = 3
 
   starting_health = base_health + heart_containers + heart_pieces
 

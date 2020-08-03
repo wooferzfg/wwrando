@@ -152,11 +152,15 @@ OPTIONS = OrderedDict([
   ),
   (
     "num_dungeon_race_mode",
-    "This effects the number of dungeons the player will have to complete if Race Mode is enabled."
+    "Effects the number of dungeons the player will have to complete if Race Mode is enabled."
   ),
   (
     "compass_map_pool_with_keys",
     "If enabled, the unhad dungeon maps and compasses will be included in items to find for dungeon completion like a small or big key.\nOtherwise, it will be placed like any other unique non-progressive items."
+  ),
+  (
+    "logic_mod",
+    "Changes logic to reflect skill level by introducing tricks.\nFor further details, look in 'dv_im/logic/*.txt'."
   ),
   (
     "randomize_music",

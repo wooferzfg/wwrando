@@ -10,3 +10,7 @@ profileresults.txt
 /keys/seed_key.py
 /keys/build_key.txt
 *.DS_Store
+*.atom
+/.atom/*
+/*/test.txt
+/*/*/test.txt
