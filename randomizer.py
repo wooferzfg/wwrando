@@ -94,7 +94,7 @@ class Randomizer:
     self.permalink = permalink
     self.seed_hash = self.get_seed_hash()
     
-    self.dry_run = ("-dry" in cmd_line_args)
+    self.dry_run = True
     self.disassemble = ("-disassemble" in cmd_line_args)
     self.export_disc_to_folder = ("-exportfolder" in cmd_line_args)
     self.no_logs = ("-nologs" in cmd_line_args)
@@ -479,10 +479,17 @@ class Randomizer:
     if self.randomize_items:
       if not self.options.get("do_not_generate_spoiler_log"):
         self.write_spoiler_log()
-      self.write_non_spoiler_log()
+
+      permalink_output_path = os.path.join(self.randomized_output_folder, "permalink_%s.txt" % self.seed)
+      with open(permalink_output_path, "w") as f:
+        f.write(self.permalink)
+
+      seed_hash_output_path = os.path.join(self.randomized_output_folder, "seed_hash_%s.txt" % self.seed)
+      with open(seed_hash_output_path, "w") as f:
+        f.write(self.seed_hash)
     
     yield("Done", -1)
-  
+
   def apply_necessary_tweaks(self):
     patcher.apply_patch(self, "custom_data")
     patcher.apply_patch(self, "custom_funcs")
@@ -984,14 +991,6 @@ class Randomizer:
     
     header += "Wind Waker Randomizer Version %s\n" % VERSION
     
-    if self.permalink:
-      header += "Permalink: %s\n" % self.permalink
-    
-    if self.seed_hash:
-      header += "Seed Hash: %s\n" % self.seed_hash
-
-    header += "Seed: %s\n" % self.seed
-    
     header += "Options selected:\n  "
     non_disabled_options = [
       name for name in self.options
@@ -1158,7 +1157,7 @@ class Randomizer:
       island_name = self.island_number_to_name[island_number]
       spoiler_log += "  %-18s %s\n" % (chart_name+":", island_name)
     
-    spoiler_log_output_path = os.path.join(self.randomized_output_folder, "WW Random %s - Spoiler Log.txt" % self.seed)
+    spoiler_log_output_path = os.path.join(self.randomized_output_folder, "spoiler_log_%s.txt" % self.seed)
     with open(spoiler_log_output_path, "w") as f:
       f.write(spoiler_log)
   
