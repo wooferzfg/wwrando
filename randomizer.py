@@ -79,7 +79,7 @@ class Randomizer:
     self.seed = seed
     self.permalink = permalink
     
-    self.dry_run = ("-dry" in cmd_line_args)
+    self.dry_run = True
     self.disassemble = ("-disassemble" in cmd_line_args)
     self.export_disc_to_folder = ("-exportfolder" in cmd_line_args)
     self.no_logs = ("-nologs" in cmd_line_args)
@@ -434,7 +434,6 @@ class Randomizer:
     if self.randomize_items:
       if not self.options.get("do_not_generate_spoiler_log"):
         self.write_spoiler_log()
-      self.write_non_spoiler_log()
     
     yield("Done", -1)
   
@@ -898,11 +897,6 @@ class Randomizer:
     
     header += "Wind Waker Randomizer Version %s\n" % VERSION
     
-    if self.permalink:
-      header += "Permalink: %s\n" % self.permalink
-    
-    header += "Seed: %s\n" % self.seed
-    
     header += "Options selected:\n  "
     non_disabled_options = [
       name for name in self.options
@@ -1069,7 +1063,7 @@ class Randomizer:
       island_name = self.island_number_to_name[island_number]
       spoiler_log += "  %-18s %s\n" % (chart_name+":", island_name)
     
-    spoiler_log_output_path = os.path.join(self.randomized_output_folder, "WW Random %s - Spoiler Log.txt" % self.seed)
+    spoiler_log_output_path = os.path.join(self.randomized_output_folder, "WW Randomizer - Spoiler Log.txt")
     with open(spoiler_log_output_path, "w") as f:
       f.write(spoiler_log)
   

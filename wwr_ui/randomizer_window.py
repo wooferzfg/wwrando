@@ -216,13 +216,6 @@ class WWRandomizerWindow(QMainWindow):
     self.ui.clean_iso_path.setText(clean_iso_path)
     self.ui.output_folder.setText(output_folder)
     
-    if not os.path.isfile(clean_iso_path):
-      QMessageBox.warning(self, "Clean ISO path not specified", "Must specify path to your clean Wind Waker ISO (USA).")
-      return
-    if not os.path.isdir(output_folder):
-      QMessageBox.warning(self, "No output folder specified", "Must specify a valid output folder for the randomized files.")
-      return
-    
     seed = self.settings["seed"]
     seed = self.sanitize_seed(seed)
     
