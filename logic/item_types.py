@@ -57,7 +57,7 @@ PROGRESS_ITEMS = [
   ["Progressive Bow"]*3 + \
   ["Progressive Wallet"]*2 + \
   ["Progressive Picto Box"]*2 + \
-  ["Empty Bottle"]*4
+  ["Empty Bottle"]*4 #+ \
 
 NONPROGRESS_ITEMS = [
   "Telescope",
@@ -69,11 +69,7 @@ NONPROGRESS_ITEMS = [
   #"Complimentary ID",
   "Fill-Up Coupon",
 
-  "Hurricane Spin",
-
   "Progressive Bomb Bag",
-  "Progressive Bomb Bag",
-  "Progressive Quiver",
   "Progressive Quiver",
 
   "Submarine Chart",
@@ -115,6 +111,24 @@ CONSUMABLE_ITEMS = \
    1 * ["All-Purpose Bait"] + \
    4 * ["Hyoi Pear"]
 # (Note: Blue Chu Jelly is not included as it is specially coded and would cause issues if randomly placed as a field item.)
+
+CONVENIENCE_ITEMS = [
+  "Hurricane Spin",
+  "Progressive Bomb Bag",
+  "Progressive Quiver",
+]
+
+XTRA_ITEMS = [
+  "Progressive Sword",
+  "Progressive Bow",
+  "Progressive Wallet",
+  "Progressive Picto Box",
+  "Hookshot",
+  "Rainbow Rupee",
+  "Progressive Bomb Bag",
+  "Progressive Quiver",
+  "Magic Meter Upgrade",
+]
 
 # Once all the items that have a fixed number per seed are used up, this list is used.
 # Unlike the other lists, this one does not have items removed from it as they are placed.

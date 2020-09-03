@@ -1,0 +1,538 @@
+# Great Sea
+The Great Sea - Ghost Ship:
+  Mode: o
+  Need:
+    Ghost Ship Chart
+    & Can Play Ballad of Gales
+    & (Can Defeat Wizzrobes | Deku Leaf)
+  Types: Other Chest
+Needle Rock Isle - Chest:
+  Mode: o
+  Need:
+    (Bait Bag & Can Buy Hyoi Pears)
+    | Fire Arrows
+  Types: Island Puzzle
+Cliff Plateau Isles - Highest Isle:
+  Mode: o
+  Need:
+    Can Access Cliff Plateau Isles Secret Cave
+    & Can Defeat Boko Babas
+    & (Deku Leaf | Wind Waker)
+  Types: Puzzle Secret Cave
+
+# Secret Caves
+Islet of Steel - Interior:
+  Mode: o
+  Need: Can Play Wind's Requiem
+  Types: Other Chest
+Private Oasis - Cabana Labyrinth - First Chest:
+  Mode: o
+  Need:
+    Can Access Cabana Labyrinth
+  Types: Puzzle Secret Cave
+Private Oasis - Cabana Labyrinth - Second Chest:
+  Mode: o
+  Need:
+    Can Access Cabana Labyrinth
+    & (Skull Hammer | Hookshot)
+    & Can Play Wind's Requiem
+  Types: Puzzle Secret Cave
+Southern Fairy Island - Great Fairy:
+  Mode: o
+  Need:
+    Bombs
+    | Fire Arrows
+    | Wind Waker
+  Types: Great Fairy
+
+# Pawprint
+Pawprint Isle - Chuchu Cave - Behind First Boulder:
+  # Left Boulder Chest
+  Mode: o
+  Need:
+    Can Access Pawprint Isle Chuchu Cave
+  Types: Puzzle Secret Cave
+Pawprint Isle - Chuchu Cave - Behind Second Boulder:
+  # Right Boulder Chest
+  Mode: o
+  Need:
+    Can Access Pawprint Isle Chuchu Cave
+    & (Can Move Boulders | Deku Leaf)
+  Types: Puzzle Secret Cave
+
+# Dragon Roost Island
+Dragon Roost Island - Chest on Top of Boulder:
+  Mode: o
+  Need:
+    Can Get DRI Boulder Chest
+  Types: Island Puzzle
+Dragon Roost Island - Fly Across Platforms Around Island:
+  Mode: o
+  Need:
+    (
+      Can Fly With Deku Leaf Outdoors
+      & (
+        Can Cut Grass
+        | Magic Meter Upgrade
+      )
+    )
+    | (
+      Can Get DRI Boulder Chest
+      & Wind Waker
+    )
+  Types: Island Puzzle
+
+# Dragon Roost Cavern
+Dragon Roost Cavern - Pot Room Chest:
+  Mode: o
+  Need:
+    (
+      Can Access Dragon Roost Cavern
+      & DRC Small Key x4
+    )
+    | (
+      Can Access Dragon Roost Cavern
+      & DRC Small Key x1
+      & Hero's Bow
+    )
+  Types: Dungeon
+Dragon Roost Cavern - Mini-Boss:
+  Mode: o
+  Need:
+    (
+      Can Access Dragon Roost Cavern
+      & DRC Small Key x4
+    )
+    | (
+      Can Access Dragon Roost Cavern
+      & DRC Small Key x1
+      & Hero's Bow
+      & Grappling Hook
+    )
+  Types: Dungeon
+Dragon Roost Cavern - Under Rope Bridge:
+  Mode: o
+  Need:
+    (
+      Can Access Dragon Roost Cavern
+      & DRC Small Key x4
+    )
+    | (
+      Can Access Dragon Roost Cavern
+      & DRC Small Key x1
+      & Hero's Bow
+    )
+  Types: Dungeon
+Dragon Roost Cavern - Tingle Statue Chest:
+  Mode: o
+  Need:
+    (
+      Can Access Dragon Roost Cavern
+      & DRC Small Key x1
+    )
+    & (
+      (
+        DRC Small Key x4
+        & Can Cut Down Hanging DRC Platform
+      )
+      | Deku Leaf
+      | Hero's Bow
+    )
+    & (
+      Grappling Hook
+      | Deku Leaf
+    )
+    & Tingle Tuner Bombs
+  Types: Tingle Chest, Dungeon
+Dragon Roost Cavern - Big Key Chest:
+  Mode: o
+  Need:
+    (
+      Can Access Dragon Roost Cavern
+      & DRC Small Key x1
+    )
+    & (
+      (
+        DRC Small Key x4
+        & Can Cut Down Hanging DRC Platform
+      )
+      | Deku Leaf
+      | Hero's Bow
+    )
+    & (
+      Grappling Hook
+      | Deku Leaf
+    )
+  Types: Dungeon
+Dragon Roost Cavern - Boss Stairs Right Chest:
+  Mode: o
+  Need:
+    (
+      Can Access Dragon Roost Cavern
+      & DRC Small Key x4
+    )
+    | (
+      Can Access Dragon Roost Cavern
+      & DRC Small Key x1
+      & Hero's Bow
+      & (
+        Deku Leaf
+        | Grappling Hook
+        | Hookshot
+        | Ice Arrows
+      )
+    )
+  Types: Dungeon
+Dragon Roost Cavern - Boss Stairs Left Chest:
+  Mode: o
+  Need:
+    (
+      Can Access Dragon Roost Cavern
+      & DRC Small Key x4
+    )
+    | (
+      Can Access Dragon Roost Cavern
+      & DRC Small Key x1
+      & Hero's Bow
+      & (
+        Deku Leaf
+        | Grappling Hook
+        | Hookshot
+        | Ice Arrows
+      )
+    )
+  Types: Dungeon
+Dragon Roost Cavern - Gohma Heart Container:
+  Mode: o
+  Need:
+    Can Access Dragon Roost Cavern
+
+    & (
+      DRC Small Key x4
+      | (
+        DRC Small Key x1
+        & Hero's Bow
+        & Grappling Hook
+      )
+    )
+    & Grappling Hook
+    & DRC Big Key
+    & Can Defeat Gohma
+  Types: Dungeon
+
+# Forbidden Woods
+Forbidden Woods - Tall Room Before Mini-Boss:
+  Mode: o
+  Need:
+    Can Access Forbidden Woods
+    & Deku Leaf
+    & Can Defeat Boko Babas
+    & Grappling Hook
+    & FW Small Key x1
+  Types: Dungeon
+Forbidden Woods - Chest Across Red Hanging Flower:
+  Mode: o
+  Need:
+    Can Access Forbidden Woods
+    & Deku Leaf
+    & Can Defeat Boko Babas
+    & Grappling Hook
+    & (Boomerang | Bombs | Wind Waker)
+  Types: Dungeon
+Forbidden Woods - Tingle Statue Chest:
+  Mode: o
+  Need:
+    Can Access Forbidden Woods
+    & Deku Leaf
+    & Can Defeat Boko Babas
+    & Grappling Hook
+    & (Boomerang | Bombs | Wind Waker)
+    & Tingle Tuner Bombs
+  Types: Tingle Chest, Dungeon
+Forbidden Woods - Chest in Locked Tree Trunk:
+  Mode: o
+  Need:
+    Can Access Forbidden Woods
+    & Deku Leaf
+    & Can Defeat Boko Babas
+    & Grappling Hook
+    & (Boomerang | Bombs | Wind Waker)
+  Types: Dungeon
+Forbidden Woods - Big Key Chest:
+  Mode: o
+  Need:
+    Can Access Forbidden Woods
+    & Deku Leaf
+    & Can Defeat Boko Babas
+    & Grappling Hook
+    & Boomerang
+  Types: Dungeon
+Forbidden Woods - Kalle Demos Heart Container:
+  Mode: o
+  Need:
+    Can Access Forbidden Woods
+    & Deku Leaf
+    & Can Defeat Boko Babas
+    & (Can Defeat Door Flowers | Grappling Hook)
+    & Can Defeat Mothulas
+    & FW Big Key
+    & Can Defeat Kalle Demos
+  Types: Dungeon
+
+# Tower of the Gods
+Tower of the Gods - Chest Behind Bombable Walls:
+  Mode: o
+  Need:
+    Can Access Tower of the Gods
+  Types: Dungeon
+Tower of the Gods - Light Two Torches:
+  Mode: o
+  Need:
+    Can Access Tower of the Gods
+    & (
+      Bombs
+      | (
+        Deku Leaf
+        & Magic Meter Upgrade
+      )
+    )
+  Types: Dungeon
+Tower of the Gods - Skulls Room Chest:
+  Mode: o
+  Need:
+    Can Access Tower of the Gods
+    & (
+      Bombs
+      | (
+        Deku Leaf
+        & Magic Meter Upgrade
+      )
+    )
+  Types: Dungeon
+Tower of the Gods - Shoot Eye Above Skulls Room Chest:
+  Mode: o
+  Need:
+    Can Access Tower of the Gods
+    & (Hero's Bow | (Bombs & Deku Leaf))
+    & (
+      Bombs
+      | (
+        Deku Leaf
+        & Magic Meter Upgrade
+      )
+    )
+  Types: Dungeon
+Tower of the Gods - Tingle Statue Chest:
+  Mode: o
+  Need:
+    Can Access Tower of the Gods
+    & (TotG Small Key x1 | Deku Leaf)
+    & Tingle Tuner Bombs
+  Original item: Goddess Tingle Statue
+  Types: Tingle Chest, Dungeon
+  Paths:
+    - Siren/Stage.arc/Chest00A
+Tower of the Gods - First Chest Guarded by Armos Knights:
+  Mode: o
+  Need:
+    Can Access Tower of the Gods
+    & Bombs
+    & (TotG Small Key x1 | Deku Leaf)
+    & Hero's Bow
+  Types: Dungeon
+Tower of the Gods - Stone Tablet:
+  Mode: o
+  Need:
+    Can Access Tower of the Gods
+    & (TotG Small Key x1 | Deku Leaf)
+    & Wind Waker
+  Types: Dungeon
+Tower of the Gods - Darknut Mini-Boss Room:
+  Mode: o
+  Need:
+    Can Access Tower of the Gods
+    & (TotG Small Key x1 | Deku Leaf)
+    & Wind Waker
+    & (Grappling Hook | Deku Leaf)
+    & (Can Play Command Melody | Hero's Bow)
+    & Can Defeat Darknuts
+  Types: Dungeon
+Tower of the Gods - Second Chest Guarded by Armos Knights:
+  Mode: o
+  Need:
+    Can Access Tower of the Gods
+    & (TotG Small Key x1 | Deku Leaf)
+    & Wind Waker
+    & (Grappling Hook | Deku Leaf)
+    & Can Play Command Melody
+    & Hero's Bow
+    & Can Play Wind's Requiem
+  Types: Dungeon
+Tower of the Gods - Floating Platforms Room:
+  Mode: o
+  Need:
+    Can Access Tower of the Gods
+    & (TotG Small Key x1 | Deku Leaf)
+    & Wind Waker
+    & (Grappling Hook | Deku Leaf)
+    & Can Play Command Melody
+    & (Hero's Bow | Deku Leaf)
+  Types: Dungeon
+Tower of the Gods - Top of Floating Platforms Room:
+  Mode: o
+  Need:
+    Can Access Tower of the Gods
+    & (TotG Small Key x1 | Deku Leaf)
+    & Wind Waker
+    & (Grappling Hook | Deku Leaf)
+    & Can Play Command Melody
+    & (Hero's Bow | Deku Leaf)
+  Types: Dungeon
+Tower of the Gods - Big Key Chest:
+  Mode: o
+  Need:
+    Can Access Tower of the Gods
+    & (TotG Small Key x1 | Deku Leaf)
+    & Wind Waker
+    & (Grappling Hook | Deku Leaf)
+    & Can Play Command Melody
+    & (Bombs | Deku Leaf)
+  Types: Dungeon
+Tower of the Gods - Gohdan Heart Container:
+  Mode: o
+  Need:
+    Can Access Tower of the Gods
+    & Bombs
+    & Wind Waker
+    & Can Play Command Melody
+    & Hero's Bow
+    & TotG Small Key x1
+    & Can Defeat Armos
+    & TotG Big Key
+    & Can Defeat Gohdan
+  Types: Dungeon
+
+# Earth Temple
+Earth Temple - Transparent Chest In Warp Pot Room:
+  Mode: o
+  Need:
+    Can Get into Earth Temple
+  Types: Dungeon
+Earth Temple - Chest Behind Destructible Walls:
+  Mode: o
+  Need:
+    Can Get into Earth Temple
+    & Can Defeat Red ChuChus
+    & Can Defeat Green ChuChus
+    & Can Defeat Dark ChuChus
+    & Skull Hammer
+    & Mirror Shield
+  Types: Dungeon
+Earth Temple - Transparent Chest in First Crypt:
+  Mode: o
+  Need:
+    Can Get into Earth Temple
+    & Skull Hammer
+    & Power Bracelets
+  Types: Dungeon
+Earth Temple - Chest In Three Blocks Room:
+  Mode: o
+  Need:
+    Can Get into Earth Temple
+    & ET Small Key x2
+    & (Fire Arrows | Deku Leaf)
+    & Power Bracelets
+    & Can Defeat Floormasters
+  Types: Dungeon
+Earth Temple - Chest Behind Statues:
+  Mode: o
+  Need:
+    Can Get into Earth Temple
+    & (Can Play Command Melody | Mirror Shield)
+    & ET Small Key x2
+    & (Fire Arrows | Deku Leaf)
+    & Can Defeat Floormasters
+  Types: Dungeon
+Earth Temple - Casket in Second Crypt:
+  Mode: o
+  Need:
+    Can Get into Earth Temple
+    & ET Small Key x2
+    & (Fire Arrows | Deku Leaf)
+    & Can Defeat Floormasters
+  Types: Dungeon
+Earth Temple - Stalfos Mini-Boss Room:
+  Mode: o
+  Need:
+    Can Get into Earth Temple
+    & ET Small Key x3
+    & (Fire Arrows | Deku Leaf)
+    & Can Defeat Floormasters
+    & (Can Defeat Stalfos | Hookshot | Deku Leaf)
+  Types: Dungeon
+Earth Temple - Chest in Third Crypt:
+  Mode: o
+  Need:
+    Can Access Earth Temple
+    & Can Play Command Melody
+    & Can Aim Mirror Shield
+    & Can Play Earth God's Lyric
+    & ET Small Key x3
+  Types: Dungeon
+Earth Temple - Many Mirrors Room Right Chest:
+  Mode: o
+  Need:
+    Can Access Earth Temple
+    & Can Play Command Melody
+    & Can Aim Mirror Shield
+    & Can Play Earth God's Lyric
+    & ET Small Key x3
+  Types: Dungeon
+Earth Temple - Many Mirrors Room Left Chest:
+  Mode: o
+  Need:
+    Can Access Earth Temple
+    & Can Play Command Melody
+    & Can Aim Mirror Shield
+    & Can Play Earth God's Lyric
+    & Power Bracelets
+    & ET Small Key x3
+  Types: Dungeon
+Earth Temple - Stalfos Crypt Room:
+  Mode: o
+  Need:
+    Can Access Earth Temple
+    & Can Play Command Melody
+    & Can Aim Mirror Shield
+    & Can Play Earth God's Lyric
+    & Power Bracelets
+    & ET Small Key x3
+    & Can Defeat Stalfos
+  Types: Dungeon
+Earth Temple - Big Key Chest:
+  Mode: o
+  Need:
+    Can Access Earth Temple
+    & Can Play Command Melody
+    & Can Aim Mirror Shield
+    & (
+      Power Bracelets
+      | Deku Leaf
+    )
+    & Can Play Earth God's Lyric
+    & ET Small Key x3
+    & Can Defeat Blue Bubbles
+    & Can Defeat Darknuts
+  Types: Dungeon
+Earth Temple - Jalhalla Heart Container:
+  Mode: o
+  Need:
+    Can Access Earth Temple
+    & Can Play Command Melody
+    & Can Aim Mirror Shield
+    & Can Play Earth God's Lyric
+    & Power Bracelets
+    & ET Small Key x3
+    & ET Big Key
+    & Can Defeat Jalhalla
+  Types: Dungeon

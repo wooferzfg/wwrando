@@ -1369,12 +1369,14 @@ class RandomizerThread(QThread):
 
     try:
       randomizer_generator = self.randomizer.randomize()
-      while True:
-        # Need to use a while loop to go through the generator instead of a for loop, as a for loop would silently exit if a StopIteration error ever happened for any reason.
+      for items in randomizer_generator:
+        # This comment lied so now it is gone!
         next_option_description, options_finished = next(randomizer_generator)
         if options_finished == -1:
           break
         self.update_progress.emit(next_option_description, options_finished)
+    except StopIteration:
+      pass
     except Exception as e:
       stack_trace = traceback.format_exc()
       error_message = "Randomization failed with error:\n" + str(e) + "\n\n" + stack_trace

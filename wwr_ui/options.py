@@ -160,7 +160,11 @@ OPTIONS = OrderedDict([
   ),
   (
     "logic_mod",
-    "Changes logic to reflect skill level by introducing tricks.\nFor further details, look in 'dv_im/logic/*.txt'."
+    "Changes logic to reflect skill level by introducing tricks.\nFor further details, look in 'dv_im/logic_types/About Logic Types.txt'."
+  ),
+  (
+    "convenience_option",
+    "Adds extra items to the pool.\nConvenience includes Quiver, Hurricane Spin, etc. Plentiful adds an extra of each progressive item."
   ),
   (
     "randomize_music",

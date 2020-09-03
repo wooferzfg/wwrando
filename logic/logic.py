@@ -6,11 +6,14 @@ import copy
 
 import os
 
-from logic.item_types import PROGRESS_ITEMS, NONPROGRESS_ITEMS, CONSUMABLE_ITEMS, DUPLICATABLE_CONSUMABLE_ITEMS, DUNGEON_PROGRESS_ITEMS, DUNGEON_NONPROGRESS_ITEMS
+from logic.item_types import PROGRESS_ITEMS, NONPROGRESS_ITEMS, CONSUMABLE_ITEMS, DUPLICATABLE_CONSUMABLE_ITEMS, DUNGEON_PROGRESS_ITEMS, DUNGEON_NONPROGRESS_ITEMS, CONVENIENCE_ITEMS, XTRA_ITEMS
 from paths import LOGIC_PATH, TRICK_PATH
 from randomizers import entrances
 from tweaks import *
-import wwr_ui.options as options
+import wwr_ui.options
+#import settings as ui_rando
+
+
 
 class Logic:
   DUNGEON_NAMES = OrderedDict([
@@ -53,7 +56,8 @@ class Logic:
 
 
     # Initialize location related attributes.
-    self.item_locations = Logic.load_and_parse_item_locations()
+    logic_mod=self.rando.options.get("logic_mod")
+    self.item_locations = Logic.load_and_parse_item_locations(logic=logic_mod)
     self.load_and_parse_macros()
 
     self.locations_by_zone_name = OrderedDict()
@@ -81,8 +85,20 @@ class Logic:
 
 
     # Initialize item related attributes.
-    self.all_progress_items = PROGRESS_ITEMS.copy()
-    self.all_nonprogress_items = NONPROGRESS_ITEMS.copy()
+    is_convenient = self.rando.options.get("convenience_option")
+    progress_xtra = []
+    nonprogress_xtra = []
+    if(is_convenient=="Plentiful and Convenient"):
+      progress_xtra = CONVENIENCE_ITEMS.copy()
+      nonprogress_xtra = XTRA_ITEMS.copy()
+    elif(is_convenient=="Plentiful"):
+      nonprogress_xtra = CONVENIENCE_ITEMS.copy() + XTRA_ITEMS.copy()
+    elif(is_convenient=="Convenient"):
+      progress_xtra = CONVENIENCE_ITEMS.copy()
+    else:
+      nonprogress_xtra = CONVENIENCE_ITEMS.copy()
+    self.all_progress_items = PROGRESS_ITEMS.copy() + progress_xtra
+    self.all_nonprogress_items = NONPROGRESS_ITEMS.copy() + nonprogress_xtra
     self.all_fixed_consumable_items = CONSUMABLE_ITEMS.copy()
     self.duplicatable_consumable_items = DUPLICATABLE_CONSUMABLE_ITEMS.copy()
 
@@ -233,6 +249,7 @@ class Logic:
     return num_progress_locations
 
   def get_progress_and_non_progress_locations(self):
+    errorRun=1
     all_locations = self.item_locations.keys()
     progress_locations = self.filter_locations_for_progression(all_locations, filter_sunken_treasure=True)
     nonprogress_locations = []
@@ -243,6 +260,11 @@ class Logic:
       types = self.item_locations[location_name]["Types"]
       if "Sunken Treasure" in types:
         chart_name = self.chart_name_for_location(location_name)
+        try:
+          assert type(chart_name)==type("")
+        except:
+          chart_name="Default "+str(errorRun)
+          errorRun++1
         if "Triforce Chart" in chart_name:
           if self.rando.options.get("progression_triforce_charts"):
             progress_locations.append(location_name)
@@ -609,24 +631,7 @@ class Logic:
       types = [type.strip() for type in types]
       item_locations[location_name]["Types"] = types
 
-    logic_type = logic.split(" – ")
-    logic_mod = ""
-    if(logic_type[0]=="Glitchless"):
-      if(logic_type[1]=="Beginner"):
-        logic_mod = "easy.txt"
-      else:
-        logic_mod = "standard"
-    elif(logic_type[0]=="Glitched"):
-      if(logic_type[1]=="Trivial"):
-        logic_mod = "glitch_easy.txt"
-      elif(logic_type[1]=="Moderate"):
-        logic_mod = "glitch_medium.txt"
-      elif(logic_type[1]=="No Logic"):
-        logic_mod = "no_logic.txt"
-      else:
-        logic_mod = "standard"
-    else:
-      logic_mod = "standard"
+    logic_mod = get_logic_mod(logic)
 
     if(logic_mod!="standard"):
       with open(os.path.join(TRICK_PATH, logic_mod)) as g:
@@ -1036,7 +1041,18 @@ class Logic:
 
     reqs = self.macros[chart_req]
     chart_name = reqs[0]
-    assert chart_name in self.all_cleaned_item_names
+
+    logic_mod=self.rando.options.get("logic_mod")
+    logic_mod = get_logic_mod(logic_mod)
+
+    if(logic_mod=="no_logic.txt"):
+      pass
+    elif(logic_mod=="standard"):
+      assert chart_name in self.all_cleaned_item_names
+    elif(logic_mod[0:9]=="glitched_"):
+      assert chart_name in self.all_cleaned_item_names
+    elif(logic_mod=="other"):
+      print("Warning, custom logic may not be beatable.")
 
     return chart_name
 

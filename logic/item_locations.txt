@@ -1,10 +1,10 @@
 #Outset Island - Aryll's Birthday Gift:
-#  Need: 
+#  Need:
 #  Original item: Telescope
 #  Paths:
 #    - sea/Stage.arc/Event085:get_telescope/Actor002/Action001
 #Outset Island - Bring a Pig to Rose:
-#  Need: 
+#  Need:
 #  Original item: Red Rupee
 #  Paths:
 #    - sea/Stage.arc/Event0B1:Get_Rupee/Actor002/Action000
@@ -21,12 +21,12 @@ Outset Island - Mesa the Grasscutter's House:
   Paths:
     - Omasao/Stage.arc/Chest000
 #Outset Island - Orca - Tutorial:
-#  Need: 
+#  Need:
 #  Original item: Hero's Sword
 #  Paths:
 #    - rels/d_a_npc_ji1.rel@4253
 #Outset Island - Shield from Grandma:
-#  Need: 
+#  Need:
 #  Original item: Hero's Shield
 #  Paths:
 #    - main.dol@8035BD3B
@@ -143,7 +143,7 @@ Outset Island - Savage Labyrinth - Floor 50:
     - Cave10/Room20.arc/Chest000
 
 #Pirate Ship - First Visit:
-#  Need: 
+#  Need:
 #  Original item: Spoils Bag
 #  Paths:
 #    - Asoko/Stage.arc/Layer0/Chest000
@@ -168,17 +168,17 @@ Windfall Island - Jail - Maze Chest:
   Paths:
     - Pnezumi/Stage.arc/Chest000
 #Windfall Island - Chu Jelly Juice Shop - Red Potion Free Sample:
-#  Need: 
+#  Need:
 #  Original item: Red Potion
 #  Paths:
 #    - rels/d_a_npc_ds1.rel@28C7
 #Windfall Island - Chu Jelly Juice Shop - Green Potion Free Sample:
-#  Need: 
+#  Need:
 #  Original item: Green Potion
 #  Paths:
 #    - rels/d_a_npc_ds1.rel@28D7
 #Windfall Island - Chu Jelly Juice Shop - Blue Potion Free Sample:
-#  Need: 
+#  Need:
 #  Original item: Blue Potion
 #  Paths:
 #    - rels/d_a_npc_ds1.rel@28DF
@@ -234,17 +234,17 @@ Windfall Island - Mrs. Marie - Give 40 Joy Pendants:
   Paths:
     - rels/d_a_npc_ho.rel@0C87
 #Windfall Island - Mrs. Marie - Give 1 or 2 Joy Pendants at Once:
-#  Need: 
+#  Need:
 #  Original item: Red Rupee
 #  Paths:
 #    - rels/d_a_npc_ho.rel@0C4B
 #Windfall Island - Mrs. Marie - Give 3 or 4 Joy Pendants at Once:
-#  Need: 
+#  Need:
 #  Original item: Purple Rupee
 #  Paths:
 #    - rels/d_a_npc_ho.rel@0C5F
 #Windfall Island - Mrs. Marie - Give 5+ Joy Pendants at Once:
-#  Need: 
+#  Need:
 #  Original item: Orange Rupee
 #  Paths:
 #    - rels/d_a_npc_ho.rel@0C6B
@@ -252,7 +252,7 @@ Windfall Island - Lenzo's House - Left Chest:
   Need:
     # Need Wind's Requiem to activate the Windmill
     # Need Picto Box because Lenzo will not unlock his upper door until you talk to him after obtaining it
-    Can Play Wind's Requiem 
+    Can Play Wind's Requiem
     & Picto Box
   Original item: Treasure Chart 29
   Types: Short Sidequest
@@ -262,7 +262,7 @@ Windfall Island - Lenzo's House - Right Chest:
   Need:
     # Need Wind's Requiem to activate the Windmill
     # Need Picto Box because Lenzo will not unlock his upper door until you talk to him after obtaining it
-    Can Play Wind's Requiem 
+    Can Play Wind's Requiem
     & Picto Box
   Original item: Purple Rupee
   Types: Short Sidequest
@@ -286,7 +286,7 @@ Windfall Island - Lenzo's House - Bring Forest Firefly:
     - rels/d_a_npc_photo.rel@1C37
     - rels/d_a_npc_photo.rel@3BE3
 #Windfall Island - Lenzo's House - Legendary Pictograph:
-#  Need: 
+#  Need:
 #  Original item: Legendary Pictograph
 #  Paths:
 #    - rels/d_a_npc_photo.rel@3B8B
@@ -390,7 +390,7 @@ Windfall Island - 80 Rupee Auction:
   Paths:
     - rels/d_a_auction.rel@44A1
 #Windfall Island - Zunari - Sail:
-#  Need: 
+#  Need:
 #  Original item: Boat's Sail
 #  Paths:
 #    - rels/d_a_npc_rsh1.rel@30FB
@@ -475,7 +475,7 @@ Windfall Island - Battlesquid - Under 20 Shots Prize:
 #  Paths:
 #    - rels/d_a_npc_people.rel@5BDF
 #Windfall Island - Dampa's Piggy Sitting Minigame (Unused):
-#  Need: 
+#  Need:
 #  Original item: Red Rupee
 #  Paths:
 #    - rels/d_a_npc_people.rel@5BC3
@@ -484,7 +484,7 @@ Windfall Island - Pompie and Vera - Secret Meeting Photo:
     # Need to snap a photo of Lenzo and Minenco in Lenzo's house.
     # Need Wind's Requiem to activate the Windmill.
     # Need Picto Box because Lenzo will not unlock his upper door until you talk to him after obtaining it
-    Can Play Wind's Requiem 
+    Can Play Wind's Requiem
     & Picto Box
   Original item: Treasure Chart 24
   Types: Short Sidequest
@@ -514,7 +514,7 @@ Windfall Island - Linda and Anton:
 
 
 #Dragon Roost Island - Gift from King of Red Lions:
-#  Need: 
+#  Need:
 #  Original item: Wind Waker
 #  Paths:
 #    - sea/Stage.arc/Event025:TACT_TEARCH3/Actor000/Action002
@@ -526,7 +526,7 @@ Dragon Roost Island - Wind Shrine:
     - sea/Stage.arc/Event0D8:TACT_HT/Actor001/Action005
     #- rels/d_a_npc_hr.rel@1167 # Duplicate Wind's Requiem given by Zephos, we remove this from his code so the player doesn't get this item twice.
 #Dragon Roost Island - Quill:
-#  Need: 
+#  Need:
 #  Original item: Delivery Bag
 #  Paths:
 #    - main.dol@8035BD3A
@@ -542,7 +542,7 @@ Dragon Roost Island - Wind Shrine:
 #  Paths:
 #    - rels/d_a_npc_md.rel@AF3F
 #Dragon Roost Island - Komali:
-#  Need: 
+#  Need:
 #  Original item: Din's Pearl
 #  Paths:
 #    - main.dol@8035BD37
@@ -775,7 +775,7 @@ Forest Haven - On Tree Branch:
     - Omori/Room0.arc/Layer0/Actor000
     - Omori/Room0.arc/Layer1/Actor00B
 #Forest Haven - Farore's Pearl:
-#  Need: 
+#  Need:
 #  Original item: Farore's Pearl
 #  Paths:
 #    - main.dol@8035BD38
@@ -1128,12 +1128,12 @@ Tower of the Gods - Big Key Chest:
   Paths:
     - Siren/Stage.arc/Chest00B
 #Tower of the Gods - Gohdan - Arrow Refill:
-#  Need: 
+#  Need:
 #  Original item: 10 Arrows (Pickup)
 #  Paths:
 #    - rels/d_a_bst.rel@5CA7
 #Tower of the Gods - Gohdan - Bomb Refill:
-#  Need: 
+#  Need:
 #  Original item: 5 Bombs (Pickup)
 #  Paths:
 #    - rels/d_a_bst.rel@5CD3
@@ -1211,7 +1211,7 @@ Forsaken Fortress - Chest on Bed:
     - ma2room/Stage.arc/Chest001
     - ma3room/Stage.arc/Chest001
 #Forsaken Fortress - Dropped Sword:
-#  Need: 
+#  Need:
 #  Original item: Recovered Hero's Sword
 #  Paths:
 #    - MajyuE/Room0.arc/Actor016
@@ -1312,7 +1312,7 @@ Headstone Island - Submarine:
     - Abship/Room5.arc/Chest000
 
 #Earth Temple - Entrance:
-#  Need: 
+#  Need:
 #  Original item: Earth God's Lyric
 #  Paths:
 #    - Edaichi/Stage.arc/Event043:MKNJD_D_LESSON/Actor003/Action006
@@ -1529,7 +1529,7 @@ Earth Temple - Big Key Chest:
   Paths:
     - M_Dai/Stage.arc/Chest006
 #Earth Temple - Duplicate Earth God's Lyric?:
-#  Need: 
+#  Need:
 #  Original item: Earth God's Lyric
 #  Paths:
 #    - M_Dai/Stage.arc/Event050:MKNJD_D_LESSON/Actor003/Action006
@@ -1551,14 +1551,14 @@ Earth Temple - Jalhalla Heart Container:
     - rels/d_a_bpw.rel@877E
     - M_DaiB/Room0.arc/Actor001
 #Earth Temple - Master Sword Upgrade:
-#  Need: 
+#  Need:
 #  Original item: Master Sword (Half Power)
 #  Paths:
 #    - main.dol@8035BD35
 
 
 #Wind Temple - Entrance:
-#  Need: 
+#  Need:
 #  Original item: Wind God's Aria
 #  Paths:
 #    - Ekaze/Stage.arc/Event042:MKNJD_K_LESSON/Actor003/Action006
@@ -1744,7 +1744,7 @@ Wind Temple - Kill All Enemies in Tall Basement Room:
   Paths:
     - kaze/Stage.arc/Chest009
 #Wind Temple - Duplicate Wind God's Aria?:
-#  Need: 
+#  Need:
 #  Original item: Wind God's Aria
 #  Paths:
 #    - kaze/Stage.arc/Event04F:MKNJD_K_LESSON/Actor003/Action006
@@ -1766,7 +1766,7 @@ Wind Temple - Molgera Heart Container:
     - rels/d_a_bwd.rel@6D83
     - kazeB/Room0.arc/Actor001
 #Wind Temple - Master Sword Upgrade:
-#  Need: 
+#  Need:
 #  Original item: Master Sword (Full Power)
 #  Paths:
 #    - main.dol@8035BD36
@@ -1946,28 +1946,28 @@ The Great Sea - Ghost Ship:
     - PShip3/Stage.arc/Chest000
 
 #The Great Sea - Old Man Hoho 1 (Unused):
-#  Need: 
+#  Need:
 #  Original item: Piece of Heart
 #  Paths:
 #    - rels/d_a_npc_ah.rel@174F
 #The Great Sea - Old Man Hoho 2 (Unused):
-#  Need: 
+#  Need:
 #  Original item: Purple Rupee
 #  Paths:
 #    - rels/d_a_npc_ah.rel@1773
 #The Great Sea - Fishman (Unused):
-#  Need: 
+#  Need:
 #  Original item: Silver Rupee
 #  Paths:
 #    - sea/Stage.arc/Event0D2:SO_GET_RUPEE/Actor002/Action000
 
 #Nintendo Gallery - Carlov 1 (Unused):
-#  Need: 
+#  Need:
 #  Original item: Piece of Heart
 #  Paths:
 #    - rels/d_a_npc_mt.rel@18AB
 #Nintendo Gallery - Carlov 2 (Unused):
-#  Need: 
+#  Need:
 #  Original item: Purple Rupee
 #  Paths:
 #    - rels/d_a_npc_mt.rel@18CF
@@ -2015,7 +2015,7 @@ Spectacle Island - Barrel Shooting - Second Prize:
   Paths:
     - rels/d_a_npc_kg2.rel@2107
 #Spectacle Island - Barrel Shooting - Prize 3+:
-#  Need: 
+#  Need:
 #  Original item: Orange Rupee
 #  Paths:
 #    - rels/d_a_npc_kg2.rel@210F
@@ -2157,6 +2157,7 @@ Pawprint Isle - Chuchu Cave - Chest:
   Paths:
     - TyuTyu/Stage.arc/Chest003
 Pawprint Isle - Chuchu Cave - Behind First Boulder:
+  # Left Boulder Chest
   Need:
     Can Access Pawprint Isle Chuchu Cave
     & Can Move Boulders
@@ -2165,6 +2166,7 @@ Pawprint Isle - Chuchu Cave - Behind First Boulder:
   Paths:
     - TyuTyu/Stage.arc/Chest001
 Pawprint Isle - Chuchu Cave - Behind Second Boulder:
+  # Right Boulder Chest
   Need:
     Can Access Pawprint Isle Chuchu Cave
     & Can Move Boulders
@@ -2289,27 +2291,27 @@ Northern Fairy Island - Submarine:
     - Abship/Room4.arc/Chest000
 
 #Tingle Island - Ankle - Reward for 1 Tingle Statue:
-#  Need: 
+#  Need:
 #  Original item: 50 Rupees, reward for finding 1 Tingle Statue
 #  Paths:
 #    - rels/d_a_npc_tc.rel@617F
 #Tingle Island - Ankle - Reward for 2 Tingle Statues:
-#  Need: 
+#  Need:
 #  Original item: 100 Rupees, reward for finding 2 Tingle Statues
 #  Paths:
 #    - rels/d_a_npc_tc.rel@6187
 #Tingle Island - Ankle - Reward for 3 Tingle Statues:
-#  Need: 
+#  Need:
 #  Original item: 150 Rupees, reward for finding 3 Tingle Statues
 #  Paths:
 #    - rels/d_a_npc_tc.rel@618F
 #Tingle Island - Ankle - Reward for 4 Tingle Statues:
-#  Need: 
+#  Need:
 #  Original item: 200 Rupees, reward for finding 4 Tingle Statues
 #  Paths:
 #    - rels/d_a_npc_tc.rel@6197
 #Tingle Island - Ankle - Reward for 5 Tingle Statues:
-#  Need: 
+#  Need:
 #  Original item: 250 Rupees, reward for finding 5 Tingle Statues
 #  Paths:
 #    - rels/d_a_npc_tc.rel@619F
@@ -2325,42 +2327,42 @@ Tingle Island - Ankle - Reward for All Tingle Statues:
   Paths:
     - rels/d_a_npc_tc.rel@6143
 #Tingle Island - Tingle - Triforce Chart 1 Deciphered:
-#  Need: 
+#  Need:
 #  Original item: Triforce Chart 1 got deciphered
 #  Paths:
 #    - rels/d_a_npc_tc.rel@61D7
 #Tingle Island - Tingle - Triforce Chart 2 Deciphered:
-#  Need: 
+#  Need:
 #  Original item: Triforce Chart 2 got deciphered
 #  Paths:
 #    - rels/d_a_npc_tc.rel@61DF
 #Tingle Island - Tingle - Triforce Chart 3 Deciphered:
-#  Need: 
+#  Need:
 #  Original item: Triforce Chart 3 got deciphered
 #  Paths:
 #    - rels/d_a_npc_tc.rel@61E7
 #Tingle Island - Tingle - Triforce Chart 4 Deciphered:
-#  Need: 
+#  Need:
 #  Original item: Triforce Chart 4 got deciphered
 #  Paths:
 #    - rels/d_a_npc_tc.rel@61EF
 #Tingle Island - Tingle - Triforce Chart 5 Deciphered:
-#  Need: 
+#  Need:
 #  Original item: Triforce Chart 5 got deciphered
 #  Paths:
 #    - rels/d_a_npc_tc.rel@61F7
 #Tingle Island - Tingle - Triforce Chart 6 Deciphered:
-#  Need: 
+#  Need:
 #  Original item: Triforce Chart 6 got deciphered
 #  Paths:
 #    - rels/d_a_npc_tc.rel@61FF
 #Tingle Island - Tingle - Triforce Chart 7 Deciphered:
-#  Need: 
+#  Need:
 #  Original item: Triforce Chart 7 got deciphered
 #  Paths:
 #    - rels/d_a_npc_tc.rel@6207
 #Tingle Island - Tingle - Triforce Chart 8 Deciphered:
-#  Need: 
+#  Need:
 #  Original item: Triforce Chart 8 got deciphered
 #  Paths:
 #    - rels/d_a_npc_tc.rel@620F
@@ -2568,7 +2570,7 @@ Flight Control Platform - Bird-Man Contest - First Prize:
   Paths:
     - rels/d_a_npc_bmcon1.rel@2B7B
 #Flight Control Platform - Bird-Man Contest - Prize 2+:
-#  Need: 
+#  Need:
 #  Original item: Purple Rupee
 #  Paths:
 #    - rels/d_a_npc_bmcon1.rel@2B9F

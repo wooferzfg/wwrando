@@ -6,26 +6,28 @@ with open("./version.txt") as f:
   randomizer_version = f.read().strip()
 
 import struct
+'''
 if (struct.calcsize("P") * 8) == 64:
-  randomizer_version += "_64bit"
+  randomizer_version += " 64 bit"
 else:
-  randomizer_version += "_32bit"
+  randomizer_version += " 32 bit"
+'''
 
 import os
 import glob
 def build_datas_recursive(paths):
   datas = []
-  
+
   for path in paths:
     for filename in glob.iglob(path, recursive=True):
       dest_dirname = os.path.dirname(filename)
       if dest_dirname == "":
         dest_dirname = "."
-      
+
       data_entry = (filename, dest_dirname)
       datas.append(data_entry)
       print(data_entry)
-  
+
   return datas
 
 a = Analysis(['wwrando.py'],
@@ -55,7 +57,7 @@ exe = EXE(pyz,
           a.binaries,
           a.zipfiles,
           a.datas,
-          name='Wind Waker Randomizer ' + randomizer_version,
+          name='Wind Waker Randomizer dv_im ' + randomizer_version,
           debug=False,
           strip=False,
           upx=True,

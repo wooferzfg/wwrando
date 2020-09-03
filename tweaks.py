@@ -26,6 +26,32 @@ try:
 except ImportError:
   SEED_KEY = ""
 
+#logic_mod=self.options.get("logic_mod")
+
+#def getLogicMod(*args):
+  #return logic_mod
+
+def get_logic_mod(logic):
+  logic_type = logic.split(" – ")
+  logic_mod = ""
+  if(logic_type[0]=="Glitchless"):
+    if(logic_type[1]=="Beginner"):
+      logic_mod = "easy.txt"
+    else:
+      logic_mod = "standard"
+  elif(logic_type[0]=="Glitched"):
+    if(logic_type[1]=="Trivial"):
+      logic_mod = "glitched_easy.txt"
+    elif(logic_type[1]=="Moderate"):
+      logic_mod = "glitched_medium.txt"
+    elif(logic_type[1]=="No Logic"):
+      logic_mod = "no_logic.txt"
+    else:
+      logic_mod = "standard"
+  else:
+    logic_mod = "other"
+  return logic_mod
+
 def modify_logic_data(argument=[],definition=[]):
   mode = definition["Mode"]
   try:
@@ -33,8 +59,8 @@ def modify_logic_data(argument=[],definition=[]):
       argument["Need"] = definition["Need"]
       argument["Types"] = definition["Types"]
     elif(mode=="a"):
-      argument["Need"] += ("\n"+definition["Need"])
-      argument["Types"] += (", "+definition["Types"])
+      argument["Need"] += definition["Need"]
+      argument["Types"] += definition["Types"]
   except:
     print("\nYAML formating is incorrect for: {}.\nPlease correct this before a seed can be generated.".format(definition))
     raise LookupError
@@ -63,6 +89,12 @@ def get_hash(self,salt=True,pepper=True):
     pass
   else:
     random.seed(hash_fin)
+    hash_fin = random.randint(0,100000)
+  if(self.options.get("convenience_option")=="Convenient"):
+    random.seed(hash_fin)
+    hash_fin = random.randint(0,100000)
+  elif(self.options.get("convenience_option")=="Plentiful and Convenient"):
+    random.seed(hash_fin+random.randint(0,10))
     hash_fin = random.randint(0,100000)
   return hash_fin
 
@@ -366,7 +398,7 @@ def make_sail_behave_like_swift_sail(self):
 
   # Update the pause menu name for the sail.
   msg = self.bmg.messages_by_id[463]
-  msg.string = "Swift Sail"
+  msg.string = "Sail of Red Lions"
 
   new_sail_tex_image_path = os.path.join(ASSETS_PATH, "swift sail texture.png")
   new_sail_icon_image_path = os.path.join(ASSETS_PATH, "swift sail icon.png")

@@ -403,11 +403,12 @@ class Randomizer:
     if self.options.get("randomize_enemies"):
       yield("Randomizing enemy locations...", options_completed)
       enemies.randomize_enemies(self)
+      options_completed += 2
 
     if self.options.get("randomize_enemy_palettes"):
       yield("Randomizing enemy colors...", options_completed)
       palettes.randomize_enemy_palettes(self)
-      options_completed += 10
+      options_completed += 2
 
     # Reset RNG before doing item randomization so other randomization options don't affect item layout.
     self.rng = self.get_new_rng()

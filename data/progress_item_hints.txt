@@ -84,6 +84,10 @@ Progressive Wallet:
   a coin pouch
 Progressive Picto Box:
   an upgrade for your camera
+Progressive Quiver:
+  a sock for ammo
+Progressive Bomb Bag:
+  a satchel for explosives
 Empty Bottle:
   a glass container
 Small Key:

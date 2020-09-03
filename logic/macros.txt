@@ -78,7 +78,7 @@ Can Access Forest Haven:
   # Grappling over the waterfall is very difficult without killing the Boko Baba there - but only if you start grappling from the top. You can grapple from the bottom up to avoid that Boko Baba entirely, so there's no extra requirement here for swordless.
 Can Access Dungeon Entrance In Forest Haven Sector:
   Can Access Forest Haven
-  & Grappling Hook
+  & (Grappling Hook | (Glitched Logic & Wind Waker))
   & Can Fly With Deku Leaf Outdoors
   & (Can Cut Grass | Magic Meter Upgrade)
   # You either need double magic or the ability to refill your magic by cutting grass to make it all the way across.
@@ -90,7 +90,8 @@ Can Access Dungeon Entrance In Tower of the Gods Sector:
 Can Access Dungeon Entrance On Headstone Island:
   Power Bracelets
 Can Access Dungeon Entrance On Gale Isle:
-  Iron Boots & Skull Hammer
+  Skull Hammer
+  & (Iron Boots | (Glitched Logic & Wind Waker))
 
 # The below macros are used when dungeon entrances are not randomized.
 # When dungeon entrances are randomized, these macros are shuffled around by the randomizer logic.
@@ -102,6 +103,15 @@ Can Access Tower of the Gods:
   Can Access Dungeon Entrance In Tower of the Gods Sector
 Can Access Earth Temple:
   Can Access Dungeon Entrance On Headstone Island
+Can Get into Earth Temple:
+  Can Access Earth Temple
+  & (
+    Can Play Command Melody
+    | (
+      Glitched Logic
+      & Deku Leaf
+    )
+  )
 Can Access Wind Temple:
   Can Access Dungeon Entrance On Gale Isle
 
@@ -118,8 +128,8 @@ Can Access Secret Cave Entrance on Fire Mountain:
 Can Access Secret Cave Entrance on Ice Ring Isle:
   Fire Arrows
 Can Access Secret Cave Entrance on Private Oasis:
-  Delivery Bag & Cabana Deed
-  & Grappling Hook
+  (Cabana Deed & Delivery Bag & Grappling Hook)
+  | (Glitched Logic & Wind Waker & Grappling Hook & (Can Fly With Deku Leaf Outdoors | Hookshot))
 Can Access Secret Cave Entrance on Needle Rock Isle:
   Fire Arrows
 Can Access Secret Cave Entrance on Angular Isles:
@@ -134,17 +144,30 @@ Can Access Secret Cave Entrance on Overlook Island:
   Hookshot
 Can Access Secret Cave Entrance on Bird's Peak Rock:
   # Need to hit the switches with a seagull.
-  Bait Bag & Can Buy Hyoi Pears
+  (Bait Bag & Can Buy Hyoi Pears)
+  | (Glitched Logic & Grappling Hook)
+  | (
+    Glitched Logic
+    & Can Access Cliff Plateau Isles Secret Cave
+    & Can Defeat Boko Babas
+    & Wind Waker
+  )
 Can Access Secret Cave Entrance on Pawprint Isle:
   Nothing
 Can Access Secret Cave Entrance on Pawprint Isle Side Isle:
   Hookshot
+  | (Glitched Logic & Deku Leaf & Bombs)
 Can Access Secret Cave Entrance on Diamond Steppe Island:
   Hookshot
+  | (
+    Glitched Logic
+    & Wind Waker
+  )
 Can Access Secret Cave Entrance on Bomb Island:
   Can Move Boulders
 Can Access Secret Cave Entrance on Rock Spire Isle:
   Bombs
+  | (Glitched Logic & Can Fly With Deku Leaf Outdoors)
 Can Access Secret Cave Entrance on Shark Island:
   # Iron Boots and Skull Hammer are necessary to hit the two big buttons.
   # The diamond switch does not require Boomerang or any ranged weapon - you can just hit it with your sword or hammer.
@@ -203,10 +226,18 @@ Can Access Star Island Secret Cave:
 
 Can Get Past Forsaken Fortress Gate:
   Bombs
+  | Glitched Logic
   # Note: It's also possible to blow up the door without bombs by using the mounted cannons, but this is not required by the logic.
   # Note: It's also possible to get past the gate by going all the way down to Ganon's Tower, and then activating the warp up to Forsaken Fortress. But this is not currently required by the logic.
 Can Get Inside Forsaken Fortress:
-  Can Get Past Forsaken Fortress Gate & Skull Hammer
+  Can Get Past Forsaken Fortress Gate
+  & (
+    Skull Hammer
+    | (
+      Glitched Logic
+      & Wind Waker
+    )
+  )
   # Even though you can kill Phantom Ganon without the Skull Hammer, that only lets you access the one chest he spawns.
   # You can't access the other chests/boss without Skull Hammer.
 Can Reach and Defeat Phantom Ganon:
@@ -262,11 +293,11 @@ Can Reach and Defeat Puppet Ganon:
   & Can Defeat Darknuts
   & Can Defeat Puppet Ganon
 Can Defeat Puppet Ganon:
-  Boomerang
+  (Boomerang | Glitched Logic)
   # Boomerang isn't strictly necessary to defeat Puppet Ganon but makes things significantly easier, both to cut down Puppet Ganon's strings and to defeat the keese who drop refills.
 Can Reach and Defeat Ganondorf:
   Can Reach and Defeat Puppet Ganon
-  & Grappling Hook
+  & (Grappling Hook | Glitched Logic)
   & Hookshot
   & Can Defeat Ganondorf
 Can Defeat Ganondorf:
@@ -275,6 +306,7 @@ Can Defeat Ganondorf:
   # It doesn't matter if you have the bow or not, Zelda will still get it.
   (Hero's Sword | In Swordless Mode)
   & Hero's Shield
+  & Convenient
   # Swordless gives you a sword temporarily during the Ganondorf fight, so you don't need to have found a sword item.
 
 Rescued Aryll:
@@ -632,6 +664,13 @@ Can Defeat Gohma:
   # Gohma can be killed with just the Grappling Hook since it damages her eye in the second phase.
 Can Defeat Kalle Demos:
   Boomerang
+  | (
+    Glitched Logic
+    & (
+      Bombs
+      | Hero's Bow
+    )
+  )
   # No sword needed - Kalle Demos can be damaged with just boomerang.
 Can Defeat Gohdan:
   (Hero's Bow | Hookshot)
@@ -744,6 +783,33 @@ In Swordless Mode:
   Option "sword_mode" Is "Swordless"
 Outside Swordless Mode:
   Option "sword_mode" Is Not "Swordless"
+Glitched Logic:
+  Option "logic_mod" Is "Glitched – Trivial"
+  | Option "logic_mod" Is "Glitched – Moderate"
+
+Convenient:
+  (
+    (Option "convenience_option" Is "Convenient" | Option "convenience_option" Is "Plentiful and Convenient")
+    & Hurricane Spin
+    & Magic Meter Upgrade
+    & Progressive Bomb Bag x1
+    & Progressive Quiver x1
+    & Progressive Wallet x1
+  )
+  | Option "convenience_option" Is "Default"
+  | Option "convenience_option" Is "Plentiful"
 
 TODO:
   Impossible
+
+Can Get DRI Boulder Chest:
+  # Bombs work by getting in the ship and shooting the cannon up at the bomb flowers.
+  Hero's Bow
+  | (Bait Bag & Can Buy Hyoi Pears)
+  | Boomerang
+  | Bombs
+  | (
+    Glitched Logic
+    & Can Fly With Deku Leaf Outdoors
+    & (Hero's Sword | Skull Hammer)
+  )
