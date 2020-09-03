@@ -3,33 +3,36 @@ from enum import Enum
 from io import BytesIO
 from collections import OrderedDict
 
-from fs_helpers import *
+try:
+  from fs_helpers import *
+except:
+  from wwrando.fs_helpers import *
 
 class ELF:
   def read_from_file(self, file_path):
     with open(file_path, "rb") as f:
       self.data = BytesIO(f.read())
-    
+
     self.section_headers_table_offset = read_u32(self.data, 0x20)
     self.num_section_headers = read_u16(self.data, 0x30)
-    
+
     self.sections = []
     self.section_header_string_table_offset = None
     for i in range(self.num_section_headers):
       section = ELFSection()
       section.read(self.data, self.section_headers_table_offset + i*ELFSection.ENTRY_SIZE)
       self.sections.append(section)
-      
+
       if section.type == ELFSectionType.SHT_STRTAB:
         self.section_header_string_table_offset = section.section_offset
-    
+
     for section in self.sections:
       section.name = read_str_until_null_character(self.data, self.section_header_string_table_offset+section.name_offset)
-    
+
     self.sections_by_name = OrderedDict()
     for section in self.sections:
       self.sections_by_name[section.name] = section
-    
+
     self.relocations = OrderedDict()
     for section in self.sections:
       if section.type == ELFSectionType.SHT_RELA:
@@ -38,7 +41,7 @@ class ELF:
           relocation = ELFRelocation()
           relocation.read(self.data, section.section_offset + i*ELFRelocation.ENTRY_SIZE)
           self.relocations[section.name].append(relocation)
-    
+
     self.symbols = OrderedDict()
     self.symbols_by_name = OrderedDict()
     for section in self.sections:
@@ -51,34 +54,34 @@ class ELF:
           symbol.name = self.read_string_from_table(symbol.name_offset)
           self.symbols[section.name].append(symbol)
           self.symbols_by_name[section.name][symbol.name] = symbol
-  
+
   def read_string_from_table(self, string_offset):
     offset = self.sections_by_name[".strtab"].section_offset + string_offset
     return read_str_until_null_character(self.data, offset)
 
 class ELFSection:
   ENTRY_SIZE = 0x28
-  
+
   def read(self, elf_data, header_offset):
     self.header_offset = header_offset
-    
+
     self.name_offset = read_u32(elf_data, self.header_offset+0x00)
     self.type = ELFSectionType(read_u32(elf_data, self.header_offset+0x04))
     self.flags = read_u32(elf_data, self.header_offset+0x08)
     self.address = read_u32(elf_data, self.header_offset+0x0C)
     self.section_offset = read_u32(elf_data, self.header_offset+0x10)
     self.size = read_u32(elf_data, self.header_offset+0x14)
-    
+
     self.info = read_u32(elf_data, self.header_offset+0x1C)
-    
+
     self.data = BytesIO(read_bytes(elf_data, self.section_offset, self.size))
 
 class ELFRelocation:
   ENTRY_SIZE = 0xC
-  
+
   def read(self, elf_data, offset):
     self.offset = offset
-    
+
     self.relocation_offset = read_u32(elf_data, self.offset + 0x00)
     info = read_u32(elf_data, self.offset + 0x04)
     self.type = ELFRelocationType(info & 0x000000FF)
@@ -87,10 +90,10 @@ class ELFRelocation:
 
 class ELFSymbol:
   ENTRY_SIZE = 0x10
-  
+
   def read(self, elf_data, offset):
     self.offset = offset
-    
+
     self.name_offset = read_u32(elf_data, self.offset + 0x00)
     self.address = read_u32(elf_data, self.offset + 0x04)
     self.size = read_u32(elf_data, self.offset + 0x08)
@@ -117,7 +120,7 @@ class ELFSectionType(Enum):
   SHT_GROUP = 0x11
   SHT_SYMTAB_SHNDX = 0x12
   SHT_NUM = 0x13
-  
+
   UNK_1 = 0x6FFFFFF5
 
 class ELFSectionFlags(Enum):
@@ -151,7 +154,7 @@ class ELFRelocationType(Enum):
   R_PPC_REL14 = 0x0B
   R_PPC_REL14_BRTAKEN = 0x0C
   R_PPC_REL14_BRNTAKEN = 0x0D
-  
+
   R_PPC_REL32 = 0x1A
 
 class ELFSymbolSpecialSection(Enum):

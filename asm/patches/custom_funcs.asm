@@ -58,7 +58,7 @@ stb r4, 7 (r3) ; Max bombs
 ; Start the player with a magic meter so items that use it work correctly.
 lis r3, 0x803C4C1B@ha
 addi r3, r3, 0x803C4C1B@l
-lis r4, starting_magic@ha 
+lis r4, starting_magic@ha
 addi r4, r4, starting_magic@l
 lbz r4, 0 (r4) ; Load starting magic address into r4, then load byte at address into r4
 stb r4, 0 (r3) ; Max magic meter
@@ -1978,7 +1978,7 @@ addi sp, sp, 0x50
 blr
 
 key_text_command_has_big_key_text:
-.string " +Big"
+.string "+\xDF   "
 key_text_command_does_not_have_big_key_text:
 .string "     "
 
