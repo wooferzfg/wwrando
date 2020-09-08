@@ -5,7 +5,7 @@ from PySide2.QtWidgets import *
 from wwr_ui.ui_randomizer_window import Ui_MainWindow
 from wwr_ui.options import OPTIONS, NON_PERMALINK_OPTIONS, HIDDEN_OPTIONS, POTENTIALLY_UNBEATABLE_OPTIONS
 from wwr_ui.update_checker import check_for_updates, LATEST_RELEASE_DOWNLOAD_PAGE_URL
-from wwr_ui.inventory import INVENTORY_ITEMS, REGULAR_ITEMS, PROGRESSIVE_ITEMS, DUNGEON_NONPROGRESS_ITEMS
+from wwr_ui.inventory import INVENTORY_ITEMS, REGULAR_ITEMS, PROGRESSIVE_ITEMS, DUNGEON_NONPROGRESS_ITEMS, SORT_KEY
 from wwr_ui.packedbits import PackedBitsReader, PackedBitsWriter
 
 import random
@@ -30,6 +30,21 @@ from paths import ASSETS_PATH, SEEDGEN_PATH, IS_RUNNING_FROM_SOURCE
 import customizer
 from logic.logic import Logic
 from wwlib import texture_utils
+
+'''
+def sortItems(inputList=[],keyList=SORT_KEY):
+  orderList = []
+  for item in inputList:
+    locale = keyList.index(item)
+    orderList.append(locale)
+  assert len(inputList)==len(orderList)
+  zippedList = zip(orderList,inputList)
+  outputList = []
+  zippedList.sort()
+  for item in zippedList:
+    outputList.insert(item[0],item[1])
+  return outputList
+'''
 
 class WWRandomizerWindow(QMainWindow):
   VALID_SEED_CHARACTERS = "-_'%%.%s%s" % (string.ascii_letters, string.digits)
@@ -185,12 +200,12 @@ class WWRandomizerWindow(QMainWindow):
 
   def add_to_starting_gear(self):
     self.move_selected_rows(self.ui.randomized_gear, self.ui.starting_gear)
-    self.ui.starting_gear.model().sort(0)
+    self.ui.starting_gear.model().sort(0,key=lambda x:SORT_KEY.index(x))
     self.update_settings()
 
   def remove_from_starting_gear(self):
     self.move_selected_rows(self.ui.starting_gear, self.ui.randomized_gear)
-    self.ui.randomized_gear.model().sourceModel().sort(0)
+    self.ui.randomized_gear.model().sourceModel().sort(0,key=lambda x:SORT_KEY.index(x))
     self.update_settings()
 
   def update_health_label(self):
@@ -504,7 +519,7 @@ class WWRandomizerWindow(QMainWindow):
           bit = DUNGEON_NONPROGRESS_ITEMS[i] in value
           bitswriter.write(bit, 1)
         unique_progressive_items = list(set(PROGRESSIVE_ITEMS))
-        unique_progressive_items.sort()
+        unique_progressive_items.sort() #key=lambda x:SORT_KEY.index(x)
         for item in unique_progressive_items:
           # No Progressive Sword and there's no more than
           # 3 of any other Progressive item so two bits per item
@@ -561,7 +576,7 @@ class WWRandomizerWindow(QMainWindow):
         self.set_option_value(option_name, value)
       elif widget == self.ui.starting_gear:
         # Reset model with only the regular items
-        self.randomized_gear_model.setStringList(REGULAR_ITEMS.copy())
+        self.randomized_gear_model.setStringList(REGULAR_ITEMS.copy()+DUNGEON_NONPROGRESS_ITEMS.copy())
         self.starting_gear_model.setStringList([])
         for i in range(len(REGULAR_ITEMS)):
           starting = bitsreader.read(1)
@@ -574,7 +589,7 @@ class WWRandomizerWindow(QMainWindow):
         self.move_selected_rows(self.ui.randomized_gear, self.ui.starting_gear)
         # Progressive items are all after regular items
         unique_progressive_items = list(set(PROGRESSIVE_ITEMS))
-        unique_progressive_items.sort()
+        unique_progressive_items.sort() #key=lambda x:SORT_KEY.index(x)
         for item in unique_progressive_items:
           amount = bitsreader.read(2)
           randamount = PROGRESSIVE_ITEMS.count(item) - amount

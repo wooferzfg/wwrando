@@ -40,7 +40,7 @@ a = Analysis(['wwrando.py'],
                'assets/**/*.*',
                'data/*.txt',
                'logic/*.txt',
-               'logic/tricks/*.txt'
+               'logic_var/*.txt',
                'seedgen/*.txt',
                'version.txt',
              ]),

@@ -51,3 +51,53 @@ DUNGEON_NONPROGRESS_ITEMS = \
   ["WT Dungeon Map", "WT Compass"]
 
 INVENTORY_ITEMS = REGULAR_ITEMS + PROGRESSIVE_ITEMS + DUNGEON_NONPROGRESS_ITEMS
+
+QUEST_ITEMS = [
+  "Din's Pearl",
+  "Farore's Pearl",
+  "Nayru's Pearl",
+  "Command Melody",
+  "Earth God's Lyric",
+  "Wind God's Aria",
+]
+
+KEY_ITEMS = [
+  "Bait Bag",
+  "Bombs",
+  "Boomerang",
+  "Progressive Bow",
+  "Deku Leaf",
+  "Delivery Bag",
+  "Cabana Deed",
+  "Maggie's Letter",
+  "Moblin's Letter",
+  "Note to Mom",
+  "Empty Bottle",
+  "Ghost Ship Chart",
+  "Grappling Hook",
+  "Hookshot",
+  "Iron Boots",
+  "Magic Meter Upgrade",
+  "Mirror Shield",
+  "Progressive Picto Box",
+  "Power Bracelets",
+  "Skull Hammer",
+  "Spoils Bag",
+  "Progressive Sword",
+  "Progressive Wallet",
+]
+#KEY_ITEMS.sort()
+
+NONKEY_ITEMS= [
+  "Progressive Bomb Bag",
+  "Hero's Charm",
+  "Hurricane Spin",
+  "Magic Armor",
+  "Progressive Quiver",
+  "Telescope",
+  "Tingle Tuner",
+]
+NONKEY_ITEMS.sort()
+
+SORT_KEY = KEY_ITEMS + QUEST_ITEMS + DUNGEON_NONPROGRESS_ITEMS + NONKEY_ITEMS
+INVENTORY_ITEMS.sort(key=lambda x:SORT_KEY.index(x))

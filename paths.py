@@ -12,6 +12,6 @@ except ImportError:
 ASSETS_PATH = os.path.join(RANDO_ROOT_PATH, "assets")
 DATA_PATH = os.path.join(RANDO_ROOT_PATH, "data")
 LOGIC_PATH = os.path.join(RANDO_ROOT_PATH, "logic")
-TRICK_PATH = os.path.join(RANDO_ROOT_PATH, "logic/tricks")
+TRICK_PATH = os.path.join(RANDO_ROOT_PATH, "logic_var")
 ASM_PATH = os.path.join(RANDO_ROOT_PATH, "asm")
 SEEDGEN_PATH = os.path.join(RANDO_ROOT_PATH, "seedgen")
