@@ -44,7 +44,7 @@ MelonSpeedruns (game design suggestions, graphic design)
 TrogWW (additional programming)  
 nbouteme (additional programming)  
 wooferzfg (additional programming)  
-Zach the DualVission (v_im modifications)
+Zach the DualVission (dv_im modifications)
 
 ### Running the randomizer from source
 
@@ -69,4 +69,4 @@ Then run the randomizer with:
 `python3 wwrando.py` (on Linux)  
 
 Optionally, you can also install `requirements_full.txt` with the same process you used for `requirements.txt` above.  
-`requirements_full.txt` will install additional libraries that speed up texture recoloring, as well as for building a distributable version of the randomizer. You can still run the randomizer from source without these.  
+`requirements_full.txt` will install additional libraries that speed up texture recoloring, as well as for building a distributable version of the randomizer. You can still run the randomizer from source without these. You will also need Visual Studio.

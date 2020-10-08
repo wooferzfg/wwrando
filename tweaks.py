@@ -44,6 +44,8 @@ def get_logic_mod(logic):
       logic_mod = "glitched_easy.txt"
     elif(logic_type[1]=="Moderate"):
       logic_mod = "glitched_medium.txt"
+    elif(logic_type[1]=="Lunatic (Crain)"):
+      logic_mod = "glitched_hard.txt"
     elif(logic_type[1]=="No Logic"):
       logic_mod = "no_logic.txt"
     else:
@@ -52,7 +54,7 @@ def get_logic_mod(logic):
     logic_mod = "other"
   return logic_mod
 
-def modify_logic_data(argument=[],definition=[]):
+def modify_logic_data(argument=[],definition=[],run='YAML'):
   mode = definition["Mode"]
   try:
     if(mode=="o"):
@@ -61,8 +63,11 @@ def modify_logic_data(argument=[],definition=[]):
     elif(mode=="a"):
       argument["Need"] += definition["Need"]
       argument["Types"] += definition["Types"]
+    elif(mode=="f"):
+      argument["Need"] = argument["Need"]
+      argument["Types"] = argument["Types"]
   except:
-    print("\nYAML formating is incorrect for: {}.\nPlease correct this before a seed can be generated.".format(definition))
+    print("\n{} formating is incorrect for: {}.\nPlease correct this before a seed can be generated.".format(run,definition))
     raise LookupError
   #print(str(definition))
   return argument

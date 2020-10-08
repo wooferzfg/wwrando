@@ -5,8 +5,10 @@ from PySide2.QtWidgets import *
 from wwr_ui.ui_randomizer_window import Ui_MainWindow
 from wwr_ui.options import OPTIONS, NON_PERMALINK_OPTIONS, HIDDEN_OPTIONS, POTENTIALLY_UNBEATABLE_OPTIONS
 from wwr_ui.update_checker import check_for_updates, LATEST_RELEASE_DOWNLOAD_PAGE_URL
-from wwr_ui.inventory import INVENTORY_ITEMS, REGULAR_ITEMS, PROGRESSIVE_ITEMS, DUNGEON_NONPROGRESS_ITEMS, SORT_KEY
+from wwr_ui.inventory import INVENTORY_ITEMS, REGULAR_ITEMS, PROGRESSIVE_ITEMS, DUNGEON_NONPROGRESS_ITEMS, SORT_KEY, STNDRD_ITEMS
 from wwr_ui.packedbits import PackedBitsReader, PackedBitsWriter
+
+import xml_func as xfx
 
 import random
 import collections
@@ -65,6 +67,7 @@ class WWRandomizerWindow(QMainWindow):
     self.custom_color_reset_buttons = OrderedDict()
     self.custom_colors = OrderedDict()
     self.initialize_custom_player_model_list()
+    self.initialize_custom_logic_type_list()
     self.initialize_color_presets_list()
 
     self.ui.add_gear.clicked.connect(self.add_to_starting_gear)
@@ -131,7 +134,7 @@ class WWRandomizerWindow(QMainWindow):
 
     self.update_settings()
 
-    self.setWindowTitle("Wind Waker Randomizer %s" % VERSION)
+    self.setWindowTitle("Wind Waker Randomizer dv_im %s" % VERSION)
 
     icon_path = os.path.join(ASSETS_PATH, "icon.ico")
     self.setWindowIcon(QIcon(icon_path))
@@ -512,13 +515,10 @@ class WWRandomizerWindow(QMainWindow):
         bitswriter.write(value, box_length)
       elif widget == self.ui.starting_gear:
         # randomized_gear is a complement of starting_gear
-        for i in range(len(REGULAR_ITEMS)):
-          bit = REGULAR_ITEMS[i] in value
+        for i in range(len(STNDRD_ITEMS)):
+          bit = STNDRD_ITEMS[i] in value
           bitswriter.write(bit, 1)
-        for i in range(len(DUNGEON_NONPROGRESS_ITEMS)):
-          bit = DUNGEON_NONPROGRESS_ITEMS[i] in value
-          bitswriter.write(bit, 1)
-        unique_progressive_items = list(set(PROGRESSIVE_ITEMS))
+        unique_progressive_items = list(set(STNDRD_ITEMS))
         unique_progressive_items.sort() #key=lambda x:SORT_KEY.index(x)
         for item in unique_progressive_items:
           # No Progressive Sword and there's no more than
@@ -576,13 +576,9 @@ class WWRandomizerWindow(QMainWindow):
         self.set_option_value(option_name, value)
       elif widget == self.ui.starting_gear:
         # Reset model with only the regular items
-        self.randomized_gear_model.setStringList(REGULAR_ITEMS.copy()+DUNGEON_NONPROGRESS_ITEMS.copy())
+        self.randomized_gear_model.setStringList(STNDRD_ITEMS.copy())
         self.starting_gear_model.setStringList([])
-        for i in range(len(REGULAR_ITEMS)):
-          starting = bitsreader.read(1)
-          if starting == 1:
-            self.ui.randomized_gear.selectionModel().select(self.randomized_gear_model.index(i), QItemSelectionModel.Select)
-        for i in range(len(DUNGEON_NONPROGRESS_ITEMS)):
+        for i in range(len(STNDRD_ITEMS)):
           starting = bitsreader.read(1)
           if starting == 1:
             self.ui.randomized_gear.selectionModel().select(self.randomized_gear_model.index(i), QItemSelectionModel.Select)
@@ -704,6 +700,12 @@ class WWRandomizerWindow(QMainWindow):
     else:
       self.ui.option_description.setText(new_description)
       self.ui.option_description.setStyleSheet("")
+
+  def initialize_custom_logic_type_list(self):
+    custom_logic_names = xfx.get_all_custom_logic()
+    if(len(custom_logic_names)!=0):
+      for custom_logic_name in custom_logic_names:
+        self.ui.logic_mod.addItem(custom_logic_name)
 
   def initialize_custom_player_model_list(self):
     self.ui.custom_player_model.addItem("Link")

@@ -28,6 +28,8 @@ Hero's Shield:
   the heirloom
 Mirror Shield:
   the polished protection
+Hurricane Spin:
+  the skill of true warriors
 Triforce Shard 1:
   a shard of Courage
 Triforce Shard 2:

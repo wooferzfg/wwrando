@@ -78,7 +78,7 @@ Can Access Forest Haven:
   # Grappling over the waterfall is very difficult without killing the Boko Baba there - but only if you start grappling from the top. You can grapple from the bottom up to avoid that Boko Baba entirely, so there's no extra requirement here for swordless.
 Can Access Dungeon Entrance In Forest Haven Sector:
   Can Access Forest Haven
-  & (Grappling Hook | (Glitched Logic & Wind Waker))
+  & (Grappling Hook | (Tricked Logic & Wind Waker))
   & Can Fly With Deku Leaf Outdoors
   & (Can Cut Grass | Magic Meter Upgrade)
   # You either need double magic or the ability to refill your magic by cutting grass to make it all the way across.
@@ -119,6 +119,7 @@ Can Access Secret Cave Entrance on Outset Island:
   (
     (Can Cut Down Outset Trees & Can Fly With Deku Leaf Outdoors)
     | Hookshot
+    | (Tricked Logic & Can Fly With Deku Leaf Outdoors)
   )
   & Power Bracelets
 Can Access Secret Cave Entrance on Dragon Roost Island:
@@ -132,6 +133,7 @@ Can Access Secret Cave Entrance on Private Oasis:
   | (Glitched Logic & Wind Waker & Grappling Hook & (Can Fly With Deku Leaf Outdoors | Hookshot))
 Can Access Secret Cave Entrance on Needle Rock Isle:
   Fire Arrows
+  | (Wind Waker & Glitched Logic)
 Can Access Secret Cave Entrance on Angular Isles:
   # Either Deku Leaf or Hookshot are needed to get into the cave.
   Can Fly With Deku Leaf Outdoors | Hookshot
@@ -145,12 +147,13 @@ Can Access Secret Cave Entrance on Overlook Island:
 Can Access Secret Cave Entrance on Bird's Peak Rock:
   # Need to hit the switches with a seagull.
   (Bait Bag & Can Buy Hyoi Pears)
-  | (Glitched Logic & Grappling Hook)
+  | (Tricked Logic & Grappling Hook)
   | (
     Glitched Logic
     & Can Access Cliff Plateau Isles Secret Cave
     & Can Defeat Boko Babas
     & Wind Waker
+    & Not Secret Cave Entrance Rando
   )
 Can Access Secret Cave Entrance on Pawprint Isle:
   Nothing
@@ -226,7 +229,7 @@ Can Access Star Island Secret Cave:
 
 Can Get Past Forsaken Fortress Gate:
   Bombs
-  | Glitched Logic
+  | Tricked Logic
   # Note: It's also possible to blow up the door without bombs by using the mounted cannons, but this is not required by the logic.
   # Note: It's also possible to get past the gate by going all the way down to Ganon's Tower, and then activating the warp up to Forsaken Fortress. But this is not currently required by the logic.
 Can Get Inside Forsaken Fortress:
@@ -234,7 +237,7 @@ Can Get Inside Forsaken Fortress:
   & (
     Skull Hammer
     | (
-      Glitched Logic
+      Tricked Logic
       & Wind Waker
     )
   )
@@ -665,7 +668,7 @@ Can Defeat Gohma:
 Can Defeat Kalle Demos:
   Boomerang
   | (
-    Glitched Logic
+    Tricked Logic
     & (
       Bombs
       | Hero's Bow
@@ -784,8 +787,10 @@ In Swordless Mode:
 Outside Swordless Mode:
   Option "sword_mode" Is Not "Swordless"
 Glitched Logic:
-  Option "logic_mod" Is "Glitched – Trivial"
-  | Option "logic_mod" Is "Glitched – Moderate"
+  Option "logic_mod" Is "Glitched – Moderate"
+Tricked Logic:
+  Glitched Logic
+  | Option "logic_mod" Is "Glitched – Trivial"
 
 Convenient:
   (
@@ -798,6 +803,10 @@ Convenient:
   )
   | Option "convenience_option" Is "Default"
   | Option "convenience_option" Is "Plentiful"
+
+Not Secret Cave Entrance Rando:
+  Option "randomize_entrances" Is "Disabled"
+  | Option "randomize_entrances" Is "Dungeons"
 
 TODO:
   Impossible

@@ -177,6 +177,11 @@
                 </item>
                 <item>
                  <property name="text">
+                  <string>Glitched – Lunatic (Crain)</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
                   <string>Glitched – No Logic</string>
                  </property>
                 </item>

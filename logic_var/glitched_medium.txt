@@ -1,4 +1,12 @@
 # Great Sea
+Windfall Island - Lenzo's House - Left Chest:
+  Mode: o
+  Need: Wind Waker
+  Types: Short Sidequest
+Windfall Island - Lenzo's House - Right Chest:
+  Mode: o
+  Need: Wind Waker
+  Types: Short Sidequest
 The Great Sea - Ghost Ship:
   Mode: o
   Need:

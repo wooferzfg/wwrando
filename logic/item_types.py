@@ -1,20 +1,8 @@
-
-PROGRESS_ITEMS = [
-  "Tingle Tuner",
+HARD_REQUIRED_ITEMS = [
   "Wind Waker",
-  "Spoils Bag",
   "Grappling Hook",
-  "Power Bracelets",
-  "Iron Boots",
-  "Bait Bag",
   "Boomerang",
   "Hookshot",
-  "Delivery Bag",
-  "Bombs",
-  "Skull Hammer",
-  "Deku Leaf",
-  "Hero's Shield",
-  "Mirror Shield",
 
   "Triforce Shard 1",
   "Triforce Shard 2",
@@ -25,12 +13,30 @@ PROGRESS_ITEMS = [
   "Triforce Shard 7",
   "Triforce Shard 8",
 
+  "Wind's Requiem",
+  "Ballad of Gales",
+]+ \
+  ["Progressive Sword"]*4 + \
+  ["Progressive Bow"]*3
+
+SOFT_REQUIRED_ITEMS = [
+  "Tingle Tuner",
+
+  "Spoils Bag",
+  "Power Bracelets",
+  "Iron Boots",
+  "Bait Bag",
+  "Delivery Bag",
+  "Bombs",
+  "Skull Hammer",
+  "Deku Leaf",
+  "Hero's Shield",
+  "Mirror Shield",
+
   "Nayru's Pearl",
   "Din's Pearl",
   "Farore's Pearl",
 
-  "Wind's Requiem",
-  "Ballad of Gales",
   "Command Melody",
   "Earth God's Lyric",
   "Wind God's Aria",
@@ -50,23 +56,19 @@ PROGRESS_ITEMS = [
   "Wind Tingle Statue",
 
   "Magic Meter Upgrade",
-
   "Ghost Ship Chart",
 ] + \
-  ["Progressive Sword"]*4 + \
-  ["Progressive Bow"]*3 + \
   ["Progressive Wallet"]*2 + \
   ["Progressive Picto Box"]*2 + \
-  ["Empty Bottle"]*4 #+ \
+  ["Empty Bottle"]*4
+
+PROGRESS_ITEMS = HARD_REQUIRED_ITEMS + SOFT_REQUIRED_ITEMS
 
 NONPROGRESS_ITEMS = [
   "Telescope",
   "Magic Armor",
   "Hero's Charm",
 
-  # Complimentary ID is not placed in the randomizer to avoid the player getting an overly full delivery bag.
-  # If you got a progress item for your delivery bag when the bag was already full, the new item would simply never enter your inventory.
-  #"Complimentary ID",
   "Fill-Up Coupon",
 
   "Progressive Bomb Bag",
@@ -81,11 +83,6 @@ NONPROGRESS_ITEMS = [
   "Octo Chart",
   "Tingle's Chart",
 
-  # These three charts are inaccurate in the randomizer so they're not placed.
-  # If a way to update them is found they should be placed.
-  #"Sea Hearts Chart",
-  #"Island Hearts Chart",
-  #"IN-credible Chart",
 ] + \
   ["Piece of Heart"]*44 + \
   ["Heart Container"]*6
