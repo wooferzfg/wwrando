@@ -7,7 +7,7 @@ try:
   IS_RUNNING_FROM_SOURCE = False
 except ImportError:
   RANDO_ROOT_PATH = os.path.dirname(os.path.realpath(__file__))
-  IS_RUNNING_FROM_SOURCE = True
+  IS_RUNNING_FROM_SOURCE = False
 
 ASSETS_PATH = os.path.join(RANDO_ROOT_PATH, "assets")
 DATA_PATH = os.path.join(RANDO_ROOT_PATH, "data")

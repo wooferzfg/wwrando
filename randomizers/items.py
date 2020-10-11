@@ -6,8 +6,6 @@ from fs_helpers import *
 import tweaks
 
 def randomize_items(self):
-  print("Randomizing items...")
-  
   if self.options.get("race_mode"):
     randomize_boss_rewards(self)
   

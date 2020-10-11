@@ -42,7 +42,7 @@ class WWRandomizerWindow(QMainWindow):
     
     self.cmd_line_args = cmd_line_args
     self.bulk_test = ("-bulk" in cmd_line_args)
-    self.no_ui_test = ("-noui" in cmd_line_args)
+    self.no_ui_test = True
     self.profiling = ("-profile" in cmd_line_args)
     
     self.custom_color_selector_buttons = OrderedDict()
@@ -72,6 +72,9 @@ class WWRandomizerWindow(QMainWindow):
     self.ui.starting_hcs.valueChanged.connect(self.update_health_label)
     
     self.load_settings()
+
+    self.decode_permalink(cmd_line_args["-permalink"])
+    self.ui.seed.setText(cmd_line_args["-seed"])
     
     self.ui.clean_iso_path.editingFinished.connect(self.update_settings)
     self.ui.output_folder.editingFinished.connect(self.update_settings)
@@ -124,13 +127,6 @@ class WWRandomizerWindow(QMainWindow):
       return
     
     self.show()
-    
-    if not IS_RUNNING_FROM_SOURCE:
-      self.update_checker_thread = UpdateCheckerThread()
-      self.update_checker_thread.finished_checking_for_updates.connect(self.show_update_check_results)
-      self.update_checker_thread.start()
-    else:
-      self.ui.update_checker_label.setText("(Running from source, skipping release update check.)")
   
   def generate_seed(self):
     random.seed(None)
@@ -241,7 +237,6 @@ class WWRandomizerWindow(QMainWindow):
     max_progress_val = 20
     if options.get("randomize_enemy_palettes"):
       max_progress_val += 10
-    self.progress_dialog = RandomizerProgressDialog("Randomizing", "Initializing...", max_progress_val)
     
     if self.bulk_test:
       failures_done = 0
@@ -276,18 +271,10 @@ class WWRandomizerWindow(QMainWindow):
       return
     
     self.randomizer_thread = RandomizerThread(rando, profiling=self.profiling)
-    self.randomizer_thread.update_progress.connect(self.update_progress_dialog)
     self.randomizer_thread.randomization_complete.connect(self.randomization_complete)
-    self.randomizer_thread.randomization_failed.connect(self.randomization_failed)
     self.randomizer_thread.start()
   
-  def update_progress_dialog(self, next_option_description, options_finished):
-    self.progress_dialog.setLabelText(next_option_description)
-    self.progress_dialog.setValue(options_finished)
-  
   def randomization_complete(self):
-    self.progress_dialog.reset()
-    
     if self.no_ui_test:
       self.close()
       return
@@ -1270,10 +1257,6 @@ class WWRandomizerWindow(QMainWindow):
       self.close()
   
   def closeEvent(self, event):
-    if not IS_RUNNING_FROM_SOURCE:
-      # Need to wait for the update checker before exiting, or the program will crash when closing.
-      self.update_checker_thread.quit()
-      self.update_checker_thread.wait()
     event.accept()
 
 class ModelFilterOut(QSortFilterProxyModel):
@@ -1333,11 +1316,10 @@ class RandomizerThread(QThread):
         next_option_description, options_finished = next(randomizer_generator)
         if options_finished == -1:
           break
-        self.update_progress.emit(next_option_description, options_finished)
     except Exception as e:
       stack_trace = traceback.format_exc()
       error_message = "Randomization failed with error:\n" + str(e) + "\n\n" + stack_trace
-      self.randomization_failed.emit(error_message)
+      self.randomization_complete.emit()
       return
     
     if self.profiling:
