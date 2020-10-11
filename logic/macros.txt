@@ -115,13 +115,14 @@ Can Get into Earth Temple:
 Can Access Wind Temple:
   Can Access Dungeon Entrance On Gale Isle
 
+Can Get to Far Ledge:
+  (Can Cut Down Outset Trees & Can Fly With Deku Leaf Outdoors)
+  | Hookshot
+  | (Tricked Logic & Can Fly With Deku Leaf Outdoors)
+
 Can Access Secret Cave Entrance on Outset Island:
-  (
-    (Can Cut Down Outset Trees & Can Fly With Deku Leaf Outdoors)
-    | Hookshot
-    | (Tricked Logic & Can Fly With Deku Leaf Outdoors)
-  )
-  & Power Bracelets
+  (Can Get to Far Ledge & Power Bracelets )
+  | Complex Logic
 Can Access Secret Cave Entrance on Dragon Roost Island:
   Can Move Boulders
 Can Access Secret Cave Entrance on Fire Mountain:
@@ -786,8 +787,11 @@ In Swordless Mode:
   Option "sword_mode" Is "Swordless"
 Outside Swordless Mode:
   Option "sword_mode" Is Not "Swordless"
+Complex Logic:
+  Option "logic_mod" Is "Glitched – Lunatic"
 Glitched Logic:
-  Option "logic_mod" Is "Glitched – Moderate"
+  Complex Logic
+  | Option "logic_mod" Is "Glitched – Moderate"
 Tricked Logic:
   Glitched Logic
   | Option "logic_mod" Is "Glitched – Trivial"
@@ -807,6 +811,21 @@ Convenient:
 Not Secret Cave Entrance Rando:
   Option "randomize_entrances" Is "Disabled"
   | Option "randomize_entrances" Is "Dungeons"
+
+Can DRC Backward:
+  Complex Logic
+  & Hero's Bow
+  & DRC Small Key x1
+Can Burn Pallet Door:
+  Complex Logic
+  & (
+    Bombs
+    | Fire Arrows
+  )
+Can Spring Storage:
+  Complex Logic
+  & Iron Boots
+  & Hookshot
 
 TODO:
   Impossible

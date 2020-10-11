@@ -95,10 +95,13 @@ The only logic in place is:
 
 This folder will house custom logic injection file. If injection files meet certain checksums and structure, upon launching the randomizer, they will be selectable from the logic type dropdown.
 Custom logic and injection files are not directly associated with The Wind Waker Randomizer, dv_im, or any directly related party of either repository.
-As of 1.8.0d, dv_im does not yet support custom logic injection.
+**Important Notes**
+- Tags must end with a forwardslash "/", otherwise errors may be raised. However, <inject> needs to be the root and final tag. See example.dv_im for more information.
+- File type is .dv_im
+- The formatting is XML, so white space outside variables is for legibility.
 
 **Structure** - This is subject to change prior to the release of custom logic injection
-*<inject Creator='str' Type='str' Description='str' Change='int' File='str' Checksum='int'/>*
+*<inject Creator="str" Type="str" Description="str" Change="int" File="str" Checksum="int">*
 1. Creator -     Dictates the creator of the custom logic
 2. Type -        Dictates the name of the custom logic
 3. Description - Dictates the description of the custom logic
@@ -112,21 +115,21 @@ As of 1.8.0d, dv_im does not yet support custom logic injection.
                  - d is the length of Description
                  - e is the Checksum
 
-*<check Name='str' Mode='char' Need='list' Types='list' Glitches='list' Item='str'/>*
+*<check Name="str" Mode="char" Need="list" Types="list" Glitches="list" Item="str"/>*
 1. Name -        Dictates the name of the check as dictated by TWWR
 2. Mode -        Dictates the injection method
-                 - 'o' is to overwrite or replace current existing data
-                 - 'a' is to append or add to current data
-                 - 'f' is to force item on check
+                 - "o" is to overwrite or replace current existing data
+                 - "a" is to append or add to current data
+                 - "f" is to force item on check
 3. Need -        Dictates required items to complete check
-                 - '&' is used to dictate a requirement of multiple items (AND)
-                 - '|' is used to dictate a requirement of variable items (OR)
-                 - '(' and ')' is used to dictate complex relations
-                 - '&' and '|' cannot be on the same nesting level
+                 - "AND" is used to dictate a requirement of multiple items
+                 - "OR" is used to dictate a requirement of variable items
+                 - "(" and ")" is used to dictate complex relations
+                 - "AND" and "OR" cannot be on the same nesting level
 4. Types -       Dictates the settings users must enable to make check a valid location (Comma separated formatting)
 5. Glitches -    Dictates the glitches user may be expected to use*
 6. Item -        Dictates the item to be forced on check* (Is not implimented)
 *. Elements may not be necessary to define check
 
-*<comment Line='str'/> OR <! ----- />*
+*<comment Line="str"/> OR <! ----- />*
 1. Line -     Dictates the comment

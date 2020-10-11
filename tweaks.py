@@ -44,7 +44,7 @@ def get_logic_mod(logic):
       logic_mod = "glitched_easy.txt"
     elif(logic_type[1]=="Moderate"):
       logic_mod = "glitched_medium.txt"
-    elif(logic_type[1]=="Lunatic (Crain)"):
+    elif(logic_type[1]=="Lunatic"):
       logic_mod = "glitched_hard.txt"
     elif(logic_type[1]=="No Logic"):
       logic_mod = "no_logic.txt"
@@ -54,7 +54,7 @@ def get_logic_mod(logic):
     logic_mod = "other"
   return logic_mod
 
-def modify_logic_data(argument=[],definition=[],run='YAML'):
+def modify_logic_data(argument=OrderedDict(),definition=OrderedDict(),run='YAML'):
   mode = definition["Mode"]
   try:
     if(mode=="o"):

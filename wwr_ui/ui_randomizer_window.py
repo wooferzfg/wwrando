@@ -20,7 +20,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(950, 650)
+        MainWindow.resize(950, 850)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout = QVBoxLayout(self.centralwidget)
@@ -31,7 +31,7 @@ class Ui_MainWindow(object):
         self.scroll_for_main.setWidgetResizable(True)
         self.content_for_main_scroll = QWidget()
         self.content_for_main_scroll.setObjectName(u"content_for_main_scroll")
-        self.content_for_main_scroll.setGeometry(QRect(0, 0, 944, 730))
+        self.content_for_main_scroll.setGeometry(QRect(0, 0, 944, 753))
         self.verticalLayout_4 = QVBoxLayout(self.content_for_main_scroll)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
@@ -92,20 +92,10 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_2.addLayout(self.grid_for_paths)
 
-        self.layout_for_logic = QHBoxLayout()
-        self.layout_for_logic.setObjectName(u"layout_for_logic")
-        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.layout_for_logic.addItem(self.horizontalSpacer_2)
-
-        self.label_for_logic = QLabel(self.tab_for_settings)
-        self.label_for_logic.setObjectName(u"label_for_logic")
-        self.label_for_logic.setEnabled(True)
-        self.label_for_logic.setMaximumSize(QSize(489, 16777215))
-
-        self.layout_for_logic.addWidget(self.label_for_logic)
-
+        self.gridLayout = QGridLayout()
+        self.gridLayout.setObjectName(u"gridLayout")
         self.logic_mod = QComboBox(self.tab_for_settings)
+        self.logic_mod.addItem("")
         self.logic_mod.addItem("")
         self.logic_mod.addItem("")
         self.logic_mod.addItem("")
@@ -114,22 +104,34 @@ class Ui_MainWindow(object):
         self.logic_mod.setObjectName(u"logic_mod")
         self.logic_mod.setMinimumSize(QSize(70, 0))
 
-        self.layout_for_logic.addWidget(self.logic_mod)
+        self.gridLayout.addWidget(self.logic_mod, 0, 3, 1, 1)
 
         self.horizontalSpacer_4 = QSpacerItem(5, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.layout_for_logic.addItem(self.horizontalSpacer_4)
-
-        self.horizontalSpacer_3 = QSpacerItem(5, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.layout_for_logic.addItem(self.horizontalSpacer_3)
+        self.gridLayout.addItem(self.horizontalSpacer_4, 0, 4, 1, 1)
 
         self.horizontalSpacer = QSpacerItem(5, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.layout_for_logic.addItem(self.horizontalSpacer)
+        self.gridLayout.addItem(self.horizontalSpacer, 0, 5, 1, 1)
+
+        self.label_for_logic = QLabel(self.tab_for_settings)
+        self.label_for_logic.setObjectName(u"label_for_logic")
+        self.label_for_logic.setEnabled(True)
+        self.label_for_logic.setMaximumSize(QSize(489, 16777215))
+
+        self.gridLayout.addWidget(self.label_for_logic, 0, 2, 1, 1)
+
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.gridLayout.addItem(self.horizontalSpacer_2, 0, 1, 1, 1)
+
+        self.logic_desc = QLabel(self.tab_for_settings)
+        self.logic_desc.setObjectName(u"logic_desc")
+
+        self.gridLayout.addWidget(self.logic_desc, 1, 2, 1, 3)
 
 
-        self.verticalLayout_2.addLayout(self.layout_for_logic)
+        self.verticalLayout_2.addLayout(self.gridLayout)
 
         self.group_for_locations = QGroupBox(self.tab_for_settings)
         self.group_for_locations.setObjectName(u"group_for_locations")
@@ -171,28 +173,22 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.progression_combat_secret_caves, 0, 4, 1, 1)
 
-        self.progression_free_gifts = QCheckBox(self.group_for_locations)
-        self.progression_free_gifts.setObjectName(u"progression_free_gifts")
-        self.progression_free_gifts.setChecked(True)
-
-        self.gridLayout_2.addWidget(self.progression_free_gifts, 1, 2, 1, 1)
-
         self.progression_savage_labyrinth = QCheckBox(self.group_for_locations)
         self.progression_savage_labyrinth.setObjectName(u"progression_savage_labyrinth")
 
         self.gridLayout_2.addWidget(self.progression_savage_labyrinth, 0, 6, 1, 1)
-
-        self.progression_puzzle_secret_caves = QCheckBox(self.group_for_locations)
-        self.progression_puzzle_secret_caves.setObjectName(u"progression_puzzle_secret_caves")
-        self.progression_puzzle_secret_caves.setChecked(True)
-
-        self.gridLayout_2.addWidget(self.progression_puzzle_secret_caves, 0, 2, 1, 1)
 
         self.progression_misc = QCheckBox(self.group_for_locations)
         self.progression_misc.setObjectName(u"progression_misc")
         self.progression_misc.setChecked(True)
 
         self.gridLayout_2.addWidget(self.progression_misc, 1, 4, 1, 1)
+
+        self.progression_puzzle_secret_caves = QCheckBox(self.group_for_locations)
+        self.progression_puzzle_secret_caves.setObjectName(u"progression_puzzle_secret_caves")
+        self.progression_puzzle_secret_caves.setChecked(True)
+
+        self.gridLayout_2.addWidget(self.progression_puzzle_secret_caves, 0, 2, 1, 1)
 
         self.progression_eye_reef_chests = QCheckBox(self.group_for_locations)
         self.progression_eye_reef_chests.setObjectName(u"progression_eye_reef_chests")
@@ -263,6 +259,12 @@ class Ui_MainWindow(object):
         self.horizontalSpacer_9 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.gridLayout_2.addItem(self.horizontalSpacer_9, 0, 5, 1, 1)
+
+        self.progression_free_gifts = QCheckBox(self.group_for_locations)
+        self.progression_free_gifts.setObjectName(u"progression_free_gifts")
+        self.progression_free_gifts.setChecked(True)
+
+        self.gridLayout_2.addWidget(self.progression_free_gifts, 1, 2, 1, 1)
 
 
         self.verticalLayout_2.addWidget(self.group_for_locations)
@@ -711,6 +713,11 @@ class Ui_MainWindow(object):
 
         self.layout_for_starting_health.addItem(self.spacer_for_health_end)
 
+        self.no_heart_in_pool = QCheckBox(self.tab_for_starting_items)
+        self.no_heart_in_pool.setObjectName(u"no_heart_in_pool")
+
+        self.layout_for_starting_health.addWidget(self.no_heart_in_pool)
+
 
         self.verticalLayout_10.addLayout(self.layout_for_starting_health)
 
@@ -899,7 +906,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         self.tab_for_main.setCurrentIndex(0)
-        self.logic_mod.setCurrentIndex(1)
+        self.logic_mod.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -913,13 +920,15 @@ class Ui_MainWindow(object):
         self.label_for_seed.setText(QCoreApplication.translate("MainWindow", u"Seed (optional)", None))
         self.generate_seed_button.setText(QCoreApplication.translate("MainWindow", u"New seed", None))
         self.clean_iso_path_browse_button.setText(QCoreApplication.translate("MainWindow", u"Browse", None))
-        self.label_for_logic.setText(QCoreApplication.translate("MainWindow", u"Logic Type", None))
         self.logic_mod.setItemText(0, QCoreApplication.translate("MainWindow", u"Glitchless \u2013 Beginner", None))
         self.logic_mod.setItemText(1, QCoreApplication.translate("MainWindow", u"Glitchless \u2013 Standard", None))
         self.logic_mod.setItemText(2, QCoreApplication.translate("MainWindow", u"Glitched \u2013 Trivial", None))
         self.logic_mod.setItemText(3, QCoreApplication.translate("MainWindow", u"Glitched \u2013 Moderate", None))
-        self.logic_mod.setItemText(4, QCoreApplication.translate("MainWindow", u"Glitched \u2013 No Logic", None))
+        self.logic_mod.setItemText(4, QCoreApplication.translate("MainWindow", u"Glitched \u2013 Lunatic", None))
+        self.logic_mod.setItemText(5, QCoreApplication.translate("MainWindow", u"Glitched \u2013 No Logic", None))
 
+        self.label_for_logic.setText(QCoreApplication.translate("MainWindow", u"Logic Type", None))
+        self.logic_desc.setText("")
         self.group_for_locations.setTitle(QCoreApplication.translate("MainWindow", u"Where Should Progress Items Appear?", None))
         self.progression_battlesquid.setText(QCoreApplication.translate("MainWindow", u"Battlesquid Minigame", None))
         self.progression_minigames.setText(QCoreApplication.translate("MainWindow", u"Minigames", None))
@@ -927,10 +936,9 @@ class Ui_MainWindow(object):
         self.progression_expensive_purchases.setText(QCoreApplication.translate("MainWindow", u"Expensive Purchases", None))
         self.progression_great_fairies.setText(QCoreApplication.translate("MainWindow", u"Great Fairies", None))
         self.progression_combat_secret_caves.setText(QCoreApplication.translate("MainWindow", u"Combat Secret Caves", None))
-        self.progression_free_gifts.setText(QCoreApplication.translate("MainWindow", u"Free Gifts", None))
         self.progression_savage_labyrinth.setText(QCoreApplication.translate("MainWindow", u"Savage Labyrinth", None))
-        self.progression_puzzle_secret_caves.setText(QCoreApplication.translate("MainWindow", u"Puzzle Secret Caves", None))
         self.progression_misc.setText(QCoreApplication.translate("MainWindow", u"Miscellaneous", None))
+        self.progression_puzzle_secret_caves.setText(QCoreApplication.translate("MainWindow", u"Puzzle Secret Caves", None))
         self.progression_eye_reef_chests.setText(QCoreApplication.translate("MainWindow", u"Eye Reef Chests", None))
         self.progression_mail.setText(QCoreApplication.translate("MainWindow", u"Mail", None))
         self.progression_tingle_chests.setText(QCoreApplication.translate("MainWindow", u"Tingle Chests", None))
@@ -943,6 +951,7 @@ class Ui_MainWindow(object):
         self.progression_spoils_trading.setText(QCoreApplication.translate("MainWindow", u"Spoils Trading", None))
         self.progression_triforce_charts.setText(QCoreApplication.translate("MainWindow", u"Sunken Treasure (From Triforce Charts)", None))
         self.progression_submarines.setText(QCoreApplication.translate("MainWindow", u"Submarines", None))
+        self.progression_free_gifts.setText(QCoreApplication.translate("MainWindow", u"Free Gifts", None))
         self.group_for_settings_secondary.setTitle(QCoreApplication.translate("MainWindow", u"Dungeon Randomization Options", None))
         self.label_for_num_dungeon_race_mode.setText(QCoreApplication.translate("MainWindow", u"Dungeon Number", None))
         self.num_dungeon_race_mode.setItemText(0, QCoreApplication.translate("MainWindow", u"1", None))
@@ -1015,6 +1024,7 @@ class Ui_MainWindow(object):
         self.label_for_heart_container.setText(QCoreApplication.translate("MainWindow", u"Heart Containers", None))
         self.label_for_heart_piece.setText(QCoreApplication.translate("MainWindow", u"Heart Pieces", None))
         self.current_health.setText(QCoreApplication.translate("MainWindow", u"Current Starting Health: 3 hearts", None))
+        self.no_heart_in_pool.setText(QCoreApplication.translate("MainWindow", u"No Additional Health in Pool", None))
         self.tab_for_main.setTabText(self.tab_for_main.indexOf(self.tab_for_starting_items), QCoreApplication.translate("MainWindow", u"Starting Items", None))
         self.label_for_custom_player_model.setText(QCoreApplication.translate("MainWindow", u"Player Model", None))
         self.label_for_custom_color_preset.setText(QCoreApplication.translate("MainWindow", u"Color Preset", None))

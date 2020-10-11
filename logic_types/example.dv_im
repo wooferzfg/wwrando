@@ -1,0 +1,4 @@
+<inject Creator="DualVission" Type="Test CLI" Description="Test Logic Injection" Change="1" File="example.dv_im" Checksum="11">
+<comment Line="These are not actually possible, but this is to show how much can be done."/>
+<check Name="Hyrule - Master Sword Chamber" Mode="o" Need="Nothing" Types="Dungeons"/>
+</inject>

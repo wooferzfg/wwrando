@@ -1,0 +1,307 @@
+<inject Creator="LagoLunatic" Type="Standard" Description="The regular TWW Logic" Change="305" File="standard.dv_im" Chechsum="1">
+  <check Name="Outset Island - Underneath Link's House" Mode="o" Need="Nothing" Types="Other Chest"/>
+  <check Name="Outset Island - Mesa the Grasscutter's House" Mode="o" Need="Nothing" Types="Other Chest"/>
+  <check Name="Outset Island - Orca - Give 10 Knight's Crests" Mode="o" Need="Spoils Bag AND Can Farm Knight's Crests AND Can Sword Fight with Orca" Types="Spoils Trading"/>
+  <check Name="Outset Island - Orca - Hit 500 Times" Mode="o" Need="Can Sword Fight with Orca" Types="No progression"/>
+  <check Name="Outset Island - Great Fairy" Mode="o" Need="Can Cut Down Outset Trees AND Can Fly With Deku Leaf Outdoors AND Can Move Boulders" Types="Great Fairy"/>
+  <check Name="Outset Island - Jabun's Cave" Mode="o" Need="Bombs" Types="Island Puzzle"/>
+  <check Name="Outset Island - Dig up Black Soil" Mode="o" Need="Bait Bag AND Can Buy Bait AND Power Bracelets" Types="Island Puzzle"/>
+  <check Name="Outset Island - Savage Labyrinth - Floor 30" Mode="o" Need="Can Access Savage Labyrinth AND Can Defeat Keese AND Can Defeat Miniblins AND Can Defeat Red ChuChus AND Can Defeat Magtails AND Can Defeat Fire Keese AND Can Defeat Peahats AND Can Defeat Green ChuChus AND Can Defeat Boko Babas AND Can Defeat Mothulas AND Can Defeat Winged Mothulas AND Can Defeat Wizzrobes AND Can Defeat Armos AND Can Defeat Yellow ChuChus AND Can Defeat Red Bubbles AND Can Defeat Darknuts AND Can Play Wind's Requiem AND (Grappling Hook OR Hero's Sword OR Skull Hammer)" Types="Savage Labyrinth"/>
+  <check Name="Outset Island - Savage Labyrinth - Floor 50" Mode="o" Need="Can Access Other Location 'Outset Island - Savage Labyrinth - Floor 30' AND Can Aim Mirror Shield AND Can Defeat ReDeads AND Can Defeat Blue Bubbles AND Can Defeat Dark ChuChus AND Can Defeat Poes AND Can Defeat Stalfos AND Skull Hammer" Types="Savage Labyrinth"/>
+  <check Name="Windfall Island - Jail - Tingle - First Gift" Mode="o" Need="Nothing" Types="Free Gift"/>
+  <check Name="Windfall Island - Jail - Tingle - Second Gift" Mode="o" Need="Nothing" Types="Free Gift"/>
+  <check Name="Windfall Island - Jail - Maze Chest" Mode="o" Need="Nothing" Types="Island Puzzle"/>
+  <check Name="Windfall Island - Chu Jelly Juice Shop - Give 15 Green Chu Jelly" Mode="o" Need="Can Farm Green Chu Jelly" Types="Spoils Trading"/>
+  <check Name="Windfall Island - Chu Jelly Juice Shop - Give 15 Blue Chu Jelly" Mode="o" Need="Can Obtain 15 Blue Chu Jelly" Types="Spoils Trading, Long Sidequest"/>
+  <check Name="Windfall Island - Ivan - Catch Killer Bees" Mode="o" Need="Nothing" Types="Short Sidequest"/>
+  <check Name="Windfall Island - Mrs. Marie - Catch Killer Bees" Mode="o" Need="Nothing" Types="Short Sidequest"/>
+  <check Name="Windfall Island - Mrs. Marie - Give 1 Joy Pendant" Mode="o" Need="Spoils Bag" Types="Spoils Trading"/>
+  <check Name="Windfall Island - Mrs. Marie - Give 21 Joy Pendants" Mode="o" Need="Spoils Bag AND Can Farm Joy Pendants" Types="Spoils Trading"/>
+  <check Name="Windfall Island - Mrs. Marie - Give 40 Joy Pendants" Mode="o" Need="Spoils Bag AND Can Farm Joy Pendants" Types="Spoils Trading"/>
+  <check Name="Windfall Island - Lenzo's House - Left Chest" Mode="o" Need="Can Play Wind's Requiem AND Picto Box" Types="Short Sidequest"/>
+  <check Name="Windfall Island - Lenzo's House - Right Chest" Mode="o" Need="Can Play Wind's Requiem AND Picto Box" Types="Short Sidequest"/>
+  <check Name="Windfall Island - Lenzo's House - Become Lenzo's Assistant" Mode="o" Need="Picto Box" Types="Long Sidequest"/>
+  <check Name="Windfall Island - Lenzo's House - Bring Forest Firefly" Mode="o" Need="Picto Box AND Empty Bottle AND Can Access Forest Haven" Types="Long Sidequest"/>
+  <check Name="Windfall Island - House of Wealth Chest" Mode="o" Need="Nothing" Types="Other Chest"/>
+  <check Name="Windfall Island - Maggie's Father - Give 20 Skull Necklaces" Mode="o" Need="Rescued Aryll AND Spoils Bag AND Can Farm Skull Necklaces" Types="Spoils Trading"/>
+  <check Name="Windfall Island - Maggie - Free Item" Mode="o" Need="Rescued Aryll" Types="Free Gift"/>
+  <check Name="Windfall Island - Maggie - Delivery Reward" Mode="o" Need="Rescued Aryll AND Delivery Bag AND Moblin's Letter" Types="Short Sidequest"/>
+  <check Name="Windfall Island - Cafe Bar - Postman" Mode="o" Need="Rescued Aryll AND Delivery Bag AND Maggie's Letter" Types="Short Sidequest"/>
+  <check Name="Windfall Island - Kreeb - Light Up Lighthouse" Mode="o" Need="Can Play Wind's Requiem AND Fire Arrows" Types="Short Sidequest"/>
+  <check Name="Windfall Island - Transparent Chest" Mode="o" Need="Can Play Wind's Requiem AND Fire Arrows AND (Can Fly With Deku Leaf Outdoors OR Hookshot)" Types="Short Sidequest"/>
+  <check Name="Windfall Island - Tott - Teach Rhythm" Mode="o" Need="Wind Waker" Types="Free Gift"/>
+  <check Name="Windfall Island - Pirate Ship" Mode="o" Need="Nothing" Types="Minigame"/>
+  <check Name="Windfall Island - 5 Rupee Auction" Mode="o" Need="Nothing" Types="Expensive Purchase, Minigame"/>
+  <check Name="Windfall Island - 40 Rupee Auction" Mode="o" Need="Nothing" Types="Expensive Purchase, Minigame"/>
+  <check Name="Windfall Island - 60 Rupee Auction" Mode="o" Need="Nothing" Types="Expensive Purchase, Minigame"/>
+  <check Name="Windfall Island - 80 Rupee Auction" Mode="o" Need="Nothing" Types="Expensive Purchase, Minigame"/>
+  <check Name="Windfall Island - Zunari - Stock Exotic Flower in Zunari's Shop" Mode="o" Need="Rescued Aryll AND Delivery Bag" Types="Short Sidequest"/>
+  <check Name="Windfall Island - Sam - Decorate the Town" Mode="o" Need="Rescued Aryll AND Delivery Bag" Types="Long Sidequest"/>
+  <check Name="Windfall Island - Mila - Follow the Thief" Mode="o" Need="Rescued Aryll" Types="Short Sidequest"/>
+  <check Name="Windfall Island - Battlesquid - First Prize" Mode="o" Need="Nothing" Types="Battlesquid"/>
+  <check Name="Windfall Island - Battlesquid - Second Prize" Mode="o" Need="Nothing" Types="Battlesquid"/>
+  <check Name="Windfall Island - Battlesquid - Under 20 Shots Prize" Mode="o" Need="Nothing" Types="Battlesquid"/>
+  <check Name="Windfall Island - Pompie and Vera - Secret Meeting Photo" Mode="o" Need="Can Play Wind's Requiem AND Picto Box" Types="Short Sidequest"/>
+  <check Name="Windfall Island - Kamo - Full Moon Photo" Mode="o" Need="Deluxe Picto Box AND Song of Passing" Types="Long Sidequest"/>
+  <check Name="Windfall Island - Minenco - Miss Windfall Photo" Mode="o" Need="Deluxe Picto Box" Types="Short Sidequest"/>
+  <check Name="Windfall Island - Linda and Anton" Mode="o" Need="Deluxe Picto Box AND Song of Passing" Types="Long Sidequest"/>
+  <check Name="Dragon Roost Island - Wind Shrine" Mode="o" Need="Wind Waker" Types="Misc"/>
+  <check Name="Dragon Roost Island - Rito Aerie - Give Hoskit 20 Golden Feathers" Mode="o" Need="Spoils Bag AND Can Farm Golden Feathers" Types="Spoils Trading"/>
+  <check Name="Dragon Roost Island - Chest on Top of Boulder" Mode="o" Need="Hero's Bow OR (Bait Bag AND Can Buy Hyoi Pears) OR Boomerang OR Bombs" Types="Island Puzzle"/>
+  <check Name="Dragon Roost Island - Fly Across Platforms Around Island" Mode="o" Need="Can Fly With Deku Leaf Outdoors AND (Can Cut Grass OR Magic Meter Upgrade)" Types="Island Puzzle"/>
+  <check Name="Dragon Roost Island - Rito Aerie - Baito" Mode="o" Need="Nothing" Types="Minigame"/>
+  <check Name="Dragon Roost Island - Secret Cave" Mode="o" Need="Can Access Dragon Roost Island Secret Cave AND Can Defeat Keese AND Can Defeat Red ChuChus" Types="Combat Secret Cave"/>
+  <check Name="Dragon Roost Cavern - First Room" Mode="o" Need="Can Access Dragon Roost Cavern" Types="Dungeon"/>
+  <check Name="Dragon Roost Cavern - Alcove With Water Jugs" Mode="o" Need="Can Access Dragon Roost Cavern AND DRC Small Key x1" Types="Dungeon"/>
+  <check Name="Dragon Roost Cavern - Boarded Up Chest" Mode="o" Need="Can Access Dragon Roost Cavern AND DRC Small Key x1" Types="Dungeon"/>
+  <check Name="Dragon Roost Cavern - Chest Across Lava Pit" Mode="o" Need="Can Access Dragon Roost Cavern AND DRC Small Key x2 AND (Grappling Hook OR Deku Leaf)" Types="Dungeon"/>
+  <check Name="Dragon Roost Cavern - Rat Room" Mode="o" Need="Can Access Dragon Roost Cavern AND DRC Small Key x2" Types="Dungeon"/>
+  <check Name="Dragon Roost Cavern - Rat Room Boarded Up Chest" Mode="o" Need="Can Access Dragon Roost Cavern AND DRC Small Key x2" Types="Dungeon"/>
+  <check Name="Dragon Roost Cavern - Bird's Nest" Mode="o" Need="Can Access Dragon Roost Cavern AND DRC Small Key x3" Types="Dungeon"/>
+  <check Name="Dragon Roost Cavern - Dark Room" Mode="o" Need="Can Access Dragon Roost Cavern AND DRC Small Key x4" Types="Dungeon"/>
+  <check Name="Dragon Roost Cavern - Tingle Chest in Hub Room" Mode="o" Need="Can Access Dragon Roost Cavern AND DRC Small Key x4 AND Tingle Tuner Bombs" Types="Tingle Chest, Dungeon"/>
+  <check Name="Dragon Roost Cavern - Pot Room Chest" Mode="o" Need="Can Access Dragon Roost Cavern AND DRC Small Key x4" Types="Dungeon"/>
+  <check Name="Dragon Roost Cavern - Mini-Boss" Mode="o" Need="Can Access Dragon Roost Cavern AND DRC Small Key x4" Types="Dungeon"/>
+  <check Name="Dragon Roost Cavern - Under Rope Bridge" Mode="o" Need="Can Access Dragon Roost Cavern AND DRC Small Key x4 AND (Grappling Hook OR Can Fly With Deku Leaf Outdoors)" Types="Dungeon"/>
+  <check Name="Dragon Roost Cavern - Tingle Statue Chest" Mode="o" Need="Can Access Dragon Roost Cavern AND DRC Small Key x1 AND ( (DRC Small Key x4 AND Can Cut Down Hanging DRC Platform) OR Deku Leaf OR Ice Arrows ) AND Grappling Hook AND Tingle Tuner Bombs" Types="Tingle Chest, Dungeon"/>
+  <check Name="Dragon Roost Cavern - Big Key Chest" Mode="o" Need="Can Access Dragon Roost Cavern AND DRC Small Key x1 AND ( (DRC Small Key x4 AND Can Cut Down Hanging DRC Platform) OR Deku Leaf OR Ice Arrows ) AND Grappling Hook" Types="Dungeon"/>
+  <check Name="Dragon Roost Cavern - Boss Stairs Right Chest" Mode="o" Need="Can Access Dragon Roost Cavern AND DRC Small Key x4 AND (Grappling Hook OR Deku Leaf OR Hookshot OR Ice Arrows)" Types="Dungeon"/>
+  <check Name="Dragon Roost Cavern - Boss Stairs Left Chest" Mode="o" Need="Can Access Dragon Roost Cavern AND DRC Small Key x4 AND (Grappling Hook OR Deku Leaf OR Hookshot OR Ice Arrows)" Types="Dungeon"/>
+  <check Name="Dragon Roost Cavern - Gohma Heart Container" Mode="o" Need="Can Access Dragon Roost Cavern AND DRC Small Key x4 AND Grappling Hook AND DRC Big Key AND Can Defeat Gohma" Types="Dungeon"/>
+  <check Name="Forest Haven - On Tree Branch" Mode="o" Need="Can Access Forest Haven AND Grappling Hook" Types="Island Puzzle"/>
+  <check Name="Forest Haven - Small Island Chest" Mode="o" Need="Can Access Forest Haven AND Grappling Hook AND Can Fly With Deku Leaf Outdoors" Types="Island Puzzle"/>
+  <check Name="Forbidden Woods - First Room" Mode="o" Need="Can Access Forbidden Woods" Types="Dungeon"/>
+  <check Name="Forbidden Woods - Inside Hollow Tree's Mouth" Mode="o" Need="Can Access Forbidden Woods AND (Can Defeat Door Flowers OR Can Defeat Boko Babas)" Types="Dungeon"/>
+  <check Name="Forbidden Woods - Climb to Top Using Boko Baba Bulbs" Mode="o" Need="Can Access Forbidden Woods AND Deku Leaf AND Can Defeat Door Flowers" Types="Dungeon"/>
+  <check Name="Forbidden Woods - Hole in Tree" Mode="o" Need="Can Access Forbidden Woods AND Deku Leaf AND Can Defeat Boko Babas" Types="Dungeon"/>
+  <check Name="Forbidden Woods - Morth Pit" Mode="o" Need="Can Access Forbidden Woods AND Deku Leaf AND Can Defeat Boko Babas AND Grappling Hook" Types="Dungeon"/>
+  <check Name="Forbidden Woods - Vine Maze Left Chest" Mode="o" Need="Can Access Forbidden Woods AND Deku Leaf AND Can Defeat Boko Babas AND Grappling Hook" Types="Dungeon"/>
+  <check Name="Forbidden Woods - Vine Maze Right Chest" Mode="o" Need="Can Access Forbidden Woods AND Deku Leaf AND Can Defeat Boko Babas AND Grappling Hook" Types="Dungeon"/>
+  <check Name="Forbidden Woods - Tall Room Before Mini-Boss" Mode="o" Need="Can Access Forbidden Woods AND Deku Leaf AND Can Defeat Boko Babas AND Grappling Hook AND FW Small Key x1 AND Can Defeat Peahats" Types="Dungeon"/>
+  <check Name="Forbidden Woods - Mothula Mini-Boss Room" Mode="o" Need="Can Access Forbidden Woods AND Deku Leaf AND Can Defeat Boko Babas AND Grappling Hook AND FW Small Key x1 AND Can Defeat Winged Mothulas" Types="Dungeon"/>
+  <check Name="Forbidden Woods - Past Seeds Hanging by Vines" Mode="o" Need="Can Access Forbidden Woods AND Deku Leaf AND Can Defeat Boko Babas AND Grappling Hook AND FW Small Key x1 AND Can Defeat Door Flowers AND Can Destroy Seeds Hanging by Vines" Types="Dungeon"/>
+  <check Name="Forbidden Woods - Chest Across Red Hanging Flower" Mode="o" Need="Can Access Forbidden Woods AND Deku Leaf AND Can Defeat Boko Babas AND Grappling Hook AND Boomerang" Types="Dungeon"/>
+  <check Name="Forbidden Woods - Tingle Statue Chest" Mode="o" Need="Can Access Forbidden Woods AND Deku Leaf AND Grappling Hook AND Boomerang AND Tingle Tuner Bombs" Types="Tingle Chest, Dungeon"/>
+  <check Name="Forbidden Woods - Chest in Locked Tree Trunk" Mode="o" Need="Can Access Forbidden Woods AND Deku Leaf AND Can Defeat Boko Babas AND Grappling Hook AND Boomerang" Types="Dungeon"/>
+  <check Name="Forbidden Woods - Big Key Chest" Mode="o" Need="Can Access Forbidden Woods AND Deku Leaf AND Can Defeat Boko Babas AND Grappling Hook AND Boomerang" Types="Dungeon"/>
+  <check Name="Forbidden Woods - Double Mothula Room" Mode="o" Need="Can Access Forbidden Woods AND Deku Leaf AND Can Defeat Boko Babas AND (Can Defeat Door Flowers OR Grappling Hook) AND Can Defeat Mothulas" Types="Dungeon"/>
+  <check Name="Forbidden Woods - Kalle Demos Heart Container" Mode="o" Need="Can Access Forbidden Woods AND Deku Leaf AND Can Defeat Boko Babas AND (Can Defeat Door Flowers OR Grappling Hook) AND Can Defeat Mothulas AND FW Big Key AND Can Defeat Kalle Demos" Types="Dungeon"/>
+  <check Name="Greatfish Isle - Hidden Chest" Mode="o" Need="Can Fly With Deku Leaf Outdoors" Types="Island Puzzle"/>
+  <check Name="Tower of the Gods - Chest Behind Bombable Walls" Mode="o" Need="Can Access Tower of the Gods AND Bombs" Types="Dungeon"/>
+  <check Name="Tower of the Gods - Hop Across Floating Boxes" Mode="o" Need="Can Access Tower of the Gods" Types="Dungeon"/>
+  <check Name="Tower of the Gods - Light Two Torches" Mode="o" Need="Can Access Tower of the Gods AND Bombs" Types="Dungeon"/>
+  <check Name="Tower of the Gods - Skulls Room Chest" Mode="o" Need="Can Access Tower of the Gods AND Bombs" Types="Dungeon"/>
+  <check Name="Tower of the Gods - Shoot Eye Above Skulls Room Chest" Mode="o" Need="Can Access Tower of the Gods AND Bombs AND Hero's Bow" Types="Dungeon"/>
+  <check Name="Tower of the Gods - Tingle Statue Chest" Mode="o" Need="Can Access Tower of the Gods AND Bombs AND TotG Small Key x1 AND Can Defeat Yellow ChuChus AND Tingle Tuner Bombs" Types="Tingle Chest, Dungeon"/>
+  <check Name="Tower of the Gods - First Chest Guarded by Armos Knights" Mode="o" Need="Can Access Tower of the Gods AND Bombs AND TotG Small Key x1 AND Can Defeat Yellow ChuChus AND Hero's Bow" Types="Dungeon"/>
+  <check Name="Tower of the Gods - Stone Tablet" Mode="o" Need="Can Access Tower of the Gods AND Bombs AND TotG Small Key x1 AND Can Defeat Yellow ChuChus AND Wind Waker" Types="Dungeon"/>
+  <check Name="Tower of the Gods - Darknut Mini-Boss Room" Mode="o" Need="Can Access Tower of the Gods AND Bombs AND TotG Small Key x1 AND Can Defeat Yellow ChuChus AND Wind Waker AND (Grappling Hook OR Deku Leaf) AND (Can Play Command Melody OR Hero's Bow) AND Can Defeat Darknuts" Types="Dungeon"/>
+  <check Name="Tower of the Gods - Second Chest Guarded by Armos Knights" Mode="o" Need="Can Access Tower of the Gods AND Bombs AND TotG Small Key x1 AND Can Defeat Yellow ChuChus AND Wind Waker AND (Grappling Hook OR Deku Leaf) AND Can Play Command Melody AND Hero's Bow AND Can Play Wind's Requiem" Types="Dungeon"/>
+  <check Name="Tower of the Gods - Floating Platforms Room" Mode="o" Need="Can Access Tower of the Gods AND Bombs AND TotG Small Key x1 AND Can Defeat Yellow ChuChus AND Wind Waker AND (Grappling Hook OR Deku Leaf) AND Can Play Command Melody AND Hero's Bow" Types="Dungeon"/>
+  <check Name="Tower of the Gods - Top of Floating Platforms Room" Mode="o" Need="Can Access Tower of the Gods AND Bombs AND TotG Small Key x1 AND Can Defeat Yellow ChuChus AND Wind Waker AND (Grappling Hook OR Deku Leaf) AND Can Play Command Melody AND Hero's Bow" Types="Dungeon"/>
+  <check Name="Tower of the Gods - Big Key Chest" Mode="o" Need="Can Access Tower of the Gods AND Bombs AND Can Defeat Yellow ChuChus AND Wind Waker AND (Grappling Hook OR Deku Leaf) AND Can Play Command Melody AND Hero's Bow AND TotG Small Key x2 AND Deku Leaf" Types="Dungeon"/>
+  <check Name="Tower of the Gods - Gohdan Heart Container" Mode="o" Need="Can Access Tower of the Gods AND Bombs AND Can Defeat Yellow ChuChus AND Wind Waker AND (Grappling Hook OR Deku Leaf) AND Can Play Command Melody AND Hero's Bow AND TotG Small Key x2 AND Deku Leaf AND Can Defeat Armos AND TotG Big Key AND Can Defeat Gohdan" Types="Dungeon"/>
+  <check Name="Hyrule - Master Sword Chamber" Mode="o" Need="Can Access Hyrule AND Can Defeat Darknuts" Types="Dungeon"/>
+  <check Name="Forsaken Fortress - Phantom Ganon" Mode="o" Need="Can Reach and Defeat Phantom Ganon" Types="Dungeon"/>
+  <check Name="Forsaken Fortress - Chest Outside Upper Jail Cell" Mode="o" Need="Can Get Inside Forsaken Fortress AND (Deku Leaf OR Hookshot)" Types="Dungeon"/>
+  <check Name="Forsaken Fortress - Chest Inside Lower Jail Cell" Mode="o" Need="Can Get Inside Forsaken Fortress" Types="Dungeon"/>
+  <check Name="Forsaken Fortress - Chest Guarded By Bokoblin" Mode="o" Need="Can Get Inside Forsaken Fortress" Types="Dungeon"/>
+  <check Name="Forsaken Fortress - Chest on Bed" Mode="o" Need="Can Get Inside Forsaken Fortress" Types="Dungeon"/>
+  <check Name="Forsaken Fortress - Helmaroc King Heart Container" Mode="o" Need="Can Get Inside Forsaken Fortress AND Skull Hammer AND (Deku Leaf OR Hookshot) AND Can Defeat Helmaroc King" Types="Dungeon"/>
+  <check Name="Mother and Child Isles - Inside Mother Isle" Mode="o" Need="Can Play Ballad of Gales" Types="Other Chest"/>
+  <check Name="Fire Mountain - Cave - Chest" Mode="o" Need="Can Access Fire Mountain Secret Cave AND Can Defeat Magtails" Types="Puzzle Secret Cave"/>
+  <check Name="Fire Mountain - Lookout Platform Chest" Mode="o" Need="Nothing" Types="Platform"/>
+  <check Name="Fire Mountain - Lookout Platform - Destroy the Cannons" Mode="o" Need="Can Destroy Cannons" Types="Platform"/>
+  <check Name="Fire Mountain - Big Octo" Mode="o" Need="Can Defeat Big Octos AND Grappling Hook" Types="Big Octo"/>
+  <check Name="Ice Ring Isle - Frozen Chest" Mode="o" Need="Fire Arrows" Types="Island Puzzle"/>
+  <check Name="Ice Ring Isle - Cave - Chest" Mode="o" Need="Can Access Ice Ring Isle Secret Cave" Types="Puzzle Secret Cave"/>
+  <check Name="Ice Ring Isle - Inner Cave - Chest" Mode="o" Need="Can Access Ice Ring Isle Secret Cave AND Iron Boots AND Fire Arrows" Types="Puzzle Secret Cave, Combat Secret Cave"/>
+  <check Name="Headstone Island - Top of the Island" Mode="o" Need="Bait Bag AND Can Buy Hyoi Pears" Types="Island Puzzle"/>
+  <check Name="Headstone Island - Submarine" Mode="o" Need="Can Defeat Bombchus" Types="Submarine"/>
+  <check Name="Earth Temple - Transparent Chest In Warp Pot Room" Mode="o" Need="Can Access Earth Temple AND Can Play Command Melody" Types="Dungeon"/>
+  <check Name="Earth Temple - Chest Behind Destructible Walls" Mode="o" Need="Can Access Earth Temple AND Can Play Command Melody AND Can Defeat Red ChuChus AND Can Defeat Green ChuChus AND Can Defeat Dark ChuChus AND Skull Hammer AND Mirror Shield" Types="Dungeon"/>
+  <check Name="Earth Temple - Transparent Chest in First Crypt" Mode="o" Need="Can Access Earth Temple AND Can Play Command Melody AND Skull Hammer AND Power Bracelets" Types="Dungeon"/>
+  <check Name="Earth Temple - Chest In Three Blocks Room" Mode="o" Need="Can Access Earth Temple AND Can Play Command Melody AND ET Small Key x2 AND Fire Arrows AND Power Bracelets AND Can Defeat Floormasters" Types="Dungeon"/>
+  <check Name="Earth Temple - Chest Behind Statues" Mode="o" Need="Can Access Earth Temple AND Can Play Command Melody AND ET Small Key x2 AND Fire Arrows AND Power Bracelets AND Can Defeat Floormasters" Types="Dungeon"/>
+  <check Name="Earth Temple - Casket in Second Crypt" Mode="o" Need="Can Access Earth Temple AND Can Play Command Melody AND ET Small Key x2 AND Fire Arrows AND Power Bracelets AND Can Defeat Floormasters" Types="Dungeon"/>
+  <check Name="Earth Temple - Stalfos Mini-Boss Room" Mode="o" Need="Can Access Earth Temple AND Can Play Command Melody AND ET Small Key x3 AND Fire Arrows AND Power Bracelets AND Can Defeat Floormasters AND (Can Defeat Stalfos OR Hookshot)" Types="Dungeon"/>
+  <check Name="Earth Temple - Tingle Statue Chest" Mode="o" Need="Can Access Earth Temple AND Can Play Command Melody AND Can Aim Mirror Shield AND Tingle Tuner Bombs" Types="Tingle Chest, Dungeon"/>
+  <check Name="Earth Temple - End of Foggy Room With Floormasters" Mode="o" Need="Can Access Earth Temple AND Can Play Command Melody AND Can Aim Mirror Shield AND Can Play Earth God's Lyric" Types="Dungeon"/>
+  <check Name="Earth Temple - Kill All Floormasters in Foggy Room" Mode="o" Need="Can Access Earth Temple AND Can Play Command Melody AND Can Aim Mirror Shield AND Can Play Earth God's Lyric AND Can Defeat Floormasters" Types="Dungeon"/>
+  <check Name="Earth Temple - Chest in Third Crypt" Mode="o" Need="Can Access Earth Temple AND Can Play Command Melody AND Can Aim Mirror Shield AND Can Play Earth God's Lyric AND Power Bracelets AND Skull Hammer AND ET Small Key x3 AND Can Defeat Red Bubbles" Types="Dungeon"/>
+  <check Name="Earth Temple - Many Mirrors Room Right Chest" Mode="o" Need="Can Access Earth Temple AND Can Play Command Melody AND Can Aim Mirror Shield AND Can Play Earth God's Lyric AND Power Bracelets AND Skull Hammer AND ET Small Key x3 AND Can Defeat Red Bubbles" Types="Dungeon"/>
+  <check Name="Earth Temple - Many Mirrors Room Left Chest" Mode="o" Need="Can Access Earth Temple AND Can Play Command Melody AND Can Aim Mirror Shield AND Can Play Earth God's Lyric AND Power Bracelets AND Skull Hammer AND ET Small Key x3 AND Can Defeat Red Bubbles" Types="Dungeon"/>
+  <check Name="Earth Temple - Stalfos Crypt Room" Mode="o" Need="Can Access Earth Temple AND Can Play Command Melody AND Can Aim Mirror Shield AND Can Play Earth God's Lyric AND Power Bracelets AND Skull Hammer AND ET Small Key x3 AND Can Defeat Red Bubbles AND Can Defeat Stalfos" Types="Dungeon"/>
+  <check Name="Earth Temple - Big Key Chest" Mode="o" Need="Can Access Earth Temple AND Can Play Command Melody AND Can Aim Mirror Shield AND Can Play Earth God's Lyric AND Power Bracelets AND Skull Hammer AND ET Small Key x3 AND Can Defeat Red Bubbles AND Can Defeat Blue Bubbles AND Can Defeat Darknuts" Types="Dungeon"/>
+  <check Name="Earth Temple - Jalhalla Heart Container" Mode="o" Need="Can Access Earth Temple AND Can Play Command Melody AND Can Aim Mirror Shield AND Can Play Earth God's Lyric AND Power Bracelets AND Skull Hammer AND ET Small Key x3 AND Can Defeat Red Bubbles AND ET Big Key AND Can Defeat Jalhalla" Types="Dungeon"/>
+  <check Name="Wind Temple - Chest Between Two Dirt Patches" Mode="o" Need="Can Access Wind Temple AND Can Play Command Melody" Types="Dungeon"/>
+  <check Name="Wind Temple - Tingle Statue Chest" Mode="o" Need="Can Access Wind Temple AND Can Play Command Melody AND Iron Boots AND Deku Leaf AND Tingle Tuner Bombs" Types="Tingle Chest, Dungeon"/>
+  <check Name="Wind Temple - Chest Behind Stone Head" Mode="o" Need="Can Access Wind Temple AND Can Play Command Melody AND Iron Boots AND Deku Leaf AND Hookshot" Types="Dungeon"/>
+  <check Name="Wind Temple - Chest in Left Alcove" Mode="o" Need="Can Access Wind Temple AND Can Play Command Melody AND Iron Boots AND Deku Leaf" Types="Dungeon"/>
+  <check Name="Wind Temple - Big Key Chest" Mode="o" Need="Can Access Wind Temple AND Can Play Command Melody AND Iron Boots AND Deku Leaf AND Can Play Wind God's Aria AND Can Defeat Darknuts" Types="Dungeon"/>
+  <check Name="Wind Temple - Chest In Many Cyclones Room" Mode="o" Need="Can Access Wind Temple AND Can Play Command Melody AND Iron Boots AND Deku Leaf AND ( (Can Cut Grass OR Magic Meter Upgrade) OR (Hookshot AND Can Defeat Blue Bubbles) )" Types="Dungeon"/>
+  <check Name="Wind Temple - Chest In Middle Of Hub Room" Mode="o" Need="Can Access Wind Temple AND Can Play Command Melody AND Iron Boots AND Deku Leaf AND ( Can Cut Grass OR (Hookshot AND Can Defeat Blue Bubbles) )" Types="Dungeon"/>
+  <check Name="Wind Temple - Spike Wall Room - First Chest" Mode="o" Need="Can Access Wind Temple AND Can Play Command Melody AND Iron Boots AND Deku Leaf AND ( Can Cut Grass OR (Hookshot AND Can Defeat Blue Bubbles) )" Types="Dungeon"/>
+  <check Name="Wind Temple - Spike Wall Room - Destroy All Cracked Floors" Mode="o" Need="Can Access Wind Temple AND Can Play Command Melody AND Iron Boots AND Deku Leaf AND ( Can Cut Grass OR (Hookshot AND Can Defeat Blue Bubbles) )" Types="Dungeon"/>
+  <check Name="Wind Temple - Wizzrobe Mini-Boss Room" Mode="o" Need="Can Access Wind Temple AND Can Play Command Melody AND Iron Boots AND Deku Leaf AND ( Can Cut Grass OR (Hookshot AND Can Defeat Blue Bubbles) ) AND WT Small Key x2 AND Can Defeat Darknuts AND Can Remove Peahat Armor" Types="Dungeon"/>
+  <check Name="Wind Temple - Chest at Top of Hub Room" Mode="o" Need="Can Access Wind Temple AND Can Play Command Melody AND Iron Boots AND Deku Leaf AND ( Can Cut Grass OR (Hookshot AND Can Defeat Blue Bubbles) )" Types="Dungeon"/>
+  <check Name="Wind Temple - Chest Behind Seven Armos" Mode="o" Need="Can Access Wind Temple AND Can Play Command Melody AND Iron Boots AND Deku Leaf AND ( Can Cut Grass OR (Hookshot AND Can Defeat Blue Bubbles) ) AND Can Defeat Armos" Types="Dungeon"/>
+  <check Name="Wind Temple - Kill All Enemies in Tall Basement Room" Mode="o" Need="Can Access Wind Temple AND Can Play Command Melody AND Iron Boots AND Deku Leaf AND Hookshot AND Can Defeat Blue Bubbles AND WT Small Key x2 AND Can Defeat Stalfos AND Can Defeat Wizzrobes AND Can Defeat Morths" Types="Dungeon"/>
+  <check Name="Wind Temple - Molgera Heart Container" Mode="o" Need="Can Access Wind Temple AND Can Play Command Melody AND Iron Boots AND Deku Leaf AND Hookshot AND Can Defeat Blue Bubbles AND WT Small Key x2 AND Can Play Wind God's Aria AND WT Big Key AND Can Defeat Molgera" Types="Dungeon"/>
+  <check Name="Ganon's Tower - Maze Chest" Mode="o" Need="Can Reach Ganon's Tower Phantom Ganon Room AND Can Defeat Phantom Ganon" Types="Dungeon"/>
+  <check Name="Mailbox - Letter from Hoskit's Girlfriend" Mode="o" Need="Spoils Bag AND Can Farm Golden Feathers AND Song of Passing" Types="Mail, Spoils Trading"/>
+  <check Name="Mailbox - Letter from Baito's Mother" Mode="o" Need="Delivery Bag AND Note to Mom AND Song of Passing" Types="Mail"/>
+  <check Name="Mailbox - Letter from Baito" Mode="o" Need="Delivery Bag AND Note to Mom AND Song of Passing AND Can Access Other Location 'Earth Temple - Jalhalla Heart Container'" Types="Mail, Dungeon"/>
+  <check Name="Mailbox - Letter from Komali's Father" Mode="o" Need="Farore's Pearl" Types="Mail"/>
+  <check Name="Mailbox - Letter Advertising Bombs in Beedle's Shop" Mode="o" Need="Bombs" Types="Mail"/>
+  <check Name="Mailbox - Letter Advertising Rock Spire Shop Ship" Mode="o" Need="Any Wallet Upgrade" Types="Mail"/>
+  <check Name="Mailbox - Beedle's Silver Membership Reward" Mode="o" Need="( Bait Bag OR Bombs OR Hero's Bow OR Empty Bottle ) AND Song of Passing" Types="No progression"/>
+  <check Name="Mailbox - Beedle's Gold Membership Reward" Mode="o" Need="( Bait Bag OR Bombs OR Hero's Bow OR Empty Bottle ) AND Song of Passing" Types="No progression"/>
+  <check Name="Mailbox - Letter from Orca" Mode="o" Need="Can Access Other Location 'Forbidden Woods - Kalle Demos Heart Container'" Types="Mail, Dungeon"/>
+  <check Name="Mailbox - Letter from Grandma" Mode="o" Need="Empty Bottle AND Can Get Fairies AND Song of Passing" Types="Mail"/>
+  <check Name="Mailbox - Letter from Aryll" Mode="o" Need="Can Access Other Location 'Forsaken Fortress - Helmaroc King Heart Container' AND Song of Passing" Types="Mail, Dungeon"/>
+  <check Name="Mailbox - Letter from Tingle" Mode="o" Need="Rescued Tingle AND Any Wallet Upgrade AND Can Access Other Location 'Forsaken Fortress - Helmaroc King Heart Container' AND Song of Passing" Types="Mail, Dungeon, Expensive Purchase"/>
+  <check Name="The Great Sea - Beedle's Shop Ship - 20 Rupee Item" Mode="o" Need="Nothing" Types="Misc"/>
+  <check Name="The Great Sea - Salvage Corp Gift" Mode="o" Need="Nothing" Types="Free Gift"/>
+  <check Name="The Great Sea - Cyclos" Mode="o" Need="Hero's Bow" Types="Misc"/>
+  <check Name="The Great Sea - Goron Trading Reward" Mode="o" Need="Rescued Aryll AND Delivery Bag" Types="Long Sidequest, Expensive Purchase"/>
+  <check Name="The Great Sea - Withered Trees" Mode="o" Need="Can Access Forest Haven AND Empty Bottle AND Can Play Ballad of Gales AND Can Access Other Location 'Cliff Plateau Isles - Highest Isle'" Types="Long Sidequest"/>
+  <check Name="The Great Sea - Ghost Ship" Mode="o" Need="Ghost Ship Chart AND Can Play Ballad of Gales AND Can Defeat Wizzrobes AND Can Defeat Poes AND Can Defeat ReDeads AND Can Defeat Stalfos" Types="Other Chest"/>
+  <check Name="Private Oasis - Chest at Top of Waterfall" Mode="o" Need="Hookshot OR Can Fly With Deku Leaf Outdoors" Types="Island Puzzle"/>
+  <check Name="Private Oasis - Cabana Labyrinth - First Chest" Mode="o" Need="Can Access Cabana Labyrinth AND Skull Hammer" Types="Puzzle Secret Cave"/>
+  <check Name="Private Oasis - Cabana Labyrinth - Second Chest" Mode="o" Need="Can Access Cabana Labyrinth AND Skull Hammer AND Can Play Wind's Requiem" Types="Puzzle Secret Cave"/>
+  <check Name="Private Oasis - Big Octo" Mode="o" Need="Can Defeat Big Octos AND Grappling Hook" Types="Big Octo"/>
+  <check Name="Spectacle Island - Barrel Shooting - First Prize" Mode="o" Need="Nothing" Types="Minigame"/>
+  <check Name="Spectacle Island - Barrel Shooting - Second Prize" Mode="o" Need="Nothing" Types="Minigame"/>
+  <check Name="Needle Rock Isle - Chest" Mode="o" Need="Bait Bag AND Can Buy Hyoi Pears" Types="Island Puzzle"/>
+  <check Name="Needle Rock Isle - Cave" Mode="o" Need="Can Access Needle Rock Isle Secret Cave AND Fire Arrows" Types="Puzzle Secret Cave"/>
+  <check Name="Needle Rock Isle - Golden Gunboat" Mode="o" Need="Bombs AND Grappling Hook" Types="Gunboat"/>
+  <check Name="Angular Isles - Peak" Mode="o" Need="Nothing" Types="Island Puzzle"/>
+  <check Name="Angular Isles - Cave" Mode="o" Need="Can Access Angular Isles Secret Cave AND Can Aim Mirror Shield AND (Deku Leaf OR Hookshot)" Types="Puzzle Secret Cave"/>
+  <check Name="Boating Course - Raft" Mode="o" Need="Nothing" Types="Raft"/>
+  <check Name="Boating Course - Cave" Mode="o" Need="Can Access Boating Course Secret Cave AND Can Hit Diamond Switches at Range AND Can Defeat Miniblins Easily" Types="Puzzle Secret Cave, Combat Secret Cave"/>
+  <check Name="Stone Watcher Island - Cave" Mode="o" Need="Can Access Stone Watcher Island Secret Cave AND Can Defeat Armos AND Can Defeat Wizzrobes AND Can Defeat Darknuts AND Can Play Wind's Requiem" Types="Combat Secret Cave"/>
+  <check Name="Stone Watcher Island - Lookout Platform Chest" Mode="o" Need="Nothing" Types="Platform"/>
+  <check Name="Stone Watcher Island - Lookout Platform - Destroy the Cannons" Mode="o" Need="Can Destroy Cannons" Types="Platform"/>
+  <check Name="Islet of Steel - Interior" Mode="o" Need="Bombs AND Can Play Wind's Requiem" Types="Other Chest"/>
+  <check Name="Islet of Steel - Lookout Platform - Defeat the Enemies" Mode="o" Need="Can Defeat Wizzrobes at Range" Types="Platform"/>
+  <check Name="Overlook Island - Cave" Mode="o" Need="Can Access Overlook Island Secret Cave AND Can Defeat Stalfos AND Can Defeat Wizzrobes AND Can Defeat Red ChuChus AND Can Defeat Green ChuChus AND Can Defeat Keese AND Can Defeat Fire Keese AND Can Defeat Morths AND Can Defeat Kargarocs AND Can Defeat Darknuts AND Can Play Wind's Requiem" Types="Combat Secret Cave"/>
+  <check Name="Bird's Peak Rock - Cave" Mode="o" Need="Can Access Bird's Peak Rock Secret Cave AND Can Play Wind's Requiem" Types="Puzzle Secret Cave"/>
+  <check Name="Pawprint Isle - Chuchu Cave - Chest" Mode="o" Need="Can Access Pawprint Isle Chuchu Cave" Types="Puzzle Secret Cave"/>
+  <check Name="Pawprint Isle - Chuchu Cave - Behind First Boulder" Mode="o" Need="Can Access Pawprint Isle Chuchu Cave AND Can Move Boulders" Types="Puzzle Secret Cave"/>
+  <check Name="Pawprint Isle - Chuchu Cave - Behind Second Boulder" Mode="o" Need="Can Access Pawprint Isle Chuchu Cave AND Can Move Boulders" Types="Puzzle Secret Cave"/>
+  <check Name="Pawprint Isle - Chuchu Cave - Scale the Wall" Mode="o" Need="Can Access Pawprint Isle Chuchu Cave AND Grappling Hook" Types="Puzzle Secret Cave"/>
+  <check Name="Pawprint Isle - Wizzrobe Cave" Mode="o" Need="Can Access Pawprint Isle Wizzrobe Cave AND Can Defeat Wizzrobes at Range AND Can Defeat Fire Keese AND Can Defeat Magtails AND Can Defeat Red ChuChus AND Can Defeat Green ChuChus AND Can Defeat Yellow ChuChus AND Can Defeat Red Bubbles AND Can Remove Peahat Armor" Types="Combat Secret Cave"/>
+  <check Name="Pawprint Isle - Lookout Platform - Defeat the Enemies" Mode="o" Need="Nothing" Types="Platform"/>
+  <check Name="Thorned Fairy Island - Great Fairy" Mode="o" Need="Skull Hammer" Types="Great Fairy"/>
+  <check Name="Thorned Fairy Island - Northeastern Lookout Platform - Destroy the Cannons" Mode="o" Need="Can Destroy Cannons" Types="Platform"/>
+  <check Name="Thorned Fairy Island - Southwestern Lookout Platform - Defeat the Enemies" Mode="o" Need="Can Fly With Deku Leaf Outdoors" Types="Platform"/>
+  <check Name="Eastern Fairy Island - Great Fairy" Mode="o" Need="Can Move Boulders" Types="Great Fairy"/>
+  <check Name="Eastern Fairy Island - Lookout Platform - Defeat the Cannons and Enemies" Mode="o" Need="Can Destroy Cannons" Types="Platform"/>
+  <check Name="Western Fairy Island - Great Fairy" Mode="o" Need="Skull Hammer" Types="Great Fairy"/>
+  <check Name="Western Fairy Island - Lookout Platform" Mode="o" Need="Nothing" Types="Platform"/>
+  <check Name="Southern Fairy Island - Great Fairy" Mode="o" Need="Bombs OR Fire Arrows" Types="Great Fairy"/>
+  <check Name="Southern Fairy Island - Lookout Platform - Destroy the Northwest Cannons" Mode="o" Need="Can Destroy Cannons AND Can Fly With Deku Leaf Outdoors" Types="Platform"/>
+  <check Name="Southern Fairy Island - Lookout Platform - Destroy the Southeast Cannons" Mode="o" Need="Can Destroy Cannons AND Can Fly With Deku Leaf Outdoors" Types="Platform"/>
+  <check Name="Northern Fairy Island - Great Fairy" Mode="o" Need="Nothing" Types="Great Fairy"/>
+  <check Name="Northern Fairy Island - Submarine" Mode="o" Need="Nothing" Types="Submarine"/>
+  <check Name="Tingle Island - Ankle - Reward for All Tingle Statues" Mode="o" Need="Dragon Tingle Statue AND Forbidden Tingle Statue AND Goddess Tingle Statue AND Earth Tingle Statue AND Wind Tingle Statue" Types="Misc"/>
+  <check Name="Tingle Island - Big Octo" Mode="o" Need="Can Defeat Big Octos AND Grappling Hook" Types="Big Octo"/>
+  <check Name="Diamond Steppe Island - Warp Maze Cave - First Chest" Mode="o" Need="Can Access Diamond Steppe Island Warp Maze Cave" Types="Puzzle Secret Cave"/>
+  <check Name="Diamond Steppe Island - Warp Maze Cave - Second Chest" Mode="o" Need="Can Access Diamond Steppe Island Warp Maze Cave" Types="Puzzle Secret Cave"/>
+  <check Name="Diamond Steppe Island - Big Octo" Mode="o" Need="Can Defeat Big Octos AND Grappling Hook" Types="Big Octo"/>
+  <check Name="Bomb Island - Cave" Mode="o" Need="Can Access Bomb Island Secret Cave AND Can Stun Magtails" Types="Puzzle Secret Cave"/>
+  <check Name="Bomb Island - Lookout Platform - Defeat the Enemies" Mode="o" Need="Nothing" Types="Platform"/>
+  <check Name="Bomb Island - Submarine" Mode="o" Need="Nothing" Types="Submarine"/>
+  <check Name="Rock Spire Isle - Cave" Mode="o" Need="Can Access Rock Spire Isle Secret Cave" Types="Combat Secret Cave"/>
+  <check Name="Rock Spire Isle - Beedle's Special Shop Ship - 500 Rupee Item" Mode="o" Need="Any Wallet Upgrade AND Can Farm Lots of Rupees" Types="Expensive Purchase"/>
+  <check Name="Rock Spire Isle - Beedle's Special Shop Ship - 950 Rupee Item" Mode="o" Need="Any Wallet Upgrade AND Can Farm Lots of Rupees" Types="Expensive Purchase"/>
+  <check Name="Rock Spire Isle - Beedle's Special Shop Ship - 900 Rupee Item" Mode="o" Need="Any Wallet Upgrade AND Can Farm Lots of Rupees" Types="Expensive Purchase"/>
+  <check Name="Rock Spire Isle - Western Lookout Platform - Destroy the Cannons" Mode="o" Need="Can Destroy Cannons AND Can Fly With Deku Leaf Outdoors" Types="Platform"/>
+  <check Name="Rock Spire Isle - Eastern Lookout Platform - Destroy the Cannons" Mode="o" Need="Can Destroy Cannons AND Can Fly With Deku Leaf Outdoors" Types="Platform"/>
+  <check Name="Rock Spire Isle - Center Lookout Platform" Mode="o" Need="Nothing" Types="Platform"/>
+  <check Name="Rock Spire Isle - Gunboat" Mode="o" Need="Bombs AND Grappling Hook" Types="Gunboat"/>
+  <check Name="Shark Island - Cave" Mode="o" Need="Can Access Shark Island Secret Cave AND Can Defeat Miniblins" Types="Combat Secret Cave"/>
+  <check Name="Cliff Plateau Isles - Cave" Mode="o" Need="Can Access Cliff Plateau Isles Secret Cave AND Can Defeat Boko Babas" Types="Puzzle Secret Cave"/>
+  <check Name="Cliff Plateau Isles - Highest Isle" Mode="o" Need="Can Access Cliff Plateau Isles Secret Cave AND Can Defeat Boko Babas AND Deku Leaf" Types="Puzzle Secret Cave"/>
+  <check Name="Cliff Plateau Isles - Lookout Platform" Mode="o" Need="Nothing" Types="Platform"/>
+  <check Name="Crescent Moon Island - Chest" Mode="o" Need="Nothing" Types="Other Chest"/>
+  <check Name="Crescent Moon Island - Submarine" Mode="o" Need="Can Defeat Miniblins" Types="Submarine"/>
+  <check Name="Horseshoe Island - Play Golf" Mode="o" Need="Deku Leaf AND (Can Fly With Deku Leaf Outdoors OR Hookshot)" Types="Island Puzzle"/>
+  <check Name="Horseshoe Island - Cave" Mode="o" Need="Can Access Horseshoe Island Secret Cave AND Can Defeat Mothulas AND Can Defeat Winged Mothulas" Types="Combat Secret Cave"/>
+  <check Name="Horseshoe Island - Northwestern Lookout Platform" Mode="o" Need="Nothing" Types="Platform"/>
+  <check Name="Horseshoe Island - Southeastern Lookout Platform" Mode="o" Need="Nothing" Types="Platform"/>
+  <check Name="Flight Control Platform - Bird-Man Contest - First Prize" Mode="o" Need="Can Fly With Deku Leaf Outdoors AND Magic Meter Upgrade" Types="Minigame"/>
+  <check Name="Flight Control Platform - Submarine" Mode="o" Need="Can Defeat Wizzrobes AND Can Defeat Red ChuChus AND Can Defeat Green ChuChus AND Can Defeat Miniblins AND Can Defeat Wizzrobes at Range" Types="Submarine"/>
+  <check Name="Star Island - Cave" Mode="o" Need="Can Access Star Island Secret Cave AND Can Defeat Magtails" Types="Combat Secret Cave"/>
+  <check Name="Star Island - Lookout Platform" Mode="o" Need="Nothing" Types="Platform"/>
+  <check Name="Star Belt Archipelago - Lookout Platform" Mode="o" Need="Nothing" Types="Platform"/>
+  <check Name="Five-Star Isles - Lookout Platform - Destroy the Cannons" Mode="o" Need="Can Destroy Cannons" Types="Platform"/>
+  <check Name="Five-Star Isles - Raft" Mode="o" Need="Nothing" Types="Raft"/>
+  <check Name="Five-Star Isles - Submarine" Mode="o" Need="Nothing" Types="Submarine"/>
+  <check Name="Seven-Star Isles - Center Lookout Platform" Mode="o" Need="Nothing" Types="Platform"/>
+  <check Name="Seven-Star Isles - Northern Lookout Platform" Mode="o" Need="Nothing" Types="Platform"/>
+  <check Name="Seven-Star Isles - Southern Lookout Platform" Mode="o" Need="Can Defeat Wizzrobes at Range" Types="Platform"/>
+  <check Name="Seven-Star Isles - Big Octo" Mode="o" Need="Can Defeat Big Octos AND Grappling Hook" Types="Big Octo"/>
+  <check Name="Cyclops Reef - Destroy the Cannons and Gunboats" Mode="o" Need="Bombs AND Can Fly With Deku Leaf Outdoors" Types="Eye Reef Chest"/>
+  <check Name="Cyclops Reef - Lookout Platform - Defeat the Enemies" Mode="o" Need="Nothing" Types="Platform"/>
+  <check Name="Two-Eye Reef - Destroy the Cannons and Gunboats" Mode="o" Need="Bombs AND Can Fly With Deku Leaf Outdoors" Types="Eye Reef Chest"/>
+  <check Name="Two-Eye Reef - Lookout Platform" Mode="o" Need="Nothing" Types="Platform"/>
+  <check Name="Two-Eye Reef - Big Octo Great Fairy" Mode="o" Need="Can Defeat Big Octos" Types="Big Octo, Great Fairy"/>
+  <check Name="Three-Eye Reef - Destroy the Cannons and Gunboats" Mode="o" Need="Bombs AND Can Fly With Deku Leaf Outdoors" Types="Eye Reef Chest"/>
+  <check Name="Four-Eye Reef - Destroy the Cannons and Gunboats" Mode="o" Need="Bombs AND Can Fly With Deku Leaf Outdoors" Types="Eye Reef Chest"/>
+  <check Name="Five-Eye Reef - Destroy the Cannons" Mode="o" Need="Can Destroy Cannons AND Can Fly With Deku Leaf Outdoors" Types="Eye Reef Chest"/>
+  <check Name="Five-Eye Reef - Lookout Platform" Mode="o" Need="Nothing" Types="Platform"/>
+  <check Name="Six-Eye Reef - Destroy the Cannons and Gunboats" Mode="o" Need="Bombs AND Can Fly With Deku Leaf Outdoors" Types="Eye Reef Chest"/>
+  <check Name="Six-Eye Reef - Lookout Platform - Destroy the Cannons" Mode="o" Need="Can Destroy Cannons" Types="Platform"/>
+  <check Name="Six-Eye Reef - Submarine" Mode="o" Need="Nothing" Types="Submarine"/>
+  <check Name="Forsaken Fortress - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 1" Types="Sunken Treasure"/>
+  <check Name="Star Island - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 2" Types="Sunken Treasure"/>
+  <check Name="Northern Fairy Island - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 3" Types="Sunken Treasure"/>
+  <check Name="Gale Isle - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 4" Types="Sunken Treasure"/>
+  <check Name="Crescent Moon Island - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 5" Types="Sunken Treasure"/>
+  <check Name="Seven-Star Isles - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 6 AND Bombs" Types="Sunken Treasure"/>
+  <check Name="Overlook Island - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 7" Types="Sunken Treasure"/>
+  <check Name="Four-Eye Reef - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 8 AND Bombs" Types="Sunken Treasure"/>
+  <check Name="Mother and Child Isles - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 9" Types="Sunken Treasure"/>
+  <check Name="Spectacle Island - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 10" Types="Sunken Treasure"/>
+  <check Name="Windfall Island - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 11" Types="Sunken Treasure"/>
+  <check Name="Pawprint Isle - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 12" Types="Sunken Treasure"/>
+  <check Name="Dragon Roost Island - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 13" Types="Sunken Treasure"/>
+  <check Name="Flight Control Platform - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 14" Types="Sunken Treasure"/>
+  <check Name="Western Fairy Island - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 15" Types="Sunken Treasure"/>
+  <check Name="Rock Spire Isle - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 16" Types="Sunken Treasure"/>
+  <check Name="Tingle Island - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 17" Types="Sunken Treasure"/>
+  <check Name="Northern Triangle Island - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 18" Types="Sunken Treasure"/>
+  <check Name="Eastern Fairy Island - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 19" Types="Sunken Treasure"/>
+  <check Name="Fire Mountain - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 20" Types="Sunken Treasure"/>
+  <check Name="Star Belt Archipelago - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 21" Types="Sunken Treasure"/>
+  <check Name="Three-Eye Reef - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 22 AND Bombs" Types="Sunken Treasure"/>
+  <check Name="Greatfish Isle - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 23" Types="Sunken Treasure"/>
+  <check Name="Cyclops Reef - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 24 AND Bombs" Types="Sunken Treasure"/>
+  <check Name="Six-Eye Reef - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 25 AND Bombs" Types="Sunken Treasure"/>
+  <check Name="Tower of the Gods - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 26" Types="Sunken Treasure"/>
+  <check Name="Eastern Triangle Island - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 27" Types="Sunken Treasure"/>
+  <check Name="Thorned Fairy Island - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 28" Types="Sunken Treasure"/>
+  <check Name="Needle Rock Isle - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 29" Types="Sunken Treasure"/>
+  <check Name="Islet of Steel - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 30" Types="Sunken Treasure"/>
+  <check Name="Stone Watcher Island - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 31" Types="Sunken Treasure"/>
+  <check Name="Southern Triangle Island - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 32 AND Can Defeat Seahats" Types="Sunken Treasure"/>
+  <check Name="Private Oasis - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 33" Types="Sunken Treasure"/>
+  <check Name="Bomb Island - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 34" Types="Sunken Treasure"/>
+  <check Name="Bird's Peak Rock - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 35" Types="Sunken Treasure"/>
+  <check Name="Diamond Steppe Island - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 36" Types="Sunken Treasure"/>
+  <check Name="Five-Eye Reef - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 37 AND Can Destroy Cannons" Types="Sunken Treasure"/>
+  <check Name="Shark Island - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 38" Types="Sunken Treasure"/>
+  <check Name="Southern Fairy Island - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 39" Types="Sunken Treasure"/>
+  <check Name="Ice Ring Isle - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 40" Types="Sunken Treasure"/>
+  <check Name="Forest Haven - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 41" Types="Sunken Treasure"/>
+  <check Name="Cliff Plateau Isles - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 42" Types="Sunken Treasure"/>
+  <check Name="Horseshoe Island - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 43" Types="Sunken Treasure"/>
+  <check Name="Outset Island - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 44" Types="Sunken Treasure"/>
+  <check Name="Headstone Island - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 45" Types="Sunken Treasure"/>
+  <check Name="Two-Eye Reef - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 46 AND Bombs" Types="Sunken Treasure"/>
+  <check Name="Angular Isles - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 47" Types="Sunken Treasure"/>
+  <check Name="Boating Course - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 48" Types="Sunken Treasure"/>
+  <check Name="Five-Star Isles - Sunken Treasure" Mode="o" Need="Grappling Hook AND Chart for Island 49" Types="Sunken Treasure"/>
+</inject>

@@ -3,9 +3,14 @@ from paths import TYPE_PATH
 import os
 import glob
 from collections import OrderedDict
+#from logic.logic import Logic
 
-file_ext = ".xml"
+file_ext = ".dv_im"
 file_split = ["/","\\"]
+file_path = "./logic_types/"
+extempt_files = ["{}example{}".format(file_path,file_ext),"{}standard{}".format(file_path,file_ext)]
+
+
 
 def splitbyReturn(string,items,output):
   string = string[:]
@@ -14,19 +19,34 @@ def splitbyReturn(string,items,output):
     string = list[output]
   return string
 
+def reParse(string):
+  list = string.split(' AND ')
+  reString = ' & '.join(list)
+  list = reString.split(' OR ')
+  reString = ' | '.join(list)
+  list = reString.split(" '")
+  reString = ' "'.join(list)
+  list = reString.split("' ")
+  string = '" '.join(list)
+  if(string[-1]=="'"):
+    string = string[0:len(string)-1]+'"'
+  return string
+
 def parseXML(file):
-  with open(os.path.join(LOGIC_PATH, file)) as f:
+  with open(os.path.join(TYPE_PATH, file)) as f:
     reads = minidom.parse(f)
   checks = reads.getElementsByTagName('check')
   locations = OrderedDict()
   for check in checks:
     data = OrderedDict()
     name = (check.attributes['Name'].value)[:]
-    data['Mode'] = check.attributes['Mode'].value
+    mode =  check.attributes['Mode'].value
+    data['Mode'] = mode
     if(1):
       req_string = check.attributes['Need'].value
-      data['Need'] = Logic.parse_logic_expression(req_string)
-    data['Types'] = check.attributes['Types'].value
+      #data['Need'] = Logic.parse_logic_expression(req_string)
+      data['Need'] = reParse(req_string)
+    data['Types'] = (check.attributes['Types'].value).split(',')
     try:
       data['Glitches'] = check.attributes['Glitches'].value
     except:
@@ -38,8 +58,10 @@ def parseXML(file):
 
 def get_all_custom_logic(*args):
   custom_logic_names = OrderedDict()
-  custom_logic_paths = glob.glob("./logic_types/*{}".format(file_ext))
+  custom_logic_paths = glob.glob("{}*{}".format(file_path,file_ext))
   for logic_path in custom_logic_paths:
+    if(logic_path in extempt_files):
+      continue
     data = OrderedDict()
     with open(logic_path) as f:
       reads = minidom.parse(f)
@@ -56,18 +78,20 @@ def get_all_custom_logic(*args):
         pass
       try:
         filename = splitbyReturn(logic_path,file_split,-1)
-        filename = (filename.split("."))[0]
-        assert((file+file_ext)==filename)
+        #filename = (filename.split("."))[0]
+        assert(file==filename)
       except:
         #print("Interal file name,{}, does not match external,{}.").format((file+file_ext),filename)
         desc = desc+" FAILED FILESUM."
+        file = filename
         pass
       if(1):
         try:
           totl = len(reads.getElementsByTagName('check'))
-          assert(totl==chec)
+          assert(totl==chan)
         except:
           desc = desc+" FAILED CHANGESUM."
+          chan = totl
           pass
       try:
         if(1):
@@ -80,6 +104,7 @@ def get_all_custom_logic(*args):
             assert(sum==int(chec))
           except:
             desc = desc+" FAILED CHECKSUM."
+            chec = sum
             pass
       except:
         pass
@@ -93,12 +118,12 @@ def get_all_custom_logic(*args):
       custom_logic_names[type] = data
     except:
       filename = splitbyReturn(logic_path,file_split,-1)
-      filename = (filename.split("."))[0]
       data['Creator'] = 'Unknown'
-      data['File'] = 'Unknown'
+      data['File'] = filename
       data['Description'] = 'File is missing <inject> tag. FAILED FILESUM. FAILED CHANGESUM. FAILED CHECKSUM.'
       data['Changes'] = 'Unknown'
       data['Checksum'] = 'Unknown'
+      filename = (filename.split("."))[0]
       custom_logic_names[filename] = data
       pass
   return custom_logic_names

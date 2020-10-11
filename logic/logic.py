@@ -3,14 +3,17 @@ import yaml
 import re
 from collections import OrderedDict
 import copy
+import xml.dom.minidom as minidom
+import glob
 
 import os
 
 from logic.item_types import PROGRESS_ITEMS, NONPROGRESS_ITEMS, CONSUMABLE_ITEMS, DUPLICATABLE_CONSUMABLE_ITEMS, DUNGEON_PROGRESS_ITEMS, DUNGEON_NONPROGRESS_ITEMS, CONVENIENCE_ITEMS, XTRA_ITEMS
-from paths import LOGIC_PATH, TRICK_PATH
+from paths import LOGIC_PATH, TRICK_PATH,TYPE_PATH
 from randomizers import entrances
 from tweaks import *
 import wwr_ui.options
+import xml_func as xfx
 #import settings as ui_rando
 
 
@@ -633,7 +636,7 @@ class Logic:
 
     logic_mod = get_logic_mod(logic)
 
-    if(logic_mod!="standard"):
+    if(logic_mod!="standard" and logic_mod!="other"):
       with open(os.path.join(TRICK_PATH, logic_mod)) as g:
         modify_locations = yaml.load(g, YamlOrderedDictLoader)
       for modification_name in modify_locations:
@@ -647,6 +650,16 @@ class Logic:
         modify_locations[modification_name]["Types"] = types
 
         modify_data = modify_logic_data(argument=item_locations[modification_name],definition=modify_locations[modification_name])
+        item_locations[modification_name] = modify_data
+
+    elif(logic_mod=="other"):
+      custom_logic_names = xfx.get_all_custom_logic()
+      logic_name = logic[9:]
+      file_name = custom_logic_names[logic_name]["File"]
+      modify_locations = xfx.parseXML(file_name)
+      for modification_name in modify_locations:
+        modify_locations[modification_name]['Need'] = Logic.parse_logic_expression(modify_locations[modification_name]['Need'])
+        modify_data = modify_logic_data(argument=item_locations[modification_name],definition=modify_locations[modification_name],run="XML")
         item_locations[modification_name] = modify_data
 
     return item_locations
@@ -1042,8 +1055,8 @@ class Logic:
     reqs = self.macros[chart_req]
     chart_name = reqs[0]
 
-    logic_mod=self.rando.options.get("logic_mod")
-    logic_mod = get_logic_mod(logic_mod)
+    logic_type=self.rando.options.get("logic_mod")
+    logic_mod = get_logic_mod(logic_type)
 
     if(logic_mod=="no_logic.txt"):
       pass

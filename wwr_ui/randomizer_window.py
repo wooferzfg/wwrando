@@ -85,7 +85,8 @@ class WWRandomizerWindow(QMainWindow):
     self.preserve_default_settings()
 
     logic_mod = self.get_option_value("logic_mod")
-    self.cached_item_locations = Logic.load_and_parse_item_locations(logic=logic_mod)          #dv_logic find
+    self.cached_item_locations = Logic.load_and_parse_item_locations(logic=logic_mod)          #dv_logic findx
+    self.ui.logic_mod.currentIndexChanged.connect(self.set_logic_description)
 
     self.ui.starting_pohs.valueChanged.connect(self.update_health_label)
     self.ui.starting_hcs.valueChanged.connect(self.update_health_label)
@@ -701,11 +702,43 @@ class WWRandomizerWindow(QMainWindow):
       self.ui.option_description.setText(new_description)
       self.ui.option_description.setStyleSheet("")
 
+  def set_logic_description(self):
+    logic = self.get_option_value("logic_mod")
+    logic_cat = (logic.split(" – "))[0]
+    logic_type = (logic.split(" – "))[1]
+    if(logic_cat!="Custom"):
+      desc=""
+      if(logic_cat=="Glitchless"):
+        if(logic_type=="Beginner"):
+          desc="Certain actions may not be reasonable to a new player.\nBeginner is more similarly segmented to vanilla."
+        elif(logic_type=="Standard"):
+          desc="Everything is as expected, except when it's not.\nStandard is the regular, unedited TWWR logic."
+      elif(logic_cat=="Glitched"):
+        if(logic_type=="Trivial"):
+          desc="Things are getting a little harder.\nTrivial requires tricks that are easily repeatable."
+        elif(logic_type=="Moderate"):
+          desc="Things are getting harder.\nModerate requires tricks that are easily repeatable or easily learned."
+        elif(logic_type=="Lunatic (Crain)"):
+          desc="Things are getting a lot harder.\nLunatic requires all tricks that are possible."
+        elif(logic_type=="No Logic"):
+          desc="Things are potentially impossible.\nNo Logic runs as with as little logic as possible."
+      self.ui.logic_desc.setText(desc)
+      self.ui.logic_desc.setStyleSheet("color: grey;")
+    elif(logic_cat=="Custom"):
+      custom_logic_names = xfx.get_all_custom_logic()
+      logic_name = logic[9:]
+      desc = custom_logic_names[logic_name]["Description"]
+      self.ui.logic_desc.setText(desc)
+      self.ui.logic_desc.setStyleSheet("color: grey;")
+    else:
+      self.ui.logic_desc.setText("")
+      self.ui.logic_desc.setStyleSheet("")
+
   def initialize_custom_logic_type_list(self):
     custom_logic_names = xfx.get_all_custom_logic()
     if(len(custom_logic_names)!=0):
       for custom_logic_name in custom_logic_names:
-        self.ui.logic_mod.addItem(custom_logic_name)
+        self.ui.logic_mod.addItem("Custom – {}".format(custom_logic_name))
 
   def initialize_custom_player_model_list(self):
     self.ui.custom_player_model.addItem("Link")

@@ -160,7 +160,7 @@ OPTIONS = OrderedDict([
   ),
   (
     "logic_mod",
-    "Changes logic to reflect skill level by introducing tricks.\nFor further details, look in 'dv_im/logic_types/About Logic Types.txt'."
+    "Changes logic to reflect skill level by introducing tricks.\nFor further details, look in './logic_types/About Logic Types.txt'."
   ),
   (
     "convenience_option",
@@ -223,6 +223,10 @@ OPTIONS = OrderedDict([
   (
     "starting_bh",
     "Amount of base hearts the player has.\nThis will effect full completion by reducing the total heart count."
+  ),
+  (
+    "no_heart_in_pool",
+    "Additional health pieces and containers do not appear in item pool."
   ),
   (
     "remove_music",
