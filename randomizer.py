@@ -434,6 +434,10 @@ class Randomizer:
     if self.randomize_items:
       if not self.options.get("do_not_generate_spoiler_log"):
         self.write_spoiler_log()
+
+      permalink_output_path = os.path.join(self.randomized_output_folder, "permalink_%s.txt" % self.seed)
+      with open(permalink_output_path, "w") as f:
+        f.write(self.permalink)
     
     yield("Done", -1)
   

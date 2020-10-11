@@ -404,8 +404,6 @@ class WWRandomizerWindow(QMainWindow):
       self.settings[option_name] = self.get_option_value(option_name)
     self.settings["custom_colors"] = self.custom_colors
     
-    self.save_settings()
-    
     self.encode_permalink()
     
     self.update_total_progress_locations()
