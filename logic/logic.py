@@ -8,7 +8,7 @@ import glob
 
 import os
 
-from logic.item_types import PROGRESS_ITEMS, NONPROGRESS_ITEMS, CONSUMABLE_ITEMS, DUPLICATABLE_CONSUMABLE_ITEMS, DUNGEON_PROGRESS_ITEMS, DUNGEON_NONPROGRESS_ITEMS, CONVENIENCE_ITEMS, XTRA_ITEMS
+from logic.item_types import PROGRESS_ITEMS, NONPROGRESS_ITEMS, CONSUMABLE_ITEMS, DUPLICATABLE_CONSUMABLE_ITEMS, DUNGEON_PROGRESS_ITEMS, DUNGEON_NONPROGRESS_ITEMS, CONVENIENCE_ITEMS, XTRA_ITEMS, HEALTH_ITEMS
 from paths import LOGIC_PATH, TRICK_PATH,TYPE_PATH
 from randomizers import entrances
 from tweaks import *
@@ -100,6 +100,9 @@ class Logic:
       progress_xtra = CONVENIENCE_ITEMS.copy()
     else:
       nonprogress_xtra = CONVENIENCE_ITEMS.copy()
+    is_health = self.rando.options.get("no_heart_in_pool")
+    if(is_health!=True):
+      nonprogress_xtra = nonprogress_xtra + HEALTH_ITEMS.copy()
     self.all_progress_items = PROGRESS_ITEMS.copy() + progress_xtra
     self.all_nonprogress_items = NONPROGRESS_ITEMS.copy() + nonprogress_xtra
     self.all_fixed_consumable_items = CONSUMABLE_ITEMS.copy()
@@ -286,7 +289,10 @@ class Logic:
   def add_owned_item(self, item_name):
     cleaned_item_name = self.clean_item_name(item_name)
     if cleaned_item_name not in self.all_cleaned_item_names:
-      raise Exception("Unknown item name: " + item_name)
+      if(cleaned_item_name=="Heart Container" or cleaned_item_name=="Piece of Heart"):
+        pass
+      else:
+        raise Exception("Unknown item name: " + item_name)
 
     self.currently_owned_items.append(cleaned_item_name)
 

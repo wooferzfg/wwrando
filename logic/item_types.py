@@ -83,8 +83,8 @@ NONPROGRESS_ITEMS = [
   "Octo Chart",
   "Tingle's Chart",
 
-] + \
-  ["Piece of Heart"]*44 + \
+]
+HEALTH_ITEMS = ["Piece of Heart"]*44 + \
   ["Heart Container"]*6
 
 CONSUMABLE_ITEMS = \
