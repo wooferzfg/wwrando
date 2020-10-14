@@ -42,7 +42,7 @@ Outset Island - Jabun's Cave:
 
 Outset Island - Dig up Black Soil:
   Mode: o
-  Need: Bait Bag & Can Buy Bait & Power Bracelets
+  Need: Bait Bag & Power Bracelets
   Types: Island Puzzle
 
 #Macro puts the Early entrance into logic
@@ -82,14 +82,18 @@ Outset Island - Savage Labyrinth - Floor 50:
   Mode: o
   Need:
     Can Access Other Location "Outset Island - Savage Labyrinth - Floor 30"
-    & Can Aim Mirror Shield (
-    & Can Defeat ReDeads
-    & Can Defeat Blue Bubbles
-    & Can Defeat Dark ChuChus
-    & Can Defeat Poes
-    & Can Defeat Stalfos
-    & Skull Hammer )
-    | (Iron Boots & Hookshot)
+    & Can Aim Mirror Shield
+    & (
+      (
+        & Can Defeat ReDeads
+        & Can Defeat Blue Bubbles
+        & Can Defeat Dark ChuChus
+        & Can Defeat Poes
+        & Can Defeat Stalfos
+        & Skull Hammer
+      )
+      | (Iron Boots & Hookshot)
+    )
   # Either vanilla or the trick way, but not going to modify it past this
   # 2 of the 3 Wizzrobes on floor 48 never seem to come down to ground level, but it doesn't matter since you can throw the swords the Darknuts drop at them to kill them.
   # The following floors don't have requirements listed because you can trick enemies into hitting each other, pick up one of their dropped weapons, and kill the enemies with the weapon:
@@ -326,19 +330,24 @@ Dragon Roost Island - Rito Aerie - Give Hoskit 20 Golden Feathers:
 Dragon Roost Island - Chest on Top of Boulder:
   Mode: o
   Need:
-    Hero's Bow
-    | (Bait Bag & Can Buy Hyoi Pears)
-    | Boomerang
-    | Bombs
-    # Bombs work by getting in the ship and shooting the cannon up at the bomb flowers.
+    Can Get DRI Boulder Chest
   Types: Island Puzzle
 
 #Few Exceptions where Chest storage *could* be required, added in easier door cancel
 Dragon Roost Island - Fly Across Platforms Around Island:
   Mode: o
   Need:
-    Nothing
-    | (Hero's Bow & Bait Bag)
+    (
+      Can Fly With Deku Leaf Outdoors
+      & (
+        Can Cut Grass
+        | Magic Meter Upgrade
+      )
+    )
+    | (
+      Can Get DRI Boulder Chest
+      & Wind Waker
+    )
   Types: Island Puzzle
 
 Dragon Roost Island - Rito Aerie - Baito:
@@ -406,15 +415,21 @@ Dragon Roost Cavern - Bird's Nest:
   Mode: o
   Need:
     Can Access Dragon Roost Cavern
-    & (DRC Small Key x3 |
-    (Can DRC Backward & Can Burn Pallet Door & DRC Small Key x2)
+    & (
+      DRC Small Key x3
+      | (
+        Can DRC Backward
+        & Can Burn Pallet Door
+        & DRC Small Key x2
+      )
+    )
   Types: Dungeon
 
 Dragon Roost Cavern - Dark Room:
   Mode: o
   Need:
     Can Access Dragon Roost Cavern
-    & (DRC Small Key x4 | (Can DRC Backward & Can Burn Pallet Door)
+    & (DRC Small Key x4 | (Can DRC Backward & Can Burn Pallet Door))
   Types: Dungeon
 
 Dragon Roost Cavern - Tingle Chest in Hub Room:
@@ -693,6 +708,11 @@ Tower of the Gods - Light Two Torches:
   Mode: o
   Need:
     Can Access Tower of the Gods
+    & (
+      Hero's Sword
+      | Skull Hammer
+      | Deku Leaf
+    )
   Types: Dungeon
 
 #See above
@@ -700,6 +720,11 @@ Tower of the Gods - Skulls Room Chest:
   Mode: o
   Need:
     Can Access Tower of the Gods
+    & (
+      Hero's Sword
+      | Skull Hammer
+      | Deku Leaf
+    )
   Types: Dungeon
 
 #See Above + A bomb boost for an OoB clip
@@ -708,6 +733,11 @@ Tower of the Gods - Shoot Eye Above Skulls Room Chest:
   Need:
     Can Access Tower of the Gods
     & (Hero's Bow | (Bombs & Deku Leaf))
+    & (
+      Hero's Sword
+      | Skull Hammer
+      | Deku Leaf
+    )
   Types: Dungeon
 
 #Logic could require F1 skip -> Tuner bombs
@@ -909,8 +939,9 @@ Ice Ring Isle - Inner Cave - Chest:
 #Door Cancel Potential
 Headstone Island - Top of the Island:
   Mode: o
-  Need: (Bait Bag & Can Buy Hyoi Pears)
- | Deku Leaf
+  Need:
+    Bait Bag
+    | Deku Leaf
   Types: Island Puzzle
 
 Headstone Island - Submarine:
@@ -923,7 +954,7 @@ Earth Temple - Transparent Chest In Warp Pot Room:
   Mode: o
   Need:
     Can Access Earth Temple
-    & ((Can Play Command Melody | Deku Leaf) | Can Aim Mirror Shield)
+    & ((Can Play Command Melody | Deku Leaf) & Can Aim Mirror Shield)
   Types: Dungeon
 
 #Command Melody Skip potential
@@ -996,7 +1027,7 @@ Earth Temple - Stalfos Mini-Boss Room:
   Need:
     Can Access Earth Temple
     & (Can Play Command Melody | Deku Leaf)
-    & (ET Small Key x3 | (Deku Leaf & ET Small Key x2)
+    & (ET Small Key x3 | (Deku Leaf & ET Small Key x2))
     & (Deku Leaf | Bombs | Fire Arrows)
     & Power Bracelets
     & Can Defeat Floormasters
@@ -1029,7 +1060,7 @@ Earth Temple - Kill All Floormasters in Foggy Room:
     Can Access Earth Temple
     & (Can Play Command Melody | Deku Leaf)
     & (Can Aim Mirror Shield | Can Play Command Melody)
-    & (Can Play Earth God's Lyric | (Deku Leaf and Bombs))
+    & (Can Play Earth God's Lyric | (Deku Leaf & Bombs))
     & Can Defeat Floormasters
   Types: Dungeon
 
@@ -1058,7 +1089,7 @@ Earth Temple - Many Mirrors Room Right Chest:
     & Can Play Earth God's Lyric
     & Power Bracelets
     & Skull Hammer
-    & (ET Small Key x3 | (Deku Leaf and Bombs))
+    & (ET Small Key x3 | (Deku Leaf & Bombs))
   Types: Dungeon
 
 #Removed SK logic
@@ -1134,9 +1165,11 @@ Wind Temple - Tingle Statue Chest:
   Mode: o
   Need:
     Can Access Wind Temple
-    & Can Play Command Melody (
-    | Can Spring Storage
-    | Deku Leaf )
+    & Can Play Command Melody
+    & (
+      | Can Spring Storage
+      | Deku Leaf
+    )
     & Tingle Tuner Bombs
   Types: Tingle Chest, Dungeon
 
@@ -1155,8 +1188,10 @@ Wind Temple - Chest in Left Alcove:
   Need:
     Can Access Wind Temple
     & Can Play Command Melody
-    & (Can Spring Storage
-    | Deku Leaf)
+    & (
+      Can Spring Storage
+      | Deku Leaf
+    )
   Types: Dungeon
 
 #REALLY Dumb access logic, but this allows for Spring Storage + Bomb Drop, or the Roll Clip
@@ -1478,7 +1513,7 @@ The Great Sea - Ghost Ship:
 
 Private Oasis - Chest at Top of Waterfall:
   Mode: o
-  Need: Hookshot | Can Fly With Deku Leaf Outdoors
+  Need: Nothing
   Types: Island Puzzle
 
 Private Oasis - Cabana Labyrinth - First Chest:
@@ -1510,8 +1545,8 @@ Spectacle Island - Barrel Shooting - Second Prize:
 
 Needle Rock Isle - Chest:
   Mode: o
-  Need: ((Bait Bag & Can Buy Hyoi Pears)
-    | Fire Arrows)
+  Need: Bait Bag
+    | Fire Arrows
     # Note: It is possible to hit the switch at the top with a fire arrow's explosion, but it's not easy, but neither are these settings
   Types: Island Puzzle
 
@@ -1831,9 +1866,13 @@ Cliff Plateau Isles - Cave:
   Mode: o
   Need:
     Can Access Cliff Plateau Isles Secret Cave
-    & (Can Defeat Boko Babas | (
-    Deku Leaf
-    & Can Burn Pallet Door)
+    & (
+      Can Defeat Boko Babas
+      | (
+        Deku Leaf
+        & Can Burn Pallet Door
+      )
+    )
     # Technically you can kill the Boko Babas here by throwing a nut at one to stun it, then using the Grappling Hook to finish it off. But the timing is pretty precise and this is pretty obscure, so it's not in the logic.
   Types: Puzzle Secret Cave
 
@@ -1898,13 +1937,15 @@ Flight Control Platform - Bird-Man Contest - First Prize:
 #    - rels/d_a_npc_bmcon1.rel@2B9F
 Flight Control Platform - Submarine:
   Mode: o
-  Need:((
-    Can Defeat Wizzrobes
-    & Can Defeat Red ChuChus
-    & Can Defeat Green ChuChus
-    & Can Defeat Miniblins
-    & Can Defeat Wizzrobes at Range )
-    | Deku Leaf)
+  Need:
+    (
+      Can Defeat Wizzrobes
+      & Can Defeat Red ChuChus
+      & Can Defeat Green ChuChus
+      & Can Defeat Miniblins
+      & Can Defeat Wizzrobes at Range
+    )
+    | Deku Leaf
   Types: Submarine
 Star Island - Cave:
   Mode: o

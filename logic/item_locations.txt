@@ -83,7 +83,7 @@ Outset Island - Jabun's Cave:
     - main.dol@8035BD39
     - Pjavdou/Room0.arc/Chest000
 Outset Island - Dig up Black Soil:
-  Need: Bait Bag & Can Buy Bait & Power Bracelets
+  Need: Bait Bag & Power Bracelets
   Original item: Piece of Heart
   Types: Island Puzzle
   Paths:
@@ -555,7 +555,7 @@ Dragon Roost Island - Rito Aerie - Give Hoskit 20 Golden Feathers:
 Dragon Roost Island - Chest on Top of Boulder:
   Need:
     Hero's Bow
-    | (Bait Bag & Can Buy Hyoi Pears)
+    | Bait Bag
     | Boomerang
     | Bombs
     # Bombs work by getting in the ship and shooting the cannon up at the bomb flowers.
@@ -1298,7 +1298,7 @@ Ice Ring Isle - Inner Cave - Chest:
 
 
 Headstone Island - Top of the Island:
-  Need: Bait Bag & Can Buy Hyoi Pears
+  Need: Bait Bag
   Original item: Piece of Heart
   Types: Island Puzzle
   Paths:
@@ -2021,7 +2021,7 @@ Spectacle Island - Barrel Shooting - Second Prize:
 #    - rels/d_a_npc_kg2.rel@210F
 
 Needle Rock Isle - Chest:
-  Need: Bait Bag & Can Buy Hyoi Pears
+  Need: Bait Bag
     # Note: It might be theoretically possible to hit the switch at the top with a fire arrow's explosion, but it's not easy.
   Original item: Piece of Heart
   Types: Island Puzzle

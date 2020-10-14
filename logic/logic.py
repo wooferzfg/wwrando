@@ -16,7 +16,8 @@ import wwr_ui.options
 import xml_func as xfx
 #import settings as ui_rando
 
-
+#from sys import getrecursionlimit as getRL
+from sys import setrecursionlimit as setRL
 
 class Logic:
   DUNGEON_NAMES = OrderedDict([
@@ -53,6 +54,8 @@ class Logic:
       "Wind Tingle Statue",
     ]),
   ])
+
+  setRL(5120)
 
   def __init__(self, rando):
     self.rando = rando

@@ -8,7 +8,15 @@ from collections import OrderedDict
 file_ext = ".dv_im"
 file_split = ["/","\\"]
 file_path = "./logic_types/"
-extempt_files = ["{}example{}".format(file_path,file_ext),"{}standard{}".format(file_path,file_ext)]
+file_paths = ["./logic_types/",".\\logic_types\\","./logic_types",".\\logic_types"]
+extempt_files_var = ["example","standard"]
+extempt_files = []
+formats_var = ["{0}{2}{1}","{2}{1}","{0}\\{2}{1}","\\{2}{1}","{0}/{2}{1}","/{2}{1}"]
+for file in extempt_files_var:
+  for format in formats_var:
+    for path in file_paths:
+      extemption = (format.format(path,file_ext,file))
+      extempt_files.append(extemption)
 
 
 

@@ -3,7 +3,7 @@
 Needle Rock Isle - Chest:
   Mode: o
   Need:
-    (Bait Bag & Can Buy Hyoi Pears)
+    Bait Bag
     | Fire Arrows
   Types: Island Puzzle
 Cliff Plateau Isles - Highest Isle:

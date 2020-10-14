@@ -105,7 +105,7 @@ Dragon Roost Island - Chest on Top of Boulder:
   Mode: o
   Need:
     Hero's Bow
-    | (Bait Bag & Can Buy Hyoi Pears)
+    | Bait Bag
   Types: Island Puzzle
 Dragon Roost Island - Fly Across Platforms Around Island:
   Mode: o
@@ -615,7 +615,6 @@ Headstone Island - Top of the Island:
   Mode: o
   Need:
     Bait Bag
-    & Can Buy Hyoi Pears
   Types: Island Puzzle
 Headstone Island - Submarine:
   Mode: o
@@ -1152,7 +1151,6 @@ Needle Rock Isle - Chest:
   Mode: o
   Need:
     Bait Bag
-    & Can Buy Hyoi Pears
   Types: Island Puzzle
 Needle Rock Isle - Cave:
   Mode: o

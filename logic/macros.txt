@@ -9,16 +9,16 @@ Can Play Earth God's Lyric:
 Can Play Wind God's Aria:
   Wind Waker & Wind God's Aria
 Can Fly With Deku Leaf Outdoors:
-  Deku Leaf & Can Play Wind's Requiem
+  Deku Leaf & Wind Waker & Wind's Requiem
 Can Aim Mirror Shield:
   Mirror Shield
   & (
-    Hero's Sword
+    Progressive Sword x1
     | Wind Waker
     | Grappling Hook
     | Boomerang
     | Deku Leaf
-    | Hero's Bow
+    | Progressive Bow x1
     | Hookshot
   )
   # You need to be holding an item in your hand in order to aim your shield around. Otherwise you can only aim it behind you at an angle or straight in front of you.
@@ -27,15 +27,11 @@ Can Aim Mirror Shield:
 Can Move Boulders:
   Bombs | Power Bracelets
 Can Defeat Door Flowers:
-  Boomerang | Hero's Bow | Bombs | Hookshot
+  Boomerang | Progressive Bow x1 | Bombs | Hookshot
 Can Hit Diamond Switches at Range:
-  Boomerang | Hero's Bow | Hookshot
+  Boomerang | Progressive Bow x1 | Hookshot
 Can Destroy Seeds Hanging by Vines:
-  Boomerang | Hero's Bow | Bombs | Hookshot
-Can Buy Bait:
-  Nothing
-Can Buy Hyoi Pears:
-  Nothing
+  Boomerang | Progressive Bow x1 | Bombs | Hookshot
 
 Hero's Sword:
   Progressive Sword x1
@@ -74,12 +70,12 @@ Tingle Tuner Bombs:
 Can Access Dungeon Entrance On Dragon Roost Island:
   Nothing
 Can Access Forest Haven:
-  Grappling Hook | Can Fly With Deku Leaf Outdoors
+  Grappling Hook | (Deku Leaf & Wind Waker & Wind's Requiem)
   # Grappling over the waterfall is very difficult without killing the Boko Baba there - but only if you start grappling from the top. You can grapple from the bottom up to avoid that Boko Baba entirely, so there's no extra requirement here for swordless.
 Can Access Dungeon Entrance In Forest Haven Sector:
   Can Access Forest Haven
   & (Grappling Hook | (Tricked Logic & Wind Waker))
-  & Can Fly With Deku Leaf Outdoors
+  & (Deku Leaf & Wind Waker & Wind's Requiem)
   & (Can Cut Grass | Magic Meter Upgrade)
   # You either need double magic or the ability to refill your magic by cutting grass to make it all the way across.
   # Note: You don't need Grappling Hook because you can take the lower platform exit out of Forest Haven (Noob Skip), but this is not currently in the logic.
@@ -106,7 +102,7 @@ Can Access Earth Temple:
 Can Get into Earth Temple:
   Can Access Earth Temple
   & (
-    Can Play Command Melody
+    (Wind Waker & Command Melody)
     | (
       Glitched Logic
       & Deku Leaf
@@ -115,47 +111,36 @@ Can Get into Earth Temple:
 Can Access Wind Temple:
   Can Access Dungeon Entrance On Gale Isle
 
-Can Get to Far Ledge:
-  (Can Cut Down Outset Trees & Can Fly With Deku Leaf Outdoors)
-  | Hookshot
-  | (Tricked Logic & Can Fly With Deku Leaf Outdoors)
-
 Can Access Secret Cave Entrance on Outset Island:
-  (Can Get to Far Ledge & Power Bracelets )
+  ((Can Cut Down Outset Trees | Tricked Logic) & (Deku Leaf & Wind Waker & Wind's Requiem) & Power Bracelets)
+  | (Hookshot & Power Bracelets)
   | Complex Logic
 Can Access Secret Cave Entrance on Dragon Roost Island:
-  Can Move Boulders
+  Bombs | Power Bracelets
 Can Access Secret Cave Entrance on Fire Mountain:
-  Ice Arrows
+  Progressive Bow x2
 Can Access Secret Cave Entrance on Ice Ring Isle:
-  Fire Arrows
+  Progressive Bow x2
 Can Access Secret Cave Entrance on Private Oasis:
   (Cabana Deed & Delivery Bag & Grappling Hook)
   | (Glitched Logic & Wind Waker & Grappling Hook & (Can Fly With Deku Leaf Outdoors | Hookshot))
 Can Access Secret Cave Entrance on Needle Rock Isle:
-  Fire Arrows
+  Progressive Bow x2
   | (Wind Waker & Glitched Logic)
 Can Access Secret Cave Entrance on Angular Isles:
   # Either Deku Leaf or Hookshot are needed to get into the cave.
-  Can Fly With Deku Leaf Outdoors | Hookshot
+  (Deku Leaf & Wind Waker & Wind's Requiem) | Hookshot
 Can Access Secret Cave Entrance on Boating Course:
   # Getting inside the cave requires flying with Deku Leaf or Hookshotting the pole.
-  Can Fly With Deku Leaf Outdoors | Hookshot
+  (Deku Leaf & Wind Waker & Wind's Requiem) | Hookshot
 Can Access Secret Cave Entrance on Stone Watcher Island:
   Power Bracelets
 Can Access Secret Cave Entrance on Overlook Island:
   Hookshot
 Can Access Secret Cave Entrance on Bird's Peak Rock:
   # Need to hit the switches with a seagull.
-  (Bait Bag & Can Buy Hyoi Pears)
+  Bait Bag
   | (Tricked Logic & Grappling Hook)
-  | (
-    Glitched Logic
-    & Can Access Cliff Plateau Isles Secret Cave
-    & Can Defeat Boko Babas
-    & Wind Waker
-    & Not Secret Cave Entrance Rando
-  )
 Can Access Secret Cave Entrance on Pawprint Isle:
   Nothing
 Can Access Secret Cave Entrance on Pawprint Isle Side Isle:
@@ -168,10 +153,10 @@ Can Access Secret Cave Entrance on Diamond Steppe Island:
     & Wind Waker
   )
 Can Access Secret Cave Entrance on Bomb Island:
-  Can Move Boulders
+  Bombs | Power Bracelets
 Can Access Secret Cave Entrance on Rock Spire Isle:
   Bombs
-  | (Glitched Logic & Can Fly With Deku Leaf Outdoors)
+  | (Glitched Logic & (Deku Leaf & Wind Waker & Wind's Requiem))
 Can Access Secret Cave Entrance on Shark Island:
   # Iron Boots and Skull Hammer are necessary to hit the two big buttons.
   # The diamond switch does not require Boomerang or any ranged weapon - you can just hit it with your sword or hammer.
@@ -183,7 +168,7 @@ Can Access Secret Cave Entrance on Horseshoe Island:
   # Need Deku Leaf to play golf.
   Deku Leaf
 Can Access Secret Cave Entrance on Star Island:
-  Can Move Boulders
+  Bombs | Power Bracelets
 
 # The below macros are used when secret cave entrances are not randomized.
 # When secret cave entrances are randomized, these macros are shuffled around by the randomizer logic.
@@ -234,7 +219,7 @@ Can Get Past Forsaken Fortress Gate:
   # Note: It's also possible to blow up the door without bombs by using the mounted cannons, but this is not required by the logic.
   # Note: It's also possible to get past the gate by going all the way down to Ganon's Tower, and then activating the warp up to Forsaken Fortress. But this is not currently required by the logic.
 Can Get Inside Forsaken Fortress:
-  Can Get Past Forsaken Fortress Gate
+  (Bombs | Tricked Logic)
   & (
     Skull Hammer
     | (
@@ -250,15 +235,22 @@ Can Reach and Defeat Phantom Ganon:
 Can Defeat Phantom Ganon:
   # You need any form of the Master Sword to damage Phantom Ganon.
   # Note that his energy balls can be reflected with either the Master Sword or an empty bottle, but you still need the Master Sword to deal damage.
-  (Outside Swordless Mode & Any Master Sword)
+  (Outside Swordless Mode & Progressive Sword x2)
   | (In Swordless Mode & Skull Hammer)
   # Swordless switches Phantom Ganon's damage vulnerability to be for Skull Hammer instead of the Master Sword.
 
 Can Access Hyrule:
-  All 8 Triforce Shards
+  Triforce Shard 1
+  & Triforce Shard 2
+  & Triforce Shard 3
+  & Triforce Shard 4
+  & Triforce Shard 5
+  & Triforce Shard 6
+  & Triforce Shard 7
+  & Triforce Shard 8
 Can Get Past Hyrule Barrier:
   Can Access Hyrule
-  & (Full Power Master Sword | In Swordless Mode)
+  & (Progressive Sword x4 | In Swordless Mode)
 Can Access Ganon's Tower:
   Can Get Past Hyrule Barrier
   & (Hookshot | Deku Leaf)
@@ -292,7 +284,7 @@ Can Reach Ganon's Tower Phantom Ganon Room:
   & Can Unlock Ganon's Tower Four Boss Door
 Can Reach and Defeat Puppet Ganon:
   Can Reach Ganon's Tower Phantom Ganon Room
-  & Light Arrows
+  & Progressive Bow x3
   & Can Defeat Moblins
   & Can Defeat Darknuts
   & Can Defeat Puppet Ganon
@@ -308,7 +300,7 @@ Can Defeat Ganondorf:
   # You need a sword to kill Ganondorf, but it doesn't need to be the Master Sword.
   # You need a shield to reflect Zelda's light arrows, but it doesn't need to be Mirror Shield.
   # It doesn't matter if you have the bow or not, Zelda will still get it.
-  (Hero's Sword | In Swordless Mode)
+  (Progressive Sword x1 | In Swordless Mode)
   & Hero's Shield
   & Convenient
   # Swordless gives you a sword temporarily during the Ganondorf fight, so you don't need to have found a sword item.
@@ -361,7 +353,8 @@ Can Obtain 15 Blue Chu Jelly:
   # So all you need to get 15 is any 1 out of the 9 requirements.
   Can Get Blue Chu Jelly from Blue ChuChus
   & (
-    Can Move Boulders
+    Bombs
+    | Power Bracelets
     | Hookshot
     | Bombs
     | Grappling Hook
@@ -401,8 +394,8 @@ Can Farm Lots of Rupees:
   # TODO: We might want to add some restrictions here until the player can access efficient farming spots?
 
 Can Defeat Bokoblins:
-  Hero's Sword
-  | Hero's Bow
+  Progressive Sword x1
+  | Progressive Bow x1
   | Bombs
   | Skull Hammer
 Can Defeat Green Bokoblins:
@@ -412,47 +405,47 @@ Can Defeat Blue Bokoblins:
 Can Defeat Pink Bokoblins:
   Can Defeat Bokoblins
 Can Defeat Moblins:
-  Hero's Sword
-  | Hero's Bow
+  Progressive Sword x1
+  | Progressive Bow x1
   | Bombs
   | Skull Hammer
   # Moblins are tricky to kill with just Bombs because they run away from them when they reach low health. Easiest way is to use one bomb to knock the spear out of its hands, then use the spear to kill it.
 Can Defeat Darknuts:
-  Hero's Sword
-  | Light Arrows
+  Progressive Sword x1
+  | Progressive Bow x3
   | Skull Hammer
   # Removing their armor with Skull Hammer is tricky.
   # The most consistent way with Skull Hammer is to run up to a Darknut, do a spin attack to hit its armor, roll away to dodge its attack, roll back in and do another spin attack, and repeat until the armor has been broken.
   # Another way is to circle around the Darknut counterclockwise without locking onto it and wait for it to attack. As soon as it attacks, use the hammer to attack its back and its armor will fall off in one hit.
 Can Defeat Darknuts Easily:
-  Hero's Sword
-  | Light Arrows
+  Progressive Sword x1
+  | Progressive Bow x3
 Can Defeat Miniblins:
-  Hero's Sword
+  Progressive Sword x1
   | Grappling Hook
   | Boomerang
-  | Hero's Bow
+  | Progressive Bow x1
   | Bombs
   | Skull Hammer
   # Grappling Hook does no damage for the first few hits on each Miniblin. But once the Miniblin runs out of hearts and rupees to give you, the Grappling Hook starts doing damage and can kill it.
 Can Defeat Miniblins Easily:
-  Hero's Sword
+  Progressive Sword x1
   | Boomerang
-  | Hero's Bow
+  | Progressive Bow x1
   | Bombs
   | Skull Hammer
 Can Defeat Red ChuChus:
-  Hero's Sword
+  Progressive Sword x1
   | Skull Hammer
   | Bombs
-  | Hero's Bow
+  | Progressive Bow x1
 Can Defeat Green ChuChus:
   Can Defeat Red ChuChus
 Can Defeat Yellow ChuChus:
-  (Boomerang & Hero's Sword)
-  | Hero's Bow
+  (Boomerang & Progressive Sword x1)
+  | Progressive Bow x1
   | Bombs
-  | (Deku Leaf & Hero's Sword)
+  | (Deku Leaf & Progressive Sword x1)
   | Skull Hammer
   # Note: Skull Hammer can stun them without taking damage if you hit the ground near them instead of hitting them directly.
   # Note: Grappling Hook does stun it just barely long enough for you to kill it with your sword.
@@ -466,126 +459,126 @@ Can Defeat Dark ChuChus:
   Nothing
   # Simply lure them into the light rays and then pick them up and throw them. Neither Mirror Shield nor a weapon are necessary.
 Can Defeat Keese:
-  Hero's Sword
+  Progressive Sword x1
   | Hookshot
   | Grappling Hook
   | Boomerang
-  | Hero's Bow
+  | Progressive Bow x1
   | Bombs
   | Skull Hammer
 Can Defeat Fire Keese:
   Can Defeat Keese
 Can Defeat Magtails:
-  Hero's Sword
+  Progressive Sword x1
   | Skull Hammer
   | Boomerang
   | Hookshot
   | Bombs
   | Grappling Hook
-  | Hero's Bow
+  | Progressive Bow x1
 Can Stun Magtails:
-  Hero's Sword
+  Progressive Sword x1
   | Skull Hammer
   | Boomerang
   | Hookshot
   | Bombs
   | Grappling Hook
-  | Hero's Bow
+  | Progressive Bow x1
 Can Defeat Kargarocs:
-  Hero's Sword
+  Progressive Sword x1
   | Boomerang
-  | Hero's Bow
+  | Progressive Bow x1
   | Skull Hammer
   | Bombs
 Can Defeat Peahats:
   Boomerang
-  | (Hookshot & Hero's Sword)
-  | (Deku Leaf & Hero's Sword)
+  | (Hookshot & Progressive Sword x1)
+  | (Deku Leaf & Progressive Sword x1)
   | Skull Hammer
-  | Hero's Bow
+  | Progressive Bow x1
   | Bombs
 Can Remove Peahat Armor:
   Boomerang
   | Hookshot
   | Deku Leaf
   | Skull Hammer
-  | Hero's Bow
+  | Progressive Bow x1
   | Bombs
 Can Defeat Seahats:
   Boomerang
-  | Hero's Bow
+  | Progressive Bow x1
   | Hookshot
   | Bombs
 Can Defeat Boko Babas:
-  Hero's Sword
+  Progressive Sword x1
   | Boomerang
   | Skull Hammer
-  | Hero's Bow
+  | Progressive Bow x1
   | Hookshot
   | Bombs
   | (Deku Leaf & Grappling Hook)
   # Note: Killing Boko Babas with the Skull Hammer does not yield a stick if you squish them, but if you stun it first then kill it while it's stunned, it will yield a stick as normal.
 Can Defeat Mothulas:
-  Hero's Sword
-  | Hero's Bow
+  Progressive Sword x1
+  | Progressive Bow x1
   | Bombs
   | Skull Hammer
 Can Defeat Winged Mothulas:
-  Hero's Sword
-  | Hero's Bow
+  Progressive Sword x1
+  | Progressive Bow x1
   | Bombs
   | Skull Hammer
 Can Defeat Wizzrobes:
-  Hero's Sword
-  | Hero's Bow
+  Progressive Sword x1
+  | Progressive Bow x1
   | Hookshot
   | Bombs
   | Skull Hammer
 Can Defeat Wizzrobes at Range:
-  Hero's Bow
+  Progressive Bow x1
   | Hookshot
 Can Defeat Armos:
-  Hero's Sword
-  | Hero's Bow
+  Progressive Sword x1
+  | Progressive Bow x1
   | Bombs
   | Skull Hammer
   | Hookshot
-  # Hero's Bow makes killing these more convenient compared to just with sword/hammer.
+  # Progressive Bow x1 makes killing these more convenient compared to just with sword/hammer.
 Can Defeat Armos Knights:
   Bombs
-  | Light Arrows
+  | Progressive Bow x3
 Can Defeat Big Octos:
-  Hero's Bow
+  Progressive Bow x1
   | Bombs
   | Boomerang
   # Hookshot can technically damage Big Octos, but it only reaches at the end when your time limit is almost up.
 Can Defeat Red Bubbles:
-  Hero's Sword
+  Progressive Sword x1
   | Skull Hammer
-  | Hero's Bow
+  | Progressive Bow x1
   | Bombs
   | (
     (Deku Leaf | Hookshot)
     & Grappling Hook
   )
 Can Defeat Blue Bubbles:
-  Ice Arrows
+  Progressive Bow x2
   | Bombs
   | (
     (Deku Leaf | Hookshot)
-    & (Hero's Sword | Hero's Bow | Grappling Hook | Skull Hammer)
+    & (Progressive Sword x1 | Progressive Bow x1 | Grappling Hook | Skull Hammer)
   )
 Can Defeat ReDeads:
-  Hero's Sword
-  | Light Arrows
+  Progressive Sword x1
+  | Progressive Bow x3
   | Skull Hammer
   | Bombs
 Can Defeat Poes:
   Nothing
   # You don't need Mirror Shield because you can simply lure them into the light ray.
 Can Defeat Poes Without Light Ray:
-  Hero's Sword
-  | Hero's Bow
+  Progressive Sword x1
+  | Progressive Bow x1
   | Boomerang
   | Hookshot
   | Skull Hammer
@@ -594,32 +587,32 @@ Can Defeat Poes Without Light Ray:
   # You can knock the lantern out of its hands, then let it possess you and eventually it will disappear.
   # Or you can just shoot it with Light Arrows which is easier - but that doesn't need to be in logic since if you have the bow you can knock the lantern out of its hands instead.
 Can Defeat Jalhalla Poes:
-  Hero's Sword
-  | Hero's Bow
+  Progressive Sword x1
+  | Progressive Bow x1
   | Bombs
   | Skull Hammer
   # Note: Grappling Hook stuns Poes, but doesn't damage them.
 Can Defeat Stalfos:
-  Hero's Sword
+  Progressive Sword x1
   | Bombs
   | Skull Hammer
-  | Light Arrows
+  | Progressive Bow x3
   # Some other items can damage the head once you break the body apart, but you still need sword/bombs/hammer/light arrows to break it apart in the first place.
 Can Defeat Floormasters:
-  Hero's Sword
-  | Hero's Bow
+  Progressive Sword x1
+  | Progressive Bow x1
   # Skull Hammer also works, but because of the wonky hitbox on floormasters there's a very high chance you'll miss and get taken back to the dungeon entrance, so it's not in the logic.
   # Bombs also work, but it's very annoying to hit them since they throw the bombs back at you. They also go back in the ground becoming invulnerable if you get too far away.
-  # Hero's Bow would only be an issue if you run out of arrows when you need to kill a ton of Floormasters - aka the Earth Temple foggy Floormaster room. But thankfully that room has tons of skulls that drop arrow refills.
+  # Progressive Bow x1 would only be an issue if you run out of arrows when you need to kill a ton of Floormasters - aka the Earth Temple foggy Floormaster room. But thankfully that room has tons of skulls that drop arrow refills.
 Can Defeat Morths:
-  Hero's Sword
+  Progressive Sword x1
   | Boomerang
-  | Hero's Bow
+  | Progressive Bow x1
   | Hookshot
   # Skull Hammer technically works but it's extremely annoying to hit them with. Same with bombs.
 Can Defeat Rats:
-  Hero's Sword
-  | Hero's Bow
+  Progressive Sword x1
+  | Progressive Bow x1
   | Bombs
   | Boomerang
   | Skull Hammer
@@ -627,14 +620,14 @@ Can Defeat Rats:
   # Hookshot pulls them towards you but doesn't appear to damage them. Actually, it seems Hookshot can rarely push them out of bounds.
   # Skull Hammer also stuns them if you hit the ground near them.
 Can Defeat Bombchus:
-  Hero's Sword
-  | Hero's Bow
+  Progressive Sword x1
+  | Progressive Bow x1
   | Boomerang
   | Skull Hammer
   | Grappling Hook
 Can Cut Down Dexivines:
-  Hero's Sword
-  | Hero's Bow
+  Progressive Sword x1
+  | Progressive Bow x1
   | Bombs
   | Boomerang
   | Skull Hammer
@@ -645,13 +638,13 @@ Can Defeat Dexivines:
   # They never die forever, they come back the instant they're cut down.
   # Things that trigger when all enemies are dead will never trigger.
 Can Defeat Freshwater Octoroks:
-  Hero's Bow
+  Progressive Bow x1
   | Boomerang
   | Hookshot
   # The sword and shield can be used to reflect projectiles back at them to kill them, but this only works if the player is at the same horizontal level as the Octorok, otherwise it won't shoot projectiles in the first place.
   # Bombs can also kill them, but they only work in situations where you can actually throw a bomb far enough to reach them. Even then, the timing is very precise because the bomb will be defused when it hits the water.
 Can Defeat Saltwater Octoroks:
-  Hero's Bow
+  Progressive Bow x1
   | Boomerang
   | Hookshot
   # Bombs work when fired from KoRL's cannon, but if a Saltwater Octorok got placed somewhere not in the sea you couldn't use the cannon, and it's too hard to hit them by throwing bombs.
@@ -660,7 +653,7 @@ Can Defeat Beamos:
   # Beamos do not count as alive, and therefore not being able to kill them doesn't stop a room from thinking all enemies in the room are dead.
 Can Defeat Gyorgs:
   Boomerang
-  | Hero's Bow
+  | Progressive Bow x1
   | Hookshot
 
 Can Defeat Gohma:
@@ -672,27 +665,41 @@ Can Defeat Kalle Demos:
     Tricked Logic
     & (
       Bombs
-      | Hero's Bow
+      | Progressive Bow x1
     )
   )
   # No sword needed - Kalle Demos can be damaged with just boomerang.
 Can Defeat Gohdan:
-  (Hero's Bow | Hookshot)
+  (Progressive Bow x1 | Hookshot)
   & Bombs
   # You can use hookshot to shoot all of Gohdan's eyes instead of the bow.
 Can Defeat Helmaroc King:
   Skull Hammer
   # Doesn't require a sword or anything - just the hammer both breaks his mask and damages him.
 Can Defeat Jalhalla:
-  (Can Aim Mirror Shield | Light Arrows)
+  (
+    (
+      Mirror Shield
+      & (
+        Progressive Sword x1
+        | Wind Waker
+        | Grappling Hook
+        | Boomerang
+        | Deku Leaf
+        | Progressive Bow x1
+        | Hookshot
+      )
+    )
+    | Progressive Bow x3
+  )
   & Power Bracelets
   & Can Defeat Jalhalla Poes
   # Light Arrows also work to materialize Jalhalla.
 Can Defeat Molgera:
   Hookshot
   & (
-    Hero's Sword
-    | Hero's Bow
+    Progressive Sword x1
+    | Progressive Bow x1
     | Boomerang
     | Grappling Hook
     | Skull Hammer
@@ -705,26 +712,26 @@ Can Destroy Cannons:
   | Boomerang
   # Two hits from the boomerang also destroys cannons.
 Can Cut Down Outset Trees:
-  Hero's Sword
+  Progressive Sword x1
   | Boomerang
   | Skull Hammer
   # Fire Arrows and Bombs don't work.
   # Luring a ChuChu up the hill and having it jump on the trees doesn't work.
   # Carrying the big pig to the trees and enraging it DOES work, it can cut the trees. But this is not currently in the logic because it's obscure and slow to do.
 Can Cut Down Hanging DRC Platform:
-  Hero's Sword
+  Progressive Sword x1
   | Bombs
-  | Hero's Bow
+  | Progressive Bow x1
   | Skull Hammer
   # Hookshot and Grappling Hook can also technically cut the ropes, but it's too precise to aim them.
   # Boomerang can't cut them at all.
 Can Cut Grass:
-  Hero's Sword
+  Progressive Sword x1
   | Skull Hammer
   | Boomerang
   | Bombs
 Can Sword Fight with Orca:
-  Hero's Sword
+  Progressive Sword x1
   | In Swordless Mode
   # Swordless gives you a sword temporarily while in Orca's house, so you don't need to have found a sword item.
 
@@ -733,9 +740,9 @@ Can Sword Fight with Orca:
 Chart for Island 1: Treasure Chart 25
 Chart for Island 2: Treasure Chart 7
 Chart for Island 3: Treasure Chart 24
-Chart for Island 4: Triforce Chart 2 & Any Wallet Upgrade
+Chart for Island 4: Triforce Chart 2 & Progressive Wallet x1
 Chart for Island 5: Treasure Chart 11
-Chart for Island 6: Triforce Chart 7 & Any Wallet Upgrade
+Chart for Island 6: Triforce Chart 7 & Progressive Wallet x1
 Chart for Island 7: Treasure Chart 13
 Chart for Island 8: Treasure Chart 41
 Chart for Island 9: Treasure Chart 29
@@ -752,7 +759,7 @@ Chart for Island 19: Treasure Chart 3
 Chart for Island 20: Treasure Chart 37
 Chart for Island 21: Treasure Chart 27
 Chart for Island 22: Treasure Chart 38
-Chart for Island 23: Triforce Chart 1 & Any Wallet Upgrade
+Chart for Island 23: Triforce Chart 1 & Progressive Wallet x1
 Chart for Island 24: Treasure Chart 21
 Chart for Island 25: Treasure Chart 6
 Chart for Island 26: Treasure Chart 14
@@ -760,8 +767,8 @@ Chart for Island 27: Treasure Chart 34
 Chart for Island 28: Treasure Chart 5
 Chart for Island 29: Treasure Chart 28
 Chart for Island 30: Treasure Chart 35
-Chart for Island 31: Triforce Chart 3 & Any Wallet Upgrade
-Chart for Island 32: Triforce Chart 6 & Any Wallet Upgrade
+Chart for Island 31: Triforce Chart 3 & Progressive Wallet x1
+Chart for Island 32: Triforce Chart 6 & Progressive Wallet x1
 Chart for Island 33: Treasure Chart 1
 Chart for Island 34: Treasure Chart 20
 Chart for Island 35: Treasure Chart 36
@@ -771,11 +778,11 @@ Chart for Island 38: Treasure Chart 16
 Chart for Island 39: Treasure Chart 4
 Chart for Island 40: Treasure Chart 17
 Chart for Island 41: Treasure Chart 31
-Chart for Island 42: Triforce Chart 5 & Any Wallet Upgrade
+Chart for Island 42: Triforce Chart 5 & Progressive Wallet x1
 Chart for Island 43: Treasure Chart 9
-Chart for Island 44: Triforce Chart 4 & Any Wallet Upgrade
+Chart for Island 44: Triforce Chart 4 & Progressive Wallet x1
 Chart for Island 45: Treasure Chart 40
-Chart for Island 46: Triforce Chart 8 & Any Wallet Upgrade
+Chart for Island 46: Triforce Chart 8 & Progressive Wallet x1
 Chart for Island 47: Treasure Chart 15
 Chart for Island 48: Treasure Chart 32
 Chart for Island 49: Treasure Chart 33
@@ -787,13 +794,19 @@ In Swordless Mode:
   Option "sword_mode" Is "Swordless"
 Outside Swordless Mode:
   Option "sword_mode" Is Not "Swordless"
+No Logic:
+  Option "logic_mod" Is "Glitched – No Logic"
 Complex Logic:
-  Option "logic_mod" Is "Glitched – Lunatic"
+  Option "logic_mod" Is "Glitched – No Logic"
+  | Option "logic_mod" Is "Glitched – Lunatic"
 Glitched Logic:
-  Complex Logic
+  Option "logic_mod" Is "Glitched – No Logic"
+  | Option "logic_mod" Is "Glitched – Lunatic"
   | Option "logic_mod" Is "Glitched – Moderate"
 Tricked Logic:
-  Glitched Logic
+  Option "logic_mod" Is "Glitched – No Logic"
+  | Option "logic_mod" Is "Glitched – Lunatic"
+  | Option "logic_mod" Is "Glitched – Moderate"
   | Option "logic_mod" Is "Glitched – Trivial"
 
 Convenient:
@@ -814,13 +827,13 @@ Not Secret Cave Entrance Rando:
 
 Can DRC Backward:
   Complex Logic
-  & Hero's Bow
+  & Progressive Bow x1
   & DRC Small Key x1
 Can Burn Pallet Door:
   Complex Logic
   & (
     Bombs
-    | Fire Arrows
+    | Progressive Bow x2
   )
 Can Spring Storage:
   Complex Logic
@@ -832,12 +845,14 @@ TODO:
 
 Can Get DRI Boulder Chest:
   # Bombs work by getting in the ship and shooting the cannon up at the bomb flowers.
-  Hero's Bow
-  | (Bait Bag & Can Buy Hyoi Pears)
+  Progressive Bow x1
+  | Bait Bag
   | Boomerang
   | Bombs
   | (
     Glitched Logic
-    & Can Fly With Deku Leaf Outdoors
-    & (Hero's Sword | Skull Hammer)
+    & Deku Leaf
+    & Wind Waker
+    & Wind's Requiem
+    & (Progressive Sword x1 | Skull Hammer)
   )

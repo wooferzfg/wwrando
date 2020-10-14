@@ -718,10 +718,10 @@ class WWRandomizerWindow(QMainWindow):
           desc="Things are getting a little harder.\nTrivial requires tricks that are easily repeatable."
         elif(logic_type=="Moderate"):
           desc="Things are getting harder.\nModerate requires tricks that are easily repeatable or easily learned."
-        elif(logic_type=="Lunatic (Crain)"):
-          desc="Things are getting a lot harder.\nLunatic requires all tricks that are possible."
+        elif(logic_type=="Lunatic"):
+          desc="Things are getting a lot harder. Created by CrainWWR.\nLunatic requires all tricks that are possible."
         elif(logic_type=="No Logic"):
-          desc="Things are potentially impossible.\nNo Logic runs as with as little logic as possible."
+          desc="Things are potentially impossible.\nNo Logic runs with as little logic as possible."
       self.ui.logic_desc.setText(desc)
       self.ui.logic_desc.setStyleSheet("color: grey;")
     elif(logic_cat=="Custom"):
