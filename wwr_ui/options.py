@@ -201,6 +201,10 @@ OPTIONS = OrderedDict([
     "If the chosen custom model comes with custom item models, you can check this option to turn them off and simply use Link's normal item models instead."
   ),
   (
+    "disable_custom_boat",
+    "If the chosen custom model comes with a custom boat model, you can check this option to turn it off and simply use the regular King of Red Lions."
+  ),
+  (
     "custom_color_preset",
     "This allows you to select from preset color combinations chosen by the author of the selected player model."
   ),
@@ -244,6 +248,7 @@ NON_PERMALINK_OPTIONS = [
   "player_in_casual_clothes",
   "disable_custom_player_voice",
   "disable_custom_player_items",
+  "disable_custom_boat",
   "custom_color_preset",
   # Note: Options that affect music must be included in the permalink because music duration affects gameplay in some cases, like not being allowed to close the item get textbox until the item get jingle has finished playing.
 ]

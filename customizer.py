@@ -245,7 +245,8 @@ def replace_link_model(self):
 
   # Replace KoRL.
   ship_path = custom_model_path + "Ship.arc"
-  if os.path.isfile(ship_path):
+  boat_get = self.options.get("disable_custom_boat")
+  if(os.path.isfile(ship_path) and boat_get!=True):
     with open(ship_path, "rb") as f:
       custom_ship_arc_data = BytesIO(f.read())
     orig_ship_arc = self.get_arc("files/res/Object/Ship.arc")
