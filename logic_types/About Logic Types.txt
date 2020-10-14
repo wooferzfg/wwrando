@@ -63,6 +63,7 @@ Changes from *Glitchless – Standard* are as follows:
 - Tower of the Gods beyond last Goddess Idol can require Bombs instead of Deku Leaf
 - Forsaken Fortress can be entered without Bombs
 - Earth Temple no longer requires defeating Red Bubbles
+- Wind Temple final Wind God's Stone skip can be required
 *Moderate*
 Moderate tricks or glitches are ones that require more deliberate effort and practice to perform.
 Generally speaking, this is intended for players with experience with speedrunning strategies of TWW for GameCube.
@@ -78,18 +79,40 @@ Changes from *Glitched – Trivial* are as follows:
 - Kalle Demos can be defeated with Bombs or Hero's Bow instead of Boomerang
 - Tower of the Gods behind boulder chest can require a roll clip instead of Bombs
 - Tower of the Gods behind Skulls chest can require a OOB leaf pump instead of Hero's Bow
-- Tower of the Gods boss key chest can require Bombs instead of other items
+- Tower of the Gods Big Key Chest can require Bombs instead of other items
 - Earth Temple can require a leaf pump to skip the first required use of Command Melody
 - Earth Temple boss key chest can require a roll clip instead of completing the maze puzzle
 - Puppet Ganon does not require Boomerang
 - Ganondorf does not require Grappling Hook
+*Lunatic*
+Lunatic requires all tricks and glitches that are possible. No hardlocks.
+For the most part, this is only for seasoned players of the randomizer or The Wind Waker Speed Run.
+Changes from *Glitched – Moderate* are as follows:
+- Outset Great Fairy can require Bait Bag and Hero's Bow instead of Deku Leaf
+- Jabun's Cave can require nothing instead of Bombs
+- Dragon Roost Cavern Backwards may be required
+- Forbidden Woods Back does not require any items beyond the Deku Leaf
+- Forbidden Woods Basement can require door storage or roll clip
+- Forbidden Woods Big Key Chest can require Hookshot instead of Boomerang
+- Tower of the Gods first floor skip can require nothing instead of Deku Leaf
+- Tower of the Gods Big Key Chest and Gohdan Heart Container do not hard require both Bombs and Deku Leaf
+- Helmaroc King does not require Deku Leaf or Hookshot
+- Ice Ring Isle Combat Cave does not require Iron Boots
+- Headstone Island Top of Island can require door cancel and Deku Leaf instead of Bait Bag
+- Earth Temple First Floor Western Wing can require Deku Leaf instead of Command Melody
+- Earth Temple Earth God's Stone Skip can be required
+- Wind Temple Spring Storage can be required
+- Wind Temple Behind Stone Head can require roll clip
+- Beedle's Silver and Gold Memberships are in the Expensive Purchases, Short Sidequests, and Mail.
+- Private Oasis Chest at Top of Waterfall can require nothing instead of Deku Leaf or Hookshot
+- Cabana Labyrinth can require nothing instead of Skull Hammer or Hookshot
+- Horseshoe Golf can require Hookshot instead of Deku Leaf
 *No Logic*
 As the name suggest, the randomizer operates with as little logic as possible.
 Soft and hard locks are very likely.
 The only logic in place is:
 - Bosses require all dungeon-specific keys and boss key
 - Sunken Treasures require correct numbered charts in randomized charts
-- Ganondorf requires all regularly required items
 
 ### Custom Logic Injection
 
