@@ -403,11 +403,25 @@ def make_sail_behave_like_swift_sail(self):
 
   # Update the pause menu name for the sail.
   msg = self.bmg.messages_by_id[463]
-  msg.string = "Sail of Red Lions"
+  sailDict = OrderedDict()
+  sorlDict = OrderedDict()
+  swiftDict = OrderedDict()
 
-  new_sail_tex_image_path = os.path.join(ASSETS_PATH, "swift sail texture.png")
-  new_sail_icon_image_path = os.path.join(ASSETS_PATH, "swift sail icon.png")
-  new_sail_itemget_tex_image_path = os.path.join(ASSETS_PATH, "swift sail item get texture.png")
+  sorlDict["Preface"] = "sail of red lions"
+  sorlDict["Name"] = "Sail of Red Lions"
+  sailDict["Sail of Red Lions"] = sorlDict
+
+  swiftDict["Preface"] = "swift sail"
+  swiftDict["Name"] = "Swift Sail"
+  sailDict["Swift Sail"] = swiftDict
+
+  sail_color = self.options.get("sail_color")
+
+  msg.string = sailDict[sail_color]["Name"]
+
+  new_sail_tex_image_path = os.path.join(ASSETS_PATH, ("{} texture.png".format(sailDict[sail_color]["Preface"])))
+  new_sail_icon_image_path = os.path.join(ASSETS_PATH, ("{} icon.png".format(sailDict[sail_color]["Preface"])))
+  new_sail_itemget_tex_image_path = os.path.join(ASSETS_PATH, ("{} item get texture.png".format(sailDict[sail_color]["Preface"])))
 
   if not self.using_custom_sail_texture:
     # Modify the sail's texture while sailing (only if the custom player model didn't already change the sail texture).

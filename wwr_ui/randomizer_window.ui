@@ -123,8 +123,17 @@
                   <height>0</height>
                  </size>
                 </property>
+                <property name="currentText">
+                 <string>Glitchless – Standard</string>
+                </property>
                 <property name="currentIndex">
-                 <number>0</number>
+                 <number>1</number>
+                </property>
+                <property name="duplicatesEnabled">
+                 <bool>false</bool>
+                </property>
+                <property name="frame">
+                 <bool>true</bool>
                 </property>
                 <item>
                  <property name="text">
@@ -700,19 +709,6 @@
                   </widget>
                  </item>
                  <item>
-                  <spacer name="horizontalSpacer_18">
-                   <property name="orientation">
-                    <enum>Qt::Horizontal</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>40</width>
-                     <height>20</height>
-                    </size>
-                   </property>
-                  </spacer>
-                 </item>
-                 <item>
                   <spacer name="horizontalSpacer_19">
                    <property name="orientation">
                     <enum>Qt::Horizontal</enum>
@@ -753,19 +749,6 @@
                     </property>
                    </item>
                   </widget>
-                 </item>
-                 <item>
-                  <spacer name="horizontalSpacer_20">
-                   <property name="orientation">
-                    <enum>Qt::Horizontal</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>40</width>
-                     <height>20</height>
-                    </size>
-                   </property>
-                  </spacer>
                  </item>
                  <item>
                   <widget class="QWidget" name="widget_2" native="true"/>
@@ -1320,6 +1303,28 @@
            <layout class="QVBoxLayout" name="verticalLayout_3">
             <item>
              <layout class="QGridLayout" name="grid_for_model_general_options">
+              <item row="3" column="2">
+               <layout class="QHBoxLayout" name="layout_for_disable_custom">
+                <item>
+                 <widget class="QCheckBox" name="disable_custom_boat">
+                  <property name="text">
+                   <string>Disable Custom Boat</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item row="0" column="2">
+               <layout class="QHBoxLayout" name="layout_for_misc_custom">
+                <item>
+                 <widget class="QCheckBox" name="player_in_casual_clothes">
+                  <property name="text">
+                   <string>Casual Clothes</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
               <item row="0" column="0">
                <layout class="QHBoxLayout" name="layout_for_custom_player_model">
                 <item>
@@ -1334,21 +1339,7 @@
                 </item>
                </layout>
               </item>
-              <item row="1" column="0">
-               <layout class="QHBoxLayout" name="layout_for_custom_preset">
-                <item>
-                 <widget class="QLabel" name="label_for_custom_color_preset">
-                  <property name="text">
-                   <string>Color Preset</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QComboBox" name="custom_color_preset"/>
-                </item>
-               </layout>
-              </item>
-              <item row="1" column="1">
+              <item row="4" column="2">
                <layout class="QHBoxLayout" name="layout_for_randomize_color_options">
                 <item>
                  <widget class="QPushButton" name="randomize_all_custom_colors_together">
@@ -1366,12 +1357,12 @@
                 </item>
                </layout>
               </item>
-              <item row="0" column="1">
-               <layout class="QHBoxLayout" name="layout_for_misc_options">
+              <item row="1" column="2">
+               <layout class="QHBoxLayout" name="horizontalLayout_3">
                 <item>
-                 <widget class="QCheckBox" name="player_in_casual_clothes">
+                 <widget class="QCheckBox" name="disable_custom_player_items">
                   <property name="text">
-                   <string>Casual Clothes</string>
+                   <string>Disable Custom Items</string>
                   </property>
                  </widget>
                 </item>
@@ -1382,32 +1373,64 @@
                   </property>
                  </widget>
                 </item>
+               </layout>
+              </item>
+              <item row="1" column="0">
+               <layout class="QHBoxLayout" name="layout_for_custom_preset">
                 <item>
-                 <widget class="QCheckBox" name="disable_custom_player_items">
+                 <widget class="QLabel" name="label_for_custom_color_preset">
                   <property name="text">
-                   <string>Disable Custom Items</string>
+                   <string>Color Preset</string>
                   </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QComboBox" name="custom_color_preset"/>
+                </item>
+               </layout>
+              </item>
+              <item row="4" column="0">
+               <widget class="QLabel" name="custom_model_comment">
+                <property name="maximumSize">
+                 <size>
+                  <width>810</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="wordWrap">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <layout class="QHBoxLayout" name="layout_for_sail_color">
+                <item>
+                 <widget class="QLabel" name="label_for_sail_color">
+                  <property name="text">
+                   <string>Sail</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QComboBox" name="sail_color">
+                  <item>
+                   <property name="text">
+                    <string>Sail of Red Lions</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Swift Sail</string>
+                   </property>
+                  </item>
                  </widget>
                 </item>
                </layout>
               </item>
              </layout>
-            </item>
-            <item>
-             <widget class="QLabel" name="custom_model_comment">
-              <property name="maximumSize">
-               <size>
-                <width>810</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="wordWrap">
-               <bool>true</bool>
-              </property>
-             </widget>
             </item>
             <item>
              <layout class="QHBoxLayout" name="layout_for_color_visualizer">

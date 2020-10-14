@@ -926,8 +926,10 @@ class WWRandomizerWindow(QMainWindow):
     # Hide the custom items disable option for Link, but not any other models (since we don't know which have custom items).
     if custom_model_name == "Link":
       self.ui.disable_custom_player_items.hide()
+      self.ui.disable_custom_boat.hide()
     else:
       self.ui.disable_custom_player_items.show()
+      self.ui.disable_custom_boat.show()
 
   def reload_colors(self, update_preview=True):
     preset_name = self.get_option_value("custom_color_preset")
