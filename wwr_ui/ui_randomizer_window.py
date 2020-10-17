@@ -819,6 +819,7 @@ class Ui_MainWindow(object):
         self.sail_color = QComboBox(self.tab_for_model_customization)
         self.sail_color.addItem("")
         self.sail_color.addItem("")
+        self.sail_color.addItem("")
         self.sail_color.setObjectName(u"sail_color")
 
         self.layout_for_sail_color.addWidget(self.sail_color)
@@ -1065,6 +1066,7 @@ class Ui_MainWindow(object):
         self.label_for_sail_color.setText(QCoreApplication.translate("MainWindow", u"Sail", None))
         self.sail_color.setItemText(0, QCoreApplication.translate("MainWindow", u"Sail of Red Lions", None))
         self.sail_color.setItemText(1, QCoreApplication.translate("MainWindow", u"Swift Sail", None))
+        self.sail_color.setItemText(2, QCoreApplication.translate("MainWindow", u"Sail of Lions' Pride", None))
 
         self.custom_model_preview_label.setText("")
         self.tab_for_main.setTabText(self.tab_for_main.indexOf(self.tab_for_model_customization), QCoreApplication.translate("MainWindow", u"Player Customization", None))
@@ -1075,4 +1077,3 @@ class Ui_MainWindow(object):
         self.reset_settings_to_default.setText(QCoreApplication.translate("MainWindow", u"Reset All Settings to Default", None))
         self.randomize_button.setText(QCoreApplication.translate("MainWindow", u"Randomize", None))
     # retranslateUi
-

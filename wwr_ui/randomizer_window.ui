@@ -1426,6 +1426,11 @@
                     <string>Swift Sail</string>
                    </property>
                   </item>
+                  <item>
+                   <property name="text">
+                    <string>Sail of Lions' Pride</string>
+                   </property>
+                  </item>
                  </widget>
                 </item>
                </layout>

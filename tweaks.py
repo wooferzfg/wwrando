@@ -406,6 +406,7 @@ def make_sail_behave_like_swift_sail(self):
   sailDict = OrderedDict()
   sorlDict = OrderedDict()
   swiftDict = OrderedDict()
+  solpDict = OrderedDict()
 
   sorlDict["Preface"] = "sail of red lions"
   sorlDict["Name"] = "Sail of Red Lions"
@@ -414,6 +415,10 @@ def make_sail_behave_like_swift_sail(self):
   swiftDict["Preface"] = "swift sail"
   swiftDict["Name"] = "Swift Sail"
   sailDict["Swift Sail"] = swiftDict
+
+  solpDict["Preface"] = "sail of lions pride"
+  solpDict["Name"] = "Sail of Lions' Pride"
+  sailDict["Sail of Lions' Pride"] = solpDict
 
   sail_color = self.options.get("sail_color")
 
