@@ -1008,8 +1008,8 @@ class Ui_MainWindow(object):
         self.num_starting_triforce_shards.setCurrentText(QCoreApplication.translate("MainWindow", u"0", None))
         self.compass_map_pool_with_keys.setText(QCoreApplication.translate("MainWindow", u"Pool Dungeon Items with Keys", None))
         self.label_for_sword_mode.setText(QCoreApplication.translate("MainWindow", u"Sword Mode", None))
-        self.sword_mode.setItemText(0, QCoreApplication.translate("MainWindow", u"Start with Sword", None))
-        self.sword_mode.setItemText(1, QCoreApplication.translate("MainWindow", u"Randomized Sword", None))
+        self.sword_mode.setItemText(0, QCoreApplication.translate("MainWindow", u"Start with Hero's Sword", None))
+        self.sword_mode.setItemText(1, QCoreApplication.translate("MainWindow", u"No Starting Sword", None))
         self.sword_mode.setItemText(2, QCoreApplication.translate("MainWindow", u"Swordless", None))
 
         self.label_for_randomize_entrances.setText(QCoreApplication.translate("MainWindow", u"Randomize Entrances", None))

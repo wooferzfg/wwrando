@@ -33,12 +33,12 @@ Islet of Steel - Interior:
   Mode: o
   Need: Can Play Wind's Requiem
   Types: Other Chest
-Private Oasis - Cabana Labyrinth - First Chest:
+Private Oasis - Cabana Labyrinth - Lower Floor Chest:
   Mode: o
   Need:
     Can Access Cabana Labyrinth
   Types: Puzzle Secret Cave
-Private Oasis - Cabana Labyrinth - Second Chest:
+Private Oasis - Cabana Labyrinth - Upper Floor Chest:
   Mode: o
   Need:
     Can Access Cabana Labyrinth
@@ -54,13 +54,13 @@ Southern Fairy Island - Great Fairy:
   Types: Great Fairy
 
 # Pawprint
-Pawprint Isle - Chuchu Cave - Behind First Boulder:
+Pawprint Isle - Chuchu Cave - Behind Left Boulder:
   # Left Boulder Chest
   Mode: o
   Need:
     Can Access Pawprint Isle Chuchu Cave
   Types: Puzzle Secret Cave
-Pawprint Isle - Chuchu Cave - Behind Second Boulder:
+Pawprint Isle - Chuchu Cave - Behind Right Boulder:
   # Right Boulder Chest
   Mode: o
   Need:

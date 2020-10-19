@@ -189,7 +189,7 @@ def fix_deku_leaf_model(self):
     actor.name = "item"
     actor.params = 0x01FF0000 # Misc params, one of which makes the item not fade out over time
     actor.item_id = 0x34 # Deku Leaf
-    actor.item_flag = 2 # This is the same item pickup flag that itemDek originally had in its params.
+    actor.item_pickup_flag = 2 # This is the same item pickup flag that itemDek originally had in its params.
     actor.activation_switch_index = 0xFF # Necessary for the item to be pickupable.
     actor.save_changes()
 
@@ -620,7 +620,7 @@ def modify_title_screen_logo(self):
 def update_game_name_icon_and_banners(self):
   new_game_name = "Wind Waker Randomized %s" % self.seed
   banner_data = self.get_raw_file("files/opening.bnr")
-  write_str(banner_data, 0x1860, new_game_name, 0x40)
+  write_magic_str(banner_data, 0x1860, new_game_name, 0x40)
 
   new_game_id = "GZLE99"
   boot_data = self.get_raw_file("sys/boot.bin")
@@ -1441,7 +1441,7 @@ INTER_DUNGEON_WARP_DATA = [
   ],
   [
     WarpPotData("ma2room", 2, 1556, 728.46, -7091, 0xEAA6, 5), # FF
-    WarpPotData("M_Dai", 3, -358, 0, -778, 0x4000, 5), # ET
+    WarpPotData("M_Dai", 1, -8010, 1010, -1610, 0, 5), # ET
     WarpPotData("kaze", 3, -4333, 1100, 48, 0x4000, 5), # WT
   ],
 ]
@@ -1670,9 +1670,9 @@ def update_skip_rematch_bosses_game_variable(self):
 
 def update_sword_mode_game_variable(self):
   sword_mode_address = self.main_custom_symbols["sword_mode"]
-  if self.options.get("sword_mode") == "Start with Sword":
+  if self.options.get("sword_mode") == "Start with Hero's Sword":
     self.dol.write_data(write_u8, sword_mode_address, 0)
-  elif self.options.get("sword_mode") == "Randomized Sword":
+  elif self.options.get("sword_mode") == "No Starting Sword":
     self.dol.write_data(write_u8, sword_mode_address, 1)
   elif self.options.get("sword_mode") == "Swordless":
     self.dol.write_data(write_u8, sword_mode_address, 2)
@@ -1795,7 +1795,7 @@ def show_seed_hash_on_name_entry_screen(self):
   if not self.permalink:
     return
 
-  if self.options.get("generate_spoiler_log"):
+  if not self.options.get("do_not_generate_spoiler_log"):
     integer_seed = self.convert_string_to_integer_md5(self.permalink)
   else:
     # When no spoiler log is generated, the seed key also affects randomization, not just the data in the permalink.

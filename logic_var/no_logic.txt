@@ -936,12 +936,12 @@ Pawprint Isle - Chuchu Cave - Chest:
   Need: Nothing
   Types: Puzzle Secret Cave
 
-Pawprint Isle - Chuchu Cave - Behind First Boulder:
+Pawprint Isle - Chuchu Cave - Behind Left Boulder:
   Mode: o
   Need: Nothing
   Types: Puzzle Secret Cave
 
-Pawprint Isle - Chuchu Cave - Behind Second Boulder:
+Pawprint Isle - Chuchu Cave - Behind Right Boulder:
   Mode: o
   Need: Nothing
   Types: Puzzle Secret Cave

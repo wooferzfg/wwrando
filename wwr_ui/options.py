@@ -136,7 +136,7 @@ OPTIONS = OrderedDict([
   ),
   (
     "sword_mode",
-    "Controls whether you start with the Hero's Sword, the Hero's Sword is randomized, or if there are no swords in the entire game.\nSwordless and Randomized Sword are challenge modes, not recommended for your first run. Also, FF's Phantom Ganon is vulnerable to Skull Hammer in Swordless mode."
+    "Controls whether you start with the Hero's Sword, without a sword, or if there is no sword in the entire game.\nSwordless and No Starting Sword are challenge modes, not recommended for your first run. FF's Phantom Ganon is vulnerable to Skull Hammer in Swordless mode only."
   ),
   (
     "skip_rematch_bosses",
@@ -255,7 +255,9 @@ NON_PERMALINK_OPTIONS = [
   "disable_custom_boat",
   "sail_color",
   "custom_color_preset",
+  "remove_title_and_ending_videos",
   # Note: Options that affect music must be included in the permalink because music duration affects gameplay in some cases, like not being allowed to close the item get textbox until the item get jingle has finished playing.
+  # Note: randomize_enemy_palettes has special logic to be in the permalink when enemy rando is on, but otherwise just have an unused placeholder in the permalink.
 ]
 
 HIDDEN_OPTIONS = [

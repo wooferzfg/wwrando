@@ -15,13 +15,13 @@ from paths import ASM_PATH
 def disassemble_all_code(self):
   if not os.path.isfile(r"C:\devkitPro\devkitPPC\bin\powerpc-eabi-objdump.exe"):
     raise Exception(r"Failed to disassemble code: Could not find devkitPPC. devkitPPC should be installed to: C:\devkitPro\devkitPPC")
-  
+
   rels_arc = self.get_arc("files/RELS.arc")
   out_dir = os.path.join(self.randomized_output_folder, "disassemble")
   if not os.path.isdir(out_dir):
     os.mkdir(out_dir)
-  
-  
+
+
   demangled_map_path = os.path.join(ASM_PATH, "maps-out", "framework.map.out")
   if os.path.isfile(demangled_map_path):
     with open(demangled_map_path, "rb") as f:
@@ -30,15 +30,15 @@ def disassemble_all_code(self):
     framework_map_contents = self.gcm.read_file_data("files/maps/framework.map")
   framework_map_contents = read_all_bytes(framework_map_contents).decode("ascii")
   main_symbols = get_main_symbols(framework_map_contents)
-  
-  
+
+
   all_rel_paths = get_list_of_all_rels(self)
   files_to_disassemble = all_rel_paths.copy()
   files_to_disassemble.append("sys/main.dol")
-  
+
   for file_path_in_gcm in files_to_disassemble:
     basename_with_ext = os.path.basename(file_path_in_gcm)
-    
+
     rel_file_entry = rels_arc.get_file_entry(basename_with_ext)
     if rel_file_entry:
       rel_file_entry.decompress_data_if_necessary()
@@ -47,27 +47,27 @@ def disassemble_all_code(self):
       data = self.gcm.read_file_data(file_path_in_gcm)
       if try_read_str(data, 0, 4) == "Yaz0":
         data = Yaz0.decompress(data)
-    
+
     basename, file_ext = os.path.splitext(basename_with_ext)
-    
+
     bin_path = os.path.join(out_dir, basename_with_ext)
     with open(bin_path, "wb") as f:
       data.seek(0)
       f.write(data.read())
-  
+
   all_rels_by_path = OrderedDict()
   all_rel_symbols_by_path = OrderedDict()
   for file_path_in_gcm in all_rel_paths:
     basename_with_ext = os.path.basename(file_path_in_gcm)
     basename, file_ext = os.path.splitext(basename_with_ext)
-    
-    
+
+
     bin_path = os.path.join(out_dir, basename_with_ext)
     rel = REL()
     rel.read_from_file(bin_path)
     all_rels_by_path[file_path_in_gcm] = rel
-    
-    
+
+
     demangled_map_path = os.path.join(ASM_PATH, "maps-out", basename + ".map.out")
     if os.path.isfile(demangled_map_path):
       with open(demangled_map_path, "rb") as f:
@@ -76,27 +76,27 @@ def disassemble_all_code(self):
       rel_map_data = self.gcm.read_file_data("files/maps/" + basename + ".map")
     rel_map_data.seek(0)
     rel_map_data = rel_map_data.read()
-    
+
     # Copy the map file to the output directory
     rel_map_path = os.path.join(out_dir, basename + ".map")
     with open(rel_map_path, "wb") as f:
       f.write(rel_map_data)
-    
+
     rel_map_data = rel_map_data.decode("ascii")
-    
+
     all_rel_symbols_by_path[file_path_in_gcm] = get_rel_symbols(rel, rel_map_data)
-  
+
   for file_path_in_gcm in files_to_disassemble:
     basename_with_ext = os.path.basename(file_path_in_gcm)
     print(basename_with_ext)
-    
+
     basename, file_ext = os.path.splitext(basename_with_ext)
-    
+
     bin_path = os.path.join(out_dir, basename_with_ext)
     asm_path = os.path.join(out_dir, basename + ".asm")
-    
+
     disassemble_file(bin_path, asm_path)
-    
+
     is_rel = (file_ext == ".rel")
     if is_rel:
       add_relocations_and_symbols_to_rel(asm_path, bin_path, file_path_in_gcm, main_symbols, all_rel_symbols_by_path, all_rels_by_path)
@@ -113,7 +113,7 @@ def disassemble_file(bin_path, asm_path):
     "-EB",
     bin_path
   ]
-  
+
   print(" ".join(command))
   print()
   with open(asm_path, "wb") as f:
@@ -124,7 +124,7 @@ def disassemble_file(bin_path, asm_path):
 def add_relocations_and_symbols_to_rel(asm_path, rel_path, file_path_in_gcm, main_symbols, all_rel_symbols_by_path, all_rels_by_path):
   rel = all_rels_by_path[file_path_in_gcm]
   rel_symbol_names = all_rel_symbols_by_path[file_path_in_gcm]
-  
+
   replacements = {}
   replacement_offsets = {}
   for module_num, relocation_entries in rel.relocation_entries_for_module.items():
@@ -156,12 +156,12 @@ def add_relocations_and_symbols_to_rel(asm_path, rel_path, file_path_in_gcm, mai
           other_rel, other_rel_path_in_gcm = find_rel_by_module_num(all_rels_by_path, module_num)
           other_rel_symbol_names = all_rel_symbols_by_path[other_rel_path_in_gcm]
           other_rel_name = os.path.basename(other_rel_path_in_gcm)
-          
+
           section_to_relocate_against = other_rel.sections[relocation_data_entry.section_num_to_relocate_against]
           section_offset_to_relocate_against = section_to_relocate_against.offset
           #print("address: %04X (%X + %X)" % (section_offset_to_relocate_against + relocation_data_entry.symbol_address, section_offset_to_relocate_against, relocation_data_entry.symbol_address))
           #print("section #%X; section offset %X" % (relocation_data_entry.section_num_to_relocate_against, section_offset_to_relocate_against))
-          
+
           relocated_offset = section_offset_to_relocate_against + relocation_data_entry.symbol_address
           symbol_name = other_rel_symbol_names.get(relocated_offset, "")
           replacements[rounded_down_location] = "%s:      %X (%X + %X)      %s" % (
@@ -173,8 +173,8 @@ def add_relocations_and_symbols_to_rel(asm_path, rel_path, file_path_in_gcm, mai
           )
           if other_rel.bss_section_index and relocated_offset >= other_rel.bss_offset:
             replacements[rounded_down_location] += "    [BSS]"
-  
-  
+
+
   with open(asm_path) as f:
     asm = f.read()
   out_str = ""
@@ -189,15 +189,15 @@ def add_relocations_and_symbols_to_rel(asm_path, rel_path, file_path_in_gcm, mai
           if rel.bss_section_index and offset >= rel.bss_offset:
             out_str += "    [BSS symbol, value initialized at runtime]"
           out_str += "\n"
-      
+
       if not check_offset_in_executable_rel_section(word_offset, rel):
         # Remove the disassembled code for non-executable sections since it will be nonsense, not actually code.
         before_disassembly_match = re.search(r"^( +[0-9a-f]+:\s(?:[0-9a-f]{2} ){4}).+", line)
         if before_disassembly_match:
           line = before_disassembly_match.group(1)
-    
+
     out_str += line
-    
+
     if match:
       offset = int(match.group(1), 16)
       if offset in replacements:
@@ -222,9 +222,9 @@ def add_relocations_and_symbols_to_rel(asm_path, rel_path, file_path_in_gcm, mai
               out_str += "    [BSS]"
         else:
           out_str += get_extra_comment_for_asm_line(line)
-    
+
     out_str += "\n"
-    
+
     if line.endswith("blr"):
       out_str += "\n" # Separate functions
   with open(asm_path, "w") as f:
@@ -233,32 +233,42 @@ def add_relocations_and_symbols_to_rel(asm_path, rel_path, file_path_in_gcm, mai
 ALL_LOAD_OR_STORE_OPCODES = [
   "lbz",
   "lbzu",
-  
+  "stb",
+
   "lha",
   "lhau",
   "lhz",
   "lhzu",
-  
+  "sth",
+  "sthu",
+
   "lmw",
   "lwz",
   "lwzu",
-  
+  "stw",
+  "stwu",
+
   "lfs",
   "lfsu",
   "lfd",
   "lfdu",
+  "stfs",
+  "stfd",
 ]
 
 def add_symbols_to_main(self, asm_path, main_symbols):
   out_str = ""
   with open(asm_path) as f:
     last_lis_match = None
+    last_line_loaded_symbol_info = None
     while True:
       line = f.readline()
       if line == "":
         break
       line = line.rstrip("\r\n")
-      
+
+      this_line_loaded_symbol_info = None
+
       match = re.search(r"^\s+([0-9a-f]+)(:\s.+)$", line, re.IGNORECASE)
       #print(match)
       if match:
@@ -268,27 +278,27 @@ def add_symbols_to_main(self, asm_path, main_symbols):
           if address in main_symbols:
             symbol_name = main_symbols[address]
             out_str += "; SYMBOL: %08X    %s\n" % (address, symbol_name)
-          
+
           # Convert the displayed main.dol offset to an address in RAM.
           line_after_offset = match.group(2)
           line = "%08X%s" % (address, line_after_offset)
-        
+
         if not check_offset_in_executable_dol_section(self, offset):
           # Remove the disassembled code for non-executable sections since it will be nonsense, not actually code.
           before_disassembly_match = re.search(r"^( *[0-9a-f]+:\s((?:[0-9a-f]{2} ){4})).+", line, re.IGNORECASE)
           if before_disassembly_match:
             line = before_disassembly_match.group(1)
-            
+
             # Also add symbols if this line is an address.
             bytes_str = before_disassembly_match.group(2)
             bytes_strs = bytes_str.split(" ")
             word_value = int(bytes_strs[0] + bytes_strs[1] + bytes_strs[2] + bytes_strs[3], 16)
-            
+
             if word_value in main_symbols:
               symbol_name = main_symbols[word_value]
               line += get_padded_comment_string_for_line(line)
               line += "%X  %s" % (word_value, symbol_name)
-      
+
       branch_match = re.search(r"^(.+ \t(?:bl|b|beq|bne|blt|bgt|ble|bge|bdnz|bdz)\s+0x)([0-9a-f]+)$", line, re.IGNORECASE)
       addi_match = re.search(r"^.+ \t(?:addi)\s+r\d+,(r\d+),(-?\d+)$", line, re.IGNORECASE)
       load_or_store_match = re.search(r"^.+ \t(?:" + "|".join(ALL_LOAD_OR_STORE_OPCODES) + ")\s+[rf]\d+,(-?\d+)\((r\d+)\)$", line, re.IGNORECASE)
@@ -313,8 +323,9 @@ def add_symbols_to_main(self, asm_path, main_symbols):
         elif load_or_store_match:
           source_register = load_or_store_match.group(2)
           address_offset = int(load_or_store_match.group(1))
-        
+
         address = None
+        loaded_string_address = None
         if source_register == "r2":
           address = 0x803FFD00
         elif source_register == "r13":
@@ -324,36 +335,54 @@ def add_symbols_to_main(self, asm_path, main_symbols):
           if lis_register == source_register:
             upper_halfword = int(last_lis_match.group(2)) & 0xFFFF
             address = (upper_halfword << 16)
-        
+        elif addi_match and last_line_loaded_symbol_info is not None:
+          last_line_address, last_line_symbol_name, last_line_source_register = last_line_loaded_symbol_info
+          if last_line_symbol_name == "@stringBase0":
+            # Loading a pointer to a string.
+            loaded_string_address = last_line_address+address_offset
+
         if address is not None:
           address += address_offset
-          
+
           if (address & ~0x01FFFFFF) != 0x80000000:
             address = None
-        
+
         if address is not None:
           out_str += line
           out_str += get_padded_comment_string_for_line(line)
           out_str += "%08X" % address
-          
+
           if address in main_symbols:
             symbol_name = main_symbols[address]
             out_str += "      " + symbol_name
+            this_line_loaded_symbol_info = (address, symbol_name, source_register)
+        elif loaded_string_address is not None:
+          out_str += line
+          out_str += get_padded_comment_string_for_line(line)
+          out_str += "%08X" % loaded_string_address
+
+          loaded_string = self.dol.read_data(read_str_until_null_character, loaded_string_address)
+          out_str += "      " + repr(loaded_string)
         else:
           out_str += line
           out_str += get_extra_comment_for_asm_line(line)
       else:
         out_str += line
         out_str += get_extra_comment_for_asm_line(line)
-      
+
       lis_match = re.search(r"^.+ \t(?:lis)\s+(r\d+),(-?\d+)$", line, re.IGNORECASE)
       if lis_match:
         last_lis_match = lis_match
       else:
         last_lis_match = None
-      
+
+      if this_line_loaded_symbol_info:
+        last_line_loaded_symbol_info = this_line_loaded_symbol_info
+      else:
+        last_line_loaded_symbol_info = None
+
       out_str += "\n"
-      
+
       if line.endswith("blr"):
         out_str += "\n" # Separate functions
   with open(asm_path, "w") as f:
@@ -362,16 +391,16 @@ def add_symbols_to_main(self, asm_path, main_symbols):
 
 def get_list_of_all_rels(self):
   all_rel_paths = []
-  
+
   for file_path in self.gcm.files_by_path:
     if file_path.startswith("files/rels/"):
       all_rel_paths.append(file_path)
-  
+
   rels_arc = self.get_arc("files/RELS.arc")
   for file_entry in rels_arc.file_entries:
     if file_entry.name.endswith(".rel"):
       all_rel_paths.append("files/rels/" + file_entry.name)
-  
+
   return all_rel_paths
 
 def find_rel_by_module_num(all_rels_by_path, module_num):
@@ -407,7 +436,7 @@ def get_rel_symbols(rel, rel_map_data):
           next_section_index += 1
   if not found_memory_map:
     raise Exception("Failed to find memory map")
-  
+
   rel_symbol_names = {}
   all_valid_sections = []
   for section in rel.sections:
@@ -438,16 +467,16 @@ def get_rel_symbols(rel, rel_map_data):
       symbol_name = symbol_entry_match.group(2)
       rel_symbol_names[symbol_offset] = symbol_name
       #print("%08X  %s" % (symbol_offset, symbol_name))
-  
+
   #print(rel_symbol_names)
-  
+
   return rel_symbol_names
 
 def get_padded_comment_string_for_line(line):
   spaces_needed = 50 - len(line)
   if spaces_needed < 1:
     spaces_needed = 1
-  
+
   return (" "*spaces_needed) + "; "
 
 def check_offset_in_executable_dol_section(self, offset):
@@ -463,19 +492,19 @@ def check_offset_in_executable_rel_section(offset, rel):
   for section in rel.sections:
     if offset >= section.offset and offset < section.offset+section.length:
       return section.is_executable
-  
+
   #print("Failed to find section for offset: %04X" % offset)
   return False
 
 def get_extra_comment_for_asm_line(line):
   comment = ""
-  
+
   rlwinm_match = re.search(r"^.+ \t(?:rlwinm\.?)\s+(r\d+),(r\d+),(\d+),(\d+),(\d+)$", line, re.IGNORECASE)
   clrlwi_match = re.search(r"^.+ \t(?:clrlwi\.?)\s+(r\d+),(r\d+),(\d+)$", line, re.IGNORECASE)
   rotlwi_match = re.search(r"^.+ \t(?:rotlwi\.?)\s+(r\d+),(r\d+),(\d+)$", line, re.IGNORECASE)
-  
+
   rlwimi_match = re.search(r"^.+ \t(?:rlwimi\.?)\s+(r\d+),(r\d+),(\d+),(\d+),(\d+)$", line, re.IGNORECASE)
-  
+
   if rlwinm_match or clrlwi_match or rotlwi_match or rlwimi_match:
     if rlwinm_match:
       dst_reg = rlwinm_match.group(1)
@@ -503,7 +532,7 @@ def get_extra_comment_for_asm_line(line):
       last_mask_bit = int(rlwimi_match.group(5))
     else:
       raise Exception("Unknown rotate left opcode")
-    
+
     if first_mask_bit <= last_mask_bit:
       mask_length = (last_mask_bit - first_mask_bit) + 1
       mask = (1 << mask_length) - 1
@@ -516,7 +545,7 @@ def get_extra_comment_for_asm_line(line):
       inverse_mask = (1 << inverse_mask_length) - 1
       inverse_mask <<= (31 - last_inverse_mask_bit)
       mask = (~inverse_mask) & 0xFFFFFFFF
-    
+
     if rlwimi_match:
       if l_shift == 0:
         comment += "%s |= %s & 0x%08X" % (dst_reg, src_reg, mask)
@@ -526,19 +555,19 @@ def get_extra_comment_for_asm_line(line):
       # Undo the shifting operation on the mask so we can present the mask as if it was ANDed pre-shift (it's actually post-shift).
       adjusted_mask = (mask >> l_shift) | (mask << (32 - l_shift))
       adjusted_mask &= 0xFFFFFFFF
-      
+
       # Represent right shifting as a negative number.
       if l_shift != 0 and last_mask_bit + l_shift > 31:
         l_shift = -(32 - l_shift)
-      
+
       if l_shift == 0:
         comment += "%s = %s & 0x%08X" % (dst_reg, src_reg, adjusted_mask)
       elif l_shift < 0:
         comment += "%s = (%s & 0x%08X) >> 0x%02X" % (dst_reg, src_reg, adjusted_mask, -l_shift)
       else:
         comment += "%s = (%s & 0x%08X) << 0x%02X" % (dst_reg, src_reg, adjusted_mask, l_shift)
-  
+
   if comment:
     comment = get_padded_comment_string_for_line(line) + comment
-  
+
   return comment

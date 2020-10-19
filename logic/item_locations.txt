@@ -1161,6 +1161,7 @@ Hyrule - Master Sword Chamber:
   Need:
     Can Access Hyrule
     & Can Defeat Darknuts
+    & Can Defeat Mighty Darknuts
   Original item: Master Sword (Powerless)
   Types: Dungeon
   Paths:
@@ -1978,7 +1979,7 @@ Private Oasis - Chest at Top of Waterfall:
   Types: Island Puzzle
   Paths:
     - sea/Room33.arc/Chest000
-Private Oasis - Cabana Labyrinth - First Chest:
+Private Oasis - Cabana Labyrinth - Lower Floor Chest:
   Need:
     Can Access Cabana Labyrinth
     & Skull Hammer
@@ -1986,7 +1987,7 @@ Private Oasis - Cabana Labyrinth - First Chest:
   Types: Puzzle Secret Cave
   Paths:
     - TF_04/Stage.arc/Chest001
-Private Oasis - Cabana Labyrinth - Second Chest:
+Private Oasis - Cabana Labyrinth - Upper Floor Chest:
   Need:
     Can Access Cabana Labyrinth
     & Skull Hammer
@@ -2156,7 +2157,7 @@ Pawprint Isle - Chuchu Cave - Chest:
   Types: Puzzle Secret Cave
   Paths:
     - TyuTyu/Stage.arc/Chest003
-Pawprint Isle - Chuchu Cave - Behind First Boulder:
+Pawprint Isle - Chuchu Cave - Behind Left Boulder:
   # Left Boulder Chest
   Need:
     Can Access Pawprint Isle Chuchu Cave
@@ -2165,7 +2166,7 @@ Pawprint Isle - Chuchu Cave - Behind First Boulder:
   Types: Puzzle Secret Cave
   Paths:
     - TyuTyu/Stage.arc/Chest001
-Pawprint Isle - Chuchu Cave - Behind Second Boulder:
+Pawprint Isle - Chuchu Cave - Behind Right Boulder:
   # Right Boulder Chest
   Need:
     Can Access Pawprint Isle Chuchu Cave

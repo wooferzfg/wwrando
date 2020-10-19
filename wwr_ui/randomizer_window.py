@@ -20,6 +20,7 @@ import string
 import struct
 import base64
 import colorsys
+import time
 
 import yaml
 try:
@@ -131,6 +132,7 @@ class WWRandomizerWindow(QMainWindow):
       label_for_option = getattr(self.ui, "label_for_" + option_name, None)
       if label_for_option:
         label_for_option.installEventFilter(self)
+    self.ui.sword_mode.highlighted.connect(self.update_sword_mode_highlighted_description)
     self.set_option_description(None)
 
     self.update_settings()
@@ -336,9 +338,11 @@ class WWRandomizerWindow(QMainWindow):
 
     try:
       self.randomizer_thread.randomizer.write_error_log(error_message)
-    except:
-      # If an error happened when writing the error log just ignore it.
-      pass
+    except Exception as e:
+      # If an error happened when writing the error log just print it and then ignore it.
+      stack_trace = traceback.format_exc()
+      error_message = "Failed to parse permalink:\n" + str(e) + "\n\n" + stack_trace
+      print(error_message)
 
     print(error_message)
     QMessageBox.critical(
@@ -502,6 +506,12 @@ class WWRandomizerWindow(QMainWindow):
 
       value = self.settings[option_name]
 
+      if option_name == "randomize_enemy_palettes" and not self.get_option_value("randomize_enemies"):
+        # Enemy palette randomizer doesn't need to be in the permalink when enemy rando is off.
+        # So just put a 0 bit as a placeholder.
+
+        value = False
+
       widget = getattr(self.ui, option_name)
       if isinstance(widget, QAbstractButton):
         bitswriter.write(int(value), 1)
@@ -554,6 +564,8 @@ class WWRandomizerWindow(QMainWindow):
 
     option_bytes = struct.unpack(">" + "B"*len(options_bytes), options_bytes)
 
+    prev_randomize_enemy_palettes_value = self.get_option_value("randomize_enemy_palettes")
+
     bitsreader = PackedBitsReader(option_bytes)
     for option_name in OPTIONS:
       if option_name in NON_PERMALINK_OPTIONS:
@@ -594,6 +606,11 @@ class WWRandomizerWindow(QMainWindow):
             self.append_row(self.starting_gear_model, item)
           for i in range(randamount):
             self.append_row(self.randomized_gear_model, item)
+
+    if not self.get_option_value("randomize_enemies"):
+      # If a permalink with enemy rando off was pasted, we don't want to change enemy palette rando to match the permalink.
+      # So revert it to the value from before reading the permalink.
+      self.set_option_value("randomize_enemy_palettes", prev_randomize_enemy_palettes_value)
 
     self.update_settings()
 
@@ -638,6 +655,20 @@ class WWRandomizerWindow(QMainWindow):
       return True
 
     return QMainWindow.eventFilter(self, target, event)
+
+  def update_sword_mode_highlighted_description(self, index):
+    option_name = self.ui.sword_mode.itemText(index)
+
+    if option_name == "Start with Hero's Sword":
+      desc = "Start with Hero's Sword: You will start the game with the Hero's Sword already in your inventory."
+    elif option_name == "No Starting Sword":
+      desc = "No Starting Sword: You will start the game with no sword, and have to find it somewhere in the world like other randomized items."
+    elif option_name == "Swordless":
+      desc = "Swordless: You will start the game with no sword, and won't be able to find it anywhere. You have to beat the entire game using other items as weapons instead of the sword.\n(Note that Phantom Ganon in FF becomes vulnerable to Skull Hammer in this mode.)"
+    else:
+      desc = None
+
+    self.set_option_description(desc)
 
   def get_option_value(self, option_name):
     widget = getattr(self.ui, option_name)
@@ -979,7 +1010,7 @@ class WWRandomizerWindow(QMainWindow):
     sword_mode = self.get_option_value("sword_mode")
     if sword_mode == "Swordless":
       items_to_filter_out += ["Hurricane Spin"]
-    if sword_mode == "Swordless" or sword_mode == "Randomized Sword":
+    if(sword_mode in ["Swordless", "No Starting Sword"]):
       items_to_filter_out += 3 * ["Progressive Sword"]
 
     if self.get_option_value("race_mode"):
@@ -989,7 +1020,7 @@ class WWRandomizerWindow(QMainWindow):
         num_possible_rewards = 8
       potential_boss_rewards = []
 
-      if sword_mode == "Start with Sword":
+      if sword_mode == "Start with Hero's Sword":
         potential_boss_rewards += 3 * ["Progressive Sword"]
       elif sword_mode == "Randomized Sword":
         num_possible_rewards += 4
@@ -1421,12 +1452,18 @@ class RandomizerThread(QThread):
 
     try:
       randomizer_generator = self.randomizer.randomize()
+      last_update_time = time.time()
       for items in randomizer_generator:
         # This comment lied so now it is gone!
         next_option_description, options_finished = next(randomizer_generator)
         if options_finished == -1:
           break
+        if time.time()-last_update_time < 0.1:
+          # Limit how frequently the signal is emitted to 10 times per second.
+          # Extremely frequent updates (e.g. 1000 times per second) can cause the program to crash with no error message.
+          continue
         self.update_progress.emit(next_option_description, options_finished)
+        last_update_time = time.time()
     except StopIteration:
       pass
     except Exception as e:

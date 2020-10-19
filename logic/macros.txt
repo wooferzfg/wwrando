@@ -287,6 +287,7 @@ Can Reach and Defeat Puppet Ganon:
   & Progressive Bow x3
   & Can Defeat Moblins
   & Can Defeat Darknuts
+  & Can Defeat Mighty Darknuts
   & Can Defeat Puppet Ganon
 Can Defeat Puppet Ganon:
   (Boomerang | Glitched Logic)
@@ -420,6 +421,11 @@ Can Defeat Darknuts:
 Can Defeat Darknuts Easily:
   Progressive Sword x1
   | Progressive Bow x3
+Can Defeat Mighty Darknuts:
+  Can Defeat Darknuts Easily
+  | (Can Defeat Darknuts & Complex Logic)
+  # The capes Mighty Darknuts have mean the one hit armor removal with the hammer doesn't work.
+  # Destroying the armor the slow way by hitting it repeatedly with spinning hammer attacks is far too hard against Mighty Darknuts, so that's not in logic.
 Can Defeat Miniblins:
   Progressive Sword x1
   | Grappling Hook

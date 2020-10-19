@@ -1116,14 +1116,14 @@ Private Oasis - Chest at Top of Waterfall:
     Hookshot
     | Can Fly With Deku Leaf Outdoors
   Types: Island Puzzle
-Private Oasis - Cabana Labyrinth - First Chest:
+Private Oasis - Cabana Labyrinth - Lower Floor Chest:
   Mode: o
   Need:
     Can Access Cabana Labyrinth
     & Skull Hammer
     & Can Defeat ReDeads
   Types: Puzzle Secret Cave
-Private Oasis - Cabana Labyrinth - Second Chest:
+Private Oasis - Cabana Labyrinth - Upper Floor Chest:
   Mode: o
   Need:
     Can Access Cabana Labyrinth
@@ -1249,13 +1249,13 @@ Pawprint Isle - Chuchu Cave - Chest:
   Mode: o
   Need: Can Access Pawprint Isle Chuchu Cave
   Types: Puzzle Secret Cave
-Pawprint Isle - Chuchu Cave - Behind First Boulder:
+Pawprint Isle - Chuchu Cave - Behind Left Boulder:
   Mode: o
   Need:
     Can Access Pawprint Isle Chuchu Cave
     & Can Move Boulders
   Types: Puzzle Secret Cave
-Pawprint Isle - Chuchu Cave - Behind Second Boulder:
+Pawprint Isle - Chuchu Cave - Behind Right Boulder:
   Mode: o
   Need:
     Can Access Pawprint Isle Chuchu Cave
