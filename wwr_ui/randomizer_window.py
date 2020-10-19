@@ -519,7 +519,7 @@ class WWRandomizerWindow(QMainWindow):
         for i in range(len(STNDRD_ITEMS)):
           bit = STNDRD_ITEMS[i] in value
           bitswriter.write(bit, 1)
-        unique_progressive_items = list(set(STNDRD_ITEMS))
+        unique_progressive_items = list(set(PROGRESSIVE_ITEMS))
         unique_progressive_items.sort() #key=lambda x:SORT_KEY.index(x)
         for item in unique_progressive_items:
           # No Progressive Sword and there's no more than
