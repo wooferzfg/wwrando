@@ -21,6 +21,10 @@ ORIG_SHIP_ARC_FILE_SIZE_IN_BYTES  =  191520
 # In other words, the same amount of increase as when the 1.24MiB original Link.arc is increased to 1.44MiB.
 MAX_ALLOWED_TOTAL_ARC_FILE_SIZE_SUM_INCREASE_IN_BYTES = 1525678 - ORIG_LINK_ARC_FILE_SIZE_IN_BYTES
 
+valid_bck_entry = []
+first_bck_entry = ["atngham","atnham","dashham","waitham","walkham"]
+secnd_bck_entry = ["walk", "walkhboots", "wait", "waits", "walks", "dash", "dashs"]
+
 class InvalidColorError(Exception):
   pass
 
@@ -196,7 +200,7 @@ def replace_link_model(self):
   self.replace_arc("files/res/Object/Link.arc", custom_link_arc_data)
   custom_link_arc = self.get_arc("files/res/Object/Link.arc")
 
-  revert_bck_files_in_arc_to_original(orig_link_arc, custom_link_arc)
+  revert_bck_files_in_arc_to_original(self, orig_link_arc, custom_link_arc)
 
   if self.options.get("disable_custom_player_items"):
     revert_item_models_in_arc_to_original(orig_link_arc, custom_link_arc)
@@ -208,7 +212,7 @@ def replace_link_model(self):
   check_changed_archives_over_filesize_limit(orig_sum_of_changed_arc_sizes, new_sum_of_changed_arc_sizes, checked_arc_names)
 
 
-  def replace_animation_arc(anim_arc_name, orig_anim_arc_file_size, revert_totals_after=False):
+  def replace_animation_arc(self, anim_arc_name, orig_anim_arc_file_size, revert_totals_after=False):
     nonlocal orig_sum_of_changed_arc_sizes
     nonlocal new_sum_of_changed_arc_sizes
 
@@ -220,7 +224,7 @@ def replace_link_model(self):
       self.replace_arc("files/res/Object/" + anim_arc_name, custom_anim_arc_data)
       custom_anim_arc = self.get_arc("files/res/Object/" + anim_arc_name)
 
-      revert_bck_files_in_arc_to_original(orig_anim_arc, custom_anim_arc)
+      revert_bck_files_in_arc_to_original(self, orig_anim_arc, custom_anim_arc)
 
       orig_sum_of_changed_arc_sizes += orig_anim_arc_file_size
       custom_anim_arc.save_changes()
@@ -237,11 +241,11 @@ def replace_link_model(self):
         checked_arc_names.remove(anim_arc_name)
 
   # Replace Link's gameplay animations.
-  replace_animation_arc("LkAnm.arc", ORIG_LKANM_ARC_FILE_SIZE_IN_BYTES)
+  replace_animation_arc(self, "LkAnm.arc", ORIG_LKANM_ARC_FILE_SIZE_IN_BYTES)
 
   # Replace Link's cutscene animations.
-  replace_animation_arc("LkD00.arc", ORIG_LKD00_ARC_FILE_SIZE_IN_BYTES, revert_totals_after=True)
-  replace_animation_arc("LkD01.arc", ORIG_LKD01_ARC_FILE_SIZE_IN_BYTES)
+  replace_animation_arc(self, "LkD00.arc", ORIG_LKD00_ARC_FILE_SIZE_IN_BYTES, revert_totals_after=True)
+  replace_animation_arc(self, "LkD01.arc", ORIG_LKD01_ARC_FILE_SIZE_IN_BYTES)
 
   # Replace KoRL.
   ship_path = custom_model_path + "Ship.arc"
@@ -253,7 +257,7 @@ def replace_link_model(self):
     self.replace_arc("files/res/Object/Ship.arc", custom_ship_arc_data)
     custom_ship_arc = self.get_arc("files/res/Object/Ship.arc")
 
-    revert_bck_files_in_arc_to_original(orig_ship_arc, custom_ship_arc)
+    revert_bck_files_in_arc_to_original(self, orig_ship_arc, custom_ship_arc)
 
     orig_sum_of_changed_arc_sizes += ORIG_SHIP_ARC_FILE_SIZE_IN_BYTES
     custom_ship_arc.save_changes()
@@ -296,12 +300,24 @@ def replace_link_model(self):
           ganont_aw_data = BytesIO(f.read())
         self.replace_raw_file("files/Audiores/Banks/GanonT_0.aw", ganont_aw_data)
 
-def revert_bck_files_in_arc_to_original(orig_arc, custom_arc):
+def revert_bck_files_in_arc_to_original(self, orig_arc, custom_arc):
   # Revert all BCK animations in a custom arc to the original ones.
   # This is because BCK animations can change gameplay, which we don't want to allow cosmetic mods to do.
+  custom_bck_entry = self.options.get("custom_bck_entry")
+  act_on = True
+  if(custom_bck_entry!="No Changes"):
+    if(custom_bck_entry=="Not Gameplay"):
+      valid_bck_entry = valid_bck_entry + first_bck_entry
+    elif(custom_bck_entry=="Basic Gameplay"):
+      valid_bck_entry = valid_bck_entry + first_bck_entry + secnd_bck_entry
+    elif(custom_bck_entry=="All"):
+      valid_bck_entry = valid_bck_entry + first_bck_entry + secnd_bck_entry
+      act_on = False
+    else:
+      pass
   for orig_file_entry in orig_arc.file_entries:
     basename, file_ext = os.path.splitext(orig_file_entry.name)
-    if file_ext == ".bck":
+    if((file_ext == ".bck") and (basename not in valid_bck_entry) and act_on):
       custom_file_entry = custom_arc.get_file_entry(orig_file_entry.name)
       custom_file_entry.data = orig_file_entry.data
 

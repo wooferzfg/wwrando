@@ -168,8 +168,8 @@
   <check Name="The Great Sea - Withered Trees" Mode="o" Need="Can Access Forest Haven AND Empty Bottle AND Can Play Ballad of Gales AND Can Access Other Location 'Cliff Plateau Isles - Highest Isle'" Types="Long Sidequest"/>
   <check Name="The Great Sea - Ghost Ship" Mode="o" Need="Ghost Ship Chart AND Can Play Ballad of Gales AND Can Defeat Wizzrobes AND Can Defeat Poes AND Can Defeat ReDeads AND Can Defeat Stalfos" Types="Other Chest"/>
   <check Name="Private Oasis - Chest at Top of Waterfall" Mode="o" Need="Hookshot OR Can Fly With Deku Leaf Outdoors" Types="Island Puzzle"/>
-  <check Name="Private Oasis - Cabana Labyrinth - First Chest" Mode="o" Need="Can Access Cabana Labyrinth AND Skull Hammer" Types="Puzzle Secret Cave"/>
-  <check Name="Private Oasis - Cabana Labyrinth - Second Chest" Mode="o" Need="Can Access Cabana Labyrinth AND Skull Hammer AND Can Play Wind's Requiem" Types="Puzzle Secret Cave"/>
+  <check Name="Private Oasis - Cabana Labyrinth - Lower Level Chest" Mode="o" Need="Can Access Cabana Labyrinth AND Skull Hammer" Types="Puzzle Secret Cave"/>
+  <check Name="Private Oasis - Cabana Labyrinth - Upper Level Chest" Mode="o" Need="Can Access Cabana Labyrinth AND Skull Hammer AND Can Play Wind's Requiem" Types="Puzzle Secret Cave"/>
   <check Name="Private Oasis - Big Octo" Mode="o" Need="Can Defeat Big Octos AND Grappling Hook" Types="Big Octo"/>
   <check Name="Spectacle Island - Barrel Shooting - First Prize" Mode="o" Need="Nothing" Types="Minigame"/>
   <check Name="Spectacle Island - Barrel Shooting - Second Prize" Mode="o" Need="Nothing" Types="Minigame"/>
@@ -188,8 +188,8 @@
   <check Name="Overlook Island - Cave" Mode="o" Need="Can Access Overlook Island Secret Cave AND Can Defeat Stalfos AND Can Defeat Wizzrobes AND Can Defeat Red ChuChus AND Can Defeat Green ChuChus AND Can Defeat Keese AND Can Defeat Fire Keese AND Can Defeat Morths AND Can Defeat Kargarocs AND Can Defeat Darknuts AND Can Play Wind's Requiem" Types="Combat Secret Cave"/>
   <check Name="Bird's Peak Rock - Cave" Mode="o" Need="Can Access Bird's Peak Rock Secret Cave AND Can Play Wind's Requiem" Types="Puzzle Secret Cave"/>
   <check Name="Pawprint Isle - Chuchu Cave - Chest" Mode="o" Need="Can Access Pawprint Isle Chuchu Cave" Types="Puzzle Secret Cave"/>
-  <check Name="Pawprint Isle - Chuchu Cave - Behind First Boulder" Mode="o" Need="Can Access Pawprint Isle Chuchu Cave AND Can Move Boulders" Types="Puzzle Secret Cave"/>
-  <check Name="Pawprint Isle - Chuchu Cave - Behind Second Boulder" Mode="o" Need="Can Access Pawprint Isle Chuchu Cave AND Can Move Boulders" Types="Puzzle Secret Cave"/>
+  <check Name="Pawprint Isle - Chuchu Cave - Behind Left Boulder" Mode="o" Need="Can Access Pawprint Isle Chuchu Cave AND Can Move Boulders" Types="Puzzle Secret Cave"/>
+  <check Name="Pawprint Isle - Chuchu Cave - Behind Right Boulder" Mode="o" Need="Can Access Pawprint Isle Chuchu Cave AND Can Move Boulders" Types="Puzzle Secret Cave"/>
   <check Name="Pawprint Isle - Chuchu Cave - Scale the Wall" Mode="o" Need="Can Access Pawprint Isle Chuchu Cave AND Grappling Hook" Types="Puzzle Secret Cave"/>
   <check Name="Pawprint Isle - Wizzrobe Cave" Mode="o" Need="Can Access Pawprint Isle Wizzrobe Cave AND Can Defeat Wizzrobes at Range AND Can Defeat Fire Keese AND Can Defeat Magtails AND Can Defeat Red ChuChus AND Can Defeat Green ChuChus AND Can Defeat Yellow ChuChus AND Can Defeat Red Bubbles AND Can Remove Peahat Armor" Types="Combat Secret Cave"/>
   <check Name="Pawprint Isle - Lookout Platform - Defeat the Enemies" Mode="o" Need="Nothing" Types="Platform"/>

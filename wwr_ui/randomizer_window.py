@@ -856,11 +856,17 @@ class WWRandomizerWindow(QMainWindow):
 
     model_author = metadata.get("author", None)
     model_comment = metadata.get("comment", None)
+    if(len(str(model_comment)) > 150):
+      model_comment = model_comment[:148]+"\u2026"
     comment_lines = []
     if model_author:
-      comment_lines.append("Model author: %s" % model_author)
+      comment_lines.append("Author: %s" % model_author)
     if model_comment:
-      comment_lines.append("Model author comment: %s" % model_comment)
+      comment_lines.append("Comment: %s" % model_comment)
+    if(custom_model_name=="Link"):
+      comment_lines.append("The Hero of Winds himself, brother of Aryll")
+    elif(custom_model_name in ["Random","Random (exclude Link)"]):
+      comment_lines.append("Selects from model list and uses default color scheme.")
     self.ui.custom_model_comment.setText("\n".join(comment_lines))
     if len(comment_lines) <= 0:
       self.ui.custom_model_comment.hide()
@@ -887,8 +893,14 @@ class WWRandomizerWindow(QMainWindow):
       option_name = "custom_color_" + custom_color_name
       hlayout = QHBoxLayout()
       label_for_color_selector = QLabel(self.ui.tab_for_model_customization)
-      label_for_color_selector.setText("Player %s Color" % custom_color_name)
+      label_for_color_selector.setText("%s Color" % custom_color_name)
       hlayout.addWidget(label_for_color_selector)
+
+      color_selector_button = QPushButton(self.ui.tab_for_model_customization)
+      color_selector_button.setText("Set color")
+      color_selector_button.setObjectName(option_name)
+      #color_selector_button.setFixedWidth(96)
+      hlayout.addWidget(color_selector_button)
 
       color_hex_code_input = QLineEdit(self.ui.tab_for_model_customization)
       color_hex_code_input.setText("")
@@ -899,18 +911,13 @@ class WWRandomizerWindow(QMainWindow):
       color_randomize_button = QPushButton(self.ui.tab_for_model_customization)
       color_randomize_button.setText("Random")
       color_randomize_button.setObjectName(option_name + "_randomize_color")
-      color_randomize_button.setFixedWidth(48)
+      color_randomize_button.setFixedWidth(69)
       hlayout.addWidget(color_randomize_button)
 
-      color_selector_button = QPushButton(self.ui.tab_for_model_customization)
-      color_selector_button.setText("Click to set color")
-      color_selector_button.setObjectName(option_name)
-      hlayout.addWidget(color_selector_button)
-
       color_reset_button = QPushButton(self.ui.tab_for_model_customization)
-      color_reset_button.setText("X")
+      color_reset_button.setText("\u26D2")
       color_reset_button.setObjectName(option_name + "_reset_color")
-      color_reset_button.setFixedWidth(18)
+      color_reset_button.setFixedWidth(24)
       size_policy = color_reset_button.sizePolicy()
       size_policy.setRetainSizeWhenHidden(True)
       color_reset_button.setSizePolicy(size_policy)
@@ -943,24 +950,34 @@ class WWRandomizerWindow(QMainWindow):
       self.update_model_preview()
 
     # Hide the custom voice disable option for models that don't have custom voice files.
-    if custom_model_name == "Random" or custom_model_name == "Random (exclude Link)":
-      self.ui.disable_custom_player_voice.show()
-    else:
+    # if custom_model_name == "Random" or custom_model_name == "Random (exclude Link)":
+      # self.ui.disable_custom_player_voice.show()
+    # else:
+    if(custom_model_name!="Link"):
       custom_model_path = "./models/%s/" % custom_model_name
       jaiinit_aaf_path = custom_model_path + "sound/JaiInit.aaf"
       voice_aw_path = custom_model_path + "sound/voice_0.aw"
-      if os.path.isfile(jaiinit_aaf_path) and os.path.isfile(voice_aw_path):
+      if os.path.isfile(jaiinit_aaf_path) or os.path.isfile(voice_aw_path) or custom_model_name in ["Random","Random (exclude Link)"]:
         self.ui.disable_custom_player_voice.show()
       else:
         self.ui.disable_custom_player_voice.hide()
 
-    # Hide the custom items disable option for Link, but not any other models (since we don't know which have custom items).
-    if custom_model_name == "Link":
-      self.ui.disable_custom_player_items.hide()
-      self.ui.disable_custom_boat.hide()
-    else:
+      ship_arc_path = custom_model_path + "Ship.arc"
+      if((os.path.isfile(ship_arc_path)) or (custom_model_name in ["Random","Random (exclude Link)"])):
+        self.ui.disable_custom_boat.show()
+      else:
+        self.ui.disable_custom_boat.hide()
+
+      # Hide the custom items disable option for Link, but not any other models (since we don't know which have custom items).
+      # if custom_model_name == "Link":
+        # self.ui.disable_custom_player_items.hide()
+      # else:
       self.ui.disable_custom_player_items.show()
-      self.ui.disable_custom_boat.show()
+
+    else:
+      self.ui.disable_custom_player_voice.hide()
+      self.ui.disable_custom_boat.hide()
+      self.ui.disable_custom_player_items.hide()
 
   def reload_colors(self, update_preview=True):
     preset_name = self.get_option_value("custom_color_preset")
@@ -1084,10 +1101,18 @@ class WWRandomizerWindow(QMainWindow):
     # Hide certain options from the GUI (still accessible via settings.txt and permalinks).
     for option_name in HIDDEN_OPTIONS:
       widget = getattr(self.ui, option_name)
+      widget.hide()
+      try:
+        widget = getattr(self.ui, "label_for_"+option_name)
+        widget.hide()
+      except:
+        pass
+      '''
       if self.get_option_value(option_name):
         widget.show()
       else:
         widget.hide()
+      '''
 
   def disable_invalid_cosmetic_options(self):
     custom_model_name = self.get_option_value("custom_player_model")

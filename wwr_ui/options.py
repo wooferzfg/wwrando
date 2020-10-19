@@ -209,6 +209,10 @@ OPTIONS = OrderedDict([
     "Selects sail to use in game."
   ),
   (
+    "custom_bck_entry",
+    "Selects animation deviation. May effect gameplay."
+  ),
+  (
     "custom_color_preset",
     "This allows you to select from preset color combinations chosen by the author of the selected player model."
   ),
@@ -264,6 +268,7 @@ HIDDEN_OPTIONS = [
   "disable_tingle_chests_with_tingle_bombs",
   "randomize_music",
   "randomize_enemies",
+  "custom_bck_entry",
 ]
 
 POTENTIALLY_UNBEATABLE_OPTIONS = [

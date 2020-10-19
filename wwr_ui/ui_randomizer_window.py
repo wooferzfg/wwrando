@@ -20,7 +20,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(950, 850)
+        MainWindow.resize(950, 771)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout = QVBoxLayout(self.centralwidget)
@@ -31,7 +31,7 @@ class Ui_MainWindow(object):
         self.scroll_for_main.setWidgetResizable(True)
         self.content_for_main_scroll = QWidget()
         self.content_for_main_scroll.setObjectName(u"content_for_main_scroll")
-        self.content_for_main_scroll.setGeometry(QRect(0, 0, 944, 753))
+        self.content_for_main_scroll.setGeometry(QRect(0, 0, 932, 637))
         self.verticalLayout_4 = QVBoxLayout(self.content_for_main_scroll)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
@@ -722,26 +722,6 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.grid_for_model_general_options = QGridLayout()
         self.grid_for_model_general_options.setObjectName(u"grid_for_model_general_options")
-        self.layout_for_disable_custom = QHBoxLayout()
-        self.layout_for_disable_custom.setObjectName(u"layout_for_disable_custom")
-        self.disable_custom_boat = QCheckBox(self.tab_for_model_customization)
-        self.disable_custom_boat.setObjectName(u"disable_custom_boat")
-
-        self.layout_for_disable_custom.addWidget(self.disable_custom_boat)
-
-
-        self.grid_for_model_general_options.addLayout(self.layout_for_disable_custom, 3, 2, 1, 1)
-
-        self.layout_for_misc_custom = QHBoxLayout()
-        self.layout_for_misc_custom.setObjectName(u"layout_for_misc_custom")
-        self.player_in_casual_clothes = QCheckBox(self.tab_for_model_customization)
-        self.player_in_casual_clothes.setObjectName(u"player_in_casual_clothes")
-
-        self.layout_for_misc_custom.addWidget(self.player_in_casual_clothes)
-
-
-        self.grid_for_model_general_options.addLayout(self.layout_for_misc_custom, 0, 2, 1, 1)
-
         self.layout_for_custom_player_model = QHBoxLayout()
         self.layout_for_custom_player_model.setObjectName(u"layout_for_custom_player_model")
         self.label_for_custom_player_model = QLabel(self.tab_for_model_customization)
@@ -757,36 +737,6 @@ class Ui_MainWindow(object):
 
         self.grid_for_model_general_options.addLayout(self.layout_for_custom_player_model, 0, 0, 1, 1)
 
-        self.layout_for_randomize_color_options = QHBoxLayout()
-        self.layout_for_randomize_color_options.setObjectName(u"layout_for_randomize_color_options")
-        self.randomize_all_custom_colors_together = QPushButton(self.tab_for_model_customization)
-        self.randomize_all_custom_colors_together.setObjectName(u"randomize_all_custom_colors_together")
-
-        self.layout_for_randomize_color_options.addWidget(self.randomize_all_custom_colors_together)
-
-        self.randomize_all_custom_colors_separately = QPushButton(self.tab_for_model_customization)
-        self.randomize_all_custom_colors_separately.setObjectName(u"randomize_all_custom_colors_separately")
-
-        self.layout_for_randomize_color_options.addWidget(self.randomize_all_custom_colors_separately)
-
-
-        self.grid_for_model_general_options.addLayout(self.layout_for_randomize_color_options, 4, 2, 1, 1)
-
-        self.horizontalLayout_3 = QHBoxLayout()
-        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
-        self.disable_custom_player_items = QCheckBox(self.tab_for_model_customization)
-        self.disable_custom_player_items.setObjectName(u"disable_custom_player_items")
-
-        self.horizontalLayout_3.addWidget(self.disable_custom_player_items)
-
-        self.disable_custom_player_voice = QCheckBox(self.tab_for_model_customization)
-        self.disable_custom_player_voice.setObjectName(u"disable_custom_player_voice")
-
-        self.horizontalLayout_3.addWidget(self.disable_custom_player_voice)
-
-
-        self.grid_for_model_general_options.addLayout(self.horizontalLayout_3, 1, 2, 1, 1)
-
         self.layout_for_custom_preset = QHBoxLayout()
         self.layout_for_custom_preset.setObjectName(u"layout_for_custom_preset")
         self.label_for_custom_color_preset = QLabel(self.tab_for_model_customization)
@@ -801,13 +751,6 @@ class Ui_MainWindow(object):
 
 
         self.grid_for_model_general_options.addLayout(self.layout_for_custom_preset, 1, 0, 1, 1)
-
-        self.custom_model_comment = QLabel(self.tab_for_model_customization)
-        self.custom_model_comment.setObjectName(u"custom_model_comment")
-        self.custom_model_comment.setMaximumSize(QSize(810, 16777215))
-        self.custom_model_comment.setWordWrap(True)
-
-        self.grid_for_model_general_options.addWidget(self.custom_model_comment, 4, 0, 1, 1)
 
         self.layout_for_sail_color = QHBoxLayout()
         self.layout_for_sail_color.setObjectName(u"layout_for_sail_color")
@@ -826,6 +769,69 @@ class Ui_MainWindow(object):
 
 
         self.grid_for_model_general_options.addLayout(self.layout_for_sail_color, 3, 0, 1, 1)
+
+        self.disable_custom_player_items = QCheckBox(self.tab_for_model_customization)
+        self.disable_custom_player_items.setObjectName(u"disable_custom_player_items")
+
+        self.grid_for_model_general_options.addWidget(self.disable_custom_player_items, 0, 3, 1, 1)
+
+        self.disable_custom_player_voice = QCheckBox(self.tab_for_model_customization)
+        self.disable_custom_player_voice.setObjectName(u"disable_custom_player_voice")
+
+        self.grid_for_model_general_options.addWidget(self.disable_custom_player_voice, 1, 3, 1, 1)
+
+        self.player_in_casual_clothes = QCheckBox(self.tab_for_model_customization)
+        self.player_in_casual_clothes.setObjectName(u"player_in_casual_clothes")
+
+        self.grid_for_model_general_options.addWidget(self.player_in_casual_clothes, 0, 2, 1, 1)
+
+        self.layout_for_randomize_color_options = QHBoxLayout()
+        self.layout_for_randomize_color_options.setObjectName(u"layout_for_randomize_color_options")
+        self.randomize_all_custom_colors_together = QPushButton(self.tab_for_model_customization)
+        self.randomize_all_custom_colors_together.setObjectName(u"randomize_all_custom_colors_together")
+
+        self.layout_for_randomize_color_options.addWidget(self.randomize_all_custom_colors_together)
+
+        self.randomize_all_custom_colors_separately = QPushButton(self.tab_for_model_customization)
+        self.randomize_all_custom_colors_separately.setObjectName(u"randomize_all_custom_colors_separately")
+
+        self.layout_for_randomize_color_options.addWidget(self.randomize_all_custom_colors_separately)
+
+
+        self.grid_for_model_general_options.addLayout(self.layout_for_randomize_color_options, 2, 0, 1, 1)
+
+        self.disable_custom_boat = QCheckBox(self.tab_for_model_customization)
+        self.disable_custom_boat.setObjectName(u"disable_custom_boat")
+
+        self.grid_for_model_general_options.addWidget(self.disable_custom_boat, 2, 3, 1, 1)
+
+        self.custom_model_comment = QLabel(self.tab_for_model_customization)
+        self.custom_model_comment.setObjectName(u"custom_model_comment")
+        self.custom_model_comment.setMaximumSize(QSize(810, 16777215))
+        self.custom_model_comment.setWordWrap(True)
+
+        self.grid_for_model_general_options.addWidget(self.custom_model_comment, 1, 2, 2, 1)
+
+        self.layout_for_custom_bck_entry = QHBoxLayout()
+        self.layout_for_custom_bck_entry.setObjectName(u"layout_for_custom_bck_entry")
+        self.label_for_custom_bck_entry = QLabel(self.tab_for_model_customization)
+        self.label_for_custom_bck_entry.setObjectName(u"label_for_custom_bck_entry")
+        self.label_for_custom_bck_entry.setEnabled(False)
+
+        self.layout_for_custom_bck_entry.addWidget(self.label_for_custom_bck_entry)
+
+        self.custom_bck_entry = QComboBox(self.tab_for_model_customization)
+        self.custom_bck_entry.addItem("")
+        self.custom_bck_entry.addItem("")
+        self.custom_bck_entry.addItem("")
+        self.custom_bck_entry.addItem("")
+        self.custom_bck_entry.setObjectName(u"custom_bck_entry")
+        self.custom_bck_entry.setEnabled(False)
+
+        self.layout_for_custom_bck_entry.addWidget(self.custom_bck_entry)
+
+
+        self.grid_for_model_general_options.addLayout(self.layout_for_custom_bck_entry, 3, 2, 1, 1)
 
 
         self.verticalLayout_3.addLayout(self.grid_for_model_general_options)
@@ -934,6 +940,7 @@ class Ui_MainWindow(object):
 
         self.tab_for_main.setCurrentIndex(0)
         self.logic_mod.setCurrentIndex(1)
+        self.custom_bck_entry.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -1054,19 +1061,25 @@ class Ui_MainWindow(object):
         self.current_health.setText(QCoreApplication.translate("MainWindow", u"Current Starting Health: 3 hearts", None))
         self.no_heart_in_pool.setText(QCoreApplication.translate("MainWindow", u"No Additional Health in Pool", None))
         self.tab_for_main.setTabText(self.tab_for_main.indexOf(self.tab_for_starting_items), QCoreApplication.translate("MainWindow", u"Starting Items", None))
-        self.disable_custom_boat.setText(QCoreApplication.translate("MainWindow", u"Disable Custom Boat", None))
-        self.player_in_casual_clothes.setText(QCoreApplication.translate("MainWindow", u"Casual Clothes", None))
         self.label_for_custom_player_model.setText(QCoreApplication.translate("MainWindow", u"Player Model", None))
-        self.randomize_all_custom_colors_together.setText(QCoreApplication.translate("MainWindow", u"Randomize Colors Orderly", None))
-        self.randomize_all_custom_colors_separately.setText(QCoreApplication.translate("MainWindow", u"Randomize Colors Chaotically", None))
-        self.disable_custom_player_items.setText(QCoreApplication.translate("MainWindow", u"Disable Custom Items", None))
-        self.disable_custom_player_voice.setText(QCoreApplication.translate("MainWindow", u"Disable Custom Voice", None))
         self.label_for_custom_color_preset.setText(QCoreApplication.translate("MainWindow", u"Color Preset", None))
-        self.custom_model_comment.setText("")
         self.label_for_sail_color.setText(QCoreApplication.translate("MainWindow", u"Sail", None))
         self.sail_color.setItemText(0, QCoreApplication.translate("MainWindow", u"Sail of Red Lions", None))
         self.sail_color.setItemText(1, QCoreApplication.translate("MainWindow", u"Swift Sail", None))
         self.sail_color.setItemText(2, QCoreApplication.translate("MainWindow", u"Sail of Lions' Pride", None))
+
+        self.disable_custom_player_items.setText(QCoreApplication.translate("MainWindow", u"Disable Custom Items", None))
+        self.disable_custom_player_voice.setText(QCoreApplication.translate("MainWindow", u"Disable Custom Voice", None))
+        self.player_in_casual_clothes.setText(QCoreApplication.translate("MainWindow", u"Casual Clothes", None))
+        self.randomize_all_custom_colors_together.setText(QCoreApplication.translate("MainWindow", u"Randomize Colors Orderly", None))
+        self.randomize_all_custom_colors_separately.setText(QCoreApplication.translate("MainWindow", u"Randomize Colors Chaotically", None))
+        self.disable_custom_boat.setText(QCoreApplication.translate("MainWindow", u"Disable Custom Boat", None))
+        self.custom_model_comment.setText("")
+        self.label_for_custom_bck_entry.setText(QCoreApplication.translate("MainWindow", u"Animation Deviation", None))
+        self.custom_bck_entry.setItemText(0, QCoreApplication.translate("MainWindow", u"No Changes", None))
+        self.custom_bck_entry.setItemText(1, QCoreApplication.translate("MainWindow", u"Not Gameplay", None))
+        self.custom_bck_entry.setItemText(2, QCoreApplication.translate("MainWindow", u"Basic Gameplay", None))
+        self.custom_bck_entry.setItemText(3, QCoreApplication.translate("MainWindow", u"All", None))
 
         self.custom_model_preview_label.setText("")
         self.tab_for_main.setTabText(self.tab_for_main.indexOf(self.tab_for_model_customization), QCoreApplication.translate("MainWindow", u"Player Customization", None))
@@ -1077,3 +1090,4 @@ class Ui_MainWindow(object):
         self.reset_settings_to_default.setText(QCoreApplication.translate("MainWindow", u"Reset All Settings to Default", None))
         self.randomize_button.setText(QCoreApplication.translate("MainWindow", u"Randomize", None))
     # retranslateUi
+

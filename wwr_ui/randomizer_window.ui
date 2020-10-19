@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>950</width>
-    <height>850</height>
+    <height>771</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -28,8 +28,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>944</width>
-         <height>753</height>
+         <width>932</width>
+         <height>637</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -1303,28 +1303,6 @@
            <layout class="QVBoxLayout" name="verticalLayout_3">
             <item>
              <layout class="QGridLayout" name="grid_for_model_general_options">
-              <item row="3" column="2">
-               <layout class="QHBoxLayout" name="layout_for_disable_custom">
-                <item>
-                 <widget class="QCheckBox" name="disable_custom_boat">
-                  <property name="text">
-                   <string>Disable Custom Boat</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item row="0" column="2">
-               <layout class="QHBoxLayout" name="layout_for_misc_custom">
-                <item>
-                 <widget class="QCheckBox" name="player_in_casual_clothes">
-                  <property name="text">
-                   <string>Casual Clothes</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
               <item row="0" column="0">
                <layout class="QHBoxLayout" name="layout_for_custom_player_model">
                 <item>
@@ -1336,42 +1314,6 @@
                 </item>
                 <item>
                  <widget class="QComboBox" name="custom_player_model"/>
-                </item>
-               </layout>
-              </item>
-              <item row="4" column="2">
-               <layout class="QHBoxLayout" name="layout_for_randomize_color_options">
-                <item>
-                 <widget class="QPushButton" name="randomize_all_custom_colors_together">
-                  <property name="text">
-                   <string>Randomize Colors Orderly</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="randomize_all_custom_colors_separately">
-                  <property name="text">
-                   <string>Randomize Colors Chaotically</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item row="1" column="2">
-               <layout class="QHBoxLayout" name="horizontalLayout_3">
-                <item>
-                 <widget class="QCheckBox" name="disable_custom_player_items">
-                  <property name="text">
-                   <string>Disable Custom Items</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QCheckBox" name="disable_custom_player_voice">
-                  <property name="text">
-                   <string>Disable Custom Voice</string>
-                  </property>
-                 </widget>
                 </item>
                </layout>
               </item>
@@ -1388,22 +1330,6 @@
                  <widget class="QComboBox" name="custom_color_preset"/>
                 </item>
                </layout>
-              </item>
-              <item row="4" column="0">
-               <widget class="QLabel" name="custom_model_comment">
-                <property name="maximumSize">
-                 <size>
-                  <width>810</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="wordWrap">
-                 <bool>true</bool>
-                </property>
-               </widget>
               </item>
               <item row="3" column="0">
                <layout class="QHBoxLayout" name="layout_for_sail_color">
@@ -1429,6 +1355,112 @@
                   <item>
                    <property name="text">
                     <string>Sail of Lions' Pride</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item row="0" column="3">
+               <widget class="QCheckBox" name="disable_custom_player_items">
+                <property name="text">
+                 <string>Disable Custom Items</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="3">
+               <widget class="QCheckBox" name="disable_custom_player_voice">
+                <property name="text">
+                 <string>Disable Custom Voice</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <widget class="QCheckBox" name="player_in_casual_clothes">
+                <property name="text">
+                 <string>Casual Clothes</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <layout class="QHBoxLayout" name="layout_for_randomize_color_options">
+                <item>
+                 <widget class="QPushButton" name="randomize_all_custom_colors_together">
+                  <property name="text">
+                   <string>Randomize Colors Orderly</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="randomize_all_custom_colors_separately">
+                  <property name="text">
+                   <string>Randomize Colors Chaotically</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item row="2" column="3">
+               <widget class="QCheckBox" name="disable_custom_boat">
+                <property name="text">
+                 <string>Disable Custom Boat</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="2" rowspan="2">
+               <widget class="QLabel" name="custom_model_comment">
+                <property name="maximumSize">
+                 <size>
+                  <width>810</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="wordWrap">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="2">
+               <layout class="QHBoxLayout" name="layout_for_custom_bck_entry">
+                <item>
+                 <widget class="QLabel" name="label_for_custom_bck_entry">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="text">
+                   <string>Animation Deviation</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QComboBox" name="custom_bck_entry">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="currentIndex">
+                   <number>1</number>
+                  </property>
+                  <item>
+                   <property name="text">
+                    <string>No Changes</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Not Gameplay</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Basic Gameplay</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>All</string>
                    </property>
                   </item>
                  </widget>
