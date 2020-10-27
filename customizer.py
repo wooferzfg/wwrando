@@ -21,10 +21,6 @@ ORIG_SHIP_ARC_FILE_SIZE_IN_BYTES  =  191520
 # In other words, the same amount of increase as when the 1.24MiB original Link.arc is increased to 1.44MiB.
 MAX_ALLOWED_TOTAL_ARC_FILE_SIZE_SUM_INCREASE_IN_BYTES = 1525678 - ORIG_LINK_ARC_FILE_SIZE_IN_BYTES
 
-valid_bck_entry = []
-first_bck_entry = ["atngham","atnham","dashham","waitham","walkham"]
-secnd_bck_entry = ["walk", "walkhboots", "wait", "waits", "walks", "dash", "dashs"]
-
 class InvalidColorError(Exception):
   pass
 
@@ -305,6 +301,9 @@ def revert_bck_files_in_arc_to_original(self, orig_arc, custom_arc):
   # This is because BCK animations can change gameplay, which we don't want to allow cosmetic mods to do.
   custom_bck_entry = self.options.get("custom_bck_entry")
   act_on = True
+  valid_bck_entry = []
+  first_bck_entry = ["atngham","atnham","dashham","waitham","walkham"]
+  secnd_bck_entry = ["walk", "walkhboots", "wait", "waits", "walks", "dash", "dashs"]
   if(custom_bck_entry!="No Changes"):
     if(custom_bck_entry=="Not Gameplay"):
       valid_bck_entry = valid_bck_entry + first_bck_entry

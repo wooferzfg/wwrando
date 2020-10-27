@@ -1119,7 +1119,7 @@ def shorten_zephos_event(self):
     camera.actions[-1].flag_id_to_set,
   ]
 
-def update_korl_dialogue(self):
+def update_korl_dialogue(self):                                                 #update_text_for_swordless
   msg = self.bmg.messages_by_id[3443]
   msg.string = "\\{1A 05 00 00 00}, the sea is all yours.\n"
   msg.string += "Make sure you explore every corner\n"
@@ -1698,7 +1698,7 @@ def update_starting_gear(self):
   # Write end marker.
   self.dol.write_data(write_u8, starting_gear_array_address+len(starting_gear), 0xFF)
 
-def update_text_for_swordless(self):
+def update_text_for_swordless(self):                                            #update_korl_dialogue
   msg = self.bmg.messages_by_id[1128]
   msg.string = "\\{1A 05 00 00 00}, you may not have the\nMaster Sword, but do not be afraid!\n\n\n"
   msg.string += "The hammer of the dead is all you\nneed to crush your foe...\n\n\n"
