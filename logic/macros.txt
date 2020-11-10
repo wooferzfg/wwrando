@@ -33,10 +33,6 @@ Can Hit Diamond Switches at Range:
 Can Destroy Seeds Hanging by Vines:
   Boomerang | Progressive Bow x1 | Bombs | Hookshot
 
-Hero's Shield:
-  Progressive Shield x1
-Mirror Shield:
-  Progressive Shield x2
 Hero's Sword:
   Progressive Sword x1
 Any Master Sword:
