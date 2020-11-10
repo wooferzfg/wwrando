@@ -650,13 +650,19 @@ class Logic:
         modify_locations = yaml.load(g, YamlOrderedDictLoader)
       for modification_name in modify_locations:
 
-        req_string = modify_locations[modification_name]["Need"]
-        modify_locations[modification_name]["Need"] = Logic.parse_logic_expression(req_string)
+        try:
+          req_string = modify_locations[modification_name]["Need"]
+          modify_locations[modification_name]["Need"] = Logic.parse_logic_expression(req_string)
+        except:
+          pass
 
-        types_string = modify_locations[modification_name]["Types"]
-        types = types_string.split(",")
-        types = [type.strip() for type in types]
-        modify_locations[modification_name]["Types"] = types
+        try:
+          types_string = modify_locations[modification_name]["Types"]
+          types = types_string.split(",")
+          types = [type.strip() for type in types]
+          modify_locations[modification_name]["Types"] = types
+        except:
+          pass
 
         modify_data = modify_logic_data(argument=item_locations[modification_name],definition=modify_locations[modification_name])
         item_locations[modification_name] = modify_data

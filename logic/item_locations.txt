@@ -554,11 +554,7 @@ Dragon Roost Island - Rito Aerie - Give Hoskit 20 Golden Feathers:
     - Atorizk/Stage.arc/Event000:Get_Rupee/Actor002/Action001
 Dragon Roost Island - Chest on Top of Boulder:
   Need:
-    Hero's Bow
-    | Bait Bag
-    | Boomerang
-    | Bombs
-    # Bombs work by getting in the ship and shooting the cannon up at the bomb flowers.
+    Can Get DRI Boulder Chest
   Original item: Silver Rupee
   Types: Island Puzzle
   Paths:
@@ -1319,16 +1315,14 @@ Headstone Island - Submarine:
 #    - Edaichi/Stage.arc/Event043:MKNJD_D_LESSON/Actor003/Action006
 Earth Temple - Transparent Chest In Warp Pot Room:
   Need:
-    Can Access Earth Temple
-    & Can Play Command Melody
+    Can Get into Earth Temple
   Original item: Dungeon Map
   Types: Dungeon
   Paths:
     - M_Dai/Stage.arc/Chest000
 Earth Temple - Chest Behind Destructible Walls:
   Need:
-    Can Access Earth Temple
-    & Can Play Command Melody
+    Can Get into Earth Temple
     & Can Defeat Red ChuChus
     & Can Defeat Green ChuChus
     & Can Defeat Dark ChuChus
@@ -1349,8 +1343,7 @@ Earth Temple - Chest Behind Destructible Walls:
 #    - M_Dai/Room2.arc/Actor010
 Earth Temple - Transparent Chest in First Crypt:
   Need:
-    Can Access Earth Temple
-    & Can Play Command Melody
+    Can Get into Earth Temple
     & Skull Hammer
     & Power Bracelets
     # Power Bracelets necessary to move the large black pushable box and reveal a light ray.
@@ -1360,8 +1353,7 @@ Earth Temple - Transparent Chest in First Crypt:
     - M_Dai/Stage.arc/Chest001
 Earth Temple - Chest In Three Blocks Room:
   Need:
-    Can Access Earth Temple
-    & Can Play Command Melody
+    Can Get into Earth Temple
     & ET Small Key x2
     & Fire Arrows
     & Power Bracelets
@@ -1374,8 +1366,7 @@ Earth Temple - Chest In Three Blocks Room:
     - M_Dai/Stage.arc/Chest002
 Earth Temple - Chest Behind Statues:
   Need:
-    Can Access Earth Temple
-    & Can Play Command Melody
+    Can Get into Earth Temple
     & ET Small Key x2
     & Fire Arrows
     & Power Bracelets
@@ -1386,8 +1377,7 @@ Earth Temple - Chest Behind Statues:
     - M_Dai/Stage.arc/Chest003
 Earth Temple - Casket in Second Crypt:
   Need:
-    Can Access Earth Temple
-    & Can Play Command Melody
+    Can Get into Earth Temple
     & ET Small Key x2
     & Fire Arrows
     & Power Bracelets
@@ -1400,8 +1390,7 @@ Earth Temple - Casket in Second Crypt:
     - M_Dai/Room8.arc/Actor008
 Earth Temple - Stalfos Mini-Boss Room:
   Need:
-    Can Access Earth Temple
-    & Can Play Command Melody
+    Can Get into Earth Temple
     & ET Small Key x3
     & Fire Arrows
     & Power Bracelets
@@ -1415,8 +1404,7 @@ Earth Temple - Stalfos Mini-Boss Room:
     - M_DaiMB/Stage.arc/Chest000
 Earth Temple - Tingle Statue Chest:
   Need:
-    Can Access Earth Temple
-    & Can Play Command Melody
+    Can Get into Earth Temple
     & Can Aim Mirror Shield
     & Tingle Tuner Bombs
   Original item: Earth Tingle Statue
@@ -1425,8 +1413,7 @@ Earth Temple - Tingle Statue Chest:
     - M_Dai/Stage.arc/Chest00D
 Earth Temple - End of Foggy Room With Floormasters:
   Need:
-    Can Access Earth Temple
-    & Can Play Command Melody
+    Can Get into Earth Temple
     & Can Aim Mirror Shield
     & Can Play Earth God's Lyric
   Original item: Small Key
@@ -1435,8 +1422,7 @@ Earth Temple - End of Foggy Room With Floormasters:
     - M_Dai/Stage.arc/Chest004
 Earth Temple - Kill All Floormasters in Foggy Room:
   Need:
-    Can Access Earth Temple
-    & Can Play Command Melody
+    Can Get into Earth Temple
     & Can Aim Mirror Shield
     & Can Play Earth God's Lyric
     & Can Defeat Floormasters
@@ -1456,8 +1442,7 @@ Earth Temple - Kill All Floormasters in Foggy Room:
 #    - M_Dai/Room13.arc/Actor01A
 Earth Temple - Chest in Third Crypt:
   Need:
-    Can Access Earth Temple
-    & Can Play Command Melody
+    Can Get into Earth Temple
     & Can Aim Mirror Shield
     & Can Play Earth God's Lyric
     & Power Bracelets
@@ -1472,8 +1457,7 @@ Earth Temple - Chest in Third Crypt:
     - M_Dai/Stage.arc/Chest005
 Earth Temple - Many Mirrors Room Right Chest:
   Need:
-    Can Access Earth Temple
-    & Can Play Command Melody
+    Can Get into Earth Temple
     & Can Aim Mirror Shield
     & Can Play Earth God's Lyric
     & Power Bracelets
@@ -1486,8 +1470,7 @@ Earth Temple - Many Mirrors Room Right Chest:
     - M_Dai/Stage.arc/Chest007
 Earth Temple - Many Mirrors Room Left Chest:
   Need:
-    Can Access Earth Temple
-    & Can Play Command Melody
+    Can Get into Earth Temple
     & Can Aim Mirror Shield
     & Can Play Earth God's Lyric
     & Power Bracelets
@@ -1500,8 +1483,7 @@ Earth Temple - Many Mirrors Room Left Chest:
     - M_Dai/Stage.arc/Chest008
 Earth Temple - Stalfos Crypt Room:
   Need:
-    Can Access Earth Temple
-    & Can Play Command Melody
+    Can Get into Earth Temple
     & Can Aim Mirror Shield
     & Can Play Earth God's Lyric
     & Power Bracelets
@@ -1515,8 +1497,7 @@ Earth Temple - Stalfos Crypt Room:
     - M_Dai/Stage.arc/Chest00B
 Earth Temple - Big Key Chest:
   Need:
-    Can Access Earth Temple
-    & Can Play Command Melody
+    Can Get into Earth Temple
     & Can Aim Mirror Shield
     & Can Play Earth God's Lyric
     & Power Bracelets
@@ -1536,8 +1517,7 @@ Earth Temple - Big Key Chest:
 #    - M_Dai/Stage.arc/Event050:MKNJD_D_LESSON/Actor003/Action006
 Earth Temple - Jalhalla Heart Container:
   Need:
-    Can Access Earth Temple
-    & Can Play Command Melody
+    Can Get into Earth Temple
     & Can Aim Mirror Shield
     & Can Play Earth God's Lyric
     & Power Bracelets

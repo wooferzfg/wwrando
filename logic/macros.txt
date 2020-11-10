@@ -33,6 +33,10 @@ Can Hit Diamond Switches at Range:
 Can Destroy Seeds Hanging by Vines:
   Boomerang | Progressive Bow x1 | Bombs | Hookshot
 
+Hero's Shield:
+  Progressive Shield x1
+Mirror Shield:
+  Progressive Shield x2
 Hero's Sword:
   Progressive Sword x1
 Any Master Sword:
@@ -70,13 +74,16 @@ Tingle Tuner Bombs:
 Can Access Dungeon Entrance On Dragon Roost Island:
   Nothing
 Can Access Forest Haven:
-  Grappling Hook | (Deku Leaf & Wind Waker & Wind's Requiem)
+  Grappling Hook | (Deku Leaf & Wind Waker & Wind's Requiem) | (Complex Logic & Wind Waker)
   # Grappling over the waterfall is very difficult without killing the Boko Baba there - but only if you start grappling from the top. You can grapple from the bottom up to avoid that Boko Baba entirely, so there's no extra requirement here for swordless.
 Can Access Dungeon Entrance In Forest Haven Sector:
-  Can Access Forest Haven
-  & (Grappling Hook | (Tricked Logic & Wind Waker))
-  & (Deku Leaf & Wind Waker & Wind's Requiem)
-  & (Can Cut Grass | Magic Meter Upgrade)
+  (
+    Can Access Forest Haven
+    & (Grappling Hook | (Tricked Logic & Wind Waker))
+    & (Deku Leaf & Wind Waker & Wind's Requiem)
+    & (Can Cut Grass | Magic Meter Upgrade)
+  )
+  | (Complex Logic & Wind Waker)
   # You either need double magic or the ability to refill your magic by cutting grass to make it all the way across.
   # Note: You don't need Grappling Hook because you can take the lower platform exit out of Forest Haven (Noob Skip), but this is not currently in the logic.
 Can Access Dungeon Entrance In Tower of the Gods Sector:
@@ -84,9 +91,9 @@ Can Access Dungeon Entrance In Tower of the Gods Sector:
   & Farore's Pearl
   & Nayru's Pearl
 Can Access Dungeon Entrance On Headstone Island:
-  Power Bracelets
+  Power Bracelets | (Complex Logic & Wind Waker)
 Can Access Dungeon Entrance On Gale Isle:
-  Skull Hammer
+  (Skull Hammer | (Complex Logic & Wind Waker))
   & (Iron Boots | (Glitched Logic & Wind Waker))
 
 # The below macros are used when dungeon entrances are not randomized.
@@ -114,9 +121,9 @@ Can Access Wind Temple:
 Can Access Secret Cave Entrance on Outset Island:
   ((Can Cut Down Outset Trees | Tricked Logic) & (Deku Leaf & Wind Waker & Wind's Requiem) & Power Bracelets)
   | (Hookshot & Power Bracelets)
-  | Complex Logic
+  | (Complex Logic & Wind Waker)
 Can Access Secret Cave Entrance on Dragon Roost Island:
-  Bombs | Power Bracelets
+  Bombs | Power Bracelets | Glitched Logic
 Can Access Secret Cave Entrance on Fire Mountain:
   Progressive Bow x2
 Can Access Secret Cave Entrance on Ice Ring Isle:
@@ -124,23 +131,26 @@ Can Access Secret Cave Entrance on Ice Ring Isle:
 Can Access Secret Cave Entrance on Private Oasis:
   (Cabana Deed & Delivery Bag & Grappling Hook)
   | (Glitched Logic & Wind Waker & Grappling Hook & (Can Fly With Deku Leaf Outdoors | Hookshot))
+  | (Complex Logic & Wind Waker & Grappling Hook)
 Can Access Secret Cave Entrance on Needle Rock Isle:
   Progressive Bow x2
   | (Wind Waker & Glitched Logic)
 Can Access Secret Cave Entrance on Angular Isles:
   # Either Deku Leaf or Hookshot are needed to get into the cave.
-  (Deku Leaf & Wind Waker & Wind's Requiem) | Hookshot
+  (Deku Leaf & Wind Waker & Wind's Requiem) | Hookshot | Complex Logic
 Can Access Secret Cave Entrance on Boating Course:
   # Getting inside the cave requires flying with Deku Leaf or Hookshotting the pole.
   (Deku Leaf & Wind Waker & Wind's Requiem) | Hookshot
+  | (Complex Logic & Wind Waker & (Progressive Sword x1 | Skull Hammer))
 Can Access Secret Cave Entrance on Stone Watcher Island:
-  Power Bracelets
+  Power Bracelets | (Complex Logic & Wind Waker & (Progressive Sword x1 | Skull Hammer))
 Can Access Secret Cave Entrance on Overlook Island:
-  Hookshot
+  Hookshot | (Complex Logic & Wind Waker)
 Can Access Secret Cave Entrance on Bird's Peak Rock:
   # Need to hit the switches with a seagull.
   Bait Bag
   | (Tricked Logic & Grappling Hook)
+  | (Complex Logic & Wind Waker)
 Can Access Secret Cave Entrance on Pawprint Isle:
   Nothing
 Can Access Secret Cave Entrance on Pawprint Isle Side Isle:
@@ -153,10 +163,11 @@ Can Access Secret Cave Entrance on Diamond Steppe Island:
     & Wind Waker
   )
 Can Access Secret Cave Entrance on Bomb Island:
-  Bombs | Power Bracelets
+  Bombs | Power Bracelets | (Complex Logic & Wind Waker)
 Can Access Secret Cave Entrance on Rock Spire Isle:
   Bombs
   | (Glitched Logic & (Deku Leaf & Wind Waker & Wind's Requiem))
+  | (Complex Logic & Wind Waker & (Progressive Sword x1 | Skull Hammer))
 Can Access Secret Cave Entrance on Shark Island:
   # Iron Boots and Skull Hammer are necessary to hit the two big buttons.
   # The diamond switch does not require Boomerang or any ranged weapon - you can just hit it with your sword or hammer.
@@ -167,7 +178,9 @@ Can Access Secret Cave Entrance on Cliff Plateau Isles:
 Can Access Secret Cave Entrance on Horseshoe Island:
   # Need Deku Leaf to play golf.
   Deku Leaf
+  | Complex Logic
 Can Access Secret Cave Entrance on Star Island:
+  #Note, the loading zone doesn't seem to trigger unless the rock breaks. As such DO NOT CHANGE THIS MACRO CRAIN
   Bombs | Power Bracelets
 
 # The below macros are used when secret cave entrances are not randomized.
@@ -276,9 +289,11 @@ Can Complete All Memory Dungeons and Bosses:
   & Can Complete Memory Earth Temple and Jalhalla
   & Can Complete Memory Wind Temple and Molgera
 
+
 Can Unlock Ganon's Tower Four Boss Door:
   Can Complete All Memory Dungeons and Bosses
   | Rematch Bosses Skipped
+  | (Complex Logic & Bombs & Deku Leaf)
 Can Reach Ganon's Tower Phantom Ganon Room:
   Can Access Ganon's Tower
   & Can Unlock Ganon's Tower Four Boss Door
@@ -295,7 +310,7 @@ Can Defeat Puppet Ganon:
 Can Reach and Defeat Ganondorf:
   Can Reach and Defeat Puppet Ganon
   & (Grappling Hook | Glitched Logic)
-  & Hookshot
+  & (Hookshot | Complex Logic)
   & Can Defeat Ganondorf
 Can Defeat Ganondorf:
   # You need a sword to kill Ganondorf, but it doesn't need to be the Master Sword.
