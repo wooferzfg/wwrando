@@ -388,11 +388,17 @@ class Randomizer:
     if self.options.get("randomize_charts"):
       charts.randomize_charts(self)
 
+    options_completed += 1
+
     if self.options.get("randomize_starting_island"):
       starting_island.randomize_starting_island(self)
 
+    options_completed += 1
+
     if self.options.get("randomize_entrances") not in ["Disabled", None]:
       entrances.randomize_entrances(self)
+
+    options_completed += 1
 
     if self.options.get("randomize_music"):
       music.randomize_music(self)
@@ -422,6 +428,8 @@ class Randomizer:
     yield("Saving items...", options_completed)
     if self.randomize_items and not self.dry_run:
       items.write_changed_items(self)
+
+    options_completed += 1
 
     if not self.dry_run:
       self.apply_necessary_post_randomization_tweaks()

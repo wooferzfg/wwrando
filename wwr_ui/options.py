@@ -148,7 +148,7 @@ OPTIONS = OrderedDict([
   ),
   (
     "race_mode",
-    "In Race Mode, random dungeon bosses will drop required items (e.g. Triforce Shards). Nothing in the other dungeons will ever be required.\nYou can see which islands have the required dungeons on them by which islands have blue quest markers on the sea chart.",
+    "For Dungeon Modes other than Default, random dungeon bosses will drop required items (e.g. Triforce Shards). In Race Mode, nothing in the other dungeons will ever be required.\nYou can see which islands have the required dungeons on them by which islands have blue quest markers on the sea chart.",
   ),
   (
     "num_dungeon_race_mode",
@@ -168,7 +168,7 @@ OPTIONS = OrderedDict([
   ),
   (
     "randomize_music",
-    "Shuffles around all the music in the game. This affects background music, combat music, fanfares, etc.",
+    "Shuffles around all the music in the game. This affects background music, combat music, fanfares, etc.<br>At this time, this may cause issues that could serverely impact player enjoyment.",
   ),
   (
     "disable_tingle_chests_with_tingle_bombs",
@@ -266,7 +266,6 @@ NON_PERMALINK_OPTIONS = [
 
 HIDDEN_OPTIONS = [
   "disable_tingle_chests_with_tingle_bombs",
-  "randomize_music",
   "randomize_enemies",
   "custom_bck_entry",
 ]

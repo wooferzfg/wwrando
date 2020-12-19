@@ -15,6 +15,8 @@ HARD_REQUIRED_ITEMS = [
 
   "Wind's Requiem",
   "Ballad of Gales",
+
+  "Boat's Sail"
 ]+ \
   ["Progressive Sword"]*4 + \
   ["Progressive Bow"]*3
@@ -41,8 +43,6 @@ SOFT_REQUIRED_ITEMS = [
   "Earth God's Lyric",
   "Wind God's Aria",
   "Song of Passing",
-
-  "Boat's Sail",
 
   "Note to Mom",
   "Maggie's Letter",

@@ -8,7 +8,7 @@ import tweaks
 def randomize_items(self):
   print("Randomizing items...")
 
-  if self.options.get("race_mode"):
+  if(self.options.get("race_mode")!="Default"):
     randomize_boss_rewards(self)
 
   if not self.options.get("keylunacy"):
@@ -196,9 +196,10 @@ def randomize_boss_rewards(self):
     self.race_mode_required_dungeons.append(dungeon_name)
 
   banned_dungeons = []
-  for boss_location_name in possible_boss_locations:
-    dungeon_name, _ = self.logic.split_location_name_by_zone(boss_location_name)
-    banned_dungeons.append(dungeon_name)
+  if(self.options.get("race_mode")=="Race"):
+    for boss_location_name in possible_boss_locations:
+      dungeon_name, _ = self.logic.split_location_name_by_zone(boss_location_name)
+      banned_dungeons.append(dungeon_name)
 
   for location_name in self.logic.item_locations:
     zone_name, _ = self.logic.split_location_name_by_zone(location_name)

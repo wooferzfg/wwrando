@@ -17,6 +17,7 @@ alike
 alive
 all
 alone
+amazing
 ancient
 angry
 angular
@@ -63,6 +64,7 @@ burly
 burning
 bushed
 busy
+calamity
 calm
 careful
 catching
@@ -228,6 +230,7 @@ flying
 fond
 foolhardy
 foolish
+forbidden
 foreign
 foremost
 former
@@ -241,8 +244,10 @@ fragrant
 free
 french
 frequent
+freakin'
 frigid
 frivolous
+frost
 full
 functional
 funky
@@ -255,6 +260,7 @@ gelatinous
 general
 generous
 gentle
+ghostly
 gifted
 gigantic
 glad
@@ -307,9 +313,12 @@ human
 humble
 hundred
 hungry
+hylian
 hyper
+hyrulean
 icy
 idle
+igneo
 ill
 impatient
 impenetrable
@@ -341,8 +350,11 @@ invincible
 junior
 just
 keen
+kingly
 knowing
 knowledgeable
+kokiri
+korok
 lacking
 lame
 lamentable
@@ -383,6 +395,7 @@ mad
 magical
 main
 major
+malice
 manned
 mannered
 manual
@@ -403,6 +416,7 @@ middle
 mighty
 mild
 minded
+minish
 mischievous
 miserable
 missing
@@ -531,6 +545,7 @@ ridiculous
 right
 righteous
 rising
+rito
 robust
 romantic
 rough
@@ -694,6 +709,7 @@ unassuming
 unbelievable
 unclean
 unconscious
+undead
 undeniable
 underwater
 undeterred
@@ -789,7 +805,4 @@ wrong
 wry
 yellow
 young
-undead
-ghostly
-forbidden
-ganon's
+zora

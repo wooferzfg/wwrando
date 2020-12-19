@@ -115,7 +115,9 @@ boat
 boating
 bod
 body
+bokoblin
 bomb
+bombchu
 bone
 bonus
 book
@@ -554,6 +556,7 @@ guru
 gust
 gutter
 guy
+gyorg
 habit
 habitat
 hag
@@ -681,8 +684,10 @@ juice
 junk
 justice
 kaleidoscope
+kargaroc
 keeping
 keepsake
+keese
 key
 kid
 kiddie
@@ -763,6 +768,7 @@ maestro
 magic
 magician
 magma
+magtail
 mail
 maker
 making
@@ -807,6 +813,7 @@ might
 mile
 milk
 mind
+miniblin
 minimum
 minute
 mirror
@@ -815,6 +822,7 @@ misfortune
 mist
 mistake
 mister
+moblin
 mode
 mold
 mom
@@ -828,7 +836,9 @@ monument
 mood
 moon
 morning
+morth
 moth
+mothula
 mother
 motif
 motion
@@ -877,6 +887,7 @@ object
 obsession
 occupation
 ocean
+octorok
 offering
 onrush
 onslaught
@@ -926,6 +937,7 @@ patience
 patronage
 payment
 peace
+peahat
 peak
 pear
 pearl
@@ -970,6 +982,7 @@ pleasure
 plenty
 plight
 plot
+poe
 pocket
 point
 police
@@ -1063,6 +1076,7 @@ rear
 reason
 reception
 record
+redead
 reef
 reflection
 refreshment
@@ -1147,6 +1161,7 @@ sculpture
 scurvy
 sea
 seagull
+seahat
 seal
 searchlight
 sector
@@ -1244,6 +1259,7 @@ sprite
 spunk
 square
 squid
+stalfos
 stall
 stamina
 standing
@@ -1448,6 +1464,7 @@ winter
 wisdom
 wit
 witness
+wizzrobe
 woe
 woman
 wonder

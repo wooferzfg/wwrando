@@ -873,3 +873,440 @@ Can Get DRI Boulder Chest:
     & Wind's Requiem
     & (Progressive Sword x1 | Skull Hammer)
   )
+
+Can Sail:
+  Boat's Sail
+  & (
+    Can Play Wind's Requiem
+    | Option "swift_sail" Enabled
+  )
+
+Can Travel to any Island:
+  Can Play Ballad of Gales
+  & Can Sail
+
+Can Travel to Mother Isle:
+  Can Play Ballad of Gales
+
+Can Travel to Windfall Island Warp:
+  Can Play Ballad of Gales
+
+Can Travel to Tingle Island Warp:
+  Can Play Ballad of Gales
+
+Can Travel to Greatfish Isle Warp:
+  Can Play Ballad of Gales
+
+
+Can Travel to Forsaken Fortress:
+  Can Play Ballad of Gales
+
+Can Travel to Windfall Island:
+  Can Travel to Windfall Island Warp
+  | (
+    Can Travel to Tingle Island Warp
+    & Can Sail
+  )
+  | Can Travel to any Island
+
+Can Travel to Dragon Roost Island:
+  Can Play Ballad of Gales
+
+Can Travel to Tingle Island:
+  Can Travel to Tingle Island Warp
+  | (
+    Can Travel to Greatfish Isle Warp
+    & Can Sail
+  )
+  | (
+    Can Travel to Windfall Island Warp
+    & Can Sail
+  )
+  | Can Travel to any Island
+
+Can Travel to Greatfish Isle:
+  Can Travel to Greatfish Isle Warp
+  | (
+    Can Travel to Tingle Island Warp
+    & Can Sail
+  )
+  | Can Travel to any Island
+
+Can Travel to Tower of the Gods:
+  Can Play Ballad of Gales
+
+Can Travel to Southern Fairy Island:
+  Can Play Ballad of Gales
+
+Can Travel to Forest Haven:
+  Can Play Ballad of Gales
+
+Can Travel to Outset Island:
+  Can Play Ballad of Gales
+
+
+Can Travel to Star Island:
+  (
+    Can Travel to Forsaken Fortress
+    & Can Sail
+  )
+  | Can Travel to any Island
+
+Can Travel to Northern Fairy Island:
+  (
+    Can Travel to Windfall Island
+    & Can Sail
+  )
+  | Can Travel to any Island
+
+Can Travel to Gale Isle:
+  (
+    Can Travel to Windfall Island
+    & Can Sail
+  )
+  | Can Travel to any Island
+
+Can Travel to Crescent Moon Island:
+  (
+    Can Travel to Windfall Island
+    & Can Sail
+  )
+  | (
+    Can Travel to Dragon Roost Island
+    & Can Sail
+  )
+  | Can Travel to any Island
+
+Can Travel to Seven Star Isles:
+  (
+    Can Travel to Dragon Roost Island
+    & Can Sail
+  )
+  | Can Travel to any Island
+
+Can Travel to Overlook Island:
+  (
+    Can Travel to Dragon Roost Island
+    & Can Sail
+  )
+  | Can Travel to any Island
+
+
+Can Travel to Four-Eye Reef:
+  (
+    Can Travel to Forsaken Fortress
+    & Can Sail
+  )
+  | Can Travel to any Island
+
+Can Travel to Child Isle:
+  (
+    Can Travel to Forsaken Fortress
+    & Can Sail
+  )
+  | (
+    Can Travel to Tingle Island
+    & Can Sail
+  )
+  | Can Travel to any Island
+
+Can Travel to Spectacle Island:
+  (
+    Can Travel to Windfall Island
+    & Can Sail
+  )
+  | (
+    Can Travel to Tingle Island
+    & Can Sail
+  )
+  | Can Travel to any Island
+
+Can Travel to Pawprint Isle:
+  (
+    Can Travel to Windfall Island
+    & Can Sail
+  )
+  | (
+    Can Travel to Dragon Roost Island
+    & Can Sail
+  )
+  | Can Travel to any Island
+
+Can Travel to Flight Control Platform:
+  (
+    Can Travel to Dragon Roost Island
+    & Can Sail
+  )
+  | Can Travel to any Island
+
+
+Can Travel to Western Fairy Island:
+  (
+    Can Travel to Greatfish Isle
+    & Can Sail
+  )
+  | Can Travel to any Island
+
+Can Travel to Rock Spire Isle:
+  (
+    Can Travel to Greatfish Isle
+    & Can Sail
+  )
+  | (
+    Can Travel to Tingle Island
+    & Can Sail
+  )
+  | Can Travel to any Island
+
+Can Travel to Northern Triangle Isle:
+  (
+    Can Travel to Windfall Island
+    & Can Sail
+  )
+  | (
+    Can Travel to Tingle Island
+    & Can Sail
+  )
+  | (
+    Can Travel to Tower of the Gods
+    & Can Sail
+  )
+  | Can Travel to any Island
+
+Can Travel to Eastern Fairy Island:
+  (
+    Can Travel to Windfall Island
+    & Can Sail
+  )
+  | (
+    Can Travel to Dragon Roost Island
+    & Can Sail
+  )
+  | (
+    Can Travel to Tower of the Gods
+    & Can Sail
+  )
+  | Can Travel to any Island
+
+Can Travel to Fire Mountain:
+  (
+    Can Travel to Dragon Roost Island
+    & Can Sail
+  )
+  | (
+    Can Travel to Tower of the Gods
+    & Can Sail
+  )
+  | Can Travel to any Island
+
+Can Travel to Star Belt Archipelago:
+  (
+    Can Travel to Dragon Roost Island
+    & Can Sail
+  )
+  | Can Travel to any Island
+
+
+Can Travel to Three-Eye Reef:
+  (
+    Can Travel to Greatfish Isle
+    & Can Sail
+  )
+  | Can Travel to any Island
+
+Can Travel to Cyclops Reef:
+  (
+    Can Travel to Greatfish Isle
+    & Can Sail
+  )
+  | (
+    Can Travel to Tingle Island
+    & Can Sail
+  )
+  | Can Travel to any Island
+
+Can Travel to Six-Eye Reef:
+  (
+    Can Travel to Tower of the Gods
+    & Can Sail
+  )
+  | Can Travel to any Island
+
+Can Travel to Eastern Triangle Isle:
+  (
+    Can Travel to Tower of the Gods
+    & Can Sail
+  )
+  | Can Travel to any Island
+
+Can Travel to Thorned Fairy Island:
+  Can Travel to any Island
+
+
+Can Travel to Needle Rock Isle:
+  (
+    Can Travel to Greatfish Isle
+    & Can Sail
+  )
+  | Can Travel to any Island
+
+Can Travel to Islet of Steel:
+  (
+    Can Travel to Greatfish Isle
+    & Can Sail
+  )
+  | Can Travel to any Island
+
+Can Travel to Stonewatcher Island:
+  (
+    Can Travel to Greatfish Isle
+    & Can Sail
+  )
+  | (
+    Can Travel to Southern Fairy Island
+    & Can Sail
+  )
+  | Can Travel to any Island
+
+Can Travel to Southern Triangle Isle:
+  (
+    Can Travel to Tower of the Gods
+    & Can Sail
+  )
+  | (
+    Can Travel to Southern Fairy Island
+    & Can Sail
+  )
+  | Can Travel to any Island
+
+Can Travel to Private Oasis:
+  (
+    Can Travel to Tower of the Gods
+    & Can Sail
+  )
+  | (
+    Can Travel to Southern Fairy Island
+    & Can Sail
+  )
+  | (
+    Can Travel to Forest Haven
+    & Can Sail
+  )
+  | Can Travel to any Island
+
+Can Travel to Bomb Island:
+  (
+    Can Travel to Tower of the Gods
+    & Can Sail
+  )
+  | (
+    Can Travel to Forest Haven
+    & Can Sail
+  )
+  | Can Travel to any Island
+
+Can Travel to Bird's Peak Rock:
+  (
+    Can Travel to Tower of the Gods
+    & Can Sail
+  )
+  | (
+    Can Travel to Forest Haven
+    & Can Sail
+  )
+  | Can Travel to any Island
+
+
+Can Travel to Diamond Steppe Island:
+  (
+    Can Travel to Outset Island
+    & Can Sail
+  )
+  | Can Travel to any Island
+
+Can Travel to Five-Eye Reef:
+  (
+    Can Travel to Outset Island
+    & Can Sail
+  )
+  | Can Travel to any Island
+
+Can Travel to Shark Island:
+  (
+    Can Travel to Outset Island
+    & Can Sail
+  )
+  | (
+    Can Travel to Southern Fairy Island
+    & Can Sail
+  )
+  | Can Travel to any Island
+
+Can Travel to Ice Ring Isle:
+  (
+    Can Travel to Forest Haven
+    & Can Sail
+  )
+  | (
+    Can Travel to Southern Fairy Island
+    & Can Sail
+  )
+  | Can Travel to any Island
+
+Can Travel to Cliff Plateau Isles:
+  (
+    Can Travel to Forest Haven
+    & Can Sail
+  )
+  | Can Travel to any Island
+
+
+Can Travel to Horseshoe Isle:
+  (
+    Can Travel to Outset Island
+    & Can Sail
+  )
+  | Can Travel to any Island
+
+Can Travel to Headstone Island:
+  (
+    Can Travel to Outset Island
+    & Can Sail
+  )
+  | (
+    Can Travel to Southern Fairy Island
+    & Can Sail
+  )
+  | Can Travel to any Island
+
+Can Travel to Two-Eye Reef:
+  (
+    Can Travel to Southern Fairy Island
+    & Can Sail
+  )
+  | Can Travel to any Island
+
+Can Travel to Angular Isles:
+  (
+    Can Travel to Forest Haven
+    & Can Sail
+  )
+  | (
+    Can Travel to Southern Fairy Island
+    & Can Sail
+  )
+  | Can Travel to any Island
+
+Can Travel to Boating Course:
+  (
+    Can Travel to Forest Haven
+    & Can Sail
+  )
+  | Can Travel to any Island
+
+Can Travel to Five Star Isles:
+  (
+    Can Travel to Forest Haven
+    & Can Sail
+  )
+  | Can Travel to any Island

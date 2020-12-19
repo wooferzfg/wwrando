@@ -55,6 +55,15 @@ STNDRD_ITEMS.sort()
 INVENTORY_ITEMS = PROGRESSIVE_ITEMS + STNDRD_ITEMS
 INVENTORY_ITEMS.sort()
 
+DEFAULT_STARTING_ITEMS = [
+  "Wind Waker",
+  "Wind's Requiem",
+  "Ballad of Gales",
+  "Song of Passing",
+  "Hero's Shield",
+  "Boat's Sail"
+]
+
 QUEST_ITEMS = [
   "Din's Pearl",
   "Farore's Pearl",

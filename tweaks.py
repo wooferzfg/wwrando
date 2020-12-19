@@ -368,9 +368,11 @@ def make_items_progressive(self):
     picto_box_item_get_func_addr = item_get_funcs_list + picto_box_item_id*4
     self.dol.write_data(write_u32, picto_box_item_get_func_addr, self.main_custom_symbols["progressive_picto_box_item_func"])
 
+  '''
   for shield_item_id in [0x3B, 0x3C]:
     shield_item_get_func_addr = item_get_funcs_list + shield_item_id*4
     self.dol.write_data(write_u32, shield_item_get_func_addr, self.main_custom_symbols["progressive_shield_item_func"])
+  '''
 
   # Register which item ID is for which progressive item.
   self.item_name_to_id["Progressive Sword"] = 0x38
@@ -379,7 +381,7 @@ def make_items_progressive(self):
   self.item_name_to_id["Progressive Bomb Bag"] = 0xAD
   self.item_name_to_id["Progressive Quiver"] = 0xAF
   self.item_name_to_id["Progressive Picto Box"] = 0x23
-  self.item_name_to_id["Progressive Shield"] = 0x3B
+  #self.item_name_to_id["Progressive Shield"] = 0x3B
 
   # Modify the item get funcs for bombs and the hero's bow to nop out the code that sets your current and max bombs/arrows to 30.
   # Without this change, getting bombs after a bomb bag upgrade would negate the bomb bag upgrade.

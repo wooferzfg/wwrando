@@ -461,7 +461,7 @@ class WWRandomizerWindow(QMainWindow):
     for option_name in OPTIONS:
       options[option_name] = self.get_option_value(option_name)
     num_progress_locations = Logic.get_num_progression_locations_static(self.cached_item_locations, options)
-    if(self.get_option_value("race_mode")):
+    if(self.get_option_value("race_mode")=="Race"):
       try:
         num_remove = 84 - int(self.get_option_value("num_dungeon_race_mode"))*14
       except:
@@ -644,6 +644,9 @@ class WWRandomizerWindow(QMainWindow):
 
       if option_name.startswith("label_for_"):
         option_name = option_name[len("label_for_"):]
+
+      elif option_name.startswith("spacer_for_"):
+        option_name = option_name[len("spacer_for_"):]
 
       if option_name in OPTIONS:
         self.set_option_description(OPTIONS[option_name])
@@ -1021,6 +1024,7 @@ class WWRandomizerWindow(QMainWindow):
     if not self.get_option_value("progression_dungeons"):
       # Race mode places required items on dungeon bosses.
       should_enable_options["race_mode"] = False
+      self.set_option_value("race_mode","Default")
       should_enable_options["num_dungeon_race_mode"] = False
       self.set_option_value("num_dungeon_race_mode","4")
 
@@ -1030,7 +1034,7 @@ class WWRandomizerWindow(QMainWindow):
     if(sword_mode in ["Swordless", "No Starting Sword"]):
       items_to_filter_out += 3 * ["Progressive Sword"]
 
-    if self.get_option_value("race_mode"):
+    if(self.get_option_value("race_mode")!="Default"):
       try:
         num_possible_rewards = 8 - int(self.get_option_value("num_starting_triforce_shards"))
       except:
