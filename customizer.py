@@ -6,6 +6,7 @@ from collections import OrderedDict
 from io import BytesIO
 import glob
 from PIL import Image
+from class_ms import YamlOrderedDictLoader
 
 from fs_helpers import data_len
 from wwlib.texture_utils import *
@@ -561,11 +562,3 @@ def get_default_colors(self):
   custom_colors = custom_model_metadata.get(prefix + "_custom_colors", {})
 
   return custom_colors
-
-class YamlOrderedDictLoader(yaml.SafeLoader):
-  pass
-
-YamlOrderedDictLoader.add_constructor(
-  yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG,
-  lambda loader, node: OrderedDict(loader.construct_pairs(node))
-)

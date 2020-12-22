@@ -5,7 +5,7 @@ from PySide2.QtWidgets import *
 from wwr_ui.ui_randomizer_window import Ui_MainWindow
 from wwr_ui.options import OPTIONS, NON_PERMALINK_OPTIONS, HIDDEN_OPTIONS, POTENTIALLY_UNBEATABLE_OPTIONS
 from wwr_ui.update_checker import check_for_updates, LATEST_RELEASE_DOWNLOAD_PAGE_URL
-from wwr_ui.inventory import INVENTORY_ITEMS, REGULAR_ITEMS, PROGRESSIVE_ITEMS, DUNGEON_NONPROGRESS_ITEMS, SORT_KEY, STNDRD_ITEMS
+from wwr_ui.inventory import * #INVENTORY_ITEMS, REGULAR_ITEMS, PROGRESSIVE_ITEMS, DUNGEON_NONPROGRESS_ITEMS, SORT_KEY, STNDRD_ITEMS
 from wwr_ui.packedbits import PackedBitsReader, PackedBitsWriter
 
 import xml_func as xfx
@@ -94,6 +94,7 @@ class WWRandomizerWindow(QMainWindow):
     self.ui.starting_bh.valueChanged.connect(self.update_health_label)
 
     self.load_settings()
+    self.set_logic_description()
 
     self.ui.clean_iso_path.editingFinished.connect(self.update_settings)
     self.ui.output_folder.editingFinished.connect(self.update_settings)
@@ -379,6 +380,25 @@ class WWRandomizerWindow(QMainWindow):
     if any_color_changed:
       any_setting_changed = True
 
+    self.update_settings()
+    self.set_logic_description()
+    #item_index = OrderedDict()
+
+    source = self.ui.randomized_gear
+    dest = self.ui.starting_gear
+    new_def = DEFAULT_STARTING_ITEMS.copy()
+    new_def.sort(reverse = True)
+    #newSel = QItemSelection()
+    #sourceModel = source.selectionModel()
+    #clearSel = QItemSelectionModel.Select
+    #run = sourceModel.model()
+    for item_Name in new_def:
+      item_index = INVENTORY_ITEMS.index(item_Name)
+      #print(str(item.row()))
+      #print(str(item.column()))
+      source.model().removeRow(item_index)
+      self.append_row(dest.model(), item_Name)
+      self.update_settings()
     self.update_settings()
 
     if not any_setting_changed:

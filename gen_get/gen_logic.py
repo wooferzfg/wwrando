@@ -2,6 +2,7 @@ import yaml
 import os
 from paths import LOGIC_PATH, TYPE_PATH, TRICK_PATH
 from collections import OrderedDict
+from class_ms import YamlOrderedDictLoader
 
 forbidden_keys = ["Paths","Original item","Mode"]
 path_input = LOGIC_PATH
@@ -10,14 +11,6 @@ source_file = "item_locations.txt"
 file_details = ["LagoLunatic","Standard","The regular TWW Logic","standard.dv_im"]
 format_title = '<inject Creator="{}" Type="{}" Description="{}" Change="{}" File="{}" Chechsum="{}">\n'
 
-
-class YamlOrderedDictLoader(yaml.SafeLoader):
-  pass
-
-YamlOrderedDictLoader.add_constructor(
-  yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG,
-  lambda loader, node: OrderedDict(loader.construct_pairs(node))
-)
 
 with open(os.path.join(path_input, source_file)) as f:
   item_locations = yaml.load(f, YamlOrderedDictLoader)

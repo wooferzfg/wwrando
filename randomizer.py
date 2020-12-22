@@ -152,14 +152,10 @@ class Randomizer:
         stage_searcher.print_all_used_chest_open_flags(self)
         stage_searcher.print_all_event_flags_used_by_stb_cutscenes(self)
 
+    self.logic_mod = self.options.get("logic_mod")
     # Starting items. This list is read by the Logic when initializing your currently owned items list.
     self.starting_items = [
-      "Wind Waker",
-      "Wind's Requiem",
-      "Ballad of Gales",
-      "Song of Passing",
       "Hero's Shield",
-      "Boat's Sail",
     ]
     self.starting_items += self.options.get("starting_gear", [])
 
@@ -177,6 +173,8 @@ class Randomizer:
     starting_hcs = self.options.get("starting_hcs")
     for i in range(starting_hcs):
       self.starting_items.append("Heart Container")
+
+    self.island_number = 44
 
     # Default entrances connections to be used if the entrance randomizer is not on.
     self.entrance_connections = OrderedDict([
@@ -389,16 +387,21 @@ class Randomizer:
       charts.randomize_charts(self)
 
     options_completed += 1
+    yield("Randomizing...", options_completed)
 
     if self.options.get("randomize_starting_island"):
-      starting_island.randomize_starting_island(self)
+      self.island_number = starting_island.randomize_starting_island(self)
+    else:
+      self.island_number = 44
 
     options_completed += 1
+    yield("Randomizing...", options_completed)
 
     if self.options.get("randomize_entrances") not in ["Disabled", None]:
       entrances.randomize_entrances(self)
 
     options_completed += 1
+    yield("Randomizing...", options_completed)
 
     if self.options.get("randomize_music"):
       music.randomize_music(self)

@@ -8,6 +8,8 @@ Can Play Earth God's Lyric:
   Wind Waker & Earth God's Lyric
 Can Play Wind God's Aria:
   Wind Waker & Wind God's Aria
+Can Play Song of Passing:
+  Wind Waker & Song of Passing
 Can Fly With Deku Leaf Outdoors:
   Deku Leaf & Wind Waker & Wind's Requiem
 Can Aim Mirror Shield:
@@ -70,7 +72,12 @@ Tingle Tuner Bombs:
 Can Access Dungeon Entrance On Dragon Roost Island:
   Nothing
 Can Access Forest Haven:
-  Grappling Hook | (Deku Leaf & Wind Waker & Wind's Requiem) | (Complex Logic & Wind Waker)
+  (
+    Grappling Hook
+    | (Deku Leaf & Wind Waker & Wind's Requiem)
+    | (Complex Logic & Wind Waker)
+  )
+  & Can Travel to Forest Haven
   # Grappling over the waterfall is very difficult without killing the Boko Baba there - but only if you start grappling from the top. You can grapple from the bottom up to avoid that Boko Baba entirely, so there's no extra requirement here for swordless.
 Can Access Dungeon Entrance In Forest Haven Sector:
   (
@@ -223,12 +230,15 @@ Can Access Star Island Secret Cave:
   Can Access Secret Cave Entrance on Star Island
 
 Can Get Past Forsaken Fortress Gate:
+  (
   Bombs
   | Tricked Logic
+  )
+  & Can Travel to Forsaken Fortress
   # Note: It's also possible to blow up the door without bombs by using the mounted cannons, but this is not required by the logic.
   # Note: It's also possible to get past the gate by going all the way down to Ganon's Tower, and then activating the warp up to Forsaken Fortress. But this is not currently required by the logic.
 Can Get Inside Forsaken Fortress:
-  (Bombs | Tricked Logic)
+  Can Get Past Forsaken Fortress Gate
   & (
     Skull Hammer
     | (
@@ -748,8 +758,11 @@ Can Cut Grass:
   | Boomerang
   | Bombs
 Can Sword Fight with Orca:
+  (
   Progressive Sword x1
   | In Swordless Mode
+  )
+  & Can Travel to Outset Island
   # Swordless gives you a sword temporarily while in Orca's house, so you don't need to have found a sword item.
 
 # The below macros are used when charts are not randomized.
@@ -943,6 +956,7 @@ Can Travel to Forest Haven:
 
 Can Travel to Outset Island:
   Can Play Ballad of Gales
+  | Option "randomize_starting_island" Disabled
 
 
 Can Travel to Star Island:
@@ -977,7 +991,7 @@ Can Travel to Crescent Moon Island:
   )
   | Can Travel to any Island
 
-Can Travel to Seven Star Isles:
+Can Travel to Seven-Star Isles:
   (
     Can Travel to Dragon Roost Island
     & Can Sail
@@ -1058,7 +1072,7 @@ Can Travel to Rock Spire Isle:
   )
   | Can Travel to any Island
 
-Can Travel to Northern Triangle Isle:
+Can Travel to Northern Triangle Island:
   (
     Can Travel to Windfall Island
     & Can Sail
@@ -1132,7 +1146,7 @@ Can Travel to Six-Eye Reef:
   )
   | Can Travel to any Island
 
-Can Travel to Eastern Triangle Isle:
+Can Travel to Eastern Triangle Island:
   (
     Can Travel to Tower of the Gods
     & Can Sail
@@ -1157,7 +1171,7 @@ Can Travel to Islet of Steel:
   )
   | Can Travel to any Island
 
-Can Travel to Stonewatcher Island:
+Can Travel to Stone Watcher Island:
   (
     Can Travel to Greatfish Isle
     & Can Sail
@@ -1168,7 +1182,7 @@ Can Travel to Stonewatcher Island:
   )
   | Can Travel to any Island
 
-Can Travel to Southern Triangle Isle:
+Can Travel to Southern Triangle Island:
   (
     Can Travel to Tower of the Gods
     & Can Sail
@@ -1261,7 +1275,7 @@ Can Travel to Cliff Plateau Isles:
   | Can Travel to any Island
 
 
-Can Travel to Horseshoe Isle:
+Can Travel to Horseshoe Island:
   (
     Can Travel to Outset Island
     & Can Sail
@@ -1304,9 +1318,30 @@ Can Travel to Boating Course:
   )
   | Can Travel to any Island
 
-Can Travel to Five Star Isles:
+Can Travel to Five-Star Isles:
   (
     Can Travel to Forest Haven
     & Can Sail
   )
   | Can Travel to any Island
+
+Can Travel to Postbox:
+  Can Travel to Bird's Peak Rock
+  | Can Travel to Bomb Island
+  | Can Travel to Cliff Plateau Isles
+  | Can Travel to Dragon Roost Island
+  | Can Travel to Eastern Fairy Island
+  | Can Travel to Flight Control Platform
+  | Can Travel to Forest Haven
+  | Can Travel to Needle Rock Isle
+  | Can Travel to Northern Fairy Island
+  | Can Travel to Outset Island
+  | Can Travel to Pawprint Isle
+  | Can Travel to Private Oasis
+  | Can Travel to Southern Fairy Island
+  | Can Travel to Spectacle Island
+  | Can Travel to Stone Watcher Island
+  | Can Travel to Thorned Fairy Island
+  | Can Travel to Tingle Island
+  | Can Travel to Western Fairy Island
+  | Can Travel to Windfall Island

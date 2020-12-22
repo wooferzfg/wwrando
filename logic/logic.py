@@ -5,12 +5,13 @@ from collections import OrderedDict
 import copy
 import xml.dom.minidom as minidom
 import glob
+from class_ms import YamlOrderedDictLoader
 
 import os
 
 from logic.item_types import PROGRESS_ITEMS, NONPROGRESS_ITEMS, CONSUMABLE_ITEMS, DUPLICATABLE_CONSUMABLE_ITEMS, DUNGEON_PROGRESS_ITEMS, DUNGEON_NONPROGRESS_ITEMS, CONVENIENCE_ITEMS, XTRA_ITEMS, HEALTH_ITEMS
 from paths import LOGIC_PATH, TRICK_PATH,TYPE_PATH
-from randomizers import entrances
+from randomizers import entrances, starting_island
 from tweaks import *
 import wwr_ui.options
 import xml_func as xfx
@@ -55,16 +56,16 @@ class Logic:
     ]),
   ])
 
-  setRL(5120)
+  setRL(100)
 
   def __init__(self, rando):
     self.rando = rando
-
+    logic_mod = rando.logic_mod
 
     # Initialize location related attributes.
-    logic_mod=self.rando.options.get("logic_mod")
     self.item_locations = Logic.load_and_parse_item_locations(logic=logic_mod)
     self.load_and_parse_macros()
+    starting_island.get_starting_island(self,rando.island_number)
 
     self.locations_by_zone_name = OrderedDict()
     for location_name in self.item_locations:
@@ -402,6 +403,7 @@ class Logic:
     item_names_for_all_locations = []
     for location_name in inaccessible_undone_item_locations:
       requirement_expression = self.item_locations[location_name]["Need"]
+      print(location_name)
       item_names_for_loc = self.get_item_names_from_logical_expression_req(requirement_expression)
       item_names_for_all_locations.append(item_names_for_loc)
     item_names_to_beat_game = self.get_item_names_by_req_name("Can Reach and Defeat Ganondorf")
@@ -803,7 +805,7 @@ class Logic:
       item_name for item_name in self.all_progress_items
       if item_name not in all_progress_items_filtered
       and item_name not in self.currently_owned_items
-    ]
+    ] #FOR LATER: HARD VS SOFT REQUIRED (REMAINING ITEMS)
     for item_name in items_to_make_nonprogress:
       #print(item_name)
       self.all_progress_items.remove(item_name)
@@ -894,6 +896,7 @@ class Logic:
       raise Exception("Unknown requirement name: " + req_name)
 
   def check_logical_expression_req(self, logical_expression):
+    #print(str(logical_expression))
     expression_type = None
     subexpression_results = []
     tokens = list(logical_expression).copy()
@@ -1181,11 +1184,3 @@ class Logic:
       self.cached_enemies_tested_for_req_string[original_req_string][enemy_name] = True
 
     return enemy_datas_allowed_here
-
-class YamlOrderedDictLoader(yaml.SafeLoader):
-  pass
-
-YamlOrderedDictLoader.add_constructor(
-  yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG,
-  lambda loader, node: OrderedDict(loader.construct_pairs(node))
-)
