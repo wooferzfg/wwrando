@@ -11,14 +11,8 @@ import traceback
 
 import sys
 sys.path.insert(0, "../")
-try:
-  from fs_helpers import *
-except:
-  from wwrando.fs_helpers import *
-try:
-  from elf import *
-except:
-  from wwrando.asm.elf import *
+from fs_helpers import *
+from elf import *
 
 if sys.platform == "win32":
   devkitbasepath = r"C:\devkitPro\devkitPPC\bin"
@@ -60,15 +54,8 @@ print()
 custom_symbols = OrderedDict()
 custom_symbols["sys/main.dol"] = OrderedDict()
 
-try:
-  with open("free_space_start_offsets.txt", "r") as f:
-    free_space_start_offsets = yaml.safe_load(f)
-  expPath = "./"
-except:
-  with open("asm/free_space_start_offsets.txt", "r") as f:
-    free_space_start_offsets = yaml.safe_load(f)
-  expPath = "asm/"
-
+with open("free_space_start_offsets.txt", "r") as f:
+  free_space_start_offsets = yaml.safe_load(f)
 
 next_free_space_offsets = {}
 for file_path, offset in free_space_start_offsets.items():
@@ -150,14 +137,14 @@ def try_apply_local_relocation(bin_name, elf_relocation, elf_symbol):
   return False
 
 try:
-  with open(expPath+"linker.ld") as f:
+  with open("linker.ld") as f:
     linker_script = f.read()
 
-  with open(expPath+"asm_macros.asm") as f:
+  with open("asm_macros.asm") as f:
     asm_macros = f.read()
 
-  all_asm_file_paths = glob.glob(expPath+'patches/*.asm')
-  all_asm_files = [os.path.basename(rel_path) for rel_path in all_asm_file_paths]
+  all_asm_file_paths = glob.glob('./patches/*.asm')
+  all_asm_files = [os.path.basename(asm_path) for asm_path in all_asm_file_paths]
   all_asm_files.remove("custom_funcs.asm")
   # Always do custom_funcs first so the custom symbols are defined for all the other patches to use.
   all_asm_files = ["custom_funcs.asm"] + all_asm_files

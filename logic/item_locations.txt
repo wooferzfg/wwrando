@@ -1276,7 +1276,7 @@ Fire Mountain - Big Octo:
     - sea/Room20.arc/ScalableObject001
 
 Ice Ring Isle - Frozen Chest:
-  Need: Fire Arrows & Can Travel to Ice Ring Isle
+  Need: Fire Arrows & Can Travel to Ice Ring Isle & Can Sail
   Original item: Treasure Chart 36
   Types: Island Puzzle
   Paths:
@@ -1996,7 +1996,7 @@ Private Oasis - Cabana Labyrinth - Upper Floor Chest:
   Paths:
     - TF_04/Stage.arc/Chest000
 Private Oasis - Big Octo:
-  Need: Can Defeat Big Octos & Grappling Hook & Can Travel to Private Oasis
+  Need: Can Defeat Big Octos & Can Salvage Treasure & Can Travel to Private Oasis & Can Sail
   Original item: Orange Rupee
   Types: Big Octo
   Paths:
@@ -2036,7 +2036,7 @@ Needle Rock Isle - Cave:
   Paths:
     - SubD42/Stage.arc/Chest000
 Needle Rock Isle - Golden Gunboat:
-  Need: Bombs & Grappling Hook & Can Travel to Needle Rock Isle
+  Need: Bombs & Grappling Hook & Can Travel to Needle Rock Isle & Can Sail
   Original item: Triforce Chart 5
   Types: Gunboat
   Paths:
@@ -2091,13 +2091,13 @@ Stone Watcher Island - Cave:
   Paths:
     - TF_01/Stage.arc/Chest000
 Stone Watcher Island - Lookout Platform Chest:
-  Need: Can Travel to Stone Watcher Island
+  Need: Can Travel to Stone Watcher Island & Can Sail
   Original item: Red Rupee
   Types: Platform
   Paths:
     - sea/Room31.arc/Chest001
 Stone Watcher Island - Lookout Platform - Destroy the Cannons:
-  Need: Can Destroy Cannons & Can Travel to Stone Watcher Island
+  Need: Can Destroy Cannons & Can Travel to Stone Watcher Island & Can Sail
   Original item: Piece of Heart
   Types: Platform
   Paths:
@@ -2204,7 +2204,7 @@ Pawprint Isle - Wizzrobe Cave:
   Paths:
     - Cave07/Stage.arc/Chest000
 Pawprint Isle - Lookout Platform - Defeat the Enemies:
-  Need: Can Travel to Pawprint Isle
+  Need: Can Travel to Pawprint Isle & Can Sail
     # You don't need anything to kill these Pink Bokoblins because you can throw pots at them.
   Original item: Red Rupee
   Types: Platform
@@ -2218,13 +2218,13 @@ Thorned Fairy Island - Great Fairy:
   Paths:
     - rels/d_a_bigelf.rel@221F
 Thorned Fairy Island - Northeastern Lookout Platform - Destroy the Cannons:
-  Need: Can Destroy Cannons & Can Travel to Thorned Fairy Island
+  Need: Can Destroy Cannons & Can Travel to Thorned Fairy Island & Can Sail
   Original item: Golden Feather
   Types: Platform
   Paths:
     - sea/Room28.arc/Chest000
 Thorned Fairy Island - Southwestern Lookout Platform - Defeat the Enemies:
-  Need: Can Fly With Deku Leaf Outdoors & Can Travel to Thorned Fairy Island
+  Need: Can Fly With Deku Leaf Outdoors & Can Travel to Thorned Fairy Island & Can Sail
     # You can defeat the Pink Bokoblins here by throwing pots and barrels at them, and letting them kick each other. You might run out of pots and barrels to kill the last one with if you miss too much though, in which case you'd need to reload and try again.
   Original item: Boko Baba Seed
   Types: Platform
@@ -2238,7 +2238,7 @@ Eastern Fairy Island - Great Fairy:
   Paths:
     - rels/d_a_bigelf.rel@21E7
 Eastern Fairy Island - Lookout Platform - Defeat the Cannons and Enemies:
-  Need: Can Destroy Cannons & Can Travel to Eastern Fairy Island
+  Need: Can Destroy Cannons & Can Travel to Eastern Fairy Island & Can Sail
     # The Pink Bokoblins can be knocked off the edge by throwing pots at them. You don't have many shots at this before running out of pots, so it's best to do it while they're still asleep.
   Original item: Boko Baba Seed
   Types: Platform
@@ -2252,7 +2252,7 @@ Western Fairy Island - Great Fairy:
   Paths:
     - rels/d_a_bigelf.rel@2213
 Western Fairy Island - Lookout Platform:
-  Need: Can Travel to Western Fairy Island
+  Need: Can Travel to Western Fairy Island & Can Sail
   Original item: Skull Necklace
   Types: Platform
   Paths:
@@ -2274,6 +2274,7 @@ Southern Fairy Island - Lookout Platform - Destroy the Northwest Cannons:
     Can Destroy Cannons
     & Can Fly With Deku Leaf Outdoors
     & Can Travel to Southern Fairy Island
+    & Can Sail
   Original item: Treasure Chart 40
   Types: Platform
   Paths:
@@ -2283,6 +2284,7 @@ Southern Fairy Island - Lookout Platform - Destroy the Southeast Cannons:
     Can Destroy Cannons
     & Can Fly With Deku Leaf Outdoors
     & Can Travel to Southern Fairy Island
+    & Can Sail
   Original item: Skull Necklace
   Types: Platform
   Paths:
@@ -2295,7 +2297,7 @@ Northern Fairy Island - Great Fairy:
   Paths:
     - rels/d_a_bigelf.rel@21BB
 Northern Fairy Island - Submarine:
-  Need: Can Travel to Northern Fairy Island
+  Need: Can Travel to Northern Fairy Island & Can Sail
     # No need to kill the Moblins here.
   Original item: Treasure Chart 22
   Types: Submarine
@@ -2380,7 +2382,7 @@ Tingle Island - Ankle - Reward for All Tingle Statues:
 #  Paths:
 #    - rels/d_a_npc_tc.rel@620F
 Tingle Island - Big Octo:
-  Need: Can Defeat Big Octos & Grappling Hook & Can Travel to Tingle Island
+  Need: Can Defeat Twelve-Eye Octos & Can Salvage Treasure & Can Travel to Tingle Island & Can Sail
   Original item: Piece of Heart
   Types: Big Octo
   Paths:
@@ -2401,7 +2403,7 @@ Diamond Steppe Island - Warp Maze Cave - Second Chest:
   Paths:
     - WarpD/Stage.arc/Chest000
 Diamond Steppe Island - Big Octo:
-  Need: Can Defeat Big Octos & Grappling Hook & Can Travel to Diamond Steppe Island
+  Need: Can Defeat Big Octos & Can Salvage Treasure & Can Travel to Diamond Steppe Island & Can Sail
   Original item: Orange Rupee
   Types: Big Octo
   Paths:
@@ -2416,14 +2418,14 @@ Bomb Island - Cave:
   Paths:
     - Cave01/Stage.arc/Chest000
 Bomb Island - Lookout Platform - Defeat the Enemies:
-  Need: Can Travel to Bomb Island
+  Need: Can Travel to Bomb Island & Can Sail
     # The Pink Bokoblins can be knocked off the edge by throwing pots at them. You don't have many shots at this before running out of pots.
   Original item: Red Rupee
   Types: Platform
   Paths:
     - sea/Room34.arc/Chest000
 Bomb Island - Submarine:
-  Need: Can Travel to Bomb Island
+  Need: Can Travel to Bomb Island & Can Sail
     # You can throw pots and barrels at the Blue and Green Bokoblins to make them drop a weapon, then use it to kill them.
   Original item: Empty Bottle
   Types: Submarine
@@ -2467,6 +2469,7 @@ Rock Spire Isle - Western Lookout Platform - Destroy the Cannons:
     Can Destroy Cannons
     & Can Fly With Deku Leaf Outdoors
     & Can Travel to Rock Spire Isle
+    & Can Sail
   Original item: Orange Rupee
   Types: Platform
   Paths:
@@ -2477,18 +2480,19 @@ Rock Spire Isle - Eastern Lookout Platform - Destroy the Cannons:
     Can Destroy Cannons
     & Can Fly With Deku Leaf Outdoors
     & Can Travel to Rock Spire Isle
+    & Can Sail
   Original item: Golden Feather
   Types: Platform
   Paths:
     - sea/Room16.arc/Chest001
 Rock Spire Isle - Center Lookout Platform:
-  Need: Can Travel to Rock Spire Isle
+  Need: Can Travel to Rock Spire Isle & Can Sail
   Original item: Red Rupee
   Types: Platform
   Paths:
     - sea/Room16.arc/Chest002
 Rock Spire Isle - Gunboat:
-  Need: Bombs & Grappling Hook & Can Travel to Rock Spire Isle
+  Need: Bombs & Can Salvage Treasure & Can Travel to Rock Spire Isle & Can Sail
   Original item: Piece of Heart
   Types: Gunboat
   Paths:
@@ -2525,7 +2529,7 @@ Cliff Plateau Isles - Highest Isle:
   Paths:
     - sea/Room42.arc/Chest000
 Cliff Plateau Isles - Lookout Platform:
-  Need: Can Travel to Cliff Plateau Isles
+  Need: Can Travel to Cliff Plateau Isles & Can Sail
   Original item: Boko Baba Seed
   Types: Platform
   Paths:
@@ -2538,7 +2542,7 @@ Crescent Moon Island - Chest:
   Paths:
     - sea/Room5.arc/Chest000
 Crescent Moon Island - Submarine:
-  Need: Can Defeat Miniblins & Can Travel to Crescent Moon Island
+  Need: Can Defeat Miniblins & Can Travel to Crescent Moon Island & Can Sail
     # You only need to defeat the very first Miniblin, then wait out the timer.
   Original item: Treasure Chart 9
   Types: Submarine
@@ -2565,13 +2569,13 @@ Horseshoe Island - Cave:
   Paths:
     - Cave05/Stage.arc/Chest000
 Horseshoe Island - Northwestern Lookout Platform:
-  Need: Can Travel to Horseshoe Island
+  Need: Can Travel to Horseshoe Island & Can Sail
   Original item: Skull Necklace
   Types: Platform
   Paths:
     - sea/Room43.arc/Chest001
 Horseshoe Island - Southeastern Lookout Platform:
-  Need: Can Travel to Horseshoe Island
+  Need: Can Travel to Horseshoe Island & Can Sail
   Original item: Golden Feather
   Types: Platform
   Paths:
@@ -2599,6 +2603,7 @@ Flight Control Platform - Submarine:
     & Can Defeat Miniblins
     & Can Defeat Wizzrobes at Range
     & Can Travel to Flight Control Platform
+    & Can Sail
   Original item: Platform Chart
   Types: Submarine
   Paths:
@@ -2614,33 +2619,33 @@ Star Island - Cave:
   Paths:
     - Cave02/Stage.arc/Chest000
 Star Island - Lookout Platform:
-  Need: Can Travel to Star Island
+  Need: Can Travel to Star Island & Can Sail
   Original item: Golden Feather
   Types: Platform
   Paths:
     - sea/Room2.arc/Chest000
 
 Star Belt Archipelago - Lookout Platform:
-  Need: Can Travel to Star Belt Archipelago
+  Need: Can Travel to Star Belt Archipelago & Can Sail
   Original item: Red Rupee
   Types: Platform
   Paths:
     - sea/Room21.arc/Chest000
 
 Five-Star Isles - Lookout Platform - Destroy the Cannons:
-  Need: Can Destroy Cannons & Can Travel to Five-Star Isles
+  Need: Can Destroy Cannons & Can Travel to Five-Star Isles & Can Sail
   Original item: Golden Feather
   Types: Platform
   Paths:
     - sea/Room49.arc/Chest001
 Five-Star Isles - Raft:
-  Need: Can Travel to Five-Star Isles
+  Need: Can Travel to Five-Star Isles & Can Sail
   Original item: Red Rupee
   Types: Raft
   Paths:
     - sea/Room49.arc/Chest000
 Five-Star Isles - Submarine:
-  Need: Can Travel to Five-Star Isles
+  Need: Can Travel to Five-Star Isles & Can Sail
     # You need to defeat Green Bokoblins and Blue Bokoblins here, but you can throw pots at them and then steal their weapons.
   Original item: Piece of Heart
   Types: Submarine
@@ -2648,28 +2653,28 @@ Five-Star Isles - Submarine:
     - Abship/Room0.arc/Chest000
 
 Seven-Star Isles - Center Lookout Platform:
-  Need: Can Travel to Seven-Star Isles
+  Need: Can Travel to Seven-Star Isles & Can Sail
     # You need to kill a wizzrobe here but you can throw pots/barrels at it.
   Original item: Red Rupee
   Types: Platform
   Paths:
     - sea/Room6.arc/Chest001
 Seven-Star Isles - Northern Lookout Platform:
-  Need: Can Travel to Seven-Star Isles
+  Need: Can Travel to Seven-Star Isles & Can Sail
     # You need to kill a wizzrobe here but you can throw pots/barrels at it.
   Original item: Golden Feather
   Types: Platform
   Paths:
     - sea/Room6.arc/Chest000
 Seven-Star Isles - Southern Lookout Platform:
-  Need: Can Defeat Wizzrobes at Range & Can Travel to Seven-Star Isles
+  Need: Can Defeat Wizzrobes at Range & Can Travel to Seven-Star Isles & Can Sail
     # Unlike the wizzrobes you need to kill for the center and northern lookout platforms, one of the ones for the southern platform never comes close to you.
   Original item: Treasure Chart 16
   Types: Platform
   Paths:
     - sea/Room6.arc/Chest002
 Seven-Star Isles - Big Octo:
-  Need: Can Defeat Big Octos & Grappling Hook & Can Travel to Seven-Star Isles
+  Need: Can Defeat Twelve-Eye Octos & Can Salvage Treasure & Can Travel to Seven-Star Isles
   Original item: Piece of Heart
   Types: Big Octo
   Paths:
@@ -2681,12 +2686,13 @@ Cyclops Reef - Destroy the Cannons and Gunboats:
     Bombs
     & Can Fly With Deku Leaf Outdoors
     & Can Travel to Cyclops Reef
+    & Can Sail
   Original item: Treasure Chart 21
   Types: Eye Reef Chest
   Paths:
     - sea/Room24.arc/Chest000
 Cyclops Reef - Lookout Platform - Defeat the Enemies:
-  Need: Can Travel to Cyclops Reef
+  Need: Can Travel to Cyclops Reef & Can Sail
     # There are Green Bokoblins and Pink Bokoblins here but you can throw pots/barrels at them and steal a weapon.
   Original item: Golden Feather
   Types: Platform
@@ -2699,18 +2705,22 @@ Two-Eye Reef - Destroy the Cannons and Gunboats:
     Bombs
     & Can Fly With Deku Leaf Outdoors
     & Can Travel to Two-Eye Reef
+    & Can Sail
   Original item: Treasure Chart 13
   Types: Eye Reef Chest
   Paths:
     - sea/Room46.arc/Chest000
 Two-Eye Reef - Lookout Platform:
-  Need: Can Travel to Two-Eye Reef
+  Need: Can Travel to Two-Eye Reef & Can Sail
   Original item: Purple Rupee
   Types: Platform
   Paths:
     - sea/Room46.arc/Chest001
 Two-Eye Reef - Big Octo Great Fairy:
-  Need: Can Defeat Big Octos & Can Travel to Two-Eye Reef
+  Need:
+    Can Defeat Big Octos
+    & Can Travel to Two-Eye Reef
+    & Can Sail
   Original item: Magic Meter Upgrade
   Types: Big Octo, Great Fairy
   Paths:
@@ -2722,6 +2732,7 @@ Three-Eye Reef - Destroy the Cannons and Gunboats:
     Bombs
     & Can Fly With Deku Leaf Outdoors
     & Can Travel to Three-Eye Reef
+    & Can Sail
   Original item: Treasure Chart 32
   Types: Eye Reef Chest
   Paths:
@@ -2733,6 +2744,7 @@ Four-Eye Reef - Destroy the Cannons and Gunboats:
     Bombs
     & Can Fly With Deku Leaf Outdoors
     & Can Travel to Four-Eye Reef
+    & Can Sail
   Original item: Treasure Chart 19
   Types: Eye Reef Chest
   Paths:
@@ -2745,12 +2757,13 @@ Five-Eye Reef - Destroy the Cannons:
     Can Destroy Cannons
     & Can Fly With Deku Leaf Outdoors
     & Can Travel to Five-Eye Reef
+    & Can Sail
   Original item: Treasure Chart 41
   Types: Eye Reef Chest
   Paths:
     - sea/Room37.arc/Chest000
 Five-Eye Reef - Lookout Platform:
-  Need: Can Travel to Five-Eye Reef
+  Need: Can Travel to Five-Eye Reef & Can Sail
   Original item: Golden Feather
   Types: Platform
   Paths:
@@ -2762,18 +2775,19 @@ Six-Eye Reef - Destroy the Cannons and Gunboats:
     Bombs
     & Can Fly With Deku Leaf Outdoors
     & Can Travel to Six-Eye Reef
+    & Can Sail
   Original item: Treasure Chart 26
   Types: Eye Reef Chest
   Paths:
     - sea/Room25.arc/Chest000
 Six-Eye Reef - Lookout Platform - Destroy the Cannons:
-  Need: Can Destroy Cannons & Can Travel to Six-Eye Reef
+  Need: Can Destroy Cannons & Can Travel to Six-Eye Reef & Can Sail
   Original item: Skull Necklace
   Types: Platform
   Paths:
     - sea/Room25.arc/Chest001
 Six-Eye Reef - Submarine:
-  Need: Can Travel to Six-Eye Reef
+  Need: Can Travel to Six-Eye Reef & Can Sail
     # There are Moblins here, but you can throws pots and barrels at one to get a weapon.
   Original item: Piece of Heart
   Types: Submarine
@@ -2781,7 +2795,7 @@ Six-Eye Reef - Submarine:
     - Abship/Room1.arc/Chest000
 
 Forsaken Fortress - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 1 & Can Travel to Forsaken Fortress
+  Need: Can Salvage Treasure & Chart for Island 1 & Can Travel to Forsaken Fortress
   Original item: Silver Rupee
   Types: Sunken Treasure
   Paths:
@@ -2790,7 +2804,7 @@ Forsaken Fortress - Sunken Treasure:
     - sea/Room1.arc/ScalableObject00B
     - sea/Room1.arc/ScalableObject00C
 Star Island - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 2 & Can Travel to Star Island
+  Need: Can Salvage Treasure & Chart for Island 2 & Can Travel to Star Island
   Original item: Silver Rupee
   Types: Sunken Treasure
   Paths:
@@ -2799,7 +2813,7 @@ Star Island - Sunken Treasure:
     - sea/Room2.arc/ScalableObject00C
     - sea/Room2.arc/ScalableObject00D
 Northern Fairy Island - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 3 & Can Travel to Northern Fairy Island
+  Need: Can Salvage Treasure & Chart for Island 3 & Can Travel to Northern Fairy Island
   Original item: Silver Rupee
   Types: Sunken Treasure
   Paths:
@@ -2808,7 +2822,7 @@ Northern Fairy Island - Sunken Treasure:
     - sea/Room3.arc/ScalableObject008
     - sea/Room3.arc/ScalableObject009
 Gale Isle - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 4 & Can Travel to Gale Isle
+  Need: Can Salvage Treasure & Chart for Island 4 & Can Travel to Gale Isle
   Original item: Triforce Shard 2
   Types: Sunken Treasure
   Paths:
@@ -2817,7 +2831,7 @@ Gale Isle - Sunken Treasure:
     - sea/Room4.arc/ScalableObject009
     - sea/Room4.arc/ScalableObject00A
 Crescent Moon Island - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 5 & Can Travel to Crescent Moon Island
+  Need: Can Salvage Treasure & Chart for Island 5 & Can Travel to Crescent Moon Island
   Original item: Piece of Heart
   Types: Sunken Treasure
   Paths:
@@ -2826,7 +2840,7 @@ Crescent Moon Island - Sunken Treasure:
     - sea/Room5.arc/ScalableObject008
     - sea/Room5.arc/ScalableObject009
 Seven-Star Isles - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 6 & Bombs & Can Travel to Seven-Star Isles
+  Need: Can Salvage Treasure & Chart for Island 6 & Bombs & Can Travel to Seven-Star Isles
   # Bombs are not necessary, but it's tricky to salvage this treasure with two stationary gunboats shooting at you, so being able to destroy them makes this much easier. (Note that these gunboats only spawn after you have deciphered Triforce Chart 7.)
   Original item: Triforce Shard 7
   Types: Sunken Treasure
@@ -2836,7 +2850,7 @@ Seven-Star Isles - Sunken Treasure:
     - sea/Room6.arc/ScalableObject00A
     - sea/Room6.arc/ScalableObject00B
 Overlook Island - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 7 & Can Travel to Overlook Island
+  Need: Can Salvage Treasure & Chart for Island 7 & Can Travel to Overlook Island
   Original item: Secret Cave Chart
   Types: Sunken Treasure
   Paths:
@@ -2845,7 +2859,7 @@ Overlook Island - Sunken Treasure:
     - sea/Room7.arc/ScalableObject008
     - sea/Room7.arc/ScalableObject009
 Four-Eye Reef - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 8 & Bombs & Can Travel to Four-Eye Reef
+  Need: Can Salvage Treasure & Chart for Island 8 & Bombs & Can Travel to Four-Eye Reef
   # The cannons and gunboats can get in the way when trying to salvage this treasure, so being able to destroy them makes this easier.
   Original item: Great Fairy Chart
   Types: Sunken Treasure
@@ -2855,7 +2869,7 @@ Four-Eye Reef - Sunken Treasure:
     - sea/Room8.arc/ScalableObject010
     - sea/Room8.arc/ScalableObject011
 Mother and Child Isles - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 9 & Can Travel to Child Isle
+  Need: Can Salvage Treasure & Chart for Island 9 & Can Travel to Child Isle
   Original item: Silver Rupee
   Types: Sunken Treasure
   Paths:
@@ -2864,7 +2878,7 @@ Mother and Child Isles - Sunken Treasure:
     - sea/Room9.arc/ScalableObject008
     - sea/Room9.arc/ScalableObject009
 Spectacle Island - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 10 & Can Travel to Spectacle Island
+  Need: Can Salvage Treasure & Chart for Island 10 & Can Travel to Spectacle Island
   Original item: Silver Rupee
   Types: Sunken Treasure
   Paths:
@@ -2873,7 +2887,7 @@ Spectacle Island - Sunken Treasure:
     - sea/Room10.arc/ScalableObject008
     - sea/Room10.arc/ScalableObject009
 Windfall Island - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 11 & Can Travel to Windfall Island
+  Need: Can Salvage Treasure & Chart for Island 11 & Can Travel to Windfall Island
   Original item: Green Rupee
   Types: Sunken Treasure
   Paths:
@@ -2882,7 +2896,7 @@ Windfall Island - Sunken Treasure:
     - sea/Room11.arc/ScalableObject024
     - sea/Room11.arc/ScalableObject025
 Pawprint Isle - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 12 & Can Travel to Pawprint Isle
+  Need: Can Salvage Treasure & Chart for Island 12 & Can Travel to Pawprint Isle
   Original item: Piece of Heart
   Types: Sunken Treasure
   Paths:
@@ -2891,7 +2905,7 @@ Pawprint Isle - Sunken Treasure:
     - sea/Room12.arc/ScalableObject008
     - sea/Room12.arc/ScalableObject009
 Dragon Roost Island - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 13 & Can Travel to Dragon Roost Island
+  Need: Can Salvage Treasure & Chart for Island 13 & Can Travel to Dragon Roost Island
   Original item: Silver Rupee
   Types: Sunken Treasure
   Paths:
@@ -2900,7 +2914,7 @@ Dragon Roost Island - Sunken Treasure:
     - sea/Room13.arc/ScalableObject00A
     - sea/Room13.arc/ScalableObject00B
 Flight Control Platform - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 14 & Can Travel to Flight Control Platform
+  Need: Can Salvage Treasure & Chart for Island 14 & Can Travel to Flight Control Platform
   Original item: Island Hearts Chart
   Types: Sunken Treasure
   Paths:
@@ -2909,7 +2923,7 @@ Flight Control Platform - Sunken Treasure:
     - sea/Room14.arc/ScalableObject00A
     - sea/Room14.arc/ScalableObject00B
 Western Fairy Island - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 15 & Can Travel to Western Fairy Island
+  Need: Can Salvage Treasure & Chart for Island 15 & Can Travel to Western Fairy Island
   Original item: Silver Rupee
   Types: Sunken Treasure
   Paths:
@@ -2918,7 +2932,7 @@ Western Fairy Island - Sunken Treasure:
     - sea/Room15.arc/ScalableObject009
     - sea/Room15.arc/ScalableObject00A
 Rock Spire Isle - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 16 & Can Travel to Rock Spire Isle
+  Need: Can Salvage Treasure & Chart for Island 16 & Can Travel to Rock Spire Isle
   Original item: Piece of Heart
   Types: Sunken Treasure
   Paths:
@@ -2927,7 +2941,7 @@ Rock Spire Isle - Sunken Treasure:
     - sea/Room16.arc/ScalableObject00A
     - sea/Room16.arc/ScalableObject00B
 Tingle Island - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 17 & Can Travel to Tingle Island
+  Need: Can Salvage Treasure & Chart for Island 17 & Can Travel to Tingle Island
   Original item: Silver Rupee
   Types: Sunken Treasure
   Paths:
@@ -2936,7 +2950,7 @@ Tingle Island - Sunken Treasure:
     - sea/Room17.arc/ScalableObject00D
     - sea/Room17.arc/ScalableObject00E
 Northern Triangle Island - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 18 & Can Travel to Northern Triangle Island
+  Need: Can Salvage Treasure & Chart for Island 18 & Can Travel to Northern Triangle Island
   Original item: Octo Chart
   Types: Sunken Treasure
   Paths:
@@ -2945,7 +2959,7 @@ Northern Triangle Island - Sunken Treasure:
     - sea/Room18.arc/ScalableObject008
     - sea/Room18.arc/ScalableObject009
 Eastern Fairy Island - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 19 & Can Travel to Eastern Fairy Island
+  Need: Can Salvage Treasure & Chart for Island 19 & Can Travel to Eastern Fairy Island
   Original item: Silver Rupee
   Types: Sunken Treasure
   Paths:
@@ -2954,7 +2968,7 @@ Eastern Fairy Island - Sunken Treasure:
     - sea/Room19.arc/ScalableObject008
     - sea/Room19.arc/ScalableObject009
 Fire Mountain - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 20 & Can Travel to Fire Mountain
+  Need: Can Salvage Treasure & Chart for Island 20 & Can Travel to Fire Mountain
   Original item: Silver Rupee
   Types: Sunken Treasure
   Paths:
@@ -2963,7 +2977,7 @@ Fire Mountain - Sunken Treasure:
     - sea/Room20.arc/ScalableObject00D
     - sea/Room20.arc/ScalableObject00E
 Star Belt Archipelago - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 21 & Can Travel to Star Belt Archipelago
+  Need: Can Salvage Treasure & Chart for Island 21 & Can Travel to Star Belt Archipelago
   Original item: Silver Rupee
   Types: Sunken Treasure
   Paths:
@@ -2972,7 +2986,7 @@ Star Belt Archipelago - Sunken Treasure:
     - sea/Room21.arc/ScalableObject00B
     - sea/Room21.arc/ScalableObject00C
 Three-Eye Reef - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 22 & Bombs & Can Travel to Three-Eye Reef
+  Need: Can Salvage Treasure & Chart for Island 22 & Bombs & Can Travel to Three-Eye Reef
   # The cannons and gunboats can get in the way when trying to salvage this treasure, so being able to destroy them makes this easier.
   Original item: Piece of Heart
   Types: Sunken Treasure
@@ -2982,7 +2996,7 @@ Three-Eye Reef - Sunken Treasure:
     - sea/Room22.arc/ScalableObject009
     - sea/Room22.arc/ScalableObject00A
 Greatfish Isle - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 23 & Can Travel to Greatfish Isle
+  Need: Can Salvage Treasure & Chart for Island 23 & Can Travel to Greatfish Isle
   Original item: Triforce Shard 1
   Types: Sunken Treasure
   Paths:
@@ -2991,7 +3005,7 @@ Greatfish Isle - Sunken Treasure:
     - sea/Room23.arc/ScalableObject007
     - sea/Room23.arc/ScalableObject008
 Cyclops Reef - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 24 & Bombs & Can Travel to Cyclops Reef
+  Need: Can Salvage Treasure & Chart for Island 24 & Bombs & Can Travel to Cyclops Reef
   # The cannons and gunboats can get in the way when trying to salvage this treasure, so being able to destroy them makes this easier.
   Original item: Light Ring Chart
   Types: Sunken Treasure
@@ -3001,7 +3015,7 @@ Cyclops Reef - Sunken Treasure:
     - sea/Room24.arc/ScalableObject00E
     - sea/Room24.arc/ScalableObject00F
 Six-Eye Reef - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 25 & Bombs & Can Travel to Six-Eye Reef
+  Need: Can Salvage Treasure & Chart for Island 25 & Bombs & Can Travel to Six-Eye Reef
   # The cannons and gunboats can get in the way when trying to salvage this treasure, so being able to destroy them makes this easier.
   Original item: Silver Rupee
   Types: Sunken Treasure
@@ -3011,7 +3025,7 @@ Six-Eye Reef - Sunken Treasure:
     - sea/Room25.arc/ScalableObject009
     - sea/Room25.arc/ScalableObject00A
 Tower of the Gods - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 26 & Can Travel to Tower of the Gods
+  Need: Can Salvage Treasure & Chart for Island 26 & Can Travel to Tower of the Gods
   Original item: Silver Rupee
   Types: Sunken Treasure
   Paths:
@@ -3020,7 +3034,7 @@ Tower of the Gods - Sunken Treasure:
     - sea/Room26.arc/ScalableObject008
     - sea/Room26.arc/ScalableObject009
 Eastern Triangle Island - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 27 & Can Travel to Eastern Triangle Island
+  Need: Can Salvage Treasure & Chart for Island 27 & Can Travel to Eastern Triangle Island
   Original item: Silver Rupee
   Types: Sunken Treasure
   Paths:
@@ -3029,7 +3043,7 @@ Eastern Triangle Island - Sunken Treasure:
     - sea/Room27.arc/ScalableObject008
     - sea/Room27.arc/ScalableObject009
 Thorned Fairy Island - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 28 & Can Travel to Thorned Fairy Island
+  Need: Can Salvage Treasure & Chart for Island 28 & Can Travel to Thorned Fairy Island
   Original item: Piece of Heart
   Types: Sunken Treasure
   Paths:
@@ -3038,7 +3052,7 @@ Thorned Fairy Island - Sunken Treasure:
     - sea/Room28.arc/ScalableObject008
     - sea/Room28.arc/ScalableObject009
 Needle Rock Isle - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 29 & Can Travel to Needle Rock Isle
+  Need: Can Salvage Treasure & Chart for Island 29 & Can Travel to Needle Rock Isle
   Original item: Silver Rupee
   Types: Sunken Treasure
   Paths:
@@ -3047,7 +3061,7 @@ Needle Rock Isle - Sunken Treasure:
     - sea/Room29.arc/ScalableObject008
     - sea/Room29.arc/ScalableObject009
 Islet of Steel - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 30 & Can Travel to Islet of Steel
+  Need: Can Salvage Treasure & Chart for Island 30 & Can Travel to Islet of Steel
   # Note: There are several gunboats here near the treasure, but they rarely seem to actually hit you and get in your way. So bombs are not currently a requirement here.
   Original item: Silver Rupee
   Types: Sunken Treasure
@@ -3057,7 +3071,7 @@ Islet of Steel - Sunken Treasure:
     - sea/Room30.arc/ScalableObject009
     - sea/Room30.arc/ScalableObject00A
 Stone Watcher Island - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 31 & Can Travel to Stone Watcher Island
+  Need: Can Salvage Treasure & Chart for Island 31 & Can Travel to Stone Watcher Island
   # Note: There are some gunboats here guarding the treasure, but they never seem to actually hit you when you're trying to salvage it. So bombs are not currently a requirement here.
   Original item: Triforce Shard 3
   Types: Sunken Treasure
@@ -3067,7 +3081,7 @@ Stone Watcher Island - Sunken Treasure:
     - sea/Room31.arc/ScalableObject008
     - sea/Room31.arc/ScalableObject009
 Southern Triangle Island - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 32 & Can Defeat Seahats & Can Travel to Southern Triangle Island
+  Need: Can Salvage Treasure & Chart for Island 32 & Can Defeat Seahats & Can Travel to Southern Triangle Island
   # Killing the seahats isn't necessary, but makes it much easier.
   Original item: Triforce Shard 6
   Types: Sunken Treasure
@@ -3077,7 +3091,7 @@ Southern Triangle Island - Sunken Treasure:
     - sea/Room32.arc/ScalableObject008
     - sea/Room32.arc/ScalableObject009
 Private Oasis - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 33 & Can Travel to Private Oasis
+  Need: Can Salvage Treasure & Chart for Island 33 & Can Travel to Private Oasis
   Original item: Silver Rupee
   Types: Sunken Treasure
   Paths:
@@ -3086,7 +3100,7 @@ Private Oasis - Sunken Treasure:
     - sea/Room33.arc/ScalableObject00A
     - sea/Room33.arc/ScalableObject00B
 Bomb Island - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 34 & Can Travel to Bomb Island
+  Need: Can Salvage Treasure & Chart for Island 34 & Can Travel to Bomb Island
   Original item: Piece of Heart
   Types: Sunken Treasure
   Paths:
@@ -3095,7 +3109,7 @@ Bomb Island - Sunken Treasure:
     - sea/Room34.arc/ScalableObject008
     - sea/Room34.arc/ScalableObject009
 Bird's Peak Rock - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 35 & Can Travel to Bird's Peak Rock
+  Need: Can Salvage Treasure & Chart for Island 35 & Can Travel to Bird's Peak Rock
   Original item: Silver Rupee
   Types: Sunken Treasure
   Paths:
@@ -3104,7 +3118,7 @@ Bird's Peak Rock - Sunken Treasure:
     - sea/Room35.arc/ScalableObject009
     - sea/Room35.arc/ScalableObject00A
 Diamond Steppe Island - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 36 & Can Travel to Diamond Steppe Island
+  Need: Can Salvage Treasure & Chart for Island 36 & Can Travel to Diamond Steppe Island
   Original item: Piece of Heart
   Types: Sunken Treasure
   Paths:
@@ -3113,7 +3127,7 @@ Diamond Steppe Island - Sunken Treasure:
     - sea/Room36.arc/ScalableObject00B
     - sea/Room36.arc/ScalableObject00C
 Five-Eye Reef - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 37 & Can Destroy Cannons & Can Travel to Five-Eye Reef
+  Need: Can Salvage Treasure & Chart for Island 37 & Can Destroy Cannons & Can Travel to Five-Eye Reef
   # The cannons can get in the way when trying to salvage this treasure, so being able to destroy them makes this easier.
   Original item: Silver Rupee
   Types: Sunken Treasure
@@ -3123,7 +3137,7 @@ Five-Eye Reef - Sunken Treasure:
     - sea/Room37.arc/ScalableObject009
     - sea/Room37.arc/ScalableObject00A
 Shark Island - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 38 & Can Travel to Shark Island
+  Need: Can Salvage Treasure & Chart for Island 38 & Can Travel to Shark Island
   Original item: Silver Rupee
   Types: Sunken Treasure
   Paths:
@@ -3132,7 +3146,7 @@ Shark Island - Sunken Treasure:
     - sea/Room38.arc/ScalableObject00F
     - sea/Room38.arc/ScalableObject010
 Southern Fairy Island - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 39 & Can Travel to Southern Fairy Island
+  Need: Can Salvage Treasure & Chart for Island 39 & Can Travel to Southern Fairy Island
   Original item: Piece of Heart
   Types: Sunken Treasure
   Paths:
@@ -3141,7 +3155,7 @@ Southern Fairy Island - Sunken Treasure:
     - sea/Room39.arc/ScalableObject008
     - sea/Room39.arc/ScalableObject009
 Ice Ring Isle - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 40 & Can Travel to Ice Ring Isle
+  Need: Can Salvage Treasure & Chart for Island 40 & Can Travel to Ice Ring Isle
   Original item: Silver Rupee
   Types: Sunken Treasure
   Paths:
@@ -3150,7 +3164,7 @@ Ice Ring Isle - Sunken Treasure:
     - sea/Room40.arc/ScalableObject00C
     - sea/Room40.arc/ScalableObject00D
 Forest Haven - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 41 & Can Travel to Forest Haven
+  Need: Can Salvage Treasure & Chart for Island 41 & Can Travel to Forest Haven
   Original item: Piece of Heart
   Types: Sunken Treasure
   Paths:
@@ -3159,7 +3173,7 @@ Forest Haven - Sunken Treasure:
     - sea/Room41.arc/ScalableObject016
     - sea/Room41.arc/ScalableObject017
 Cliff Plateau Isles - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 42 & Can Travel to Cliff Plateau Isles
+  Need: Can Salvage Treasure & Chart for Island 42 & Can Travel to Cliff Plateau Isles
   Original item: Triforce Shard 5
   Types: Sunken Treasure
   Paths:
@@ -3168,7 +3182,7 @@ Cliff Plateau Isles - Sunken Treasure:
     - sea/Room42.arc/ScalableObject008
     - sea/Room42.arc/ScalableObject009
 Horseshoe Island - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 43 & Can Travel to Horseshoe Island
+  Need: Can Salvage Treasure & Chart for Island 43 & Can Travel to Horseshoe Island
   Original item: Silver Rupee
   Types: Sunken Treasure
   Paths:
@@ -3177,7 +3191,7 @@ Horseshoe Island - Sunken Treasure:
     - sea/Room43.arc/ScalableObject009
     - sea/Room43.arc/ScalableObject00A
 Outset Island - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 44 & Can Travel to Outset Island
+  Need: Can Salvage Treasure & Chart for Island 44 & Can Travel to Outset Island
   Original item: Triforce Shard 4
   Types: Sunken Treasure
   Paths:
@@ -3186,7 +3200,7 @@ Outset Island - Sunken Treasure:
     - sea/Room44.arc/ScalableObject015
     - sea/Room44.arc/ScalableObject016
 Headstone Island - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 45 & Can Travel to Headstone Island
+  Need: Can Salvage Treasure & Chart for Island 45 & Can Travel to Headstone Island
   Original item: Silver Rupee
   Types: Sunken Treasure
   Paths:
@@ -3195,7 +3209,7 @@ Headstone Island - Sunken Treasure:
     - sea/Room45.arc/ScalableObject028
     - sea/Room45.arc/ScalableObject029
 Two-Eye Reef - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 46 & Bombs & Can Travel to Two-Eye Reef
+  Need: Can Salvage Treasure & Chart for Island 46 & Bombs & Can Travel to Two-Eye Reef
   # The cannons and gunboats can get in the way when trying to salvage this treasure, so being able to destroy them makes this easier.
   Original item: Triforce Shard 8
   Types: Sunken Treasure
@@ -3205,7 +3219,7 @@ Two-Eye Reef - Sunken Treasure:
     - sea/Room46.arc/ScalableObject00A
     - sea/Room46.arc/ScalableObject00B
 Angular Isles - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 47 & Can Travel to Angular Isles
+  Need: Can Salvage Treasure & Chart for Island 47 & Can Travel to Angular Isles
   Original item: Piece of Heart
   Types: Sunken Treasure
   Paths:
@@ -3214,7 +3228,7 @@ Angular Isles - Sunken Treasure:
     - sea/Room47.arc/ScalableObject008
     - sea/Room47.arc/ScalableObject009
 Boating Course - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 48 & Can Travel to Boating Course
+  Need: Can Salvage Treasure & Chart for Island 48 & Can Travel to Boating Course
   Original item: Sea Hearts Chart
   Types: Sunken Treasure
   Paths:
@@ -3223,7 +3237,7 @@ Boating Course - Sunken Treasure:
     - sea/Room48.arc/ScalableObject008
     - sea/Room48.arc/ScalableObject009
 Five-Star Isles - Sunken Treasure:
-  Need: Grappling Hook & Chart for Island 49 & Can Travel to Five-Star Isles
+  Need: Can Salvage Treasure & Chart for Island 49 & Can Travel to Five-Star Isles
   Original item: Piece of Heart
   Types: Sunken Treasure
   Paths:

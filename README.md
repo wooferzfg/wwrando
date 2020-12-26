@@ -45,6 +45,8 @@ TrogWW (additional programming)
 nbouteme (additional programming)  
 wooferzfg (additional programming)  
 Zach the DualVission (dv_im modifications)
+j_im (dv_im aid)
+CrainWWR (dv_im logic)
 
 ### Running the randomizer from source
 

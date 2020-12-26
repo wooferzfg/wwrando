@@ -23,6 +23,9 @@ Can Aim Mirror Shield:
     | Progressive Bow x1
     | Hookshot
   )
+Can Cut or Slash:
+  Progressive Sword x1
+  | Skull Hammer
   # You need to be holding an item in your hand in order to aim your shield around. Otherwise you can only aim it behind you at an angle or straight in front of you.
   # (Empty Bottle also works, but you would need to use the contents first so not in the logic.)
   # (Picto Box also works, but is not included as it would be a weirder and less intuitive thing to have to use to aim the shield as you normally wouldn't need to use picto box to solve dungeon puzzles.)
@@ -70,7 +73,7 @@ Tingle Tuner Bombs:
   # Note: If an option to require Tingle Tuner is added, this macro should have Bombs replaced with Tingle Tuner when that option is on.
 
 Can Access Dungeon Entrance On Dragon Roost Island:
-  Nothing
+  Can Travel to Dragon Roost Island
 Can Access Forest Haven:
   (
     Grappling Hook
@@ -93,11 +96,16 @@ Can Access Dungeon Entrance In Tower of the Gods Sector:
   Din's Pearl
   & Farore's Pearl
   & Nayru's Pearl
+  & Can Travel to Tower of the Gods
 Can Access Dungeon Entrance On Headstone Island:
-  Power Bracelets | (Complex Logic & Wind Waker)
+  (
+    Power Bracelets
+    | (Complex Logic & Wind Waker)
+  ) & Can Travel to Headstone Island
 Can Access Dungeon Entrance On Gale Isle:
   (Skull Hammer | (Complex Logic & Wind Waker))
   & (Iron Boots | (Glitched Logic & Wind Waker))
+  & Can Travel to Gale Isle
 
 # The below macros are used when dungeon entrances are not randomized.
 # When dungeon entrances are randomized, these macros are shuffled around by the randomizer logic.
@@ -121,70 +129,118 @@ Can Get into Earth Temple:
 Can Access Wind Temple:
   Can Access Dungeon Entrance On Gale Isle
 
-Can Access Secret Cave Entrance on Outset Island:
+Can Get into Secret Cave Entrance on Outset Island:
   ((Can Cut Down Outset Trees | Tricked Logic) & (Deku Leaf & Wind Waker & Wind's Requiem) & Power Bracelets)
   | (Hookshot & Power Bracelets)
   | (Complex Logic & Wind Waker)
+Can Access Secret Cave Entrance on Outset Island:
+  Can Get into Secret Cave Entrance on Outset Island
+  & Can Travel to Outset Island
 Can Access Secret Cave Entrance on Dragon Roost Island:
-  Bombs | Power Bracelets | Glitched Logic
+  (
+    Bombs
+    | Power Bracelets
+    | Glitched Logic
+  ) & Can Travel to Dragon Roost Island
 Can Access Secret Cave Entrance on Fire Mountain:
   Progressive Bow x2
+  & Can Travel to Fire Mountain
+  & Can Sail
 Can Access Secret Cave Entrance on Ice Ring Isle:
   Progressive Bow x2
-Can Access Secret Cave Entrance on Private Oasis:
+  & Can Travel to Ice Ring Isle
+  & Can Sail
+Can Get into Secret Cave Entrance on Private Oasis:
   (Cabana Deed & Delivery Bag & Grappling Hook)
   | (Glitched Logic & Wind Waker & Grappling Hook & (Can Fly With Deku Leaf Outdoors | Hookshot))
   | (Complex Logic & Wind Waker & Grappling Hook)
+Can Access Secret Cave Entrance on Private Oasis:
+  Can Get into Secret Cave Entrance on Private Oasis
+  & Can Travel to Private Oasis
 Can Access Secret Cave Entrance on Needle Rock Isle:
+  (
   Progressive Bow x2
   | (Wind Waker & Glitched Logic)
+  ) & Can Travel to Needle Rock Isle
 Can Access Secret Cave Entrance on Angular Isles:
   # Either Deku Leaf or Hookshot are needed to get into the cave.
-  (Deku Leaf & Wind Waker & Wind's Requiem) | Hookshot | Complex Logic
-Can Access Secret Cave Entrance on Boating Course:
+  (
+    (Deku Leaf & Wind Waker & Wind's Requiem)
+    | Hookshot
+    | (Complex Logic & Wind Waker)
+  ) & Can Travel to Angular Isles
+Can Get into Secret Cave Entrance on Boating Course:
   # Getting inside the cave requires flying with Deku Leaf or Hookshotting the pole.
-  (Deku Leaf & Wind Waker & Wind's Requiem) | Hookshot
-  | (Complex Logic & Wind Waker & (Progressive Sword x1 | Skull Hammer))
+  (Deku Leaf & Wind Waker & Wind's Requiem)
+  | Hookshot
+  | (Complex Logic & Wind Waker & Can Cut or Slash)
+Can Access Secret Cave Entrance on Boating Course:
+  Can Get into Secret Cave Entrance on Boating Course
+  & Can Travel to Boating Course
+Can Get into Secret Cave Entrance on Stone Watcher Island:
+  Power Bracelets | (Complex Logic & Wind Waker & Can Cut or Slash)
 Can Access Secret Cave Entrance on Stone Watcher Island:
-  Power Bracelets | (Complex Logic & Wind Waker & (Progressive Sword x1 | Skull Hammer))
+  Can Get into Secret Cave Entrance on Stone Watcher Island
+  & Can Travel to Stone Watcher Island
 Can Access Secret Cave Entrance on Overlook Island:
-  Hookshot | (Complex Logic & Wind Waker)
+  (
+    Hookshot
+    | (Complex Logic & Wind Waker)
+  ) & Can Travel to Overlook Island
 Can Access Secret Cave Entrance on Bird's Peak Rock:
   # Need to hit the switches with a seagull.
-  Bait Bag
-  | (Tricked Logic & Grappling Hook)
-  | (Complex Logic & Wind Waker)
+  (
+    Bait Bag
+    | (Tricked Logic & Grappling Hook)
+    | (Complex Logic & Wind Waker)
+  ) & Can Travel to Bird's Peak Rock
 Can Access Secret Cave Entrance on Pawprint Isle:
-  Nothing
+  Can Travel to Pawprint Isle
 Can Access Secret Cave Entrance on Pawprint Isle Side Isle:
-  Hookshot
-  | (Glitched Logic & Deku Leaf & Bombs)
+  (
+    Hookshot
+    | (Glitched Logic & Deku Leaf & Bombs)
+  ) & Can Travel to Pawprint Isle
 Can Access Secret Cave Entrance on Diamond Steppe Island:
-  Hookshot
-  | (
-    Glitched Logic
-    & Wind Waker
-  )
+  (
+    Hookshot
+    | (
+      Glitched Logic
+      & Wind Waker
+    )
+  ) & Can Travel to Diamond Steppe Island
 Can Access Secret Cave Entrance on Bomb Island:
-  Bombs | Power Bracelets | (Complex Logic & Wind Waker)
+  (
+    Bombs
+    | Power Bracelets
+    | (Complex Logic & Wind Waker)
+  ) & Can Travel to Bomb Island
 Can Access Secret Cave Entrance on Rock Spire Isle:
-  Bombs
-  | (Glitched Logic & (Deku Leaf & Wind Waker & Wind's Requiem))
-  | (Complex Logic & Wind Waker & (Progressive Sword x1 | Skull Hammer))
+  (
+    Bombs
+    | (Glitched Logic & Can Fly With Deku Leaf Outdoors)
+    | (Complex Logic & Wind Waker & Can Cut or Slash)
+  ) & Can Travel to Rock Spire Isle
 Can Access Secret Cave Entrance on Shark Island:
   # Iron Boots and Skull Hammer are necessary to hit the two big buttons.
   # The diamond switch does not require Boomerang or any ranged weapon - you can just hit it with your sword or hammer.
   Iron Boots
   & Skull Hammer
+  & Can Travel to Shark Island
 Can Access Secret Cave Entrance on Cliff Plateau Isles:
-  Nothing
+  Can Travel to Cliff Plateau Isles
 Can Access Secret Cave Entrance on Horseshoe Island:
   # Need Deku Leaf to play golf.
-  Deku Leaf
-  | Complex Logic
+  (
+    Deku Leaf
+    | Complex Logic
+  ) & Can Travel to Horseshoe Island
 Can Access Secret Cave Entrance on Star Island:
   #Note, the loading zone doesn't seem to trigger unless the rock breaks. As such DO NOT CHANGE THIS MACRO CRAIN
-  Bombs | Power Bracelets
+  (
+    Bombs
+    | Power Bracelets
+  ) & Can Travel to Star Island
 
 # The below macros are used when secret cave entrances are not randomized.
 # When secret cave entrances are randomized, these macros are shuffled around by the randomizer logic.
@@ -331,6 +387,10 @@ Rescued Aryll:
   Nothing # We set the event bit for having rescued Aryll by default.
 Rescued Tingle:
   Nothing
+
+Can Salvage Treasure:
+  Grappling Hook
+  & Can Sail
 
 Can Get Fairies:
   Nothing # Northern Fairy Island can be entered without any items.
@@ -576,6 +636,11 @@ Can Defeat Armos Knights:
   | Progressive Bow x3
 Can Defeat Big Octos:
   Progressive Bow x1
+  | Bombs
+  | Boomerang
+  # Hookshot can technically damage Big Octos, but it only reaches at the end when your time limit is almost up.
+Can Defeat Twelve-Eye Octos:
+  Progressive Bow x3
   | Bombs
   | Boomerang
   # Hookshot can technically damage Big Octos, but it only reaches at the end when your time limit is almost up.
@@ -884,7 +949,7 @@ Can Get DRI Boulder Chest:
     & Deku Leaf
     & Wind Waker
     & Wind's Requiem
-    & (Progressive Sword x1 | Skull Hammer)
+    & Can Cut or Slash
   )
 
 Can Sail:

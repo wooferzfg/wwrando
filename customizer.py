@@ -25,6 +25,8 @@ MAX_ALLOWED_TOTAL_ARC_FILE_SIZE_SUM_INCREASE_IN_BYTES = 1525678 - ORIG_LINK_ARC_
 class InvalidColorError(Exception):
   pass
 
+cached_model_metadata = {}
+
 def get_model_metadata(custom_model_name):
   if custom_model_name == "Random":
     return {}
@@ -115,6 +117,8 @@ def get_model_metadata(custom_model_name):
               return {
                 "error_message": error_message,
               }
+
+    cached_model_metadata[custom_model_name] = metadata
 
     return metadata
 

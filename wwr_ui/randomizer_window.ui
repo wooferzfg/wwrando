@@ -517,7 +517,7 @@
                     </sizepolicy>
                    </property>
                    <property name="text">
-                    <string>Dungeon Number</string>
+                    <string>Number of Dungeons</string>
                    </property>
                   </widget>
                  </item>

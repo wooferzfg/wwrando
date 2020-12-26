@@ -66,7 +66,7 @@
   Long Name: Spectacle Island
   Short Name: Spectacle
   Abbreviation: SpI
-  Hint: a lone man waits with his cannon
+  Hint: the lensed peaks
   Stage: Room10.arc
   Neighbors: 3, 9, 11, 17
 11:

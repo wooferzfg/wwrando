@@ -219,7 +219,7 @@ def randomize_dungeon_items(self):
 
   # Temporarily add all progress items except for dungeon keys while we randomize them.
   items_to_temporarily_add = [
-    item_name for item_name in (self.logic.unplaced_progress_items + self.logic.unplaced_nonprogress_items)
+    item_name for item_name in (self.logic.unplaced_progress_items)
     if not self.logic.is_dungeon_item(item_name)
   ]
   for item_name in items_to_temporarily_add:
