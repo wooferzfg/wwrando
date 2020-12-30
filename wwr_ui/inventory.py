@@ -30,6 +30,11 @@ REGULAR_ITEMS = [
   "Ghost Ship Chart",
   "Empty Bottle",
   "Magic Meter Upgrade",
+  "Wind Waker",
+  "Wind's Requiem",
+  "Ballad of Gales",
+  "Song of Passing",
+  "Boat's Sail"
 ]
 REGULAR_ITEMS.sort()
 
@@ -54,6 +59,21 @@ STNDRD_ITEMS = REGULAR_ITEMS + DUNGEON_NONPROGRESS_ITEMS
 STNDRD_ITEMS.sort()
 INVENTORY_ITEMS = PROGRESSIVE_ITEMS + STNDRD_ITEMS
 INVENTORY_ITEMS.sort()
+
+DEFAULT_STARTING_ITEMS = [
+  "Wind Waker",
+  "Wind's Requiem",
+  "Ballad of Gales",
+  "Song of Passing",
+  "Boat's Sail",
+  "DRC Dungeon Map",
+  "FW Dungeon Map",
+  "TotG Dungeon Map",
+  "FF Dungeon Map",
+  "ET Dungeon Map",
+  "WT Dungeon Map", 
+]
+DEFAULT_STARTING_ITEMS.sort()
 
 QUEST_ITEMS = [
   "Din's Pearl",

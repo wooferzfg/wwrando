@@ -5,7 +5,6 @@ Outset Island - Great Fairy:
     & Can Fly With Deku Leaf Outdoors
     & (Magic Meter Upgrade | Can Cut Grass)
     & Can Move Boulders
-  Types: Great Fairy
 Outset Island - Jabun's Cave:
   Mode: o
   Need:
@@ -17,7 +16,6 @@ Outset Island - Jabun's Cave:
         & Farore's Pearl
       )
     )
-  Types: Island Puzzle
 Outset Island - Savage Labyrinth - Floor 30:
   Mode: o
   Need:
@@ -40,7 +38,6 @@ Outset Island - Savage Labyrinth - Floor 30:
     & Can Defeat Darknuts
     & Can Play Wind's Requiem
     & (Grappling Hook | Hero's Sword | Skull Hammer)
-  Types: Savage Labyrinth
 Outset Island - Savage Labyrinth - Floor 50:
   Mode: o
   Need:
@@ -52,148 +49,122 @@ Outset Island - Savage Labyrinth - Floor 50:
     & Can Defeat Poes
     & Can Defeat Stalfos
     & Skull Hammer
-  Types: Savage Labyrinth
 
 Windfall Island - House of Wealth Chest:
   Mode: o
   Need: Progressive Wallet x1
-  Types: Other Chest
 Windfall Island - Tott - Teach Rhythm:
   Mode: o
   Need: Wind Waker
-  Types: Free Gift
 Windfall Island - Pirate Ship:
   Mode: o
   Need: Deku Leaf
-  Types: Minigame
 Windfall Island - 40 Rupee Auction:
   Mode: o
   Need: Progressive Wallet x1
-  Types: Expensive Purchase, Minigame
 Windfall Island - 60 Rupee Auction:
   Mode: o
   Need: Progressive Wallet x1
-  Types: Expensive Purchase, Minigame
 Windfall Island - 80 Rupee Auction:
   Mode: o
   Need: Progressive Wallet x1
-  Types: Expensive Purchase, Minigame
 Windfall Island - Zunari - Stock Exotic Flower in Zunari's Shop:
   Mode: o
   Need:
     Rescued Aryll
     & Delivery Bag
     & Progressive Wallet x1
-  Types: Short Sidequest
 Windfall Island - Sam - Decorate the Town:
   Mode: o
   Need:
     Rescued Aryll
     & Delivery Bag
     & Progressive Wallet x1
-  Types: Long Sidequest
 Windfall Island - Battlesquid - Second Prize:
   Mode: o
   Need: Progressive Wallet x1
-  Types: Battlesquid
 Windfall Island - Battlesquid - Under 20 Shots Prize:
   Mode: o
   Need: Progressive Wallet x1
-  Types: Battlesquid
 
 Dragon Roost Island - Chest on Top of Boulder:
   Mode: o
   Need:
     Hero's Bow
     | Bait Bag
-  Types: Island Puzzle
 Dragon Roost Island - Fly Across Platforms Around Island:
   Mode: o
   Need:
     Can Fly With Deku Leaf Outdoors
     & (Can Cut Grass | Magic Meter Upgrade)
-  Types: Island Puzzle
 Dragon Roost Island - Secret Cave:
   Mode: o
   Need:
     Can Access Dragon Roost Island Secret Cave
     & Can Defeat Keese
     & Can Defeat Red ChuChus
-  Types: Combat Secret Cave
 
 Dragon Roost Cavern - First Room:
   Mode: o
   Need: Can Access Dragon Roost Cavern
-  Types: Dungeon
 Dragon Roost Cavern - Alcove With Water Jugs:
   Mode: o
   Need:
     Can Access Dragon Roost Cavern
     & DRC Small Key x1
-  Types: Dungeon
 Dragon Roost Cavern - Boarded Up Chest:
   Mode: o
   Need:
     Can Access Dragon Roost Cavern
     & DRC Small Key x1
-  Types: Dungeon
 Dragon Roost Cavern - Chest Across Lava Pit:
   Mode: o
   Need:
     Can Access Dragon Roost Cavern
     & DRC Small Key x2
     & (Grappling Hook | Deku Leaf)
-  Types: Dungeon
 Dragon Roost Cavern - Rat Room:
   Mode: o
   Need:
     Can Access Dragon Roost Cavern
     & DRC Small Key x2
-  Types: Dungeon
 Dragon Roost Cavern - Rat Room Boarded Up Chest:
   Mode: o
   Need:
     Can Access Dragon Roost Cavern
     & DRC Small Key x2
-  Types: Dungeon
 Dragon Roost Cavern - Bird's Nest:
   Mode: o
   Need:
     Can Access Dragon Roost Cavern
     & DRC Small Key x3
-  Types: Dungeon
 Dragon Roost Cavern - Dark Room:
   Mode: o
   Need:
     Can Access Dragon Roost Cavern
     & DRC Small Key x4
-  Types: Dungeon
 Dragon Roost Cavern - Tingle Chest in Hub Room:
   Mode: o
   Need:
     Can Access Dragon Roost Cavern
     & DRC Small Key x4
     & Tingle Tuner Bombs
-  Types: Tingle Chest, Dungeon
 Dragon Roost Cavern - Pot Room Chest:
   Mode: o
   Need:
     Can Access Dragon Roost Cavern
     & DRC Small Key x4
-  Types: Dungeon
 Dragon Roost Cavern - Mini-Boss:
   Mode: o
   Need:
     Can Access Dragon Roost Cavern
     & DRC Small Key x4
-  Types: Dungeon
 Dragon Roost Cavern - Under Rope Bridge:
   Mode: o
   Need:
     Can Access Dragon Roost Cavern
     & DRC Small Key x4
     & (Grappling Hook | Can Fly With Deku Leaf Outdoors)
-  Types: Dungeon
 Dragon Roost Cavern - Tingle Statue Chest:
   Mode: o
   Need:
@@ -202,7 +173,6 @@ Dragon Roost Cavern - Tingle Statue Chest:
     & Can Cut Down Hanging DRC Platform
     & Grappling Hook
     & Tingle Tuner Bombs
-  Types: Tingle Chest, Dungeon
 Dragon Roost Cavern - Big Key Chest:
   Mode: o
   Need:
@@ -210,21 +180,18 @@ Dragon Roost Cavern - Big Key Chest:
     & DRC Small Key x4
     & Can Cut Down Hanging DRC Platform
     & Grappling Hook
-  Types: Dungeon
 Dragon Roost Cavern - Boss Stairs Right Chest:
   Mode: o
   Need:
     Can Access Dragon Roost Cavern
     & DRC Small Key x4
     & (Grappling Hook | Deku Leaf | Hookshot)
-  Types: Dungeon
 Dragon Roost Cavern - Boss Stairs Left Chest:
   Mode: o
   Need:
     Can Access Dragon Roost Cavern
     & DRC Small Key x4
     & (Grappling Hook | Deku Leaf | Hookshot)
-  Types: Dungeon
 Dragon Roost Cavern - Gohma Heart Container:
   Mode: o
   Need:
@@ -233,14 +200,12 @@ Dragon Roost Cavern - Gohma Heart Container:
     & Grappling Hook
     & DRC Big Key
     & Can Defeat Gohma
-  Types: Dungeon
 
 Forest Haven - On Tree Branch:
   Mode: o
   Need:
     Can Access Forest Haven
     & Grappling Hook
-  Types: Island Puzzle
 Forest Haven - Small Island Chest:
   Mode: o
   Need:
@@ -251,33 +216,28 @@ Forest Haven - Small Island Chest:
       Can Cut Grass
       | Magic Meter Upgrade
     )
-  Types: Island Puzzle
 
 Forbidden Woods - First Room:
   Mode: o
   Need: Can Access Forbidden Woods
-  Types: Dungeon
 Forbidden Woods - Inside Hollow Tree's Mouth:
   Mode: o
   Need:
     Can Access Forbidden Woods
     & (Can Defeat Door Flowers | Can Defeat Boko Babas)
     & Can Defeat Green ChuChus
-  Types: Dungeon
 Forbidden Woods - Climb to Top Using Boko Baba Bulbs:
   Mode: o
   Need:
     Can Access Forbidden Woods
     & Deku Leaf
     & Can Defeat Door Flowers
-  Types: Dungeon
 Forbidden Woods - Hole in Tree:
   Mode: o
   Need:
     Can Access Forbidden Woods
     & Deku Leaf
     & Can Defeat Boko Babas
-  Types: Dungeon
 Forbidden Woods - Morth Pit:
   Mode: o
   Need:
@@ -285,7 +245,6 @@ Forbidden Woods - Morth Pit:
     & Deku Leaf
     & Can Defeat Boko Babas
     & Grappling Hook
-  Types: Dungeon
 Forbidden Woods - Vine Maze Left Chest:
   Mode: o
   Need:
@@ -293,7 +252,6 @@ Forbidden Woods - Vine Maze Left Chest:
     & Deku Leaf
     & Can Defeat Boko Babas
     & Grappling Hook
-  Types: Dungeon
 Forbidden Woods - Vine Maze Right Chest:
   Mode: o
   Need:
@@ -301,7 +259,6 @@ Forbidden Woods - Vine Maze Right Chest:
     & Deku Leaf
     & Can Defeat Boko Babas
     & Grappling Hook
-  Types: Dungeon
 Forbidden Woods - Tall Room Before Mini-Boss:
   Mode: o
   Need:
@@ -311,7 +268,6 @@ Forbidden Woods - Tall Room Before Mini-Boss:
     & Grappling Hook
     & FW Small Key x1
     & Can Defeat Peahats
-  Types: Dungeon
 Forbidden Woods - Mothula Mini-Boss Room:
   Mode: o
   Need:
@@ -321,7 +277,6 @@ Forbidden Woods - Mothula Mini-Boss Room:
     & Grappling Hook
     & FW Small Key x1
     & Can Defeat Winged Mothulas
-  Types: Dungeon
 Forbidden Woods - Past Seeds Hanging by Vines:
   Mode: o
   Need:
@@ -332,7 +287,6 @@ Forbidden Woods - Past Seeds Hanging by Vines:
     & FW Small Key x1
     & Can Defeat Door Flowers
     & Can Destroy Seeds Hanging by Vines
-  Types: Dungeon
 Forbidden Woods - Chest Across Red Hanging Flower:
   Mode: o
   Need:
@@ -342,7 +296,6 @@ Forbidden Woods - Chest Across Red Hanging Flower:
     & Grappling Hook
     & Boomerang
     & FW Small Key x1
-  Types: Dungeon
 Forbidden Woods - Tingle Statue Chest:
   Mode: o
   Need:
@@ -352,7 +305,6 @@ Forbidden Woods - Tingle Statue Chest:
     & Boomerang
     & Tingle Tuner Bombs
     & FW Small Key x1
-  Types: Tingle Chest, Dungeon
 Forbidden Woods - Chest in Locked Tree Trunk:
   Mode: o
   Need:
@@ -362,7 +314,6 @@ Forbidden Woods - Chest in Locked Tree Trunk:
     & Grappling Hook
     & Boomerang
     & FW Small Key x1
-  Types: Dungeon
 Forbidden Woods - Big Key Chest:
   Mode: o
   Need:
@@ -372,7 +323,6 @@ Forbidden Woods - Big Key Chest:
     & Grappling Hook
     & Boomerang
     & FW Small Key x1
-  Types: Dungeon
 Forbidden Woods - Double Mothula Room:
   Mode: o
   Need:
@@ -382,7 +332,6 @@ Forbidden Woods - Double Mothula Room:
     & (Can Defeat Door Flowers | Grappling Hook)
     & Can Defeat Mothulas
     & FW Small Key x1
-  Types: Dungeon
 Forbidden Woods - Kalle Demos Heart Container:
   Mode: o
   Need:
@@ -394,7 +343,6 @@ Forbidden Woods - Kalle Demos Heart Container:
     & Can Defeat Mothulas
     & FW Big Key
     & Can Defeat Kalle Demos
-  Types: Dungeon
 
 Tower of the Gods - Chest Behind Bombable Walls:
   Mode: o
@@ -402,18 +350,15 @@ Tower of the Gods - Chest Behind Bombable Walls:
     Can Access Tower of the Gods
     & Bombs
     & Can Defeat Yellow ChuChus
-  Types: Dungeon
 Tower of the Gods - Hop Across Floating Boxes:
   Mode: o
   Need: Can Access Tower of the Gods
-  Types: Dungeon
 Tower of the Gods - Light Two Torches:
   Mode: o
   Need:
     Can Access Tower of the Gods
     & Bombs
     & Can Defeat Yellow ChuChus
-  Types: Dungeon
 Tower of the Gods - Skulls Room Chest:
   Mode: o
   Need:
@@ -421,7 +366,6 @@ Tower of the Gods - Skulls Room Chest:
     & Bombs
     & Can Defeat Red Bubbles
     & Can Defeat Yellow ChuChus
-  Types: Dungeon
 Tower of the Gods - Shoot Eye Above Skulls Room Chest:
   Mode: o
   Need:
@@ -430,7 +374,6 @@ Tower of the Gods - Shoot Eye Above Skulls Room Chest:
     & Hero's Bow
     & Can Defeat Red Bubbles
     & Can Defeat Yellow ChuChus
-  Types: Dungeon
 Tower of the Gods - Tingle Statue Chest:
   Mode: o
   Need:
@@ -440,7 +383,6 @@ Tower of the Gods - Tingle Statue Chest:
     & Deku Leaf
     & Can Defeat Yellow ChuChus
     & Tingle Tuner Bombs
-  Types: Tingle Chest, Dungeon
 Tower of the Gods - First Chest Guarded by Armos Knights:
   Mode: o
   Need:
@@ -450,7 +392,6 @@ Tower of the Gods - First Chest Guarded by Armos Knights:
     & Can Defeat Yellow ChuChus
     & Deku Leaf
     & Hero's Bow
-  Types: Dungeon
 Tower of the Gods - Stone Tablet:
   Mode: o
   Need:
@@ -459,7 +400,6 @@ Tower of the Gods - Stone Tablet:
     & TotG Small Key x1
     & Can Defeat Yellow ChuChus
     & Wind Waker
-  Types: Dungeon
 Tower of the Gods - Darknut Mini-Boss Room:
   Mode: o
   Need:
@@ -471,7 +411,6 @@ Tower of the Gods - Darknut Mini-Boss Room:
     & (Grappling Hook | Deku Leaf)
     & (Can Play Command Melody | Hero's Bow)
     & Can Defeat Darknuts
-  Types: Dungeon
 Tower of the Gods - Second Chest Guarded by Armos Knights:
   Mode: o
   Need:
@@ -484,7 +423,6 @@ Tower of the Gods - Second Chest Guarded by Armos Knights:
     & Can Play Command Melody
     & Hero's Bow
     & Can Play Wind's Requiem
-  Types: Dungeon
 Tower of the Gods - Floating Platforms Room:
   Mode: o
   Need:
@@ -497,7 +435,6 @@ Tower of the Gods - Floating Platforms Room:
     & Can Defeat Red Bubbles
     & Can Play Command Melody
     & Hero's Bow
-  Types: Dungeon
 Tower of the Gods - Top of Floating Platforms Room:
   Mode: o
   Need:
@@ -509,7 +446,6 @@ Tower of the Gods - Top of Floating Platforms Room:
     & Deku Leaf
     & Can Play Command Melody
     & Hero's Bow
-  Types: Dungeon
 Tower of the Gods - Big Key Chest:
   Mode: o
   Need:
@@ -521,7 +457,6 @@ Tower of the Gods - Big Key Chest:
     & Can Play Command Melody
     & Hero's Bow
     & TotG Small Key x2
-  Types: Dungeon
 Tower of the Gods - Gohdan Heart Container:
   Mode: o
   Need:
@@ -536,30 +471,24 @@ Tower of the Gods - Gohdan Heart Container:
     & Can Defeat Armos
     & TotG Big Key
     & Can Defeat Gohdan
-  Types: Dungeon
 
 Forsaken Fortress - Phantom Ganon:
   Mode: o
   Need: Can Reach and Defeat Phantom Ganon
-  Types: Dungeon
 Forsaken Fortress - Chest Outside Upper Jail Cell:
   Mode: o
   Need:
     Can Get Inside Forsaken Fortress
     & (Deku Leaf | Hookshot)
-  Types: Dungeon
 Forsaken Fortress - Chest Inside Lower Jail Cell:
   Mode: o
   Need: Can Get Inside Forsaken Fortress
-  Types: Dungeon
 Forsaken Fortress - Chest Guarded By Bokoblin:
   Mode: o
   Need: Can Get Inside Forsaken Fortress
-  Types: Dungeon
 Forsaken Fortress - Chest on Bed:
   Mode: o
   Need: Can Get Inside Forsaken Fortress
-  Types: Dungeon
 Forsaken Fortress - Helmaroc King Heart Container:
   Mode: o
   Need:
@@ -567,7 +496,6 @@ Forsaken Fortress - Helmaroc King Heart Container:
     & Skull Hammer
     & (Deku Leaf | Hookshot)
     & Can Defeat Helmaroc King
-  Types: Dungeon
 
 Fire Mountain - Cave - Chest:
   Mode: o
@@ -575,32 +503,26 @@ Fire Mountain - Cave - Chest:
     Can Access Fire Mountain Secret Cave
     & Can Defeat Magtails
     & Can Defeat Fire Keese
-  Types: Puzzle Secret Cave
 Fire Mountain - Lookout Platform Chest:
   Mode: o
   Need: Nothing
-  Types: Platform
 Fire Mountain - Lookout Platform - Destroy the Cannons:
   Mode: o
   Need: Can Destroy Cannons
-  Types: Platform
 Fire Mountain - Big Octo:
   Mode: o
   Need:
     Can Defeat Big Octos
     & Grappling Hook
-  Types: Big Octo
 
 Ice Ring Isle - Frozen Chest:
   Mode: o
   Need: Fire Arrows
-  Types: Island Puzzle
 Ice Ring Isle - Cave - Chest:
   Mode: o
   Need:
     Can Access Ice Ring Isle Secret Cave
     & Can Defeat Fire Keese
-  Types: Puzzle Secret Cave
 Ice Ring Isle - Inner Cave - Chest:
   Mode: o
   Need:
@@ -609,17 +531,14 @@ Ice Ring Isle - Inner Cave - Chest:
     & Fire Arrows
     & Can Defeat Fire Keese
     & Can Defeat Darknuts
-  Types: Puzzle Secret Cave, Combat Secret Cave
 
 Headstone Island - Top of the Island:
   Mode: o
   Need:
     Bait Bag
-  Types: Island Puzzle
 Headstone Island - Submarine:
   Mode: o
   Need: Can Defeat Bombchus
-  Types: Submarine
 
 Earth Temple - Transparent Chest In Warp Pot Room:
   Mode: o
@@ -629,7 +548,6 @@ Earth Temple - Transparent Chest In Warp Pot Room:
     & Can Defeat Red ChuChus
     & Can Defeat Green ChuChus
     & Can Defeat Dark ChuChus
-  Types: Dungeon
 Earth Temple - Chest Behind Destructible Walls:
   Mode: o
   Need:
@@ -640,7 +558,6 @@ Earth Temple - Chest Behind Destructible Walls:
     & Can Defeat Dark ChuChus
     & Skull Hammer
     & Mirror Shield
-  Types: Dungeon
 Earth Temple - Transparent Chest in First Crypt:
   Mode: o
   Need:
@@ -651,7 +568,6 @@ Earth Temple - Transparent Chest in First Crypt:
     & Can Defeat Red ChuChus
     & Can Defeat Green ChuChus
     & Can Defeat Dark ChuChus
-  Types: Dungeon
 Earth Temple - Chest In Three Blocks Room:
   Mode: o
   Need:
@@ -664,7 +580,6 @@ Earth Temple - Chest In Three Blocks Room:
     & Can Defeat Red ChuChus
     & Can Defeat Green ChuChus
     & Can Defeat Dark ChuChus
-  Types: Dungeon
 Earth Temple - Chest Behind Statues:
   Mode: o
   Need:
@@ -677,7 +592,6 @@ Earth Temple - Chest Behind Statues:
     & Can Defeat Red ChuChus
     & Can Defeat Green ChuChus
     & Can Defeat Dark ChuChus
-  Types: Dungeon
 Earth Temple - Casket in Second Crypt:
   Mode: o
   Need:
@@ -690,7 +604,6 @@ Earth Temple - Casket in Second Crypt:
     & Can Defeat Red ChuChus
     & Can Defeat Green ChuChus
     & Can Defeat Dark ChuChus
-  Types: Dungeon
 Earth Temple - Stalfos Mini-Boss Room:
   Mode: o
   Need:
@@ -704,7 +617,6 @@ Earth Temple - Stalfos Mini-Boss Room:
     & Can Defeat Red ChuChus
     & Can Defeat Green ChuChus
     & Can Defeat Dark ChuChus
-  Types: Dungeon
 Earth Temple - Tingle Statue Chest:
   Mode: o
   Need:
@@ -717,7 +629,6 @@ Earth Temple - Tingle Statue Chest:
     & Can Defeat Green ChuChus
     & Can Defeat Dark ChuChus
     & ET Small Key x2
-  Types: Tingle Chest, Dungeon
 Earth Temple - End of Foggy Room With Floormasters:
   Mode: o
   Need:
@@ -730,7 +641,6 @@ Earth Temple - End of Foggy Room With Floormasters:
     & Can Defeat Green ChuChus
     & Can Defeat Dark ChuChus
     & ET Small Key x2
-  Types: Dungeon
 Earth Temple - Kill All Floormasters in Foggy Room:
   Mode: o
   Need:
@@ -744,7 +654,6 @@ Earth Temple - Kill All Floormasters in Foggy Room:
     & Can Defeat Green ChuChus
     & Can Defeat Dark ChuChus
     & ET Small Key x2
-  Types: Dungeon
 Earth Temple - Chest in Third Crypt:
   Mode: o
   Need:
@@ -760,7 +669,6 @@ Earth Temple - Chest in Third Crypt:
     & Can Defeat Green ChuChus
     & Can Defeat Dark ChuChus
     & Can Defeat Keese
-  Types: Dungeon
 Earth Temple - Many Mirrors Room Right Chest:
   Mode: o
   Need:
@@ -775,7 +683,6 @@ Earth Temple - Many Mirrors Room Right Chest:
     & Can Defeat Red ChuChus
     & Can Defeat Green ChuChus
     & Can Defeat Dark ChuChus
-  Types: Dungeon
 Earth Temple - Many Mirrors Room Left Chest:
   Mode: o
   Need:
@@ -790,7 +697,6 @@ Earth Temple - Many Mirrors Room Left Chest:
     & Can Defeat Red ChuChus
     & Can Defeat Green ChuChus
     & Can Defeat Dark ChuChus
-  Types: Dungeon
 Earth Temple - Stalfos Crypt Room:
   Mode: o
   Need:
@@ -806,7 +712,6 @@ Earth Temple - Stalfos Crypt Room:
     & Can Defeat Green ChuChus
     & Can Defeat Dark ChuChus
     & Can Defeat Stalfos
-  Types: Dungeon
 Earth Temple - Big Key Chest:
   Mode: o
   Need:
@@ -822,7 +727,6 @@ Earth Temple - Big Key Chest:
     & Can Defeat Green ChuChus
     & Can Defeat Dark ChuChus
     & Can Defeat Darknuts
-  Types: Dungeon
 Earth Temple - Jalhalla Heart Container:
   Mode: o
   Need:
@@ -839,7 +743,6 @@ Earth Temple - Jalhalla Heart Container:
     & Can Defeat Dark ChuChus
     & ET Big Key
     & Can Defeat Jalhalla
-  Types: Dungeon
 
 Wind Temple - Chest Between Two Dirt Patches:
   Mode: o
@@ -848,7 +751,6 @@ Wind Temple - Chest Between Two Dirt Patches:
     & Can Play Command Melody
     & Deku Leaf
     & Iron Boots
-  Types: Dungeon
 Wind Temple - Tingle Statue Chest:
   Mode: o
   Need:
@@ -857,7 +759,6 @@ Wind Temple - Tingle Statue Chest:
     & Iron Boots
     & Deku Leaf
     & Tingle Tuner Bombs
-  Types: Tingle Chest, Dungeon
 Wind Temple - Chest Behind Stone Head:
   Mode: o
   Need:
@@ -866,7 +767,6 @@ Wind Temple - Chest Behind Stone Head:
     & Iron Boots
     & Deku Leaf
     & Hookshot
-  Types: Dungeon
 Wind Temple - Chest in Left Alcove:
   Mode: o
   Need:
@@ -874,7 +774,6 @@ Wind Temple - Chest in Left Alcove:
     & Can Play Command Melody
     & Iron Boots
     & Deku Leaf
-  Types: Dungeon
 Wind Temple - Big Key Chest:
   Mode: o
   Need:
@@ -884,7 +783,6 @@ Wind Temple - Big Key Chest:
     & Deku Leaf
     & Can Play Wind God's Aria
     & Can Defeat Darknuts
-  Types: Dungeon
 Wind Temple - Chest In Many Cyclones Room:
   Mode: o
   Need:
@@ -896,7 +794,6 @@ Wind Temple - Chest In Many Cyclones Room:
       Can Cut Grass
       | Magic Meter Upgrade
     )
-  Types: Dungeon
 Wind Temple - Chest In Middle Of Hub Room:
   Mode: o
   Need:
@@ -905,7 +802,6 @@ Wind Temple - Chest In Middle Of Hub Room:
     & Iron Boots
     & Deku Leaf
     & Can Cut Grass
-  Types: Dungeon
 Wind Temple - Spike Wall Room - First Chest:
   Mode: o
   Need:
@@ -918,7 +814,6 @@ Wind Temple - Spike Wall Room - First Chest:
     & Can Defeat Armos
     & Can Defeat Red ChuChus
     & Can Defeat Green ChuChus
-  Types: Dungeon
 Wind Temple - Spike Wall Room - Destroy All Cracked Floors:
   Mode: o
   Need:
@@ -931,7 +826,6 @@ Wind Temple - Spike Wall Room - Destroy All Cracked Floors:
     & Can Defeat Armos
     & Can Defeat Red ChuChus
     & Can Defeat Green ChuChus
-  Types: Dungeon
 Wind Temple - Wizzrobe Mini-Boss Room:
   Mode: o
   Need:
@@ -943,7 +837,6 @@ Wind Temple - Wizzrobe Mini-Boss Room:
     & WT Small Key x2
     & Can Defeat Darknuts
     & Can Remove Peahat Armor
-  Types: Dungeon
 Wind Temple - Chest at Top of Hub Room:
   Mode: o
   Need:
@@ -953,7 +846,6 @@ Wind Temple - Chest at Top of Hub Room:
     & Deku Leaf
     & Can Cut Grass
     & Can Defeat Peahats
-  Types: Dungeon
 Wind Temple - Chest Behind Seven Armos:
   Mode: o
   Need:
@@ -964,7 +856,6 @@ Wind Temple - Chest Behind Seven Armos:
     & Can Cut Grass
     & Can Defeat Peahats
     & Can Defeat Armos
-  Types: Dungeon
 Wind Temple - Kill All Enemies in Tall Basement Room:
   Mode: o
   Need:
@@ -978,7 +869,6 @@ Wind Temple - Kill All Enemies in Tall Basement Room:
     & Can Defeat Stalfos
     & Can Defeat Wizzrobes
     & Can Defeat Morths
-  Types: Dungeon
 Wind Temple - Molgera Heart Container:
   Mode: o
   Need:
@@ -996,14 +886,12 @@ Wind Temple - Molgera Heart Container:
     & Can Defeat Armos Knights
     & WT Big Key
     & Can Defeat Molgera
-  Types: Dungeon
 
 Ganon's Tower - Maze Chest:
   Mode: o
   Need:
     Can Reach Ganon's Tower Phantom Ganon Room
     & Can Defeat Phantom Ganon
-  Types: Dungeon
 
 Mailbox - Letter from Hoskit's Girlfriend:
   Mode: o
@@ -1011,14 +899,12 @@ Mailbox - Letter from Hoskit's Girlfriend:
     Spoils Bag
     & Can Farm Golden Feathers
     & Song of Passing
-  Types: Mail, Spoils Trading
 Mailbox - Letter from Baito's Mother:
   Mode: o
   Need:
     Delivery Bag
     & Note to Mom
     & Song of Passing
-  Types: Mail
 Mailbox - Letter from Baito:
   Mode: o
   Need:
@@ -1026,44 +912,37 @@ Mailbox - Letter from Baito:
     & Note to Mom
     & Song of Passing
     & Can Access Other Location "Earth Temple - Jalhalla Heart Container"
-  Types: Mail, Dungeon
 Mailbox - Letter from Komali's Father:
   Mode: o
   Need:
     Farore's Pearl
     & Song of Passing
-  Types: Mail
 Mailbox - Letter Advertising Bombs in Beedle's Shop:
   Mode: o
   Need:
     Bombs
     & Song of Passing
-  Types: Mail
 Mailbox - Letter Advertising Rock Spire Shop Ship:
   Mode: o
   Need:
     Any Wallet Upgrade
     & Song of Passing
-  Types: Mail
 Mailbox - Letter from Orca:
   Mode: o
   Need:
     Can Access Other Location "Forbidden Woods - Kalle Demos Heart Container"
     & Song of Passing
-  Types: Mail, Dungeon
 Mailbox - Letter from Grandma:
   Mode: o
   Need:
     Empty Bottle
     & Can Get Fairies
     & Song of Passing
-  Types: Mail
 Mailbox - Letter from Aryll:
   Mode: o
   Need:
     Can Access Other Location "Forsaken Fortress - Helmaroc King Heart Container"
     & Song of Passing
-  Types: Mail, Dungeon
 Mailbox - Letter from Tingle:
   Mode: o
   Need:
@@ -1071,26 +950,21 @@ Mailbox - Letter from Tingle:
     & Any Wallet Upgrade
     & Can Access Other Location "Forsaken Fortress - Helmaroc King Heart Container"
     & Song of Passing
-  Types: Mail, Dungeon, Expensive Purchase
 
 The Great Sea - Beedle's Shop Ship - 20 Rupee Item:
   Mode: o
   Need: Nothing
-  Types: Misc
 The Great Sea - Salvage Corp Gift:
   Mode: o
   Need: Grappling Hook
-  Types: Free Gift
 The Great Sea - Cyclos:
   Mode: o
   Need: Hero's Bow
-  Types: Misc
 The Great Sea - Goron Trading Reward:
   Mode: o
   Need:
     Rescued Aryll
     & Delivery Bag
-  Types: Long Sidequest, Expensive Purchase
 The Great Sea - Withered Trees:
   Mode: o
   Need:
@@ -1098,7 +972,6 @@ The Great Sea - Withered Trees:
     & Empty Bottle
     & Can Play Ballad of Gales
     & Can Access Other Location "Cliff Plateau Isles - Highest Isle"
-  Types: Long Sidequest
 The Great Sea - Ghost Ship:
   Mode: o
   Need:
@@ -1108,21 +981,18 @@ The Great Sea - Ghost Ship:
     & Can Defeat Poes
     & Can Defeat ReDeads
     & Can Defeat Stalfos
-  Types: Other Chest
 
 Private Oasis - Chest at Top of Waterfall:
   Mode: o
   Need:
     Hookshot
     | Can Fly With Deku Leaf Outdoors
-  Types: Island Puzzle
 Private Oasis - Cabana Labyrinth - Lower Floor Chest:
   Mode: o
   Need:
     Can Access Cabana Labyrinth
     & Skull Hammer
     & Can Defeat ReDeads
-  Types: Puzzle Secret Cave
 Private Oasis - Cabana Labyrinth - Upper Floor Chest:
   Mode: o
   Need:
@@ -1130,45 +1000,37 @@ Private Oasis - Cabana Labyrinth - Upper Floor Chest:
     & Skull Hammer
     & Can Play Wind's Requiem
     & Can Defeat ReDeads
-  Types: Puzzle Secret Cave
 Private Oasis - Big Octo:
   Mode: o
   Need:
     Can Defeat Big Octos
     & Grappling Hook
-  Types: Big Octo
 
 Spectacle Island - Barrel Shooting - First Prize:
   Mode: o
   Need: Nothing
-  Types: Minigame
 Spectacle Island - Barrel Shooting - Second Prize:
   Mode: o
   Need: Progressive Wallet x1
-  Types: Minigame
 
 Needle Rock Isle - Chest:
   Mode: o
   Need:
     Bait Bag
-  Types: Island Puzzle
 Needle Rock Isle - Cave:
   Mode: o
   Need:
     Can Access Needle Rock Isle Secret Cave
     & Fire Arrows
-  Types: Puzzle Secret Cave
 Needle Rock Isle - Golden Gunboat:
   Mode: o
   Need:
     Bombs
     & Grappling Hook
-  Types: Gunboat
 
 Angular Isles - Peak:
   Mode: o
   Need: Nothing
-  Types: Island Puzzle
 Angular Isles - Cave:
   Mode: o
   Need:
@@ -1178,19 +1040,16 @@ Angular Isles - Cave:
       Deku Leaf
       | Hookshot
     )
-  Types: Puzzle Secret Cave
 
 Boating Course - Raft:
   Mode: o
   Need: Bombs
-  Types: Raft
 Boating Course - Cave:
   Mode: o
   Need:
     Can Access Boating Course Secret Cave
     & Can Hit Diamond Switches at Range
     & Can Defeat Miniblins Easily
-  Types: Puzzle Secret Cave, Combat Secret Cave
 
 Stone Watcher Island - Cave:
   Mode: o
@@ -1200,27 +1059,22 @@ Stone Watcher Island - Cave:
     & Can Defeat Wizzrobes
     & Can Defeat Darknuts
     & Can Play Wind's Requiem
-  Types: Combat Secret Cave
 Stone Watcher Island - Lookout Platform Chest:
   Mode: o
   Need: Nothing
-  Types: Platform
 Stone Watcher Island - Lookout Platform - Destroy the Cannons:
   Mode: o
   Need: Can Destroy Cannons
-  Types: Platform
 
 Islet of Steel - Interior:
   Mode: o
   Need:
     Bombs
     & Can Play Wind's Requiem
-  Types: Other Chest
 Islet of Steel - Lookout Platform - Defeat the Enemies:
   Mode: o
   Need: Can Defeat Wizzrobes at Range
 
-  Types: Platform
 
 Overlook Island - Cave:
   Mode: o
@@ -1236,37 +1090,31 @@ Overlook Island - Cave:
     & Can Defeat Kargarocs
     & Can Defeat Darknuts
     & Can Play Wind's Requiem
-  Types: Combat Secret Cave
 
 Bird's Peak Rock - Cave:
   Mode: o
   Need:
     Can Access Bird's Peak Rock Secret Cave
     & Can Play Wind's Requiem
-  Types: Puzzle Secret Cave
 
 Pawprint Isle - Chuchu Cave - Chest:
   Mode: o
   Need: Can Access Pawprint Isle Chuchu Cave
-  Types: Puzzle Secret Cave
 Pawprint Isle - Chuchu Cave - Behind Left Boulder:
   Mode: o
   Need:
     Can Access Pawprint Isle Chuchu Cave
     & Can Move Boulders
-  Types: Puzzle Secret Cave
 Pawprint Isle - Chuchu Cave - Behind Right Boulder:
   Mode: o
   Need:
     Can Access Pawprint Isle Chuchu Cave
     & Can Move Boulders
-  Types: Puzzle Secret Cave
 Pawprint Isle - Chuchu Cave - Scale the Wall:
   Mode: o
   Need:
     Can Access Pawprint Isle Chuchu Cave
     & Grappling Hook
-  Types: Puzzle Secret Cave
 Pawprint Isle - Wizzrobe Cave:
   Mode: o
   Need:
@@ -1279,22 +1127,18 @@ Pawprint Isle - Wizzrobe Cave:
     & Can Defeat Yellow ChuChus
     & Can Defeat Red Bubbles
     & Can Defeat Peahats
-  Types: Combat Secret Cave
 Pawprint Isle - Lookout Platform - Defeat the Enemies:
   Mode: o
   Need:
     Hero's Sword
     | Skull Hammer
-  Types: Platform
 
 Thorned Fairy Island - Great Fairy:
   Mode: o
   Need: Skull Hammer
-  Types: Great Fairy
 Thorned Fairy Island - Northeastern Lookout Platform - Destroy the Cannons:
   Mode: o
   Need: Can Destroy Cannons
-  Types: Platform
 Thorned Fairy Island - Southwestern Lookout Platform - Defeat the Enemies:
   Mode: o
   Need:
@@ -1304,12 +1148,10 @@ Thorned Fairy Island - Southwestern Lookout Platform - Defeat the Enemies:
       | Skull Hammer
     )
 
-  Types: Platform
 
 Eastern Fairy Island - Great Fairy:
   Mode: o
   Need: Can Move Boulders
-  Types: Great Fairy
 Eastern Fairy Island - Lookout Platform - Defeat the Cannons and Enemies:
   Mode: o
   Need:
@@ -1318,42 +1160,34 @@ Eastern Fairy Island - Lookout Platform - Defeat the Cannons and Enemies:
       Hero's Sword
       | Skull Hammer
     )
-  Types: Platform
 
 Western Fairy Island - Great Fairy:
   Mode: o
   Need: Skull Hammer
-  Types: Great Fairy
 Western Fairy Island - Lookout Platform:
   Mode: o
   Need: Nothing
-  Types: Platform
 
 Southern Fairy Island - Great Fairy:
   Mode: o
   Need: Bombs | Fire Arrows
-  Types: Great Fairy
 Southern Fairy Island - Lookout Platform - Destroy the Northwest Cannons:
   Mode: o
   Need:
     Can Destroy Cannons
     & Can Fly With Deku Leaf Outdoors
-  Types: Platform
 Southern Fairy Island - Lookout Platform - Destroy the Southeast Cannons:
   Mode: o
   Need:
     Can Destroy Cannons
     & Can Fly With Deku Leaf Outdoors
-  Types: Platform
 
 Northern Fairy Island - Great Fairy:
   Mode: o
   Need: Nothing
-  Types: Great Fairy
 Northern Fairy Island - Submarine:
   Mode: o
   Need: Nothing
-  Types: Submarine
 
 Tingle Island - Ankle - Reward for All Tingle Statues:
   Mode: o
@@ -1364,94 +1198,78 @@ Tingle Island - Ankle - Reward for All Tingle Statues:
     & Earth Tingle Statue
     & Wind Tingle Statue
     & Progressive Wallet x1
-  Types: Misc
 Tingle Island - Big Octo:
   Mode: o
   Need:
     Can Defeat Big Octos
     & Grappling Hook
-  Types: Big Octo
 
 Diamond Steppe Island - Warp Maze Cave - First Chest:
   Mode: o
   Need:
     Can Access Diamond Steppe Island Warp Maze Cave
     & Can Defeat Floormasters
-  Types: Puzzle Secret Cave
 Diamond Steppe Island - Warp Maze Cave - Second Chest:
   Mode: o
   Need:
     Can Access Diamond Steppe Island Warp Maze Cave
     & Can Defeat Floormasters
-  Types: Puzzle Secret Cave
 Diamond Steppe Island - Big Octo:
   Mode: o
   Need:
     Can Defeat Big Octos
     & Grappling Hook
-  Types: Big Octo
 
 Bomb Island - Cave:
   Mode: o
   Need:
     Can Access Bomb Island Secret Cave
     & Can Stun Magtails
-  Types: Puzzle Secret Cave
 Bomb Island - Lookout Platform - Defeat the Enemies:
   Mode: o
   Need:
     Hero's Sword
     | Skull Hammer
-  Types: Platform
 Bomb Island - Submarine:
   Mode: o
   Need: Nothing
-  Types: Submarine
 
 Rock Spire Isle - Cave:
   Mode: o
   Need: Can Access Rock Spire Isle Secret Cave
-  Types: Combat Secret Cave
 Rock Spire Isle - Beedle's Special Shop Ship - 500 Rupee Item:
   Mode: o
   Need:
     Any Wallet Upgrade
     & Can Farm Lots of Rupees
-  Types: Expensive Purchase
 Rock Spire Isle - Beedle's Special Shop Ship - 950 Rupee Item:
   Mode: o
   Need:
     Any Wallet Upgrade
     & Can Farm Lots of Rupees
-  Types: Expensive Purchase
 Rock Spire Isle - Beedle's Special Shop Ship - 900 Rupee Item:
   Mode: o
   Need:
     Any Wallet Upgrade
     & Can Farm Lots of Rupees
-  Types: Expensive Purchase
 Rock Spire Isle - Western Lookout Platform - Destroy the Cannons:
   Mode: o
   Need:
     Can Destroy Cannons
     & Can Fly With Deku Leaf Outdoors
-  Types: Platform
 Rock Spire Isle - Eastern Lookout Platform - Destroy the Cannons:
   Mode: o
   Need:
     Can Destroy Cannons
     & Can Fly With Deku Leaf Outdoors
-  Types: Platform
 Rock Spire Isle - Center Lookout Platform:
   Mode: o
   Need: Nothing
-  Types: Platform
 Rock Spire Isle - Gunboat:
   Mode: o
   Need:
     Bombs
     & Grappling Hook
-  Types: Gunboat
 
 Shark Island - Cave:
   Mode: o
@@ -1459,63 +1277,52 @@ Shark Island - Cave:
     Can Access Shark Island Secret Cave
     & Can Defeat Miniblins
     & Can Defeat Darknuts
-  Types: Combat Secret Cave
 
 Cliff Plateau Isles - Cave:
   Mode: o
   Need:
     Can Access Cliff Plateau Isles Secret Cave
     & Can Defeat Boko Babas
-  Types: Puzzle Secret Cave
 Cliff Plateau Isles - Highest Isle:
   Mode: o
   Need:
     Can Access Cliff Plateau Isles Secret Cave
     & Can Defeat Boko Babas
     & Deku Leaf
-  Types: Puzzle Secret Cave
 Cliff Plateau Isles - Lookout Platform:
   Mode: o
   Need: Nothing
-  Types: Platform
 
 Crescent Moon Island - Chest:
   Mode: o
   Need: Nothing
-  Types: Other Chest
 Crescent Moon Island - Submarine:
   Mode: o
   Need: Can Defeat Miniblins
-  Types: Submarine
 
 Horseshoe Island - Play Golf:
   Mode: o
   Need:
     Deku Leaf
     & Hookshot
-  Types: Island Puzzle
 Horseshoe Island - Cave:
   Mode: o
   Need:
     Can Access Horseshoe Island Secret Cave
     & Can Defeat Mothulas
     & Can Defeat Winged Mothulas
-  Types: Combat Secret Cave
 Horseshoe Island - Northwestern Lookout Platform:
   Mode: o
   Need: Nothing
-  Types: Platform
 Horseshoe Island - Southeastern Lookout Platform:
   Mode: o
   Need: Nothing
-  Types: Platform
 
 Flight Control Platform - Bird-Man Contest - First Prize:
   Mode: o
   Need:
     Can Fly With Deku Leaf Outdoors
     & Magic Meter Upgrade
-  Types: Minigame
 Flight Control Platform - Submarine:
   Mode: o
   Need:
@@ -1524,118 +1331,95 @@ Flight Control Platform - Submarine:
     & Can Defeat Green ChuChus
     & Can Defeat Miniblins
     & Can Defeat Wizzrobes at Range
-  Types: Submarine
 
 Star Island - Cave:
   Mode: o
   Need:
     Can Access Star Island Secret Cave
     & Can Defeat Magtails
-  Types: Combat Secret Cave
 Star Island - Lookout Platform:
   Mode: o
   Need: Nothing
-  Types: Platform
 
 Star Belt Archipelago - Lookout Platform:
   Mode: o
   Need: Nothing
-  Types: Platform
 
 Five-Star Isles - Lookout Platform - Destroy the Cannons:
   Mode: o
   Need: Can Destroy Cannons
-  Types: Platform
 Five-Star Isles - Raft:
   Mode: o
   Need: Nothing
-  Types: Raft
 Five-Star Isles - Submarine:
   Mode: o
   Need: Nothing
-  Types: Submarine
 
 Seven-Star Isles - Center Lookout Platform:
   Mode: o
   Need: Can Defeat Wizzrobes
-  Types: Platform
 Seven-Star Isles - Northern Lookout Platform:
   Mode: o
   Need: Can Defeat Wizzrobes
-  Types: Platform
 Seven-Star Isles - Southern Lookout Platform:
   Mode: o
   Need: Can Defeat Wizzrobes at Range
-  Types: Platform
 Seven-Star Isles - Big Octo:
   Mode: o
   Need:
     Can Defeat Big Octos
     & Grappling Hook
-  Types: Big Octo
 
 Cyclops Reef - Destroy the Cannons and Gunboats:
   Mode: o
   Need:
     Bombs
     & Can Fly With Deku Leaf Outdoors
-  Types: Eye Reef Chest
 Cyclops Reef - Lookout Platform - Defeat the Enemies:
   Mode: o
   Need: Nothing
-  Types: Platform
 
 Two-Eye Reef - Destroy the Cannons and Gunboats:
   Mode: o
   Need:
     Bombs
     & Can Fly With Deku Leaf Outdoors
-  Types: Eye Reef Chest
 Two-Eye Reef - Lookout Platform:
   Mode: o
   Need: Nothing
-  Types: Platform
 Two-Eye Reef - Big Octo Great Fairy:
   Mode: o
   Need: Can Defeat Big Octos
-  Types: Big Octo, Great Fairy
 
 Three-Eye Reef - Destroy the Cannons and Gunboats:
   Mode: o
   Need:
     Bombs
     & Can Fly With Deku Leaf Outdoors
-  Types: Eye Reef Chest
 
 Four-Eye Reef - Destroy the Cannons and Gunboats:
   Mode: o
   Need:
     Bombs
     & Can Fly With Deku Leaf Outdoors
-  Types: Eye Reef Chest
 
 Five-Eye Reef - Destroy the Cannons:
   Mode: o
   Need:
     Can Destroy Cannons
     & Can Fly With Deku Leaf Outdoors
-  Types: Eye Reef Chest
 Five-Eye Reef - Lookout Platform:
   Mode: o
   Need: Nothing
-  Types: Platform
 
 Six-Eye Reef - Destroy the Cannons and Gunboats:
   Mode: o
   Need:
     Bombs
     & Can Fly With Deku Leaf Outdoors
-  Types: Eye Reef Chest
 Six-Eye Reef - Lookout Platform - Destroy the Cannons:
   Mode: o
   Need: Can Destroy Cannons
-  Types: Platform
 Six-Eye Reef - Submarine:
   Mode: o
   Need: Nothing
-  Types: Submarine

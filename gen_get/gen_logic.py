@@ -2,22 +2,15 @@ import yaml
 import os
 from paths import LOGIC_PATH, TYPE_PATH, TRICK_PATH
 from collections import OrderedDict
+from class_ms import YamlOrderedDictLoader
 
-forbidden_keys = ["Paths","Mode","Item","Original item"]
-path_input = PLAN_PATH
+forbidden_keys = ["Paths","Original item","Mode"]
+path_input = LOGIC_PATH
 path_output = TYPE_PATH
 source_file = "item_locations.txt"
-file_details = ["Nintendo EAD","Vanilla","The Vanilla Item Locations","vanilla.dv_im"]
-format_title = '<plan Creator="{}" Type="{}" Description="{}" Change="{}" File="{}" Chechsum="{}">\n'
+file_details = ["LagoLunatic","Standard","The regular TWW Logic","standard.dv_im"]
+format_title = '<inject Creator="{}" Type="{}" Description="{}" Change="{}" File="{}" Chechsum="{}">\n'
 
-
-class YamlOrderedDictLoader(yaml.SafeLoader):
-  pass
-
-YamlOrderedDictLoader.add_constructor(
-  yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG,
-  lambda loader, node: OrderedDict(loader.construct_pairs(node))
-)
 
 with open(os.path.join(path_input, source_file)) as f:
   item_locations = yaml.load(f, YamlOrderedDictLoader)
@@ -26,20 +19,16 @@ final_locations = ''
 change=0
 for location in item_locations:
   add_text = ' Name="{}"'.format(location)
-  try:
-    try:
-      force_item = item_locations[location]["Item"]
-      add_text = add_text+(' {}="{}"').format("Item",force_item)
-    except:
-      force_item = item_locations[location]["Original item"]
-      add_text = add_text+(' {}="{}"').format("Item",force_item)
-  except:
-    continue
   change+=1
+  try:
+    mode = item_locations[location]["Mode"]
+    add_text = add_text+(' Mode="{}"').format(mode)
+  except:
+    add_text = add_text+(' {}="{}"').format("Mode","o")
   for key, value in item_locations[location].items():
     if(key in forbidden_keys):
       continue
-    if(key in ["Need","Glitches"]):
+    if(key=="Need" OR key=="Gltiches"):
       splitStr = value.split('"')
       result = "'".join(splitStr)
       splitStr = result.split('&')
@@ -48,7 +37,7 @@ for location in item_locations:
       result = "OR".join(splitStr)
       value = result
     add_text = add_text+(' {}="{}"').format(key,value)
-  final_locations+='  <item{}/>\n'.format(add_text)
+  final_locations+='  <check{}/>\n'.format(add_text)
 checksum = (((len(file_details[0]))**((change%2)*((len(file_details[2]))%6+1)))%(len(file_details[1])))
 format_title = format_title.format(file_details[0],file_details[1],file_details[2],change,file_details[3],checksum)
 doc_cont = format_title+final_locations+"</inject>"

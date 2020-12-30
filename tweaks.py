@@ -56,20 +56,23 @@ def get_logic_mod(logic):
 
 def modify_logic_data(argument=OrderedDict(),definition=OrderedDict(),run='YAML'):
   mode = definition["Mode"]
+  valid_keys = ["Need","Types"]
   try:
-    if(mode=="o"):
-      argument["Need"] = definition["Need"]
-      argument["Types"] = definition["Types"]
-    elif(mode=="a"):
-      argument["Need"] += definition["Need"]
-      argument["Types"] += definition["Types"]
-    elif(mode=="f"):
-      argument["Need"] = argument["Need"]
-      argument["Types"] = argument["Types"]
+    argument["Glitches"] = definition["Glitches"]
   except:
-    print("\n{} formating is incorrect for: {}.\nPlease correct this before a seed can be generated.".format(run,definition))
-    raise LookupError
-  #print(str(definition))
+    pass
+  for key in valid_keys:
+    try:
+      if(mode=="o"):
+        argument[key] = definition[key]
+      elif(mode=="a"):
+        argument[key] += definition[key]
+      elif(mode=="f"):
+        argument[key] = argument[key]
+      else:
+        print("\n{} formating is incorrect for:\n\n{}\n{}:\t{}\n\nPlease correct this before a seed can be generated as intended.".format(run,definition,key,definition[key]))
+    except:
+      pass
   return argument
 
 def get_hash(self,salt=True,pepper=True):
@@ -365,6 +368,12 @@ def make_items_progressive(self):
     picto_box_item_get_func_addr = item_get_funcs_list + picto_box_item_id*4
     self.dol.write_data(write_u32, picto_box_item_get_func_addr, self.main_custom_symbols["progressive_picto_box_item_func"])
 
+  '''
+  for shield_item_id in [0x3B, 0x3C]:
+    shield_item_get_func_addr = item_get_funcs_list + shield_item_id*4
+    self.dol.write_data(write_u32, shield_item_get_func_addr, self.main_custom_symbols["progressive_shield_item_func"])
+  '''
+
   # Register which item ID is for which progressive item.
   self.item_name_to_id["Progressive Sword"] = 0x38
   self.item_name_to_id["Progressive Bow"] = 0x27
@@ -372,6 +381,7 @@ def make_items_progressive(self):
   self.item_name_to_id["Progressive Bomb Bag"] = 0xAD
   self.item_name_to_id["Progressive Quiver"] = 0xAF
   self.item_name_to_id["Progressive Picto Box"] = 0x23
+  #self.item_name_to_id["Progressive Shield"] = 0x3B
 
   # Modify the item get funcs for bombs and the hero's bow to nop out the code that sets your current and max bombs/arrows to 30.
   # Without this change, getting bombs after a bomb bag upgrade would negate the bomb bag upgrade.
@@ -799,6 +809,10 @@ def get_indefinite_article(string):
   else:
     return "a"
 
+def upper_first_letter(string):
+  first_letter = string[0].upper()
+  return first_letter + string[1:]
+
 def pad_string_to_next_4_lines(string):
   lines = string.split("\n")
   padding_lines_needed = (4 - len(lines) % 4) % 4
@@ -1093,7 +1107,7 @@ def update_big_octo_great_fairy_item_name_hint(self, hint):
     max_line_length=43
   )
   self.bmg.messages_by_id[12016].string = word_wrap_string(
-    "\\{1A 06 FF 00 00 05}...\\{1A 06 FF 00 00 01}%s\\{1A 06 FF 00 00 05} which may help you on your quest." % item_hint_name.capitalize(),
+    "\\{1A 06 FF 00 00 05}...\\{1A 06 FF 00 00 01}%s\\{1A 06 FF 00 00 05} which may help you on your quest." % upper_first_letter(item_hint_name),
     max_line_length=43
   )
   self.bmg.messages_by_id[12017].string = word_wrap_string(
@@ -1808,8 +1822,8 @@ def show_seed_hash_on_name_entry_screen(self):
   valid_names = [name for name in all_names if len(name) <= 5]
 
   name_1, name_2 = temp_rng.sample(valid_names, 2)
-  name_1 = name_1.capitalize()
-  name_2 = name_2.capitalize()
+  name_1 = upper_first_letter(name_1)
+  name_2 = upper_first_letter(name_2)
 
   # Since actually adding new text to the UI would be very difficult, instead hijack the "Name Entry" text, and put the seed hash after several linebreaks.
   # (The three linebreaks we insert before "Name Entry" are so it's still in the correct spot after vertical centering happens.)

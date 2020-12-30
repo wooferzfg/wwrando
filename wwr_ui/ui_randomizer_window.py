@@ -20,7 +20,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(950, 771)
+        MainWindow.resize(950, 750)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout = QVBoxLayout(self.centralwidget)
@@ -31,7 +31,7 @@ class Ui_MainWindow(object):
         self.scroll_for_main.setWidgetResizable(True)
         self.content_for_main_scroll = QWidget()
         self.content_for_main_scroll.setObjectName(u"content_for_main_scroll")
-        self.content_for_main_scroll.setGeometry(QRect(0, 0, 932, 637))
+        self.content_for_main_scroll.setGeometry(QRect(0, 0, 944, 753))
         self.verticalLayout_4 = QVBoxLayout(self.content_for_main_scroll)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
@@ -92,8 +92,8 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_2.addLayout(self.grid_for_paths)
 
-        self.gridLayout = QGridLayout()
-        self.gridLayout.setObjectName(u"gridLayout")
+        self.grid_for_logic = QGridLayout()
+        self.grid_for_logic.setObjectName(u"grid_for_logic")
         self.logic_mod = QComboBox(self.tab_for_settings)
         self.logic_mod.addItem("")
         self.logic_mod.addItem("")
@@ -106,34 +106,34 @@ class Ui_MainWindow(object):
         self.logic_mod.setDuplicatesEnabled(False)
         self.logic_mod.setFrame(True)
 
-        self.gridLayout.addWidget(self.logic_mod, 0, 3, 1, 1)
+        self.grid_for_logic.addWidget(self.logic_mod, 0, 3, 1, 1)
 
-        self.horizontalSpacer_4 = QSpacerItem(5, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.logic_spacer = QSpacerItem(5, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.gridLayout.addItem(self.horizontalSpacer_4, 0, 4, 1, 1)
+        self.grid_for_logic.addItem(self.logic_spacer, 0, 4, 1, 1)
 
-        self.horizontalSpacer = QSpacerItem(5, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.right_spacer = QSpacerItem(5, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.gridLayout.addItem(self.horizontalSpacer, 0, 5, 1, 1)
+        self.grid_for_logic.addItem(self.right_spacer, 0, 5, 1, 1)
 
         self.label_for_logic = QLabel(self.tab_for_settings)
         self.label_for_logic.setObjectName(u"label_for_logic")
         self.label_for_logic.setEnabled(True)
         self.label_for_logic.setMaximumSize(QSize(489, 16777215))
 
-        self.gridLayout.addWidget(self.label_for_logic, 0, 2, 1, 1)
+        self.grid_for_logic.addWidget(self.label_for_logic, 0, 2, 1, 1)
 
-        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.left_spacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.gridLayout.addItem(self.horizontalSpacer_2, 0, 1, 1, 1)
+        self.grid_for_logic.addItem(self.left_spacer, 0, 1, 1, 1)
 
         self.logic_desc = QLabel(self.tab_for_settings)
         self.logic_desc.setObjectName(u"logic_desc")
 
-        self.gridLayout.addWidget(self.logic_desc, 1, 2, 1, 3)
+        self.grid_for_logic.addWidget(self.logic_desc, 1, 2, 1, 3)
 
 
-        self.verticalLayout_2.addLayout(self.gridLayout)
+        self.verticalLayout_2.addLayout(self.grid_for_logic)
 
         self.group_for_locations = QGroupBox(self.tab_for_settings)
         self.group_for_locations.setObjectName(u"group_for_locations")
@@ -275,6 +275,28 @@ class Ui_MainWindow(object):
         self.group_for_settings_secondary.setObjectName(u"group_for_settings_secondary")
         self.gridLayout_3 = QGridLayout(self.group_for_settings_secondary)
         self.gridLayout_3.setObjectName(u"gridLayout_3")
+        self.layout_for_race_mode = QHBoxLayout()
+        self.layout_for_race_mode.setObjectName(u"layout_for_race_mode")
+        self.label_for_race_mode = QLabel(self.group_for_settings_secondary)
+        self.label_for_race_mode.setObjectName(u"label_for_race_mode")
+
+        self.layout_for_race_mode.addWidget(self.label_for_race_mode)
+
+        self.spacer_for_race_mode = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.layout_for_race_mode.addItem(self.spacer_for_race_mode)
+
+        self.race_mode = QComboBox(self.group_for_settings_secondary)
+        self.race_mode.addItem("")
+        self.race_mode.addItem("")
+        self.race_mode.addItem("")
+        self.race_mode.setObjectName(u"race_mode")
+
+        self.layout_for_race_mode.addWidget(self.race_mode)
+
+
+        self.gridLayout_3.addLayout(self.layout_for_race_mode, 2, 2, 1, 1)
+
         self.layout_for_num_dungeon_race_mode = QHBoxLayout()
         self.layout_for_num_dungeon_race_mode.setObjectName(u"layout_for_num_dungeon_race_mode")
         self.label_for_num_dungeon_race_mode = QLabel(self.group_for_settings_secondary)
@@ -311,11 +333,6 @@ class Ui_MainWindow(object):
 
 
         self.gridLayout_3.addLayout(self.layout_for_num_dungeon_race_mode, 2, 4, 1, 1)
-
-        self.race_mode = QCheckBox(self.group_for_settings_secondary)
-        self.race_mode.setObjectName(u"race_mode")
-
-        self.gridLayout_3.addWidget(self.race_mode, 2, 2, 1, 1)
 
         self.layout_for_starting_triforce_shards = QHBoxLayout()
         self.layout_for_starting_triforce_shards.setObjectName(u"layout_for_starting_triforce_shards")
@@ -367,9 +384,9 @@ class Ui_MainWindow(object):
 
         self.layout_for_sword.addWidget(self.label_for_sword_mode)
 
-        self.horizontalSpacer_22 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.spacer_for_sword_mode = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.layout_for_sword.addItem(self.horizontalSpacer_22)
+        self.layout_for_sword.addItem(self.spacer_for_sword_mode)
 
         self.sword_mode = QComboBox(self.group_for_settings_secondary)
         self.sword_mode.addItem("")
@@ -389,9 +406,9 @@ class Ui_MainWindow(object):
 
         self.layout_for_randomize_entrances.addWidget(self.label_for_randomize_entrances)
 
-        self.horizontalSpacer_19 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.spacer_for_randomize_entrances = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.layout_for_randomize_entrances.addItem(self.horizontalSpacer_19)
+        self.layout_for_randomize_entrances.addItem(self.spacer_for_randomize_entrances)
 
         self.randomize_entrances = QComboBox(self.group_for_settings_secondary)
         self.randomize_entrances.addItem("")
@@ -520,7 +537,7 @@ class Ui_MainWindow(object):
         self.gridLayout_6.setObjectName(u"gridLayout_6")
         self.randomize_music = QCheckBox(self.group_for_advanced)
         self.randomize_music.setObjectName(u"randomize_music")
-        self.randomize_music.setEnabled(False)
+        self.randomize_music.setEnabled(True)
 
         self.gridLayout_6.addWidget(self.randomize_music, 1, 2, 1, 1)
 
@@ -940,6 +957,7 @@ class Ui_MainWindow(object):
 
         self.tab_for_main.setCurrentIndex(0)
         self.logic_mod.setCurrentIndex(1)
+        self.race_mode.setCurrentIndex(0)
         self.custom_bck_entry.setCurrentIndex(1)
 
 
@@ -988,6 +1006,11 @@ class Ui_MainWindow(object):
         self.progression_submarines.setText(QCoreApplication.translate("MainWindow", u"Submarines", None))
         self.progression_free_gifts.setText(QCoreApplication.translate("MainWindow", u"Free Gifts", None))
         self.group_for_settings_secondary.setTitle(QCoreApplication.translate("MainWindow", u"Dungeon Randomization Options", None))
+        self.label_for_race_mode.setText(QCoreApplication.translate("MainWindow", u"Dungeon Mode", None))
+        self.race_mode.setItemText(0, QCoreApplication.translate("MainWindow", u"Default", None))
+        self.race_mode.setItemText(1, QCoreApplication.translate("MainWindow", u"Mixed", None))
+        self.race_mode.setItemText(2, QCoreApplication.translate("MainWindow", u"Race", None))
+
         self.label_for_num_dungeon_race_mode.setText(QCoreApplication.translate("MainWindow", u"Dungeon Number", None))
         self.num_dungeon_race_mode.setItemText(0, QCoreApplication.translate("MainWindow", u"1", None))
         self.num_dungeon_race_mode.setItemText(1, QCoreApplication.translate("MainWindow", u"2", None))
@@ -998,7 +1021,6 @@ class Ui_MainWindow(object):
         self.num_dungeon_race_mode.setItemText(6, QCoreApplication.translate("MainWindow", u"Random", None))
 
         self.num_dungeon_race_mode.setCurrentText(QCoreApplication.translate("MainWindow", u"1", None))
-        self.race_mode.setText(QCoreApplication.translate("MainWindow", u"Race Mode", None))
         self.label_for_num_starting_triforce_shards.setText(QCoreApplication.translate("MainWindow", u"Starting Triforce Shards", None))
         self.num_starting_triforce_shards.setItemText(0, QCoreApplication.translate("MainWindow", u"0", None))
         self.num_starting_triforce_shards.setItemText(1, QCoreApplication.translate("MainWindow", u"1", None))

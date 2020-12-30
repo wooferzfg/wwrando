@@ -1,0 +1,349 @@
+1:
+  Long Name: Forsaken Fortress
+  Short Name: Forsaken
+  Abbreviation: FFS
+  Hint: the rubble of Evil's lair
+  Stage: Room1.arc
+  Neighbors: 2, 8
+2:
+  Long Name: Star Island
+  Short Name: Star
+  Abbreviation: SaI
+  Hint: the stelar island
+  Stage: Room2.arc
+  Neighbors: 1, 3, 9
+3:
+  Long Name: Northern Fairy Island
+  Short Name: Northern Fairy
+  Abbreviation: NfI
+  Hint: the domain of the northern fairy
+  Stage: Room3.arc
+  Neighbors: 2, 4, 10
+4:
+  Long Name: Gale Isle
+  Short Name: Gale
+  Abbreviation: GaI
+  Hint: the home of the wind
+  Stage: Room4.arc
+  Neighbors: 3, 5, 11
+5:
+  Long Name: Crescent Moon Island
+  Short Name: Crescent
+  Abbreviation: CmI
+  Hint: the island shaped like a pastry
+  Stage: Room5.arc
+  Neighbors: 4, 6, 12
+6:
+  Long Name: Seven-Star Isles
+  Short Name: Seven-Star
+  Abbreviation: SsI
+  Hint: the inverted S
+  Stage: Room6.arc
+  Neighbors: 5, 7, 13
+7:
+  Long Name: Overlook Island
+  Short Name: Overlook
+  Abbreviation: OvI
+  Hint: the tall brick structures
+  Stage: Room7.arc
+  Neighbors: 6, 14
+
+8:
+  Long Name: Four-Eye Reef
+  Short Name: Four-Eye
+  Abbreviation: FoR
+  Hint: the four-eyed demon
+  Stage: Room8.arc
+  Neighbors: 1, 9, 15
+9:
+  Long Name: Mother and Child Isles
+  Short Name: Mother Child
+  Abbreviation: McI
+  Hint: the source of all fairies
+  Stage: Room9.arc
+  Neighbors: 2, 8, 10, 16
+10:
+  Long Name: Spectacle Island
+  Short Name: Spectacle
+  Abbreviation: SpI
+  Hint: the lensed peaks
+  Stage: Room10.arc
+  Neighbors: 3, 9, 11, 17
+11:
+  Long Name: Windfall Island
+  Short Name: Windfall
+  Abbreviation: WfI
+  Hint: the seaman's crossroads
+  Stage: Room11.arc
+  Neighbors: 4, 10, 12, 18
+12:
+  Long Name: Pawprint Isle
+  Short Name: Pawprint
+  Abbreviation: PpI
+  Hint: the pet's hand
+  Stage: Room12.arc
+  Neighbors: 5, 11, 13, 19
+13:
+  Long Name: Dragon Roost Island
+  Short Name: Dragon Roost
+  Abbreviation: DrI
+  Hint: the post office
+  Stage: Room13.arc
+  Neighbors: 6, 12, 14, 20
+14:
+  Long Name: Flight Control Platform
+  Short Name: Birdman
+  Abbreviation: FcP
+  Hint: the bird man contest
+  Stage: Room14.arc
+  Neighbors: 7, 13, 21
+
+15:
+  Long Name: Western Fairy Island
+  Short Name: Western Fairy
+  Abbreviation: WfI
+  Hint: the domain of the western fairy
+  Stage: Room15.arc
+  Neighbors: 8, 16, 22
+16:
+  Long Name: Rock Spire Isle
+  Short Name: Rock Spire
+  Abbreviation: RsI
+  Hint: the home of the masked shop seller
+  Stage: Room16.arc
+  Neighbors: 9, 15, 17, 23
+17:
+  Long Name: Tingle Island
+  Short Name: Tingle
+  Abbreviation: TiI
+  Hint: the island of greed
+  Stage: Room17.arc
+  Neighbors: 10, 16, 18, 24
+18:
+  Long Name: Northern Triangle Island
+  Short Name: Northern Triangle
+  Abbreviation: NtI
+  Hint: the Brawn island
+  Stage: Room18.arc
+  Neighbors: 11, 17, 19, 25
+19:
+  Long Name: Eastern Fairy Island
+  Short Name: Eastern Fairy
+  Abbreviation: EfI
+  Hint: the domain of the eastern fairy
+  Stage: Room19.arc
+  Neighbors: 12, 18, 20, 26
+20:
+  Long Name: Fire Mountain
+  Short Name: Fire Mountain
+  Abbreviation: FrM
+  Hint: the burning mountain
+  Stage: Room20.arc
+  Neighbors: 13, 19, 21, 27
+21:
+  Long Name: Star Belt Archipelago
+  Short Name: Star Belt
+  Abbreviation: SbA
+  Hint: Orion's island
+  Stage: Room21.arc
+  Neighbors: 14, 20, 28
+
+22:
+  Long Name: Three-Eye Reef
+  Short Name: Three-Eye
+  Abbreviation: ThR
+  Hint: the three-eyed demon
+  Stage: Room22.arc
+  Neighbors: 15, 23, 29
+23:
+  Long Name: Greatfish Isle
+  Short Name: Greatfish
+  Abbreviation: GfI
+  Hint: an island destroyed by Evil itself
+  Stage: Room23.arc
+  Neighbors: 16, 22, 24, 30
+24:
+  Long Name: Cyclops Reef
+  Short Name: Cyclops
+  Abbreviation: CpR
+  Hint: the hinox
+  Stage: Room24.arc
+  Neighbors: 17, 23, 25, 31
+25:
+  Long Name: Six-Eye Reef
+  Short Name: Six-Eye
+  Abbreviation: SeR
+  Hint: the six-eyed demon
+  Stage: Room25.arc
+  Neighbors: 18, 24, 26, 32
+26:
+  Long Name: Tower of the Gods
+  Short Name: Tower of the Gods
+  Abbreviation: ToG
+  Hint: a structure to test the hero
+  Stage: Room26.arc
+  Neighbors: 19, 25, 27, 33
+27:
+  Long Name: Eastern Triangle Island
+  Short Name: Eastern Triangle
+  Abbreviation: EtI
+  Hint: the Grit island
+  Stage: Room27.arc
+  Neighbors: 20, 26, 28, 34
+28:
+  Long Name: Thorned Fairy Island
+  Short Name: Thorned Fairy
+  Abbreviation: TfI
+  Hint: the domain of the thorned fairy
+  Stage: Room28.arc
+  Neighbors: 21, 27, 35
+
+29:
+  Long Name: Needle Rock Isle
+  Short Name: Needle Rock
+  Abbreviation: NrI
+  Hint: threading the needle
+  Stage: Room29.arc
+  Neighbors: 22, 30, 36
+30:
+  Long Name: Islet of Steel
+  Short Name: Steel Islet
+  Abbreviation: IoS
+  Hint: the iron fort
+  Stage: Room30.arc
+  Neighbors: 23, 29, 31, 37
+31:
+  Long Name: Stone Watcher Island
+  Short Name: Stone Watcher
+  Abbreviation: SwI
+  Hint: the gaze of stone eyes
+  Stage: Room31.arc
+  Neighbors: 24, 30, 32, 38
+32:
+  Long Name: Southern Triangle Island
+  Short Name: Southern Triangle
+  Abbreviation: StI
+  Hint: the Wise island
+  Stage: Room32.arc
+  Neighbors: 25, 31, 33, 39
+33:
+  Long Name: Private Oasis
+  Short Name: Oasis
+  Abbreviation: PrO
+  Hint: your island
+  Stage: Room33.arc
+  Neighbors: 26, 32, 34, 40
+34:
+  Long Name: Bomb Island
+  Short Name: Bomb
+  Abbreviation: BoI
+  Hint: the island shaped like an explosive
+  Stage: Room34.arc
+  Neighbors: 27, 33, 35, 41
+35:
+  Long Name: Bird's Peak Rock
+  Short Name: Bird
+  Abbreviation: BpR
+  Hint: the 5 diamond eggs
+  Stage: Room35.arc
+  Neighbors: 28, 34, 42
+
+36:
+  Long Name: Diamond Steppe Island
+  Short Name: Diamond Steppe
+  Abbreviation: DsI
+  Hint: the crystal rock
+  Stage: Room35.arc
+  Neighbors: 29, 37, 43
+37:
+  Long Name: Five-Eye Reef
+  Short Name: Five-Eye
+  Abbreviation: FiR
+  Hint: the five-eyed demon
+  Stage: Room37.arc
+  Neighbors: 30, 36, 38, 44
+38:
+  Long Name: Shark Island
+  Short Name: Shark
+  Abbreviation: ShI
+  Hint: the island of gyorg
+  Stage: Room38.arc
+  Neighbors: 31, 37, 39, 45
+39:
+  Long Name: Southern Fairy Island
+  Short Name: Southern Fairy
+  Abbreviation: SfI
+  Hint: the domain of the southern fairy
+  Stage: Room39.arc
+  Neighbors: 32, 38, 40, 46
+40:
+  Long Name: Ice Ring Isle
+  Short Name: Ice Ring
+  Abbreviation: IrI
+  Hint: the permafrost dragon
+  Stage: Room40.arc
+  Neighbors: 33, 39, 41, 47
+41:
+  Long Name: Forest Haven
+  Short Name: Forest Haven
+  Abbreviation: FrH
+  Hint: the home of the Forest Children
+  Stage: Room41.arc
+  Neighbors: 34, 40, 42, 48
+42:
+  Long Name: Cliff Plateau Isles
+  Short Name: Cliff Plateau
+  Abbreviation: CpI
+  Hint: the remains of a wooded plateau
+  Stage: Room42.arc
+  Neighbors: 35, 41, 49
+
+43:
+  Long Name: Horseshoe Island
+  Short Name: Horseshoe
+  Abbreviation: HsI
+  Hint: a place where you can play golf
+  Stage: Room43.arc
+  Neighbors: 36, 44
+44:
+  Long Name: Outset Island
+  Short Name: Outset
+  Abbreviation: OuI
+  Hint: the place of all beginnings
+  Stage: Room44.arc
+  Neighbors: 37, 43, 45
+45:
+  Long Name: Headstone Island
+  Short Name: Headstone
+  Abbreviation: HdI
+  Hint: the home of the earth
+  Stage: Room45.arc
+  Neighbors: 38, 44, 46
+46:
+  Long Name: Two-Eye Reef
+  Short Name: Two-Eye
+  Abbreviation: TwR
+  Hint: the two-eyed demon
+  Stage: Room46.arc
+  Neighbors: 39, 45, 47
+47:
+  Long Name: Angular Isles
+  Short Name: Angular
+  Abbreviation: AgI
+  Hint: an island made of blocks
+  Stage: Room47.arc
+  Neighbors: 40, 46, 48
+48:
+  Long Name: Boating Course
+  Short Name: Boating Course
+  Abbreviation: BtC
+  Hint: the island with a boat race
+  Stage: Room48.arc
+  Neighbors: 41, 47, 49
+49:
+  Long Name: Five-Star Isles
+  Short Name: Five-Star
+  Abbreviation: FsI
+  Hint: the remains of five isles
+  Stage: Room49.arc
+  Neighbors: 42, 48

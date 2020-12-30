@@ -1,4 +1,6 @@
-<inject Creator="DualVission" Type="Test CLI" Description="Test Logic Injection" Change="1" File="example.dv_im" Checksum="11">
+<inject Creator="DualVission" Type="Test CLI" Description="Test Logic Injection" Change="3" File="example.dv_im" Checksum="11">
 <comment Line="These are not actually possible, but this is to show how much can be done."/>
-<check Name="Hyrule - Master Sword Chamber" Mode="o" Need="Nothing" Types="Dungeons"/>
+<check Name="Hyrule - Master Sword Chamber" Mode="o" Need="Nothing"/>
+<check Name="Five-Star Isles - Sunken Treasure" Mode="o" Types="Island Puzzle"/>
+<check Name="Windfall Island - Jail - Maze Chest" Mode="o" Need="Picto Box" Types="Free Gift"/>
 </inject>

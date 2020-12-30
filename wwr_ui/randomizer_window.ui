@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>950</width>
-    <height>771</height>
+    <height>750</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -28,8 +28,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>932</width>
-         <height>637</height>
+         <width>944</width>
+         <height>753</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -114,7 +114,7 @@
              </layout>
             </item>
             <item>
-             <layout class="QGridLayout" name="gridLayout">
+             <layout class="QGridLayout" name="grid_for_logic">
               <item row="0" column="3">
                <widget class="QComboBox" name="logic_mod">
                 <property name="minimumSize">
@@ -168,7 +168,7 @@
                </widget>
               </item>
               <item row="0" column="4">
-               <spacer name="horizontalSpacer_4">
+               <spacer name="logic_spacer">
                 <property name="orientation">
                  <enum>Qt::Horizontal</enum>
                 </property>
@@ -181,7 +181,7 @@
                </spacer>
               </item>
               <item row="0" column="5">
-               <spacer name="horizontalSpacer">
+               <spacer name="right_spacer">
                 <property name="orientation">
                  <enum>Qt::Horizontal</enum>
                 </property>
@@ -210,7 +210,7 @@
                </widget>
               </item>
               <item row="0" column="1">
-               <spacer name="horizontalSpacer_2">
+               <spacer name="left_spacer">
                 <property name="orientation">
                  <enum>Qt::Horizontal</enum>
                 </property>
@@ -460,6 +460,52 @@
                <string>Dungeon Randomization Options</string>
               </property>
               <layout class="QGridLayout" name="gridLayout_3">
+               <item row="2" column="2">
+                <layout class="QHBoxLayout" name="layout_for_race_mode">
+                 <item>
+                  <widget class="QLabel" name="label_for_race_mode">
+                   <property name="text">
+                    <string>Dungeon Mode</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="spacer_for_race_mode">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <widget class="QComboBox" name="race_mode">
+                   <property name="currentIndex">
+                    <number>0</number>
+                   </property>
+                   <item>
+                    <property name="text">
+                     <string>Default</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Mixed</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Race</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
                <item row="2" column="4">
                 <layout class="QHBoxLayout" name="layout_for_num_dungeon_race_mode">
                  <item>
@@ -471,7 +517,7 @@
                     </sizepolicy>
                    </property>
                    <property name="text">
-                    <string>Dungeon Number</string>
+                    <string>Number of Dungeons</string>
                    </property>
                   </widget>
                  </item>
@@ -540,13 +586,6 @@
                   <widget class="QWidget" name="widget_9" native="true"/>
                  </item>
                 </layout>
-               </item>
-               <item row="2" column="2">
-                <widget class="QCheckBox" name="race_mode">
-                 <property name="text">
-                  <string>Race Mode</string>
-                 </property>
-                </widget>
                </item>
                <item row="1" column="4">
                 <layout class="QHBoxLayout" name="layout_for_starting_triforce_shards">
@@ -666,7 +705,7 @@
                   </widget>
                  </item>
                  <item>
-                  <spacer name="horizontalSpacer_22">
+                  <spacer name="spacer_for_sword_mode">
                    <property name="orientation">
                     <enum>Qt::Horizontal</enum>
                    </property>
@@ -709,7 +748,7 @@
                   </widget>
                  </item>
                  <item>
-                  <spacer name="horizontalSpacer_19">
+                  <spacer name="spacer_for_randomize_entrances">
                    <property name="orientation">
                     <enum>Qt::Horizontal</enum>
                    </property>
@@ -967,7 +1006,7 @@
                <item row="1" column="2">
                 <widget class="QCheckBox" name="randomize_music">
                  <property name="enabled">
-                  <bool>false</bool>
+                  <bool>true</bool>
                  </property>
                  <property name="text">
                   <string>Randomize Music</string>
