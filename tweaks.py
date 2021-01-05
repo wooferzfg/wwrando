@@ -417,6 +417,7 @@ def make_sail_behave_like_swift_sail(self):
   sorlDict = OrderedDict()
   swiftDict = OrderedDict()
   solpDict = OrderedDict()
+  flatDict = OrderedDict()
 
   sorlDict["Preface"] = "sail of red lions"
   sorlDict["Name"] = "Sail of Red Lions"
@@ -429,6 +430,10 @@ def make_sail_behave_like_swift_sail(self):
   solpDict["Preface"] = "sail of lions pride"
   solpDict["Name"] = "Sail of Lions' Pride"
   sailDict["Sail of Lions' Pride"] = solpDict
+
+  flatDict["Preface"] = "flat"
+  flatDict["Name"] = "Emblem to Nothing"
+  sailDict["Emblem to Nothing"] = flatDict
 
   sail_color = self.options.get("sail_color")
 
@@ -986,7 +991,7 @@ def update_savage_labyrinth_hint_tablet(self):
     max_line_length=43
   )
 
-def update_randomly_chosen_hints(self):
+def randomize_and_update_hints(self):
   hints = []
   unique_items_given_hint_for = []
   possible_item_locations = list(self.logic.done_item_locations.keys())

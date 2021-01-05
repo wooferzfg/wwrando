@@ -31,7 +31,12 @@ def randomize_starting_island(self):
     for island_index in limit_list:
       possible_starting_islands.remove(island_index)
 
-  starting_island_room_index = self.rng.choice(possible_starting_islands)
+  while True:
+    starting_island_room_index = self.rng.choice(possible_starting_islands)
+    if(self.banned_island_locales[starting_island_room_index-1]):
+      break
+    else:
+      continue
 
   if not self.dry_run:
     tweaks.set_new_game_starting_room_index(self, starting_island_room_index)
@@ -52,7 +57,6 @@ def get_starting_island(self,starting_island_room_index):
   starting_island_name = island_data[starting_island_room_index]["Long Name"]
   neighbor_index = (island_data[starting_island_room_index]["Neighbors"]).split(", ")
   island_macro = "Can Travel to {}".format(starting_island_name)
-  req_string = "Nothing"
   req_string = "Nothing"
   self.set_macro(island_macro, req_string)
   req_string = "| ({} & Can Sail)".format(island_macro)

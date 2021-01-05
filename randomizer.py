@@ -303,6 +303,34 @@ class Randomizer:
     self.custom_model_name = "Link"
     self.using_custom_sail_texture = False
 
+    self.banned_island_locales = [
+      self.options.get("locale_ff"), self.options.get("locale_star"), self.options.get("locale_northern_fairy"), self.options.get("locale_gale"), self.options.get("locale_crescent"), self.options.get("locale_seven_star"), self.options.get("locale_overlook"),
+      self.options.get("locale_four_eye"), self.options.get("locale_mother_child"), self.options.get("locale_spectacle"), self.options.get("locale_windfall"), self.options.get("locale_pawprint"), self.options.get("locale_dragon_roost_island"), self.options.get("locale_flight_control"),
+      self.options.get("locale_western_fairy"), self.options.get("locale_rock_spire"), self.options.get("locale_tingle"), self.options.get("locale_northern_triangle"), self.options.get("locale_eastern_fairy"), self.options.get("locale_fire_mountain"), self.options.get("locale_star_belt"),
+      self.options.get("locale_three_eye"), self.options.get("locale_greatfish"), self.options.get("locale_cyclops"), self.options.get("locale_six_eye"), self.options.get("locale_totg"), self.options.get("locale_eastern_triangle"), self.options.get("locale_thorned_fairy"),
+      self.options.get("locale_needle_rock"), self.options.get("locale_islet"), self.options.get("locale_stone_watcher"), self.options.get("locale_southern_triangle"), self.options.get("locale_private_oasis"), self.options.get("locale_bomb"), self.options.get("locale_birds_peak"),
+      self.options.get("locale_diamond_steppe"), self.options.get("locale_five_eye"), self.options.get("locale_shark"), self.options.get("locale_southern_fairy"), self.options.get("locale_ice_ring"), self.options.get("locale_forest_haven"), self.options.get("locale_cliff_plateau"),
+      self.options.get("locale_horseshoe"), self.options.get("locale_outset"), self.options.get("locale_headstone"), self.options.get("locale_two_eye"), self.options.get("locale_angular"), self.options.get("locale_boating_course"), self.options.get("locale_five_star")
+    ]
+
+    self.banned_dungeon_locales = [
+      self.options.get("locale_drc"),  self.options.get("locale_deep_drc"),
+      self.options.get("locale_fw"),   self.options.get("locale_deep_fw"),
+      self.options.get("locale_totg"), self.options.get("locale_deep_totg"),
+      self.options.get("locale_ff"),   False,
+      self.options.get("locale_et"),   self.options.get("locale_deep_et"),
+      self.options.get("locale_wt"),   self.options.get("locale_deep_wt")
+    ]
+
+    self.banned_misc_locales = [
+      self.options.get("locale_great_sea"),
+      self.options.get("locale_battlesquid"),
+      self.options.get("locale_mail"),
+      self.options.get("locale_under_great_sea"),
+      self.options.get("locale_savage"),
+    ]
+
+
     self.logic = Logic(self)
 
     num_progress_locations = self.logic.get_num_progression_locations()
@@ -384,52 +412,58 @@ class Randomizer:
     yield("Randomizing...", options_completed)
 
     if self.options.get("randomize_charts"):
+      self.reset_rng()
       charts.randomize_charts(self)
 
     options_completed += 1
     yield("Randomizing...", options_completed)
 
     if self.options.get("randomize_starting_island"):
+      self.reset_rng()
       self.island_number = starting_island.randomize_starting_island(self)
     else:
+      self.reset_rng()
       self.island_number = 44
 
     options_completed += 1
     yield("Randomizing...", options_completed)
 
     if self.options.get("randomize_entrances") not in ["Disabled", None]:
+      self.reset_rng()
       entrances.randomize_entrances(self)
 
     options_completed += 1
     yield("Randomizing...", options_completed)
 
     if self.options.get("randomize_music"):
+      self.reset_rng()
       music.randomize_music(self)
 
     options_completed += 1
 
     # Enemies must be randomized before items in order for the enemy logic to properly take into account what items you do and don't start with.
     if self.options.get("randomize_enemies"):
+      self.reset_rng()
       yield("Randomizing enemy locations...", options_completed)
       enemies.randomize_enemies(self)
       options_completed += 2
 
     if self.options.get("randomize_enemy_palettes"):
+      self.reset_rng()
       yield("Randomizing enemy colors...", options_completed)
       palettes.randomize_enemy_palettes(self)
       options_completed += 2
 
-    # Reset RNG before doing item randomization so other randomization options don't affect item layout.
-    self.rng = self.get_new_rng()
-
     yield("Randomizing items...", options_completed)
     if self.randomize_items:
+      self.reset_rng()
       items.randomize_items(self)
 
     options_completed += 2
 
     yield("Saving items...", options_completed)
     if self.randomize_items and not self.dry_run:
+      self.reset_rng()
       items.write_changed_items(self)
 
     options_completed += 1
@@ -529,7 +563,7 @@ class Randomizer:
       tweaks.update_battlesquid_item_names(self)
       tweaks.update_item_names_in_letter_advertising_rock_spire_shop(self)
       tweaks.update_savage_labyrinth_hint_tablet(self)
-      tweaks.update_randomly_chosen_hints(self)
+      #tweaks.update_randomly_chosen_hints(self)
     tweaks.show_quest_markers_on_sea_chart_for_dungeons(self, dungeon_names=self.race_mode_required_dungeons)
     tweaks.prevent_fire_mountain_lava_softlock(self)
 
@@ -847,6 +881,9 @@ class Randomizer:
       for i in range(1, 100):
         rng.getrandbits(i)
     return rng
+
+  def reset_rng(self):
+    self.rng = self.get_new_rng()
 
   def calculate_playthrough_progression_spheres(self):
     progression_spheres = []

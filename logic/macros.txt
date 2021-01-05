@@ -207,6 +207,8 @@ Can Access Secret Cave Entrance on Diamond Steppe Island:
     | (
       Glitched Logic
       & Wind Waker
+      & Can Sail
+      & Option "swift_sail" Enabled
     )
   ) & Can Travel to Diamond Steppe Island
 Can Access Secret Cave Entrance on Bomb Island:
@@ -643,6 +645,7 @@ Can Defeat Twelve-Eye Octos:
   Progressive Bow x3
   | Bombs
   | Boomerang
+  | (Progressive Bow x1 & Complex Logic)
   # Hookshot can technically damage Big Octos, but it only reaches at the end when your time limit is almost up.
 Can Defeat Red Bubbles:
   Progressive Sword x1
@@ -921,11 +924,11 @@ Not Secret Cave Entrance Rando:
   | Option "randomize_entrances" Is "Dungeons"
 
 Can DRC Backward:
-  Complex Logic
+  Glitched Logic
   & Progressive Bow x1
   & DRC Small Key x1
 Can Burn Pallet Door:
-  Complex Logic
+  Glitched Logic
   & (
     Bombs
     | Progressive Bow x2
@@ -1038,6 +1041,10 @@ Can Travel to Northern Fairy Island:
   )
   | Can Travel to any Island
 
+Can Travel to Northern Fairy Island Sub:
+  (Can Travel to Northern Fairy Island & Can Sail)
+  | Can Travel to any Island
+
 Can Travel to Gale Isle:
   (
     Can Travel to Windfall Island
@@ -1054,6 +1061,10 @@ Can Travel to Crescent Moon Island:
     Can Travel to Dragon Roost Island
     & Can Sail
   )
+  | Can Travel to any Island
+
+Can Travel to Crescent Moon Island Sub:
+  (Can Travel to Crescent Moon Island & Can Sail)
   | Can Travel to any Island
 
 Can Travel to Seven-Star Isles:
@@ -1118,6 +1129,9 @@ Can Travel to Flight Control Platform:
   )
   | Can Travel to any Island
 
+Can Travel to Flight Control Platform Sub:
+  (Can Travel to Flight Control Platform & Can Sail)
+  | Can Travel to any Island
 
 Can Travel to Western Fairy Island:
   (
@@ -1284,6 +1298,10 @@ Can Travel to Bomb Island:
   )
   | Can Travel to any Island
 
+Can Travel to Bomb Island Sub:
+  (Can Travel to Bomb Island & Can Sail)
+  | Can Travel to any Island
+
 Can Travel to Bird's Peak Rock:
   (
     Can Travel to Tower of the Gods
@@ -1358,6 +1376,10 @@ Can Travel to Headstone Island:
   )
   | Can Travel to any Island
 
+Can Travel to Headstone Island Sub:
+  (Can Travel to Headstone Island & Can Sail)
+  | Can Travel to any Island
+
 Can Travel to Two-Eye Reef:
   (
     Can Travel to Southern Fairy Island
@@ -1388,6 +1410,10 @@ Can Travel to Five-Star Isles:
     Can Travel to Forest Haven
     & Can Sail
   )
+  | Can Travel to any Island
+
+Can Travel to Five-Star Isles Sub:
+  (Can Travel to Five-Star Isles & Can Sail)
   | Can Travel to any Island
 
 Can Travel to Postbox:

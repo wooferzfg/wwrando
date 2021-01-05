@@ -314,7 +314,7 @@ class Logic:
 
     self.currently_owned_items.remove(cleaned_item_name)
 
-    if item_name in self.all_progress_items:
+    if self.all_progress_items.count(item_name) > self.unplaced_progress_items.count(item_name):
       self.unplaced_progress_items.append(item_name)
     elif item_name in self.all_nonprogress_items:
       self.unplaced_nonprogress_items.append(item_name)
@@ -507,52 +507,60 @@ class Logic:
   @staticmethod
   def filter_locations_for_progression_static(locations_to_filter, item_locations, options, filter_sunken_treasure=False):
     filtered_locations = []
+    typeDict = OrderedDict([
+      ("No progression", False),
+      ("Farmable", False),
+      ("Dungeon", options.get("progression_dungeons")),
+      ("Puzzle Secret Cave", options.get("progression_puzzle_secret_caves")),
+      ("Mixed Secret Cave", options.get("progression_mixed_secret_caves")),
+      ("Combat Secret Cave", options.get("progression_combat_secret_caves")),
+      ("Tingle Chest", options.get("progression_tingle_chests")),
+      ("Great Fairy", options.get("progression_great_fairies")),
+      ("Island Puzzle", options.get("progression_island_puzzles")),
+      ("Long Combat Trial", options.get("progression_long_combat_trials")),
+      ("Short Sidequest", options.get("progression_short_sidequests")),
+      ("Long Sidequest", options.get("progression_long_sidequests")),
+      ("Spoils Trading", options.get("progression_spoils_trading")),
+      ("Platform", options.get("progression_platforms_rafts")),
+      ("Raft", options.get("progression_platforms_rafts")),
+      ("Short Minigame", options.get("progression_short_minigames")),
+      ("Long Minigame", options.get("progression_long_minigames")),
+      ("Expensive Purchase", options.get("progression_expensive_purchases")),
+      ("Big Octo", options.get("progression_big_octos_gunboats"),
+      ("Gunboat", options.get("progression_big_octos_gunboats")),
+      ("Submarine", options.get("progression_submarines")),
+      ("Eye Reef Chest", options.get("progression_eye_reef_chests")),
+      ("Free Gift", options.get("progression_free_gifts")),
+      ("Other Chest", options.get("progression_misc")),
+      ("Misc", options.get("progression_misc")),
+      ("Sunken Treasure", not filter_sunken_treasure)
+    ])
+
+    islandDict = OrderedDict()
+    with open(os.path.join(DATA_PATH, "island_data.txt")) as f:
+      island_data = yaml.load(f, YamlOrderedDictLoader)
+    for island in island_data:
+      islandDict[island_data[island]["Long Name"]] = island_data[island]["Locale Setting"]
+
     for location_name in locations_to_filter:
       types = item_locations[location_name]["Types"]
-      if "No progression" in types:
+      locales = item_locations[location_name]["Locale"]
+      changed = False
+      for typeName in types:
+        if( not typeDict[typeName] ):
+          changed = True
+          break
         continue
-      if "Dungeon" in types and not options.get("progression_dungeons"):
+      if( changed == True ):
         continue
-      if "Tingle Chest" in types and not options.get("progression_tingle_chests"):
+      for locale in locales:
+        if( options.get(islandDict[locale]) ):
+          changed = True
+          break
         continue
-      if "Great Fairy" in types and not options.get("progression_great_fairies"):
+      if( changed == True ):
         continue
-      if "Puzzle Secret Cave" in types and not options.get("progression_puzzle_secret_caves"):
-        continue
-      if "Combat Secret Cave" in types and not options.get("progression_combat_secret_caves"):
-        continue
-      if "Savage Labyrinth" in types and not options.get("progression_savage_labyrinth"):
-        continue
-      if "Short Sidequest" in types and not options.get("progression_short_sidequests"):
-        continue
-      if "Long Sidequest" in types and not options.get("progression_long_sidequests"):
-        continue
-      if "Spoils Trading" in types and not options.get("progression_spoils_trading"):
-        continue
-      if "Minigame" in types and not options.get("progression_minigames"):
-        continue
-      if "Battlesquid" in types and not options.get("progression_battlesquid"):
-        continue
-      if "Free Gift" in types and not options.get("progression_free_gifts"):
-        continue
-      if "Mail" in types and not options.get("progression_mail"):
-        continue
-      if ("Platform" in types or "Raft" in types) and not options.get("progression_platforms_rafts"):
-        continue
-      if "Submarine" in types and not options.get("progression_submarines"):
-        continue
-      if "Eye Reef Chest" in types and not options.get("progression_eye_reef_chests"):
-        continue
-      if ("Big Octo" in types or "Gunboat" in types) and not options.get("progression_big_octos_gunboats"):
-        continue
-      if "Expensive Purchase" in types and not options.get("progression_expensive_purchases"):
-        continue
-      if "Island Puzzle" in types and not options.get("progression_island_puzzles"):
-        continue
-      if ("Other Chest" in types or "Misc" in types) and not options.get("progression_misc"):
-        continue
-      if "Sunken Treasure" in types and filter_sunken_treasure:
-        continue
+
       # Note: The Triforce/Treasure Chart sunken treasures are handled differently from other types.
       # During randomization they are handled by not considering the charts themselves to be progress items.
       # That results in the item randomizer considering these locations inaccessible until after all progress items are placed.
@@ -645,9 +653,20 @@ class Logic:
       types = [type.strip() for type in types]
       item_locations[location_name]["Types"] = types
 
+      locales_string = item_locations[location_name]["Locale"]
+      locales = locales_string.split(",")
+      locales = [locale.strip() for locale in locales]
+      item_locations[location_name]["Locale"] = locales
+
     logic_mod = get_logic_mod(logic)
 
-    if(logic_mod!="standard" and logic_mod!="other"):
+    standardized_logics=["standard","glitched_easy.txt","glitched_medium.txt"]
+
+    standard_atypical_logics=["other","no_logic.txt"]
+
+    standard_logics=(standardized_logics.copy()+standard_atypical_logics.copy())
+
+    if(logic_mod not in standard_logics):
       with open(os.path.join(TRICK_PATH, logic_mod)) as g:
         modify_locations = yaml.load(g, YamlOrderedDictLoader)
       for modification_name in modify_locations:
@@ -668,6 +687,16 @@ class Logic:
 
         modify_data = modify_logic_data(argument=item_locations[modification_name],definition=modify_locations[modification_name])
         item_locations[modification_name] = modify_data
+
+    elif(logic_mod=="no_logic.txt"):
+      i = 0
+      for location_name in item_locations:
+        i+=1
+        try:
+          item_locations[location_name]["Need"] = Logic.parse_logic_expression("Nothing")
+        except:
+          print("An error occurred with this location, {}: {}. Will use Lunatic Logic instead.".format(i,item_locations[location_name]))
+          pass
 
     elif(logic_mod=="other"):
       custom_logic_names = xfx.get_all_custom_logic()
@@ -781,11 +810,18 @@ class Logic:
       filter_sunken_treasure=filter_sunken_treasure
     )
 
-    useful_items = []
+    items_needed = OrderedDict()
     for location_name in progress_locations:
       requirement_expression = self.item_locations[location_name]["Need"]
       useful_items += self.get_item_names_from_logical_expression_req(requirement_expression)
-    useful_items += self.get_item_names_by_req_name("Can Reach and Defeat Ganondorf")
+      sub_items_needed = self.get_items_needed_from_logical_expression_req(requirement_expression)
+    for item_name, num_required in sub_items_needed.items():
+      items_needed[item_name] = max(num_required, items_needed.setdefault(item_name, 0))
+    sub_items_needed = self.get_items_needed_by_req_name("Can Reach and Defeat Ganondorf")
+    for item_name, num_required in sub_items_needed.items():
+      items_needed[item_name] = max(num_required, items_needed.setdefault(item_name, 0))
+
+    useful_items = self.flatten_items_needed_to_item_names(items_needed)
 
     all_progress_items_filtered = []
     for item_name in useful_items:
@@ -796,20 +832,26 @@ class Logic:
       if item_name not in self.all_progress_items:
         if not (item_name.startswith("Triforce Chart ") or item_name.startswith("Treasure Chart")):
           raise Exception("Item %s opens up progress locations but is not in the list of all progress items." % item_name)
-      if item_name in all_progress_items_filtered:
-        # Avoid duplicates
-        continue
+
       all_progress_items_filtered.append(item_name)
 
-    items_to_make_nonprogress = [
-      item_name for item_name in self.all_progress_items
-      if item_name not in all_progress_items_filtered
-      and item_name not in self.currently_owned_items
-    ] #FOR LATER: HARD VS SOFT REQUIRED (REMAINING ITEMS)
-    for item_name in items_to_make_nonprogress:
+    all_items_to_make_nonprogress = self.all_progress_items.copy()
+    starting_items_to_remove = self.rando.starting_items.copy()
+    for item_name in all_progress_items_filtered:
+      all_items_to_make_nonprogress.remove(item_name)
+      if item_name in starting_items_to_remove:
+        starting_items_to_remove.remove(item_name)
+    unplaced_items_to_make_nonprogress = all_items_to_make_nonprogress.copy()
+    for item_name in starting_items_to_remove:
+      if item_name not in self.all_progress_items:
+        continue
+      unplaced_items_to_make_nonprogress.remove(item_name)
+
+    for item_name in all_items_to_make_nonprogress:
       #print(item_name)
       self.all_progress_items.remove(item_name)
       self.all_nonprogress_items.append(item_name)
+    for item_name in unplaced_items_to_make_nonprogress:
       self.unplaced_progress_items.remove(item_name)
       self.unplaced_nonprogress_items.append(item_name)
 
