@@ -1,11 +1,8 @@
 #Created by LeanusCrain/CrainWWR
-Outset Island - Orca - Hit 500 Times:
-  Mode: o
-  Types: Long Sidequests, Misc, Minigames
 Windfall Island - Kane - Place Six Idols on Gate:
+  Mode: o
   Need: Rescued Aryll & Delivery Bag
-  Original item: Red Rupee
-  Types: Long Sidequests, Expensive Purchases, Misc
+  Types: Long Sidequest, Expensive Purchases, Misc
 Mailbox - Beedle's Silver Membership Reward:
   Mode: o
   Types: Mail, Expensive Purchases, Short Sidequests, Misc

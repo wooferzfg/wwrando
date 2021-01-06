@@ -112,259 +112,259 @@ OPTIONS = OrderedDict([
 
   (
     "locale_drc",
-    "Disables all item locations in Dragon Roost Cavern.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in Dragon Roost Cavern.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_deep_drc",
-    "Disables all item locations deep inside Dragon Roost Cavern.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations deep inside Dragon Roost Cavern.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_fw",
-    "Disables all item locations in Forbidden Woods.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in Forbidden Woods.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_deep_fw",
-    "Disables all item locations deep inside Forbidden Woods.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations deep inside Forbidden Woods.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_totg",
-    "Disables all item locations in or around Tower of the Gods.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Tower of the Gods.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_deep_totg",
-    "Disables all item locations deep inside Tower of the Gods.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations deep inside Tower of the Gods.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_ff",
-    "Disables all item locations in or around Forsaken Fortress.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Forsaken Fortress.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_et",
-    "Disables all item locations in Earth Temple.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in Earth Temple.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_deep_et",
-    "Disables all item locations deep inside Earth Temple.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations deep inside Earth Temple.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_wt",
-    "Disables all item locations in Wind Temple.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in Wind Temple.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_deep_wt",
-    "Disables all item locations deep inside Wind Temple.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations deep inside Wind Temple.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
 
   (
     "locale_star",
-    "Disables all item locations in or around Star Island.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Star Island.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_northern_fairy",
-    "Disables all item locations in or around Northern Fairy Island.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Northern Fairy Island.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_gale",
-    "Disables all item locations in or around Gale Isle.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Gale Isle.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_crescent",
-    "Disables all item locations in or around Crescent Moon Island.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Crescent Moon Island.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_seven_star",
-    "Disables all item locations in or around Seven-Star Isles.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Seven-Star Isles.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_overlook",
-    "Disables all item locations in or around Overlook Island.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Overlook Island.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_four_eye",
-    "Disables all item locations in or around Four-Eye Reef.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Four-Eye Reef.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_mother_child",
-    "Disables all item locations in or around Mother and Child Isles.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Mother and Child Isles.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_spectacle",
-    "Disables all item locations in or around Spectacle Island.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Spectacle Island.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_windfall",
-    "Disables all item locations in or around Windfall Island.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Windfall Island.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_pawprint",
-    "Disables all item locations in or around Pawprint Isle.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Pawprint Isle.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_dragon_roost_island",
-    "Disables all item locations in or around Dragon Roost Island.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Dragon Roost Island.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_flight_control",
-    "Disables all item locations in or around Flight Control Platform.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Flight Control Platform.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_western_fairy",
-    "Disables all item locations in or around Western Fairy Island.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Western Fairy Island.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_rock_spire",
-    "Disables all item locations in or around Rock Spire Isle.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Rock Spire Isle.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_tingle",
-    "Disables all item locations in or around Tingle Island.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Tingle Island.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_northern_triangle",
-    "Disables all item locations in or around Northern Triangle Island.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Northern Triangle Island.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_eastern_fairy",
-    "Disables all item locations in or around Eastern Fairy Island.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Eastern Fairy Island.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_fire_mountain",
-    "Disables all item locations in or around Fire Mountain.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Fire Mountain.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_star_belt",
-    "Disables all item locations in or around Star Belt Archipelago.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Star Belt Archipelago.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_three_eye",
-    "Disables all item locations in or around Three-Eye Reef.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Three-Eye Reef.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_greatfish",
-    "Disables all item locations in or around Greatfish Isle.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Greatfish Isle.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_cyclops",
-    "Disables all item locations in or around Cyclops Reef.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Cyclops Reef.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_six_eye",
-    "Disables all item locations in or around Six-Eye Reef.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Six-Eye Reef.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_eastern_triangle",
-    "Disables all item locations in or around Eastern Triangle Island.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Eastern Triangle Island.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_thorned_fairy",
-    "Disables all item locations in or around Thorned Fairy Island.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Thorned Fairy Island.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_needle_rock",
-    "Disables all item locations in or around Needle Rock Isle.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Needle Rock Isle.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_islet",
-    "Disables all item locations in or around Islet of Steel.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Islet of Steel.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_stone_watcher",
-    "Disables all item locations in or around Stone Watcher Island.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Stone Watcher Island.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_southern_triangle",
-    "Disables all item locations in or around Southern Triangle Island.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Southern Triangle Island.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_private_oasis",
-    "Disables all item locations in or around Private Oasis.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Private Oasis.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_bomb",
-    "Disables all item locations in or around Bomb Island.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Bomb Island.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_birds_peak",
-    "Disables all item locations in or around Bird's Peak Rock.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Bird's Peak Rock.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_diamond_steppe",
-    "Disables all item locations in or around Diamond Steppe Island.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Diamond Steppe Island.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_five_eye",
-    "Disables all item locations in or around Five-Eye Reef.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Five-Eye Reef.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_shark",
-    "Disables all item locations in or around Shark Island.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Shark Island.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_southern_fairy",
-    "Disables all item locations in or around Southern Fairy Island.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Southern Fairy Island.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_ice_ring",
-    "Disables all item locations in or around Ice Ring Isle.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Ice Ring Isle.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_forest_haven",
-    "Disables all item locations in or around Forest Haven.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Forest Haven.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_cliff_plateau",
-    "Disables all item locations in or around Cliff Plateau Isles.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Cliff Plateau Isles.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_horseshoe",
-    "Disables all item locations in or around Horseshoe Island.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Horseshoe Island.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_outset",
-    "Disables all item locations in or around Outset Island.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Outset Island.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_headstone",
-    "Disables all item locations in or around Headstone Island.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Headstone Island.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
 
   (
     "locale_two_eye",
-    "Disables all item locations in or around Two-Eye Reef.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Two-Eye Reef.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_angular",
-    "Disables all item locations in or around Angular Isle.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Angular Isle.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_boating_course",
-    "Disables all item locations in or around Boating Course.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Boating Course.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_five_star",
-    "Disables all item locations in or around Five-Star Isles.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in or around Five-Star Isles.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
 
 
   (
     "locale_great_sea",
-    "Disables all item locations without a single map location.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations without a single map location.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_under_great_sea",
-    "Disables all item locations in Hyrule Castle or the Gerudo Desert.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in Hyrule Castle or the Gerudo Desert.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_battlesquid",
-    "Disables all item locations associated with Battlesquids/Sploosh Kaboom.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations associated with Battlesquids/Sploosh Kaboom.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_savage",
-    "Disables all item locations in Savage Labyrinth.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in Savage Labyrinth.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "locale_mail",
-    "Disables all item locations in the mailbox.<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Disables all item locations in the mailbox.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
 
 

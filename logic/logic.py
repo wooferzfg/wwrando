@@ -9,8 +9,8 @@ from class_ms import YamlOrderedDictLoader
 
 import os
 
-from logic.item_types import PROGRESS_ITEMS, NONPROGRESS_ITEMS, CONSUMABLE_ITEMS, DUPLICATABLE_CONSUMABLE_ITEMS, DUNGEON_PROGRESS_ITEMS, DUNGEON_NONPROGRESS_ITEMS, CONVENIENCE_ITEMS, XTRA_ITEMS, HEALTH_ITEMS
-from paths import LOGIC_PATH, TRICK_PATH,TYPE_PATH
+from logic.item_types import *
+from paths import LOGIC_PATH, TRICK_PATH, TYPE_PATH, DATA_PATH
 from randomizers import entrances, starting_island
 from tweaks import *
 import wwr_ui.options
@@ -139,11 +139,24 @@ class Logic:
       self.all_nonprogress_items += self.treasure_chart_names
 
     # Add dungeon items to the progress/nonprogress items lists.
+    possible_dungeon_items = POSSIBLE_DUNGEON_PROGRESS_ITEMS.copy()
+    dungeon_progress = DUNGEON_PROGRESS_ITEMS.copy()
+    non_dungeon_progress = DUNGEON_NONPROGRESS_ITEMS.copy()
     if self.rando.options.get("progression_dungeons"):
-      self.all_progress_items += DUNGEON_PROGRESS_ITEMS
+      quick_dungeon_list = ["Dragon Roost Cavern","","Forbidden Woods","","Tower of the Gods","","Forsaken Fortress","","Earth Temple","","Wind Temple"]
+      for dungeon in possible_dungeon_items:
+        num = quick_dungeon_list.index(dungeon)
+        banned_regular = self.rando.banned_dungeon_locales[num]
+        if(banned_regular):
+          non_dungeon_progress += possible_dungeon_items[dungeon]
+        else:
+          dungeon_progress += possible_dungeon_items[dungeon]
     else:
-      self.all_nonprogress_items += DUNGEON_PROGRESS_ITEMS
-    self.all_nonprogress_items += DUNGEON_NONPROGRESS_ITEMS
+      for dungeon in possible_dungeon_items:
+        non_dungeon_progress += possible_dungeon_items[dungeon]
+    self.all_progress_items += dungeon_progress
+    self.all_nonprogress_items += non_dungeon_progress
+    self.possible_dungeon_progress = dungeon_progress + non_dungeon_progress
 
     # Tell the randomizer to register dungeon-specific item names as the normal items.
     for dungeon_item_name in (DUNGEON_PROGRESS_ITEMS + DUNGEON_NONPROGRESS_ITEMS):
@@ -403,7 +416,7 @@ class Logic:
     item_names_for_all_locations = []
     for location_name in inaccessible_undone_item_locations:
       requirement_expression = self.item_locations[location_name]["Need"]
-      print(location_name)
+      #print(location_name)
       item_names_for_loc = self.get_item_names_from_logical_expression_req(requirement_expression)
       item_names_for_all_locations.append(item_names_for_loc)
     item_names_to_beat_game = self.get_item_names_by_req_name("Can Reach and Defeat Ganondorf")
@@ -526,7 +539,7 @@ class Logic:
       ("Short Minigame", options.get("progression_short_minigames")),
       ("Long Minigame", options.get("progression_long_minigames")),
       ("Expensive Purchase", options.get("progression_expensive_purchases")),
-      ("Big Octo", options.get("progression_big_octos_gunboats"),
+      ("Big Octo", options.get("progression_big_octos_gunboats")),
       ("Gunboat", options.get("progression_big_octos_gunboats")),
       ("Submarine", options.get("progression_submarines")),
       ("Eye Reef Chest", options.get("progression_eye_reef_chests")),
@@ -813,10 +826,9 @@ class Logic:
     items_needed = OrderedDict()
     for location_name in progress_locations:
       requirement_expression = self.item_locations[location_name]["Need"]
-      useful_items += self.get_item_names_from_logical_expression_req(requirement_expression)
       sub_items_needed = self.get_items_needed_from_logical_expression_req(requirement_expression)
-    for item_name, num_required in sub_items_needed.items():
-      items_needed[item_name] = max(num_required, items_needed.setdefault(item_name, 0))
+      for item_name, num_required in sub_items_needed.items():
+        items_needed[item_name] = max(num_required, items_needed.setdefault(item_name, 0))
     sub_items_needed = self.get_items_needed_by_req_name("Can Reach and Defeat Ganondorf")
     for item_name, num_required in sub_items_needed.items():
       items_needed[item_name] = max(num_required, items_needed.setdefault(item_name, 0))
@@ -827,8 +839,17 @@ class Logic:
     for item_name in useful_items:
       if item_name == "Progressive Sword" and self.rando.options.get("sword_mode") == "Swordless":
         continue
-      if self.is_dungeon_item(item_name) and not self.rando.options.get("progression_dungeons"):
-        continue
+      if self.is_dungeon_item(item_name):
+        short_dungeon_name = item_name.split(" ")[0]
+        dungeon_name = self.DUNGEON_NAMES[short_dungeon_name]
+        quick_dungeon_list = ["Dragon Roost Cavern","","Forbidden Woods","","Tower of the Gods","","Forsaken Fortress","","Earth Temple","","Wind Temple"]
+        num = quick_dungeon_list.index(dungeon_name)
+        banned_regular = self.rando.banned_dungeon_locales[num]
+        banned_deep = self.rando.banned_dungeon_locales[num+1]
+        if(banned_regular or banned_deep):
+          continue
+        if not self.rando.options.get("progression_dungeons"):
+          continue
       if item_name not in self.all_progress_items:
         if not (item_name.startswith("Triforce Chart ") or item_name.startswith("Treasure Chart")):
           raise Exception("Item %s opens up progress locations but is not in the list of all progress items." % item_name)

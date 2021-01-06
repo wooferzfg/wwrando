@@ -1689,7 +1689,7 @@ Mother and Child Isles - Inside Mother Isle:
   Need: Can Travel to Mother Isle
   Original item: Fire and Ice Arrows
   Types: Misc
-  Locale: Mother and Child Isle
+  Locale: Mother and Child Isles
   Paths:
     - main.dol@8035BD3C
     - sea/Room9.arc/Chest000
@@ -2345,7 +2345,7 @@ Mailbox - Letter from Hoskit's Girlfriend:
   # Need to wait for time to pass.
   Original item: Piece of Heart (Alternate Message)
   Types: Spoils Trading
-  Locale: Mail, Dragon Roost Island
+  Locale: Mailbox, Dragon Roost Island
   Paths:
     - rels/d_a_obj_toripost.rel@25DC
 Mailbox - Letter from Baito's Mother:
@@ -2357,7 +2357,7 @@ Mailbox - Letter from Baito's Mother:
   # Need to wait for time to pass.
   Original item: Piece of Heart
   Types: Misc
-  Locale: Mail
+  Locale: Mailbox
   Paths:
     - rels/d_a_obj_toripost.rel@2564
     - rels/d_a_obj_toripost.rel@25C4
@@ -2372,7 +2372,7 @@ Mailbox - Letter from Baito:
   # You do not need to wait for time to pass for this one, but because you did need to wait for time to pass for the one from his mother first, we still require Song of Passing here.
   Original item: Red Rupee
   Types: Dungeon
-  Locale: Mail, Deep Earth Temple
+  Locale: Mailbox, Deep Earth Temple
   Paths:
     - rels/d_a_obj_toripost.rel@25E8
 Mailbox - Letter from Komali's Father:
@@ -2380,21 +2380,21 @@ Mailbox - Letter from Komali's Father:
   # Do not need to wait for time to pass.
   Original item: Piece of Heart
   Types: Free Gift
-  Locale: Mail
+  Locale: Mailbox
   Paths:
     - rels/d_a_obj_toripost.rel@2570
 Mailbox - Letter Advertising Bombs in Beedle's Shop:
   Need: Bombs & Can Travel to Postbox
   Original item: Beedle's Chart
   Types: Free Gift
-  Locale: Mail
+  Locale: Mailbox
   Paths:
     - rels/d_a_obj_toripost.rel@257C
 Mailbox - Letter Advertising Rock Spire Shop Ship:
   Need: Any Wallet Upgrade & Can Travel to Postbox
   Original item: Green Rupee
   Types: Free Gift
-  Locale: Mail, Rock Spire Isle
+  Locale: Mailbox, Rock Spire Isle
   Paths:
     - rels/d_a_obj_toripost.rel@25A0
 Mailbox - Beedle's Silver Membership Reward:
@@ -2411,7 +2411,7 @@ Mailbox - Beedle's Silver Membership Reward:
   # Need to wait for time to pass.
   Original item: Complimentary ID
   Types: No progression # Too tedious to buy 30 items just to progress
-  Locale: Mail
+  Locale: Mailbox
   Paths:
     - rels/d_a_obj_toripost.rel@25D0
 Mailbox - Beedle's Gold Membership Reward:
@@ -2428,7 +2428,7 @@ Mailbox - Beedle's Gold Membership Reward:
   # Need to wait for time to pass.
   Original item: Fill-Up Coupon
   Types: No progression # Too tedious to buy 60 items just to progress
-  Locale: Mail
+  Locale: Mailbox
   Paths:
     - rels/d_a_obj_toripost.rel@25F4
 Mailbox - Letter from Orca:
@@ -2440,7 +2440,7 @@ Mailbox - Letter from Orca:
   # Do not need to wait for time to pass.
   Original item: Red Rupee
   Types: Dungeon
-  Locale: Mail, Deep Forbidden Woods
+  Locale: Mailbox, Deep Forbidden Woods
   Paths:
     - rels/d_a_obj_toripost.rel@2588
 Mailbox - Letter from Grandma:
@@ -2452,7 +2452,7 @@ Mailbox - Letter from Grandma:
   # Need to wait for time to pass.
   Original item: Red Rupee
   Types: Free Gift
-  Locale: Mail, Outset Island
+  Locale: Mailbox, Outset Island
   Paths:
     - rels/d_a_obj_toripost.rel@2594
 Mailbox - Letter from Aryll:
@@ -2465,7 +2465,7 @@ Mailbox - Letter from Aryll:
   # Need to wait for time to pass.
   Original item: Red Rupee
   Types: Dungeon
-  Locale: Mail, Forsaken Fortress
+  Locale: Mailbox, Forsaken Fortress
   Paths:
     - rels/d_a_obj_toripost.rel@25B8
 Mailbox - Letter from Tingle:
@@ -2480,7 +2480,7 @@ Mailbox - Letter from Tingle:
   # Need to wait for time to pass.
   Original item: IN-credible Chart
   Types: Dungeon, Expensive Purchase
-  Locale: Mail, Forsaken Fortress
+  Locale: Mailbox, Forsaken Fortress
   Paths:
     - rels/d_a_obj_toripost.rel@25AC
 

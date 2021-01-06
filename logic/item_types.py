@@ -1,3 +1,5 @@
+from collections import OrderedDict
+
 HARD_REQUIRED_ITEMS = [
   "Wind Waker",
   "Grappling Hook",
@@ -138,13 +140,26 @@ DUPLICATABLE_CONSUMABLE_ITEMS = \
   \
    3 * ["Joy Pendant"]
 
-DUNGEON_PROGRESS_ITEMS = \
-  ["DRC Big Key"] *1 + ["DRC Small Key"] *4 + \
-  ["FW Big Key"]  *1 + ["FW Small Key"]  *1 + \
-  ["TotG Big Key"]*1 + ["TotG Small Key"]*2 + \
-  ["FF Big Key"]  *0 + ["FF Small Key"]  *0 + \
-  ["ET Big Key"]  *1 + ["ET Small Key"]  *3 + \
-  ["WT Big Key"]  *1 + ["WT Small Key"]  *2
+FARMABLE_ITEMS = \
+   3 * ["Yellow Rupee"] + \
+   4 * ["Red Rupee"] + \
+   7 * ["Purple Rupee"] + \
+   3 * ["Orange Rupee"] + \
+   1 * ["Silver Rupee"] + \
+  \
+   5 * ["Joy Pendant"] + \
+   2 * ["Golden Feather"] + \
+   2 * ["Green Chu Jelly"] + \
+   2 * ["Skull Necklace"]
+
+DUNGEON_PROGRESS_ITEMS = []
+POSSIBLE_DUNGEON_PROGRESS_ITEMS = OrderedDict()
+POSSIBLE_DUNGEON_PROGRESS_ITEMS["Dragon Roost Cavern"] = ["DRC Big Key"]  *1 + ["DRC Small Key"] *4
+POSSIBLE_DUNGEON_PROGRESS_ITEMS["Forbidden Woods"]     = ["FW Big Key"]   *1 + ["FW Small Key"] *1
+POSSIBLE_DUNGEON_PROGRESS_ITEMS["Tower of the Gods"]   = ["TotG Big Key"] *1 + ["TotG Small Key"] *2
+POSSIBLE_DUNGEON_PROGRESS_ITEMS["Forsaken Fortress"]   = ["FF Big Key"]   *0 + ["FF Small Key"] *0
+POSSIBLE_DUNGEON_PROGRESS_ITEMS["Earth Temple"]        = ["ET Big Key"]   *1 + ["ET Small Key"] *3
+POSSIBLE_DUNGEON_PROGRESS_ITEMS["Wind Temple"]         = ["WT Big Key"]   *1 + ["WT Small Key"] *2
 
 DUNGEON_NONPROGRESS_ITEMS = \
   ["DRC Dungeon Map", "DRC Compass"] + \

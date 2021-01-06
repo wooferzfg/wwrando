@@ -14,6 +14,33 @@ def randomize_items(self):
   if not self.options.get("keylunacy"):
     randomize_dungeon_items(self)
 
+  self.banned_island_locales = [
+    self.options.get("locale_ff"), self.options.get("locale_star"), self.options.get("locale_northern_fairy"), self.options.get("locale_gale"), self.options.get("locale_crescent"), self.options.get("locale_seven_star"), self.options.get("locale_overlook"),
+    self.options.get("locale_four_eye"), self.options.get("locale_mother_child"), self.options.get("locale_spectacle"), self.options.get("locale_windfall"), self.options.get("locale_pawprint"), self.options.get("locale_dragon_roost_island"), self.options.get("locale_flight_control"),
+    self.options.get("locale_western_fairy"), self.options.get("locale_rock_spire"), self.options.get("locale_tingle"), self.options.get("locale_northern_triangle"), self.options.get("locale_eastern_fairy"), self.options.get("locale_fire_mountain"), self.options.get("locale_star_belt"),
+    self.options.get("locale_three_eye"), self.options.get("locale_greatfish"), self.options.get("locale_cyclops"), self.options.get("locale_six_eye"), self.options.get("locale_totg"), self.options.get("locale_eastern_triangle"), self.options.get("locale_thorned_fairy"),
+    self.options.get("locale_needle_rock"), self.options.get("locale_islet"), self.options.get("locale_stone_watcher"), self.options.get("locale_southern_triangle"), self.options.get("locale_private_oasis"), self.options.get("locale_bomb"), self.options.get("locale_birds_peak"),
+    self.options.get("locale_diamond_steppe"), self.options.get("locale_five_eye"), self.options.get("locale_shark"), self.options.get("locale_southern_fairy"), self.options.get("locale_ice_ring"), self.options.get("locale_forest_haven"), self.options.get("locale_cliff_plateau"),
+    self.options.get("locale_horseshoe"), self.options.get("locale_outset"), self.options.get("locale_headstone"), self.options.get("locale_two_eye"), self.options.get("locale_angular"), self.options.get("locale_boating_course"), self.options.get("locale_five_star")
+  ]
+
+  self.banned_dungeon_locales = [
+    self.options.get("locale_drc"),  self.options.get("locale_deep_drc"),
+    self.options.get("locale_fw"),   self.options.get("locale_deep_fw"),
+    self.options.get("locale_totg"), self.options.get("locale_deep_totg"),
+    self.options.get("locale_ff"),   False,
+    self.options.get("locale_et"),   self.options.get("locale_deep_et"),
+    self.options.get("locale_wt"),   self.options.get("locale_deep_wt")
+  ]
+
+  self.banned_misc_locales = [
+    self.options.get("locale_great_sea"),
+    self.options.get("locale_battlesquid"),
+    self.options.get("locale_mail"),
+    self.options.get("locale_under_great_sea"),
+    self.options.get("locale_savage"),
+  ]
+
   randomize_progression_items(self)
 
   # Place unique non-progress items.
@@ -106,21 +133,21 @@ def randomize_boss_rewards(self):
     # Need to make sure hookshot is at the start of the list since it's more picky about which bosses can drop it.
     boss_reward_items.insert(0, "Hookshot")
 
-# If we STILL need more rewards, use the boomerang.
+  # If we STILL need more rewards, use the boomerang.
   num_additional_rewards_needed = total_num_rewards - len(boss_reward_items)
   if num_additional_rewards_needed > 0:
     assert "Boomerang" in unplaced_progress_items_degrouped
     # Need to make sure iron boots are at the start of the list since it's equally as picky as hookshot about which bosses can drop it.
     boss_reward_items.insert(0, "Boomerang")
 
-# If we STILL need more rewards, use the iron boots.
+  # If we STILL need more rewards, use the iron boots.
   num_additional_rewards_needed = total_num_rewards - len(boss_reward_items)
   if num_additional_rewards_needed > 0:
     assert "Iron Boots" in unplaced_progress_items_degrouped
     # Need to make sure iron boots are at the start of the list since it's equally as picky as hookshot about which bosses can drop it.
     boss_reward_items.insert(1, "Iron Boots")
 
-# If we STILL need more rewards, use the power bracelets.
+  # If we STILL need more rewards, use the power bracelets.
   num_additional_rewards_needed = total_num_rewards - len(boss_reward_items)
   if num_additional_rewards_needed > 0:
     assert "Power Bracelets" in unplaced_progress_items_degrouped
@@ -152,7 +179,7 @@ def randomize_boss_rewards(self):
 
   possible_boss_locations = [
     loc for loc in self.logic.remaining_item_locations
-    if self.logic.item_locations[loc]["Original item"] == "Heart Container"
+    if( self.logic.item_locations[loc]["Original item"] == "Heart Container" ) # and not self.options.get(self.banned_dungeon_locales[(["Dragon Roost Cavern","Forbidden Woods","Tower of the Gods","Forsaken Fortress","Earth Temple","Wind Temple"].index(self.logic.split_location_name_by_zone(loc))[0])*2]) )
   ]
 
   if len(possible_boss_locations) != 6:
@@ -213,6 +240,8 @@ def randomize_boss_rewards(self):
       self.race_mode_banned_locations.append(location_name)
     elif location_name == "Mailbox - Letter from Tingle" and "Forsaken Fortress" in banned_dungeons:
       self.race_mode_banned_locations.append(location_name)
+    # if self.options.get(self.banned_dungeon_locales[(["Dragon Roost Cavern","Forbidden Woods","Tower of the Gods","Forsaken Fortress","Earth Temple","Wind Temple"].index(self.logic.split_location_name_by_zone(loc))[0])*2]):
+      # self.race_mode_banned_locations.append(location_name)
 
 def randomize_dungeon_items(self):
   # Places dungeon-specific items first so all the dungeon locations don't get used up by other items.
@@ -240,23 +269,41 @@ def randomize_dungeon_items(self):
 
   # Randomize small keys.
   small_keys_to_place = [
-    item_name for item_name in (self.logic.unplaced_progress_items + self.logic.unplaced_nonprogress_items)
+    item_name for item_name in (self.logic.unplaced_progress_items)
     if item_name.endswith(" Small Key")
-  ]
-  assert len(small_keys_to_place) > 0
+  ] #  + self.logic.unplaced_nonprogress_items
+  try:
+    assert len(small_keys_to_place) > 0
+  except:
+    print("Small key minor error. If this happens more than once, panic.")
   for item_name in small_keys_to_place:
     place_dungeon_item(self, item_name)
     self.logic.add_owned_item(item_name) # Temporarily add small keys to the player's inventory while placing them.
 
   # Randomize big keys.
   big_keys_to_place = [
-    item_name for item_name in (self.logic.unplaced_progress_items + self.logic.unplaced_nonprogress_items)
+    item_name for item_name in (self.logic.unplaced_progress_items)
     if item_name.endswith(" Big Key")
-  ]
-  assert len(big_keys_to_place) > 0
+  ] # + self.logic.unplaced_nonprogress_items
+  try:
+    assert len(big_keys_to_place) > 0
+  except:
+    print("Big key minor error. If this happens more than once, panic.")
   for item_name in big_keys_to_place:
     place_dungeon_item(self, item_name)
     self.logic.add_owned_item(item_name) # Temporarily add big keys to the player's inventory while placing them.
+
+  np_keys_to_place = [
+    item_name for item_name in (self.logic.unplaced_nonprogress_items)
+    if( item_name.endswith(" Small Key") or item_name.endswith(" Big Key"))
+  ]
+  try:
+    assert len(np_keys_to_place) > 0
+  except:
+    print("Non-progressive key minor error. If this happens more than once, panic.")
+  for item_name in np_keys_to_place:
+    place_dungeon_item(self, item_name)
+    self.logic.add_owned_item(item_name) # Temporarily add small keys to the player's inventory while placing them.
 
   # Randomize dungeon maps and compasses.
   if(self.options.get("compass_map_pool_with_keys")):
@@ -287,18 +334,37 @@ def randomize_dungeon_items(self):
     self.logic.remove_owned_item(item_name)
   for item_name in big_keys_to_place:
     self.logic.remove_owned_item(item_name)
+  for item_name in np_keys_to_place:
+    self.logic.remove_owned_item(item_name)
 
 def place_dungeon_item(self, item_name):
+  quick_dungeon_list = ["Dragon Roost Cavern","","Forbidden Woods","","Tower of the Gods","","Forsaken Fortress","","Earth Temple","","Wind Temple"]
+  short_dungeon_name = item_name.split(" ")[0]
+  item_dungeon_name = self.logic.DUNGEON_NAMES[short_dungeon_name]
+  num = quick_dungeon_list.index(item_dungeon_name)
+  banned_regular = self.banned_dungeon_locales[num]
+  if (banned_regular):
+    possible_locations = []
+    for loc in self.logic.item_locations:
+      zone_dungeon_name = self.logic.split_location_name_by_zone(loc)[0]
+      if (zone_dungeon_name==item_dungeon_name) and ("Dungeon" in self.logic.item_locations[loc]["Types"]):
+        possible_locations.append(loc)
+    location_name = self.rng.choice(possible_locations)
+    self.logic.set_prerandomization_item_location(location_name, item_name)
+    return False
+
   accessible_undone_locations = self.logic.get_accessible_remaining_locations()
   accessible_undone_locations = [
     loc for loc in accessible_undone_locations
     if loc not in self.logic.prerandomization_item_locations
   ]
+
   if not self.options.get("progression_tingle_chests"):
     accessible_undone_locations = [
       loc for loc in accessible_undone_locations
       if not "Tingle Chest" in self.logic.item_locations[loc]["Types"]
     ]
+
   possible_locations = self.logic.filter_locations_valid_for_item(accessible_undone_locations, item_name)
 
   if self.dungeons_only_start and item_name == "DRC Small Key":
@@ -433,7 +499,7 @@ def randomize_progression_items(self):
     else:
       item_name = self.rng.choice(possible_items_when_not_placing_useful)
 
-    if self.options.get("race_mode"):
+    if(self.options.get("race_mode")=="Race"):
       locations_filtered = [
         loc for loc in accessible_undone_locations
         if loc not in self.race_mode_banned_locations

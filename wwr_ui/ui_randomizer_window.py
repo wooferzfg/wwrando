@@ -3,16 +3,13 @@
 ################################################################################
 ## Form generated from reading UI file 'randomizer_window.ui'
 ##
-## Created by: Qt User Interface Compiler version 5.14.2
+## Created by: Qt User Interface Compiler version 5.15.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PySide2.QtCore import (QCoreApplication, QDate, QDateTime, QMetaObject,
-    QObject, QPoint, QRect, QSize, QTime, QUrl, Qt)
-from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
-    QFontDatabase, QIcon, QKeySequence, QLinearGradient, QPalette, QPainter,
-    QPixmap, QRadialGradient)
+from PySide2.QtCore import *
+from PySide2.QtGui import *
 from PySide2.QtWidgets import *
 
 
@@ -31,13 +28,18 @@ class Ui_MainWindow(object):
         self.scroll_for_main.setWidgetResizable(True)
         self.content_for_main_scroll = QWidget()
         self.content_for_main_scroll.setObjectName(u"content_for_main_scroll")
-        self.content_for_main_scroll.setGeometry(QRect(0, 0, 944, 753))
+        self.content_for_main_scroll.setGeometry(QRect(0, 0, 939, 728))
         self.verticalLayout_4 = QVBoxLayout(self.content_for_main_scroll)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
         self.tab_for_main = QTabWidget(self.content_for_main_scroll)
         self.tab_for_main.setObjectName(u"tab_for_main")
         self.tab_for_main.setEnabled(True)
+        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.tab_for_main.sizePolicy().hasHeightForWidth())
+        self.tab_for_main.setSizePolicy(sizePolicy)
         self.tab_for_settings = QWidget()
         self.tab_for_settings.setObjectName(u"tab_for_settings")
         self.verticalLayout_2 = QVBoxLayout(self.tab_for_settings)
@@ -139,134 +141,124 @@ class Ui_MainWindow(object):
         self.group_for_locations.setObjectName(u"group_for_locations")
         self.gridLayout_2 = QGridLayout(self.group_for_locations)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
-        self.progression_battlesquid = QCheckBox(self.group_for_locations)
-        self.progression_battlesquid.setObjectName(u"progression_battlesquid")
-
-        self.gridLayout_2.addWidget(self.progression_battlesquid, 6, 2, 1, 1)
-
-        self.progression_minigames = QCheckBox(self.group_for_locations)
-        self.progression_minigames.setObjectName(u"progression_minigames")
-
-        self.gridLayout_2.addWidget(self.progression_minigames, 6, 0, 1, 1)
-
-        self.progression_big_octos_gunboats = QCheckBox(self.group_for_locations)
-        self.progression_big_octos_gunboats.setObjectName(u"progression_big_octos_gunboats")
-
-        self.gridLayout_2.addWidget(self.progression_big_octos_gunboats, 7, 4, 1, 1)
-
-        self.horizontalSpacer_7 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.gridLayout_2.addItem(self.horizontalSpacer_7, 0, 1, 1, 1)
-
-        self.progression_expensive_purchases = QCheckBox(self.group_for_locations)
-        self.progression_expensive_purchases.setObjectName(u"progression_expensive_purchases")
-        self.progression_expensive_purchases.setChecked(True)
-
-        self.gridLayout_2.addWidget(self.progression_expensive_purchases, 6, 4, 1, 1)
-
-        self.progression_great_fairies = QCheckBox(self.group_for_locations)
-        self.progression_great_fairies.setObjectName(u"progression_great_fairies")
-        self.progression_great_fairies.setChecked(True)
-
-        self.gridLayout_2.addWidget(self.progression_great_fairies, 1, 0, 1, 1)
-
-        self.progression_combat_secret_caves = QCheckBox(self.group_for_locations)
-        self.progression_combat_secret_caves.setObjectName(u"progression_combat_secret_caves")
-
-        self.gridLayout_2.addWidget(self.progression_combat_secret_caves, 0, 4, 1, 1)
-
-        self.progression_savage_labyrinth = QCheckBox(self.group_for_locations)
-        self.progression_savage_labyrinth.setObjectName(u"progression_savage_labyrinth")
-
-        self.gridLayout_2.addWidget(self.progression_savage_labyrinth, 0, 6, 1, 1)
-
-        self.progression_misc = QCheckBox(self.group_for_locations)
-        self.progression_misc.setObjectName(u"progression_misc")
-        self.progression_misc.setChecked(True)
-
-        self.gridLayout_2.addWidget(self.progression_misc, 1, 4, 1, 1)
-
-        self.progression_puzzle_secret_caves = QCheckBox(self.group_for_locations)
-        self.progression_puzzle_secret_caves.setObjectName(u"progression_puzzle_secret_caves")
-        self.progression_puzzle_secret_caves.setChecked(True)
-
-        self.gridLayout_2.addWidget(self.progression_puzzle_secret_caves, 0, 2, 1, 1)
-
-        self.progression_eye_reef_chests = QCheckBox(self.group_for_locations)
-        self.progression_eye_reef_chests.setObjectName(u"progression_eye_reef_chests")
-
-        self.gridLayout_2.addWidget(self.progression_eye_reef_chests, 7, 6, 1, 1)
-
-        self.progression_mail = QCheckBox(self.group_for_locations)
-        self.progression_mail.setObjectName(u"progression_mail")
-
-        self.gridLayout_2.addWidget(self.progression_mail, 4, 6, 1, 1)
-
-        self.progression_tingle_chests = QCheckBox(self.group_for_locations)
-        self.progression_tingle_chests.setObjectName(u"progression_tingle_chests")
-
-        self.gridLayout_2.addWidget(self.progression_tingle_chests, 1, 6, 1, 1)
-
-        self.progression_island_puzzles = QCheckBox(self.group_for_locations)
-        self.progression_island_puzzles.setObjectName(u"progression_island_puzzles")
-
-        self.gridLayout_2.addWidget(self.progression_island_puzzles, 6, 6, 1, 1)
-
-        self.progression_platforms_rafts = QCheckBox(self.group_for_locations)
-        self.progression_platforms_rafts.setObjectName(u"progression_platforms_rafts")
-
-        self.gridLayout_2.addWidget(self.progression_platforms_rafts, 7, 0, 1, 1)
-
-        self.progression_long_sidequests = QCheckBox(self.group_for_locations)
-        self.progression_long_sidequests.setObjectName(u"progression_long_sidequests")
-
-        self.gridLayout_2.addWidget(self.progression_long_sidequests, 4, 2, 1, 1)
-
         self.progression_dungeons = QCheckBox(self.group_for_locations)
         self.progression_dungeons.setObjectName(u"progression_dungeons")
         self.progression_dungeons.setChecked(True)
 
         self.gridLayout_2.addWidget(self.progression_dungeons, 0, 0, 1, 1)
 
-        self.progression_short_sidequests = QCheckBox(self.group_for_locations)
-        self.progression_short_sidequests.setObjectName(u"progression_short_sidequests")
+        self.progression_long_sidequests = QCheckBox(self.group_for_locations)
+        self.progression_long_sidequests.setObjectName(u"progression_long_sidequests")
 
-        self.gridLayout_2.addWidget(self.progression_short_sidequests, 4, 0, 1, 1)
-
-        self.progression_treasure_charts = QCheckBox(self.group_for_locations)
-        self.progression_treasure_charts.setObjectName(u"progression_treasure_charts")
-
-        self.gridLayout_2.addWidget(self.progression_treasure_charts, 9, 2, 1, 1)
+        self.gridLayout_2.addWidget(self.progression_long_sidequests, 5, 1, 1, 1)
 
         self.progression_spoils_trading = QCheckBox(self.group_for_locations)
         self.progression_spoils_trading.setObjectName(u"progression_spoils_trading")
 
-        self.gridLayout_2.addWidget(self.progression_spoils_trading, 4, 4, 1, 1)
+        self.gridLayout_2.addWidget(self.progression_spoils_trading, 5, 2, 1, 1)
 
-        self.progression_triforce_charts = QCheckBox(self.group_for_locations)
-        self.progression_triforce_charts.setObjectName(u"progression_triforce_charts")
+        self.progression_short_sidequests = QCheckBox(self.group_for_locations)
+        self.progression_short_sidequests.setObjectName(u"progression_short_sidequests")
+        self.progression_short_sidequests.setChecked(True)
 
-        self.gridLayout_2.addWidget(self.progression_triforce_charts, 9, 0, 1, 1)
-
-        self.progression_submarines = QCheckBox(self.group_for_locations)
-        self.progression_submarines.setObjectName(u"progression_submarines")
-        self.progression_submarines.setChecked(False)
-
-        self.gridLayout_2.addWidget(self.progression_submarines, 7, 2, 1, 1)
-
-        self.horizontalSpacer_8 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.gridLayout_2.addItem(self.horizontalSpacer_8, 0, 3, 1, 1)
-
-        self.horizontalSpacer_9 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.gridLayout_2.addItem(self.horizontalSpacer_9, 0, 5, 1, 1)
+        self.gridLayout_2.addWidget(self.progression_short_sidequests, 5, 0, 1, 1)
 
         self.progression_free_gifts = QCheckBox(self.group_for_locations)
         self.progression_free_gifts.setObjectName(u"progression_free_gifts")
         self.progression_free_gifts.setChecked(True)
 
-        self.gridLayout_2.addWidget(self.progression_free_gifts, 1, 2, 1, 1)
+        self.gridLayout_2.addWidget(self.progression_free_gifts, 8, 2, 1, 1)
+
+        self.progression_expensive_purchases = QCheckBox(self.group_for_locations)
+        self.progression_expensive_purchases.setObjectName(u"progression_expensive_purchases")
+        self.progression_expensive_purchases.setChecked(True)
+
+        self.gridLayout_2.addWidget(self.progression_expensive_purchases, 7, 2, 1, 1)
+
+        self.progression_short_minigames = QCheckBox(self.group_for_locations)
+        self.progression_short_minigames.setObjectName(u"progression_short_minigames")
+
+        self.gridLayout_2.addWidget(self.progression_short_minigames, 7, 0, 1, 1)
+
+        self.progression_triforce_charts = QCheckBox(self.group_for_locations)
+        self.progression_triforce_charts.setObjectName(u"progression_triforce_charts")
+
+        self.gridLayout_2.addWidget(self.progression_triforce_charts, 10, 0, 1, 2)
+
+        self.progression_puzzle_secret_caves = QCheckBox(self.group_for_locations)
+        self.progression_puzzle_secret_caves.setObjectName(u"progression_puzzle_secret_caves")
+        self.progression_puzzle_secret_caves.setChecked(True)
+
+        self.gridLayout_2.addWidget(self.progression_puzzle_secret_caves, 0, 1, 1, 1)
+
+        self.progression_misc = QCheckBox(self.group_for_locations)
+        self.progression_misc.setObjectName(u"progression_misc")
+        self.progression_misc.setCheckable(True)
+        self.progression_misc.setChecked(False)
+
+        self.gridLayout_2.addWidget(self.progression_misc, 8, 3, 1, 1)
+
+        self.progression_treasure_charts = QCheckBox(self.group_for_locations)
+        self.progression_treasure_charts.setObjectName(u"progression_treasure_charts")
+
+        self.gridLayout_2.addWidget(self.progression_treasure_charts, 10, 2, 1, 2)
+
+        self.progression_eye_reef_chests = QCheckBox(self.group_for_locations)
+        self.progression_eye_reef_chests.setObjectName(u"progression_eye_reef_chests")
+
+        self.gridLayout_2.addWidget(self.progression_eye_reef_chests, 8, 1, 1, 1)
+
+        self.progression_long_combat_trials = QCheckBox(self.group_for_locations)
+        self.progression_long_combat_trials.setObjectName(u"progression_long_combat_trials")
+
+        self.gridLayout_2.addWidget(self.progression_long_combat_trials, 1, 3, 1, 1)
+
+        self.progression_long_minigames = QCheckBox(self.group_for_locations)
+        self.progression_long_minigames.setObjectName(u"progression_long_minigames")
+
+        self.gridLayout_2.addWidget(self.progression_long_minigames, 7, 1, 1, 1)
+
+        self.progression_tingle_chests = QCheckBox(self.group_for_locations)
+        self.progression_tingle_chests.setObjectName(u"progression_tingle_chests")
+
+        self.gridLayout_2.addWidget(self.progression_tingle_chests, 1, 0, 1, 1)
+
+        self.progression_great_fairies = QCheckBox(self.group_for_locations)
+        self.progression_great_fairies.setObjectName(u"progression_great_fairies")
+        self.progression_great_fairies.setChecked(True)
+
+        self.gridLayout_2.addWidget(self.progression_great_fairies, 1, 1, 1, 1)
+
+        self.progression_combat_secret_caves = QCheckBox(self.group_for_locations)
+        self.progression_combat_secret_caves.setObjectName(u"progression_combat_secret_caves")
+
+        self.gridLayout_2.addWidget(self.progression_combat_secret_caves, 0, 3, 1, 1)
+
+        self.progression_mixed_secret_caves = QCheckBox(self.group_for_locations)
+        self.progression_mixed_secret_caves.setObjectName(u"progression_mixed_secret_caves")
+
+        self.gridLayout_2.addWidget(self.progression_mixed_secret_caves, 0, 2, 1, 1)
+
+        self.progression_platforms_rafts = QCheckBox(self.group_for_locations)
+        self.progression_platforms_rafts.setObjectName(u"progression_platforms_rafts")
+
+        self.gridLayout_2.addWidget(self.progression_platforms_rafts, 5, 3, 1, 1)
+
+        self.progression_island_puzzles = QCheckBox(self.group_for_locations)
+        self.progression_island_puzzles.setObjectName(u"progression_island_puzzles")
+
+        self.gridLayout_2.addWidget(self.progression_island_puzzles, 1, 2, 1, 1)
+
+        self.progression_submarines = QCheckBox(self.group_for_locations)
+        self.progression_submarines.setObjectName(u"progression_submarines")
+        self.progression_submarines.setChecked(False)
+
+        self.gridLayout_2.addWidget(self.progression_submarines, 8, 0, 1, 1)
+
+        self.progression_big_octos_gunboats = QCheckBox(self.group_for_locations)
+        self.progression_big_octos_gunboats.setObjectName(u"progression_big_octos_gunboats")
+
+        self.gridLayout_2.addWidget(self.progression_big_octos_gunboats, 7, 3, 1, 1)
 
 
         self.verticalLayout_2.addWidget(self.group_for_locations)
@@ -301,11 +293,11 @@ class Ui_MainWindow(object):
         self.layout_for_num_dungeon_race_mode.setObjectName(u"layout_for_num_dungeon_race_mode")
         self.label_for_num_dungeon_race_mode = QLabel(self.group_for_settings_secondary)
         self.label_for_num_dungeon_race_mode.setObjectName(u"label_for_num_dungeon_race_mode")
-        sizePolicy = QSizePolicy(QSizePolicy.Maximum, QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.label_for_num_dungeon_race_mode.sizePolicy().hasHeightForWidth())
-        self.label_for_num_dungeon_race_mode.setSizePolicy(sizePolicy)
+        sizePolicy1 = QSizePolicy(QSizePolicy.Maximum, QSizePolicy.Preferred)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.label_for_num_dungeon_race_mode.sizePolicy().hasHeightForWidth())
+        self.label_for_num_dungeon_race_mode.setSizePolicy(sizePolicy1)
 
         self.layout_for_num_dungeon_race_mode.addWidget(self.label_for_num_dungeon_race_mode)
 
@@ -338,8 +330,8 @@ class Ui_MainWindow(object):
         self.layout_for_starting_triforce_shards.setObjectName(u"layout_for_starting_triforce_shards")
         self.label_for_num_starting_triforce_shards = QLabel(self.group_for_settings_secondary)
         self.label_for_num_starting_triforce_shards.setObjectName(u"label_for_num_starting_triforce_shards")
-        sizePolicy.setHeightForWidth(self.label_for_num_starting_triforce_shards.sizePolicy().hasHeightForWidth())
-        self.label_for_num_starting_triforce_shards.setSizePolicy(sizePolicy)
+        sizePolicy1.setHeightForWidth(self.label_for_num_starting_triforce_shards.sizePolicy().hasHeightForWidth())
+        self.label_for_num_starting_triforce_shards.setSizePolicy(sizePolicy1)
 
         self.layout_for_starting_triforce_shards.addWidget(self.label_for_num_starting_triforce_shards)
 
@@ -372,11 +364,6 @@ class Ui_MainWindow(object):
 
         self.gridLayout_3.addLayout(self.layout_for_starting_triforce_shards, 1, 4, 1, 1)
 
-        self.compass_map_pool_with_keys = QCheckBox(self.group_for_settings_secondary)
-        self.compass_map_pool_with_keys.setObjectName(u"compass_map_pool_with_keys")
-
-        self.gridLayout_3.addWidget(self.compass_map_pool_with_keys, 2, 0, 1, 1)
-
         self.layout_for_sword = QHBoxLayout()
         self.layout_for_sword.setObjectName(u"layout_for_sword")
         self.label_for_sword_mode = QLabel(self.group_for_settings_secondary)
@@ -398,6 +385,11 @@ class Ui_MainWindow(object):
 
 
         self.gridLayout_3.addLayout(self.layout_for_sword, 0, 0, 1, 1)
+
+        self.compass_map_pool_with_keys = QCheckBox(self.group_for_settings_secondary)
+        self.compass_map_pool_with_keys.setObjectName(u"compass_map_pool_with_keys")
+
+        self.gridLayout_3.addWidget(self.compass_map_pool_with_keys, 2, 0, 1, 1)
 
         self.layout_for_randomize_entrances = QHBoxLayout()
         self.layout_for_randomize_entrances.setObjectName(u"layout_for_randomize_entrances")
@@ -428,23 +420,23 @@ class Ui_MainWindow(object):
 
         self.gridLayout_3.addLayout(self.layout_for_randomize_entrances, 0, 2, 1, 3)
 
-        self.add_shortcut_warps_between_dungeons = QCheckBox(self.group_for_settings_secondary)
-        self.add_shortcut_warps_between_dungeons.setObjectName(u"add_shortcut_warps_between_dungeons")
+        self.horizontalSpacer_16 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.gridLayout_3.addWidget(self.add_shortcut_warps_between_dungeons, 1, 2, 1, 1)
+        self.gridLayout_3.addItem(self.horizontalSpacer_16, 1, 1, 1, 1)
 
         self.keylunacy = QCheckBox(self.group_for_settings_secondary)
         self.keylunacy.setObjectName(u"keylunacy")
 
         self.gridLayout_3.addWidget(self.keylunacy, 1, 0, 1, 1)
 
-        self.horizontalSpacer_16 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.gridLayout_3.addItem(self.horizontalSpacer_16, 1, 1, 1, 1)
-
         self.horizontalSpacer_17 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.gridLayout_3.addItem(self.horizontalSpacer_17, 1, 3, 1, 1)
+
+        self.add_shortcut_warps_between_dungeons = QCheckBox(self.group_for_settings_secondary)
+        self.add_shortcut_warps_between_dungeons.setObjectName(u"add_shortcut_warps_between_dungeons")
+
+        self.gridLayout_3.addWidget(self.add_shortcut_warps_between_dungeons, 1, 2, 1, 1)
 
 
         self.verticalLayout_2.addWidget(self.group_for_settings_secondary)
@@ -618,6 +610,11 @@ class Ui_MainWindow(object):
 
         self.randomized_gear = QListView(self.tab_for_starting_items)
         self.randomized_gear.setObjectName(u"randomized_gear")
+        sizePolicy2 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(2)
+        sizePolicy2.setHeightForWidth(self.randomized_gear.sizePolicy().hasHeightForWidth())
+        self.randomized_gear.setSizePolicy(sizePolicy2)
         self.randomized_gear.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.randomized_gear.setSelectionMode(QAbstractItemView.ExtendedSelection)
 
@@ -628,7 +625,7 @@ class Ui_MainWindow(object):
 
         self.layout_for_gear_options = QVBoxLayout()
         self.layout_for_gear_options.setObjectName(u"layout_for_gear_options")
-        self.spacer_for_options_gear_top = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.spacer_for_options_gear_top = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Preferred)
 
         self.layout_for_gear_options.addItem(self.spacer_for_options_gear_top)
 
@@ -644,7 +641,7 @@ class Ui_MainWindow(object):
 
         self.layout_for_gear_options.addWidget(self.add_gear)
 
-        self.spacer_for_options_gear_bottom = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.spacer_for_options_gear_bottom = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Preferred)
 
         self.layout_for_gear_options.addItem(self.spacer_for_options_gear_bottom)
 
@@ -660,6 +657,11 @@ class Ui_MainWindow(object):
 
         self.starting_gear = QListView(self.tab_for_starting_items)
         self.starting_gear.setObjectName(u"starting_gear")
+        sizePolicy3 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
+        sizePolicy3.setHorizontalStretch(0)
+        sizePolicy3.setVerticalStretch(1)
+        sizePolicy3.setHeightForWidth(self.starting_gear.sizePolicy().hasHeightForWidth())
+        self.starting_gear.setSizePolicy(sizePolicy3)
         self.starting_gear.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.starting_gear.setSelectionMode(QAbstractItemView.ExtendedSelection)
 
@@ -704,6 +706,8 @@ class Ui_MainWindow(object):
 
         self.label_for_heart_piece = QLabel(self.tab_for_starting_items)
         self.label_for_heart_piece.setObjectName(u"label_for_heart_piece")
+        sizePolicy.setHeightForWidth(self.label_for_heart_piece.sizePolicy().hasHeightForWidth())
+        self.label_for_heart_piece.setSizePolicy(sizePolicy)
 
         self.layout_for_starting_health.addWidget(self.label_for_heart_piece)
 
@@ -732,7 +736,346 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_10.addLayout(self.layout_for_starting_health)
 
+        self.spacer_below_starting_health = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_10.addItem(self.spacer_below_starting_health)
+
+        self.verticalLayout_10.setStretch(0, 2)
+        self.verticalLayout_10.setStretch(1, 1)
         self.tab_for_main.addTab(self.tab_for_starting_items, "")
+        self.tab_for_locales = QWidget()
+        self.tab_for_locales.setObjectName(u"tab_for_locales")
+        self.verticalLayout_99 = QVBoxLayout(self.tab_for_locales)
+        self.verticalLayout_99.setObjectName(u"verticalLayout_99")
+        self.grid_for_locales = QGridLayout()
+        self.grid_for_locales.setObjectName(u"grid_for_locales")
+        self.locale_rock_spire = QCheckBox(self.tab_for_locales)
+        self.locale_rock_spire.setObjectName(u"locale_rock_spire")
+
+        self.grid_for_locales.addWidget(self.locale_rock_spire, 2, 1, 1, 1)
+
+        self.locale_star_belt = QCheckBox(self.tab_for_locales)
+        self.locale_star_belt.setObjectName(u"locale_star_belt")
+
+        self.grid_for_locales.addWidget(self.locale_star_belt, 2, 6, 1, 1)
+
+        self.locale_dragon_roost_island = QCheckBox(self.tab_for_locales)
+        self.locale_dragon_roost_island.setObjectName(u"locale_dragon_roost_island")
+
+        self.grid_for_locales.addWidget(self.locale_dragon_roost_island, 1, 5, 1, 1)
+
+        self.locale_mother_child = QCheckBox(self.tab_for_locales)
+        self.locale_mother_child.setObjectName(u"locale_mother_child")
+
+        self.grid_for_locales.addWidget(self.locale_mother_child, 1, 1, 1, 1)
+
+        self.locale_windfall = QCheckBox(self.tab_for_locales)
+        self.locale_windfall.setObjectName(u"locale_windfall")
+
+        self.grid_for_locales.addWidget(self.locale_windfall, 1, 3, 1, 1)
+
+        self.locale_deep_fw = QCheckBox(self.tab_for_locales)
+        self.locale_deep_fw.setObjectName(u"locale_deep_fw")
+
+        self.grid_for_locales.addWidget(self.locale_deep_fw, 8, 2, 1, 1)
+
+        self.locale_pawprint = QCheckBox(self.tab_for_locales)
+        self.locale_pawprint.setObjectName(u"locale_pawprint")
+
+        self.grid_for_locales.addWidget(self.locale_pawprint, 1, 4, 1, 1)
+
+        self.locale_ice_ring = QCheckBox(self.tab_for_locales)
+        self.locale_ice_ring.setObjectName(u"locale_ice_ring")
+
+        self.grid_for_locales.addWidget(self.locale_ice_ring, 5, 4, 1, 1)
+
+        self.locale_birds_peak = QCheckBox(self.tab_for_locales)
+        self.locale_birds_peak.setObjectName(u"locale_birds_peak")
+
+        self.grid_for_locales.addWidget(self.locale_birds_peak, 4, 6, 1, 1)
+
+        self.locale_deep_drc = QCheckBox(self.tab_for_locales)
+        self.locale_deep_drc.setObjectName(u"locale_deep_drc")
+
+        self.grid_for_locales.addWidget(self.locale_deep_drc, 8, 1, 1, 1)
+
+        self.locale_flight_control = QCheckBox(self.tab_for_locales)
+        self.locale_flight_control.setObjectName(u"locale_flight_control")
+
+        self.grid_for_locales.addWidget(self.locale_flight_control, 1, 6, 1, 1)
+
+        self.locale_cyclops = QCheckBox(self.tab_for_locales)
+        self.locale_cyclops.setObjectName(u"locale_cyclops")
+
+        self.grid_for_locales.addWidget(self.locale_cyclops, 3, 2, 1, 1)
+
+        self.locale_southern_fairy = QCheckBox(self.tab_for_locales)
+        self.locale_southern_fairy.setObjectName(u"locale_southern_fairy")
+
+        self.grid_for_locales.addWidget(self.locale_southern_fairy, 5, 3, 1, 1)
+
+        self.locale_headstone = QCheckBox(self.tab_for_locales)
+        self.locale_headstone.setObjectName(u"locale_headstone")
+
+        self.grid_for_locales.addWidget(self.locale_headstone, 6, 2, 1, 1)
+
+        self.locale_savage = QCheckBox(self.tab_for_locales)
+        self.locale_savage.setObjectName(u"locale_savage")
+        self.locale_savage.setChecked(True)
+
+        self.grid_for_locales.addWidget(self.locale_savage, 8, 6, 1, 1)
+
+        self.locale_mail = QCheckBox(self.tab_for_locales)
+        self.locale_mail.setObjectName(u"locale_mail")
+
+        self.grid_for_locales.addWidget(self.locale_mail, 7, 6, 1, 1)
+
+        self.locale_eastern_triangle = QCheckBox(self.tab_for_locales)
+        self.locale_eastern_triangle.setObjectName(u"locale_eastern_triangle")
+
+        self.grid_for_locales.addWidget(self.locale_eastern_triangle, 3, 5, 1, 1)
+
+        self.locale_deep_wt = QCheckBox(self.tab_for_locales)
+        self.locale_deep_wt.setObjectName(u"locale_deep_wt")
+
+        self.grid_for_locales.addWidget(self.locale_deep_wt, 8, 5, 1, 1)
+
+        self.locale_deep_totg = QCheckBox(self.tab_for_locales)
+        self.locale_deep_totg.setObjectName(u"locale_deep_totg")
+
+        self.grid_for_locales.addWidget(self.locale_deep_totg, 8, 3, 1, 1)
+
+        self.locale_southern_triangle = QCheckBox(self.tab_for_locales)
+        self.locale_southern_triangle.setObjectName(u"locale_southern_triangle")
+
+        self.grid_for_locales.addWidget(self.locale_southern_triangle, 4, 3, 1, 1)
+
+        self.locale_bomb = QCheckBox(self.tab_for_locales)
+        self.locale_bomb.setObjectName(u"locale_bomb")
+
+        self.grid_for_locales.addWidget(self.locale_bomb, 4, 5, 1, 1)
+
+        self.locale_ff = QCheckBox(self.tab_for_locales)
+        self.locale_ff.setObjectName(u"locale_ff")
+
+        self.grid_for_locales.addWidget(self.locale_ff, 0, 0, 1, 1)
+
+        self.locale_five_eye = QCheckBox(self.tab_for_locales)
+        self.locale_five_eye.setObjectName(u"locale_five_eye")
+
+        self.grid_for_locales.addWidget(self.locale_five_eye, 5, 1, 1, 1)
+
+        self.locale_boating_course = QCheckBox(self.tab_for_locales)
+        self.locale_boating_course.setObjectName(u"locale_boating_course")
+
+        self.grid_for_locales.addWidget(self.locale_boating_course, 6, 5, 1, 1)
+
+        self.locale_spectacle = QCheckBox(self.tab_for_locales)
+        self.locale_spectacle.setObjectName(u"locale_spectacle")
+
+        self.grid_for_locales.addWidget(self.locale_spectacle, 1, 2, 1, 1)
+
+        self.locale_forest_haven = QCheckBox(self.tab_for_locales)
+        self.locale_forest_haven.setObjectName(u"locale_forest_haven")
+
+        self.grid_for_locales.addWidget(self.locale_forest_haven, 5, 5, 1, 1)
+
+        self.locale_angular = QCheckBox(self.tab_for_locales)
+        self.locale_angular.setObjectName(u"locale_angular")
+
+        self.grid_for_locales.addWidget(self.locale_angular, 6, 4, 1, 1)
+
+        self.locale_seven_star = QCheckBox(self.tab_for_locales)
+        self.locale_seven_star.setObjectName(u"locale_seven_star")
+
+        self.grid_for_locales.addWidget(self.locale_seven_star, 0, 5, 1, 1)
+
+        self.locale_eastern_fairy = QCheckBox(self.tab_for_locales)
+        self.locale_eastern_fairy.setObjectName(u"locale_eastern_fairy")
+
+        self.grid_for_locales.addWidget(self.locale_eastern_fairy, 2, 4, 1, 1)
+
+        self.locale_four_eye = QCheckBox(self.tab_for_locales)
+        self.locale_four_eye.setObjectName(u"locale_four_eye")
+
+        self.grid_for_locales.addWidget(self.locale_four_eye, 1, 0, 1, 1)
+
+        self.locale_star = QCheckBox(self.tab_for_locales)
+        self.locale_star.setObjectName(u"locale_star")
+
+        self.grid_for_locales.addWidget(self.locale_star, 0, 1, 1, 1)
+
+        self.locale_tingle = QCheckBox(self.tab_for_locales)
+        self.locale_tingle.setObjectName(u"locale_tingle")
+
+        self.grid_for_locales.addWidget(self.locale_tingle, 2, 2, 1, 1)
+
+        self.locale_crescent = QCheckBox(self.tab_for_locales)
+        self.locale_crescent.setObjectName(u"locale_crescent")
+
+        self.grid_for_locales.addWidget(self.locale_crescent, 0, 4, 1, 1)
+
+        self.locale_western_fairy = QCheckBox(self.tab_for_locales)
+        self.locale_western_fairy.setObjectName(u"locale_western_fairy")
+
+        self.grid_for_locales.addWidget(self.locale_western_fairy, 2, 0, 1, 1)
+
+        self.locale_shark = QCheckBox(self.tab_for_locales)
+        self.locale_shark.setObjectName(u"locale_shark")
+
+        self.grid_for_locales.addWidget(self.locale_shark, 5, 2, 1, 1)
+
+        self.locale_deep_et = QCheckBox(self.tab_for_locales)
+        self.locale_deep_et.setObjectName(u"locale_deep_et")
+
+        self.grid_for_locales.addWidget(self.locale_deep_et, 8, 4, 1, 1)
+
+        self.locale_et = QCheckBox(self.tab_for_locales)
+        self.locale_et.setObjectName(u"locale_et")
+
+        self.grid_for_locales.addWidget(self.locale_et, 7, 4, 1, 1)
+
+        self.locale_battlesquid = QCheckBox(self.tab_for_locales)
+        self.locale_battlesquid.setObjectName(u"locale_battlesquid")
+        self.locale_battlesquid.setChecked(True)
+
+        self.grid_for_locales.addWidget(self.locale_battlesquid, 3, 4, 1, 1)
+
+        self.locale_horseshoe = QCheckBox(self.tab_for_locales)
+        self.locale_horseshoe.setObjectName(u"locale_horseshoe")
+
+        self.grid_for_locales.addWidget(self.locale_horseshoe, 6, 0, 1, 1)
+
+        self.locale_three_eye = QCheckBox(self.tab_for_locales)
+        self.locale_three_eye.setObjectName(u"locale_three_eye")
+
+        self.grid_for_locales.addWidget(self.locale_three_eye, 3, 0, 1, 1)
+
+        self.locale_wt = QCheckBox(self.tab_for_locales)
+        self.locale_wt.setObjectName(u"locale_wt")
+
+        self.grid_for_locales.addWidget(self.locale_wt, 7, 5, 1, 1)
+
+        self.locale_diamond_steppe = QCheckBox(self.tab_for_locales)
+        self.locale_diamond_steppe.setObjectName(u"locale_diamond_steppe")
+
+        self.grid_for_locales.addWidget(self.locale_diamond_steppe, 5, 0, 1, 1)
+
+        self.locale_needle_rock = QCheckBox(self.tab_for_locales)
+        self.locale_needle_rock.setObjectName(u"locale_needle_rock")
+
+        self.grid_for_locales.addWidget(self.locale_needle_rock, 4, 0, 1, 1)
+
+        self.locale_stone_watcher = QCheckBox(self.tab_for_locales)
+        self.locale_stone_watcher.setObjectName(u"locale_stone_watcher")
+
+        self.grid_for_locales.addWidget(self.locale_stone_watcher, 4, 2, 1, 1)
+
+        self.locale_gale = QCheckBox(self.tab_for_locales)
+        self.locale_gale.setObjectName(u"locale_gale")
+
+        self.grid_for_locales.addWidget(self.locale_gale, 0, 3, 1, 1)
+
+        self.locale_under_great_sea = QCheckBox(self.tab_for_locales)
+        self.locale_under_great_sea.setObjectName(u"locale_under_great_sea")
+
+        self.grid_for_locales.addWidget(self.locale_under_great_sea, 8, 0, 1, 1)
+
+        self.locale_fire_mountain = QCheckBox(self.tab_for_locales)
+        self.locale_fire_mountain.setObjectName(u"locale_fire_mountain")
+
+        self.grid_for_locales.addWidget(self.locale_fire_mountain, 2, 5, 1, 1)
+
+        self.locale_great_sea = QCheckBox(self.tab_for_locales)
+        self.locale_great_sea.setObjectName(u"locale_great_sea")
+
+        self.grid_for_locales.addWidget(self.locale_great_sea, 7, 0, 1, 1)
+
+        self.locale_overlook = QCheckBox(self.tab_for_locales)
+        self.locale_overlook.setObjectName(u"locale_overlook")
+
+        self.grid_for_locales.addWidget(self.locale_overlook, 0, 6, 1, 1)
+
+        self.locale_six_eye = QCheckBox(self.tab_for_locales)
+        self.locale_six_eye.setObjectName(u"locale_six_eye")
+
+        self.grid_for_locales.addWidget(self.locale_six_eye, 3, 3, 1, 1)
+
+        self.locale_northern_triangle = QCheckBox(self.tab_for_locales)
+        self.locale_northern_triangle.setObjectName(u"locale_northern_triangle")
+
+        self.grid_for_locales.addWidget(self.locale_northern_triangle, 2, 3, 1, 1)
+
+        self.locale_greatfish = QCheckBox(self.tab_for_locales)
+        self.locale_greatfish.setObjectName(u"locale_greatfish")
+
+        self.grid_for_locales.addWidget(self.locale_greatfish, 3, 1, 1, 1)
+
+        self.locale_northern_fairy = QCheckBox(self.tab_for_locales)
+        self.locale_northern_fairy.setObjectName(u"locale_northern_fairy")
+
+        self.grid_for_locales.addWidget(self.locale_northern_fairy, 0, 2, 1, 1)
+
+        self.locale_private_oasis = QCheckBox(self.tab_for_locales)
+        self.locale_private_oasis.setObjectName(u"locale_private_oasis")
+
+        self.grid_for_locales.addWidget(self.locale_private_oasis, 4, 4, 1, 1)
+
+        self.locale_thorned_fairy = QCheckBox(self.tab_for_locales)
+        self.locale_thorned_fairy.setObjectName(u"locale_thorned_fairy")
+
+        self.grid_for_locales.addWidget(self.locale_thorned_fairy, 3, 6, 1, 1)
+
+        self.locale_drc = QCheckBox(self.tab_for_locales)
+        self.locale_drc.setObjectName(u"locale_drc")
+
+        self.grid_for_locales.addWidget(self.locale_drc, 7, 1, 1, 1)
+
+        self.locale_islet = QCheckBox(self.tab_for_locales)
+        self.locale_islet.setObjectName(u"locale_islet")
+
+        self.grid_for_locales.addWidget(self.locale_islet, 4, 1, 1, 1)
+
+        self.locale_totg = QCheckBox(self.tab_for_locales)
+        self.locale_totg.setObjectName(u"locale_totg")
+
+        self.grid_for_locales.addWidget(self.locale_totg, 7, 3, 1, 1)
+
+        self.locale_cliff_plateau = QCheckBox(self.tab_for_locales)
+        self.locale_cliff_plateau.setObjectName(u"locale_cliff_plateau")
+
+        self.grid_for_locales.addWidget(self.locale_cliff_plateau, 5, 6, 1, 1)
+
+        self.locale_outset = QCheckBox(self.tab_for_locales)
+        self.locale_outset.setObjectName(u"locale_outset")
+
+        self.grid_for_locales.addWidget(self.locale_outset, 6, 1, 1, 1)
+
+        self.locale_two_eye = QCheckBox(self.tab_for_locales)
+        self.locale_two_eye.setObjectName(u"locale_two_eye")
+
+        self.grid_for_locales.addWidget(self.locale_two_eye, 6, 3, 1, 1)
+
+        self.locale_five_star = QCheckBox(self.tab_for_locales)
+        self.locale_five_star.setObjectName(u"locale_five_star")
+
+        self.grid_for_locales.addWidget(self.locale_five_star, 6, 6, 1, 1)
+
+        self.locale_fw = QCheckBox(self.tab_for_locales)
+        self.locale_fw.setObjectName(u"locale_fw")
+
+        self.grid_for_locales.addWidget(self.locale_fw, 7, 2, 1, 1)
+
+
+        self.verticalLayout_99.addLayout(self.grid_for_locales)
+
+        self.spacer_for_locale = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Preferred)
+
+        self.verticalLayout_99.addItem(self.spacer_for_locale)
+
+        self.verticalLayout_99.setStretch(0, 2)
+        self.verticalLayout_99.setStretch(1, 2)
+        self.tab_for_main.addTab(self.tab_for_locales, "")
         self.tab_for_model_customization = QWidget()
         self.tab_for_model_customization.setObjectName(u"tab_for_model_customization")
         self.verticalLayout_3 = QVBoxLayout(self.tab_for_model_customization)
@@ -913,6 +1256,14 @@ class Ui_MainWindow(object):
 
         self.layout_for_permalink.addWidget(self.permalink)
 
+        self.copy_button = QPushButton(self.centralwidget)
+        self.copy_button.setObjectName(u"copy_button")
+
+        self.layout_for_permalink.addWidget(self.copy_button)
+
+        self.layout_for_permalink.setStretch(0, 1)
+        self.layout_for_permalink.setStretch(1, 15)
+        self.layout_for_permalink.setStretch(2, 2)
 
         self.verticalLayout.addLayout(self.layout_for_permalink)
 
@@ -983,35 +1334,35 @@ class Ui_MainWindow(object):
         self.label_for_logic.setText(QCoreApplication.translate("MainWindow", u"Logic Type", None))
         self.logic_desc.setText("")
         self.group_for_locations.setTitle(QCoreApplication.translate("MainWindow", u"Where Should Progress Items Appear?", None))
-        self.progression_battlesquid.setText(QCoreApplication.translate("MainWindow", u"Battlesquid Minigame", None))
-        self.progression_minigames.setText(QCoreApplication.translate("MainWindow", u"Minigames", None))
-        self.progression_big_octos_gunboats.setText(QCoreApplication.translate("MainWindow", u"Big Octos and Gunboats", None))
+        self.progression_dungeons.setText(QCoreApplication.translate("MainWindow", u"Dungeons", None))
+        self.progression_long_sidequests.setText(QCoreApplication.translate("MainWindow", u"Long Sidequests", None))
+        self.progression_spoils_trading.setText(QCoreApplication.translate("MainWindow", u"Spoils Trading", None))
+        self.progression_short_sidequests.setText(QCoreApplication.translate("MainWindow", u"Short Sidequests", None))
+        self.progression_free_gifts.setText(QCoreApplication.translate("MainWindow", u"Free Gifts", None))
         self.progression_expensive_purchases.setText(QCoreApplication.translate("MainWindow", u"Expensive Purchases", None))
+        self.progression_short_minigames.setText(QCoreApplication.translate("MainWindow", u"Short Minigames", None))
+        self.progression_triforce_charts.setText(QCoreApplication.translate("MainWindow", u"Sunken Treasure (From Triforce Charts)", None))
+        self.progression_puzzle_secret_caves.setText(QCoreApplication.translate("MainWindow", u"Puzzle Secret Caves", None))
+        self.progression_misc.setText(QCoreApplication.translate("MainWindow", u"Miscellaneous", None))
+        self.progression_treasure_charts.setText(QCoreApplication.translate("MainWindow", u"Sunken Treasure (From Treasure Charts)", None))
+        self.progression_eye_reef_chests.setText(QCoreApplication.translate("MainWindow", u"Eye Reef Chests", None))
+        self.progression_long_combat_trials.setText(QCoreApplication.translate("MainWindow", u"Long Combat Trials", None))
+        self.progression_long_minigames.setText(QCoreApplication.translate("MainWindow", u"Long Minigames", None))
+        self.progression_tingle_chests.setText(QCoreApplication.translate("MainWindow", u"Tingle Chests", None))
         self.progression_great_fairies.setText(QCoreApplication.translate("MainWindow", u"Great Fairies", None))
         self.progression_combat_secret_caves.setText(QCoreApplication.translate("MainWindow", u"Combat Secret Caves", None))
-        self.progression_savage_labyrinth.setText(QCoreApplication.translate("MainWindow", u"Savage Labyrinth", None))
-        self.progression_misc.setText(QCoreApplication.translate("MainWindow", u"Miscellaneous", None))
-        self.progression_puzzle_secret_caves.setText(QCoreApplication.translate("MainWindow", u"Puzzle Secret Caves", None))
-        self.progression_eye_reef_chests.setText(QCoreApplication.translate("MainWindow", u"Eye Reef Chests", None))
-        self.progression_mail.setText(QCoreApplication.translate("MainWindow", u"Mail", None))
-        self.progression_tingle_chests.setText(QCoreApplication.translate("MainWindow", u"Tingle Chests", None))
-        self.progression_island_puzzles.setText(QCoreApplication.translate("MainWindow", u"Island Puzzles", None))
+        self.progression_mixed_secret_caves.setText(QCoreApplication.translate("MainWindow", u"Mixed Secret Caves", None))
         self.progression_platforms_rafts.setText(QCoreApplication.translate("MainWindow", u"Lookout Platforms and Rafts", None))
-        self.progression_long_sidequests.setText(QCoreApplication.translate("MainWindow", u"Long Sidequests", None))
-        self.progression_dungeons.setText(QCoreApplication.translate("MainWindow", u"Dungeons", None))
-        self.progression_short_sidequests.setText(QCoreApplication.translate("MainWindow", u"Short Sidequests", None))
-        self.progression_treasure_charts.setText(QCoreApplication.translate("MainWindow", u"Sunken Treasure (From Treasure Charts)", None))
-        self.progression_spoils_trading.setText(QCoreApplication.translate("MainWindow", u"Spoils Trading", None))
-        self.progression_triforce_charts.setText(QCoreApplication.translate("MainWindow", u"Sunken Treasure (From Triforce Charts)", None))
+        self.progression_island_puzzles.setText(QCoreApplication.translate("MainWindow", u"Island Puzzles", None))
         self.progression_submarines.setText(QCoreApplication.translate("MainWindow", u"Submarines", None))
-        self.progression_free_gifts.setText(QCoreApplication.translate("MainWindow", u"Free Gifts", None))
+        self.progression_big_octos_gunboats.setText(QCoreApplication.translate("MainWindow", u"Big Octos and Gunboats", None))
         self.group_for_settings_secondary.setTitle(QCoreApplication.translate("MainWindow", u"Dungeon Randomization Options", None))
         self.label_for_race_mode.setText(QCoreApplication.translate("MainWindow", u"Dungeon Mode", None))
         self.race_mode.setItemText(0, QCoreApplication.translate("MainWindow", u"Default", None))
         self.race_mode.setItemText(1, QCoreApplication.translate("MainWindow", u"Mixed", None))
         self.race_mode.setItemText(2, QCoreApplication.translate("MainWindow", u"Race", None))
 
-        self.label_for_num_dungeon_race_mode.setText(QCoreApplication.translate("MainWindow", u"Dungeon Number", None))
+        self.label_for_num_dungeon_race_mode.setText(QCoreApplication.translate("MainWindow", u"Number of Dungeons", None))
         self.num_dungeon_race_mode.setItemText(0, QCoreApplication.translate("MainWindow", u"1", None))
         self.num_dungeon_race_mode.setItemText(1, QCoreApplication.translate("MainWindow", u"2", None))
         self.num_dungeon_race_mode.setItemText(2, QCoreApplication.translate("MainWindow", u"3", None))
@@ -1035,12 +1386,12 @@ class Ui_MainWindow(object):
         self.num_starting_triforce_shards.setItemText(10, QCoreApplication.translate("MainWindow", u"Mirror Dungeon Number", None))
 
         self.num_starting_triforce_shards.setCurrentText(QCoreApplication.translate("MainWindow", u"0", None))
-        self.compass_map_pool_with_keys.setText(QCoreApplication.translate("MainWindow", u"Pool Dungeon Items with Keys", None))
         self.label_for_sword_mode.setText(QCoreApplication.translate("MainWindow", u"Sword Mode", None))
         self.sword_mode.setItemText(0, QCoreApplication.translate("MainWindow", u"Start with Hero's Sword", None))
         self.sword_mode.setItemText(1, QCoreApplication.translate("MainWindow", u"No Starting Sword", None))
         self.sword_mode.setItemText(2, QCoreApplication.translate("MainWindow", u"Swordless", None))
 
+        self.compass_map_pool_with_keys.setText(QCoreApplication.translate("MainWindow", u"Pool Dungeon Items with Keys", None))
         self.label_for_randomize_entrances.setText(QCoreApplication.translate("MainWindow", u"Randomize Entrances", None))
         self.randomize_entrances.setItemText(0, QCoreApplication.translate("MainWindow", u"Disabled", None))
         self.randomize_entrances.setItemText(1, QCoreApplication.translate("MainWindow", u"Dungeons", None))
@@ -1048,8 +1399,8 @@ class Ui_MainWindow(object):
         self.randomize_entrances.setItemText(3, QCoreApplication.translate("MainWindow", u"Dungeons & Secret Caves (Separately)", None))
         self.randomize_entrances.setItemText(4, QCoreApplication.translate("MainWindow", u"Dungeons & Secret Caves (Together)", None))
 
-        self.add_shortcut_warps_between_dungeons.setText(QCoreApplication.translate("MainWindow", u"Add Shortcuts Between Dungeons", None))
         self.keylunacy.setText(QCoreApplication.translate("MainWindow", u"Key-Lunacy", None))
+        self.add_shortcut_warps_between_dungeons.setText(QCoreApplication.translate("MainWindow", u"Add Shortcuts Between Dungeons", None))
         self.group_for_convenience.setTitle(QCoreApplication.translate("MainWindow", u"Additional Options", None))
         self.instant_text_boxes.setText(QCoreApplication.translate("MainWindow", u"Instant Text Boxes", None))
         self.swift_sail.setText(QCoreApplication.translate("MainWindow", u"Use Swift Sail", None))
@@ -1083,6 +1434,70 @@ class Ui_MainWindow(object):
         self.current_health.setText(QCoreApplication.translate("MainWindow", u"Current Starting Health: 3 hearts", None))
         self.no_heart_in_pool.setText(QCoreApplication.translate("MainWindow", u"No Additional Health in Pool", None))
         self.tab_for_main.setTabText(self.tab_for_main.indexOf(self.tab_for_starting_items), QCoreApplication.translate("MainWindow", u"Starting Items", None))
+        self.locale_rock_spire.setText(QCoreApplication.translate("MainWindow", u"Rock Spire Isle", None))
+        self.locale_star_belt.setText(QCoreApplication.translate("MainWindow", u"Star Belt", None))
+        self.locale_dragon_roost_island.setText(QCoreApplication.translate("MainWindow", u"Dragon Roost", None))
+        self.locale_mother_child.setText(QCoreApplication.translate("MainWindow", u"Mother and Child", None))
+        self.locale_windfall.setText(QCoreApplication.translate("MainWindow", u"Windfall Island", None))
+        self.locale_deep_fw.setText(QCoreApplication.translate("MainWindow", u"Deep FW", None))
+        self.locale_pawprint.setText(QCoreApplication.translate("MainWindow", u"Pawprint Isle", None))
+        self.locale_ice_ring.setText(QCoreApplication.translate("MainWindow", u"Ice Ring Isle", None))
+        self.locale_birds_peak.setText(QCoreApplication.translate("MainWindow", u"Bird's Peak Rock", None))
+        self.locale_deep_drc.setText(QCoreApplication.translate("MainWindow", u"Deep DRC", None))
+        self.locale_flight_control.setText(QCoreApplication.translate("MainWindow", u"Flight Control", None))
+        self.locale_cyclops.setText(QCoreApplication.translate("MainWindow", u"Cyclops Reef", None))
+        self.locale_southern_fairy.setText(QCoreApplication.translate("MainWindow", u"Southern Fairy", None))
+        self.locale_headstone.setText(QCoreApplication.translate("MainWindow", u"Headstone Island", None))
+        self.locale_savage.setText(QCoreApplication.translate("MainWindow", u"Savage Labyrinth", None))
+        self.locale_mail.setText(QCoreApplication.translate("MainWindow", u"Mail", None))
+        self.locale_eastern_triangle.setText(QCoreApplication.translate("MainWindow", u"Eastern Triangle", None))
+        self.locale_deep_wt.setText(QCoreApplication.translate("MainWindow", u"Deep WT", None))
+        self.locale_deep_totg.setText(QCoreApplication.translate("MainWindow", u"Deep TotG", None))
+        self.locale_southern_triangle.setText(QCoreApplication.translate("MainWindow", u"Southern Triangle", None))
+        self.locale_bomb.setText(QCoreApplication.translate("MainWindow", u"Bomb Island", None))
+        self.locale_ff.setText(QCoreApplication.translate("MainWindow", u"Forsaken Fortress", None))
+        self.locale_five_eye.setText(QCoreApplication.translate("MainWindow", u"Five-Eye Reef", None))
+        self.locale_boating_course.setText(QCoreApplication.translate("MainWindow", u"Boating Course", None))
+        self.locale_spectacle.setText(QCoreApplication.translate("MainWindow", u"Spectacle Island", None))
+        self.locale_forest_haven.setText(QCoreApplication.translate("MainWindow", u"Forest Haven", None))
+        self.locale_angular.setText(QCoreApplication.translate("MainWindow", u"Angular Isles", None))
+        self.locale_seven_star.setText(QCoreApplication.translate("MainWindow", u"Seven-Star Isles", None))
+        self.locale_eastern_fairy.setText(QCoreApplication.translate("MainWindow", u"Eastern Fairy", None))
+        self.locale_four_eye.setText(QCoreApplication.translate("MainWindow", u"Four-Eye Reef", None))
+        self.locale_star.setText(QCoreApplication.translate("MainWindow", u"Star Island", None))
+        self.locale_tingle.setText(QCoreApplication.translate("MainWindow", u"Tingle Island", None))
+        self.locale_crescent.setText(QCoreApplication.translate("MainWindow", u"Crescent Moon", None))
+        self.locale_western_fairy.setText(QCoreApplication.translate("MainWindow", u"Western Fairy", None))
+        self.locale_shark.setText(QCoreApplication.translate("MainWindow", u"Shark Island", None))
+        self.locale_deep_et.setText(QCoreApplication.translate("MainWindow", u"Deep ET", None))
+        self.locale_et.setText(QCoreApplication.translate("MainWindow", u"ET", None))
+        self.locale_battlesquid.setText(QCoreApplication.translate("MainWindow", u"Battlequids", None))
+        self.locale_horseshoe.setText(QCoreApplication.translate("MainWindow", u"Horseshoe Island", None))
+        self.locale_three_eye.setText(QCoreApplication.translate("MainWindow", u"Three-Eye Reef", None))
+        self.locale_wt.setText(QCoreApplication.translate("MainWindow", u"WT", None))
+        self.locale_diamond_steppe.setText(QCoreApplication.translate("MainWindow", u"Diamond Steppe", None))
+        self.locale_needle_rock.setText(QCoreApplication.translate("MainWindow", u"Needle Rock Isle", None))
+        self.locale_stone_watcher.setText(QCoreApplication.translate("MainWindow", u"Stone Watcher", None))
+        self.locale_gale.setText(QCoreApplication.translate("MainWindow", u"Gale Isle", None))
+        self.locale_under_great_sea.setText(QCoreApplication.translate("MainWindow", u"Under Great Sea", None))
+        self.locale_fire_mountain.setText(QCoreApplication.translate("MainWindow", u"Fire Mountain", None))
+        self.locale_great_sea.setText(QCoreApplication.translate("MainWindow", u"Great Sea", None))
+        self.locale_overlook.setText(QCoreApplication.translate("MainWindow", u"Overlook Island", None))
+        self.locale_six_eye.setText(QCoreApplication.translate("MainWindow", u"Six-Eye Reef", None))
+        self.locale_northern_triangle.setText(QCoreApplication.translate("MainWindow", u"Northern Triangle", None))
+        self.locale_greatfish.setText(QCoreApplication.translate("MainWindow", u"Greathfish Isle", None))
+        self.locale_northern_fairy.setText(QCoreApplication.translate("MainWindow", u"Northern Fairy", None))
+        self.locale_private_oasis.setText(QCoreApplication.translate("MainWindow", u"Private Oasis", None))
+        self.locale_thorned_fairy.setText(QCoreApplication.translate("MainWindow", u"Thorned Fairy", None))
+        self.locale_drc.setText(QCoreApplication.translate("MainWindow", u"DRC", None))
+        self.locale_islet.setText(QCoreApplication.translate("MainWindow", u"Islet of Steel", None))
+        self.locale_totg.setText(QCoreApplication.translate("MainWindow", u"TotG", None))
+        self.locale_cliff_plateau.setText(QCoreApplication.translate("MainWindow", u"Cliff Plateau Isles", None))
+        self.locale_outset.setText(QCoreApplication.translate("MainWindow", u"Outset Island", None))
+        self.locale_two_eye.setText(QCoreApplication.translate("MainWindow", u"Two-Eye Reef", None))
+        self.locale_five_star.setText(QCoreApplication.translate("MainWindow", u"Five-Star Isles", None))
+        self.locale_fw.setText(QCoreApplication.translate("MainWindow", u"FW", None))
+        self.tab_for_main.setTabText(self.tab_for_main.indexOf(self.tab_for_locales), QCoreApplication.translate("MainWindow", u"Banned Locales", None))
         self.label_for_custom_player_model.setText(QCoreApplication.translate("MainWindow", u"Player Model", None))
         self.label_for_custom_color_preset.setText(QCoreApplication.translate("MainWindow", u"Color Preset", None))
         self.label_for_sail_color.setText(QCoreApplication.translate("MainWindow", u"Sail", None))
@@ -1106,7 +1521,8 @@ class Ui_MainWindow(object):
         self.custom_model_preview_label.setText("")
         self.tab_for_main.setTabText(self.tab_for_main.indexOf(self.tab_for_model_customization), QCoreApplication.translate("MainWindow", u"Player Customization", None))
         self.option_description.setText("")
-        self.label_for_permalink.setText(QCoreApplication.translate("MainWindow", u"Permalink (copy paste to share your settings):", None))
+        self.label_for_permalink.setText(QCoreApplication.translate("MainWindow", u"Permalink:", None))
+        self.copy_button.setText(QCoreApplication.translate("MainWindow", u"Copy", None))
         self.update_checker_label.setText(QCoreApplication.translate("MainWindow", u"Checking for updates to the randomizer...", None))
         self.about_button.setText(QCoreApplication.translate("MainWindow", u"About", None))
         self.reset_settings_to_default.setText(QCoreApplication.translate("MainWindow", u"Reset All Settings to Default", None))

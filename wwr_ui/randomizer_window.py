@@ -13,8 +13,10 @@ import xml_func as xfx
 import random
 import collections
 from collections import OrderedDict
+from class_ms import *
 
 import os
+import gc
 import traceback
 import string
 import struct
@@ -29,7 +31,7 @@ except ImportError:
   from yaml import Dumper
 
 from randomizer import Randomizer, VERSION, TooFewProgressionLocationsError, InvalidCleanISOError
-from paths import ASSETS_PATH, SEEDGEN_PATH, IS_RUNNING_FROM_SOURCE
+from paths import ASSETS_PATH, SEEDGEN_PATH, IS_RUNNING_FROM_SOURCE, DATA_PATH
 import customizer
 from logic.logic import Logic
 from wwlib import texture_utils
@@ -125,6 +127,7 @@ class WWRandomizerWindow(QMainWindow):
     self.ui.generate_seed_button.clicked.connect(self.generate_seed)
 
     self.ui.randomize_button.clicked.connect(self.randomize)
+    self.ui.copy_button.clicked.connect(self.copy_perma)
     self.ui.reset_settings_to_default.clicked.connect(self.reset_settings_to_default)
     self.ui.about_button.clicked.connect(self.open_about)
 
@@ -233,7 +236,181 @@ class WWRandomizerWindow(QMainWindow):
 
     self.ui.current_health.setText(text)
 
+
+
+
+  def copy_perma(self): # permalink
+    perma = self.ui.permalink.text()
+    cb = QApplication.clipboard()
+    cb.clear(mode=cb.Clipboard)
+
+
+    if (QApplication.keyboardModifiers() & Qt.ShiftModifier) == Qt.ShiftModifier:
+      seed = self.ui.seed.text()
+      new_cb_text = "Seed:           {0}\nPermalink: {1}".format(seed,perma)
+
+
+    if (QApplication.keyboardModifiers() & Qt.AltModifier) == Qt.AltModifier:
+      settings = self.get_option_value("logic_mod") + "\nSettings: "
+
+      if self.get_option_value("sword_mode") != "Start with Hero's Sword":
+        settings+=self.get_option_value("sword_mode")+"; "
+
+      if self.get_option_value("progression_dungeons"):
+        mode = self.get_option_value("race_mode")
+        if mode != "Default":
+          mode="{} {}".format(self.get_option_value("num_dungeon_race_mode"),mode)
+        if self.get_option_value("keylunacy"):
+          settings+=mode+" Keylunacy Dungeons"
+        else:
+          settings+=mode+" Dungeons"
+        if self.get_option_value("progression_tingle_chests"):
+          settings+=" with Tingle Chests; "
+        else:
+          settings+="; "
+
+      if self.get_option_value("progression_puzzle_secret_caves") or self.get_option_value("progression_mixed_secret_caves") or self.get_option_value("progression_combat_secret_caves"):
+        caves = self.get_option_value("progression_puzzle_secret_caves") + self.get_option_value("progression_mixed_secret_caves") + self.get_option_value("progression_combat_secret_caves")
+        if caves == 3:
+          settings+="Puzzle, Mixed, and Combat Secret Caves; "
+        elif caves == 2:
+          if self.get_option_value("progression_puzzle_secret_caves"):
+            if self.get_option_value("progression_mixed_secret_caves"):
+              settings+="Puzzle and Mixed Secret Caves; "
+            else:
+              settings+="Puzzle and Combat Secret Caves; "
+          else:
+            settings+="Mixed and Combat Secret Caves; "
+        else:
+          if self.get_option_value("progression_puzzle_secret_caves"):
+            settings+="Puzzle Secret Caves; "
+          elif self.get_option_value("progression_mixed_secret_caves"):
+            settings+="Mixed Secret Caves; "
+          else:
+            settings+="Combat Secret Caves; "
+
+      if self.get_option_value("progression_short_sidequests") or self.get_option_value("progression_long_sidequests"):
+        sqs = self.get_option_value("progression_short_sidequests") + self.get_option_value("progression_long_sidequests")
+        if sqs == 2:
+          settings+="Short and Long Sidequests; "
+        else:
+          if self.get_option_value("progression_short_sidequests"):
+            settings+="Short Sidequests; "
+          else:
+            settings+="Long Sidequests; "
+
+      if self.get_option_value("progression_short_minigames") or self.get_option_value("progression_long_minigames"):
+        sqs = self.get_option_value("progression_short_minigames") + self.get_option_value("progression_long_minigames")
+        if sqs == 2:
+          settings+="Short and Long Minigames; "
+        else:
+          if self.get_option_value("progression_short_minigames"):
+            settings+="Short Minigames; "
+          else:
+            settings+="Long Minigames; "
+
+      if self.get_option_value("progression_triforce_charts") or self.get_option_value("progression_treasure_charts"):
+        if self.get_option_value("randomize_charts"):
+          settings+="Randomized "
+        sqs = self.get_option_value("progression_triforce_charts") + self.get_option_value("progression_treasure_charts")
+        if sqs == 2:
+          settings+="Regular and Triforce Treasure Charts; "
+        else:
+          if self.get_option_value("progression_triforce_charts"):
+            settings+="Triforce Treasure Charts; "
+          else:
+            settings+="Regular Treasure Charts; "
+
+      single_set_dict = OrderedDict()
+      single_set_dict["progression_great_fairies"] = "Great Fairies"
+      single_set_dict["progression_island_puzzles"] = "Island Puzzles"
+      single_set_dict["progression_expensive_purchases"] = "Expensive Purchases"
+      single_set_dict["progression_long_combat_trials"] = "Long Combat Trials"
+      single_set_dict["progression_spoils_trading"] = "Spoils Trading"
+      single_set_dict["progression_platforms_rafts"] = "Platforms and Rafts"
+      single_set_dict["progression_eye_reef_chests"] = "Eye Reef Chests"
+      single_set_dict["progression_big_octos_gunboats"] = "Big Octos and Gunboats"
+      single_set_dict["progression_submarines"] = "Subs"
+      single_set_dict["progression_free_gifts"] = "Free Gifts"
+      single_set_dict["progression_misc"] = "Misc"
+      single_set_dict["randomize_entrances"] = "Randomized Entrances"
+      single_set_dict["randomize_starting_island"] = "Randomized Starting Island"
+      single_set_dict["no_heart_in_pool"] = "No additional health items"
+      i = 0
+      for single_set in single_set_dict:
+        if self.get_option_value(single_set):
+          settings+="{}; ".format(single_set_dict[single_set])
+
+      settings = "{}\nBanned Locales: ".format(settings[:-1])
+
+      islandDict = OrderedDict()
+      with open(os.path.join(DATA_PATH, "island_data.txt")) as f:
+        island_data = yaml.load(f, YamlOrderedDictLoader)
+      for island in island_data:
+        islandDict[island_data[island]["Locale Setting"]] = island_data[island]["Long Name"]
+      for island in islandDict:
+        if self.get_option_value(island):
+          settings+="{}; ".format(islandDict[island])
+
+      settings = "{}\nStarting Items: ".format(settings[:-1])
+
+      if self.get_option_value("num_starting_triforce_shards") == "Mirror Dungeon Number":
+        settings+="Reflect Dungeon Number for Triforce Shards, "
+      elif self.get_option_value("num_starting_triforce_shards") == "Random":
+        settings+="Random Number of Triforce Shards, "
+      elif int(self.get_option_value("num_starting_triforce_shards")) > 0:
+        settings+="{} Triforce Shards, ".format(self.get_option_value("num_starting_triforce_shards"))
+
+      settings+="{} Heart Containers, ".format(int(self.get_option_value("starting_hcs"))+int(self.get_option_value("starting_bh")))
+      if int(self.get_option_value("starting_pohs")) > 0:
+        settings+="{} Pieces of Heart, ".format(self.get_option_value("starting_pohs"))
+
+      for item in self.get_option_value("starting_gear"):
+        settings+="{}, ".format(item)
+
+      settings="{}".format(settings[:-2])
+      new_cb_text = settings
+
+
+    elif (QApplication.keyboardModifiers() & Qt.ControlModifier) == Qt.ControlModifier:
+      chrtr = self.get_option_value("custom_player_model")
+      color = self.get_option_value("custom_color_preset")
+      items = self.get_option_value("disable_custom_player_items")
+      boatm = self.get_option_value("disable_custom_boat")
+      voice = self.get_option_value("disable_custom_player_voice")
+      clths = self.get_option_value("player_in_casual_clothes")
+      new_cb_text = ""
+
+      if chrtr != "Link":
+        if clths:
+          new_cb_text += chrtr + " in Casual Clothes\nWith: "
+        else:
+          new_cb_text += chrtr + "\nWith: "
+        if items:
+          new_cb_text += "Link's Items "
+        else:
+          if boatm:
+            new_cb_text += "Custom Boat, Link's Equipment, "
+          else:
+            new_cb_text += "Custom Items "
+        if voice:
+          new_cb_text += "and Link's Voice"
+        else:
+          new_cb_text += "and a Custom Voice"
+      else:
+        if clths:
+          new_cb_text += "Casual Clothes"
+      #new_cb_text += str(color)
+
+    else:
+      new_cb_text = perma
+    cb.setText(new_cb_text, mode=cb.Clipboard)
+
+
+
   def randomize(self):
+    #gc.collect()
+    #self.close()
     clean_iso_path = self.settings["clean_iso_path"].strip()
     output_folder = self.settings["output_folder"].strip()
     self.settings["clean_iso_path"] = clean_iso_path
@@ -1047,6 +1224,16 @@ class WWRandomizerWindow(QMainWindow):
       self.set_option_value("race_mode","Default")
       should_enable_options["num_dungeon_race_mode"] = False
       self.set_option_value("num_dungeon_race_mode","4")
+      formats_dungeon = ["locale_","locale_deep_"]
+      accronm_dungeon = ["drc","fw","totg","et","wt"]
+      for format in formats_dungeon:
+        for acro in accronm_dungeon:
+          option_name = "{0}{1}".format(format,acro)
+          should_enable_options[option_name] = False
+      accronm_dungeon = ["ff","under_great_sea"]
+      for acro in accronm_dungeon:
+        option_name = "{0}{1}".format("locale_",acro)
+        should_enable_options[option_name] = False
 
     sword_mode = self.get_option_value("sword_mode")
     if sword_mode == "Swordless":
@@ -1055,6 +1242,7 @@ class WWRandomizerWindow(QMainWindow):
       items_to_filter_out += 3 * ["Progressive Sword"]
 
     if(self.get_option_value("race_mode")!="Default"):
+      getattr(self.ui, "num_starting_triforce_shards").model().item(10).setEnabled(True)
       try:
         num_possible_rewards = 8 - int(self.get_option_value("num_starting_triforce_shards"))
       except:
@@ -1078,7 +1266,17 @@ class WWRandomizerWindow(QMainWindow):
         items_to_filter_out += [cur_reward]
         num_possible_rewards += 1
 
+
+      if((self.get_option_value("race_mode")=="Race") and (self.get_option_value("num_dungeon_race_mode")=="6" or self.get_option_value("num_dungeon_race_mode")=="Random")):
+        accronm_dungeon = ["drc","fw","totg","et","wt","ff"]
+        for acro in accronm_dungeon:
+          option_name = "{0}{1}".format("locale_",acro)
+          should_enable_options[option_name] = False
+
     else:
+      if(self.get_option_value("num_starting_triforce_shards")=="Mirror Dungeon Number"):
+        self.set_option_value("num_starting_triforce_shards","Random")
+      getattr(self.ui, "num_starting_triforce_shards").model().item(10).setEnabled(False)
       should_enable_options["num_dungeon_race_mode"] = False
       self.set_option_value("num_dungeon_race_mode","4")
 

@@ -1146,7 +1146,6 @@ def update_korl_dialogue(self):                                                 
   msg.string += "that your quest is to defeat Ganondorf."
 
 def dungeon_number(self):
-  hash = get_hash(self)
   try:
     if(type(dungeon_num_race_mode)==int):
       pass
@@ -1155,6 +1154,7 @@ def dungeon_number(self):
   if(dungeon_num_race_mode=="NaN"):                                             #If it is not changed from the default state
       dungeon_num_race_mode = self.options.get("num_dungeon_race_mode")             #Get value
       if(dungeon_num_race_mode=="Random"):                                          #If it is Random
+        hash = get_hash(self)
         test = hash%6+1                                                               #Make Random
         dungeon_num_race_mode = inRange(test,1,6)
       else:                                                                         #Otherwise
