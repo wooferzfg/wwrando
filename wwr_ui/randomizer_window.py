@@ -130,6 +130,7 @@ class WWRandomizerWindow(QMainWindow):
     self.ui.copy_button.clicked.connect(self.copy_perma)
     self.ui.reset_settings_to_default.clicked.connect(self.reset_settings_to_default)
     self.ui.about_button.clicked.connect(self.open_about)
+    self.ui.generate_spoiler_log.stateChanged.connect(self.spoiler_log_change)
 
     for option_name in OPTIONS:
       getattr(self.ui, option_name).installEventFilter(self)
@@ -235,6 +236,12 @@ class WWRandomizerWindow(QMainWindow):
         text += " and %d pieces" % pieces
 
     self.ui.current_health.setText(text)
+
+  def spoiler_log_change(self):
+    if self.get_option_value("generate_spoiler_log"):
+      spoilerLogOptions = ["progression_check_spoiler_log", "all_check_spoiler_log", "entrance_spoiler_log", "chart_spoiler_log"]
+      for option in spoilerLogOptions:
+        self.set_option_value(option,True)
 
 
 
@@ -1217,6 +1224,11 @@ class WWRandomizerWindow(QMainWindow):
     should_enable_options = {}
     for option_name in OPTIONS:
       should_enable_options[option_name] = True
+
+    if not self.get_option_value("generate_spoiler_log"):
+      spoilerLogOptions = ["progression_check_spoiler_log", "all_check_spoiler_log", "entrance_spoiler_log", "chart_spoiler_log"]
+      for option in spoilerLogOptions:
+        should_enable_options[option] = False
 
     if not self.get_option_value("progression_dungeons"):
       # Race mode places required items on dungeon bosses.

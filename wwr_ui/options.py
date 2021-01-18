@@ -388,10 +388,7 @@ OPTIONS = OrderedDict([
     "add_shortcut_warps_between_dungeons",
     "Adds new warp pots that act as shortcuts connecting dungeons to each other directly. (DRC, FW, TotG, and separately FF, ET, WT.)\nEach pot must be unlocked before it can be used, so you cannot use them to access dungeons you wouldn't already have access to."
   ),
-  (
-    "do_not_generate_spoiler_log",
-    "This options prevents the randomizer from generating a text file listing out the location of every single item for this seed. (This being checked also changes where items are placed in this seed.)<br><u>Generating a spoiler log is highly recommended even if you don't intend to use it</u>, just in case you get completely stuck."
-  ),
+
   (
     "sword_mode",
     "Controls whether you start with the Hero's Sword, without a sword, or if there is no sword in the entire game.\nSwordless and No Starting Sword are challenge modes, not recommended for your first run. FF's Phantom Ganon is vulnerable to Skull Hammer in Swordless mode only."
@@ -415,6 +412,27 @@ OPTIONS = OrderedDict([
   (
     "compass_map_pool_with_keys",
     "If enabled, the unhad dungeon maps and compasses will be included in items to find for dungeon completion like a small or big key.\nOtherwise, it will be placed like any other unique non-progressive items."
+  ),
+
+  (
+    "generate_spoiler_log",
+    "Generates a text file listing included seed details. (This being checked also changes where items are placed in this seed.)<br/><u>Highly recommended even if use is not intended</u>, in case of self-locking."
+  ),
+  (
+    "progression_check_spoiler_log",
+    "Generates a playthrough as part of the spoiler log.<br/><u>Highly recommended even if use is not intended</u>, in case of self-locking."
+  ),
+  (
+    "all_check_spoiler_log",
+    "Generates a list of all check locations as part of the spoiler log.<br/><u>Highly recommended even if use is not intended</u>, in case of self-locking."
+  ),
+  (
+    "entrance_spoiler_log",
+    "Generates a list of entrance locations as part of the spoiler log.<br/><u>Highly recommended even if use is not intended</u>, in case of self-locking."
+  ),
+  (
+    "chart_spoiler_log",
+    "Generates a list of chart locations as part of the spoiler log.<br/><u>Highly recommended even if use is not intended</u>, in case of self-locking."
   ),
   (
     "logic_mod",

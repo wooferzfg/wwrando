@@ -28,7 +28,7 @@ from asm import disassemble
 try:
   from keys.seed_key import SEED_KEY
 except ImportError:
-  SEED_KEY = ""
+  SEED_KEY = []
 
 from randomizers import items
 from randomizers import charts
@@ -79,6 +79,7 @@ class Randomizer:
     self.options = options
     self.seed = seed
     self.permalink = permalink
+    self.logic_mod = self.options.get("logic_mod")
 
     self.dry_run = ("-dry" in cmd_line_args)
     self.disassemble = ("-disassemble" in cmd_line_args)
@@ -103,9 +104,13 @@ class Randomizer:
         stage, room, spawn = args.split(",")
         self.test_room_args = {"stage": stage, "room": int(room), "spawn": int(spawn)}
 
+
+    spoilerList = [self.options.get("progression_check_spoiler_log"), self.options.get("all_check_spoiler_log"), self.options.get("entrance_spoiler_log"), self.options.get("chart_spoiler_log")]
+
     seed_string = self.seed
-    if self.options.get("do_not_generate_spoiler_log"):
-      seed_string += SEED_KEY
+    if self.options.get("generate_spoiler_log"):
+      seed_string += self.getSeedStr(SEED_KEY,spoilerList)
+    seed_string += self.logic_mod
 
     self.integer_seed = self.convert_string_to_integer_md5(seed_string)
     self.rng = self.get_new_rng()
@@ -152,7 +157,6 @@ class Randomizer:
         stage_searcher.print_all_used_chest_open_flags(self)
         stage_searcher.print_all_event_flags_used_by_stb_cutscenes(self)
 
-    self.logic_mod = self.options.get("logic_mod")
     # Starting items. This list is read by the Logic when initializing your currently owned items list.
     self.starting_items = [
       "Hero's Shield",
@@ -486,11 +490,29 @@ class Randomizer:
     yield("Writing logs...", options_completed)
 
     if self.randomize_items:
-      if not self.options.get("do_not_generate_spoiler_log"):
+      if (self.options.get("generate_spoiler_log") and (self.options.get("progression_check_spoiler_log") or self.options.get("all_check_spoiler_log") or self.options.get("entrance_spoiler_log") or self.options.get("chart_spoiler_log"))) :
         self.write_spoiler_log()
       self.write_non_spoiler_log()
 
     yield("Done", -1)
+
+  def getSeedStr(self,SEED_KEY,spoilerList):
+    if IS_RUNNING_FROM_SOURCE:
+      print("{}".join(SEED_KEY)).format(spoilerList[1],spoilerList[2],spoilerList[3])
+      return ("{}".join(SEED_KEY)).format(spoilerList[1],spoilerList[2],spoilerList[3])
+    resultList = []
+    output = "0x00"
+    if len(SEED_KEY)>0:
+      for i in range(0,4):
+        resultStr = str(SEED_KEY[i]) + str(int(spoilerList[i]))
+        resultInt = hex(int(resultStr,16))
+        resultList.append(resultInt)
+      output = str(resultList[0]-((resultList[1]+resultList[2])/resultList[3]))
+    else:
+      print("This should not happen, please contact the person below.\n\t{}".format("zach@yarnot.com"))
+      output = ("0x" + "".join(spoilerList))
+    print("{}".join(SEED_KEY)).format(spoilerList[1],spoilerList[2],spoilerList[3])
+    return output
 
   def apply_necessary_tweaks(self):
     patcher.apply_patch(self, "custom_funcs")
@@ -877,7 +899,7 @@ class Randomizer:
   def get_new_rng(self):
     rng = Random()
     rng.seed(self.integer_seed)
-    if self.options.get("do_not_generate_spoiler_log"):
+    if not self.options.get("generate_spoiler_log"):
       for i in range(1, 100):
         rng.getrandbits(i)
     return rng
@@ -1067,72 +1089,79 @@ class Randomizer:
     spoiler_log = self.get_log_header()
 
     # Write progression spheres.
-    spoiler_log += "Playthrough:\n"
-    progression_spheres = self.calculate_playthrough_progression_spheres()
-    all_progression_sphere_locations = [loc for locs in progression_spheres for loc in locs]
-    zones, max_location_name_length = self.get_zones_and_max_location_name_len(all_progression_sphere_locations)
-    format_string = "      %-" + str(max_location_name_length+1) + "s %s\n"
-    for i, progression_sphere in enumerate(progression_spheres):
-      spoiler_log += "%d:\n" % (i+1)
+    if(self.options.get("progression_check_spoiler_log")):
+      spoiler_log += "Playthrough:\n"
+      progression_spheres = self.calculate_playthrough_progression_spheres()
+      all_progression_sphere_locations = [loc for locs in progression_spheres for loc in locs]
+      zones, max_location_name_length = self.get_zones_and_max_location_name_len(all_progression_sphere_locations)
+      format_string = "      %-" + str(max_location_name_length+1) + "s %s\n"
+      for i, progression_sphere in enumerate(progression_spheres):
+        spoiler_log += "%d:\n" % (i+1)
 
-      for zone_name, locations_in_zone in zones.items():
-        if not any(loc for (loc, _) in locations_in_zone if loc in progression_sphere):
-          # No locations in this zone are used in this sphere.
-          continue
+        for zone_name, locations_in_zone in zones.items():
+          if not any(loc for (loc, _) in locations_in_zone if loc in progression_sphere):
+            # No locations in this zone are used in this sphere.
+            continue
 
-        spoiler_log += "  %s:\n" % zone_name
+          spoiler_log += "  %s:\n" % zone_name
 
-        for (location_name, specific_location_name) in locations_in_zone:
-          if location_name in progression_sphere:
-            if location_name == "Ganon's Tower - Rooftop":
-              item_name = "Defeat Ganondorf"
-            else:
-              item_name = self.logic.done_item_locations[location_name]
-            spoiler_log += format_string % (specific_location_name + ":", item_name)
+          for (location_name, specific_location_name) in locations_in_zone:
+            if location_name in progression_sphere:
+              if location_name == "Ganon's Tower - Rooftop":
+                item_name = "Defeat Ganondorf"
+              else:
+                item_name = self.logic.done_item_locations[location_name]
+              spoiler_log += format_string % (specific_location_name + ":", item_name)
 
-    spoiler_log += "\n\n\n"
+      if(self.options.get("all_check_spoiler_log") or self.options.get("entrance_spoiler_log") or self.options.get("chart_spoiler_log")):
+        spoiler_log += "\n\n\n"
 
     # Write item locations.
-    spoiler_log += "All item locations:\n"
-    zones, max_location_name_length = self.get_zones_and_max_location_name_len(self.logic.done_item_locations)
-    format_string = "    %-" + str(max_location_name_length+1) + "s %s\n"
-    for zone_name, locations_in_zone in zones.items():
-      spoiler_log += zone_name + ":\n"
+    if(self.options.get("all_check_spoiler_log")):
+      spoiler_log += "All item locations:\n"
+      zones, max_location_name_length = self.get_zones_and_max_location_name_len(self.logic.done_item_locations)
+      format_string = "    %-" + str(max_location_name_length+1) + "s %s\n"
+      for zone_name, locations_in_zone in zones.items():
+        spoiler_log += zone_name + ":\n"
 
-      for (location_name, specific_location_name) in locations_in_zone:
-        item_name = self.logic.done_item_locations[location_name]
-        spoiler_log += format_string % (specific_location_name + ":", item_name)
+        for (location_name, specific_location_name) in locations_in_zone:
+          item_name = self.logic.done_item_locations[location_name]
+          spoiler_log += format_string % (specific_location_name + ":", item_name)
 
-    spoiler_log += "\n\n\n"
+      if(self.options.get("entrance_spoiler_log") or self.options.get("chart_spoiler_log")):
+        spoiler_log += "\n\n\n"
 
     # Write starting island.
-    spoiler_log += "Starting island: "
-    spoiler_log += self.island_number_to_name[self.starting_island_index]
-    spoiler_log += "\n"
-
-    spoiler_log += "\n\n\n"
-
     # Write dungeon/secret cave entrances.
-    spoiler_log += "Entrances:\n"
-    for entrance_name, dungeon_or_cave_name in self.entrance_connections.items():
-      spoiler_log += "  %-48s %s\n" % (entrance_name+":", dungeon_or_cave_name)
+    if(self.options.get("entrance_spoiler_log")):
+      spoiler_log += "Starting island: "
+      spoiler_log += self.island_number_to_name[self.starting_island_index]
+      spoiler_log += "\n"
 
-    spoiler_log += "\n\n\n"
+      spoiler_log += "\n\n\n"
+
+      spoiler_log += "Entrances:\n"
+      for entrance_name, dungeon_or_cave_name in self.entrance_connections.items():
+        spoiler_log += "  %-48s %s\n" % (entrance_name+":", dungeon_or_cave_name)
+
+      if(self.options.get("chart_spoiler_log")):
+        spoiler_log += "\n\n\n"
 
     # Write treasure charts.
-    spoiler_log += "Charts:\n"
-    chart_name_to_island_number = {}
-    for island_number in range(1, 49+1):
-      chart_name = self.logic.macros["Chart for Island %d" % island_number][0]
-      chart_name_to_island_number[chart_name] = island_number
-    for chart_number in range(1, 49+1):
-      if chart_number <= 8:
-        chart_name = "Triforce Chart %d" % chart_number
-      else:
-        chart_name = "Treasure Chart %d" % (chart_number-8)
-      island_number = chart_name_to_island_number[chart_name]
-      island_name = self.island_number_to_name[island_number]
-      spoiler_log += "  %-18s %s\n" % (chart_name+":", island_name)
+    if(self.options.get("chart_spoiler_log")):
+      spoiler_log += "Charts:\n"
+      chart_name_to_island_number = {}
+      for island_number in range(1, 49+1):
+        chart_name = self.logic.macros["Chart for Island %d" % island_number][0]
+        chart_name_to_island_number[chart_name] = island_number
+      for chart_number in range(1, 49+1):
+        if chart_number <= 8:
+          chart_name = "Triforce Chart %d" % chart_number
+        else:
+          chart_name = "Treasure Chart %d" % (chart_number-8)
+        island_number = chart_name_to_island_number[chart_name]
+        island_name = self.island_number_to_name[island_number]
+        spoiler_log += "  %-18s %s\n" % (chart_name+":", island_name)
 
     spoiler_log_output_path = os.path.join(self.randomized_output_folder, "WW Random %s - Spoiler Log.txt" % self.seed)
     with open(spoiler_log_output_path, "w") as f:
