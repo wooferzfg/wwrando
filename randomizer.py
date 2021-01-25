@@ -498,7 +498,7 @@ class Randomizer:
 
   def getSeedStr(self,SEED_KEY,spoilerList):
     if IS_RUNNING_FROM_SOURCE:
-      print("{}".join(SEED_KEY)).format(spoilerList[1],spoilerList[2],spoilerList[3])
+      print(("{}".join(SEED_KEY)).format(spoilerList[1],spoilerList[2],spoilerList[3]))
       return ("{}".join(SEED_KEY)).format(spoilerList[1],spoilerList[2],spoilerList[3])
     resultList = []
     output = "0x00"

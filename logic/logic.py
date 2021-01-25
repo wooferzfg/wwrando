@@ -1130,18 +1130,19 @@ class Logic:
       raise Exception("Invalid option check requirement: %s" % req_name)
 
   def chart_name_for_location(self, location_name):
+    logic_type = self.rando.logic_mod
+    logic_mod = get_logic_mod(logic_type)
+
+    if(logic_mod=="no_logic.txt"):
+      return
+
     reqs = self.item_locations[location_name]["Need"]
     chart_req = next(req for req in reqs if req.startswith("Chart for Island "))
 
     reqs = self.macros[chart_req]
     chart_name = reqs[0]
 
-    logic_type=self.rando.options.get("logic_mod")
-    logic_mod = get_logic_mod(logic_type)
-
-    if(logic_mod=="no_logic.txt"):
-      pass
-    elif(logic_mod=="standard"):
+    if(logic_mod=="standard"):
       assert chart_name in self.all_cleaned_item_names
     elif(logic_mod[0:9]=="glitched_"):
       assert chart_name in self.all_cleaned_item_names

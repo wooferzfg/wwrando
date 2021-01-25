@@ -3,9 +3,10 @@ from paths import TYPE_PATH
 import os
 import glob
 from collections import OrderedDict
+from class_ms import * # Remember to correct this later, Zach
 #from logic.logic import Logic
 
-file_ext = ".dv_im"
+file_ext = [".dv_im",".yaml",".xml"]
 file_split = ["/","\\"]
 file_path = "./logic_types/"
 file_paths = ["./logic_types/",".\\logic_types\\","./logic_types",".\\logic_types"]
@@ -15,8 +16,9 @@ formats_var = ["{0}{2}{1}","{2}{1}","{0}\\{2}{1}","\\{2}{1}","{0}/{2}{1}","/{2}{
 for file in extempt_files_var:
   for format in formats_var:
     for path in file_paths:
-      extemption = (format.format(path,file_ext,file))
-      extempt_files.append(extemption)
+      for ext in file_ext:
+        extemption = (format.format(path,ext,file))
+        extempt_files.append(extemption)
 
 
 
@@ -39,6 +41,7 @@ def reParse(string):
   if(string[-1]=="'"):
     string = string[0:len(string)-1]+'"'
   return string
+
 
 def parseXML(file):
   with open(os.path.join(TYPE_PATH, file)) as f:
@@ -64,74 +67,170 @@ def parseXML(file):
     locations[name] = data
   return locations
 
+def parseYAML(file):
+  with open(logic_path) as f:
+    reads = yaml.load(f, YamlOrderedDictLoader)
+  try:
+    del reads["Injection"]
+  except:
+    pass
+  return reads
+
+def parseFile(file):
+  if(logic_path[-4:]==".dv_im"[-4:] or logic_path[-4:]==".xml"[-4:]):
+    parseXML(file)
+  elif(logic_path[-4:]==".yaml"[-4:]):
+    parseYAML(file)
+  else:
+    print("\n\n\n\nHow?\n\n\n\n")
+
+
+def getXML(logic_path):
+  data = OrderedDict()
+  with open(logic_path) as f:
+    reads = minidom.parse(f)
+  try:
+    inject = (reads.getElementsByTagName('inject'))[0]
+    try:
+      crea = inject.attributes['Creator'].value
+      type = inject.attributes['Type'].value
+      desc = inject.attributes['Description'].value
+      chan = int(inject.attributes['Change'].value)
+      file = inject.attributes['File'].value
+      chec = int(inject.attributes['Checksum'].value)
+    except:
+      pass
+    try:
+      filename = splitbyReturn(logic_path,file_split,-1)
+      #filename = (filename.split("."))[0]
+      assert(file==filename)
+    except:
+      #print("Interal file name,{}, does not match external,{}.").format((file+file_ext),filename)
+      desc = desc+" FAILED FILESUM."
+      file = filename
+      pass
+    if(1):
+      try:
+        totl = len(reads.getElementsByTagName('check'))
+        assert(totl==chan)
+      except:
+        desc = desc+" FAILED CHANGESUM."
+        chan = totl
+        pass
+    try:
+      if(1):
+        a = len(crea)
+        b = chan%2
+        c = len(file)%6+1
+        d = len(desc)
+        sum = (a**(b+c))%d
+        try:
+          assert(sum==int(chec))
+        except:
+          desc = desc+" FAILED CHECKSUM."
+          chec = sum
+          pass
+    except:
+      pass
+    try:
+      data['Creator'] = crea
+      data['Description'] = desc
+      data['Changes'] = str(chan)
+      data['File'] = file
+    except:
+      pass
+  except:
+    filename = splitbyReturn(logic_path,file_split,-1)
+    data['Creator'] = 'Unknown'
+    data['File'] = filename
+    data['Description'] = 'File is missing <inject> tag. FAILED FILESUM. FAILED CHANGESUM. FAILED CHECKSUM.'
+    data['Changes'] = 'Unknown'
+    data['Checksum'] = 'Unknown'
+    type = (filename.split("."))[0]
+    pass
+  return data, type
+
+def getYAML(logic_path):
+  data = OrderedDict()
+  with open(logic_path) as f:
+    raw_inject = yaml.load(f, YamlOrderedDictLoader)
+  try:
+    inject = raw_inject["Injection"]
+    try:
+      crea = inject["Creator"]
+      type = inject["Type"]
+      desc = inject["Description"]
+      chan = int(inject["Change Total"])
+      file = inject["File Name"]
+      chec = int(inject["Checksum"])
+    except:
+      pass
+    try:
+      filename = splitbyReturn(logic_path,file_split,-1)
+      #filename = (filename.split("."))[0]
+      assert(file==filename)
+    except:
+      #print("Interal file name,{}, does not match external,{}.").format((file+file_ext),filename)
+      desc = desc+" FAILED FILESUM."
+      file = filename
+      pass
+    if(1):
+      try:
+        totl = len(raw_inject)-1
+        assert(totl==chan)
+      except:
+        desc = desc+" FAILED CHANGESUM."
+        chan = totl
+        pass
+    try:
+      if(1):
+        a = len(crea)
+        b = chan%2
+        c = len(file)%6+1
+        d = len(desc)
+        sum = (a**(b+c))%d
+        try:
+          assert(sum==int(chec))
+        except:
+          desc = desc+" FAILED CHECKSUM."
+          chec = sum
+          pass
+    except:
+      pass
+    try:
+      data['Creator'] = crea
+      data['Description'] = desc
+      data['Changes'] = str(chan)
+      data['File'] = file
+    except:
+      pass
+  except:
+    filename = splitbyReturn(logic_path,file_split,-1)
+    data['Creator'] = 'Unknown'
+    data['File'] = filename
+    data['Description'] = 'File is missing <inject> tag. FAILED FILESUM. FAILED CHANGESUM. FAILED CHECKSUM.'
+    data['Changes'] = 'Unknown'
+    data['Checksum'] = 'Unknown'
+    type = (filename.split("."))[0]
+    pass
+  return data, type
+
 def get_all_custom_logic(*args):
   custom_logic_names = OrderedDict()
-  custom_logic_paths = glob.glob("{}*{}".format(file_path,file_ext))
+  custom_logic_paths = []
+  for ext in file_ext:
+    for file in (glob.glob("{}*{}".format(file_path,ext))):
+      custom_logic_paths.append(file)
   for logic_path in custom_logic_paths:
+    #print(logic_path)
     if(logic_path in extempt_files):
       continue
-    data = OrderedDict()
-    with open(logic_path) as f:
-      reads = minidom.parse(f)
-    try:
-      inject = (reads.getElementsByTagName('inject'))[0]
-      try:
-        crea = inject.attributes['Creator'].value
-        type = inject.attributes['Type'].value
-        desc = inject.attributes['Description'].value
-        chan = int(inject.attributes['Change'].value)
-        file = inject.attributes['File'].value
-        chec = int(inject.attributes['Checksum'].value)
-      except:
-        pass
-      try:
-        filename = splitbyReturn(logic_path,file_split,-1)
-        #filename = (filename.split("."))[0]
-        assert(file==filename)
-      except:
-        #print("Interal file name,{}, does not match external,{}.").format((file+file_ext),filename)
-        desc = desc+" FAILED FILESUM."
-        file = filename
-        pass
-      if(1):
-        try:
-          totl = len(reads.getElementsByTagName('check'))
-          assert(totl==chan)
-        except:
-          desc = desc+" FAILED CHANGESUM."
-          chan = totl
-          pass
-      try:
-        if(1):
-          a = len(crea)
-          b = chan%2
-          c = file%6+1
-          d = desc
-          sum = (a**(b+c))%d
-          try:
-            assert(sum==int(chec))
-          except:
-            desc = desc+" FAILED CHECKSUM."
-            chec = sum
-            pass
-      except:
-        pass
-      try:
-        data['Creator'] = crea
-        data['Description'] = desc
-        data['Changes'] = str(chan)
-        data['File'] = file
-      except:
-        pass
+    if(logic_path[-4:]==".dv_im"[-4:] or logic_path[-4:]==".xml"[-4:]):
+      data, type = getXML(logic_path)
       custom_logic_names[type] = data
-    except:
-      filename = splitbyReturn(logic_path,file_split,-1)
-      data['Creator'] = 'Unknown'
-      data['File'] = filename
-      data['Description'] = 'File is missing <inject> tag. FAILED FILESUM. FAILED CHANGESUM. FAILED CHECKSUM.'
-      data['Changes'] = 'Unknown'
-      data['Checksum'] = 'Unknown'
-      filename = (filename.split("."))[0]
-      custom_logic_names[filename] = data
-      pass
+    elif(logic_path[-4:]==".yaml"[-4:]):
+      data, type = getYAML(logic_path)
+      custom_logic_names[type] = data
+    else:
+      print("\n\n\n\nHow?\n\n\n\n")
   return custom_logic_names

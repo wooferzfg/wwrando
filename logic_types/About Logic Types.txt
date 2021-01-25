@@ -8,7 +8,36 @@ There are now a few knew logic types to choose from instead of a singular one wi
 **Glitchless** - This has no expectation of any tricks or glitches to complete the seed. Performing tricks or glitches will create out of logic or sequence break segments.
 *Standard*
 Every seed, up to 1.8.0c, was Glitchless – Standard logic.
-No changes, compared to 1.8.0c, were implemented.
+Changes from *Glitchless – Standard* 1.8.0f are as follows:
+- Changed Types:
+ - Underneath Link's House to free gifts
+ - Mesa the Grasscutter's House to free gifts
+ - Savage Labyrinth to combat secret caves and long combat trials
+ - Auctions are now split into short and long minigames based on price
+ - Mail Sorting to short minigames
+ - Hoskit's Girlfriend's mail to spoils trading
+ - Baito's Mother's mail to misc
+ - Baito's mail to dungeons
+ - Komali's Father's mail to free gifts
+ - Rockspire Ad mail to free gifts
+ - Grandma's mail to free gifts
+ - Aryll's mail to dungeons
+ - Tingle's mail to dungeons and expensive purchases
+ - Salvage Corp to misc
+ - Barrel Shooting and Battlesquid are now split into short and long minigames based on number of wins
+ - Boating Course Cave to mixed secret caves
+ - Islet of Steel Interior to misc
+ - Overlook cave to combat secret caves and long combat trials
+ - Pawprint Chuchu cave checks to mixed secret caves
+ - Ankle to Tingle chests
+ - Bomb Island cave to mixed secret caves
+ - Shark Island cave to combat secret caves and long combat trials
+ - Crescent Moon chest to free gifts
+ - Bird-Man Contest to long minigames
+ - Seven-Star platform north and south chests to platforms and long combat trials
+- Added:
+ - Orca 500 Hits is now a long minigame and long sidequest
+ - Earth Temple curtain checks are now Tingle chests
 *Beginner*
 This has the expectation of a new player to the randomizer.
 Certain actions may not be reasonable to a new player, or one coming from vanilla, as they are not expected or possible in the base game.
@@ -68,6 +97,7 @@ Changes from *Glitchless – Standard* are as follows:
 Moderate tricks or glitches are ones that require more deliberate effort and practice to perform.
 Generally speaking, this is intended for players with experience with speedrunning strategies of TWW for GameCube.
 Changes from *Glitched – Trivial* are as follows:
+- Jabun's Cave can require nothing instead of Bombs
 - Ghost Ship can require leaf pumping instead of defeating enemies
 - Cabana maze checks can require sidle clipping and/or OOB weird-shots instead of Skull Hammer
 - Dragon Roost Island long passage check can require dry storage instead of Deku Leaf and either any sword, Skull Hammer, or Boomerang (gotten at Dragon Roost Island boulder chest)
@@ -88,71 +118,107 @@ Changes from *Glitched – Trivial* are as follows:
 Lunatic requires all tricks and glitches that are possible. No hardlocks.
 For the most part, this is only for seasoned players of the randomizer or The Wind Waker Speed Run.
 Changes from *Glitched – Moderate* are as follows:
-- Outset Great Fairy can require Bait Bag and Hero's Bow instead of Deku Leaf
-- Jabun's Cave can require nothing instead of Bombs
+- Superswims may be required
+- Outset Great Fairy can require Bait Bag, Hero's Bow, and Wind Waker or Deku Leaf and Wind Waker instead of Deku Leaf and Power Bracelets
+- Windfall's transparent chest may require a bomb boost
+- Kane's gate checks are in logic as an expensive purchase and long sidequest
+- Dragon Roost's Flying Across Platforms may require Bait Bag, Hero's Bow, and Wind Waker instead of Deku Leaf
 - Dragon Roost Cavern Backwards may be required
+- Gohma may require big key skip
 - Forbidden Woods Back does not require any items beyond the Deku Leaf
 - Forbidden Woods Basement can require door storage or roll clip
 - Forbidden Woods Big Key Chest can require Hookshot instead of Boomerang
+- Greatfish's hidden chest can require Bait Bag, Hero's Bow, and Wind Waker instead of Deku Leaf
 - Tower of the Gods first floor skip can require nothing instead of Deku Leaf
 - Tower of the Gods Big Key Chest and Gohdan Heart Container do not hard require both Bombs and Deku Leaf
+- Gohdan may require big key skip
 - Helmaroc King does not require Deku Leaf or Hookshot
 - Ice Ring Isle Combat Cave does not require Iron Boots
 - Headstone Island Top of Island can require door cancel and Deku Leaf instead of Bait Bag
-- Earth Temple First Floor Western Wing can require Deku Leaf instead of Command Melody
+- Earth Temple First Floor Western Wing can require Deku Leaf or bomb boost instead of Command Melody
+- Earth Temple miniboss and deep portion may require a roll clip instead of 3 small keys
 - Earth Temple Earth God's Stone Skip can be required
-- Wind Temple Spring Storage can be required
-- Wind Temple Behind Stone Head can require roll clip
+- Jalhalla may require big key skip
+- Wind Temple may require spring storage and/or per-basement backwards
+- Wind Temple Behind Stone Head and basement may require roll clip
 - Beedle's Silver and Gold Memberships are in the Expensive Purchases, Short Sidequests, and Mail.
 - Private Oasis Chest at Top of Waterfall can require nothing instead of Deku Leaf or Hookshot
 - Cabana Labyrinth can require nothing instead of Skull Hammer or Hookshot
 - Horseshoe Golf can require Hookshot instead of Deku Leaf
+- Barrier Skip, good luck
 *No Logic*
 As the name suggest, the randomizer operates with as little logic as possible.
 Soft and hard locks are very likely.
 The only logic in place is:
-- Bosses require all dungeon-specific keys and boss key
-- Sunken Treasures require correct numbered charts in randomized charts
+- Ganondorf requires all items necessary for *Glitched – Lunatic*
 
 ### Custom Logic Injection
 
 This folder will house custom logic injection file. If injection files meet certain checksums and structure, upon launching the randomizer, they will be selectable from the logic type dropdown.
 Custom logic and injection files are not directly associated with The Wind Waker Randomizer, dv_im, or any directly related party of either repository.
 **Important Notes**
-- Tags must end with a forwardslash "/", otherwise errors may be raised. However, <inject> needs to be the root and final tag. See example.dv_im for more information.
-- File type is .dv_im
-- The formatting is XML, so white space outside variables is for legibility.
+*Checksum can be calculated as follows:*
+- e = (a^(b+c))%d
+- a is the length of Creator
+- b is the number of Change(s) defined modulated by 2
+- c is the length of File as defined above modulated by 6 plus 1
+- d is the length of Description
+- e is the Checksum
+*XML - .dv_im*
+- Tags must end with a forwardslash "/", otherwise errors may be raised.
+- Except <inject>, which needs to wrap all other tags. See example.dv_im for more information
+- White space outside variables is for legibility
+*YAML - .yaml*
+- Capitalization and white space are extremely important
 
 **Structure** - This is subject to change prior to the release of custom logic injection
-*<inject Creator="str" Type="str" Description="str" Change="int" File="str" Checksum="int">*
+*XML - .dv_im*
+ *<inject Creator="str" Type="str" Description="str" Change="int" File="str" Checksum="int">*
+*YAML - .yaml*
+ *Injection:*
+  *Creator:*
+  *Type:*
+  *Description:*
+  *Change Total:*
+  *File:*
+  *Checksum:*
 1. Creator -     Dictates the creator of the custom logic
 2. Type -        Dictates the name of the custom logic
 3. Description - Dictates the description of the custom logic
 4. Change -      Dictates the total number of checks changed
 5. File -        Dictates the file name of the injection
-6. Checksum -    Checksum can be calculated as follows:
-                 - e = (a^(b+c))%d
-                 - a is the length of Creator
-                 - b is the number of Change(s) defined modulated by 2
-                 - c is the length of File as defined above modulated by 6 plus 1
-                 - d is the length of Description
-                 - e is the Checksum
+6. Checksum -    See above
 
-*<check Name="str" Mode="char" Need="list" Types="list" Glitches="list" Item="str"/>*
+*XML - .dv_im*
+ *<check Name="str" Mode="char" Need="list" Types="list" Glitches="list" Item="str"/>*
+*YAML - .yaml*
+ *Name:*
+  *Mode:*
+  *Need:*
+  *Types:*
+  *Glitches:*
+  *Item:*
 1. Name -        Dictates the name of the check as dictated by TWWR
 2. Mode -        Dictates the injection method
-                 - "o" is to overwrite or replace current existing data
-                 - "a" is to append or add to current data
-                 - "f" is to force item on check
+                  - "o" is to overwrite or replace current existing data
+                  - "a" is to append or add to current data
+                  - "f" is to force item on check                                       (not yet implemented)
 3. Need -        Dictates required items to complete check
-                 - "AND" is used to dictate a requirement of multiple items
-                 - "OR" is used to dictate a requirement of variable items
-                 - "(" and ")" is used to dictate complex relations
-                 - "AND" and "OR" cannot be on the same nesting level
+                  - "(" and ")" is used to dictate complex relations
+                  - XML - .dv_im
+                    - "AND" is used to dictate a requirement of multiple items
+                    - "OR" is used to dictate a requirement of variable items
+                  - YAML - .yaml
+                    - "&" is used to dictate a requirement of multiple items
+                    - "|" is used to dictate a requirement of variable items
+                  - "AND"/"&" and "OR"/"|" cannot be on the same nesting level
 4. Types -       Dictates the settings users must enable to make check a valid location (Comma separated formatting)
-5. Glitches -    Dictates the glitches user may be expected to use*
-6. Item -        Dictates the item to be forced on check* (Is not implimented)
-*. Elements may not be necessary to define check
+5. Glitches* -   Dictates the glitches user may be expected to use                      (not yet implemented)
+6. Item* -       Dictates the item to be forced on check                                (not yet implemented)
+   *. Elements may not be necessary to define check
 
-*<comment Line="str"/> OR <! ----- />*
+*XML - .dv_im*
+ *<comment Line="str"/> OR <! ----- Line />*
+*YAML - .yaml*
+ *#Line*
 1. Line -     Dictates the comment

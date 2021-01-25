@@ -1,5 +1,8 @@
 Can Play Wind's Requiem:
   Wind Waker & Wind's Requiem
+Can Change Wind Direction:
+  Can Play Wind's Requiem
+  | (Option "swift_sail" Enabled & Tricked Logic)
 Can Play Ballad of Gales:
   Wind Waker & Ballad of Gales
 Can Play Command Melody:
@@ -11,7 +14,7 @@ Can Play Wind God's Aria:
 Can Play Song of Passing:
   Wind Waker & Song of Passing
 Can Fly With Deku Leaf Outdoors:
-  Deku Leaf & Wind Waker & Wind's Requiem
+  Deku Leaf & Can Change Wind Direction
 Can Aim Mirror Shield:
   Mirror Shield
   & (
@@ -26,6 +29,8 @@ Can Aim Mirror Shield:
 Can Cut or Slash:
   Progressive Sword x1
   | Skull Hammer
+Can Jumpslash:
+  Can Cut or Slash
   # You need to be holding an item in your hand in order to aim your shield around. Otherwise you can only aim it behind you at an angle or straight in front of you.
   # (Empty Bottle also works, but you would need to use the contents first so not in the logic.)
   # (Picto Box also works, but is not included as it would be a weirder and less intuitive thing to have to use to aim the shield as you normally wouldn't need to use picto box to solve dungeon puzzles.)
@@ -37,6 +42,8 @@ Can Hit Diamond Switches at Range:
   Boomerang | Progressive Bow x1 | Hookshot
 Can Destroy Seeds Hanging by Vines:
   Boomerang | Progressive Bow x1 | Bombs | Hookshot
+Can Refill Magic:
+  Can Cut Grass | Magic Meter Upgrade | (Empty Bottle & Tricked Logic)
 
 Hero's Sword:
   Progressive Sword x1
@@ -77,7 +84,7 @@ Can Access Dungeon Entrance On Dragon Roost Island:
 Can Access Forest Haven:
   (
     Grappling Hook
-    | (Deku Leaf & Wind Waker & Wind's Requiem)
+    | Can Fly With Deku Leaf Outdoors
     | (Complex Logic & Wind Waker)
   )
   & Can Travel to Forest Haven
@@ -86,7 +93,7 @@ Can Access Dungeon Entrance In Forest Haven Sector:
   (
     Can Access Forest Haven
     & (Grappling Hook | (Tricked Logic & Wind Waker))
-    & (Deku Leaf & Wind Waker & Wind's Requiem)
+    & Can Fly With Deku Leaf Outdoors
     & (Can Cut Grass | Magic Meter Upgrade)
   )
   | (Complex Logic & Wind Waker)
@@ -113,6 +120,15 @@ Can Access Dragon Roost Cavern:
   Can Access Dungeon Entrance On Dragon Roost Island
 Can Access Forbidden Woods:
   Can Access Dungeon Entrance In Forest Haven Sector
+Can Access Forbidden Woods Basement:
+  Can Access Forbidden Woods
+  & Deku Leaf
+  & (
+    (Wind Waker & Glitched Logic & Can Defeat Boko Babas)
+    | (Wind Waker & Complex Logic)
+    | (Bombs & Glitched Logic)
+    | Boomerang
+  )
 Can Access Tower of the Gods:
   Can Access Dungeon Entrance In Tower of the Gods Sector
 Can Access Earth Temple:
@@ -120,17 +136,31 @@ Can Access Earth Temple:
 Can Get into Earth Temple:
   Can Access Earth Temple
   & (
-    (Wind Waker & Command Melody)
+    Can Play Command Melody
     | (
       Glitched Logic
       & Deku Leaf
     )
   )
+Can Access Earth Temple Basement:
+  Can Get into Earth Temple
+  & (
+      (Can Play Command Melody & ET Small Key x3)
+      | (ET Small Key x2 & Can Aim Mirror Shield & Complex Logic)
+   )
 Can Access Wind Temple:
   Can Access Dungeon Entrance On Gale Isle
+Can Access Wind Temple Basement:
+ Can Access Wind Temple
+ & Can Play Command Melody
+ & (
+   (Deku Leaf & Glitched Logic & (Magic Meter Upgrade | Empty Bottle | Iron Boots))
+   | (Deku Leaf & Iron Boots)
+   | (Can Spring Storage & (Fire Arrows | Bombs | Can Jumpslash))
+ )
 
 Can Get into Secret Cave Entrance on Outset Island:
-  ((Can Cut Down Outset Trees | Tricked Logic) & (Deku Leaf & Wind Waker & Wind's Requiem) & Power Bracelets)
+  ((Can Cut Down Outset Trees | Tricked Logic) & Can Fly With Deku Leaf Outdoors & Power Bracelets)
   | (Hookshot & Power Bracelets)
   | (Complex Logic & Wind Waker)
 Can Access Secret Cave Entrance on Outset Island:
@@ -165,13 +195,13 @@ Can Access Secret Cave Entrance on Needle Rock Isle:
 Can Access Secret Cave Entrance on Angular Isles:
   # Either Deku Leaf or Hookshot are needed to get into the cave.
   (
-    (Deku Leaf & Wind Waker & Wind's Requiem)
+    Can Fly With Deku Leaf Outdoors
     | Hookshot
     | (Complex Logic & Wind Waker)
   ) & Can Travel to Angular Isles
 Can Get into Secret Cave Entrance on Boating Course:
   # Getting inside the cave requires flying with Deku Leaf or Hookshotting the pole.
-  (Deku Leaf & Wind Waker & Wind's Requiem)
+  Can Fly With Deku Leaf Outdoors
   | Hookshot
   | (Complex Logic & Wind Waker & Can Cut or Slash)
 Can Access Secret Cave Entrance on Boating Course:
@@ -302,7 +332,7 @@ Can Get Inside Forsaken Fortress:
     | (
       Tricked Logic
       & Wind Waker
-    )
+    ) | Complex Logic
   )
   # Even though you can kill Phantom Ganon without the Skull Hammer, that only lets you access the one chest he spawns.
   # You can't access the other chests/boss without Skull Hammer.
@@ -327,7 +357,16 @@ Can Access Hyrule:
   & Triforce Shard 8
 Can Get Past Hyrule Barrier:
   Can Access Hyrule
-  & (Progressive Sword x4 | In Swordless Mode)
+  & (
+    Progressive Sword x4
+    | In Swordless Mode
+    | (
+      Complex Logic
+      & Progressive Sword x1
+      & Wind Waker
+      & Bombs
+    )
+  )
 Can Access Ganon's Tower:
   Can Get Past Hyrule Barrier
   & (Hookshot | Deku Leaf)
@@ -395,7 +434,7 @@ Can Salvage Treasure:
   & Can Sail
 
 Can Get Fairies:
-  Nothing # Northern Fairy Island can be entered without any items.
+  Can Travel to Northern Fairy Island | Can Travel to any Island # Northern Fairy Island can be entered without any items.
 Can Farm Knight's Crests:
   Grappling Hook & Spoils Bag
   & (
@@ -923,23 +962,35 @@ Not Secret Cave Entrance Rando:
   Option "randomize_entrances" Is "Disabled"
   | Option "randomize_entrances" Is "Dungeons"
 
+
+
 Can DRC Backward:
   Glitched Logic
-  & Progressive Bow x1
-  & DRC Small Key x1
+  & (
+    Progressive Bow x1
+    | (Bombs & Can Cut or Slash & Complex Logic)
+  )
+  & DRC Small Key x2
+
 Can Burn Pallet Door:
   Glitched Logic
   & (
     Bombs
     | Progressive Bow x2
   )
+
 Can Spring Storage:
   Complex Logic
   & Iron Boots
   & Hookshot
 
-TODO:
-  Impossible
+Can Door Cancel:
+  Wind Waker
+
+Can Play Fish Minigame:
+  Can Sail
+  & Bait Bag
+  & Hero's Bow
 
 Can Get DRI Boulder Chest:
   # Bombs work by getting in the ship and shooting the cannon up at the bomb flowers.
@@ -955,16 +1006,20 @@ Can Get DRI Boulder Chest:
     & Can Cut or Slash
   )
 
+
+TODO:
+  Impossible
+
+
 Can Sail:
   Boat's Sail
-  & (
-    Can Play Wind's Requiem
-    | Option "swift_sail" Enabled
-  )
+  & Can Change Wind Direction
 
 Can Travel to any Island:
-  Can Play Ballad of Gales
-  & Can Sail
+  (
+    Can Play Ballad of Gales
+    & Can Sail
+  ) | Complex Logic
 
 Can Travel to Mother Isle:
   Can Play Ballad of Gales

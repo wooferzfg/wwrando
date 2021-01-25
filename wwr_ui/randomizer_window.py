@@ -60,6 +60,8 @@ class WWRandomizerWindow(QMainWindow):
     self.ui = Ui_MainWindow()
     self.ui.setupUi(self)
 
+    self.logic_types = xfx.get_all_custom_logic()
+
     self.cmd_line_args = cmd_line_args
     self.bulk_test = ("-bulk" in cmd_line_args)
     self.no_ui_test = ("-noui" in cmd_line_args)
@@ -963,7 +965,7 @@ class WWRandomizerWindow(QMainWindow):
       self.ui.logic_desc.setText(desc)
       self.ui.logic_desc.setStyleSheet("color: grey;")
     elif(logic_cat=="Custom"):
-      custom_logic_names = xfx.get_all_custom_logic()
+      custom_logic_names = self.logic_types
       logic_name = logic[9:]
       desc = custom_logic_names[logic_name]["Description"]
       self.ui.logic_desc.setText(desc)
@@ -1097,6 +1099,7 @@ class WWRandomizerWindow(QMainWindow):
     custom_colors = metadata.get(prefix + "_custom_colors", {})
 
     for custom_color_name, default_color in custom_colors.items():
+      self.custom_colors[custom_color_name] = default_color
       option_name = "custom_color_" + custom_color_name
       hlayout = QHBoxLayout()
       label_for_color_selector = QLabel(self.ui.tab_for_model_customization)
