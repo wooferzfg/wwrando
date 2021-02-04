@@ -610,13 +610,13 @@ Windfall Island - Battlesquid - Second Prize:
   Locale: Battlesquid
   Paths:
     - rels/d_a_npc_kg1.rel@2C29
-#Windfall Island - Battlesquid - Prize 3+:
-#  Need: Nothing
-#  Original item: Purple Rupee
-#  Types: Farmable
-#  Locale: Battlesquid
-#  Paths:
-#    - rels/d_a_npc_kg1.rel@2C2A
+Windfall Island - Battlesquid - Prize 3+:
+  Need: Nothing
+  Original item: Purple Rupee
+  Types: Consumables only
+  Locale: Battlesquid
+  Paths:
+    - rels/d_a_npc_kg1.rel@2C2A
 Windfall Island - Battlesquid - Under 20 Shots Prize:
   Need: Can Travel to Windfall Island
   Original item: Treasure Chart 23
@@ -624,13 +624,13 @@ Windfall Island - Battlesquid - Under 20 Shots Prize:
   Locale: Battlesquid
   Paths:
     - rels/d_a_npc_kg1.rel@2C2C
-#Windfall Island - Battlesquid - Under 20 Shots Prize 2+:
-#  Need: Nothing
-#  Original item: Orange Rupee
-#  Types: Farmable
-#  Locale: Battlesquid
-#  Paths:
-#    - rels/d_a_npc_kg1.rel@2C2D
+Windfall Island - Battlesquid - Under 20 Shots Prize 2+:
+  Need: Nothing
+  Original item: Orange Rupee
+  Types: Consumables only
+  Locale: Battlesquid
+  Paths:
+    - rels/d_a_npc_kg1.rel@2C2D
 #Windfall Island - Dampa's Piggy Sitting Minigame:
 #  Need: Rescued Aryll & Spoils Bag & Can Farm Skull Necklaces
 #  Original item: Purple Rupee
@@ -1830,7 +1830,7 @@ Earth Temple - Chest Behind Destructible Walls:
   Locale: Earth Temple
   Paths:
     - M_Dai/Stage.arc/Chest00A
-Earth Temple - Behind Curtain Next to Map Chest:
+Earth Temple - Behind Curtain In Warp Pot Room:
   Need:
     Can Access Earth Temple
     & Can Play Command Melody
@@ -1962,7 +1962,7 @@ Earth Temple - Kill All Floormasters in Foggy Room:
   Locale: Earth Temple
   Paths:
     - M_Dai/Stage.arc/Chest009
-Earth Temple - Behind Curtains Next to Hammer Button:
+Earth Temple - Behind Curtain Next to Hammer Button:
   Need:
     Can Get into Earth Temple
     & Can Aim Mirror Shield
@@ -2646,13 +2646,13 @@ Spectacle Island - Barrel Shooting - Second Prize:
   Locale: Spectacle Island
   Paths:
     - rels/d_a_npc_kg2.rel@2107
-#Spectacle Island - Barrel Shooting - Prize 3+:
-#  Need:
-#  Original item: Orange Rupee
-#  Types: Farmable
-#  Locale: Spectacle Island
-#  Paths:
-#    - rels/d_a_npc_kg2.rel@210F
+Spectacle Island - Barrel Shooting - Prize 3+:
+  Need:
+  Original item: Orange Rupee
+  Types: Consumables only
+  Locale: Spectacle Island
+  Paths:
+    - rels/d_a_npc_kg2.rel@210F
 
 Needle Rock Isle - Chest:
   Need:
@@ -3239,7 +3239,7 @@ Rock Spire Isle - Center Lookout Platform:
   Locale: Rock Spire Isle
   Paths:
     - sea/Room16.arc/Chest002
-Rock Spire Isle - Gunboat:
+Rock Spire Isle - Southeast Gunboat:
   Need:
     Bombs
     & Can Salvage Treasure

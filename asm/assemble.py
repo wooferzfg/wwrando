@@ -7,6 +7,10 @@ import shutil
 from collections import OrderedDict
 import struct
 import yaml
+try:
+  from yaml import CDumper as Dumper
+except:
+  from yaml import Dumper
 import traceback
 
 import sys
@@ -16,6 +20,8 @@ from elf import *
 
 if sys.platform == "win32":
   devkitbasepath = r"C:\devkitPro\devkitPPC\bin"
+elif(sys.platform == "darwin" or os.name == "posix"):
+  devkitbasepath = r"/opt/devkitpro/devkitPPC/bin"
 else:
   if not "DEVKITPPC" in os.environ:
     raise Exception(r"Could not find devkitPPC. Path to devkitPPC should be in the DEVKITPPC env var")
@@ -30,19 +36,19 @@ if not os.path.isfile(get_bin("powerpc-eabi-as")):
   raise Exception(r"Failed to assemble code: Could not find devkitPPC. devkitPPC should be installed to: C:\devkitPro\devkitPPC")
 
 # Allow yaml to dump OrderedDicts for the diffs.
-yaml.CDumper.add_representer(
+Dumper.add_representer(
   OrderedDict,
   lambda dumper, data: dumper.represent_dict(data.items())
 )
 
 # Change how yaml dumps lists so each element isn't on a separate line.
-yaml.CDumper.add_representer(
+Dumper.add_representer(
   list,
   lambda dumper, data: dumper.represent_sequence(u'tag:yaml.org,2002:seq', data, flow_style=True)
 )
 
 # Output integers as hexadecimal.
-yaml.CDumper.add_representer(
+Dumper.add_representer(
   int,
   lambda dumper, data: yaml.ScalarNode('tag:yaml.org,2002:int', "0x%02X" % data)
 )
@@ -380,7 +386,7 @@ try:
 
     diff_path = os.path.join(".", "patch_diffs", patch_name + "_diff.txt")
     with open(diff_path, "w") as f:
-      f.write(yaml.dump(diffs, Dumper=yaml.CDumper, default_flow_style=False))
+      f.write(yaml.dump(diffs, Dumper=Dumper, default_flow_style=False))
 
   # Write the custom symbols to a text file.
   # Delete any entries in custom_symbols that have no custom symbols to avoid clutter.
@@ -392,7 +398,7 @@ try:
     output_custom_symbols[file_path] = custom_symbols_for_file
 
   with open("./custom_symbols.txt", "w") as f:
-    f.write(yaml.dump(output_custom_symbols, Dumper=yaml.CDumper, default_flow_style=False))
+    f.write(yaml.dump(output_custom_symbols, Dumper=Dumper, default_flow_style=False))
 except Exception as e:
   stack_trace = traceback.format_exc()
   error_message = str(e) + "\n\n" + stack_trace

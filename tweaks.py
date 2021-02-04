@@ -1627,12 +1627,19 @@ def increase_misc_animations(self):
   # Increase speed Link starts climbing a ladder/vine (1.0 -> 1.6)
   self.dol.write_data(write_float, 0x8035DB18, 1.6)
 
-  # Increase speed Links ends climbing a ladder/vine (0.9 -> 1.4)
+  # Increase speed Link ends climbing a ladder/vine (0.9 -> 1.4)
   self.dol.write_data(write_float, 0x8035DB20, 1.4)
+
+  # Increase speed Link sidles (1.6 -> 2.0)
+  self.dol.write_data(write_float, 0x8035D6AC, 2.0)
 
   # Half the number of frames camera takes to focus on an npc for a conversation (from 20 to 10)
   self.dol.write_data(write_u32, 0x8016DA2C, 0x3800000A) # li r0,10
 
+def fix_day_night_cycle(self):
+  # Sets the cycle to always be true, with or without necessary items
+  self.dol.write_data(write_u8, 0x801908e4, 1)
+  # Thank you, Gamma, for necessary address
 
 def change_starting_clothes(self):
   custom_model_metadata = customizer.get_model_metadata(self.custom_model_name)

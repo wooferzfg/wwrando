@@ -522,7 +522,7 @@ class Logic:
     filtered_locations = []
     typeDict = OrderedDict([
       ("No progression", False),
-      ("Farmable", False),
+      ("Consumables only", False),
       ("Dungeon", options.get("progression_dungeons")),
       ("Puzzle Secret Cave", options.get("progression_puzzle_secret_caves")),
       ("Mixed Secret Cave", options.get("progression_mixed_secret_caves")),
@@ -610,6 +610,11 @@ class Logic:
     # Therefore we don't allow the other two items Zunari gives to be placed in the Magic Armor slot.
     if location_name == "Windfall Island - Zunari - Stock Exotic Flower in Zunari's Shop" and item_name in ["Town Flower", "Boat's Sail"]:
       return False
+
+    types = self.item_locations[location_name]["Types"]
+    if "Consumables only" in types:
+      if item_name not in self.all_fixed_consumable_items and item_name not in self.duplicatable_consumable_items:
+        return False
 
     return True
 

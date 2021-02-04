@@ -498,8 +498,8 @@ class Randomizer:
 
   def getSeedStr(self,SEED_KEY,spoilerList):
     if IS_RUNNING_FROM_SOURCE:
-      print(("{}".join(SEED_KEY)).format(spoilerList[1],spoilerList[2],spoilerList[3]))
-      return ("{}".join(SEED_KEY)).format(spoilerList[1],spoilerList[2],spoilerList[3])
+      print(("{}".join(SEED_KEY)).format(int(spoilerList[1]),int(spoilerList[2]),int(spoilerList[3])))
+      return ("{}".join(SEED_KEY)).format(int(spoilerList[1]),int(spoilerList[2]),int(spoilerList[3]))
     resultList = []
     output = "0x00"
     if len(SEED_KEY)>0:
@@ -550,6 +550,7 @@ class Randomizer:
     tweaks.increase_grapple_animation_speed(self)
     tweaks.increase_block_moving_animation(self)
     tweaks.increase_misc_animations(self)
+    tweaks.fix_day_night_cycle(self)
     tweaks.shorten_auction_intro_event(self)
     tweaks.disable_invisible_walls(self)
     tweaks.add_hint_signs(self)

@@ -1,7 +1,6 @@
 #Created by LeanusCrain/CrainWWR
 Windfall Island - Kane - Place Six Idols on Gate:
   Mode: o
-  Need: Rescued Aryll & Delivery Bag
   Types: Long Sidequest, Expensive Purchase
 Windfall Island - Kane - Place Shop Guru Statue on Gate:
   Mode: o
