@@ -33,7 +33,7 @@ def randomize_starting_island(self):
 
   while True:
     starting_island_room_index = self.rng.choice(possible_starting_islands)
-    if(self.banned_island_locales[starting_island_room_index-1]):
+    if not self.banned_island_locales[starting_island_room_index-1]:
       break
     else:
       continue
