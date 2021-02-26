@@ -424,7 +424,8 @@ Windfall Island - Maggie - Delivery Reward:
 Windfall Island - Cafe Bar - Postman:
   Need:
     Rescued Aryll
-    & Delivery Bag & Maggie's Letter
+    & Delivery Bag
+    & Maggie's Letter
     & Can Travel to Windfall Island
   Original item: Moblin's Letter
   Types: Short Sidequest
@@ -437,6 +438,7 @@ Windfall Island - Kreeb - Light Up Lighthouse:
     Can Play Wind's Requiem
     & Fire Arrows
     & Can Travel to Windfall Island
+    & Can Play Song of Passing
   Original item: Piece of Heart
   Types: Short Sidequest
   Locale: Windfall Island
@@ -447,6 +449,7 @@ Windfall Island - Transparent Chest:
     # Need to activate the windmill, light up the lighthouse, and then get to the chest either by flying or with hookshot.
     Can Change Wind Direction
     & Fire Arrows
+    & Can Play Song of Passing
     & (
       Can Fly With Deku Leaf Outdoors
       | Hookshot
@@ -503,12 +506,15 @@ Windfall Island - 80 Rupee Auction:
   Locale: Windfall Island
   Paths:
     - rels/d_a_auction.rel@44A1
-#Windfall Island - Zunari - Sail:
-#  Need:
+#Windfall Island - Zunari - His Last Possession:
+#  Need: Can Travel to Windfall Island
 #  Original item: Boat's Sail
+#  Types: Misc
+#  Locale: Windfall Island
 #  Paths:
 #    - rels/d_a_npc_rsh1.rel@30FB
-#Windfall Island - Zunari - Goron Trading Starter: # Doesn't randomize correctly, he just keeps giving you this item repeatedly
+#    - CustomSymbol:zunari_boats_sail_slot_item_id
+#Windfall Island - Zunari - Goron Trading Starter: # Doesn't randomize correctly, he just keeps giving you this item repeatedly. And there's no point in randomizing this since he would still sell infinite Town Flowers in the shop anyway.
 #  Need: Rescued Aryll & Delivery Bag
 #  Original item: Town Flower
 #  Paths:
@@ -611,7 +617,7 @@ Windfall Island - Battlesquid - Second Prize:
   Paths:
     - rels/d_a_npc_kg1.rel@2C29
 Windfall Island - Battlesquid - Prize 3+:
-  Need: Nothing
+  Need: Can Travel to Windfall Island
   Original item: Purple Rupee
   Types: Consumables only
   Locale: Battlesquid
@@ -625,7 +631,7 @@ Windfall Island - Battlesquid - Under 20 Shots Prize:
   Paths:
     - rels/d_a_npc_kg1.rel@2C2C
 Windfall Island - Battlesquid - Under 20 Shots Prize 2+:
-  Need: Nothing
+  Need: Can Travel to Windfall Island
   Original item: Orange Rupee
   Types: Consumables only
   Locale: Battlesquid
@@ -647,7 +653,7 @@ Windfall Island - Pompie and Vera - Secret Meeting Photo:
     # Need to snap a photo of Lenzo and Minenco in Lenzo's house.
     # Need Wind's Requiem to activate the Windmill.
     # Need Picto Box because Lenzo will not unlock his upper door until you talk to him after obtaining it
-    (Can Play Wind's Requiem | Glitched Logic)
+    Can Change Wind Direction
     & Picto Box
     & Can Travel to Windfall Island
   Original item: Treasure Chart 24
@@ -739,6 +745,7 @@ Dragon Roost Island - Fly Across Platforms Around Island:
   Need:
     (
       Can Fly With Deku Leaf Outdoors
+      & ( Can Play Wind's Requiem | Magic Meter Upgrade | Glitched Logic )
       & Can Refill Magic
       & Can Travel to Dragon Roost Island
     ) | (
@@ -747,12 +754,10 @@ Dragon Roost Island - Fly Across Platforms Around Island:
       & Glitched Logic
       & Can Travel to Dragon Roost Island
     ) | (
-      (
-        Can Door Cancel
-        & Can Sail
-        & Can Play Fish Minigame
-        & Complex Logic
-      )
+      Can Door Cancel
+      & Can Sail
+      & Can Play Fish Minigame
+      & Complex Logic
     )
   Original item: Orange Rupee
   Types: Island Puzzle
@@ -2519,6 +2524,7 @@ The Great Sea - Goron Trading Reward:
     Rescued Aryll
     & Delivery Bag
     & Can Travel to any Island
+    & Can Play Song of Passing
   # You need at least 560 rupees to get the final item, but you don't need a wallet upgrade since the most you need at one time is 200 rupees.
   Original item: Piece of Heart
   Types: Long Sidequest, Expensive Purchase
@@ -2647,7 +2653,7 @@ Spectacle Island - Barrel Shooting - Second Prize:
   Paths:
     - rels/d_a_npc_kg2.rel@2107
 Spectacle Island - Barrel Shooting - Prize 3+:
-  Need:
+  Need: Can Travel to Spectacle Island
   Original item: Orange Rupee
   Types: Consumables only
   Locale: Spectacle Island
@@ -3053,8 +3059,8 @@ Tingle Island - Ankle - Reward for All Tingle Statues:
     & Earth Tingle Statue
     & Wind Tingle Statue
     & Can Travel to Tingle Island
-  Original item: Rainbow Rupee
-  Types: Tingle Chest
+  Original item: 500 Rupees, reward for finding all Tingle Statues
+  Types: Misc
   Locale: Tingle Island
   Paths:
     - rels/d_a_npc_tc.rel@6143

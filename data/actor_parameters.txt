@@ -20,7 +20,7 @@ d_a_agbsw0:
   unknown_param_5:
     Bitfield name: aux_params_1
     Mask: 0xFFFF
-  path_index:
+  type:
     Bitfield name: aux_params_2
     Mask: 0x00FF
 
@@ -86,16 +86,16 @@ d_a_andsw0:
     Mask: 0x00FF
 
 d_a_andsw2:
-  unknown_param_1:
+  num_switches_to_check:
     Bitfield name: params
     Mask: 0x000000FF
-  unknown_param_2:
+  behavior_type:
     Bitfield name: params
     Mask: 0x0000FF00
   switch_to_set:
     Bitfield name: params
     Mask: 0x00FF0000
-  unknown_param_4:
+  first_switch_to_check:
     Bitfield name: params
     Mask: 0xFF000000
   unknown_param_5:
@@ -131,13 +131,13 @@ d_a_bb:
   range:
     Bitfield name: params
     Mask: 0x0000FF00
-  unknown_param_3:
+  path_index:
     Bitfield name: params
     Mask: 0x00FF0000
-  unknown_param_4:
+  enable_spawn_switch:
     Bitfield name: params
     Mask: 0xFF000000
-  unknown_param_5:
+  disable_spawn_switch:
     Bitfield name: aux_params_2
     Mask: 0x00FF
 
@@ -220,7 +220,7 @@ d_a_bk:
   bokoblin_type:
     Bitfield name: params
     Mask: 0x0000000F
-  unknown_param_2:
+  switch_spawns_bokoblin:
     Bitfield name: params
     Mask: 0x00000010
   is_green:
@@ -232,10 +232,10 @@ d_a_bk:
   unknown_param_5:
     Bitfield name: params
     Mask: 0x0000FF00
-  unknown_param_6:
+  path_index:
     Bitfield name: params
     Mask: 0x00FF0000
-  unknown_param_7:
+  enable_spawn_switch:
     Bitfield name: params
     Mask: 0xFF000000
   disable_spawn_on_death_switch:
@@ -352,16 +352,16 @@ d_a_canon:
     Mask: 0xFFFF
 
 d_a_cc:
-  chuchu_behavior_type:
+  behavior_type:
     Bitfield name: params
     Mask: 0x000000FF
   chuchu_type:
     Bitfield name: params
     Mask: 0x0000FF00
-  unknown_param_3:
+  sight_range:
     Bitfield name: params
     Mask: 0x00FF0000
-  unknown_param_4:
+  enable_spawn_switch:
     Bitfield name: params
     Mask: 0xFF000000
 
@@ -384,7 +384,7 @@ d_a_daiocta:
   unknown_param_3:
     Bitfield name: params
     Mask: 0x00FF0000
-  unknown_param_4:
+  disable_spawn_on_death_switch:
     Bitfield name: params
     Mask: 0xFF000000
   unknown_param_5:
@@ -416,20 +416,56 @@ d_a_dk:
     Mask: 0x000000FF
 
 d_a_door10:
-  open_condition_switch:
+  switch_1:
     Bitfield name: params
     Mask: 0x000000FF
   type:
     Bitfield name: params
     Mask: 0x00000F00
+  event_index:
+    Bitfield name: params
+    Mask: 0x000FF000
+  switch_2:
+    Bitfield name: params
+    Mask: 0x0FF00000
+  from_room_num:
+    Bitfield name: aux_params_1
+    Mask: 0x003F
+  to_room_num:
+    Bitfield name: aux_params_1
+    Mask: 0x0FC0
+  ship_id:
+    Bitfield name: aux_params_2
+    Mask: 0x003F
+  arg_1:
+    Bitfield name: aux_params_2
+    Mask: 0xFF00
 
 d_a_door12:
-  open_condition_switch:
+  switch_1:
     Bitfield name: params
     Mask: 0x000000FF
   type:
     Bitfield name: params
     Mask: 0x00000F00
+  event_index:
+    Bitfield name: params
+    Mask: 0x000FF000
+  switch_2:
+    Bitfield name: params
+    Mask: 0x0FF00000
+  from_room_num:
+    Bitfield name: aux_params_1
+    Mask: 0x003F
+  to_room_num:
+    Bitfield name: aux_params_1
+    Mask: 0x0FC0
+  ship_id:
+    Bitfield name: aux_params_2
+    Mask: 0x003F
+  appearance_type:
+    Bitfield name: aux_params_2
+    Mask: 0xFF00
 
 d_a_dr: {}
 
@@ -438,13 +474,13 @@ d_a_dr2: {}
 d_a_dummy: {}
 
 d_a_ep:
-  unknown_param_1:
+  type:
     Bitfield name: params
     Mask: 0x0000003F
-  unknown_param_2:
+  has_fireflies:
     Bitfield name: params
     Mask: 0x00000040
-  unknown_param_3:
+  is_wooden:
     Bitfield name: params
     Mask: 0x00000080
   unknown_param_4:
@@ -453,7 +489,7 @@ d_a_ep:
   unknown_param_5:
     Bitfield name: params
     Mask: 0x00FF0000
-  unknown_param_6:
+  on_switch:
     Bitfield name: params
     Mask: 0xFF000000
 
@@ -506,16 +542,16 @@ d_a_fgmahou:
     Mask: 0x0000000F
 
 d_a_fire:
-  unknown_param_1:
+  switch_to_check:
     Bitfield name: params
     Mask: 0x000000FF
   unknown_param_2:
     Bitfield name: params
     Mask: 0x00000F00
-  unknown_param_3:
+  disable_spawn_chest_open_flag:
     Bitfield name: params
     Mask: 0x0001F000
-  unknown_param_4:
+  disable_spawn_condition:
     Bitfield name: params
     Mask: 0x000E0000
   unknown_param_5:
@@ -638,10 +674,10 @@ d_a_hitobj:
     Mask: 0x000000FF
 
 d_a_hmlif:
-  unknown_param_1:
+  enable_movement_switch:
     Bitfield name: params
     Mask: 0x000000FF
-  unknown_param_2:
+  path_index:
     Bitfield name: params
     Mask: 0x0000FF00
   unknown_param_3:
@@ -653,13 +689,13 @@ d_a_hmlif:
   unknown_param_5:
     Bitfield name: params
     Mask: 0x07C00000
-  unknown_param_6:
+  type:
     Bitfield name: params
     Mask: 0x78000000
   unknown_param_7:
     Bitfield name: params
     Mask: 0x80000000
-  unknown_param_8:
+  eye_shot_switch:
     Bitfield name: aux_params_2
     Mask: 0x00FF
 
@@ -706,16 +742,16 @@ d_a_jbo:
 d_a_kaji: {}
 
 d_a_kamome:
-  unknown_param_1:
+  type:
     Bitfield name: params
     Mask: 0x000000FF
   unknown_param_2:
     Bitfield name: params
     Mask: 0x0000FF00
-  unknown_param_3:
+  path_index:
     Bitfield name: params
     Mask: 0x00FF0000
-  unknown_param_4:
+  enable_spawn_switch:
     Bitfield name: params
     Mask: 0xFF000000
 
@@ -739,16 +775,16 @@ d_a_kantera:
     Mask: 0xFF000000
 
 d_a_kb:
-  unknown_param_1:
+  color:
     Bitfield name: params
     Mask: 0x0000000F
-  unknown_param_2:
+  sight_range:
     Bitfield name: params
     Mask: 0x000000F0
   unknown_param_3:
     Bitfield name: params
     Mask: 0x0000FF00
-  unknown_param_4:
+  path_index:
     Bitfield name: params
     Mask: 0x00FF0000
   unknown_param_5:
@@ -812,7 +848,7 @@ d_a_kokiie:
   unknown_param_1:
     Bitfield name: params
     Mask: 0x000000FF
-  unknown_param_2:
+  fallen_switch:
     Bitfield name: params
     Mask: 0xFF000000
 
@@ -846,22 +882,22 @@ d_a_kui:
     Mask: 0xFF000000
 
 d_a_kytag00:
-  unknown_param_1:
+  colo_entry_index:
     Bitfield name: params
     Mask: 0x000000FF
-  unknown_param_2:
+  effect_type:
     Bitfield name: params
     Mask: 0x0000FF00
-  unknown_param_3:
+  fade_radius:
     Bitfield name: params
     Mask: 0x00FF0000
-  unknown_param_4:
+  fade_height:
     Bitfield name: params
     Mask: 0xFF000000
-  unknown_param_5:
+  switch_to_check:
     Bitfield name: aux_params_1
     Mask: 0x00FF
-  unknown_param_6:
+  invert_position_checks:
     Bitfield name: aux_params_1
     Mask: 0xFF00
   unknown_param_7:
@@ -871,12 +907,12 @@ d_a_kytag00:
 d_a_kytag01: {}
 
 d_a_kytag02:
-  unknown_param_1:
+  path_index:
     Bitfield name: params
     Mask: 0x00FF0000
 
 d_a_kytag03:
-  unknown_param_1:
+  switch_to_check:
     Bitfield name: params
     Mask: 0x000000FF
 
@@ -1111,7 +1147,7 @@ d_a_npc_bs1:
 d_a_npc_btsw: {}
 
 d_a_npc_btsw2:
-  unknown_param_1:
+  path_index:
     Bitfield name: params
     Mask: 0x00FF0000
 
@@ -1159,7 +1195,7 @@ d_a_npc_hr:
   unknown_param_1:
     Bitfield name: params
     Mask: 0x000000FF
-  unknown_param_2:
+  switch_to_set:
     Bitfield name: params
     Mask: 0x0000FF00
   unknown_param_3:
@@ -1256,13 +1292,13 @@ d_a_npc_mk:
     Mask: 0x0000FF00
 
 d_a_npc_mn:
-  unknown_param_1:
+  switch_to_check:
     Bitfield name: params
     Mask: 0x0000FF00
-  unknown_param_2:
+  switch_to_set:
     Bitfield name: params
     Mask: 0x00FF0000
-  unknown_param_3:
+  path_index:
     Bitfield name: params
     Mask: 0xFF000000
 
@@ -1428,7 +1464,7 @@ d_a_nzg:
 d_a_obj_adnno: {}
 
 d_a_obj_ajav:
-  unknown_param_1:
+  switch_to_set:
     Bitfield name: params
     Mask: 0x000000FF
 
@@ -1462,7 +1498,7 @@ d_a_obj_ashut:
     Mask: 0x0000FF00
 
 d_a_obj_auzu:
-  unknown_param_1:
+  disable_spawn_switch:
     Bitfield name: params
     Mask: 0x000000FF
   unknown_param_2:
@@ -1486,7 +1522,7 @@ d_a_obj_balancelift:
     Mask: 0x00FF0000
 
 d_a_obj_barrel:
-  item_id:
+  unknown_param_1:
     Bitfield name: params
     Mask: 0x70000000
   unknown_param_2:
@@ -1494,7 +1530,7 @@ d_a_obj_barrel:
     Mask: 0xFFFF
 
 d_a_obj_barrel2:
-  unknown_param_1:
+  item_id:
     Bitfield name: params
     Mask: 0x0000003F
   unknown_param_2:
@@ -1522,24 +1558,30 @@ d_a_obj_barrier:
     Mask: 0x00010000
 
 d_a_obj_bemos:
-  unknown_param_1:
-    Bitfield name: params
-    Mask: 0x000000FF
-  unknown_param_2:
-    Bitfield name: params
-    Mask: 0x0000FF00
-  unknown_param_3:
-    Bitfield name: params
-    Mask: 0x00FF0000
-  unknown_param_4:
+  type:
     Bitfield name: params
     Mask: 0xF0000000
-  item_id:
+  beamos_sight_range:
+    Bitfield name: params
+    Mask: 0x000000FF
+  beamos_head_rotation_speed:
+    Bitfield name: params
+    Mask: 0x0000FF00
+  beamos_item_id:
     Bitfield name: aux_params_2
     Mask: 0x003F
-  item_pickup_flag:
+  beamos_item_pickup_flag:
     Bitfield name: aux_params_2
     Mask: 0x1FC0
+  barrier_deactivated_switch:
+    Bitfield name: params
+    Mask: 0x000000FF
+  barrier_behavior_type:
+    Bitfield name: params
+    Mask: 0x0000FF00
+  barrier_laser_path_index:
+    Bitfield name: params
+    Mask: 0x00FF0000
 
 d_a_obj_bscurtain:
   unknown_param_1:
@@ -1568,16 +1610,16 @@ d_a_obj_buoyrace:
 d_a_obj_cafelmp: {}
 
 d_a_obj_canon:
-  unknown_param_1:
+  extra_scale:
     Bitfield name: params
     Mask: 0x000000FF
   enable_spawn_switch:
     Bitfield name: params
     Mask: 0x0000FF00
-  unknown_param_3:
+  visible_area_path_index:
     Bitfield name: params
     Mask: 0x00FF0000
-  unknown_param_4:
+  disable_spawn_on_death_switch:
     Bitfield name: params
     Mask: 0xFF000000
 
@@ -1602,18 +1644,15 @@ d_a_obj_coming:
     Mask: 0x30000000
 
 d_a_obj_correct:
-  unknown_param_1:
+  type:
     Bitfield name: params
     Mask: 0x0000000F
-  unknown_param_2:
+  switch_to_set:
     Bitfield name: params
     Mask: 0x0000FF00
-  unknown_param_3:
+  event_index:
     Bitfield name: params
     Mask: 0x00FF0000
-  unknown_param_4:
-    Bitfield name: params
-    Mask: 0x40000000
 
 d_a_obj_demo_barrel: {}
 
@@ -1652,7 +1691,7 @@ d_a_obj_eff:
     Mask: 0x000000FF
 
 d_a_obj_ekskz:
-  unknown_param_1:
+  destroyed_switch:
     Bitfield name: params
     Mask: 0x000000FF
 
@@ -1854,7 +1893,7 @@ d_a_obj_iceisland:
     Mask: 0x0000FF00
 
 d_a_obj_ikada:
-  unknown_param_1:
+  type:
     Bitfield name: params
     Mask: 0x0000000F
   unknown_param_2:
@@ -1862,19 +1901,19 @@ d_a_obj_ikada:
     Mask: 0x000003F0
   unknown_param_3:
     Bitfield name: params
-    Mask: 0x0003FC00 # (WARNING: overlaps)
-  unknown_param_4:
-    Bitfield name: params
-    Mask: 0x00FF0000 # (WARNING: overlaps)
+    Mask: 0x0003FC00
   unknown_param_5:
     Bitfield name: params
-    Mask: 0x03FC0000 # (WARNING: overlaps)
+    Mask: 0x03FC0000
   unknown_param_6:
     Bitfield name: aux_params_1
     Mask: 0x00FF
-  unknown_param_7:
+  path_index:
     Bitfield name: aux_params_1
     Mask: 0xFF00
+  salvage_corp_path_index:
+    Bitfield name: params
+    Mask: 0x00FF0000 # (WARNING: overlaps)
 
 d_a_obj_Itnak:
   unknown_param_1:
@@ -1912,13 +1951,13 @@ d_a_obj_kanoke:
     Mask: 0x00FF0000
 
 d_a_obj_ladder:
-  unknown_param_1:
+  length_type:
     Bitfield name: params
     Mask: 0x00000007
-  unknown_param_2:
+  switch_to_check:
     Bitfield name: params
     Mask: 0x0000FF00
-  unknown_param_3:
+  event_index:
     Bitfield name: params
     Mask: 0x00FF0000
 
@@ -1946,7 +1985,7 @@ d_a_obj_magmarock:
     Mask: 0xFF000000
 
 d_a_obj_majyuu_door:
-  unknown_param_1:
+  switch_to_set:
     Bitfield name: params
     Mask: 0x000000FF
 
@@ -1997,33 +2036,42 @@ d_a_obj_movebox:
   item_id:
     Bitfield name: params
     Mask: 0x0000003F
-  unknown_param_2:
+  stay_moved_switch_1:
     Bitfield name: params
     Mask: 0x0000FF00
   item_pickup_flag:
     Bitfield name: params
     Mask: 0x007F0000
-  unknown_param_4:
+  type:
     Bitfield name: params
     Mask: 0x0F000000
-  unknown_param_5:
+  do_not_stay_moved_after_reload:
     Bitfield name: params
     Mask: 0x40000000
-  unknown_param_6:
+  disable_flag_on_top:
     Bitfield name: params
     Mask: 0x80000000
+  unknown_param_7:
+    Bitfield name: aux_params_1
+    Mask: 0x00FF
+  stay_moved_to_path:
+    Bitfield name: aux_params_2
+    Mask: 0x00FF
+  stay_moved_switch_2:
+    Bitfield name: aux_params_2
+    Mask: 0xFF00
 
 d_a_obj_msdan:
-  unknown_param_1:
+  switch_to_check:
     Bitfield name: params
     Mask: 0x000000FF
-  unknown_param_2:
+  staircase_length:
     Bitfield name: params
     Mask: 0x00010000
   unknown_param_3:
     Bitfield name: params
     Mask: 0x00040000
-  unknown_param_4:
+  event_index:
     Bitfield name: params
     Mask: 0xFF000000
 
@@ -2033,13 +2081,13 @@ d_a_obj_msdan2:
     Mask: 0x000000FF
 
 d_a_obj_msdan_sub:
-  unknown_param_1:
+  switch_to_check:
     Bitfield name: params
     Mask: 0x000000FF
-  unknown_param_2:
+  which_stair_index:
     Bitfield name: params
     Mask: 0x0000FF00
-  unknown_param_3:
+  staircase_length:
     Bitfield name: params
     Mask: 0x00010000
 
@@ -2166,45 +2214,45 @@ d_a_obj_smplbg:
     Mask: 0x000000FF
 
 d_a_obj_stair:
-  unknown_param_1:
+  disable_spawn_switch:
     Bitfield name: params
     Mask: 0x000000FF
 
 d_a_obj_swflat:
-  unknown_param_1:
+  type:
     Bitfield name: params
     Mask: 0x00000003
-  unknown_param_2:
+  switch_to_set:
     Bitfield name: params
     Mask: 0x0000FF00
-  unknown_param_3:
+  disabled_switch:
     Bitfield name: params
     Mask: 0x00FF0000
 
 d_a_obj_swhammer:
-  unknown_param_1:
+  switch_to_unset:
     Bitfield name: params
     Mask: 0x000000FF
-  unknown_param_2:
+  switch_to_set:
     Bitfield name: params
     Mask: 0x0000FF00
 
 d_a_obj_swheavy:
-  unknown_param_1:
+  switch_to_set:
     Bitfield name: params
     Mask: 0x0000FF00
-  unknown_param_2:
+  type:
     Bitfield name: params
     Mask: 0x07000000
 
 d_a_obj_swlight:
-  unknown_param_1:
+  switch_to_set:
     Bitfield name: params
     Mask: 0x000000FF
-  unknown_param_2:
+  other_switch:
     Bitfield name: params
     Mask: 0x0000FF00
-  unknown_param_3:
+  is_paired:
     Bitfield name: params
     Mask: 0x00010000
 
@@ -2302,23 +2350,20 @@ d_a_obj_tribox:
     Mask: 0x00010000
 
 d_a_obj_try:
-  unknown_param_1:
+  type:
     Bitfield name: params
-    Mask: 0x0000000F # (WARNING: overlaps)
-  unknown_param_2:
+    Mask: 0x0000000F
+  switch_to_check:
     Bitfield name: params
     Mask: 0x0000FF00
-  unknown_param_3:
+  is_placed:
     Bitfield name: params
-    Mask: 0x80000000 # (WARNING: overlaps)
-  unknown_param_4:
-    Bitfield name: params
-    Mask: 0xFFFF00FF # (WARNING: overlaps)
+    Mask: 0x80000000
 
 d_a_obj_usovmc: {}
 
 d_a_obj_Vds:
-  unknown_param_1:
+  switch_to_check:
     Bitfield name: params
     Mask: 0x000000FF
 
@@ -2356,38 +2401,41 @@ d_a_obj_vyasi:
     Mask: 0x000000FF
 
 d_a_obj_warpt:
-  warp_pot_type:
+  type:
     Bitfield name: params
     Mask: 0x0000000F
-  warp_pot_event_reg_index:
+  cyclic_event_reg_index:
     Bitfield name: params
-    Mask: 0x000000F0 # (WARNING: overlaps)
-  warp_pot_dest_1:
+    Mask: 0x000000F0
+  cyclic_dest_1_exit:
     Bitfield name: params
-    Mask: 0x0000FF00 # (WARNING: overlaps)
-  warp_pot_dest_2:
+    Mask: 0x0000FF00
+  cyclic_dest_2_exit:
     Bitfield name: params
-    Mask: 0x00FF0000 # (WARNING: overlaps)
-  warp_pot_dest_3:
+    Mask: 0x00FF0000
+  cyclic_dest_3_exit:
     Bitfield name: params
     Mask: 0xFF000000
-  unknown_param_3:
-    Bitfield name: params
-    Mask: 0x00000FF0 # (WARNING: overlaps)
-  unknown_param_5:
-    Bitfield name: params
-    Mask: 0x000FF000 # (WARNING: overlaps)
-  unknown_param_8:
+  cyclic_top_unblocked_switch:
     Bitfield name: aux_params_1
     Mask: 0x00FF
-  unknown_param_9:
-    Bitfield name: aux_params_1
+  cyclic_play_unlocked_sfx:
+    Bitfield name: aux_params_2
+    Mask: 0x00FF
+  cyclic_is_locked:
+    Bitfield name: aux_params_2
     Mask: 0xFF00
-  unknown_param_10:
-    Bitfield name: aux_params_2
+  noncyclic_exit_to_this_pot:
+    Bitfield name: params
+    Mask: 0x00000FF0
+  noncyclic_exit_to_dest_pot:
+    Bitfield name: params
+    Mask: 0x000FF000
+  noncyclic_this_unlocked_switch:
+    Bitfield name: aux_params_1
     Mask: 0x00FF
-  unknown_param_11:
-    Bitfield name: aux_params_2
+  noncyclic_dest_unlocked_switch:
+    Bitfield name: aux_params_1
     Mask: 0xFF00
 
 d_a_obj_wood: {}
@@ -2395,7 +2443,7 @@ d_a_obj_wood: {}
 d_a_obj_xfuta: {}
 
 d_a_obj_Yboil:
-  unknown_param_1:
+  disabled_switch:
     Bitfield name: params
     Mask: 0x0000FF00
 
@@ -2426,7 +2474,7 @@ d_a_oq:
     Mask: 0x00FF0000
 
 d_a_oship:
-  unknown_param_1:
+  behavior_type:
     Bitfield name: params
     Mask: 0x000000FF
   unknown_param_2:
@@ -2435,16 +2483,16 @@ d_a_oship:
   unknown_param_3:
     Bitfield name: params
     Mask: 0x0000F000
-  unknown_param_4:
+  path_index:
     Bitfield name: params
     Mask: 0x00FF0000
-  unknown_param_5:
+  disable_spawn_on_death_switch:
     Bitfield name: params
     Mask: 0xFF000000
-  unknown_param_6:
+  enable_spawn_switch:
     Bitfield name: aux_params_1
     Mask: 0x00FF
-  unknown_param_7:
+  is_golden:
     Bitfield name: aux_params_1
     Mask: 0xFF00
 
@@ -2541,16 +2589,16 @@ d_a_rectangle: {}
 d_a_sail: {}
 
 d_a_saku:
-  unknown_param_1:
+  height_type:
     Bitfield name: params
     Mask: 0x0000000F
-  unknown_param_2:
+  strength_type:
     Bitfield name: params
     Mask: 0x000000F0
-  unknown_param_3:
+  bottom_destroyed_switch:
     Bitfield name: params
     Mask: 0x0000FF00
-  unknown_param_4:
+  top_destroyed_switch:
     Bitfield name: params
     Mask: 0x00FF0000
 
@@ -2660,13 +2708,13 @@ d_a_spotbox:
     Mask: 0x00000001
 
 d_a_ss:
-  unknown_param_1:
+  type:
     Bitfield name: params
     Mask: 0x000000FF
   unknown_param_2:
     Bitfield name: params
     Mask: 0x0000FF00
-  unknown_param_3:
+  disable_spawn_on_death_switch:
     Bitfield name: params
     Mask: 0xFF000000
 
@@ -2774,22 +2822,22 @@ d_a_swc00:
     Mask: 0x00030000
 
 d_a_swhit0:
-  unknown_param_1:
+  switch_to_set:
     Bitfield name: params
     Mask: 0x000000FF
-  unknown_param_2:
+  event_index:
     Bitfield name: params
     Mask: 0x0000FF00
-  unknown_param_3:
+  type:
     Bitfield name: params
     Mask: 0x000F0000
-  unknown_param_4:
+  time_limit:
     Bitfield name: params
     Mask: 0x0FF00000
   unknown_param_5:
     Bitfield name: aux_params_1
     Mask: 0xFFFF
-  unknown_param_6:
+  switch_to_check:
     Bitfield name: aux_params_2
     Mask: 0x00FF
 
@@ -2834,10 +2882,10 @@ d_a_swtdoor:
 d_a_syan: {}
 
 d_a_tag_attention:
-  unknown_param_1:
+  switch_to_check:
     Bitfield name: params
     Mask: 0x000000FF
-  unknown_param_2:
+  type:
     Bitfield name: params
     Mask: 0x00000300
 
@@ -2869,13 +2917,13 @@ d_a_tag_event:
     Mask: 0xFFFF
 
 d_a_tag_evsw:
-  unknown_param_1:
+  switch_to_set:
     Bitfield name: params
     Mask: 0x000000FF
-  unknown_param_2:
+  event_bit_to_check:
     Bitfield name: params
     Mask: 0x00FFFF00
-  unknown_param_3:
+  type:
     Bitfield name: params
     Mask: 0x03000000
 
@@ -2894,16 +2942,16 @@ d_a_tag_hint:
   unknown_param_2:
     Bitfield name: params
     Mask: 0x000000C0
-  unknown_param_3:
+  switch_to_set:
     Bitfield name: params
     Mask: 0x0000FF00
-  unknown_param_4:
+  enable_spawn_switch:
     Bitfield name: params
     Mask: 0x00FF0000
-  unknown_param_5:
+  evnt_index:
     Bitfield name: params
     Mask: 0xFF000000
-  unknown_param_6:
+  message_id:
     Bitfield name: aux_params_1
     Mask: 0xFFFF
   unknown_param_7:
@@ -2911,13 +2959,13 @@ d_a_tag_hint:
     Mask: 0xFFFF
 
 d_a_tag_island:
-  unknown_param_1:
+  type:
     Bitfield name: params
     Mask: 0x000000FF
-  unknown_param_2:
+  switch_to_set:
     Bitfield name: params
     Mask: 0x0000FF00
-  unknown_param_3:
+  event_index:
     Bitfield name: params
     Mask: 0xFF000000
 
@@ -2966,16 +3014,16 @@ d_a_tag_light:
     Mask: 0xFF000000
 
 d_a_tag_md_cb:
-  unknown_param_1:
+  message_id:
     Bitfield name: params
     Mask: 0x0000FFFF
-  unknown_param_2:
+  first_switch_to_check:
     Bitfield name: params
     Mask: 0x00FF0000
-  unknown_param_3:
+  num_switches_to_check:
     Bitfield name: params
     Mask: 0xFF000000
-  unknown_param_4:
+  disable_spawn_switch:
     Bitfield name: aux_params_1
     Mask: 0x00FF
 
@@ -3032,16 +3080,16 @@ d_a_tag_so:
     Mask: 0x00FF0000
 
 d_a_tag_volcano:
-  unknown_param_1:
+  disable_spawn_chest_open_flag:
     Bitfield name: params
     Mask: 0x0000003F
-  unknown_param_2:
+  type:
     Bitfield name: params
     Mask: 0x000000C0
-  unknown_param_3:
+  switch_to_set:
     Bitfield name: params
     Mask: 0x0000FF00
-  unknown_param_4:
+  timer_duration:
     Bitfield name: params
     Mask: 0x00FF0000
 
@@ -3136,7 +3184,7 @@ d_a_tsubo:
   type:
     Bitfield name: params
     Mask: 0x0F000000
-  unknown_param_6:
+  invincible_when_off_camera:
     Bitfield name: params
     Mask: 0x70000000
   do_not_ground_on_spawn:
@@ -3147,7 +3195,7 @@ d_a_tsubo:
     Mask: 0x00FF
 
 d_a_wall:
-  unknown_param_1:
+  disable_spawn_on_destroyed_switch:
     Bitfield name: params
     Mask: 0x000000FF
   unknown_param_2:
@@ -3229,7 +3277,7 @@ d_a_wind_tag:
   unknown_param_5:
     Bitfield name: params
     Mask: 0x00800000
-  unknown_param_6:
+  disable_spawn_switch:
     Bitfield name: params
     Mask: 0xFF000000
   unknown_param_7:
@@ -3296,7 +3344,7 @@ d_a_py_lk:
   unknown_param_4:
     Bitfield name: params
     Mask: 0x00FF0000
-  event_index:
+  evnt_index:
     Bitfield name: params
     Mask: 0xFF000000
   unknown_param_5:
@@ -3328,6 +3376,36 @@ d_a_npc_fa1: {}
 d_a_obj_search: {}
 
 d_a_spc_item: {}
+
+d_a_iball: {}
+
+d_a_arrow: {}
+
+d_a_boomerang: {}
+
+d_a_hookshot: {}
+
+d_a_bomb: {}
+
+d_a_bomb2: {}
+
+d_a_demo00: {}
+
+d_a_agb: {}
+
+d_a_bg: {}
+
+d_a_himo2: {}
+
+d_a_esa: {}
+
+d_a_grid: {}
+
+d_a_stand_item: {}
+
+d_a_vrbox: {}
+
+d_a_vrbox2: {}
 
 
 

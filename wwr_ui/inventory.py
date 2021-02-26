@@ -12,7 +12,6 @@ REGULAR_ITEMS = [
   "Bombs",
   "Skull Hammer",
   "Deku Leaf",
-  "Mirror Shield",
   "Hurricane Spin",
   "Din's Pearl",
   "Farore's Pearl",
@@ -44,7 +43,8 @@ PROGRESSIVE_ITEMS = \
   ["Progressive Bomb Bag"]  * 2 + \
   ["Progressive Wallet"]    * 2 + \
   ["Progressive Picto Box"] * 2 + \
-  ["Progressive Sword"]     * 3
+  ["Progressive Sword"]     * 3 + \
+  ["Progressive Shield"]    * 2
 PROGRESSIVE_ITEMS.sort()
 
 DUNGEON_NONPROGRESS_ITEMS = \
@@ -61,6 +61,7 @@ INVENTORY_ITEMS = PROGRESSIVE_ITEMS + STNDRD_ITEMS
 INVENTORY_ITEMS.sort()
 
 DEFAULT_STARTING_ITEMS = [
+  "Progressive Shield",
   "Wind Waker",
   "Wind's Requiem",
   "Ballad of Gales",
@@ -71,7 +72,7 @@ DEFAULT_STARTING_ITEMS = [
   "TotG Dungeon Map",
   "FF Dungeon Map",
   "ET Dungeon Map",
-  "WT Dungeon Map", 
+  "WT Dungeon Map",
 ]
 DEFAULT_STARTING_ITEMS.sort()
 

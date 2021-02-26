@@ -314,3 +314,23 @@
 .org 0x7CB8 ; In daShip_c::procWhirlDown
   bl set_next_stage_and_stop_sub_bgm
 .close
+
+
+
+
+; Originally the Windfall bomb shop owner only lowers the price of the bombs he sells to be reasonable after you have obtained Nayru's Pearl.
+; Remove these checks so he always sells them at the lower prices from the start of the game.
+.open "files/rels/d_a_npc_bms1.rel" ; Bomb-Master Cannon (Windfall bomb shop owner)
+.org 0x1B9C ; In daNpc_Bms1_c::shop_talk(void)
+  li r3, 1
+.org 0x2064 ; In daNpc_Bms1_c::CreateInit(void)
+  li r3, 1
+.org 0x20B4 ; In daNpc_Bms1_c::CreateInit(void)
+  li r3, 1
+.org 0x36A0 ; In daNpc_Bms1_c::_create(void)
+  li r3, 1
+.org 0x36EC ; In daNpc_Bms1_c::_create(void)
+  li r3, 1
+.org 0x3E3C ; In daNpc_Bms1_c::CreateHeap(void)
+  li r3, 1
+.close

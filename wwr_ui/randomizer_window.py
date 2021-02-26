@@ -16,6 +16,9 @@ from collections import OrderedDict
 from class_ms import *
 
 import os
+import sys
+if(sys.platform == "darwin" or os.name == "posix"):
+  os.environ['QT_MAC_WANTS_LAYER'] = '1'
 import gc
 import traceback
 import string
@@ -1266,8 +1269,8 @@ class WWRandomizerWindow(QMainWindow):
 
       if sword_mode == "Start with Hero's Sword":
         potential_boss_rewards += 3 * ["Progressive Sword"]
-      elif sword_mode == "Randomized Sword":
-        num_possible_rewards += 4
+      elif sword_mode == "No Starting Sword":
+        num_possible_rewards += 4 * ["Progressive Sword"]
 
       num_boss_rewards = 0
       try:
@@ -1275,7 +1278,7 @@ class WWRandomizerWindow(QMainWindow):
       except:
         num_boss_rewards = 6
 
-      potential_boss_rewards += 3 * ["Progressive Bow"] + ["Hookshot"] + ["Boomerang"] + ["Iron Boots"] + ["Power Bracelets"]
+      potential_boss_rewards += 3 * ["Progressive Bow"] + ["Hookshot","Boomerang","Iron Boots","Power Bracelets"]
       while num_possible_rewards < num_boss_rewards:
         cur_reward = potential_boss_rewards.pop(0)
         items_to_filter_out += [cur_reward]

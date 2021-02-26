@@ -21,6 +21,7 @@ HARD_REQUIRED_ITEMS = [
   "Boat's Sail"
 ]+ \
   ["Progressive Sword"]*4 + \
+  ["Progressive Shield"]*2 + \
   ["Progressive Bow"]*3
 
 SOFT_REQUIRED_ITEMS = [
@@ -34,8 +35,6 @@ SOFT_REQUIRED_ITEMS = [
   "Bombs",
   "Skull Hammer",
   "Deku Leaf",
-  "Hero's Shield",
-  "Mirror Shield",
 
   "Nayru's Pearl",
   "Din's Pearl",
@@ -160,6 +159,10 @@ POSSIBLE_DUNGEON_PROGRESS_ITEMS["Tower of the Gods"]   = ["TotG Big Key"] *1 + [
 POSSIBLE_DUNGEON_PROGRESS_ITEMS["Forsaken Fortress"]   = ["FF Big Key"]   *0 + ["FF Small Key"] *0
 POSSIBLE_DUNGEON_PROGRESS_ITEMS["Earth Temple"]        = ["ET Big Key"]   *1 + ["ET Small Key"] *3
 POSSIBLE_DUNGEON_PROGRESS_ITEMS["Wind Temple"]         = ["WT Big Key"]   *1 + ["WT Small Key"] *2
+
+POSSIBLE_DUNGEON_PROGRESS_ITEMS_LIST = []
+for dungeons in POSSIBLE_DUNGEON_PROGRESS_ITEMS:
+  POSSIBLE_DUNGEON_PROGRESS_ITEMS_LIST+=POSSIBLE_DUNGEON_PROGRESS_ITEMS[dungeons]
 
 DUNGEON_NONPROGRESS_ITEMS = \
   ["DRC Dungeon Map", "DRC Compass"] + \

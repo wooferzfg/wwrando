@@ -159,7 +159,7 @@ class Logic:
     self.possible_dungeon_progress = dungeon_progress + non_dungeon_progress
 
     # Tell the randomizer to register dungeon-specific item names as the normal items.
-    for dungeon_item_name in (DUNGEON_PROGRESS_ITEMS + DUNGEON_NONPROGRESS_ITEMS):
+    for dungeon_item_name in (POSSIBLE_DUNGEON_PROGRESS_ITEMS_LIST + DUNGEON_NONPROGRESS_ITEMS):
       regular_item_name = dungeon_item_name.split(" ", 1)[1]
       self.rando.item_name_to_id[dungeon_item_name] = self.rando.item_name_to_id[regular_item_name]
 
@@ -864,6 +864,9 @@ class Logic:
     all_items_to_make_nonprogress = self.all_progress_items.copy()
     starting_items_to_remove = self.rando.starting_items.copy()
     for item_name in all_progress_items_filtered:
+      if item_name not in all_items_to_make_nonprogress:
+        if (item_name.startswith("Triforce Chart ") or item_name.startswith("Treasure Chart")):
+          continue
       all_items_to_make_nonprogress.remove(item_name)
       if item_name in starting_items_to_remove:
         starting_items_to_remove.remove(item_name)
@@ -894,7 +897,7 @@ class Logic:
     return zone_name, specific_location_name
 
   def is_dungeon_item(self, item_name):
-    return (item_name in DUNGEON_PROGRESS_ITEMS or item_name in DUNGEON_NONPROGRESS_ITEMS)
+    return (item_name in POSSIBLE_DUNGEON_PROGRESS_ITEMS_LIST or item_name in DUNGEON_NONPROGRESS_ITEMS)
 
   def is_dungeon_location(self, location_name, dungeon_name_to_match=None):
     zone_name, specific_location_name = self.split_location_name_by_zone(location_name)

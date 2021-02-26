@@ -36,7 +36,6 @@ bl onEventBit__11dSv_event_cFUs
 
 after_sword_mode_initialization:
 
-bl item_func_shield__Fv
 bl item_func_pirates_omamori__Fv ; Pirate's Charm
 
 ; Start the player with 30 bombs and arrows. (But not the ability to actually use them.)
@@ -380,6 +379,11 @@ beq convert_progressive_sword_id
 cmpwi r3, 0x3E
 beq convert_progressive_sword_id
 
+cmpwi r3, 0x3B
+beq convert_progressive_shield_id
+cmpwi r3, 0x3C
+beq convert_progressive_shield_id
+
 cmpwi r3, 0x27
 beq convert_progressive_bow_id
 cmpwi r3, 0x35
@@ -436,6 +440,25 @@ li r3, 0x3A
 b convert_progressive_item_id_func_end
 convert_progressive_sword_id_to_full_power_master_sword:
 li r3, 0x3E
+b convert_progressive_item_id_func_end
+
+
+convert_progressive_shield_id:
+lis r3, 0x803C4CBD@ha
+addi r3, r3, 0x803C4CBD@l
+lbz r4, 0 (r3) ; Bitfield of swords you own
+cmpwi r4, 0
+beq convert_progressive_shield_id_to_heros_shield
+cmpwi r4, 1
+beq convert_progressive_shield_id_to_mirror_shield
+li r3, 0x3B ; Invalid shield state; this shouldn't happen so just return the base shield ID
+b convert_progressive_item_id_func_end
+
+convert_progressive_shield_id_to_heros_shield:
+li r3, 0x3B
+b convert_progressive_item_id_func_end
+convert_progressive_shield_id_to_mirror_shield:
+li r3, 0x3C
 b convert_progressive_item_id_func_end
 
 
@@ -709,6 +732,39 @@ bl item_func_master_sword_ex__Fv
 
 
 sword_func_end:
+; Function end stuff
+lwz r0, 0x14 (sp)
+mtlr r0
+addi sp, sp, 0x10
+blr
+
+
+
+
+.global progressive_shield_item_func
+progressive_shield_item_func:
+; Function start stuff
+stwu sp, -0x10 (sp)
+mflr r0
+stw r0, 0x14 (sp)
+
+lis r3, 0x803C4CBD@ha
+addi r3, r3, 0x803C4CBD@l
+lbz r4, 0 (r3) ; Bitfield of shields you own
+cmpwi r4, 0
+beq get_heros_shield
+cmpwi r4, 1
+beq get_mirror_shield
+b shield_func_end
+
+get_heros_shield:
+bl item_func_shield__Fv
+b shield_func_end
+
+get_mirror_shield:
+bl item_func_mirror_shield__Fv
+
+shield_func_end:
 ; Function end stuff
 lwz r0, 0x14 (sp)
 mtlr r0
@@ -1490,9 +1546,9 @@ medli_possible_et_spawn_positions:
 .short 0xE000
 .float -2371.38, -2000, 8471.54
 ; Inter-dungeon warp pot in ET
-.byte 69, 3
-.short 0x4000
-.float -256.939, 0, -778
+.byte 69, 1
+.short 0
+.float -8010, 1000, -1508.94
 
 
 
@@ -2584,6 +2640,49 @@ check_tingle_statue_owned_invalid:
 li r3, 0
 
 check_tingle_statue_owned_end:
+lwz r0, 0x14 (sp)
+mtlr r0
+addi sp, sp, 0x10
+blr
+
+
+
+
+.global get_num_owned_tingle_statues
+get_num_owned_tingle_statues:
+stwu sp, -0x10 (sp)
+mflr r0
+stw r0, 0x14 (sp)
+
+li r6, 0
+
+li r3, 3 ; Dragon Tingle Statue
+li r4, 0xF
+bl check_tingle_statue_owned
+add r6, r6, r3
+
+li r3, 4 ; Forbidden Tingle Statue
+li r4, 0xF
+bl check_tingle_statue_owned
+add r6, r6, r3
+
+li r3, 5 ; Goddess Tingle Statue
+li r4, 0xF
+bl check_tingle_statue_owned
+add r6, r6, r3
+
+li r3, 6 ; Earth Tingle Statue
+li r4, 0xF
+bl check_tingle_statue_owned
+add r6, r6, r3
+
+li r3, 7 ; Wind Tingle Statue
+li r4, 0xF
+bl check_tingle_statue_owned
+add r6, r6, r3
+
+mr r3, r6
+
 lwz r0, 0x14 (sp)
 mtlr r0
 addi sp, sp, 0x10

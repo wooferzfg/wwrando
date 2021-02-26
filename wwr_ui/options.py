@@ -20,7 +20,7 @@ OPTIONS = OrderedDict([
   ),
   (
     "progression_tingle_chests",
-    "Tingle Chests that are hidden in dungeons and must be bombed to make them appear. (2 in DRC, 1 each in FW, TotG, ET, and WT).<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+    "Odd Dungeon Checks that are hidden in dungeons and some must be bombed to make them appear. (2 in DRC, 3 in ET, 1 each in FW, TotG, and WT).<br><u>If this is not checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
   (
     "progression_great_fairies",

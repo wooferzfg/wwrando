@@ -51,6 +51,10 @@ Any Master Sword:
   Progressive Sword x2
 Full Power Master Sword:
   Progressive Sword x4
+Hero's Shield:
+  Progressive Shield x1
+Mirror Shield:
+  Progressive Shield x2
 Hero's Bow:
   Progressive Bow x1
 Fire Arrows:
@@ -94,6 +98,7 @@ Can Access Dungeon Entrance In Forest Haven Sector:
     Can Access Forest Haven
     & (Grappling Hook | (Tricked Logic & Wind Waker))
     & Can Fly With Deku Leaf Outdoors
+    & (Can Play Wind's Requiem | Tricked Logic)
     & (Can Cut Grass | Magic Meter Upgrade)
   )
   | (Complex Logic & Wind Waker)
@@ -322,9 +327,12 @@ Can Get Past Forsaken Fortress Gate:
   Bombs
   | Tricked Logic
   )
-  & Can Travel to Forsaken Fortress
+  & (
+    Can Travel to Forsaken Fortress
+    | ( Tricked Logic & Can Open Ganon's Tower Dark Portal )
+  )
   # Note: It's also possible to blow up the door without bombs by using the mounted cannons, but this is not required by the logic.
-  # Note: It's also possible to get past the gate by going all the way down to Ganon's Tower, and then activating the warp up to Forsaken Fortress. But this is not currently required by the logic.
+  # Note: It's also possible to get past the gate by going all the way down to Ganon's Tower, and then activating the warp up to Forsaken Fortress.
 Can Get Inside Forsaken Fortress:
   Can Get Past Forsaken Fortress Gate
   & (
@@ -336,6 +344,9 @@ Can Get Inside Forsaken Fortress:
   )
   # Even though you can kill Phantom Ganon without the Skull Hammer, that only lets you access the one chest he spawns.
   # You can't access the other chests/boss without Skull Hammer.
+Can Open Ganon's Tower Dark Portal:
+  Can Access Ganon's Tower
+  & Boomerang
 Can Reach and Defeat Phantom Ganon:
   Can Get Past Forsaken Fortress Gate
   & Can Defeat Phantom Ganon

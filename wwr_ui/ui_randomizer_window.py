@@ -29,9 +29,9 @@ class Ui_MainWindow(object):
         self.content_for_main_scroll = QWidget()
         self.content_for_main_scroll.setObjectName(u"content_for_main_scroll")
         self.content_for_main_scroll.setGeometry(QRect(0, 0, 944, 744))
-        self.verticalLayout_4 = QVBoxLayout(self.content_for_main_scroll)
-        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
-        self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
+        self.layout_for_main_scroll = QVBoxLayout(self.content_for_main_scroll)
+        self.layout_for_main_scroll.setObjectName(u"layout_for_main_scroll")
+        self.layout_for_main_scroll.setContentsMargins(0, 0, 0, 0)
         self.tab_for_main = QTabWidget(self.content_for_main_scroll)
         self.tab_for_main.setObjectName(u"tab_for_main")
         self.tab_for_main.setEnabled(True)
@@ -42,8 +42,8 @@ class Ui_MainWindow(object):
         self.tab_for_main.setSizePolicy(sizePolicy)
         self.tab_for_settings = QWidget()
         self.tab_for_settings.setObjectName(u"tab_for_settings")
-        self.verticalLayout_2 = QVBoxLayout(self.tab_for_settings)
-        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.layout_for_paths = QVBoxLayout(self.tab_for_settings)
+        self.layout_for_paths.setObjectName(u"layout_for_paths")
         self.grid_for_paths = QGridLayout()
         self.grid_for_paths.setObjectName(u"grid_for_paths")
         self.seed = QLineEdit(self.tab_for_settings)
@@ -92,7 +92,7 @@ class Ui_MainWindow(object):
         self.grid_for_paths.addWidget(self.clean_iso_path_browse_button, 0, 2, 1, 1)
 
 
-        self.verticalLayout_2.addLayout(self.grid_for_paths)
+        self.layout_for_paths.addLayout(self.grid_for_paths)
 
         self.grid_for_logic = QGridLayout()
         self.grid_for_logic.setObjectName(u"grid_for_logic")
@@ -135,138 +135,138 @@ class Ui_MainWindow(object):
         self.grid_for_logic.addWidget(self.logic_desc, 1, 2, 1, 3)
 
 
-        self.verticalLayout_2.addLayout(self.grid_for_logic)
+        self.layout_for_paths.addLayout(self.grid_for_logic)
 
         self.group_for_locations = QGroupBox(self.tab_for_settings)
         self.group_for_locations.setObjectName(u"group_for_locations")
-        self.gridLayout_2 = QGridLayout(self.group_for_locations)
-        self.gridLayout_2.setObjectName(u"gridLayout_2")
+        self.grid_for_locations = QGridLayout(self.group_for_locations)
+        self.grid_for_locations.setObjectName(u"grid_for_locations")
         self.progression_dungeons = QCheckBox(self.group_for_locations)
         self.progression_dungeons.setObjectName(u"progression_dungeons")
         self.progression_dungeons.setChecked(True)
 
-        self.gridLayout_2.addWidget(self.progression_dungeons, 1, 0, 1, 1)
+        self.grid_for_locations.addWidget(self.progression_dungeons, 1, 0, 1, 1)
 
         self.progression_short_minigames = QCheckBox(self.group_for_locations)
         self.progression_short_minigames.setObjectName(u"progression_short_minigames")
 
-        self.gridLayout_2.addWidget(self.progression_short_minigames, 8, 0, 1, 1)
+        self.grid_for_locations.addWidget(self.progression_short_minigames, 8, 0, 1, 1)
 
         self.progression_free_gifts = QCheckBox(self.group_for_locations)
         self.progression_free_gifts.setObjectName(u"progression_free_gifts")
         self.progression_free_gifts.setChecked(True)
 
-        self.gridLayout_2.addWidget(self.progression_free_gifts, 9, 2, 1, 1)
+        self.grid_for_locations.addWidget(self.progression_free_gifts, 9, 2, 1, 1)
 
         self.progression_long_sidequests = QCheckBox(self.group_for_locations)
         self.progression_long_sidequests.setObjectName(u"progression_long_sidequests")
 
-        self.gridLayout_2.addWidget(self.progression_long_sidequests, 6, 1, 1, 1)
+        self.grid_for_locations.addWidget(self.progression_long_sidequests, 6, 1, 1, 1)
 
         self.progression_short_sidequests = QCheckBox(self.group_for_locations)
         self.progression_short_sidequests.setObjectName(u"progression_short_sidequests")
         self.progression_short_sidequests.setChecked(True)
 
-        self.gridLayout_2.addWidget(self.progression_short_sidequests, 6, 0, 1, 1)
+        self.grid_for_locations.addWidget(self.progression_short_sidequests, 6, 0, 1, 1)
 
         self.progression_expensive_purchases = QCheckBox(self.group_for_locations)
         self.progression_expensive_purchases.setObjectName(u"progression_expensive_purchases")
         self.progression_expensive_purchases.setChecked(True)
 
-        self.gridLayout_2.addWidget(self.progression_expensive_purchases, 8, 2, 1, 1)
+        self.grid_for_locations.addWidget(self.progression_expensive_purchases, 8, 2, 1, 1)
 
         self.progression_triforce_charts = QCheckBox(self.group_for_locations)
         self.progression_triforce_charts.setObjectName(u"progression_triforce_charts")
 
-        self.gridLayout_2.addWidget(self.progression_triforce_charts, 11, 0, 1, 2)
+        self.grid_for_locations.addWidget(self.progression_triforce_charts, 11, 0, 1, 2)
 
         self.progression_spoils_trading = QCheckBox(self.group_for_locations)
         self.progression_spoils_trading.setObjectName(u"progression_spoils_trading")
 
-        self.gridLayout_2.addWidget(self.progression_spoils_trading, 6, 2, 1, 1)
+        self.grid_for_locations.addWidget(self.progression_spoils_trading, 6, 2, 1, 1)
 
         self.progression_puzzle_secret_caves = QCheckBox(self.group_for_locations)
         self.progression_puzzle_secret_caves.setObjectName(u"progression_puzzle_secret_caves")
         self.progression_puzzle_secret_caves.setChecked(True)
 
-        self.gridLayout_2.addWidget(self.progression_puzzle_secret_caves, 1, 1, 1, 1)
+        self.grid_for_locations.addWidget(self.progression_puzzle_secret_caves, 1, 1, 1, 1)
 
         self.progression_misc = QCheckBox(self.group_for_locations)
         self.progression_misc.setObjectName(u"progression_misc")
         self.progression_misc.setCheckable(True)
         self.progression_misc.setChecked(False)
 
-        self.gridLayout_2.addWidget(self.progression_misc, 9, 3, 1, 1)
+        self.grid_for_locations.addWidget(self.progression_misc, 9, 3, 1, 1)
 
         self.progression_treasure_charts = QCheckBox(self.group_for_locations)
         self.progression_treasure_charts.setObjectName(u"progression_treasure_charts")
 
-        self.gridLayout_2.addWidget(self.progression_treasure_charts, 11, 2, 1, 2)
+        self.grid_for_locations.addWidget(self.progression_treasure_charts, 11, 2, 1, 2)
 
         self.progression_eye_reef_chests = QCheckBox(self.group_for_locations)
         self.progression_eye_reef_chests.setObjectName(u"progression_eye_reef_chests")
 
-        self.gridLayout_2.addWidget(self.progression_eye_reef_chests, 9, 1, 1, 1)
+        self.grid_for_locations.addWidget(self.progression_eye_reef_chests, 9, 1, 1, 1)
 
         self.progression_big_octos_gunboats = QCheckBox(self.group_for_locations)
         self.progression_big_octos_gunboats.setObjectName(u"progression_big_octos_gunboats")
 
-        self.gridLayout_2.addWidget(self.progression_big_octos_gunboats, 8, 3, 1, 1)
+        self.grid_for_locations.addWidget(self.progression_big_octos_gunboats, 8, 3, 1, 1)
 
         self.progression_combat_secret_caves = QCheckBox(self.group_for_locations)
         self.progression_combat_secret_caves.setObjectName(u"progression_combat_secret_caves")
 
-        self.gridLayout_2.addWidget(self.progression_combat_secret_caves, 1, 3, 1, 1)
+        self.grid_for_locations.addWidget(self.progression_combat_secret_caves, 1, 3, 1, 1)
 
         self.progression_tingle_chests = QCheckBox(self.group_for_locations)
         self.progression_tingle_chests.setObjectName(u"progression_tingle_chests")
 
-        self.gridLayout_2.addWidget(self.progression_tingle_chests, 2, 0, 1, 1)
+        self.grid_for_locations.addWidget(self.progression_tingle_chests, 2, 0, 1, 1)
 
         self.progression_long_combat_trials = QCheckBox(self.group_for_locations)
         self.progression_long_combat_trials.setObjectName(u"progression_long_combat_trials")
 
-        self.gridLayout_2.addWidget(self.progression_long_combat_trials, 2, 3, 1, 1)
+        self.grid_for_locations.addWidget(self.progression_long_combat_trials, 2, 3, 1, 1)
 
         self.progression_platforms_rafts = QCheckBox(self.group_for_locations)
         self.progression_platforms_rafts.setObjectName(u"progression_platforms_rafts")
 
-        self.gridLayout_2.addWidget(self.progression_platforms_rafts, 6, 3, 1, 1)
+        self.grid_for_locations.addWidget(self.progression_platforms_rafts, 6, 3, 1, 1)
 
         self.progression_mixed_secret_caves = QCheckBox(self.group_for_locations)
         self.progression_mixed_secret_caves.setObjectName(u"progression_mixed_secret_caves")
 
-        self.gridLayout_2.addWidget(self.progression_mixed_secret_caves, 1, 2, 1, 1)
+        self.grid_for_locations.addWidget(self.progression_mixed_secret_caves, 1, 2, 1, 1)
 
         self.progression_submarines = QCheckBox(self.group_for_locations)
         self.progression_submarines.setObjectName(u"progression_submarines")
         self.progression_submarines.setChecked(False)
 
-        self.gridLayout_2.addWidget(self.progression_submarines, 9, 0, 1, 1)
+        self.grid_for_locations.addWidget(self.progression_submarines, 9, 0, 1, 1)
 
         self.progression_island_puzzles = QCheckBox(self.group_for_locations)
         self.progression_island_puzzles.setObjectName(u"progression_island_puzzles")
 
-        self.gridLayout_2.addWidget(self.progression_island_puzzles, 2, 2, 1, 1)
+        self.grid_for_locations.addWidget(self.progression_island_puzzles, 2, 2, 1, 1)
 
         self.progression_great_fairies = QCheckBox(self.group_for_locations)
         self.progression_great_fairies.setObjectName(u"progression_great_fairies")
         self.progression_great_fairies.setChecked(True)
 
-        self.gridLayout_2.addWidget(self.progression_great_fairies, 2, 1, 1, 1)
+        self.grid_for_locations.addWidget(self.progression_great_fairies, 2, 1, 1, 1)
 
         self.progression_long_minigames = QCheckBox(self.group_for_locations)
         self.progression_long_minigames.setObjectName(u"progression_long_minigames")
 
-        self.gridLayout_2.addWidget(self.progression_long_minigames, 8, 1, 1, 1)
+        self.grid_for_locations.addWidget(self.progression_long_minigames, 8, 1, 1, 1)
 
 
-        self.verticalLayout_2.addWidget(self.group_for_locations)
+        self.layout_for_paths.addWidget(self.group_for_locations)
 
         self.group_for_settings_secondary = QGroupBox(self.tab_for_settings)
         self.group_for_settings_secondary.setObjectName(u"group_for_settings_secondary")
-        self.gridLayout_3 = QGridLayout(self.group_for_settings_secondary)
-        self.gridLayout_3.setObjectName(u"gridLayout_3")
+        self.grid_for_settings_secondary = QGridLayout(self.group_for_settings_secondary)
+        self.grid_for_settings_secondary.setObjectName(u"grid_for_settings_secondary")
         self.layout_for_race_mode = QHBoxLayout()
         self.layout_for_race_mode.setObjectName(u"layout_for_race_mode")
         self.label_for_race_mode = QLabel(self.group_for_settings_secondary)
@@ -287,7 +287,7 @@ class Ui_MainWindow(object):
         self.layout_for_race_mode.addWidget(self.race_mode)
 
 
-        self.gridLayout_3.addLayout(self.layout_for_race_mode, 2, 2, 1, 1)
+        self.grid_for_settings_secondary.addLayout(self.layout_for_race_mode, 2, 2, 1, 1)
 
         self.layout_for_num_dungeon_race_mode = QHBoxLayout()
         self.layout_for_num_dungeon_race_mode.setObjectName(u"layout_for_num_dungeon_race_mode")
@@ -324,7 +324,7 @@ class Ui_MainWindow(object):
         self.layout_for_num_dungeon_race_mode.addWidget(self.widget_9)
 
 
-        self.gridLayout_3.addLayout(self.layout_for_num_dungeon_race_mode, 2, 4, 1, 1)
+        self.grid_for_settings_secondary.addLayout(self.layout_for_num_dungeon_race_mode, 2, 4, 1, 1)
 
         self.layout_for_starting_triforce_shards = QHBoxLayout()
         self.layout_for_starting_triforce_shards.setObjectName(u"layout_for_starting_triforce_shards")
@@ -362,7 +362,7 @@ class Ui_MainWindow(object):
         self.layout_for_starting_triforce_shards.addWidget(self.widget)
 
 
-        self.gridLayout_3.addLayout(self.layout_for_starting_triforce_shards, 1, 4, 1, 1)
+        self.grid_for_settings_secondary.addLayout(self.layout_for_starting_triforce_shards, 1, 4, 1, 1)
 
         self.layout_for_sword = QHBoxLayout()
         self.layout_for_sword.setObjectName(u"layout_for_sword")
@@ -384,12 +384,12 @@ class Ui_MainWindow(object):
         self.layout_for_sword.addWidget(self.sword_mode)
 
 
-        self.gridLayout_3.addLayout(self.layout_for_sword, 0, 0, 1, 1)
+        self.grid_for_settings_secondary.addLayout(self.layout_for_sword, 0, 0, 1, 1)
 
         self.compass_map_pool_with_keys = QCheckBox(self.group_for_settings_secondary)
         self.compass_map_pool_with_keys.setObjectName(u"compass_map_pool_with_keys")
 
-        self.gridLayout_3.addWidget(self.compass_map_pool_with_keys, 2, 0, 1, 1)
+        self.grid_for_settings_secondary.addWidget(self.compass_map_pool_with_keys, 2, 0, 1, 1)
 
         self.layout_for_randomize_entrances = QHBoxLayout()
         self.layout_for_randomize_entrances.setObjectName(u"layout_for_randomize_entrances")
@@ -418,84 +418,84 @@ class Ui_MainWindow(object):
         self.layout_for_randomize_entrances.addWidget(self.widget_2)
 
 
-        self.gridLayout_3.addLayout(self.layout_for_randomize_entrances, 0, 2, 1, 3)
+        self.grid_for_settings_secondary.addLayout(self.layout_for_randomize_entrances, 0, 2, 1, 3)
 
         self.horizontalSpacer_16 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.gridLayout_3.addItem(self.horizontalSpacer_16, 1, 1, 1, 1)
+        self.grid_for_settings_secondary.addItem(self.horizontalSpacer_16, 1, 1, 1, 1)
 
         self.keylunacy = QCheckBox(self.group_for_settings_secondary)
         self.keylunacy.setObjectName(u"keylunacy")
 
-        self.gridLayout_3.addWidget(self.keylunacy, 1, 0, 1, 1)
+        self.grid_for_settings_secondary.addWidget(self.keylunacy, 1, 0, 1, 1)
 
         self.horizontalSpacer_17 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.gridLayout_3.addItem(self.horizontalSpacer_17, 1, 3, 1, 1)
+        self.grid_for_settings_secondary.addItem(self.horizontalSpacer_17, 1, 3, 1, 1)
 
         self.add_shortcut_warps_between_dungeons = QCheckBox(self.group_for_settings_secondary)
         self.add_shortcut_warps_between_dungeons.setObjectName(u"add_shortcut_warps_between_dungeons")
 
-        self.gridLayout_3.addWidget(self.add_shortcut_warps_between_dungeons, 1, 2, 1, 1)
+        self.grid_for_settings_secondary.addWidget(self.add_shortcut_warps_between_dungeons, 1, 2, 1, 1)
 
 
-        self.verticalLayout_2.addWidget(self.group_for_settings_secondary)
+        self.layout_for_paths.addWidget(self.group_for_settings_secondary)
 
         self.group_for_convenience = QGroupBox(self.tab_for_settings)
         self.group_for_convenience.setObjectName(u"group_for_convenience")
-        self.gridLayout_4 = QGridLayout(self.group_for_convenience)
-        self.gridLayout_4.setObjectName(u"gridLayout_4")
+        self.grid_for_convenience = QGridLayout(self.group_for_convenience)
+        self.grid_for_convenience.setObjectName(u"grid_for_convenience")
         self.randomize_starting_island = QCheckBox(self.group_for_convenience)
         self.randomize_starting_island.setObjectName(u"randomize_starting_island")
 
-        self.gridLayout_4.addWidget(self.randomize_starting_island, 2, 0, 1, 1)
+        self.grid_for_convenience.addWidget(self.randomize_starting_island, 2, 0, 1, 1)
 
         self.swift_sail = QCheckBox(self.group_for_convenience)
         self.swift_sail.setObjectName(u"swift_sail")
         self.swift_sail.setChecked(True)
 
-        self.gridLayout_4.addWidget(self.swift_sail, 1, 0, 1, 1)
+        self.grid_for_convenience.addWidget(self.swift_sail, 1, 0, 1, 1)
 
         self.randomize_charts = QCheckBox(self.group_for_convenience)
         self.randomize_charts.setObjectName(u"randomize_charts")
 
-        self.gridLayout_4.addWidget(self.randomize_charts, 2, 2, 1, 1)
+        self.grid_for_convenience.addWidget(self.randomize_charts, 2, 2, 1, 1)
 
         self.instant_text_boxes = QCheckBox(self.group_for_convenience)
         self.instant_text_boxes.setObjectName(u"instant_text_boxes")
         self.instant_text_boxes.setChecked(True)
 
-        self.gridLayout_4.addWidget(self.instant_text_boxes, 1, 4, 1, 1)
+        self.grid_for_convenience.addWidget(self.instant_text_boxes, 1, 4, 1, 1)
 
         self.skip_rematch_bosses = QCheckBox(self.group_for_convenience)
         self.skip_rematch_bosses.setObjectName(u"skip_rematch_bosses")
         self.skip_rematch_bosses.setChecked(True)
 
-        self.gridLayout_4.addWidget(self.skip_rematch_bosses, 1, 6, 1, 1)
+        self.grid_for_convenience.addWidget(self.skip_rematch_bosses, 1, 6, 1, 1)
 
         self.reveal_full_sea_chart = QCheckBox(self.group_for_convenience)
         self.reveal_full_sea_chart.setObjectName(u"reveal_full_sea_chart")
         self.reveal_full_sea_chart.setChecked(True)
 
-        self.gridLayout_4.addWidget(self.reveal_full_sea_chart, 1, 2, 1, 1)
+        self.grid_for_convenience.addWidget(self.reveal_full_sea_chart, 1, 2, 1, 1)
 
         self.remove_title_and_ending_videos = QCheckBox(self.group_for_convenience)
         self.remove_title_and_ending_videos.setObjectName(u"remove_title_and_ending_videos")
         self.remove_title_and_ending_videos.setChecked(True)
 
-        self.gridLayout_4.addWidget(self.remove_title_and_ending_videos, 2, 4, 1, 1)
+        self.grid_for_convenience.addWidget(self.remove_title_and_ending_videos, 2, 4, 1, 1)
 
         self.horizontalSpacer_14 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.gridLayout_4.addItem(self.horizontalSpacer_14, 1, 3, 1, 1)
+        self.grid_for_convenience.addItem(self.horizontalSpacer_14, 1, 3, 1, 1)
 
         self.horizontalSpacer_15 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.gridLayout_4.addItem(self.horizontalSpacer_15, 1, 5, 1, 1)
+        self.grid_for_convenience.addItem(self.horizontalSpacer_15, 1, 5, 1, 1)
 
         self.horizontalSpacer_13 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.gridLayout_4.addItem(self.horizontalSpacer_13, 1, 1, 1, 1)
+        self.grid_for_convenience.addItem(self.horizontalSpacer_13, 1, 1, 1, 1)
 
         self.layout_for_convenience_option = QHBoxLayout()
         self.layout_for_convenience_option.setObjectName(u"layout_for_convenience_option")
@@ -518,107 +518,107 @@ class Ui_MainWindow(object):
         self.layout_for_convenience_option.addWidget(self.convenience_option)
 
 
-        self.gridLayout_4.addLayout(self.layout_for_convenience_option, 2, 6, 1, 1)
+        self.grid_for_convenience.addLayout(self.layout_for_convenience_option, 2, 6, 1, 1)
 
 
-        self.verticalLayout_2.addWidget(self.group_for_convenience)
+        self.layout_for_paths.addWidget(self.group_for_convenience)
 
-        self.group_for_advanced = QGroupBox(self.tab_for_settings)
-        self.group_for_advanced.setObjectName(u"group_for_advanced")
-        self.gridLayout_7 = QGridLayout(self.group_for_advanced)
-        self.gridLayout_7.setObjectName(u"gridLayout_7")
-        self.generate_spoiler_log = QCheckBox(self.group_for_advanced)
+        self.group_for_spoiler = QGroupBox(self.tab_for_settings)
+        self.group_for_spoiler.setObjectName(u"group_for_spoiler")
+        self.grid_for_spoiler = QGridLayout(self.group_for_spoiler)
+        self.grid_for_spoiler.setObjectName(u"grid_for_spoiler")
+        self.generate_spoiler_log = QCheckBox(self.group_for_spoiler)
         self.generate_spoiler_log.setObjectName(u"generate_spoiler_log")
         self.generate_spoiler_log.setChecked(False)
 
-        self.gridLayout_7.addWidget(self.generate_spoiler_log, 0, 0, 1, 1)
+        self.grid_for_spoiler.addWidget(self.generate_spoiler_log, 0, 0, 1, 1)
 
-        self.progression_check_spoiler_log = QCheckBox(self.group_for_advanced)
+        self.progression_check_spoiler_log = QCheckBox(self.group_for_spoiler)
         self.progression_check_spoiler_log.setObjectName(u"progression_check_spoiler_log")
         self.progression_check_spoiler_log.setChecked(True)
 
-        self.gridLayout_7.addWidget(self.progression_check_spoiler_log, 1, 0, 1, 1)
+        self.grid_for_spoiler.addWidget(self.progression_check_spoiler_log, 1, 0, 1, 1)
 
-        self.all_check_spoiler_log = QCheckBox(self.group_for_advanced)
+        self.all_check_spoiler_log = QCheckBox(self.group_for_spoiler)
         self.all_check_spoiler_log.setObjectName(u"all_check_spoiler_log")
         self.all_check_spoiler_log.setChecked(True)
 
-        self.gridLayout_7.addWidget(self.all_check_spoiler_log, 1, 1, 1, 1)
+        self.grid_for_spoiler.addWidget(self.all_check_spoiler_log, 1, 1, 1, 1)
 
-        self.entrance_spoiler_log = QCheckBox(self.group_for_advanced)
+        self.entrance_spoiler_log = QCheckBox(self.group_for_spoiler)
         self.entrance_spoiler_log.setObjectName(u"entrance_spoiler_log")
         self.entrance_spoiler_log.setChecked(True)
 
-        self.gridLayout_7.addWidget(self.entrance_spoiler_log, 1, 2, 1, 1)
+        self.grid_for_spoiler.addWidget(self.entrance_spoiler_log, 1, 2, 1, 1)
 
-        self.chart_spoiler_log = QCheckBox(self.group_for_advanced)
+        self.chart_spoiler_log = QCheckBox(self.group_for_spoiler)
         self.chart_spoiler_log.setObjectName(u"chart_spoiler_log")
         self.chart_spoiler_log.setChecked(True)
 
-        self.gridLayout_7.addWidget(self.chart_spoiler_log, 1, 3, 1, 1)
+        self.grid_for_spoiler.addWidget(self.chart_spoiler_log, 1, 3, 1, 1)
 
 
-        self.verticalLayout_2.addWidget(self.group_for_advanced)
+        self.layout_for_paths.addWidget(self.group_for_spoiler)
 
-        self.group_for_advanced1 = QGroupBox(self.tab_for_settings)
-        self.group_for_advanced1.setObjectName(u"group_for_advanced1")
-        self.gridLayout_6 = QGridLayout(self.group_for_advanced1)
-        self.gridLayout_6.setObjectName(u"gridLayout_6")
+        self.group_for_advanced = QGroupBox(self.tab_for_settings)
+        self.group_for_advanced.setObjectName(u"group_for_advanced")
+        self.grid_for_advanced = QGridLayout(self.group_for_advanced)
+        self.grid_for_advanced.setObjectName(u"grid_for_advanced")
         self.horizontalSpacer_12 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.gridLayout_6.addItem(self.horizontalSpacer_12, 0, 3, 1, 1)
+        self.grid_for_advanced.addItem(self.horizontalSpacer_12, 0, 3, 1, 1)
 
         self.horizontalSpacer_11 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.gridLayout_6.addItem(self.horizontalSpacer_11, 0, 1, 1, 1)
+        self.grid_for_advanced.addItem(self.horizontalSpacer_11, 0, 1, 1, 1)
 
-        self.remove_music = QCheckBox(self.group_for_advanced1)
+        self.remove_music = QCheckBox(self.group_for_advanced)
         self.remove_music.setObjectName(u"remove_music")
 
-        self.gridLayout_6.addWidget(self.remove_music, 0, 0, 1, 1)
+        self.grid_for_advanced.addWidget(self.remove_music, 0, 0, 1, 1)
 
-        self.disable_tingle_chests_with_tingle_bombs = QCheckBox(self.group_for_advanced1)
+        self.disable_tingle_chests_with_tingle_bombs = QCheckBox(self.group_for_advanced)
         self.disable_tingle_chests_with_tingle_bombs.setObjectName(u"disable_tingle_chests_with_tingle_bombs")
         self.disable_tingle_chests_with_tingle_bombs.setEnabled(False)
         self.disable_tingle_chests_with_tingle_bombs.setChecked(True)
 
-        self.gridLayout_6.addWidget(self.disable_tingle_chests_with_tingle_bombs, 1, 4, 1, 1)
+        self.grid_for_advanced.addWidget(self.disable_tingle_chests_with_tingle_bombs, 1, 4, 1, 1)
 
-        self.randomize_enemy_palettes = QCheckBox(self.group_for_advanced1)
+        self.randomize_enemy_palettes = QCheckBox(self.group_for_advanced)
         self.randomize_enemy_palettes.setObjectName(u"randomize_enemy_palettes")
         self.randomize_enemy_palettes.setEnabled(True)
 
-        self.gridLayout_6.addWidget(self.randomize_enemy_palettes, 0, 2, 1, 1)
+        self.grid_for_advanced.addWidget(self.randomize_enemy_palettes, 0, 2, 1, 1)
 
-        self.randomize_enemies = QCheckBox(self.group_for_advanced1)
+        self.randomize_enemies = QCheckBox(self.group_for_advanced)
         self.randomize_enemies.setObjectName(u"randomize_enemies")
         self.randomize_enemies.setEnabled(False)
 
-        self.gridLayout_6.addWidget(self.randomize_enemies, 1, 2, 1, 1)
+        self.grid_for_advanced.addWidget(self.randomize_enemies, 1, 2, 1, 1)
 
-        self.invert_camera_x_axis = QCheckBox(self.group_for_advanced1)
+        self.invert_camera_x_axis = QCheckBox(self.group_for_advanced)
         self.invert_camera_x_axis.setObjectName(u"invert_camera_x_axis")
 
-        self.gridLayout_6.addWidget(self.invert_camera_x_axis, 0, 4, 1, 1)
+        self.grid_for_advanced.addWidget(self.invert_camera_x_axis, 0, 4, 1, 1)
 
-        self.randomize_music = QCheckBox(self.group_for_advanced1)
+        self.randomize_music = QCheckBox(self.group_for_advanced)
         self.randomize_music.setObjectName(u"randomize_music")
         self.randomize_music.setEnabled(True)
 
-        self.gridLayout_6.addWidget(self.randomize_music, 1, 0, 1, 1)
+        self.grid_for_advanced.addWidget(self.randomize_music, 1, 0, 1, 1)
 
-        self.widget_4 = QWidget(self.group_for_advanced1)
+        self.widget_4 = QWidget(self.group_for_advanced)
         self.widget_4.setObjectName(u"widget_4")
 
-        self.gridLayout_6.addWidget(self.widget_4, 0, 7, 1, 1)
+        self.grid_for_advanced.addWidget(self.widget_4, 0, 7, 1, 1)
 
-        self.widget_3 = QWidget(self.group_for_advanced1)
+        self.widget_3 = QWidget(self.group_for_advanced)
         self.widget_3.setObjectName(u"widget_3")
 
-        self.gridLayout_6.addWidget(self.widget_3, 0, 6, 1, 1)
+        self.grid_for_advanced.addWidget(self.widget_3, 0, 6, 1, 1)
 
 
-        self.verticalLayout_2.addWidget(self.group_for_advanced1)
+        self.layout_for_paths.addWidget(self.group_for_advanced)
 
         self.tab_for_main.addTab(self.tab_for_settings, "")
         self.tab_for_starting_items = QWidget()
@@ -1258,7 +1258,7 @@ class Ui_MainWindow(object):
 
         self.tab_for_main.addTab(self.tab_for_model_customization, "")
 
-        self.verticalLayout_4.addWidget(self.tab_for_main)
+        self.layout_for_main_scroll.addWidget(self.tab_for_main)
 
         self.scroll_for_main.setWidget(self.content_for_main_scroll)
 
@@ -1375,7 +1375,7 @@ class Ui_MainWindow(object):
         self.progression_eye_reef_chests.setText(QCoreApplication.translate("MainWindow", u"Eye Reef Chests", None))
         self.progression_big_octos_gunboats.setText(QCoreApplication.translate("MainWindow", u"Big Octos and Gunboats", None))
         self.progression_combat_secret_caves.setText(QCoreApplication.translate("MainWindow", u"Combat Secret Caves", None))
-        self.progression_tingle_chests.setText(QCoreApplication.translate("MainWindow", u"Tingle Chests", None))
+        self.progression_tingle_chests.setText(QCoreApplication.translate("MainWindow", u"Odd Dungeon Checks", None))
         self.progression_long_combat_trials.setText(QCoreApplication.translate("MainWindow", u"Long Combat Trials", None))
         self.progression_platforms_rafts.setText(QCoreApplication.translate("MainWindow", u"Lookout Platforms and Rafts", None))
         self.progression_mixed_secret_caves.setText(QCoreApplication.translate("MainWindow", u"Mixed Secret Caves", None))
@@ -1442,13 +1442,13 @@ class Ui_MainWindow(object):
         self.convenience_option.setItemText(2, QCoreApplication.translate("MainWindow", u"Plentiful", None))
         self.convenience_option.setItemText(3, QCoreApplication.translate("MainWindow", u"Plentiful and Convenient", None))
 
-        self.group_for_advanced.setTitle(QCoreApplication.translate("MainWindow", u"Spoiler Options", None))
+        self.group_for_spoiler.setTitle(QCoreApplication.translate("MainWindow", u"Spoiler Options", None))
         self.generate_spoiler_log.setText(QCoreApplication.translate("MainWindow", u"Generate Spoiler Log", None))
         self.progression_check_spoiler_log.setText(QCoreApplication.translate("MainWindow", u"Include Playthrough", None))
         self.all_check_spoiler_log.setText(QCoreApplication.translate("MainWindow", u"Include All Check Locations", None))
         self.entrance_spoiler_log.setText(QCoreApplication.translate("MainWindow", u"Include Entrance Locations", None))
         self.chart_spoiler_log.setText(QCoreApplication.translate("MainWindow", u"Include Chart Locations", None))
-        self.group_for_advanced1.setTitle(QCoreApplication.translate("MainWindow", u"Advanced Options", None))
+        self.group_for_advanced.setTitle(QCoreApplication.translate("MainWindow", u"Advanced Options", None))
         self.remove_music.setText(QCoreApplication.translate("MainWindow", u"Remove Music", None))
         self.disable_tingle_chests_with_tingle_bombs.setText(QCoreApplication.translate("MainWindow", u"Tingle Bombs Don't Open Tingle Chests", None))
         self.randomize_enemy_palettes.setText(QCoreApplication.translate("MainWindow", u"Randomize Enemy Palettes", None))

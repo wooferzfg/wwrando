@@ -159,7 +159,6 @@ class Randomizer:
 
     # Starting items. This list is read by the Logic when initializing your currently owned items list.
     self.starting_items = [
-      "Hero's Shield",
     ]
     self.starting_items += self.options.get("starting_gear", [])
 
@@ -393,8 +392,6 @@ class Randomizer:
       if self.options.get("sword_mode") == "Swordless":
         patcher.apply_patch(self, "swordless")
         tweaks.update_text_for_swordless(self)
-      if self.options.get("randomize_entrances") not in ["Disabled", None, "Dungeons"]:
-        tweaks.disable_ice_ring_isle_and_fire_mountain_effects_indoors(self)
       tweaks.update_starting_gear(self)
       if self.options.get("disable_tingle_chests_with_tingle_bombs"):
         patcher.apply_patch(self, "disable_tingle_bombs_on_tingle_chests")
@@ -573,11 +570,12 @@ class Randomizer:
     tweaks.remove_minor_panning_cutscenes(self)
     tweaks.fix_message_closing_sound_on_quest_status_screen(self)
     tweaks.fix_stone_head_bugs(self)
+    tweaks.show_number_of_tingle_statues_on_quest_status_screen(self)
 
     customizer.replace_link_model(self)
     tweaks.change_starting_clothes(self)
     tweaks.check_hide_ship_sail(self)
-    customizer.change_player_clothes_color(self)
+    customizer.change_player_custom_colors(self)
 
   def apply_necessary_post_randomization_tweaks(self):
     if self.randomize_items:
@@ -692,6 +690,10 @@ class Randomizer:
 
     with open(os.path.join(DATA_PATH, "palette_randomizable_files.txt"), "r") as f:
       self.palette_randomizable_files = yaml.safe_load(f)
+
+  def register_renamed_item(self, item_id, item_name):
+    self.item_name_to_id[item_name] = item_id
+    self.item_names[item_id] = item_name
 
   def get_arc(self, arc_path):
     arc_path = arc_path.replace("\\", "/")
@@ -946,6 +948,8 @@ class Randomizer:
           previously_accessible_locations += newly_accessible_small_key_locations
           continue # Redo this loop iteration with the small key locations no longer being considered 'remaining'.
 
+      # Hide duplicated progression items (e.g. Empty Bottles) when they are placed in non-progression locations to avoid confusion and inconsistency.
+      locations_in_this_sphere = logic.filter_locations_for_progression(locations_in_this_sphere)
 
       for location_name in locations_in_this_sphere:
         item_name = self.logic.done_item_locations[location_name]

@@ -325,7 +325,7 @@ def remove_forsaken_fortress_2_cutscenes(self):
   # Removes the rescuing-Aryll cutscene played by the spawn when you enter the Forsaken Fortress tower.
   dzx = self.get_arc("files/res/Stage/M2tower/Room0.arc").get_file("room.dzr")
   spawn = next(spawn for spawn in dzx.entries_by_type("PLYR") if spawn.spawn_id == 16)
-  spawn.event_index = 0xFF
+  spawn.evnt_index = 0xFF
   spawn.save_changes()
 
   # Removes the Ganon cutscene by making the door to his room lead back to the start of Forsaken Fortress instead.
@@ -347,6 +347,10 @@ def make_items_progressive(self):
   for sword_item_id in [0x38, 0x39, 0x3A, 0x3D, 0x3E]:
     sword_item_get_func_addr = item_get_funcs_list + sword_item_id*4
     self.dol.write_data(write_u32, sword_item_get_func_addr, self.main_custom_symbols["progressive_sword_item_func"])
+
+  for shield_item_id in [0x3B, 0x3C]:
+    shield_item_get_func_addr = item_get_funcs_list + shield_item_id*4
+    self.dol.write_data(write_u32, shield_item_get_func_addr, self.main_custom_symbols["progressive_shield_item_func"])
 
   for bow_item_id in [0x27, 0x35, 0x36]:
     bow_item_get_func_addr = item_get_funcs_list + bow_item_id*4
@@ -375,13 +379,13 @@ def make_items_progressive(self):
   '''
 
   # Register which item ID is for which progressive item.
-  self.item_name_to_id["Progressive Sword"] = 0x38
-  self.item_name_to_id["Progressive Bow"] = 0x27
-  self.item_name_to_id["Progressive Wallet"] = 0xAB
-  self.item_name_to_id["Progressive Bomb Bag"] = 0xAD
-  self.item_name_to_id["Progressive Quiver"] = 0xAF
-  self.item_name_to_id["Progressive Picto Box"] = 0x23
-  #self.item_name_to_id["Progressive Shield"] = 0x3B
+  self.register_renamed_item(0x38, "Progressive Sword")
+  self.register_renamed_item(0x3B, "Progressive Shield")
+  self.register_renamed_item(0x27, "Progressive Bow")
+  self.register_renamed_item(0xAB, "Progressive Wallet")
+  self.register_renamed_item(0xAD, "Progressive Bomb Bag")
+  self.register_renamed_item(0xAF, "Progressive Quiver")
+  self.register_renamed_item(0x23, "Progressive Picto Box")
 
   # Modify the item get funcs for bombs and the hero's bow to nop out the code that sets your current and max bombs/arrows to 30.
   # Without this change, getting bombs after a bomb bag upgrade would negate the bomb bag upgrade.
@@ -702,7 +706,7 @@ def allow_dungeon_items_to_appear_anywhere(self):
     dungeon_name = self.logic.DUNGEON_NAMES[short_dungeon_name]
 
     # Register the proper item ID for this item with the randomizer.
-    self.item_name_to_id[item_name] = item_id
+    self.register_renamed_item(item_id, item_name)
 
     # Update the item get funcs for the dungeon items to point to our custom item get funcs instead.
     custom_symbol_name = item_name.lower().replace(" ", "_") + "_item_get_func"
@@ -923,7 +927,7 @@ def update_item_names_in_letter_advertising_rock_spire_shop(self):
   unchanged_string_before = "\n".join(lines[0:8]) + "\n"
   unchanged_string_after = "\n".join(lines[12:])
 
-  hint_string = "Do you have need of %s \\{1A 06 FF 00 00 01}%s\\{1A 06 FF 00 00 00}, %s \\{1A 06 FF 00 00 01}%s\\{1A 06 FF 00 00 00}, or %s \\{1A 06 FF 00 00 01}%s\\{1A 06 FF 00 00 00}? We have them at special bargain prices." % (
+  hint_string = "Do you have need of %s \\{1A 06 FF 00 00 01}%s\\{1A 06 FF 00 00 00}, %s \\{1A 06 FF 00 00 01}%s\\{1A 06 FF 00 00 00}, or %s \\{1A 06 FF 00 00 01}%s\\{1A 06 FF 00 00 00}?\nWe have them at special bargain prices." % (
     get_indefinite_article(item_name_1), item_name_1,
     get_indefinite_article(item_name_2), item_name_2,
     get_indefinite_article(item_name_3), item_name_3,
@@ -1638,7 +1642,7 @@ def increase_misc_animations(self):
 
 def fix_day_night_cycle(self):
   # Sets the cycle to always be true, with or without necessary items
-  self.dol.write_data(write_u8, 0x801908e4, 1)
+  self.dol.write_data(write_float, 0x801908e4, 1.0)
   # Thank you, Gamma, for necessary address
 
 def change_starting_clothes(self):
@@ -1807,6 +1811,9 @@ def update_tingle_statue_item_get_funcs(self):
 def make_tingle_statue_reward_rupee_rainbow_colored(self):
   # Change the color index of the special 500 rupee to be 7 - this is a special value (originally unused) we use to indicate to our custom code that it's the special rupee, and so it should have its color animated.
 
+  # Register the proper item name.
+  self.register_renamed_item(0xB8, "Rainbow Rupee")
+
   item_resources_list_start = 0x803842B0
 
   item_id = self.item_name_to_id["Rainbow Rupee"]
@@ -1916,24 +1923,6 @@ def show_quest_markers_on_sea_chart_for_dungeons(self, dungeon_names=[]):
 
     write_s16(sea_chart_ui.data, offset+0x10, sector_x*0x37-0xFA)
     write_s16(sea_chart_ui.data, offset+0x12, sector_y*0x38-0xBC)
-
-def disable_ice_ring_isle_and_fire_mountain_effects_indoors(self):
-  # Ice Ring Isle and Fire Mountain both have an entity inside of them that kills the player if the timer is inactive or reaches 0.
-  # This is an issue in secret cave entrance rando since entering these from any entrance that doesn't start the timer would cause the player to die instantly.
-  # To avoid this, the entity is removed from inside both of these caves.
-  # That same entity is also responsible for setting the event flags to permanently deactivate Ice Ring Isle and Fire Mountain when the chest inside is opened, so removing it is also useful to prevent sequence breaking (e.g. enter Ice Ring cave from wrong entrance, open chest, now go to Ice Ring Isle and you don't need fire arrows to reach that entrance).
-
-  # Remove the entity from Ice Ring Isle.
-  iri_dzx = self.get_arc("files/res/Stage/MiniHyo/Room0.arc").get_file("room.dzr")
-  actors = iri_dzx.entries_by_type_and_layer("ACTR", None)
-  kill_trigger = next(x for x in actors if x.name == "VolTag")
-  iri_dzx.remove_entity(kill_trigger, "ACTR", layer=None)
-
-  # Remove the entity from Fire Mountain.
-  fm_dzx = self.get_arc("files/res/Stage/MiniKaz/Room0.arc").get_file("room.dzr")
-  actors = fm_dzx.entries_by_type_and_layer("ACTR", None)
-  kill_trigger = next(x for x in actors if x.name == "VolTag")
-  fm_dzx.remove_entity(kill_trigger, "ACTR", layer=None)
 
 def prevent_fire_mountain_lava_softlock(self):
   # Sometimes when spawning from spawn ID 0 outside fire mountain, the player will get stuck in an infinite loop of taking damage from lava.
@@ -2352,3 +2341,22 @@ def fix_stone_head_bugs(self):
   status_bits = head_rel.read_data(read_u32, 0x3450)
   status_bits &= ~0x00000080
   head_rel.write_data(write_u32, 0x3450, status_bits)
+
+def show_number_of_tingle_statues_on_quest_status_screen(self):
+  # Replaces the visuals of the treasure chart counter on the quest status creen with visuals for a tingle statue counter.
+  # That chart counter is redundant since it shows the same number on the chart screen.
+  # (The actual counter number itself is modified via asm.)
+
+  # Replace the treasure chart item icon on the quest screen with the tingle statue icon.
+  self.dol.write_data(write_str, 0x8035F469, "tingle_figure.bti", 0x13)
+
+  # Update the "Treasure Chart" text at the bottom of the screen.
+  msg = self.bmg.messages_by_id[503]
+  msg.string = "Tingle Statues"
+
+  # Update the treasure chart description with custom text for tingle statues.
+  msg = self.bmg.messages_by_id[703]
+  msg.string = word_wrap_string(
+    "Golden statues of a mysterious dashing figure. They can be traded with \\{1A 06 FF 00 00 01}Ankle\\{1A 06 FF 00 00 00} on \\{1A 06 FF 00 00 01}Tingle Island\\{1A 06 FF 00 00 00} for a reward!",
+    max_line_length=43
+  )

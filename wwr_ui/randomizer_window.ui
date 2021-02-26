@@ -365,7 +365,7 @@
                <item row="2" column="0">
                 <widget class="QCheckBox" name="progression_tingle_chests">
                  <property name="text">
-                  <string>Tingle Chests</string>
+                  <string>Odd Dungeon Checks</string>
                  </property>
                 </widget>
                </item>
