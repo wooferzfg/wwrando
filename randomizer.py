@@ -503,12 +503,11 @@ class Randomizer:
       for i in range(0,4):
         resultStr = str(SEED_KEY[i]) + str(int(spoilerList[i]))
         resultInt = hex(int(resultStr,16))
-        resultList.append(resultInt)
-      output = str(resultList[0]-((resultList[1]+resultList[2])/resultList[3]))
+        resultList.append(int(resultInt,16))
+      output = str(hex(int(resultList[0]-((resultList[1]+resultList[2])/resultList[3]))))
     else:
       print("This should not happen, please contact the person below.\n\t{}".format("zach@yarnot.com"))
       output = ("0x" + "".join(spoilerList))
-    print("{}".join(SEED_KEY)).format(spoilerList[1],spoilerList[2],spoilerList[3])
     return output
 
   def apply_necessary_tweaks(self):
