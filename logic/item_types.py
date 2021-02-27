@@ -56,6 +56,10 @@ SOFT_REQUIRED_ITEMS = [
   "Earth Tingle Statue",
   "Wind Tingle Statue",
 
+  "Progressive Bomb Bag",
+  "Progressive Quiver",
+  "Hurricane Spin",
+
   "Magic Meter Upgrade",
   "Ghost Ship Chart",
 ] + \
@@ -71,9 +75,6 @@ NONPROGRESS_ITEMS = [
   "Hero's Charm",
 
   "Fill-Up Coupon",
-
-  "Progressive Bomb Bag",
-  "Progressive Quiver",
 
   "Submarine Chart",
   "Beedle's Chart",
@@ -111,7 +112,6 @@ CONSUMABLE_ITEMS = \
 # (Note: Blue Chu Jelly is not included as it is specially coded and would cause issues if randomly placed as a field item.)
 
 CONVENIENCE_ITEMS = [
-  "Hurricane Spin",
   "Progressive Bomb Bag",
   "Progressive Quiver",
 ]

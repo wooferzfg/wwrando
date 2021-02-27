@@ -435,6 +435,7 @@ class Ui_MainWindow(object):
 
         self.add_shortcut_warps_between_dungeons = QCheckBox(self.group_for_settings_secondary)
         self.add_shortcut_warps_between_dungeons.setObjectName(u"add_shortcut_warps_between_dungeons")
+        self.add_shortcut_warps_between_dungeons.setChecked(True)
 
         self.grid_for_settings_secondary.addWidget(self.add_shortcut_warps_between_dungeons, 1, 2, 1, 1)
 

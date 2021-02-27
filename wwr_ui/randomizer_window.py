@@ -1242,6 +1242,7 @@ class WWRandomizerWindow(QMainWindow):
       self.set_option_value("race_mode","Default")
       should_enable_options["num_dungeon_race_mode"] = False
       self.set_option_value("num_dungeon_race_mode","4")
+      should_enable_options["progression_tingle_chests"] = False
       formats_dungeon = ["locale_","locale_deep_"]
       accronm_dungeon = ["drc","fw","totg","et","wt"]
       for format in formats_dungeon:
@@ -1270,7 +1271,7 @@ class WWRandomizerWindow(QMainWindow):
       if sword_mode == "Start with Hero's Sword":
         potential_boss_rewards += 3 * ["Progressive Sword"]
       elif sword_mode == "No Starting Sword":
-        num_possible_rewards += 4 * ["Progressive Sword"]
+        potential_boss_rewards += 4 * ["Progressive Sword"]
 
       num_boss_rewards = 0
       try:

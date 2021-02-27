@@ -1,0 +1,282 @@
+ref:
+  render:
+    width:  1200
+    height: 720
+  output:
+    width:  1920
+    height: 1080
+a:
+  upper:
+    width:    27
+    height:   27
+    kerning:  3
+    offset:   0
+  lower:
+    width:    21
+    height:   20
+    kerning:  5
+    offset:   0
+b:
+  upper:
+    width:    24
+    height:   27
+    kerning:  4
+    offset:   0
+  lower:
+    width:    20
+    height:   27
+    kerning:  7
+    offset:   0
+c:
+  upper:
+    width:    25
+    height:   27
+    kerning:  7
+    offset:   0
+  lower:
+    width:    18
+    height:   21
+    kerning:  8
+    offset:   1
+d:
+  upper:
+    width:    28
+    height:   27
+    kerning:  7
+    offset:   0
+  lower:
+    width:    21
+    height:   28
+    kerning:  7
+    offset:   0
+e:
+  upper:
+    width:    22
+    height:   27
+    kerning:  5
+    offset:   0
+  lower:
+    width:    20
+    height:   20
+    kerning:  5
+    offset:   1
+f:
+  upper:
+    width:    21
+    height:   27
+    kerning:  7
+    offset:   0
+  lower:
+    width:    12
+    height:   27
+    kerning:  3
+    offset:   0
+g:
+  upper:
+    width:    27
+    height:   27
+    kerning:
+    offset:   0
+  lower:
+    width:    19
+    height:   27
+    kerning:
+    offset:   7
+h:
+  upper:
+    width:    24
+    height:   28
+    kerning:  4
+    offset:   1
+  lower:
+    width:    19
+    height:   28
+    kerning:  7
+    offset:   1
+i:
+  upper:
+    width:    6
+    height:   28
+    kerning:  6
+    offset:   1
+  lower:
+    width:    6
+    height:   27
+    kerning:  6
+    offset:   1
+j:
+  upper:
+    width:    14
+    height:   29
+    kerning:  6
+    offset:   2
+  lower:
+    width:    10
+    height:   34
+    kerning:  10
+    offset:   6
+l:
+  upper:
+    width:    19
+    height:   28
+    kerning:  4
+    offset:   0
+  lower:
+    width:    6
+    height:   27
+    kerning:  8
+    offset:   0
+m:
+  upper:
+    width:    32
+    height:   27
+    kerning:  8
+    offset:   0
+  lower:
+    width:    28
+    height:   20
+    kerning:  7
+    offset:   1
+n:
+  upper:
+    width:    24
+    height:   26
+    kerning:
+    offset:   0
+  lower:
+    width:    18
+    height:   20
+    kerning:
+    offset:   1
+o:
+  upper:
+    width:    27
+    height:   28
+    kerning:  4
+    offset:   1
+  lower:
+    width:    22
+    height:   20
+    kerning:  4
+    offset:   1
+p:
+  upper:
+    width:    23
+    height:   27
+    kerning:  5
+    offset:   0
+  lower:
+    width:    20
+    height:   26
+    kerning:  6
+    offset:   6
+q:
+  upper:
+    width:    25
+    height:   28
+    kerning:  8
+    offset:   1
+  lower:
+    width:    20
+    height:   26
+    kerning:  6
+    offset:   6
+r:
+  upper:
+    width:    25
+    height:   28
+    kerning:  3
+    offset:   1
+  lower:
+    width:    11
+    height:   20
+    kerning:  4
+    offset:   1
+s:
+  upper:
+    width:    21
+    height:   27
+    kerning:
+    offset:   1
+  lower:
+    width:    17
+    height:   20
+    kerning:
+    offset:   1
+t:
+  upper:
+    width:    24
+    height:   27
+    kerning:  5
+    offset:   0
+  lower:
+    width:    10
+    height:   24
+    kerning:  7
+    offset:   1
+u:
+  upper:
+    width:    22
+    height:   27
+    kerning:  7
+    offset:   1
+  lower:
+    width:    20
+    height:   20
+    kerning:  5
+    offset:   1
+v:
+  upper:
+    width:    26
+    height:   26
+    kerning:  5
+    offset:   0
+  lower:
+    width:    19
+    height:   19
+    kerning:  4
+    offset:   1
+w:
+  upper:
+    width:    34
+    height:   27
+    kerning:  7
+    offset:   0
+  lower:
+    width:    30
+    height:   19
+    kerning:  5
+    offset:   1
+x:
+  upper:
+    width:    22
+    height:   27
+    kerning:
+    offset:   0
+  lower:
+    width:    18
+    height:   20
+    kerning:
+    offset:   1
+y:
+  upper:
+    width:    23
+    height:   28
+    kerning:
+    offset:   0
+  lower:
+    width:    20
+    height:   28
+    kerning:
+    offset:   6
+z:
+  upper:
+    width:    23
+    height:   27
+    kerning:  4
+    offset:   0
+  lower:
+    width:    20
+    height:   20
+    kerning:  6
+    offset:   0

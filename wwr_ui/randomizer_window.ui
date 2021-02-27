@@ -805,6 +805,9 @@
                  <property name="text">
                   <string>Add Shortcuts Between Dungeons</string>
                  </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
                 </widget>
                </item>
               </layout>

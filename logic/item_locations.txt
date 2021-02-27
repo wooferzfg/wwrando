@@ -16,7 +16,13 @@ Outset Island - Underneath Link's House:
   Paths:
     - LinkUG/Stage.arc/Chest000
 Outset Island - Mesa the Grasscutter's House:
-  Need: Can Travel to Outset Island
+  Need:
+    Can Travel to Outset Island
+    & (
+      Can Play Song of Passing
+      | (Tricked Logic & Can Sail)
+      | Glitched Logic
+    )
   Original item: Red Rupee
   Types: Free Gift
   Locale: Outset Island
@@ -618,6 +624,7 @@ Windfall Island - Battlesquid - Second Prize:
     - rels/d_a_npc_kg1.rel@2C29
 Windfall Island - Battlesquid - Prize 3+:
   Need: Can Travel to Windfall Island
+  Need: Nothing
   Original item: Purple Rupee
   Types: Consumables only
   Locale: Battlesquid
@@ -653,7 +660,7 @@ Windfall Island - Pompie and Vera - Secret Meeting Photo:
     # Need to snap a photo of Lenzo and Minenco in Lenzo's house.
     # Need Wind's Requiem to activate the Windmill.
     # Need Picto Box because Lenzo will not unlock his upper door until you talk to him after obtaining it
-    Can Change Wind Direction
+    (Can Play Wind's Requiem | Glitched Logic)
     & Picto Box
     & Can Travel to Windfall Island
   Original item: Treasure Chart 24
@@ -782,7 +789,7 @@ Dragon Roost Island - Secret Cave:
   # 3 Blue Bokoblins and 4 pots - you can get them to drop their sticks and then kill them with the stick.
   Original item: Purple Rupee
   Types: Combat Secret Cave
-  Locale: Dragon Roost Cavern
+  Locale: Dragon Roost Island
   Paths:
     - TF_06/Stage.arc/Chest000
 

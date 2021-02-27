@@ -2,6 +2,8 @@
 import os
 import re
 
+from collections import OrderedDict
+
 from fs_helpers import *
 import tweaks
 

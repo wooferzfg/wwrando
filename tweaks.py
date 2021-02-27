@@ -934,7 +934,7 @@ def update_item_names_in_letter_advertising_rock_spire_shop(self):
   )
 
   # Letters have 2 spaces at the start of each line, so word wrap to 41 chars instead of 43, then add 2 spaces to each line.
-  hint_string = word_wrap_string(hint_string, max_line_length=41)
+  hint_string = word_wrap_string(hint_string, max_line_length=40)
   hint_string = pad_string_to_next_4_lines(hint_string)
   hint_lines = hint_string.split("\n")
   leading_spaces_hint_lines = []
@@ -1513,11 +1513,11 @@ def add_inter_dungeon_warp_pots(self):
       # Add the warp pots themselves.
       warp_pot = room_dzx.add_entity("ACTR", layer=None)
       warp_pot.name = "Warpts%d" % (warp_pot_index+1) # Warpts1 Warpts2 or Warpts3
-      warp_pot.warp_pot_type = warp_pot_index + 2 # 2 3 or 4
-      warp_pot.warp_pot_event_reg_index = warp_pot_data.event_reg_index
-      warp_pot.warp_pot_dest_1 = scls_exit_index_1
-      warp_pot.warp_pot_dest_2 = scls_exit_index_2
-      warp_pot.warp_pot_dest_3 = scls_exit_index_3
+      warp_pot.type = warp_pot_index + 2 # 2 3 or 4
+      warp_pot.cyclic_event_reg_index = warp_pot_data.event_reg_index
+      warp_pot.cyclic_dest_1_exit = scls_exit_index_1
+      warp_pot.cyclic_dest_2_exit = scls_exit_index_2
+      warp_pot.cyclic_dest_3_exit = scls_exit_index_3
       warp_pot.x_pos = warp_pot_data.x
       warp_pot.y_pos = warp_pot_data.y
       warp_pot.z_pos = warp_pot_data.z
@@ -1828,11 +1828,11 @@ def show_seed_hash_on_name_entry_screen(self):
   if not self.permalink:
     return
 
-  if not self.options.get("do_not_generate_spoiler_log"):
+  if self.options.get("generate_spoiler_log"):
     integer_seed = self.convert_string_to_integer_md5(self.permalink)
   else:
     # When no spoiler log is generated, the seed key also affects randomization, not just the data in the permalink.
-    integer_seed = self.convert_string_to_integer_md5(self.permalink + SEED_KEY)
+    integer_seed = self.convert_string_to_integer_md5(self.permalink + str(SEED_KEY))
   temp_rng = Random()
   temp_rng.seed(integer_seed)
 
