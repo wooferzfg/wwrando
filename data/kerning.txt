@@ -1,0 +1,1571 @@
+\x00:
+  name   : "✩Special Character"
+  value  : 0
+  type   : Cc
+  kerning: 7
+  width  : 10
+  total  : 17
+\x01:
+  name   : "✩Special Character"
+  value  : 1
+  type   : Cc
+  kerning: 9
+  width  : 6
+  total  : 15
+\x02:
+  name   : "✩Special Character"
+  value  : 2
+  type   : Cc
+  kerning: 7
+  width  : 10
+  total  : 17
+\x03:
+  name   : "✩Special Character"
+  value  : 3
+  type   : Cc
+  kerning: 4
+  width  : 16
+  total  : 20
+\x04:
+  name   : "✩Special Character"
+  value  : 4
+  type   : Cc
+  kerning: 5
+  width  : 14
+  total  : 19
+\x05:
+  name   : "✩Special Character"
+  value  : 5
+  type   : Cc
+  kerning: 2
+  width  : 20
+  total  : 22
+\x06:
+  name   : "✩Special Character"
+  value  : 6
+  type   : Cc
+  kerning: 4
+  width  : 17
+  total  : 21
+\x07:
+  name   : "✩Special Character"
+  value  : 7
+  type   : Cc
+  kerning: 9
+  width  : 6
+  total  : 15
+\x08:
+  name   : "✩Special Character"
+  value  : 8
+  type   : Cc
+  kerning: 8
+  width  : 9
+  total  : 17
+\x09:
+  name   : "✩Special Character"
+  value  : 9
+  type   : Cc
+  kerning: 8
+  width  : 9
+  total  : 17
+\x0A:
+  name   : "✩Special Character"
+  value  : 10
+  type   : Cc
+  kerning: 6
+  width  : 12
+  total  : 18
+\x0B:
+  name   : "✩Special Character"
+  value  : 11
+  type   : Cc
+  kerning: 5
+  width  : 14
+  total  : 19
+\x0C:
+  name   : "✩Special Character"
+  value  : 12
+  type   : Cc
+  kerning: 9
+  width  : 7
+  total  : 16
+\x0D:
+  name   : "✩Special Character"
+  value  : 13
+  type   : Cc
+  kerning: 7
+  width  : 10
+  total  : 17
+\x0E:
+  name   : "✩Special Character"
+  value  : 14
+  type   : Cc
+  kerning: 9
+  width  : 7
+  total  : 16
+\x0F:
+  name   : "✩Special Character"
+  value  : 15
+  type   : Cc
+  kerning: 7
+  width  : 11
+  total  : 18
+\x10:
+  name   : "✩Special Character"
+  value  : 16
+  type   : Cc
+  kerning: 5
+  width  : 14
+  total  : 19
+\x11:
+  name   : "✩Special Character"
+  value  : 17
+  type   : Cc
+  kerning: 8
+  width  : 9
+  total  : 17
+\x12:
+  name   : "✩Special Character"
+  value  : 18
+  type   : Cc
+  kerning: 5
+  width  : 14
+  total  : 19
+\x13:
+  name   : "✩Special Character"
+  value  : 19
+  type   : Cc
+  kerning: 5
+  width  : 14
+  total  : 19
+\x14:
+  name   : "✩Special Character"
+  value  : 20
+  type   : Cc
+  kerning: 4
+  width  : 16
+  total  : 20
+\x15:
+  name   : "✩Special Character"
+  value  : 21
+  type   : Cc
+  kerning: 5
+  width  : 15
+  total  : 20
+\x16:
+  name   : "✩Special Character"
+  value  : 22
+  type   : Cc
+  kerning: 5
+  width  : 15
+  total  : 20
+\x17:
+  name   : "✩Special Character"
+  value  : 23
+  type   : Cc
+  kerning: 5
+  width  : 15
+  total  : 20
+\x18:
+  name   : "✩Special Character"
+  value  : 24
+  type   : Cc
+  kerning: 5
+  width  : 15
+  total  : 20
+\x19:
+  name   : "✩Special Character"
+  value  : 25
+  type   : Cc
+  kerning: 4
+  width  : 16
+  total  : 20
+\x1A:
+  name   : "✩Special Character"
+  value  : 26
+  type   : Cc
+  kerning: 9
+  width  : 6
+  total  : 15
+\x1B:
+  name   : "✩Special Character"
+  value  : 27
+  type   : Cc
+  kerning: 9
+  width  : 6
+  total  : 15
+\x1C:
+  name   : "✩Special Character"
+  value  : 28
+  type   : Cc
+  kerning: 6
+  width  : 13
+  total  : 19
+\x1D:
+  name   : "✩Special Character"
+  value  : 29
+  type   : Cc
+  kerning: 5
+  width  : 14
+  total  : 19
+\x1E:
+  name   : "✩Special Character"
+  value  : 30
+  type   : Cc
+  kerning: 6
+  width  : 13
+  total  : 19
+\x1F:
+  name   : "✩Special Character"
+  value  : 31
+  type   : Cc
+  kerning: 5
+  width  : 14
+  total  : 19
+\x20:
+  name   : " "
+  value  : 32
+  type   : Zs
+  kerning: 2
+  width  : 20
+  total  : 22
+\x21:
+  name   : "!"
+  value  : 33
+  type   : Po
+  kerning: 4
+  width  : 16
+  total  : 20
+\x22:
+  name   : '"'
+  value  : 34
+  type   : Po
+  kerning: 5
+  width  : 15
+  total  : 20
+\x23:
+  name   : "#"
+  value  : 35
+  type   : Po
+  kerning: 4
+  width  : 16
+  total  : 20
+\x24:
+  name   : "$"
+  value  : 36
+  type   : Sc
+  kerning: 4
+  width  : 17
+  total  : 21
+\x25:
+  name   : "%"
+  value  : 37
+  type   : Po
+  kerning: 5
+  width  : 15
+  total  : 20
+\x26:
+  name   : "&"
+  value  : 38
+  type   : Po
+  kerning: 5
+  width  : 15
+  total  : 20
+\x27:
+  name   : "'"
+  value  : 39
+  type   : Po
+  kerning: 4
+  width  : 17
+  total  : 21
+\x28:
+  name   : "("
+  value  : 40
+  type   : Ps
+  kerning: 4
+  width  : 16
+  total  : 20
+\x29:
+  name   : ")"
+  value  : 41
+  type   : Pe
+  kerning: 9
+  width  : 6
+  total  : 15
+\x2A:
+  name   : "*"
+  value  : 42
+  type   : Po
+  kerning: 7
+  width  : 10
+  total  : 17
+\x2B:
+  name   : "+"
+  value  : 43
+  type   : Sm
+  kerning: 4
+  width  : 16
+  total  : 20
+\x2C:
+  name   : ","
+  value  : 44
+  type   : Po
+  kerning: 6
+  width  : 13
+  total  : 19
+\x2D:
+  name   : "-"
+  value  : 45
+  type   : Pd
+  kerning: 2
+  width  : 20
+  total  : 22
+\x2E:
+  name   : "."
+  value  : 46
+  type   : Po
+  kerning: 4
+  width  : 16
+  total  : 20
+\x2F:
+  name   : "/"
+  value  : 47
+  type   : Po
+  kerning: 4
+  width  : 16
+  total  : 20
+\x30:
+  name   : "0"
+  value  : 48
+  type   : Nd
+  kerning: 4
+  width  : 15
+  total  : 19
+\x31:
+  name   : "1"
+  value  : 49
+  type   : Nd
+  kerning: 4
+  width  : 16
+  total  : 20
+\x32:
+  name   : "2"
+  value  : 50
+  type   : Nd
+  kerning: 5
+  width  : 14
+  total  : 19
+\x33:
+  name   : "3"
+  value  : 51
+  type   : Nd
+  kerning: 5
+  width  : 14
+  total  : 19
+\x34:
+  name   : "4"
+  value  : 52
+  type   : Nd
+  kerning: 5
+  width  : 14
+  total  : 19
+\x35:
+  name   : "5"
+  value  : 53
+  type   : Nd
+  kerning: 4
+  width  : 16
+  total  : 20
+\x36:
+  name   : "6"
+  value  : 54
+  type   : Nd
+  kerning: 4
+  width  : 16
+  total  : 20
+\x37:
+  name   : "7"
+  value  : 55
+  type   : Nd
+  kerning: 2
+  width  : 20
+  total  : 22
+\x38:
+  name   : "8"
+  value  : 56
+  type   : Nd
+  kerning: 4
+  width  : 16
+  total  : 20
+\x39:
+  name   : "9"
+  value  : 57
+  type   : Nd
+  kerning: 5
+  width  : 14
+  total  : 19
+\x3A:
+  name   : ":"
+  value  : 58
+  type   : Po
+  kerning: 5
+  width  : 14
+  total  : 19
+\x3B:
+  name   : ";"
+  value  : 59
+  type   : Po
+  kerning: 8
+  width  : 8
+  total  : 16
+\x3C:
+  name   : "<"
+  value  : 60
+  type   : Sm
+  kerning: 4
+  width  : 16
+  total  : 20
+\x3D:
+  name   : "="
+  value  : 61
+  type   : Sm
+  kerning: 8
+  width  : 8
+  total  : 16
+\x3E:
+  name   : ">"
+  value  : 62
+  type   : Sm
+  kerning: 6
+  width  : 12
+  total  : 18
+\x3F:
+  name   : "?"
+  value  : 63
+  type   : Po
+  kerning: 3
+  width  : 18
+  total  : 21
+\x40:
+  name   : "@"
+  value  : 64
+  type   : Po
+  kerning: 8
+  width  : 9
+  total  : 17
+\x41:
+  name   : "A"
+  value  : 65
+  type   : Lu
+  kerning: 5
+  width  : 14
+  total  : 19
+\x42:
+  name   : "B"
+  value  : 66
+  type   : Lu
+  kerning: 5
+  width  : 14
+  total  : 19
+\x43:
+  name   : "C"
+  value  : 67
+  type   : Lu
+  kerning: 6
+  width  : 13
+  total  : 19
+\x44:
+  name   : "D"
+  value  : 68
+  type   : Lu
+  kerning: 5
+  width  : 15
+  total  : 20
+\x45:
+  name   : "E"
+  value  : 69
+  type   : Lu
+  kerning: 6
+  width  : 12
+  total  : 18
+\x46:
+  name   : "F"
+  value  : 70
+  type   : Lu
+  kerning: 7
+  width  : 9
+  total  : 16
+\x47:
+  name   : "G"
+  value  : 71
+  type   : Lu
+  kerning: 5
+  width  : 14
+  total  : 19
+\x48:
+  name   : "H"
+  value  : 72
+  type   : Lu
+  kerning: 5
+  width  : 14
+  total  : 19
+\x49:
+  name   : "I"
+  value  : 73
+  type   : Lu
+  kerning: 8
+  width  : 7
+  total  : 15
+\x4A:
+  name   : "J"
+  value  : 74
+  type   : Lu
+  kerning: 7
+  width  : 10
+  total  : 17
+\x4B:
+  name   : "K"
+  value  : 75
+  type   : Lu
+  kerning: 5
+  width  : 13
+  total  : 18
+\x4C:
+  name   : "L"
+  value  : 76
+  type   : Lu
+  kerning: 8
+  width  : 8
+  total  : 16
+\x4D:
+  name   : "M"
+  value  : 77
+  type   : Lu
+  kerning: 3
+  width  : 18
+  total  : 21
+\x4E:
+  name   : "N"
+  value  : 78
+  type   : Lu
+  kerning: 6
+  width  : 13
+  total  : 19
+\x4F:
+  name   : "O"
+  value  : 79
+  type   : Lu
+  kerning: 6
+  width  : 13
+  total  : 19
+\x50:
+  name   : "P"
+  value  : 80
+  type   : Lu
+  kerning: 5
+  width  : 14
+  total  : 19
+\x51:
+  name   : "Q"
+  value  : 81
+  type   : Lu
+  kerning: 5
+  width  : 14
+  total  : 19
+\x52:
+  name   : "R"
+  value  : 82
+  type   : Lu
+  kerning: 7
+  width  : 9
+  total  : 16
+\x53:
+  name   : "S"
+  value  : 83
+  type   : Lu
+  kerning: 6
+  width  : 12
+  total  : 18
+\x54:
+  name   : "T"
+  value  : 84
+  type   : Lu
+  kerning: 8
+  width  : 9
+  total  : 17
+\x55:
+  name   : "U"
+  value  : 85
+  type   : Lu
+  kerning: 5
+  width  : 13
+  total  : 18
+\x56:
+  name   : "V"
+  value  : 86
+  type   : Lu
+  kerning: 6
+  width  : 13
+  total  : 19
+\x57:
+  name   : "W"
+  value  : 87
+  type   : Lu
+  kerning: 3
+  width  : 18
+  total  : 21
+\x58:
+  name   : "X"
+  value  : 88
+  type   : Lu
+  kerning: 5
+  width  : 13
+  total  : 18
+\x59:
+  name   : "Y"
+  value  : 89
+  type   : Lu
+  kerning: 6
+  width  : 13
+  total  : 19
+\x5A:
+  name   : "Z"
+  value  : 90
+  type   : Lu
+  kerning: 6
+  width  : 13
+  total  : 19
+\x5B:
+  name   : "["
+  value  : 91
+  type   : Ps
+  kerning: 8
+  width  : 9
+  total  : 17
+\x5C:
+  name   : "\\"
+  value  : 92
+  type   : Po
+  kerning: 10
+  width  : 5
+  total  : 15
+\x5D:
+  name   : "]"
+  value  : 93
+  type   : Pe
+  kerning: 8
+  width  : 9
+  total  : 17
+\x5E:
+  name   : "^"
+  value  : 94
+  type   : Sk
+  kerning: 5
+  width  : 14
+  total  : 19
+\x5F:
+  name   : "_"
+  value  : 95
+  type   : Pc
+  kerning: 11
+  width  : 3
+  total  : 14
+\x60:
+  name   : "`"
+  value  : 96
+  type   : Sk
+  kerning: 4
+  width  : 16
+  total  : 20
+\x61:
+  name   : "a"
+  value  : 97
+  type   : Ll
+  kerning: 12
+  width  : 1
+  total  : 13
+\x62:
+  name   : "b"
+  value  : 98
+  type   : Ll
+  kerning: 9
+  width  : 7
+  total  : 16
+\x63:
+  name   : "c"
+  value  : 99
+  type   : Ll
+  kerning: 7
+  width  : 10
+  total  : 17
+\x64:
+  name   : "d"
+  value  : 100
+  type   : Ll
+  kerning: 12
+  width  : 1
+  total  : 13
+\x65:
+  name   : "e"
+  value  : 101
+  type   : Ll
+  kerning: 2
+  width  : 20
+  total  : 22
+\x66:
+  name   : "f"
+  value  : 102
+  type   : Ll
+  kerning: 6
+  width  : 12
+  total  : 18
+\x67:
+  name   : "g"
+  value  : 103
+  type   : Ll
+  kerning: 6
+  width  : 12
+  total  : 18
+\x68:
+  name   : "h"
+  value  : 104
+  type   : Ll
+  kerning: 6
+  width  : 12
+  total  : 18
+\x69:
+  name   : "i"
+  value  : 105
+  type   : Ll
+  kerning: 2
+  width  : 21
+  total  : 23
+\x6A:
+  name   : "j"
+  value  : 106
+  type   : Ll
+  kerning: 5
+  width  : 14
+  total  : 19
+\x6B:
+  name   : "k"
+  value  : 107
+  type   : Ll
+  kerning: 7
+  width  : 11
+  total  : 18
+\x6C:
+  name   : "l"
+  value  : 108
+  type   : Ll
+  kerning: 4
+  width  : 16
+  total  : 20
+\x6D:
+  name   : "m"
+  value  : 109
+  type   : Ll
+  kerning: 12
+  width  : 1
+  total  : 13
+\x6E:
+  name   : "n"
+  value  : 110
+  type   : Ll
+  kerning: 5
+  width  : 14
+  total  : 19
+\x6F:
+  name   : "o"
+  value  : 111
+  type   : Ll
+  kerning: 12
+  width  : 1
+  total  : 13
+\x70:
+  name   : "p"
+  value  : 112
+  type   : Ll
+  kerning: 12
+  width  : 1
+  total  : 13
+\x71:
+  name   : "q"
+  value  : 113
+  type   : Ll
+  kerning: 9
+  width  : 6
+  total  : 15
+\x72:
+  name   : "r"
+  value  : 114
+  type   : Ll
+  kerning: 9
+  width  : 6
+  total  : 15
+\x73:
+  name   : "s"
+  value  : 115
+  type   : Ll
+  kerning: 7
+  width  : 10
+  total  : 17
+\x74:
+  name   : "t"
+  value  : 116
+  type   : Ll
+  kerning: 7
+  width  : 10
+  total  : 17
+\x75:
+  name   : "u"
+  value  : 117
+  type   : Ll
+  kerning: 3
+  width  : 19
+  total  : 22
+\x76:
+  name   : "v"
+  value  : 118
+  type   : Ll
+  kerning: 6
+  width  : 12
+  total  : 18
+\x77:
+  name   : "w"
+  value  : 119
+  type   : Ll
+  kerning: 2
+  width  : 20
+  total  : 22
+\x78:
+  name   : "x"
+  value  : 120
+  type   : Ll
+  kerning: 5
+  width  : 14
+  total  : 19
+\x79:
+  name   : "y"
+  value  : 121
+  type   : Ll
+  kerning: 12
+  width  : 1
+  total  : 13
+\x7A:
+  name   : "z"
+  value  : 122
+  type   : Ll
+  kerning: 6
+  width  : 12
+  total  : 18
+\x7B:
+  name   : "{"
+  value  : 123
+  type   : Ps
+  kerning: 7
+  width  : 10
+  total  : 17
+\x7C:
+  name   : "|"
+  value  : 124
+  type   : Sm
+  kerning: 6
+  width  : 12
+  total  : 18
+\x7D:
+  name   : "}"
+  value  : 125
+  type   : Pe
+  kerning: 12
+  width  : 1
+  total  : 13
+\x7E:
+  name   : "~"
+  value  : 126
+  type   : Sm
+  kerning: 6
+  width  : 13
+  total  : 19
+\x7F:
+  name   : "✩Special Character"
+  value  : 127
+  type   : Cc
+  kerning: 5
+  width  : 14
+  total  : 19
+\x80:
+  name   : "✩Special Character"
+  value  : 128
+  type   : Cc
+  kerning: 12
+  width  : 1
+  total  : 13
+\x81:
+  name   : "✩Special Character"
+  value  : 129
+  type   : Cc
+  kerning: 9
+  width  : 6
+  total  : 15
+\x82:
+  name   : "✩Special Character"
+  value  : 130
+  type   : Cc
+  kerning: 5
+  width  : 14
+  total  : 19
+\x83:
+  name   : "✩Special Character"
+  value  : 131
+  type   : Cc
+  kerning: 4
+  width  : 16
+  total  : 20
+\x84:
+  name   : "✩Special Character"
+  value  : 132
+  type   : Cc
+  kerning: 12
+  width  : 1
+  total  : 13
+\x85:
+  name   : "✩Special Character"
+  value  : 133
+  type   : Cc
+  kerning: 4
+  width  : 16
+  total  : 20
+\x86:
+  name   : "✩Special Character"
+  value  : 134
+  type   : Cc
+  kerning: 10
+  width  : 4
+  total  : 14
+\x87:
+  name   : "✩Special Character"
+  value  : 135
+  type   : Cc
+  kerning: 5
+  width  : 14
+  total  : 19
+\x88:
+  name   : "✩Special Character"
+  value  : 136
+  type   : Cc
+  kerning: 7
+  width  : 10
+  total  : 17
+\x89:
+  name   : "✩Special Character"
+  value  : 137
+  type   : Cc
+  kerning: 6
+  width  : 13
+  total  : 19
+\x8A:
+  name   : "✩Special Character"
+  value  : 138
+  type   : Cc
+  kerning: 7
+  width  : 10
+  total  : 17
+\x8B:
+  name   : "✩Special Character"
+  value  : 139
+  type   : Cc
+  kerning: 6
+  width  : 12
+  total  : 18
+\x8C:
+  name   : "✩Special Character"
+  value  : 140
+  type   : Cc
+  kerning: 4
+  width  : 17
+  total  : 21
+\x8D:
+  name   : "✩Special Character"
+  value  : 141
+  type   : Cc
+  kerning: 6
+  width  : 12
+  total  : 18
+\x8E:
+  name   : "✩Special Character"
+  value  : 142
+  type   : Cc
+  kerning: 4
+  width  : 16
+  total  : 20
+\x8F:
+  name   : "✩Special Character"
+  value  : 143
+  type   : Cc
+  kerning: 2
+  width  : 21
+  total  : 23
+\x90:
+  name   : "✩Special Character"
+  value  : 144
+  type   : Cc
+  kerning: 8
+  width  : 8
+  total  : 16
+\x91:
+  name   : "✩Special Character"
+  value  : 145
+  type   : Cc
+  kerning: 4
+  width  : 16
+  total  : 20
+\x92:
+  name   : "✩Special Character"
+  value  : 146
+  type   : Cc
+  kerning: 7
+  width  : 10
+  total  : 17
+\x93:
+  name   : "✩Special Character"
+  value  : 147
+  type   : Cc
+  kerning: 7
+  width  : 10
+  total  : 17
+\x94:
+  name   : "✩Special Character"
+  value  : 148
+  type   : Cc
+  kerning: 8
+  width  : 8
+  total  : 16
+\x95:
+  name   : "✩Special Character"
+  value  : 149
+  type   : Cc
+  kerning: 5
+  width  : 14
+  total  : 19
+\x96:
+  name   : "✩Special Character"
+  value  : 150
+  type   : Cc
+  kerning: 6
+  width  : 13
+  total  : 19
+\x97:
+  name   : "✩Special Character"
+  value  : 151
+  type   : Cc
+  kerning: 8
+  width  : 8
+  total  : 16
+\x98:
+  name   : "✩Special Character"
+  value  : 152
+  type   : Cc
+  kerning: 12
+  width  : 1
+  total  : 13
+\x99:
+  name   : "✩Special Character"
+  value  : 153
+  type   : Cc
+  kerning: 7
+  width  : 10
+  total  : 17
+\x9A:
+  name   : "✩Special Character"
+  value  : 154
+  type   : Cc
+  kerning: 7
+  width  : 10
+  total  : 17
+\x9B:
+  name   : "✩Special Character"
+  value  : 155
+  type   : Cc
+  kerning: 6
+  width  : 13
+  total  : 19
+\x9C:
+  name   : "✩Special Character"
+  value  : 156
+  type   : Cc
+  kerning: 4
+  width  : 16
+  total  : 20
+\x9D:
+  name   : "✩Special Character"
+  value  : 157
+  type   : Cc
+  kerning: 4
+  width  : 16
+  total  : 20
+\x9E:
+  name   : "✩Special Character"
+  value  : 158
+  type   : Cc
+  kerning: 4
+  width  : 16
+  total  : 20
+\x9F:
+  name   : "✩Special Character"
+  value  : 159
+  type   : Cc
+  kerning: 5
+  width  : 14
+  total  : 19
+\xA0:
+  name   : " "
+  value  : 160
+  type   : Zs
+  kerning: 4
+  width  : 16
+  total  : 20
+\xA1:
+  name   : "¡"
+  value  : 161
+  type   : Po
+  kerning: 4
+  width  : 16
+  total  : 20
+\xA2:
+  name   : "¢"
+  value  : 162
+  type   : Sc
+  kerning: 4
+  width  : 16
+  total  : 20
+\xA3:
+  name   : "£"
+  value  : 163
+  type   : Sc
+  kerning: 4
+  width  : 16
+  total  : 20
+\xA4:
+  name   : "¤"
+  value  : 164
+  type   : Sc
+  kerning: 4
+  width  : 16
+  total  : 20
+\xA5:
+  name   : "¥"
+  value  : 165
+  type   : Sc
+  kerning: 4
+  width  : 16
+  total  : 20
+\xA6:
+  name   : "¦"
+  value  : 166
+  type   : So
+  kerning: 4
+  width  : 16
+  total  : 20
+\xA7:
+  name   : "§"
+  value  : 167
+  type   : Po
+  kerning: 4
+  width  : 16
+  total  : 20
+\xA8:
+  name   : "¨"
+  value  : 168
+  type   : Sk
+  kerning: 5
+  width  : 15
+  total  : 20
+\xA9:
+  name   : "©"
+  value  : 169
+  type   : So
+  kerning: 5
+  width  : 15
+  total  : 20
+\xAA:
+  name   : "ª"
+  value  : 170
+  type   : Lo
+  kerning: 5
+  width  : 15
+  total  : 20
+\xAB:
+  name   : "«"
+  value  : 171
+  type   : Pi
+  kerning: 5
+  width  : 15
+  total  : 20
+\xAC:
+  name   : "¬"
+  value  : 172
+  type   : Sm
+  kerning: 9
+  width  : 6
+  total  : 15
+\xAD:
+  name   : "­"
+  value  : 173
+  type   : Cf
+  kerning: 9
+  width  : 6
+  total  : 15
+\xAE:
+  name   : "®"
+  value  : 174
+  type   : So
+  kerning: 9
+  width  : 6
+  total  : 15
+\xAF:
+  name   : "¯"
+  value  : 175
+  type   : Sk
+  kerning: 9
+  width  : 6
+  total  : 15
+\xB0:
+  name   : "°"
+  value  : 176
+  type   : So
+  kerning: 4
+  width  : 17
+  total  : 21
+\xB1:
+  name   : "±"
+  value  : 177
+  type   : Sm
+  kerning: 4
+  width  : 16
+  total  : 20
+\xB2:
+  name   : "²"
+  value  : 178
+  type   : No
+  kerning: 4
+  width  : 16
+  total  : 20
+\xB3:
+  name   : "³"
+  value  : 179
+  type   : No
+  kerning: 4
+  width  : 16
+  total  : 20
+\xB4:
+  name   : "´"
+  value  : 180
+  type   : Sk
+  kerning: 4
+  width  : 16
+  total  : 20
+\xB5:
+  name   : "µ"
+  value  : 181
+  type   : Ll
+  kerning: 4
+  width  : 16
+  total  : 20
+\xB6:
+  name   : "¶"
+  value  : 182
+  type   : Po
+  kerning: 4
+  width  : 16
+  total  : 20
+\xB7:
+  name   : "·"
+  value  : 183
+  type   : Po
+  kerning: 4
+  width  : 16
+  total  : 20
+\xB8:
+  name   : "¸"
+  value  : 184
+  type   : Sk
+  kerning: 9
+  width  : 15
+  total  : 24
+\xB9:
+  name   : "¹"
+  value  : 185
+  type   : No
+  kerning: 4
+  width  : 16
+  total  : 20
+\xBA:
+  name   : "º"
+  value  : 186
+  type   : Lo
+  kerning: 4
+  width  : 16
+  total  : 20
+\xBB:
+  name   : "»"
+  value  : 187
+  type   : Pf
+  kerning: 4
+  width  : 16
+  total  : 20
+\xBC:
+  name   : "¼"
+  value  : 188
+  type   : No
+  kerning: 4
+  width  : 16
+  total  : 20
+\xBD:
+  name   : "½"
+  value  : 189
+  type   : No
+  kerning: 5
+  width  : 14
+  total  : 19
+\xBE:
+  name   : "¾"
+  value  : 190
+  type   : No
+  kerning: 5
+  width  : 14
+  total  : 19
+\xBF:
+  name   : "¿"
+  value  : 191
+  type   : Po
+  kerning: 5
+  width  : 15
+  total  : 20
+\xC0:
+  name   : "À"
+  value  : 192
+  type   : Lu
+  kerning: 5
+  width  : 14
+  total  : 19
+\xC1:
+  name   : "Á"
+  value  : 193
+  type   : Lu
+  kerning: 5
+  width  : 14
+  total  : 19
+\xC2:
+  name   : "Â"
+  value  : 194
+  type   : Lu
+  kerning: 5
+  width  : 14
+  total  : 19
+\xC3:
+  name   : "Ã"
+  value  : 195
+  type   : Lu
+  kerning: 5
+  width  : 14
+  total  : 19
+\xC4:
+  name   : "Ä"
+  value  : 196
+  type   : Lu
+  kerning: 5
+  width  : 14
+  total  : 19
+\xC5:
+  name   : "Å"
+  value  : 197
+  type   : Lu
+  kerning: 5
+  width  : 14
+  total  : 19
+\xC6:
+  name   : "Æ"
+  value  : 198
+  type   : Lu
+  kerning: 5
+  width  : 14
+  total  : 19
+\xC7:
+  name   : "Ç"
+  value  : 199
+  type   : Lu
+  kerning: 6
+  width  : 13
+  total  : 19
+\xC8:
+  name   : "È"
+  value  : 200
+  type   : Lu
+  kerning: 6
+  width  : 12
+  total  : 18
+\xC9:
+  name   : "É"
+  value  : 201
+  type   : Lu
+  kerning: 6
+  width  : 12
+  total  : 18
+\xCA:
+  name   : "Ê"
+  value  : 202
+  type   : Lu
+  kerning: 6
+  width  : 12
+  total  : 18
+\xCB:
+  name   : "Ë"
+  value  : 203
+  type   : Lu
+  kerning: 6
+  width  : 12
+  total  : 18
+\xCC:
+  name   : "Ì"
+  value  : 204
+  type   : Lu
+  kerning: 8
+  width  : 7
+  total  : 15
+\xCD:
+  name   : "Í"
+  value  : 205
+  type   : Lu
+  kerning: 8
+  width  : 7
+  total  : 15
+\xCE:
+  name   : "Î"
+  value  : 206
+  type   : Lu
+  kerning: 8
+  width  : 7
+  total  : 15
+\xCF:
+  name   : "Ï"
+  value  : 207
+  type   : Lu
+  kerning: 8
+  width  : 7
+  total  : 15
+\xD0:
+  name   : "Ð"
+  value  : 208
+  type   : Lu
+  kerning: 6
+  width  : 13
+  total  : 19
+\xD1:
+  name   : "Ñ"
+  value  : 209
+  type   : Lu
+  kerning: 6
+  width  : 13
+  total  : 19
+\xD2:
+  name   : "Ò"
+  value  : 210
+  type   : Lu
+  kerning: 6
+  width  : 13
+  total  : 19
+\xD3:
+  name   : "Ó"
+  value  : 211
+  type   : Lu
+  kerning: 6
+  width  : 13
+  total  : 19
+\xD4:
+  name   : "Ô"
+  value  : 212
+  type   : Lu
+  kerning: 6
+  width  : 13
+  total  : 19
+\xD5:
+  name   : "Õ"
+  value  : 213
+  type   : Lu
+  kerning: 6
+  width  : 13
+  total  : 19
+\xD6:
+  name   : "Ö"
+  value  : 214
+  type   : Lu
+  kerning: 6
+  width  : 13
+  total  : 19
+\xD7:
+  name   : "×"
+  value  : 215
+  type   : Sm
+  kerning: 3
+  width  : 18
+  total  : 21
+\xD8:
+  name   : "Ø"
+  value  : 216
+  type   : Lu
+  kerning: 6
+  width  : 13
+  total  : 19
+\xD9:
+  name   : "Ù"
+  value  : 217
+  type   : Lu
+  kerning: 5
+  width  : 13
+  total  : 18
+\xDA:
+  name   : "Ú"
+  value  : 218
+  type   : Lu
+  kerning: 5
+  width  : 13
+  total  : 18
+\xDB:
+  name   : "Û"
+  value  : 219
+  type   : Lu
+  kerning: 5
+  width  : 13
+  total  : 18
+\xDC:
+  name   : "Ü"
+  value  : 220
+  type   : Lu
+  kerning: 5
+  width  : 13
+  total  : 18
+\xDD:
+  name   : "Ý"
+  value  : 221
+  type   : Lu
+  kerning: 6
+  width  : 13
+  total  : 19
+\xDE:
+  name   : "Þ"
+  value  : 222
+  type   : Lu
+  kerning: 5
+  width  : 14
+  total  : 19
+\xDF:
+  name   : "ß"
+  value  : 223
+  type   : Ll
+  kerning: 6
+  width  : 13
+  total  : 19
+total:
+  total  : 4119
+  average: 18

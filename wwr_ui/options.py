@@ -1,6 +1,8 @@
 
 from collections import OrderedDict
 
+MAXIMUM_ADDITIONAL_STARTING_ITEMS = 47
+
 OPTIONS = OrderedDict([
   (
     "progression_dungeons",

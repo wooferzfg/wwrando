@@ -139,6 +139,7 @@ Outset Island - Savage Labyrinth - Floor 30:
     & Can Defeat Darknuts
     & Can Play Wind's Requiem
     & (Grappling Hook | Hero's Sword | Skull Hammer)
+    & Convenient Bottle
   # The last condition for having grappling hook or a melee weapon is to avoid cases where your only weapon for damaging most enemies is bow or bombs and you run out of arrows or bombs. Grappling hook can be used to steal ammo from enemies.
   # The following floors don't have requirements listed because you can trick enemies into hitting each other, pick up one of their dropped weapons, and kill the enemies with the weapon:
   # * Floor 4 (4x Green Bokoblins)
@@ -499,14 +500,14 @@ Windfall Island - 40 Rupee Auction:
   Paths:
     - rels/d_a_auction.rel@4489
 Windfall Island - 60 Rupee Auction:
-  Need: Can Travel to Windfall Island & Can Play Song of Passing
+  Need: Can Travel to Windfall Island & Can Play Song of Passing & Convenient Wallet
   Original item: Treasure Chart 38
   Types: Expensive Purchase, Long Minigame
   Locale: Windfall Island
   Paths:
     - rels/d_a_auction.rel@4499
 Windfall Island - 80 Rupee Auction:
-  Need: Can Travel to Windfall Island & Can Play Song of Passing
+  Need: Can Travel to Windfall Island & Can Play Song of Passing & Convenient Wallet
   Original item: Piece of Heart
   Types: Expensive Purchase, Long Minigame
   Locale: Windfall Island
@@ -2532,6 +2533,7 @@ The Great Sea - Goron Trading Reward:
     & Delivery Bag
     & Can Travel to any Island
     & Can Play Song of Passing
+    & Convenient Wallet
   # You need at least 560 rupees to get the final item, but you don't need a wallet upgrade since the most you need at one time is 200 rupees.
   Original item: Piece of Heart
   Types: Long Sidequest, Expensive Purchase
@@ -3270,6 +3272,7 @@ Shark Island - Cave:
     Can Access Shark Island Secret Cave
     & Can Defeat Miniblins
     & (Can Cut or Slash | Tricked Logic)
+    & Convenient Bottle
     # You need to kill a ton of enemies inside the cave, but no ranged weapons are required.
     # You need to have at least enough to defeat a couple Miniblins. After that some Green Bokoblins spawn, and you can get them to attack each other and drop a machete, then use that to kill the rest of the enemies in the cave.
   Original item: Silver Rupee

@@ -3,7 +3,7 @@ from PySide2.QtCore import *
 from PySide2.QtWidgets import *
 
 from wwr_ui.ui_randomizer_window import Ui_MainWindow
-from wwr_ui.options import OPTIONS, NON_PERMALINK_OPTIONS, HIDDEN_OPTIONS, POTENTIALLY_UNBEATABLE_OPTIONS
+from wwr_ui.options import * #OPTIONS, NON_PERMALINK_OPTIONS, HIDDEN_OPTIONS, POTENTIALLY_UNBEATABLE_OPTIONS
 from wwr_ui.update_checker import check_for_updates, LATEST_RELEASE_DOWNLOAD_PAGE_URL
 from wwr_ui.inventory import * #INVENTORY_ITEMS, REGULAR_ITEMS, PROGRESSIVE_ITEMS, DUNGEON_NONPROGRESS_ITEMS, SORT_KEY, STNDRD_ITEMS
 from wwr_ui.packedbits import PackedBitsReader, PackedBitsWriter
@@ -1235,6 +1235,14 @@ class WWRandomizerWindow(QMainWindow):
       spoilerLogOptions = ["progression_check_spoiler_log", "all_check_spoiler_log", "entrance_spoiler_log", "chart_spoiler_log"]
       for option in spoilerLogOptions:
         should_enable_options[option] = False
+
+    isTooManItems = len(self.get_option_value("starting_gear")) < MAXIMUM_ADDITIONAL_STARTING_ITEMS
+    self.ui.add_gear.setEnabled(isTooManItems)
+    if not isTooManItems :
+      self.ui.randomize_button.setText("Too many starting items")
+    else:
+      self.ui.randomize_button.setText("Randomize")
+    self.ui.randomize_button.setEnabled(isTooManItems)
 
     if not self.get_option_value("progression_dungeons"):
       # Race mode places required items on dungeon bosses.

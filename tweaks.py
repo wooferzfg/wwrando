@@ -14,9 +14,10 @@ from asm import patcher
 from wwlib import texture_utils
 from wwlib.rarc import RARC
 from wwlib.rel import REL, RELSection, RELRelocation, RELRelocationType
-from paths import ASSETS_PATH, ASM_PATH, SEEDGEN_PATH
+from paths import ASSETS_PATH, ASM_PATH, SEEDGEN_PATH, DATA_PATH
 import customizer
-from wwr_ui.options import OPTIONS, NON_PERMALINK_OPTIONS
+from wwr_ui.options import OPTIONS, NON_PERMALINK_OPTIONS, MAXIMUM_ADDITIONAL_STARTING_ITEMS
+from class_ms import *
 
 dungeon_num_race_mode = "NaN"
 starting_triforce = "NaN"
@@ -119,7 +120,6 @@ def inRange(input,min,max):
 ORIGINAL_FREE_SPACE_RAM_ADDRESS = 0x803FCFA8
 ORIGINAL_DOL_SIZE = 0x3A52C0
 
-MAXIMUM_ADDITIONAL_STARTING_ITEMS = 47
 
 
 def set_new_game_starting_spawn_id(self, spawn_id):
@@ -765,6 +765,16 @@ def allow_dungeon_items_to_appear_anywhere(self):
     self.dol.write_data(write_bytes, field_item_resources_addr+0x18, data6)
 
 def word_wrap_string(string, max_line_length=34):
+  with open(os.path.join(DATA_PATH,"kerning.txt")) as f:
+    char_widths_old = yaml.load(f, YamlOrderedDictLoader)
+  char_widths = char_widths_old.copy()
+  for key in char_widths_old:
+    if "name" in char_widths_old[key]:
+      name = char_widths_old[key]["name"]
+      if char_widths_old[key]["type"] != "Cc":
+        char_widths[name] = char_widths_old[key]
+      del char_widths[key]
+  max_line_length = max_line_length * char_widths["total"]["average"] + 10
   index_in_str = 0
   wordwrapped_str = ""
   current_word = ""
@@ -772,6 +782,10 @@ def word_wrap_string(string, max_line_length=34):
   length_of_curr_line = 0
   while index_in_str < len(string):
     char = string[index_in_str]
+    if char in char_widths:
+      char_width = char_widths[char]["total"]
+    else:
+      char_width = 0
 
     if char == "\\":
       assert string[index_in_str+1] == "{"
@@ -789,14 +803,15 @@ def word_wrap_string(string, max_line_length=34):
       index_in_str += 1
     elif char == " ":
       wordwrapped_str += current_word
-      wordwrapped_str += char
-      length_of_curr_line += current_word_length + len(char)
+      if wordwrapped_str[-1] != char:
+        wordwrapped_str += char
+      length_of_curr_line += current_word_length + char_width + 5
       current_word = ""
       current_word_length = 0
       index_in_str += 1
     else:
       current_word += char
-      current_word_length += 1
+      current_word_length += char_width
       index_in_str += 1
 
       if length_of_curr_line + current_word_length > max_line_length:
@@ -813,7 +828,13 @@ def word_wrap_string(string, max_line_length=34):
 
 def get_indefinite_article(string):
   first_letter = string.strip()[0].lower()
-  if first_letter in ["a", "e", "i", "o", "u"]:
+  last_letter = string.strip()[-1].lower()
+  word = string.lower().split()[0]
+  if ( last_letter in ["s"] ) and ( word not in ["forsaken", "forbidden"] ):
+    return ""
+  elif last_letter.isnumeric():
+    return ""
+  elif first_letter in ["a", "e", "i", "o", "u"]:
     return "an"
   else:
     return "a"
@@ -934,7 +955,7 @@ def update_item_names_in_letter_advertising_rock_spire_shop(self):
   )
 
   # Letters have 2 spaces at the start of each line, so word wrap to 41 chars instead of 43, then add 2 spaces to each line.
-  hint_string = word_wrap_string(hint_string, max_line_length=40)
+  hint_string = word_wrap_string(hint_string, max_line_length=41)
   hint_string = pad_string_to_next_4_lines(hint_string)
   hint_lines = hint_string.split("\n")
   leading_spaces_hint_lines = []

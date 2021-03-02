@@ -432,7 +432,7 @@ Can Defeat Ganondorf:
   # It doesn't matter if you have the bow or not, Zelda will still get it.
   (Progressive Sword x1 | In Swordless Mode)
   & Hero's Shield
-  & Convenient
+  & Convenient Ganon
   # Swordless gives you a sword temporarily during the Ganondorf fight, so you don't need to have found a sword item.
 
 Rescued Aryll:
@@ -957,17 +957,28 @@ Tricked Logic:
   | Option "logic_mod" Is "Glitched – Moderate"
   | Option "logic_mod" Is "Glitched – Trivial"
 
-Convenient:
+Convenient On:
+  (Option "convenience_option" Is "Convenient" | Option "convenience_option" Is "Plentiful and Convenient")
+
+Convenient Off:
+  Option "convenience_option" Is "Default"
+  | Option "convenience_option" Is "Plentiful"
+
+Convenient Bottle:
+  (Convenient On & Empty Bottle) | Convenient Off
+
+Convenient Wallet:
+  (Convenient On & Any Wallet Upgrade) | Convenient Off
+
+Convenient Ganon:
   (
-    (Option "convenience_option" Is "Convenient" | Option "convenience_option" Is "Plentiful and Convenient")
+    Convenient On
     & Hurricane Spin
     & Magic Meter Upgrade
     & Progressive Bomb Bag x1
     & Progressive Quiver x1
     & Progressive Wallet x1
-  )
-  | Option "convenience_option" Is "Default"
-  | Option "convenience_option" Is "Plentiful"
+  ) | Convenient Off
 
 Not Secret Cave Entrance Rando:
   Option "randomize_entrances" Is "Disabled"

@@ -8,7 +8,6 @@ from fs_helpers import *
 import tweaks
 
 def randomize_items(self):
-  print("Randomizing items...")
 
 
   self.banned_island_locales = [
@@ -37,6 +36,8 @@ def randomize_items(self):
     self.options.get("locale_under_great_sea"),
     self.options.get("locale_savage"),
   ]
+
+  print("Randomizing items...")
 
   if(self.options.get("race_mode")!="Default"):
     randomize_boss_rewards(self)

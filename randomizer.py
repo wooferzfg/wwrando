@@ -907,7 +907,10 @@ class Randomizer:
     return rng
 
   def reset_rng(self):
+    holdint = self.rng.randint(0,16)
     self.rng = self.get_new_rng()
+    for i in range(holdint):
+      self.rng.randint(0,7)
 
   def calculate_playthrough_progression_spheres(self):
     progression_spheres = []
@@ -924,7 +927,9 @@ class Randomizer:
         if loc not in previously_accessible_locations
       ]
       if not locations_in_this_sphere:
-        raise Exception("Failed to calculate progression spheres")
+        game_beatable = logic.check_requirement_met("Can Reach and Defeat Ganondorf")
+        if not game_beatable:
+          raise Exception("Failed to calculate progression spheres")
 
 
       if not self.options.get("keylunacy"):
