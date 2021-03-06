@@ -765,7 +765,7 @@ def allow_dungeon_items_to_appear_anywhere(self):
     self.dol.write_data(write_bytes, field_item_resources_addr+0x18, data6)
 
 def word_wrap_string(string, max_line_length=34):
-  with open(os.path.join(DATA_PATH,"kerning.txt")) as f:
+  with open(os.path.join(DATA_PATH,"kerning.txt"),"r",encoding="utf-8") as f:
     char_widths_old = yaml.load(f, YamlOrderedDictLoader)
   char_widths = char_widths_old.copy()
   for key in char_widths_old:

@@ -915,7 +915,7 @@ class Randomizer:
   def calculate_playthrough_progression_spheres(self):
     progression_spheres = []
 
-    logic = Logic(self)
+    logic = self.logic
     previously_accessible_locations = []
     game_beatable = False
     while logic.unplaced_progress_items:
@@ -929,7 +929,7 @@ class Randomizer:
       if not locations_in_this_sphere:
         game_beatable = logic.check_requirement_met("Can Reach and Defeat Ganondorf")
         if not game_beatable:
-          raise Exception("Failed to calculate progression spheres")
+          raise Exception("Failed to calculate progression spheres: {}".format(progression_spheres))
 
 
       if not self.options.get("keylunacy"):
@@ -992,7 +992,7 @@ class Randomizer:
   def get_log_header(self):
     header = ""
 
-    header += "Wind Waker Randomizer Version %s\n" % VERSION
+    header += "The Wind Waker Randomizer dv_im Version %s\n" % VERSION
 
     if self.permalink:
       header += "Permalink: %s\n" % self.permalink

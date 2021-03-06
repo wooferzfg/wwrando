@@ -35,18 +35,24 @@ https://discord.gg/r2963mt
 ### Credits
 
 The randomizer was created and programmed by LagoLunatic, with help from:  
+
 CryZe (event flag documentation)  
 Gamma / SageOfMirrors (custom model conversion, file format documentation)  
 Hypatia (textures)  
 JarheadHME (additional programming)  
 LordNed (file format documentation)  
-MelonSpeedruns (game design suggestions, graphic design)  
-TrogWW (additional programming)  
-nbouteme (additional programming)  
+MelonSpeedruns (game design suggestions, graphic design)
+nbouteme (additional programming)
+TrogWW (additional programming)   
 wooferzfg (additional programming)  
-Zach the DualVission (dv_im modifications)
-j_im (dv_im aid)
+
+
+dv_im was spearheaded by:
+
 CrainWWR (dv_im logic)
+j_im (dv_im aid)
+tanjo3 (dv_im aid)
+Zach the DualVission (dv_im modifications)
 
 ### Running the randomizer from source
 
