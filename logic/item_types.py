@@ -26,6 +26,7 @@ HARD_REQUIRED_ITEMS = [
 
 SOFT_REQUIRED_ITEMS = [
   "Tingle Tuner",
+  "Telescope",
 
   "Spoils Bag",
   "Power Bracelets",
@@ -70,7 +71,6 @@ SOFT_REQUIRED_ITEMS = [
 PROGRESS_ITEMS = HARD_REQUIRED_ITEMS + SOFT_REQUIRED_ITEMS
 
 NONPROGRESS_ITEMS = [
-  "Telescope",
   "Magic Armor",
   "Hero's Charm",
 

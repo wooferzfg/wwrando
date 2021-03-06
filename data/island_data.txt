@@ -443,7 +443,7 @@
   Abbreviation: dTotG
   Hint: a structure to annoy the hero
   Stage:
-  Locale Setting: locale_totg
+  Locale Setting: locale_deep_totg
   Neighbors: 130
 101:
   Long Name: Forsaken Fortress

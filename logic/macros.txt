@@ -421,8 +421,19 @@ Can Reach and Defeat Puppet Ganon:
 Can Defeat Puppet Ganon:
   (Boomerang | Glitched Logic)
   # Boomerang isn't strictly necessary to defeat Puppet Ganon but makes things significantly easier, both to cut down Puppet Ganon's strings and to defeat the keese who drop refills.
+Can Skip Puppet Ganon:
+  Complex Logic
+  & Can Reach Ganon's Tower Phantom Ganon Room
+  & Progressive Bow x2
+  & Deku Leaf
+  & Bombs
+  & Hookshot
+  & (Picto Box | Telescope)
 Can Reach and Defeat Ganondorf:
-  Can Reach and Defeat Puppet Ganon
+  (
+    Can Reach and Defeat Puppet Ganon
+    | Can Skip Puppet Ganon
+  )
   & (Grappling Hook | Glitched Logic)
   & (Hookshot | Complex Logic)
   & Can Defeat Ganondorf
@@ -1022,9 +1033,7 @@ Can Get DRI Boulder Chest:
   | Bombs
   | (
     Glitched Logic
-    & Deku Leaf
-    & Wind Waker
-    & Wind's Requiem
+    & Can Fly With Deku Leaf Outdoors
     & Can Cut or Slash
   )
 
