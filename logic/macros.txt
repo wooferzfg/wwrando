@@ -155,11 +155,12 @@ Can Access Earth Temple Basement:
    )
 Can Access Wind Temple:
   Can Access Dungeon Entrance On Gale Isle
+# Deku Leaf & Iron Boots is vanilla. Don't need it in the glitched logic options. Redundant
 Can Access Wind Temple Basement:
  Can Access Wind Temple
  & Can Play Command Melody
  & (
-   (Deku Leaf & Glitched Logic & (Magic Meter Upgrade | Empty Bottle | Iron Boots))
+   (Deku Leaf & Glitched Logic & (Magic Meter Upgrade | Empty Bottle)
    | (Deku Leaf & Iron Boots)
    | (Can Spring Storage & (Fire Arrows | Bombs | Can Jumpslash))
  )
