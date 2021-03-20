@@ -20,6 +20,12 @@ import xml_func as xfx
 #from sys import getrecursionlimit as getRL
 from sys import setrecursionlimit as setRL
 
+def countElem(list_item,string_item):
+  i = 0
+  for item in list_item:
+    i += int(item.startswith(string_item))
+  return i
+
 class Logic:
   DUNGEON_NAMES = OrderedDict([
     ("DRC",  "Dragon Roost Cavern"),
@@ -60,7 +66,8 @@ class Logic:
 
   def __init__(self, rando):
     self.rando = rando
-    logic_mod = rando.logic_mod
+    self.logic_mod = rando.logic_mod
+    logic_mod = self.logic_mod
 
     # Initialize location related attributes.
     self.item_locations = Logic.load_and_parse_item_locations(logic=logic_mod)
@@ -208,6 +215,11 @@ class Logic:
 
     self.cached_enemies_tested_for_req_string = OrderedDict()
 
+    self.done_location_items = OrderedDict()
+    hold_all_items = self.all_progress_items.copy() + self.all_nonprogress_items.copy()
+    for item_name in hold_all_items:
+      self.done_location_items[item_name] = []
+
   def set_location_to_item(self, location_name, item_name):
     #print("Setting %s to %s" % (location_name, item_name))
 
@@ -216,6 +228,8 @@ class Logic:
 
     self.done_item_locations[location_name] = item_name
     self.remaining_item_locations.remove(location_name)
+    if item_name in self.all_progress_items or item_name in self.all_nonprogress_items:
+      self.done_location_items[item_name].append(location_name)
 
     self.add_owned_item(item_name)
 
@@ -355,6 +369,21 @@ class Logic:
     accessible_location_names = []
 
     locations_to_check = self.remaining_item_locations
+    if for_progression:
+      locations_to_check = self.filter_locations_for_progression(locations_to_check)
+
+    for location_name in locations_to_check:
+      requirement_expression = self.item_locations[location_name]["Need"]
+      if self.check_logical_expression_req(requirement_expression):
+        accessible_location_names.append(location_name)
+
+    return accessible_location_names
+
+  def get_accessible_locations_from_list(self, for_progression=False, list_to_check=[]):
+    accessible_location_names = []
+    req_items = []
+
+    locations_to_check = list_to_check
     if for_progression:
       locations_to_check = self.filter_locations_for_progression(locations_to_check)
 

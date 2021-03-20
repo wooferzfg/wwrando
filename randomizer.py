@@ -913,15 +913,27 @@ class Randomizer:
       self.rng.randint(0,7)
 
   def calculate_playthrough_progression_spheres(self):
-    progression_spheres = []
-
+    progress_locs = OrderedDict()
     logic = self.logic
+    loc_dict  = logic.item_locations
+    item_locs = logic.done_item_locations
+    loc_items = logic.done_location_items
+    prog_item = logic.all_progress_items
+    logic.currently_owned_items = []
+    for item_name in self.starting_items:
+      logic.add_owned_item(item_name)
+    for item_name in logic.done_location_items:
+      if logic.done_location_items[item_name] and item_name in prog_item:
+        for location in logic.done_location_items[item_name]:
+          progress_locs[location] = item_name
+
+    progression_spheres = []
     previously_accessible_locations = []
     game_beatable = False
-    while logic.unplaced_progress_items:
+    while not game_beatable:
       progress_items_in_this_sphere = OrderedDict()
 
-      accessible_locations = logic.get_accessible_remaining_locations()
+      accessible_locations = logic.get_accessible_locations_from_list(False,progress_locs)
       locations_in_this_sphere = [
         loc for loc in accessible_locations
         if loc not in previously_accessible_locations
@@ -936,15 +948,15 @@ class Randomizer:
         # If the player gained access to any small keys, we need to give them the keys without counting that as a new sphere.
         newly_accessible_predetermined_item_locations = [
           loc for loc in locations_in_this_sphere
-          if loc in self.logic.prerandomization_item_locations
+          if loc in logic.prerandomization_item_locations
         ]
         newly_accessible_small_key_locations = [
           loc for loc in newly_accessible_predetermined_item_locations
-          if self.logic.prerandomization_item_locations[loc].endswith(" Small Key")
+          if logic.prerandomization_item_locations[loc].endswith(" Small Key")
         ]
         if newly_accessible_small_key_locations:
           for small_key_location_name in newly_accessible_small_key_locations:
-            item_name = self.logic.prerandomization_item_locations[small_key_location_name]
+            item_name = logic.prerandomization_item_locations[small_key_location_name]
             assert item_name.endswith(" Small Key")
 
             logic.add_owned_item(item_name)
@@ -956,7 +968,7 @@ class Randomizer:
       locations_in_this_sphere = logic.filter_locations_for_progression(locations_in_this_sphere)
 
       for location_name in locations_in_this_sphere:
-        item_name = self.logic.done_item_locations[location_name]
+        item_name = progress_locs[location_name]
         if item_name in logic.all_progress_items:
           progress_items_in_this_sphere[location_name] = item_name
 
@@ -1101,18 +1113,25 @@ class Randomizer:
     if(self.options.get("progression_check_spoiler_log")):
       spoiler_log += "Playthrough:\n"
       progression_spheres = self.calculate_playthrough_progression_spheres()
+      req_dungeons = self.race_mode_required_dungeons
+      if req_dungeons:
+        spoiler_log += "Required Dungeons:\n"
+        for dungeon in req_dungeons:
+          spoiler_log += "  {}\n".format(dungeon)
+        for i in range(42-len(req_dungeons)):
+          spoiler_log += "\n"
       all_progression_sphere_locations = [loc for locs in progression_spheres for loc in locs]
       zones, max_location_name_length = self.get_zones_and_max_location_name_len(all_progression_sphere_locations)
       format_string = "      %-" + str(max_location_name_length+1) + "s %s\n"
       for i, progression_sphere in enumerate(progression_spheres):
-        spoiler_log += "%d:\n" % (i+1)
+        spoiler_log += "  %d:\n" % (i+1)
 
         for zone_name, locations_in_zone in zones.items():
           if not any(loc for (loc, _) in locations_in_zone if loc in progression_sphere):
             # No locations in this zone are used in this sphere.
             continue
 
-          spoiler_log += "  %s:\n" % zone_name
+          spoiler_log += "    %s:\n" % zone_name
 
           for (location_name, specific_location_name) in locations_in_zone:
             if location_name in progression_sphere:
