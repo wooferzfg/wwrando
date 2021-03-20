@@ -12,7 +12,11 @@ Can Play Earth God's Lyric:
 Can Play Wind God's Aria:
   Wind Waker & Wind God's Aria
 Can Play Song of Passing:
-  Wind Waker & Song of Passing
+  ( 
+    Wind Waker 
+    & Song of Passing
+  ) |
+  Complex Logic
 Can Fly With Deku Leaf Outdoors:
   Deku Leaf & Can Change Wind Direction
 Can Aim Mirror Shield:
