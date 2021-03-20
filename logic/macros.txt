@@ -160,7 +160,7 @@ Can Access Wind Temple Basement:
  Can Access Wind Temple
  & Can Play Command Melody
  & (
-   (Deku Leaf & Glitched Logic & (Magic Meter Upgrade | Empty Bottle)
+   (Deku Leaf & Glitched Logic & (Magic Meter Upgrade | Empty Bottle))
    | (Deku Leaf & Iron Boots)
    | (Can Spring Storage & (Fire Arrows | Bombs | Can Jumpslash))
  )
