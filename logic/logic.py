@@ -759,7 +759,7 @@ class Logic:
     return item_locations
 
   def load_and_parse_macros(self):
-    with open(os.path.join(LOGIC_PATH, "macros.txt")) as f:
+    with open(os.path.join(LOGIC_PATH, "macros.txt"), encoding='UTF-8') as f:
       macro_strings = yaml.safe_load(f)
     self.macros = {}
     for macro_name, req_string in macro_strings.items():
