@@ -1,0 +1,2575 @@
+Injection:
+ Creator: LagoLunatic
+ Type: Lago Standard
+ Description: The Truly uneditted Logic of TWWR 1.9.0
+ Change Total: 314
+ File Name: lagostandard.yaml
+ Checksum: 25
+
+Change UI:
+  Tingle Chests: Tingle Chests
+  Long Combat Trials: Savage Labyrinth
+  Mixed Secret Caves: Combat Secret Caves
+  Combat Secret Caves: Mail
+  Short Minigames: Minigames
+  Long Minigames: Battlesquids
+
+Outset Island - Underneath Link's House:
+  Need: Can Travel to Outset Island
+  Mode: o
+  Types: Other Chest
+
+Outset Island - Mesa the Grasscutter's House:
+  Need: Can Travel to Outset Island & Can Play Song of Passing
+  Mode: o
+  Types: Other Chest
+
+Outset Island - Orca - Give 10 Knight's Crests:
+  Need:
+    Spoils Bag
+    & Can Farm Knight's Crests
+    & Can Sword Fight with Orca
+  Mode: o
+  Types: Spoils Trading
+
+Outset Island - Orca - Hit 500 Times:
+  Need: Can Sword Fight with Orca
+  Mode: o
+  Types: Consumables only # This is just tedious to do
+
+Outset Island - Great Fairy:
+  Need:
+    Can Cut Down Outset Trees
+      & Can Fly With Deku Leaf Outdoors
+      & Can Move Boulders
+      & Can Travel to Outset Island
+  Mode: o
+  Types: Great Fairy
+
+Outset Island - Jabun's Cave:
+  Need: Bombs & Can Travel to Outset Island
+  Mode: o
+  Types: Island Puzzle
+
+Outset Island - Dig up Black Soil:
+  Need:
+    Bait Bag
+    & Power Bracelets
+    & Can Travel to Outset Island
+  Mode: o
+  Types: Island Puzzle
+
+Outset Island - Savage Labyrinth - Floor 30:
+  Need:
+    Can Access Savage Labyrinth
+    & Can Defeat Keese
+    & Can Defeat Miniblins
+    & Can Defeat Red ChuChus
+    & Can Defeat Magtails
+    & Can Defeat Fire Keese
+    & Can Defeat Peahats
+    & Can Defeat Green ChuChus
+    & Can Defeat Boko Babas
+    & Can Defeat Mothulas
+    & Can Defeat Winged Mothulas
+    & Can Defeat Wizzrobes
+    & Can Defeat Armos
+    & Can Defeat Yellow ChuChus
+    & Can Defeat Red Bubbles
+    & Can Defeat Darknuts
+    & Can Play Wind's Requiem
+    & (Grappling Hook | Hero's Sword | Skull Hammer)
+    & Convenient Bottle
+  # The last condition for having grappling hook or a melee weapon is to avoid cases where your only weapon for damaging most enemies is bow or bombs and you run out of arrows or bombs. Grappling hook can be used to steal ammo from enemies.
+  # The following floors don't have requirements listed because you can trick enemies into hitting each other, pick up one of their dropped weapons, and kill the enemies with the weapon:
+  # * Floor 4 (4x Green Bokoblins)
+  # * Floor 9 (4x Green Bokoblins, 2x Fire Keese)
+  # * Floor 10 (2x Moblins)
+  # * Floor 15 (4x Green Bokoblins)
+  # * Floor 18 (4x Blue Bokoblins, 4x Green ChuChus)
+  # * Floor 19 (2x Green Bokoblins, 3x Mothulas)
+  # * Floor 27 (2x Green Bokoblins, 1x Darknut)
+  Mode: o
+  Types: Long Combat Trial
+
+Outset Island - Savage Labyrinth - Floor 50:
+  Need:
+    Can Access Other Location "Outset Island - Savage Labyrinth - Floor 30"
+    & Can Aim Mirror Shield
+    & Can Defeat ReDeads
+    & Can Defeat Blue Bubbles
+    & Can Defeat Dark ChuChus
+    & Can Defeat Poes
+    & Can Defeat Stalfos
+    & Skull Hammer
+  # 2 of the 3 Wizzrobes on floor 48 never seem to come down to ground level, but it doesn't matter since you can throw the swords the Darknuts drop at them to kill them.
+  # The following floors don't have requirements listed because you can trick enemies into hitting each other, pick up one of their dropped weapons, and kill the enemies with the weapon:
+  # * Floor 37 (2x Moblins, 3x ReDeads)
+  # * Floor 39 (2x Moblins, 5x Poes)
+  # * Floor 45 (16x Bokoblins)
+  # * Floor 47 (3x Moblins, 2x Darknuts)
+  Mode: o
+  Types: Long Combat Trial
+
+Windfall Island - Jail - Tingle - First Gift:
+  Need: Can Travel to Windfall Island
+  Mode: o
+  Types: Free Gift
+
+Windfall Island - Jail - Tingle - Second Gift:
+  Need: Can Travel to Windfall Island
+  Mode: o
+  Types: Free Gift
+
+Windfall Island - Jail - Maze Chest:
+  Need: Can Travel to Windfall Island
+  Mode: o
+  Types: Island Puzzle
+
+Windfall Island - Chu Jelly Juice Shop - Give 15 Green Chu Jelly:
+  Need:
+    Can Farm Green Chu Jelly
+    & Can Travel to Windfall Island
+    & Boat's Sail
+  Mode: o
+  Types: Spoils Trading
+
+Windfall Island - Chu Jelly Juice Shop - Give 15 Blue Chu Jelly:
+  Need: Can Obtain 15 Blue Chu Jelly
+  Mode: o
+  Types: Spoils Trading, Long Sidequest
+
+Windfall Island - Ivan - Catch Killer Bees:
+  Need: Can Travel to Windfall Island
+  Mode: o
+  Types: Short Sidequest
+
+Windfall Island - Mrs. Marie - Catch Killer Bees:
+  Need: Can Travel to Windfall Island
+  Mode: o
+  Types: Short Sidequest
+
+Windfall Island - Mrs. Marie - Give 1 Joy Pendant:
+  Need:
+    Spoils Bag
+    & Can Travel to Windfall Island
+  # Since it's just 1 Joy Pendant for this one, don't require Grappling Hook to farm spoils like the others.
+  # You can get the one Joy Pendant from the tree on Windfall, or by killing Bokoblins until one drops it.
+  Mode: o
+  Types: Spoils Trading
+
+Windfall Island - Mrs. Marie - Give 21 Joy Pendants:
+  Need:
+    Spoils Bag
+    & Can Farm Joy Pendants
+    & Can Travel to Windfall Island
+  Mode: o
+  Types: Spoils Trading
+
+Windfall Island - Mrs. Marie - Give 40 Joy Pendants:
+  Need:
+    Spoils Bag
+    & Can Farm Joy Pendants
+    & Can Travel to Windfall Island
+  Mode: o
+  Types: Spoils Trading
+
+Windfall Island - Lenzo's House - Left Chest:
+  Need:
+    # Need Wind's Requiem to activate the Windmill
+    # Need Picto Box because Lenzo will not unlock his upper door until you talk to him after obtaining it
+    Can Play Wind's Requiem
+    & Picto Box
+    & Can Travel to Windfall Island
+  Mode: o
+  Types: Short Sidequest
+
+Windfall Island - Lenzo's House - Right Chest:
+  Need:
+    # Need Wind's Requiem to activate the Windmill
+    # Need Picto Box because Lenzo will not unlock his upper door until you talk to him after obtaining it
+    Can Play Wind's Requiem
+    & Picto Box
+    & Can Travel to Windfall Island
+  Mode: o
+  Types: Short Sidequest
+
+Windfall Island - Lenzo's House - Become Lenzo's Assistant:
+  Need:
+    Picto Box
+    & Can Travel to Windfall Island
+  Mode: o
+  Types: Long Sidequest
+
+Windfall Island - Lenzo's House - Bring Forest Firefly:
+  Need:
+    Picto Box
+    & Empty Bottle
+    & Can Access Forest Haven
+    & Can Travel to Windfall Island
+  Mode: o
+  Types: Long Sidequest
+
+Windfall Island - House of Wealth Chest:
+  Need: Can Travel to Windfall Island
+  Mode: o
+  Types: Other Chest
+
+Windfall Island - Maggie's Father - Give 20 Skull Necklaces:
+  Need:
+    Rescued Aryll
+    & Spoils Bag & Can Farm Skull Necklaces
+    & Can Travel to any Island
+  Mode: o
+  Types: Spoils Trading
+
+Windfall Island - Maggie - Free Item:
+  Need:
+    Rescued Aryll
+    & Can Travel to Windfall Island
+  # Note: If you say no when she asks you to deliver her letter, she won't prompt you again - but that's temporary. Simply leave the room and re-enter and she will ask again.
+  Mode: o
+  Types: Free Gift
+
+Windfall Island - Maggie - Delivery Reward:
+  Need:
+    Rescued Aryll
+    & Delivery Bag
+    & Moblin's Letter
+    & Can Travel to Windfall Island
+  Mode: o
+  Types: Short Sidequest
+
+Windfall Island - Cafe Bar - Postman:
+  Need:
+    Rescued Aryll
+    & Delivery Bag
+    & Maggie's Letter
+    & Can Travel to Windfall Island
+  Mode: o
+  Types: Short Sidequest
+
+Windfall Island - Kreeb - Light Up Lighthouse:
+  Need:
+    # Need to activate the windmill and light up the lighthouse for him to give this to you.
+    Can Play Wind's Requiem
+    & Fire Arrows
+    & Can Travel to Windfall Island
+    & Can Play Song of Passing
+  Mode: o
+  Types: Short Sidequest
+
+Windfall Island - Transparent Chest:
+  Need:
+    # Need to activate the windmill, light up the lighthouse, and then get to the chest either by flying or with hookshot.
+    Can Change Wind Direction
+    & Fire Arrows
+    & Can Play Song of Passing
+    & (
+      Can Fly With Deku Leaf Outdoors
+      | Hookshot
+    )
+    & Can Travel to Windfall Island
+  Mode: o
+  Types: Short Sidequest
+
+Windfall Island - Tott - Teach Rhythm:
+  Need: Wind Waker & Can Travel to Windfall Island
+  Mode: o
+  Types: Free Gift
+
+Windfall Island - Pirate Ship:
+  Need: Can Travel to Windfall Island
+  Mode: o
+  Types: Short Minigame
+
+Windfall Island - 5 Rupee Auction:
+  Need: Can Travel to Windfall Island & Can Play Song of Passing
+  Mode: o
+  Types: Expensive Purchase, Short Minigame
+
+Windfall Island - 40 Rupee Auction:
+  Need: Can Travel to Windfall Island & Can Play Song of Passing
+  Mode: o
+  Types: Expensive Purchase, Short Minigame
+
+Windfall Island - 60 Rupee Auction:
+  Need: Can Travel to Windfall Island & Can Play Song of Passing & Convenient Wallet
+  Mode: o
+  Types: Expensive Purchase, Short Minigame
+
+Windfall Island - 80 Rupee Auction:
+  Need: Can Travel to Windfall Island & Can Play Song of Passing & Convenient Wallet
+  Mode: o
+  Types: Expensive Purchase, Short Minigame
+
+Windfall Island - Zunari - Stock Exotic Flower in Zunari's Shop:
+  Need:
+    Rescued Aryll
+    & Delivery Bag
+    & Can Travel to Windfall Island
+    & Can Travel to Greatfish Isle
+  Mode: o
+  Types: Short Sidequest
+
+Windfall Island - Sam - Decorate the Town:
+  Need: Rescued Aryll & Delivery Bag & Can Travel to Windfall Island
+  Mode: o
+  Types: Long Sidequest
+
+Windfall Island - Kane - Place Shop Guru Statue on Gate:
+  Need:
+    Rescued Aryll
+    & Delivery Bag
+    & Can Travel to Windfall Island
+    & Can Travel to Greatfish Isle
+    & Can Travel to Bomb Island
+    & Can Travel to Child Isle
+  Mode: o
+  Types: Consumables only # Too obscure to randomize
+
+Windfall Island - Kane - Place Postman Statue on Gate:
+  Need:
+    Rescued Aryll
+    & Delivery Bag
+    & Can Travel to Windfall Island
+    & Can Travel to Greatfish Isle
+    & Can Travel to Bomb Island
+    & Can Travel to Child Isle
+  Mode: o
+  Types: Consumables only # Too obscure to randomize
+
+Windfall Island - Kane - Place Six Flags on Gate:
+  # Pinwheel counts as a flag
+  Need:
+    Rescued Aryll
+    & Delivery Bag
+    & Can Travel to Windfall Island
+    & Can Travel to Greatfish Isle
+    & Can Travel to Bomb Island
+    & Can Travel to Child Isle
+  Mode: o
+  Types: Consumables only # Too obscure to randomize
+
+Windfall Island - Kane - Place Six Idols on Gate:
+  Need:
+    Rescued Aryll
+    & Delivery Bag
+    & Can Travel to Windfall Island
+    & Can Travel to Greatfish Isle
+    & Can Travel to Bomb Island
+    & Can Travel to Child Isle
+  Mode: o
+  Types: Consumables only # Too obscure to randomize
+
+Windfall Island - Mila - Follow the Thief:
+  Need:
+    Rescued Aryll
+    & Can Travel to Windfall Island
+    & Can Play Song of Passing
+  Mode: o
+  Types: Short Sidequest
+
+Windfall Island - Battlesquid - First Prize:
+  Need: Can Travel to Windfall Island
+  Mode: o
+  Types: Long Minigame
+
+Windfall Island - Battlesquid - Second Prize:
+  Need: Can Travel to Windfall Island
+  Mode: o
+  Types: Long Minigame
+
+Windfall Island - Battlesquid - Prize 3+:
+  Need: Can Travel to Windfall Island
+  Need: Nothing
+  Mode: o
+  Types: Consumables only
+
+Windfall Island - Battlesquid - Under 20 Shots Prize:
+  Need: Can Travel to Windfall Island
+  Mode: o
+  Types: Long Minigame
+
+Windfall Island - Battlesquid - Under 20 Shots Prize 2+:
+  Need: Can Travel to Windfall Island
+  Mode: o
+  Types: Consumables only
+
+Windfall Island - Pompie and Vera - Secret Meeting Photo:
+  Need:
+    # Need to snap a photo of Lenzo and Minenco in Lenzo's house.
+    # Need Wind's Requiem to activate the Windmill.
+    # Need Picto Box because Lenzo will not unlock his upper door until you talk to him after obtaining it
+    Can Play Wind's Requiem
+    & Picto Box
+    & Can Travel to Windfall Island
+  Mode: o
+  Types: Short Sidequest
+
+Windfall Island - Kamo - Full Moon Photo:
+  Need:
+    Deluxe Picto Box
+    & Can Play Song of Passing
+    & Can Travel to Windfall Island
+  Mode: o
+  Types: Long Sidequest
+
+Windfall Island - Minenco - Miss Windfall Photo:
+  Need: Deluxe Picto Box & Can Travel to Windfall Island
+  Mode: o
+  Types: Short Sidequest
+
+Windfall Island - Linda and Anton:
+  Need:
+    Deluxe Picto Box
+    & Can Play Song of Passing
+    & Can Travel to Windfall Island
+  # You must become Lenzo's assistant, then wait one day, then agree to help Linda.
+  # Then take a photo of Linda with the Deluxe Picto Box and show it to Anton. (You can do this before the parts with Lenzo and Linda if you want.)
+  # Then wait an additional two days, and Linda and Anton will be in the cafe.
+  Mode: o
+  Types: Long Sidequest
+
+Dragon Roost Island - Wind Shrine:
+  Need: Wind Waker & Can Travel to Dragon Roost Island
+  Mode: o
+  Types: Misc
+
+Dragon Roost Island - Rito Aerie - Give Hoskit 20 Golden Feathers:
+  Need: Spoils Bag & Can Farm Golden Feathers & Can Travel to Dragon Roost Island
+  Mode: o
+  Types: Spoils Trading
+
+Dragon Roost Island - Chest on Top of Boulder:
+  Need: Can Get DRI Boulder Chest & Can Travel to Dragon Roost Island
+  Mode: o
+  Types: Island Puzzle
+
+Dragon Roost Island - Fly Across Platforms Around Island:
+  Need:
+    (
+      Can Fly With Deku Leaf Outdoors
+      & ( Can Play Wind's Requiem | Magic Meter Upgrade)
+      & Can Refill Magic
+      & Can Travel to Dragon Roost Island
+  Mode: o
+  Types: Island Puzzle
+
+Dragon Roost Island - Rito Aerie - Baito:
+  Need: Can Travel to Dragon Roost Island # Need to sort letters 4 times total. The minimum score each time is: 10, 20, 25, 25.
+  Mode: o
+  Types: Short Minigame
+
+Dragon Roost Island - Secret Cave:
+  Need:
+    Can Access Dragon Roost Island Secret Cave
+    & Can Defeat Keese
+    & Can Defeat Red ChuChus
+  # 4 Keese and 3 pots - it doesn't seem possible to kill all 4 without having 4 pots.
+  # 2 Mothulas and 5 pots - picking up and throwing the pots can be tricky with them charging at you, but each only takes one pot to kill, so you have 3 extra chances to mess up.
+  # 3 Red ChuChus and 2 pots - it's possible to hit multiple with one pot so this is doable, but it's too tricky.
+  # 3 Blue Bokoblins and 4 pots - you can get them to drop their sticks and then kill them with the stick.
+  Mode: o
+  Types: Mixed Secret Cave
+
+# Dragon Roost Cavern
+Dragon Roost Cavern - First Room:
+  Need: Can Access Dragon Roost Cavern
+  Mode: o
+  Types: Dungeon
+
+Dragon Roost Cavern - Alcove With Water Jugs:
+  Need:
+    Can Access Dragon Roost Cavern
+    & DRC Small Key x1
+  Mode: o
+  Types: Dungeon
+
+Dragon Roost Cavern - Boarded Up Chest:
+  Need:
+    Can Access Dragon Roost Cavern
+    & DRC Small Key x1
+  Mode: o
+  Types: Dungeon
+
+Dragon Roost Cavern - Chest Across Lava Pit:
+  Need:
+    Can Access Dragon Roost Cavern
+    & DRC Small Key x2
+    & (Grappling Hook | Deku Leaf)
+  # Note: It's also possible to throw a burning stick across the pit, then stand at the very very edge of the cliff and hookshot the chest to get across. But this is pretty precise, so this is not required. (Maybe for a higher difficulty level in the future it can be.)
+  # Note: In swordless, you can throw a burning stick across the lava pit, then grapple across.
+  Mode: o
+  Types: Dungeon
+
+Dragon Roost Cavern - Rat Room:
+  Need:
+    Can Access Dragon Roost Cavern
+    & DRC Small Key x2
+  Mode: o
+  Types: Dungeon
+
+Dragon Roost Cavern - Rat Room Boarded Up Chest:
+  Need:
+    Can Access Dragon Roost Cavern
+    & DRC Small Key x2
+  Mode: o
+  Types: Dungeon
+
+Dragon Roost Cavern - Bird's Nest:
+  Need:
+    Can Access Dragon Roost Cavern
+    & DRC Small Key x3
+  Mode: o
+  Types: Dungeon
+
+Dragon Roost Cavern - Dark Room:
+  Need:
+    Can Access Dragon Roost Cavern
+    & DRC Small Key x4
+  Mode: o
+  Types: Dungeon
+
+Dragon Roost Cavern - Tingle Chest in Hub Room:
+  Need:
+    Can Access Dragon Roost Cavern
+    & DRC Small Key x4
+    & Tingle Tuner Bombs
+  Mode: o
+  Types: Tingle Chest, Dungeon
+
+Dragon Roost Cavern - Pot Room Chest:
+  Need:
+    Can Access Dragon Roost Cavern
+    & DRC Small Key x4
+  Mode: o
+  Types: Dungeon
+
+Dragon Roost Cavern - Mini-Boss:
+  Need:
+    Can Access Dragon Roost Cavern
+    & DRC Small Key x4
+  # Need to escape: Grappling Hook | Can Fly With Deku Leaf Outdoors
+  Mode: o
+  Types: Dungeon
+
+Dragon Roost Cavern - Under Rope Bridge:
+  Need:
+    Can Access Dragon Roost Cavern
+    & DRC Small Key x4
+    & (Grappling Hook | Can Fly With Deku Leaf Outdoors)
+  # The ropes holding up the bridge can be cut with a stick - note that it takes three spin attacks instead of one.
+  Mode: o
+  Types: Dungeon
+
+Dragon Roost Cavern - Tingle Statue Chest:
+  Need:
+    Can Access Dragon Roost Cavern
+    & DRC Small Key x1
+    & (
+      (DRC Small Key x4 & Can Cut Down Hanging DRC Platform)
+      | Deku Leaf
+      | Ice Arrows
+    )
+    & Grappling Hook
+    & Tingle Tuner Bombs
+  Mode: o
+  Types: Tingle Chest, Dungeon
+
+Dragon Roost Cavern - Big Key Chest:
+  Need:
+    Can Access Dragon Roost Cavern
+    & DRC Small Key x1
+    & (
+      (DRC Small Key x4 & Can Cut Down Hanging DRC Platform)
+      | Deku Leaf
+      | Ice Arrows
+    )
+    & Grappling Hook
+  # You can sneak into the gap at the bottom of the second room of DRC to get this chest early.
+  # In vanilla you couldn't because of an invisible wall, but the randomizer removes the wall.
+  # Ice Arrows can be used to make platforms in order to get into the gap - it's somewhat tricky, but made easier by jump attacking if you have a sword.
+  # The Magtail you need to use to press a switch can be stunned with just Grappling Hook so it doesn't add more requirements.
+  Mode: o
+  Types: Dungeon
+
+Dragon Roost Cavern - Boss Stairs Right Chest:
+  Need:
+    Can Access Dragon Roost Cavern
+    & DRC Small Key x4
+    & (Grappling Hook | Deku Leaf | Hookshot | Ice Arrows)
+    # Hookshot can reach the torches on the other side of the lava.
+    # Ice Arrows can create a platform in the lava.
+  Mode: o
+  Types: Dungeon
+
+Dragon Roost Cavern - Boss Stairs Left Chest:
+  Need:
+    Can Access Dragon Roost Cavern
+    & DRC Small Key x4
+    & (Grappling Hook | Deku Leaf | Hookshot | Ice Arrows)
+    # Hookshot can reach the torches on the other side of the lava.
+    # Ice Arrows can create a platform in the lava.
+  Mode: o
+  Types: Dungeon
+
+Dragon Roost Cavern - Gohma Heart Container:
+  Need:
+    Can Access Dragon Roost Cavern
+    & DRC Small Key x4
+    & Grappling Hook
+    & DRC Big Key
+    & Can Defeat Gohma
+  Mode: o
+  Types: Dungeon
+
+Forest Haven - On Tree Branch:
+  Need:
+    Can Access Forest Haven
+    & Grappling Hook
+  # Note: You can access this without Grappling Hook if you take the lower platform exit out of Forest Haven, fly to the pillar outside, then use the whirlwind to gain height and fly back to Forest Haven taking the middle platform exit. But this requires using glitches (either precise ledge grabbing, leaf pumping, or simply abusing the respawn mechanic to get on the FH ledge without actually reaching it) so it's not in the logic.
+  Mode: o
+  Types: Island Puzzle
+
+Forest Haven - Small Island Chest:
+  Need:
+    Can Access Forest Haven
+    & Grappling Hook
+    & Can Fly With Deku Leaf Outdoors
+  # Note: You don't need Grappling Hook because you can take the lower platform exit out of Forest Haven, fly to the pillar outside, then fly east to this small island (Noob Skip). You can just barely make it without double magic meter as long as your magic meter is full. But this is not currently in the logic.
+  Mode: o
+  Types: Island Puzzle
+
+Forbidden Woods - First Room:
+  Need: Can Access Forbidden Woods
+  Mode: o
+  Types: Dungeon
+
+Forbidden Woods - Inside Hollow Tree's Mouth:
+  Need:
+    Can Access Forbidden Woods
+    & (Can Defeat Door Flowers | Can Defeat Boko Babas)
+  # You need to kill the flower on the chest, but if you can kill the Boko Babas you can take one of the sticks they drop, light it on fire, and burn the flower to get to the chest.
+  Mode: o
+  Types: Dungeon
+
+Forbidden Woods - Climb to Top Using Boko Baba Bulbs:
+  Need:
+    Can Access Forbidden Woods
+    & Deku Leaf
+    & Can Defeat Door Flowers
+  Mode: o
+  Types: Dungeon
+
+Forbidden Woods - Hole in Tree:
+  Need:
+    Can Access Forbidden Woods
+    & Deku Leaf
+    & Can Defeat Boko Babas
+  Mode: o
+  Types: Dungeon
+
+Forbidden Woods - Morth Pit:
+  Need:
+    Can Access Forbidden Woods
+    & Deku Leaf
+    & Can Defeat Boko Babas
+    & Grappling Hook
+  Mode: o
+  Types: Dungeon
+
+Forbidden Woods - Vine Maze Left Chest:
+  Need:
+    Can Access Forbidden Woods
+    & Deku Leaf
+    & Can Defeat Boko Babas
+    & Grappling Hook
+  Mode: o
+  Types: Dungeon
+
+Forbidden Woods - Vine Maze Right Chest:
+  Need:
+    Can Access Forbidden Woods
+    & Deku Leaf
+    & Can Defeat Boko Babas
+    & Grappling Hook
+  Mode: o
+  Types: Dungeon
+
+Forbidden Woods - Tall Room Before Mini-Boss:
+  Need:
+    Can Access Forbidden Woods
+    & Deku Leaf
+    & Can Defeat Boko Babas
+    & Grappling Hook
+    & FW Small Key x1
+    & Can Defeat Peahats
+    # Killing the Peahats is not strictly necessary but grappling up is tricky while they're still alive since they knock you around.
+  Mode: o
+  Types: Dungeon
+
+Forbidden Woods - Mothula Mini-Boss Room:
+  Need:
+    Can Access Forbidden Woods
+    & Deku Leaf
+    & Can Defeat Boko Babas
+    & Grappling Hook
+    & FW Small Key x1
+    & Can Defeat Winged Mothulas
+  # Need to escape: Can Hit Diamond Switches at Range
+  Mode: o
+  Types: Dungeon
+
+Forbidden Woods - Past Seeds Hanging by Vines:
+  Need:
+    Can Access Forbidden Woods
+    & Deku Leaf
+    & Can Defeat Boko Babas
+    & Grappling Hook
+    & FW Small Key x1
+    & Can Defeat Door Flowers
+    & Can Destroy Seeds Hanging by Vines
+    # Note: Destroying the seeds hanging by vines is not strictly necessary, but it's hard to float across consistently without destroying them.
+  Mode: o
+  Types: Dungeon
+
+Forbidden Woods - Chest Across Red Hanging Flower:
+  Need:
+    Can Access Forbidden Woods
+    & Deku Leaf
+    & Can Defeat Boko Babas
+    & Grappling Hook
+    & Boomerang
+  Mode: o
+  Types: Dungeon
+
+Forbidden Woods - Tingle Statue Chest:
+  Need:
+    Can Access Forbidden Woods
+    & Deku Leaf
+    & Grappling Hook
+    & Boomerang
+    & Tingle Tuner Bombs
+  Mode: o
+  Types: Tingle Chest, Dungeon
+
+Forbidden Woods - Chest in Locked Tree Trunk:
+  Need:
+    Can Access Forbidden Woods
+    & Deku Leaf
+    & Can Defeat Boko Babas
+    & Grappling Hook
+    & Boomerang
+  Mode: o
+  Types: Dungeon
+
+Forbidden Woods - Big Key Chest:
+  Need:
+    Can Access Forbidden Woods
+    & Deku Leaf
+    & Can Defeat Boko Babas
+    & Grappling Hook
+    & Boomerang
+  Mode: o
+  Types: Dungeon
+
+Forbidden Woods - Double Mothula Room:
+  Need:
+    Can Access Forbidden Woods
+    & Deku Leaf
+    & Can Defeat Boko Babas
+    & (Can Defeat Door Flowers | Grappling Hook)
+    & Can Defeat Mothulas
+  # This room is locked by 2 door flowers, but if you have grappling hook you can reach a nut on the floor above and bring it down to destroy them both with it.
+  Mode: o
+  Types: Dungeon
+
+Forbidden Woods - Kalle Demos Heart Container:
+  Need:
+    Can Access Forbidden Woods
+    & Deku Leaf
+    & Can Defeat Boko Babas
+    & (Can Defeat Door Flowers | Grappling Hook)
+    & Can Defeat Mothulas
+    & FW Big Key
+    & Can Defeat Kalle Demos
+  Mode: o
+  Types: Dungeon
+
+Greatfish Isle - Hidden Chest:
+  Need:
+    Can Fly With Deku Leaf Outdoors
+    & Can Travel to Greatfish Isle
+  Mode: o
+  Types: Island Puzzle
+
+Tower of the Gods - Chest Behind Bombable Walls:
+  Need:
+    Can Access Tower of the Gods
+    & Bombs
+  Mode: o
+  Types: Dungeon
+
+Tower of the Gods - Hop Across Floating Boxes:
+  Need: Can Access Tower of the Gods
+  Mode: o
+  Types: Dungeon
+
+Tower of the Gods - Light Two Torches:
+  Need:
+    Can Access Tower of the Gods
+    & Bombs
+  Mode: o
+  Types: Dungeon
+
+Tower of the Gods - Skulls Room Chest:
+  Need:
+    Can Access Tower of the Gods
+    & Bombs
+  Mode: o
+  Types: Dungeon
+
+Tower of the Gods - Shoot Eye Above Skulls Room Chest:
+  Need:
+    Can Access Tower of the Gods
+    & Bombs
+    & Hero's Bow
+  Mode: o
+  Types: Dungeon
+
+Tower of the Gods - Tingle Statue Chest:
+  Need:
+    Can Access Tower of the Gods
+    & Bombs
+    & TotG Small Key x1
+    & Can Defeat Yellow ChuChus
+    & Tingle Tuner Bombs
+  Mode: o
+  Types: Tingle Chest, Dungeon
+
+Tower of the Gods - First Chest Guarded by Armos Knights:
+  Need:
+    Can Access Tower of the Gods
+    & Bombs
+    & TotG Small Key x1
+    & Can Defeat Yellow ChuChus
+    & Hero's Bow
+  Mode: o
+  Types: Dungeon
+
+Tower of the Gods - Stone Tablet:
+  Need:
+    Can Access Tower of the Gods
+    & Bombs
+    & TotG Small Key x1
+    & Can Defeat Yellow ChuChus
+    & Wind Waker
+  Mode: o
+  Types: Dungeon
+
+Tower of the Gods - Darknut Mini-Boss Room:
+  Need:
+    Can Access Tower of the Gods
+    & Bombs
+    & TotG Small Key x1
+    & Can Defeat Yellow ChuChus
+    & Wind Waker
+    & (Grappling Hook | Deku Leaf)
+    & (Can Play Command Melody | Hero's Bow)
+    & Can Defeat Darknuts
+    # Note: If you already have the bow you can get the statue guy across the previous room without getting this item, which might appear to make this chest permanently missable, but in reality you can use the deactivated Armos from across the pit to keep the button pressed.
+    # Note: Normally the only way to do this would be to use Command Melody on the statue guy, but if you already have the bow you can activate the moving platforms and use the deactivated Armos from across the pit to keep the button pressed instead.
+    # Note: You can reach this without Grappling Hook if you have Deku Leaf instead. But if you run out of MP you can get trapped and not be able to escape since there are no MP refill jars on this side of the gap. So we modify one of the pots to drop an MP refill jar.
+  Mode: o
+  Types: Dungeon
+
+Tower of the Gods - Second Chest Guarded by Armos Knights:
+  Need:
+    Can Access Tower of the Gods
+    & Bombs
+    & TotG Small Key x1
+    & Can Defeat Yellow ChuChus
+    & Wind Waker
+    & (Grappling Hook | Deku Leaf)
+    & Can Play Command Melody
+    & Hero's Bow
+    & Can Play Wind's Requiem
+    # Bombs are needed to kill the Armos Knights, but killing them is not necessary for any reason, since the chest appears when you play Wind's Requiem, and the door is not locked.
+  Mode: o
+  Types: Dungeon
+
+Tower of the Gods - Floating Platforms Room:
+  Need:
+    Can Access Tower of the Gods
+    & Bombs
+    & TotG Small Key x1
+    & Can Defeat Yellow ChuChus
+    & Wind Waker
+    & (Grappling Hook | Deku Leaf)
+    & Can Play Command Melody
+    & Hero's Bow
+  Mode: o
+  Types: Dungeon
+
+Tower of the Gods - Top of Floating Platforms Room:
+  Need:
+    Can Access Tower of the Gods
+    & Bombs
+    & TotG Small Key x1
+    & Can Defeat Yellow ChuChus
+    & Wind Waker
+    & (Grappling Hook | Deku Leaf)
+    & Can Play Command Melody
+        & Hero's Bow
+  Mode: o
+  Types: Dungeon
+
+Tower of the Gods - Big Key Chest:
+  Need:
+    Can Access Tower of the Gods
+    & Bombs
+    & Can Defeat Yellow ChuChus
+    & Wind Waker
+    & (Grappling Hook | Deku Leaf)
+    & Can Play Command Melody
+    & Hero's Bow
+    & TotG Small Key x2
+    & Deku Leaf
+    # Note: Deku Leaf is not strictly necessary in the 3rd statue guy room because you can jump on two decorative pillars near the side of the room, and then jump onto the wall protrusion above where the lasers are coming out of to reach the statue guy. But since it's not clear the wall protrusion is something you can jump to and stand on, this is not currently required by the logic.
+  Mode: o
+  Types: Dungeon
+
+Tower of the Gods - Gohdan Heart Container:
+  Need:
+    Can Access Tower of the Gods
+    & Bombs
+    & Can Defeat Yellow ChuChus
+    & Wind Waker
+    & (Grappling Hook | Deku Leaf)
+    & Can Play Command Melody
+    & Hero's Bow
+    & TotG Small Key x2
+    & Deku Leaf
+    & Can Defeat Armos
+    & TotG Big Key
+    & Can Defeat Gohdan
+  Mode: o
+  Types: Dungeon
+
+Hyrule - Master Sword Chamber:
+  Need:
+    Can Access Hyrule
+    & Can Defeat Mighty Darknuts
+  Mode: o
+  Types: Dungeon
+
+Forsaken Fortress - Phantom Ganon:
+  Need:
+    Can Reach and Defeat Phantom Ganon
+    & Can Travel to Forsaken Fortress
+  Mode: o
+  Types: Dungeon
+
+Forsaken Fortress - Chest Outside Upper Jail Cell:
+  Need:
+    Can Get Inside Forsaken Fortress
+    & (Deku Leaf | Hookshot)
+    # Instead of using Deku Leaf to fly over to the chest, you can also use the Hookshot on the chest.
+    # Note: You could also intentionally get caught by the Floormaster so that it takes you to jail, then escape and access this chest without needing either Deku Leaf or Hookshot. But since this one Floormaster behaving differently from all others in the game is obscure, this is not currently required by the logic.
+  Mode: o
+  Types: Dungeon
+
+Forsaken Fortress - Chest Inside Lower Jail Cell:
+  Need: Can Get Inside Forsaken Fortress
+  Mode: o
+  Types: Dungeon
+
+Forsaken Fortress - Chest Guarded By Bokoblin:
+  Need: Can Get Inside Forsaken Fortress
+  Mode: o
+  Types: Dungeon
+
+Forsaken Fortress - Chest on Bed:
+  Need: Can Get Inside Forsaken Fortress
+  Mode: o
+  Types: Dungeon
+
+Forsaken Fortress - Helmaroc King Heart Container:
+  Need:
+    Can Get Inside Forsaken Fortress
+    & Skull Hammer
+    & (Deku Leaf | Hookshot)
+    & Can Defeat Helmaroc King
+    # You can make it up there with either Deku Leaf, or Hookshotting a torch to cross a gap.
+    # Note: It is possible to get up there without either Deku Leaf or Hookshot.
+    # To do it, go to the southwest room, and jump on top of the wooden bedposts. Then jump diagonally onto the corner of the platform with the Bokoblin and the Skull Hammer pegs on it.
+    # If adding difficulty options, take that trick into account.
+    # There's a cannon that makes sidling across a gap difficult, but you don't need bombs because you can just kill the searchlight operator Bokoblin instead to get rid of the cannon simultaneously.
+    # In vanilla, you also would have needed to be able to defeat Phantom Ganon because his fight triggers even if you're way above him trying to get to Helmaroc. But the randomizer fixes this so the fight won't start in that case.
+  Mode: o
+  Types: Dungeon
+
+Mother and Child Isles - Inside Mother Isle:
+  Need: Can Travel to Mother Isle
+  Mode: o
+  Types: Misc
+
+Fire Mountain - Cave - Chest:
+  Need:
+    Can Access Fire Mountain Secret Cave
+    & Can Defeat Magtails
+  # Need to escape: Power Bracelets
+  Mode: o
+  Types: Puzzle Secret Cave
+
+Fire Mountain - Lookout Platform Chest:
+  Need: Can Travel to Fire Mountain
+  Mode: o
+  Types: Platform
+
+Fire Mountain - Lookout Platform - Destroy the Cannons:
+  Need: Can Destroy Cannons & Can Travel to Fire Mountain
+  Mode: o
+  Types: Platform
+
+Fire Mountain - Big Octo:
+  Need:
+    Can Defeat Big Octos
+    & Can Salvage Treasure
+    & Can Travel to Fire Mountain
+  Mode: o
+  Types: Big Octo
+
+Ice Ring Isle - Frozen Chest:
+  Need: Fire Arrows & Can Travel to Ice Ring Isle & Can Sail
+  Mode: o
+  Types: Island Puzzle
+
+Ice Ring Isle - Cave - Chest:
+  Need: Can Access Ice Ring Isle Secret Cave
+  # Need to escape: Iron Boots
+  Mode: o
+  Types: Puzzle Secret Cave
+
+Ice Ring Isle - Inner Cave - Chest:
+  Need:
+    Can Access Ice Ring Isle Secret Cave
+    & Iron Boots
+    & Fire Arrows
+    # There are a number of enemies you need to kill here, but you can trick enemies into attacking each other and steal a weapon so no items are required.
+  Mode: o
+  Types: Puzzle Secret Cave, Mixed Secret Cave
+
+Headstone Island - Top of the Island:
+  Need:
+    Bait Bag
+    & Can Travel to Headstone Island
+  Mode: o
+  Types: Island Puzzle
+
+Headstone Island - Submarine:
+  Need:
+    Can Defeat Bombchus
+    & Can Travel to Headstone Island Sub
+  Mode: o
+  Types: Submarine
+
+Earth Temple - Transparent Chest In Warp Pot Room:
+  Need:
+    Can Get into Earth Temple
+  Mode: o
+  Types: Dungeon
+
+Earth Temple - Chest Behind Destructible Walls:
+  Need:
+    Can Get into Earth Temple
+    & Can Defeat Red ChuChus
+    & Can Defeat Green ChuChus
+    & Can Defeat Dark ChuChus
+    & Skull Hammer
+    & Mirror Shield
+  Mode: o
+  Types: Dungeon
+
+Earth Temple - Behind Curtain In Warp Pot Room:
+  Need:
+    Can Access Earth Temple
+    & Can Play Command Melody
+    & Fire Arrows
+    & (Boomerang | Hookshot)
+  Mode: o
+  Types: Consumables only
+
+Earth Temple - Transparent Chest in First Crypt:
+  Need:
+    Can Get into Earth Temple
+    & Skull Hammer
+    & Power Bracelets
+    & (Can Play Command Melody | Can Aim Mirror Shield | Complex Logic)
+    # Power Bracelets necessary to move the large black pushable box and reveal a light ray.
+  Mode: o
+  Types: Dungeon
+
+Earth Temple - Chest In Three Blocks Room:
+  Need:
+    Can Get into Earth Temple
+    & ET Small Key x2
+    & Fire Arrows
+    & Power Bracelets
+    & Can Defeat Floormasters
+    # Power Bracelets necessary again to move the large black pushable box and unlock a door.
+    # You need to push blocks near the Floormaster to progress in this room, which basically requires killing it.
+  Mode: o
+  Types: Dungeon
+
+Earth Temple - Chest Behind Statues:
+  Need:
+    Can Access Earth Temple
+    & Can Play Command Melody
+    & ET Small Key x2
+    & Fire Arrows
+    & Power Bracelets
+    & Can Defeat Floormasters
+  Mode: o
+  Types: Dungeon
+
+Earth Temple - Casket in Second Crypt:
+  Need:
+    Can Get into Earth Temple
+    & ET Small Key x2
+    & Fire Arrows
+    & Power Bracelets
+    & Can Defeat Floormasters
+    # The Poes don't require anything to kill and the Moblins can be tricked into hitting each other so you can steal their weapon.
+    # The ReDeads don't need to be killed to get the item in their room, but you do need to kill them to escape without save warping.
+  Mode: o
+  Types: Dungeon
+
+Earth Temple - Stalfos Mini-Boss Room:
+  Need:
+    Can Access Earth Temple
+    & Can Play Command Melody
+    & ET Small Key x3
+    & Fire Arrows
+    & Power Bracelets
+    & Can Defeat Floormasters
+    & (Can Defeat Stalfos | Hookshot)
+    # Hookshot allows you to skip fighting the mini-boss if you use it on one of the torches up near the chest.
+  # Need to escape: Can Aim Mirror Shield
+  Mode: o
+  Types: Dungeon
+
+Earth Temple - Tingle Statue Chest:
+  Need:
+    Can Access Earth Temple
+    & Can Play Command Melody
+    & Can Aim Mirror Shield
+    & Tingle Tuner Bombs
+  Mode: o
+  Types: Tingle Chest, Dungeon
+
+Earth Temple - End of Foggy Room With Floormasters:
+  Need:
+    Can Access Earth Temple
+    & Can Play Command Melody
+    & Can Aim Mirror Shield
+    & Can Play Earth God's Lyric
+  Mode: o
+  Types: Dungeon
+
+Earth Temple - Kill All Floormasters in Foggy Room:
+  Need:
+    Can Access Earth Temple
+    & Can Play Command Melody
+    & Can Aim Mirror Shield
+    & Can Play Earth God's Lyric
+    & Can Defeat Floormasters
+  Mode: o
+  Types: Dungeon
+
+Earth Temple - Behind Curtain Next to Hammer Button:
+  Need:
+    Can Get into Earth Temple
+    & Can Aim Mirror Shield
+    & Can Play Earth God's Lyric
+    & Fire Arrows
+    & (Boomerang | Hookshot)
+  Mode: o
+  Types: Consumables only
+
+Earth Temple - Chest in Third Crypt:
+  Need:
+    Can Access Earth Temple Basement
+    & Can Play Command Melody
+    & Can Aim Mirror Shield
+    & Can Play Earth God's Lyric
+    & Power Bracelets
+          & Skull Hammer
+    & ET Small Key x3
+    & Can Defeat Red Bubbles
+    # Power Bracelets necessary again to move the large mirror under the light.
+    # Note: Killing the Red Bubbles is not necessary, but reflecting light is quite annoying while they're still alive.
+  Mode: o
+  Types: Dungeon
+
+Earth Temple - Many Mirrors Room Right Chest:
+  Need:
+    Can Access Earth Temple
+    & Can Play Command Melody
+    & Can Aim Mirror Shield
+    & Can Play Earth God's Lyric
+    & Power Bracelets
+    & Skull Hammer
+    & ET Small Key x3
+    & Can Defeat Red Bubbles
+  Mode: o
+  Types: Dungeon
+
+Earth Temple - Many Mirrors Room Left Chest:
+  Need:
+    Can Access Earth Temple
+    & Can Play Command Melody
+    & Can Aim Mirror Shield
+    & Can Play Earth God's Lyric
+    & Power Bracelets
+    & Skull Hammer
+    & ET Small Key x3
+    & Can Defeat Red Bubbles
+  Mode: o
+  Types: Dungeon
+
+Earth Temple - Stalfos Crypt Room:
+  Need:
+    Can Access Earth Temple
+    & Can Play Command Melody
+    & Can Aim Mirror Shield
+    & Can Play Earth God's Lyric
+    & Power Bracelets
+    & Skull Hammer
+    & ET Small Key x3
+    & Can Defeat Red Bubbles
+    & Can Defeat Stalfos
+  Mode: o
+  Types: Dungeon
+
+Earth Temple - Big Key Chest:
+  Need:
+    Can Access Earth Temple
+    & Can Play Command Melody
+    & Can Aim Mirror Shield
+    & Can Play Earth God's Lyric
+    & Power Bracelets
+    & Skull Hammer
+    & ET Small Key x3
+    & Can Defeat Red Bubbles
+    & Can Defeat Blue Bubbles
+    & Can Defeat Darknuts
+  Mode: o
+  Types: Dungeon
+
+Earth Temple - Jalhalla Heart Container:
+  Need:
+    Can Access Earth Temple
+    & Can Play Command Melody
+    & Can Aim Mirror Shield
+    & Can Play Earth God's Lyric
+    & Power Bracelets
+    & Skull Hammer
+    & ET Small Key x3
+    & Can Defeat Red Bubbles
+    & ET Big Key
+    & Can Defeat Jalhalla
+  Mode: o
+  Types: Dungeon
+
+Wind Temple - Chest Between Two Dirt Patches:
+  Need:
+    Can Access Wind Temple
+    & Can Play Command Melody
+  Mode: o
+  Types: Dungeon
+
+Wind Temple - Tingle Statue Chest:
+  Need:
+    Can Access Wind Temple
+    & Can Play Command Melody
+    & Iron Boots
+    & Deku Leaf
+    & Tingle Tuner Bombs
+  Mode: o
+  Types: Tingle Chest, Dungeon
+
+Wind Temple - Chest Behind Stone Head:
+  Need:
+    Can Access Wind Temple
+    & Can Play Command Melody
+    & Iron Boots
+    & Deku Leaf
+    & Hookshot
+  Mode: o
+  Types: Dungeon
+
+Wind Temple - Chest in Left Alcove:
+  Need:
+    Can Access Wind Temple
+    & Can Play Command Melody
+    & Iron Boots
+    & Deku Leaf
+  Mode: o
+  Types: Dungeon
+
+Wind Temple - Big Key Chest:
+  Need:
+    Can Access Wind Temple
+    & Can Play Command Melody
+    & Iron Boots
+    & Deku Leaf
+    & Can Play Wind God's Aria
+    & Can Defeat Darknuts
+  Mode: o
+  Types: Dungeon
+
+Wind Temple - Chest In Many Cyclones Room:
+  Need:
+    Can Access Wind Temple
+    & Can Play Command Melody
+    & Iron Boots
+    & Deku Leaf
+    & Can Refill Magic
+    # There's 2 paths you can take:
+    # * The vanilla path requires you to refill your magic to reach the chest, so you need a way to cut grass or the magic meter upgrade.
+    # * The alternate path is to hookshot up the trees on the side path to reach the upper level of the hub room, then glide down to where the iron switch is and do the many cyclones room backwards. If you don't have the magic meter upgrade you still need to refill your magic - but there's conveniently a skull that always drops a large magic refill, so you can just barely make it.
+  Mode: o
+  Types: Dungeon
+
+Wind Temple - Chest In Middle Of Hub Room:
+  Need:
+    Can Access Wind Temple Basement
+    # 2 paths: Through the many cyclones room (requires refilling magic) or glide down from the upper level of the hub room.
+  Mode: o
+  Types: Dungeon
+
+Wind Temple - Spike Wall Room - First Chest:
+  Need:
+    Can Access Wind Temple Basement
+  Mode: o
+  Types: Dungeon
+
+Wind Temple - Spike Wall Room - Destroy All Cracked Floors:
+  Need:
+    Can Access Wind Temple
+    & Can Play Command Melody
+    & Iron Boots
+    & Deku Leaf
+    & (
+      Can Cut Grass
+      | (Hookshot & Can Defeat Blue Bubbles)
+    )
+    # You don't need to actually kill the enemies spawned in the process of destroying all the floors to get this chest.
+  Mode: o
+  Types: Dungeon
+
+Wind Temple - Wizzrobe Mini-Boss Room:
+  Need:
+    Can Access Wind Temple Basement
+    & WT Small Key x2
+    & Can Defeat Darknuts
+    & Can Remove Peahat Armor
+    # Besides Darknuts, there are Wizzrobes, Peahats, Moblins, Keese, and Kargarocs. But if you can defeat a Darknut you can steal its sword to defeat the other enemies.
+    # Unfortunately you can't do the same in reverse by stealing a Moblin's spear to kill a Darknut - the Moblin never spawns until the Darknut is defeated.
+    # Killing the Wizzrobe doesn't require ranged weapons because he occasionally comes down to ground level.
+  # Need to escape: Hookshot & Skull Hammer
+  Mode: o
+  Types: Dungeon
+
+Wind Temple - Chest at Top of Hub Room:
+  Need:
+    Can Access Wind Temple Basement
+    & Deku Leaf
+  Mode: o
+  Types: Dungeon
+
+Wind Temple - Chest Behind Seven Armos:
+  Need:
+    Can Access Wind Temple Basement
+    & Deku Leaf
+    & Can Defeat Armos
+  Mode: o
+  Types: Dungeon
+
+Wind Temple - Kill All Enemies in Tall Basement Room:
+  Need:
+    Can Access Wind Temple Basement
+    & Hookshot
+    & Can Defeat Blue Bubbles
+    & WT Small Key x2
+    & Can Defeat Stalfos
+    & Can Defeat Wizzrobes
+    & Can Defeat Morths
+    # There's a Green Bokoblin and a Blue Bokoblin here, but you can use hookshot to make them fall off the platform to the ground - which will kill the one higher up, and for the lower one you can throw pots at it to steal its weapon.
+    # Technically you could then use the weapon stolen from a Bokoblin to defeat all the other enemies here, but the issue with that is that if you kill both the Bokoblins, then exit and re-enter the room, you could no longer do this because they don't respawn. Same with the Stalfos and their maces.
+  Mode: o
+  Types: Dungeon
+
+Wind Temple - Molgera Heart Container:
+  Need:
+    Can Access Wind Temple Basement
+    & Hookshot
+    & Can Defeat Blue Bubbles
+    & WT Small Key x2
+    & Can Play Wind God's Aria
+    & WT Big Key
+    & Can Defeat Molgera
+  Mode: o
+  Types: Dungeon
+
+Ganon's Tower - Maze Chest:
+  Need:
+    Can Reach Ganon's Tower Phantom Ganon Room
+    & Can Defeat Phantom Ganon
+  Mode: o
+  Types: Dungeon
+
+# Note: In the vanilla game, the mailbox would not give you any mail until you owned Din's Pearl. But this requirement is removed in the randomizer.
+Mailbox - Letter from Hoskit's Girlfriend:
+  Need:
+    Spoils Bag
+    & Can Farm Golden Feathers
+    & Can Play Song of Passing
+    & Can Travel to Postbox
+  # Need to wait for time to pass.
+  Mode: o
+  Types: Combat Secret Cave, Spoils Trading
+
+Mailbox - Letter from Baito's Mother:
+  Need:
+    Delivery Bag
+    & Note to Mom
+    & Can Play Song of Passing
+    & Can Travel to Postbox
+  # Need to wait for time to pass.
+  Mode: o
+  Types: Combat Secret Cave
+
+Mailbox - Letter from Baito:
+  Need:
+    Delivery Bag
+    & Note to Mom
+    & Can Play Song of Passing
+    & Can Travel to Postbox
+    & Can Access Other Location "Earth Temple - Jalhalla Heart Container"
+  # Need to kill Jalhalla and Baito's mom must have sent her letter (doesn't matter if you've read her letter or not).
+  # You do not need to wait for time to pass for this one, but because you did need to wait for time to pass for the one from his mother first, we still require Song of Passing here.
+  Mode: o
+  Types: Combat Secret Cave, Dungeon
+
+Mailbox - Letter from Komali's Father:
+  Need: Farore's Pearl & Can Travel to Postbox
+  # Do not need to wait for time to pass.
+  Mode: o
+  Types: Combat Secret Cave
+
+Mailbox - Letter Advertising Bombs in Beedle's Shop:
+  Need: Bombs & Can Travel to Postbox
+  Mode: o
+  Types: Combat Secret Cave
+
+Mailbox - Letter Advertising Rock Spire Shop Ship:
+  Need: Any Wallet Upgrade & Can Travel to Postbox
+  Mode: o
+  Types: Combat Secret Cave
+
+Mailbox - Beedle's Silver Membership Reward:
+  Need:
+    (
+      Bait Bag
+      | Bombs
+      | Hero's Bow
+      | Empty Bottle
+    ) & Can Play Song of Passing
+    & Can Travel to Postbox
+  # In order to get enough points to become a silver/gold member, you need to buy consumables.
+  # Bait bag is needed to buy bait, bombs are needed to buy bombs, bow is needed to buy arrows, and empty bottle is needed to buy red potions.
+  # Need to wait for time to pass.
+  Mode: o
+  Types: No progression # Too tedious to buy 30 items just to progress
+
+Mailbox - Beedle's Gold Membership Reward:
+  Need:
+    (
+      Bait Bag
+      | Bombs
+      | Hero's Bow
+      | Empty Bottle
+    ) & Can Play Song of Passing
+    & Can Travel to Postbox
+  # In order to get enough points to become a silver/gold member, you need to buy consumables.
+  # Bait bag is needed to buy bait, bombs are needed to buy bombs, bow is needed to buy arrows, and empty bottle is needed to buy red potions.
+  # Need to wait for time to pass.
+  Mode: o
+  Types: No progression # Too tedious to buy 60 items just to progress
+
+Mailbox - Letter from Orca:
+  Need:
+    Can Access Other Location "Forbidden Woods - Kalle Demos Heart Container"
+    & Can Travel to Postbox
+  # Note: In the vanilla game, this letter is sent after you watch a cutscene on Greatfish Isle.
+  # But since that's impossible when cutscenes are removed, the randomizer changes it to be sent when you kill Kalle Demos.
+  # Do not need to wait for time to pass.
+  Mode: o
+  Types: Combat Secret Cave, Dungeon
+
+Mailbox - Letter from Grandma:
+  Need: Empty Bottle & Can Get Fairies & Song of Passing
+  # Need to wait for time to pass.
+  Mode: o
+  Types: Combat Secret Cave
+
+Mailbox - Letter from Aryll:
+  Need:
+    Can Access Other Location "Forsaken Fortress - Helmaroc King Heart Container"
+    & Can Play Song of Passing
+    & Can Travel to Postbox
+  # Note: In the vanilla game, this letter is sent after you watch a cutscene in Hyrule 2.
+  # But since that's impossible when cutscenes are removed, the randomizer changes it to be sent when you kill Helmaroc King.
+  # Need to wait for time to pass.
+  Mode: o
+  Types: Combat Secret Cave, Dungeon
+
+Mailbox - Letter from Tingle:
+  Need:
+    Rescued Tingle
+    & Any Wallet Upgrade
+    & Can Access Other Location "Forsaken Fortress - Helmaroc King Heart Container"
+    & Can Play Song of Passing & Can Travel to Postbox
+  # You need a wallet upgrade because it costs 201 rupees to receive this letter.
+  # Note: In the vanilla game, this letter is sent after you watch a cutscene in Hyrule 2.
+  # But since that's impossible when cutscenes are removed, the randomizer changes it to be sent when you kill Helmaroc King.
+  # Need to wait for time to pass.
+  Mode: o
+  Types: Combat Secret Cave, Dungeon, Expensive Purchase
+
+The Great Sea - Beedle's Shop Ship - 20 Rupee Item:
+  Need: Can Sail
+  Mode: o
+  Types: Misc
+
+The Great Sea - Salvage Corp Gift:
+  Need: Can Sail
+  Mode: o
+  Types: Free Gift
+
+The Great Sea - Cyclos:
+  Need: Hero's Bow & Can Sail
+  Mode: o
+  Types: Misc
+
+The Great Sea - Goron Trading Reward:
+  Need:
+    Rescued Aryll
+    & Delivery Bag
+    & Can Travel to any Island
+    & Can Play Song of Passing
+    & Convenient Wallet
+  # You need at least 560 rupees to get the final item, but you don't need a wallet upgrade since the most you need at one time is 200 rupees.
+  Mode: o
+  Types: Long Sidequest, Expensive Purchase
+
+The Great Sea - Withered Trees:
+  Need:
+    Can Access Forest Haven
+    & Empty Bottle
+    & Can Play Ballad of Gales
+    & Can Access Other Location "Cliff Plateau Isles - Highest Isle"
+    & Can Travel to any Island
+  Mode: o
+  Types: Long Sidequest
+
+The Great Sea - Ghost Ship:
+  Need:
+    Ghost Ship Chart
+    & Can Play Ballad of Gales
+    & Can Defeat Wizzrobes
+    & Can Defeat Poes
+    & Can Defeat ReDeads
+    & Can Defeat Stalfos
+    & Can Travel to any Island
+    # You don't necessarily have to fight redeads and stalfos, but the wizzrobe can summon them if you're not quick enough.
+  Mode: o
+  Types: Other Chest
+
+Private Oasis - Chest at Top of Waterfall:
+  Need:
+    (Hookshot | Can Fly With Deku Leaf Outdoors)
+    & Can Travel to Private Oasis
+  Mode: o
+  Types: Island Puzzle
+
+Private Oasis - Cabana Labyrinth - Lower Floor Chest:
+  Need:
+    Can Access Cabana Labyrinth
+    & Skull Hammer
+  Mode: o
+  Types: Puzzle Secret Cave
+
+Private Oasis - Cabana Labyrinth - Upper Floor Chest:
+  Need:
+    Can Access Cabana Labyrinth
+    & Skull Hammer
+    & Can Play Wind's Requiem
+  Mode: o
+  Types: Puzzle Secret Cave
+
+Private Oasis - Big Octo:
+  Need: Can Defeat Big Octos & Can Salvage Treasure & Can Travel to Private Oasis & Can Sail
+  Mode: o
+  Types: Big Octo
+
+Spectacle Island - Barrel Shooting - First Prize:
+  Need: Can Travel to Spectacle Island
+  Mode: o
+  Types: Short Minigame
+
+Spectacle Island - Barrel Shooting - Second Prize:
+  Need: Can Travel to Spectacle Island
+  Mode: o
+  Types: Short Minigame
+
+Spectacle Island - Barrel Shooting - Prize 3+:
+  Need: Can Travel to Spectacle Island
+  Mode: o
+  Types: Consumables only
+
+Needle Rock Isle - Chest:
+  Need:
+    Bait Bag
+    & Can Travel to Needle Rock Isle
+    # Note: It might be theoretically possible to hit the switch at the top with a fire arrow's explosion, but it's not easy.
+  Mode: o
+  Types: Island Puzzle
+
+Needle Rock Isle - Cave:
+  Need:
+    Can Access Needle Rock Isle Secret Cave
+    & Fire Arrows
+  Mode: o
+  Types: Puzzle Secret Cave
+
+Needle Rock Isle - Golden Gunboat:
+  Need:
+    Bombs
+    & Can Salvage Treasure
+    & Can Travel to Needle Rock Isle
+    & Can Sail
+  Mode: o
+  Types: Gunboat
+
+Angular Isles - Peak:
+  Need: Can Travel to Angular Isles
+  Mode: o
+  Types: Island Puzzle
+
+Angular Isles - Cave:
+  Need:
+    # Mirror Shield is to shine light on the chest and make it not be transparent.
+    # Either Deku Leaf or Hookshot are needed to reach the chest in the cave.
+    Can Access Angular Isles Secret Cave
+    & Can Aim Mirror Shield
+    & (Deku Leaf | Hookshot)
+  Mode: o
+  Types: Puzzle Secret Cave
+
+Boating Course - Raft:
+  Need: Can Travel to Boating Course & Can Sail
+  Mode: o
+  Types: Raft
+
+Boating Course - Cave:
+  Need:
+    Can Access Boating Course Secret Cave
+    & Can Hit Diamond Switches at Range
+    & Can Defeat Miniblins Easily
+    # Hitting the 3 diamond switches inside the cave needs a ranged weapon.
+    # Killing the miniblins is not necessary, but hitting the switches without being able to kill them would be extremely annoying.
+  Mode: o
+  Types: Puzzle Secret Cave, Mixed Secret Cave
+
+Stone Watcher Island - Cave:
+  Need:
+    Can Access Stone Watcher Island Secret Cave
+    & Can Defeat Armos
+    & Can Defeat Wizzrobes
+    & Can Defeat Darknuts
+    & Can Play Wind's Requiem
+    # There are Moblins and Blue Bokoblins but they can be tricked into hitting each other to steal their weapons.
+  Mode: o
+  Types: Mixed Secret Cave
+
+Stone Watcher Island - Lookout Platform Chest:
+  Need: Can Travel to Stone Watcher Island & Can Sail
+  Mode: o
+  Types: Platform
+
+Stone Watcher Island - Lookout Platform - Destroy the Cannons:
+  Need: Can Destroy Cannons & Can Travel to Stone Watcher Island & Can Sail
+  Mode: o
+  Types: Platform
+
+Islet of Steel - Interior:
+  Need:
+    Bombs
+    & Can Play Wind's Requiem
+    & Can Travel to Islet of Steel
+    & Can Sail
+  Mode: o
+  Types: Misc
+
+Islet of Steel - Lookout Platform - Defeat the Enemies:
+  Need:
+    Can Defeat Wizzrobes at Range
+    & Can Travel to Islet of Steel
+    & Can Sail
+    # You don't need anything to kill the Pink Bokoblins because you can throw pots at them.
+  Mode: o
+  Types: Platform
+
+Overlook Island - Cave:
+  Need:
+    Can Access Overlook Island Secret Cave
+    & Can Defeat Stalfos
+    & Can Defeat Wizzrobes
+    & Can Defeat Red ChuChus
+    & Can Defeat Green ChuChus
+    & Can Defeat Keese
+    & Can Defeat Fire Keese
+    & Can Defeat Morths
+    & Can Defeat Kargarocs
+    & Can Defeat Darknuts
+    & Can Play Wind's Requiem
+    # The Armos Knights require nothing since there are bomb flowers in their room.
+    # The chuchus, keese, morths, and kargarocs don't necessarily have to be fought, but may be summoned by the wizzrobes.
+    # One of the rooms has Green Bokoblins but you can trick them into attacking each other to steal a weapon.
+  Mode: o
+  Types: Mixed Secret Cave
+
+Bird's Peak Rock - Cave:
+  Need:
+    # Need to play the Wind's Requiem to get the chest to appear.
+    Can Access Bird's Peak Rock Secret Cave
+    & Can Play Wind's Requiem
+  Mode: o
+  Types: Puzzle Secret Cave
+
+Pawprint Isle - Chuchu Cave - Chest:
+  Need: Can Access Pawprint Isle Chuchu Cave
+  Mode: o
+  Types: Puzzle Secret Cave
+
+Pawprint Isle - Chuchu Cave - Behind Left Boulder:
+  # Left Boulder Chest
+  Need:
+    Can Access Pawprint Isle Chuchu Cave
+    & Can Move Boulders
+  Mode: o
+  Types: Puzzle Secret Cave
+
+Pawprint Isle - Chuchu Cave - Behind Right Boulder:
+  # Right Boulder Chest
+  Need:
+    Can Access Pawprint Isle Chuchu Cave
+    & Can Move Boulders
+  Mode: o
+  Types: Puzzle Secret Cave
+
+Pawprint Isle - Chuchu Cave - Scale the Wall:
+  Need:
+    Can Access Pawprint Isle Chuchu Cave
+    & Grappling Hook
+  Mode: o
+  Types: Puzzle Secret Cave
+
+Pawprint Isle - Wizzrobe Cave:
+  Need:
+    Can Access Pawprint Isle Wizzrobe Cave
+    & Can Defeat Wizzrobes at Range
+    & Can Defeat Fire Keese
+    & Can Defeat Magtails
+    & Can Defeat Red ChuChus
+    & Can Defeat Green ChuChus
+    & Can Defeat Yellow ChuChus
+    & Can Defeat Red Bubbles
+    & Can Remove Peahat Armor
+    # For the last wave, you can get the Moblin to attack the Bokoblin, take the Bokoblin's stick, and use that to kill the Moblin, Bokoblin, Morths, Keese, Kargarocs, and Peahats with armor removed. (You can also use the stick to steal the Moblin's spear and use that.)
+  Mode: o
+  Types: Mixed Secret Cave
+
+Pawprint Isle - Lookout Platform - Defeat the Enemies:
+  Need: Can Travel to Pawprint Isle & Can Sail
+    # You don't need anything to kill these Pink Bokoblins because you can throw pots at them.
+  Mode: o
+  Types: Platform
+
+Thorned Fairy Island - Great Fairy:
+  Need:
+    Skull Hammer
+    & Can Travel to Thorned Fairy Island
+  Mode: o
+  Types: Great Fairy
+
+Thorned Fairy Island - Northeastern Lookout Platform - Destroy the Cannons:
+  Need:
+    Can Destroy Cannons
+    & Can Travel to Thorned Fairy Island
+    & Can Sail
+  Mode: o
+  Types: Platform
+
+Thorned Fairy Island - Southwestern Lookout Platform - Defeat the Enemies:
+  Need:
+    Can Fly With Deku Leaf Outdoors
+    & Can Travel to Thorned Fairy Island
+    & Can Sail
+    # You can defeat the Pink Bokoblins here by throwing pots and barrels at them, and letting them kick each other. You might run out of pots and barrels to kill the last one with if you miss too much though, in which case you'd need to reload and try again.
+  Mode: o
+  Types: Platform
+
+Eastern Fairy Island - Great Fairy:
+  Need:
+    Can Move Boulders
+    & Can Travel to Eastern Fairy Island
+  Mode: o
+  Types: Great Fairy
+
+Eastern Fairy Island - Lookout Platform - Defeat the Cannons and Enemies:
+  Need: Can Destroy Cannons & Can Travel to Eastern Fairy Island & Can Sail
+    # The Pink Bokoblins can be knocked off the edge by throwing pots at them. You don't have many shots at this before running out of pots, so it's best to do it while they're still asleep.
+  Mode: o
+  Types: Platform
+
+Western Fairy Island - Great Fairy:
+  Need:
+    Skull Hammer
+    & Can Travel to Western Fairy Island
+  Mode: o
+  Types: Great Fairy
+
+Western Fairy Island - Lookout Platform:
+  Need: Can Travel to Western Fairy Island & Can Sail
+  Mode: o
+  Types: Platform
+
+Southern Fairy Island - Great Fairy:
+  # Can either blow up or burn the blockade
+  Need:
+    (
+      Bombs
+      | Fire Arrows
+    )
+    & Can Travel to Southern Fairy Island
+  Mode: o
+  Types: Great Fairy
+
+Southern Fairy Island - Lookout Platform - Destroy the Northwest Cannons:
+  Need:
+    Can Destroy Cannons
+    & Can Fly With Deku Leaf Outdoors
+    & Can Travel to Southern Fairy Island
+    & Can Sail
+  Mode: o
+  Types: Platform
+
+Southern Fairy Island - Lookout Platform - Destroy the Southeast Cannons:
+  Need:
+    Can Destroy Cannons
+    & Can Fly With Deku Leaf Outdoors
+    & Can Travel to Southern Fairy Island
+    & Can Sail
+  Mode: o
+  Types: Platform
+
+Northern Fairy Island - Great Fairy:
+  Need: Can Travel to Northern Fairy Island
+  Mode: o
+  Types: Great Fairy
+
+Northern Fairy Island - Submarine:
+  Need: Can Travel to Northern Fairy Island Sub
+    # No need to kill the Moblins here.
+  Mode: o
+  Types: Submarine
+
+Tingle Island - Ankle - Reward for All Tingle Statues:
+  Need:
+    Dragon Tingle Statue
+    & Forbidden Tingle Statue
+    & Goddess Tingle Statue
+    & Earth Tingle Statue
+    & Wind Tingle Statue
+    & Can Travel to Tingle Island
+  Mode: o
+  Types: Misc
+
+#Tingle Island - Tingle - Triforce Chart 1 Deciphered:
+#  Need:
+#  Original item: Triforce Chart 1 got deciphered
+#  Paths:
+#
+#Tingle Island - Tingle - Triforce Chart 2 Deciphered:
+#  Need:
+#  Original item: Triforce Chart 2 got deciphered
+#  Paths:
+#
+#Tingle Island - Tingle - Triforce Chart 3 Deciphered:
+#  Need:
+#  Original item: Triforce Chart 3 got deciphered
+#  Paths:
+#
+#Tingle Island - Tingle - Triforce Chart 4 Deciphered:
+#  Need:
+#  Original item: Triforce Chart 4 got deciphered
+#  Paths:
+#
+#Tingle Island - Tingle - Triforce Chart 5 Deciphered:
+#  Need:
+#  Original item: Triforce Chart 5 got deciphered
+#  Paths:
+#
+#Tingle Island - Tingle - Triforce Chart 6 Deciphered:
+#  Need:
+#  Original item: Triforce Chart 6 got deciphered
+#  Paths:
+#
+#Tingle Island - Tingle - Triforce Chart 7 Deciphered:
+#  Need:
+#  Original item: Triforce Chart 7 got deciphered
+#  Paths:
+#
+#Tingle Island - Tingle - Triforce Chart 8 Deciphered:
+#  Need:
+#  Original item: Triforce Chart 8 got deciphered
+#  Paths:
+#
+Tingle Island - Big Octo:
+  Need:
+    Can Defeat Twelve-Eye Octos
+    & Can Salvage Treasure
+    & Can Travel to Tingle Island
+    & Can Sail
+  Mode: o
+  Types: Big Octo
+
+Diamond Steppe Island - Warp Maze Cave - First Chest:
+  Need: Can Access Diamond Steppe Island Warp Maze Cave
+    # No need to kill the Floormasters.
+  Mode: o
+  Types: Puzzle Secret Cave
+
+Diamond Steppe Island - Warp Maze Cave - Second Chest:
+  Need: Can Access Diamond Steppe Island Warp Maze Cave
+    # No need to kill the Floormasters.
+  Mode: o
+  Types: Puzzle Secret Cave
+
+Diamond Steppe Island - Big Octo:
+  Need:
+    Can Defeat Big Octos
+    & Can Salvage Treasure
+    & Can Travel to Diamond Steppe Island
+    & Can Sail
+  Mode: o
+  Types: Big Octo
+
+Bomb Island - Cave:
+  Need:
+    Can Access Bomb Island Secret Cave
+    & Can Stun Magtails
+  Mode: o
+  Types: Puzzle Secret Cave
+
+Bomb Island - Lookout Platform - Defeat the Enemies:
+  Need: Can Travel to Bomb Island & Can Sail
+    # The Pink Bokoblins can be knocked off the edge by throwing pots at them. You don't have many shots at this before running out of pots.
+  Mode: o
+  Types: Platform
+
+Bomb Island - Submarine:
+  Need: Can Travel to Bomb Island Sub
+    # You can throw pots and barrels at the Blue and Green Bokoblins to make them drop a weapon, then use it to kill them.
+  Mode: o
+  Types: Submarine
+
+Rock Spire Isle - Cave:
+  Need: Can Access Rock Spire Isle Secret Cave
+    # The Keese in the cave can be killed with nothing but the stick in there.
+  Mode: o
+  Types: Mixed Secret Cave
+
+Rock Spire Isle - Beedle's Special Shop Ship - 500 Rupee Item:
+  Need:
+    Any Wallet Upgrade
+    & Can Farm Lots of Rupees
+    & Can Travel to Rock Spire Isle
+  Mode: o
+  Types: Expensive Purchase
+
+Rock Spire Isle - Beedle's Special Shop Ship - 950 Rupee Item:
+  Need:
+    Any Wallet Upgrade
+    & Can Farm Lots of Rupees
+    & Can Travel to Rock Spire Isle
+  Mode: o
+  Types: Expensive Purchase
+
+Rock Spire Isle - Beedle's Special Shop Ship - 900 Rupee Item:
+  Need:
+    Any Wallet Upgrade
+    & Can Farm Lots of Rupees
+    & Can Travel to Rock Spire Isle
+  Mode: o
+  Types: Expensive Purchase
+
+Rock Spire Isle - Western Lookout Platform - Destroy the Cannons:
+  Need:
+    # Need Deku Leaf to fly over from the center platform to this platform.
+    Can Destroy Cannons
+    & Can Fly With Deku Leaf Outdoors
+    & Can Travel to Rock Spire Isle
+    & Can Sail
+  Mode: o
+  Types: Platform
+
+Rock Spire Isle - Eastern Lookout Platform - Destroy the Cannons:
+  Need:
+    # Need Deku Leaf to fly over from the center platform to this platform.
+    Can Destroy Cannons
+    & Can Fly With Deku Leaf Outdoors
+    & Can Travel to Rock Spire Isle
+    & Can Sail
+  Mode: o
+  Types: Platform
+
+Rock Spire Isle - Center Lookout Platform:
+  Need: Can Travel to Rock Spire Isle & Can Sail
+  Mode: o
+  Types: Platform
+
+Rock Spire Isle - Southeast Gunboat:
+  Need:
+    Bombs
+    & Can Salvage Treasure
+    & Can Travel to Rock Spire Isle
+    & Can Sail
+  Mode: o
+  Types: Gunboat
+
+# TODO: there's another gunboat here. originally gave orange rupee
+
+Shark Island - Cave:
+  Need:
+    Can Access Shark Island Secret Cave
+    & Can Defeat Miniblins
+    & Can Cut or Slash
+    & Convenient Bottle
+    # You need to kill a ton of enemies inside the cave, but no ranged weapons are required.
+    # You need to have at least enough to defeat a couple Miniblins. After that some Green Bokoblins spawn, and you can get them to attack each other and drop a machete, then use that to kill the rest of the enemies in the cave.
+  Mode: o
+  Types: Mixed Secret Cave
+
+Cliff Plateau Isles - Cave:
+  Need:
+    Can Access Cliff Plateau Isles Secret Cave
+    & Can Defeat Boko Babas
+    # Technically you can kill the Boko Babas here by throwing a nut at one to stun it, then using the Grappling Hook to finish it off. But the timing is pretty precise and this is pretty obscure, so it's not in the logic.
+  Mode: o
+  Types: Puzzle Secret Cave
+
+Cliff Plateau Isles - Highest Isle:
+  Need:
+    Can Access Cliff Plateau Isles Secret Cave
+    & Can Defeat Boko Babas
+    & Deku Leaf
+  Mode: o
+  Types: Puzzle Secret Cave
+
+Cliff Plateau Isles - Lookout Platform:
+  Need: Can Travel to Cliff Plateau Isles & Can Sail
+  Mode: o
+  Types: Platform
+
+Crescent Moon Island - Chest:
+  Need: Can Travel to Crescent Moon Island
+  Mode: o
+  Types: Other Chest
+
+Crescent Moon Island - Submarine:
+  Need: Can Defeat Miniblins & Can Travel to Crescent Moon Island Sub
+    # You only need to defeat the very first Miniblin, then wait out the timer.
+  Mode: o
+  Types: Submarine
+
+Horseshoe Island - Play Golf:
+  Need:
+    Deku Leaf
+    & (Can Fly With Deku Leaf Outdoors | Hookshot)
+    & Can Travel to Horseshoe Island
+    # Need Deku Leaf to play golf, and then need a way to reach the chest.
+  Mode: o
+  Types: Island Puzzle
+
+Horseshoe Island - Cave:
+  Need:
+    Can Access Horseshoe Island Secret Cave
+    & Can Defeat Mothulas
+    & Can Defeat Winged Mothulas
+  Mode: o
+  Types: Mixed Secret Cave
+
+Horseshoe Island - Northwestern Lookout Platform:
+  Need: Can Travel to Horseshoe Island & Can Sail
+  Mode: o
+  Types: Platform
+
+Horseshoe Island - Southeastern Lookout Platform:
+  Need: Can Travel to Horseshoe Island & Can Sail
+  Mode: o
+  Types: Platform
+
+Flight Control Platform - Bird-Man Contest - First Prize:
+  Need:
+    Can Fly With Deku Leaf Outdoors
+    & Magic Meter Upgrade
+    & Can Travel to Flight Control Platform
+  Mode: o
+  Types: Short Minigame
+
+#Flight Control Platform - Bird-Man Contest - Prize 2+:
+#  Need:
+#  Original item: Purple Rupee
+#  Paths:
+#
+Flight Control Platform - Submarine:
+  Need:
+    Can Defeat Wizzrobes
+    & Can Defeat Red ChuChus
+    & Can Defeat Green ChuChus
+    & Can Defeat Miniblins
+    & Can Defeat Wizzrobes at Range
+    & Can Travel to Flight Control Platform Sub
+  Mode: o
+  Types: Submarine
+
+Star Island - Cave:
+  Need:
+    Can Access Star Island Secret Cave
+    & Can Defeat Magtails
+    # After the Magtails, the second wave are Blue Bokoblins, so you can trick them into attacking each other, steal a stick, and use that to kill the remaining enemies: Green Bokoblins and Moblins.
+  Mode: o
+  Types: Mixed Secret Cave
+
+Star Island - Lookout Platform:
+  Need: Can Travel to Star Island & Can Sail
+  Mode: o
+  Types: Platform
+
+Star Belt Archipelago - Lookout Platform:
+  Need: Can Travel to Star Belt Archipelago & Can Sail
+  Mode: o
+  Types: Platform
+
+Five-Star Isles - Lookout Platform - Destroy the Cannons:
+  Need: Can Destroy Cannons & Can Travel to Five-Star Isles & Can Sail
+  Mode: o
+  Types: Platform
+
+Five-Star Isles - Raft:
+  Need: Can Travel to Five-Star Isles Sub
+  Mode: o
+  Types: Raft
+
+Five-Star Isles - Submarine:
+  Need: Can Travel to Five-Star Isles Sub
+    # You need to defeat Green Bokoblins and Blue Bokoblins here, but you can throw pots at them and then steal their weapons.
+  Mode: o
+  Types: Submarine
+
+Seven-Star Isles - Center Lookout Platform:
+  Need: Can Travel to Seven-Star Isles & Can Sail
+    # You need to kill a wizzrobe here but you can throw pots/barrels at it.
+  Mode: o
+  Types: Platform
+
+Seven-Star Isles - Northern Lookout Platform:
+  Need: Can Travel to Seven-Star Isles & Can Sail
+    # You need to kill a wizzrobe here but you can throw pots/barrels at it.
+  Mode: o
+  Types: Platform, Long Combat Trial
+
+Seven-Star Isles - Southern Lookout Platform:
+  Need:
+    Can Defeat Wizzrobes at Range
+    & Can Travel to Seven-Star Isles
+    & Can Sail
+    # Unlike the wizzrobes you need to kill for the center and northern lookout platforms, one of the ones for the southern platform never comes close to you.
+  Mode: o
+  Types: Platform, Long Combat Trial
+
+Seven-Star Isles - Big Octo:
+  Need:
+    Can Defeat Twelve-Eye Octos
+    & Can Salvage Treasure
+    & Can Travel to Seven-Star Isles
+    & Can Sail
+  Mode: o
+  Types: Big Octo
+
+Cyclops Reef - Destroy the Cannons and Gunboats:
+  Need:
+    # In vanilla the cannons and gunboats at the eye reefs don't appear until Phantom Ganon is dead, but that requirement is removed in the randomizer.
+    Bombs
+    & Can Fly With Deku Leaf Outdoors
+    & Can Travel to Cyclops Reef
+    & Can Sail
+  Mode: o
+  Types: Eye Reef Chest
+
+Cyclops Reef - Lookout Platform - Defeat the Enemies:
+  Need: Can Travel to Cyclops Reef & Can Sail
+    # There are Green Bokoblins and Pink Bokoblins here but you can throw pots/barrels at them and steal a weapon.
+  Mode: o
+  Types: Platform
+
+Two-Eye Reef - Destroy the Cannons and Gunboats:
+  Need:
+    # In vanilla the cannons and gunboats at the eye reefs don't appear until Phantom Ganon is dead, but that requirement is removed in the randomizer.
+    Bombs
+    & Can Fly With Deku Leaf Outdoors
+    & Can Travel to Two-Eye Reef
+    & Can Sail
+  Mode: o
+  Types: Eye Reef Chest
+
+Two-Eye Reef - Lookout Platform:
+  Need: Can Travel to Two-Eye Reef & Can Sail
+  Mode: o
+  Types: Platform
+
+Two-Eye Reef - Big Octo Great Fairy:
+  Need:
+    Can Defeat Big Octos
+    & Can Travel to Two-Eye Reef
+    & Can Sail
+  Mode: o
+  Types: Big Octo, Great Fairy
+
+Three-Eye Reef - Destroy the Cannons and Gunboats:
+  Need:
+    # In vanilla the cannons and gunboats at the eye reefs don't appear until Phantom Ganon is dead, but that requirement is removed in the randomizer.
+    Bombs
+    & Can Fly With Deku Leaf Outdoors
+    & Can Travel to Three-Eye Reef
+    & Can Sail
+  Mode: o
+  Types: Eye Reef Chest
+
+Four-Eye Reef - Destroy the Cannons and Gunboats:
+  Need:
+    # In vanilla the cannons and gunboats at the eye reefs don't appear until Phantom Ganon is dead, but that requirement is removed in the randomizer.
+    Bombs
+    & Can Fly With Deku Leaf Outdoors
+    & Can Travel to Four-Eye Reef
+    & Can Sail
+  Mode: o
+  Types: Eye Reef Chest
+
+Five-Eye Reef - Destroy the Cannons:
+  Need:
+    # In vanilla the cannons and gunboats at the eye reefs don't appear until Phantom Ganon is dead, but that requirement is removed in the randomizer.
+    # Unlike the other eye reefs, this one has only cannons and no gunboats.
+    Can Destroy Cannons
+    & Can Fly With Deku Leaf Outdoors
+    & Can Travel to Five-Eye Reef
+    & Can Sail
+  Mode: o
+  Types: Eye Reef Chest
+
+Five-Eye Reef - Lookout Platform:
+  Need: Can Travel to Five-Eye Reef & Can Sail
+  Mode: o
+  Types: Platform
+
+Six-Eye Reef - Destroy the Cannons and Gunboats:
+  Need:
+    # In vanilla the cannons and gunboats at the eye reefs don't appear until Phantom Ganon is dead, but that requirement is removed in the randomizer.
+    Bombs
+    & Can Fly With Deku Leaf Outdoors
+    & Can Travel to Six-Eye Reef
+    & Can Sail
+  Mode: o
+  Types: Eye Reef Chest
+
+Six-Eye Reef - Lookout Platform - Destroy the Cannons:
+  Need: Can Destroy Cannons & Can Travel to Six-Eye Reef & Can Sail
+  Mode: o
+  Types: Platform
+
+Six-Eye Reef - Submarine:
+  Need: Can Travel to Six-Eye Reef & Can Sail
+    # There are Moblins here, but you can throws pots and barrels at one to get a weapon.
+  Mode: o
+  Types: Submarine
+
+Forsaken Fortress - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 1 & Can Travel to Forsaken Fortress
+  Mode: o
+  Types: Sunken Treasure
+
+Star Island - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 2 & Can Travel to Star Island
+  Mode: o
+  Types: Sunken Treasure
+
+Northern Fairy Island - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 3 & Can Travel to Northern Fairy Island
+  Mode: o
+  Types: Sunken Treasure
+
+Gale Isle - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 4 & Can Travel to Gale Isle
+  Mode: o
+  Types: Sunken Treasure
+
+Crescent Moon Island - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 5 & Can Travel to Crescent Moon Island
+  Mode: o
+  Types: Sunken Treasure
+
+Seven-Star Isles - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 6 & Bombs & Can Travel to Seven-Star Isles
+  # Bombs are not necessary, but it's tricky to salvage this treasure with two stationary gunboats shooting at you, so being able to destroy them makes this much easier. (Note that these gunboats only spawn after you have deciphered Triforce Chart 7.)
+  Mode: o
+  Types: Sunken Treasure
+
+Overlook Island - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 7 & Can Travel to Overlook Island
+  Mode: o
+  Types: Sunken Treasure
+
+Four-Eye Reef - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 8 & Bombs & Can Travel to Four-Eye Reef
+  # The cannons and gunboats can get in the way when trying to salvage this treasure, so being able to destroy them makes this easier.
+  Mode: o
+  Types: Sunken Treasure
+
+Mother and Child Isles - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 9 & Can Travel to Child Isle
+  Mode: o
+  Types: Sunken Treasure
+
+Spectacle Island - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 10 & Can Travel to Spectacle Island
+  Mode: o
+  Types: Sunken Treasure
+
+Windfall Island - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 11 & Can Travel to Windfall Island
+  Mode: o
+  Types: Sunken Treasure
+
+Pawprint Isle - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 12 & Can Travel to Pawprint Isle
+  Mode: o
+  Types: Sunken Treasure
+
+Dragon Roost Island - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 13 & Can Travel to Dragon Roost Island
+  Mode: o
+  Types: Sunken Treasure
+
+Flight Control Platform - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 14 & Can Travel to Flight Control Platform
+  Mode: o
+  Types: Sunken Treasure
+
+Western Fairy Island - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 15 & Can Travel to Western Fairy Island
+  Mode: o
+  Types: Sunken Treasure
+
+Rock Spire Isle - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 16 & Can Travel to Rock Spire Isle
+  Mode: o
+  Types: Sunken Treasure
+
+Tingle Island - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 17 & Can Travel to Tingle Island
+  Mode: o
+  Types: Sunken Treasure
+
+Northern Triangle Island - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 18 & Can Travel to Northern Triangle Island
+  Mode: o
+  Types: Sunken Treasure
+
+Eastern Fairy Island - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 19 & Can Travel to Eastern Fairy Island
+  Mode: o
+  Types: Sunken Treasure
+
+Fire Mountain - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 20 & Can Travel to Fire Mountain
+  Mode: o
+  Types: Sunken Treasure
+
+Star Belt Archipelago - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 21 & Can Travel to Star Belt Archipelago
+  Mode: o
+  Types: Sunken Treasure
+
+Three-Eye Reef - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 22 & Bombs & Can Travel to Three-Eye Reef
+  # The cannons and gunboats can get in the way when trying to salvage this treasure, so being able to destroy them makes this easier.
+  Mode: o
+  Types: Sunken Treasure
+
+Greatfish Isle - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 23 & Can Travel to Greatfish Isle
+  Mode: o
+  Types: Sunken Treasure
+
+Cyclops Reef - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 24 & Bombs & Can Travel to Cyclops Reef
+  # The cannons and gunboats can get in the way when trying to salvage this treasure, so being able to destroy them makes this easier.
+  Mode: o
+  Types: Sunken Treasure
+
+Six-Eye Reef - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 25 & Bombs & Can Travel to Six-Eye Reef
+  # The cannons and gunboats can get in the way when trying to salvage this treasure, so being able to destroy them makes this easier.
+  Mode: o
+  Types: Sunken Treasure
+
+Tower of the Gods - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 26 & Can Travel to Tower of the Gods
+  Mode: o
+  Types: Sunken Treasure
+
+Eastern Triangle Island - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 27 & Can Travel to Eastern Triangle Island
+  Mode: o
+  Types: Sunken Treasure
+
+Thorned Fairy Island - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 28 & Can Travel to Thorned Fairy Island
+  Mode: o
+  Types: Sunken Treasure
+
+Needle Rock Isle - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 29 & Can Travel to Needle Rock Isle
+  Mode: o
+  Types: Sunken Treasure
+
+Islet of Steel - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 30 & Can Travel to Islet of Steel
+  # Note: There are several gunboats here near the treasure, but they rarely seem to actually hit you and get in your way. So bombs are not currently a requirement here.
+  Mode: o
+  Types: Sunken Treasure
+
+Stone Watcher Island - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 31 & Can Travel to Stone Watcher Island
+  # Note: There are some gunboats here guarding the treasure, but they never seem to actually hit you when you're trying to salvage it. So bombs are not currently a requirement here.
+  Mode: o
+  Types: Sunken Treasure
+
+Southern Triangle Island - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 32 & Can Defeat Seahats & Can Travel to Southern Triangle Island
+  # Killing the seahats isn't necessary, but makes it much easier.
+  Mode: o
+  Types: Sunken Treasure
+
+Private Oasis - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 33 & Can Travel to Private Oasis
+  Mode: o
+  Types: Sunken Treasure
+
+Bomb Island - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 34 & Can Travel to Bomb Island
+  Mode: o
+  Types: Sunken Treasure
+
+Bird's Peak Rock - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 35 & Can Travel to Bird's Peak Rock
+  Mode: o
+  Types: Sunken Treasure
+
+Diamond Steppe Island - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 36 & Can Travel to Diamond Steppe Island
+  Mode: o
+  Types: Sunken Treasure
+
+Five-Eye Reef - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 37 & Can Destroy Cannons & Can Travel to Five-Eye Reef
+  # The cannons can get in the way when trying to salvage this treasure, so being able to destroy them makes this easier.
+  Mode: o
+  Types: Sunken Treasure
+
+Shark Island - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 38 & Can Travel to Shark Island
+  Mode: o
+  Types: Sunken Treasure
+
+Southern Fairy Island - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 39 & Can Travel to Southern Fairy Island
+  Mode: o
+  Types: Sunken Treasure
+
+Ice Ring Isle - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 40 & Can Travel to Ice Ring Isle
+  Mode: o
+  Types: Sunken Treasure
+
+Forest Haven - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 41 & Can Travel to Forest Haven
+  Mode: o
+  Types: Sunken Treasure
+
+Cliff Plateau Isles - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 42 & Can Travel to Cliff Plateau Isles
+  Mode: o
+  Types: Sunken Treasure
+
+Horseshoe Island - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 43 & Can Travel to Horseshoe Island
+  Mode: o
+  Types: Sunken Treasure
+
+Outset Island - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 44 & Can Travel to Outset Island
+  Mode: o
+  Types: Sunken Treasure
+
+Headstone Island - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 45 & Can Travel to Headstone Island
+  Mode: o
+  Types: Sunken Treasure
+
+Two-Eye Reef - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 46 & Bombs & Can Travel to Two-Eye Reef
+  # The cannons and gunboats can get in the way when trying to salvage this treasure, so being able to destroy them makes this easier.
+  Mode: o
+  Types: Sunken Treasure
+
+Angular Isles - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 47 & Can Travel to Angular Isles
+  Mode: o
+  Types: Sunken Treasure
+
+Boating Course - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 48 & Can Travel to Boating Course
+  Mode: o
+  Types: Sunken Treasure
+
+Five-Star Isles - Sunken Treasure:
+  Need: Can Salvage Treasure & Chart for Island 49 & Can Travel to Five-Star Isles
+  Mode: o
+  Types: Sunken Treasure

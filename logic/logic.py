@@ -719,7 +719,8 @@ class Logic:
     elif(logic_mod=="other"):
       custom_logic_names = xfx.get_all_custom_logic()
       logic_name = logic[9:]
-      file_name = custom_logic_names[logic_name]["File"]
+      data = custom_logic_names[logic_name]["Data"]
+      file_name = data["File"]
       modify_locations = xfx.parseXML(file_name)
       for modification_name in modify_locations:
         modify_locations[modification_name]['Need'] = Logic.parse_logic_expression(modify_locations[modification_name]['Need'])

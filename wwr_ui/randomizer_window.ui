@@ -14,7 +14,7 @@
    <string>Wind Waker Randomizer</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout">
+   <layout class="QVBoxLayout" name="vertical_layout_widget">
     <item>
      <widget class="QScrollArea" name="scroll_for_main">
       <property name="frameShape">
@@ -200,7 +200,7 @@
                </spacer>
               </item>
               <item row="0" column="2">
-               <widget class="QLabel" name="label_for_logic">
+               <widget class="QLabel" name="label_for_logic_mod">
                 <property name="enabled">
                  <bool>true</bool>
                 </property>
@@ -1139,7 +1139,7 @@
            <attribute name="title">
             <string>Starting Items</string>
            </attribute>
-           <layout class="QVBoxLayout" name="verticalLayout_10" stretch="2,1,0">
+           <layout class="QVBoxLayout" name="layout_for_items_selection" stretch="20,5,1">
             <item>
              <layout class="QHBoxLayout" name="layout_for_starting_items">
               <item>
@@ -1263,7 +1263,7 @@
             <item>
              <layout class="QHBoxLayout" name="layout_for_starting_health">
               <item>
-               <widget class="QLabel" name="label_for_base_health">
+               <widget class="QLabel" name="label_for_starting_bh">
                 <property name="text">
                  <string>Base Health</string>
                 </property>
@@ -1283,7 +1283,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QLabel" name="label_for_heart_container">
+               <widget class="QLabel" name="label_for_starting_hcs">
                 <property name="text">
                  <string>Heart Containers</string>
                 </property>
@@ -1315,7 +1315,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QLabel" name="label_for_heart_piece">
+               <widget class="QLabel" name="label_for_starting_pohs">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                   <horstretch>0</horstretch>
@@ -1391,142 +1391,34 @@
            <attribute name="title">
             <string>Banned Locales</string>
            </attribute>
-           <layout class="QVBoxLayout" name="verticalLayout_99" stretch="2,2">
+           <layout class="QVBoxLayout" name="layout_for_locales" stretch="9,3,6">
             <item>
              <layout class="QGridLayout" name="grid_for_locales">
-              <item row="2" column="1">
-               <widget class="QCheckBox" name="locale_rock_spire">
+              <item row="4" column="2">
+               <widget class="QCheckBox" name="locale_stone_watcher">
                 <property name="text">
-                 <string>Rock Spire Isle</string>
+                 <string>Stone Watcher</string>
                 </property>
                </widget>
               </item>
-              <item row="2" column="6">
-               <widget class="QCheckBox" name="locale_star_belt">
+              <item row="7" column="1">
+               <widget class="QCheckBox" name="locale_dvim">
                 <property name="text">
-                 <string>Star Belt</string>
+                 <string>dv_im checks</string>
                 </property>
                </widget>
               </item>
-              <item row="1" column="5">
-               <widget class="QCheckBox" name="locale_dragon_roost_island">
+              <item row="3" column="3">
+               <widget class="QCheckBox" name="locale_six_eye">
                 <property name="text">
-                 <string>Dragon Roost</string>
+                 <string>Six-Eye Reef</string>
                 </property>
                </widget>
               </item>
-              <item row="1" column="1">
-               <widget class="QCheckBox" name="locale_mother_child">
+              <item row="7" column="3">
+               <widget class="QCheckBox" name="locale_picto">
                 <property name="text">
-                 <string>Mother and Child</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="3">
-               <widget class="QCheckBox" name="locale_windfall">
-                <property name="text">
-                 <string>Windfall Island</string>
-                </property>
-               </widget>
-              </item>
-              <item row="8" column="2">
-               <widget class="QCheckBox" name="locale_deep_fw">
-                <property name="text">
-                 <string>Deep FW</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="4">
-               <widget class="QCheckBox" name="locale_pawprint">
-                <property name="text">
-                 <string>Pawprint Isle</string>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="4">
-               <widget class="QCheckBox" name="locale_ice_ring">
-                <property name="text">
-                 <string>Ice Ring Isle</string>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="6">
-               <widget class="QCheckBox" name="locale_birds_peak">
-                <property name="text">
-                 <string>Bird's Peak Rock</string>
-                </property>
-               </widget>
-              </item>
-              <item row="8" column="1">
-               <widget class="QCheckBox" name="locale_deep_drc">
-                <property name="text">
-                 <string>Deep DRC</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="6">
-               <widget class="QCheckBox" name="locale_flight_control">
-                <property name="text">
-                 <string>Flight Control</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="2">
-               <widget class="QCheckBox" name="locale_cyclops">
-                <property name="text">
-                 <string>Cyclops Reef</string>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="3">
-               <widget class="QCheckBox" name="locale_southern_fairy">
-                <property name="text">
-                 <string>Southern Fairy</string>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="2">
-               <widget class="QCheckBox" name="locale_headstone">
-                <property name="text">
-                 <string>Headstone Island</string>
-                </property>
-               </widget>
-              </item>
-              <item row="8" column="6">
-               <widget class="QCheckBox" name="locale_savage">
-                <property name="text">
-                 <string>Savage Labyrinth</string>
-                </property>
-                <property name="checked">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="6">
-               <widget class="QCheckBox" name="locale_mail">
-                <property name="text">
-                 <string>Mail</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="5">
-               <widget class="QCheckBox" name="locale_eastern_triangle">
-                <property name="text">
-                 <string>Eastern Triangle</string>
-                </property>
-               </widget>
-              </item>
-              <item row="8" column="5">
-               <widget class="QCheckBox" name="locale_deep_wt">
-                <property name="text">
-                 <string>Deep WT</string>
-                </property>
-               </widget>
-              </item>
-              <item row="8" column="3">
-               <widget class="QCheckBox" name="locale_deep_totg">
-                <property name="text">
-                 <string>Deep TotG</string>
+                 <string>Picto Box</string>
                 </property>
                </widget>
               </item>
@@ -1642,83 +1534,10 @@
                 </property>
                </widget>
               </item>
-              <item row="8" column="4">
-               <widget class="QCheckBox" name="locale_deep_et">
-                <property name="text">
-                 <string>Deep ET</string>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="4">
-               <widget class="QCheckBox" name="locale_et">
-                <property name="text">
-                 <string>ET</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="4">
-               <widget class="QCheckBox" name="locale_battlesquid">
-                <property name="text">
-                 <string>Battlequids</string>
-                </property>
-                <property name="checked">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="0">
-               <widget class="QCheckBox" name="locale_horseshoe">
-                <property name="text">
-                 <string>Horseshoe Island</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="0">
-               <widget class="QCheckBox" name="locale_three_eye">
-                <property name="text">
-                 <string>Three-Eye Reef</string>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="5">
-               <widget class="QCheckBox" name="locale_wt">
-                <property name="text">
-                 <string>WT</string>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="0">
-               <widget class="QCheckBox" name="locale_diamond_steppe">
-                <property name="text">
-                 <string>Diamond Steppe</string>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="0">
-               <widget class="QCheckBox" name="locale_needle_rock">
-                <property name="text">
-                 <string>Needle Rock Isle</string>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="2">
-               <widget class="QCheckBox" name="locale_stone_watcher">
-                <property name="text">
-                 <string>Stone Watcher</string>
-                </property>
-               </widget>
-              </item>
               <item row="0" column="3">
                <widget class="QCheckBox" name="locale_gale">
                 <property name="text">
                  <string>Gale Isle</string>
-                </property>
-               </widget>
-              </item>
-              <item row="8" column="0">
-               <widget class="QCheckBox" name="locale_under_great_sea">
-                <property name="text">
-                 <string>Under Great Sea</string>
                 </property>
                </widget>
               </item>
@@ -1729,10 +1548,10 @@
                 </property>
                </widget>
               </item>
-              <item row="7" column="0">
-               <widget class="QCheckBox" name="locale_great_sea">
+              <item row="4" column="4">
+               <widget class="QCheckBox" name="locale_private_oasis">
                 <property name="text">
-                 <string>Great Sea</string>
+                 <string>Private Oasis</string>
                 </property>
                </widget>
               </item>
@@ -1743,20 +1562,6 @@
                 </property>
                </widget>
               </item>
-              <item row="3" column="3">
-               <widget class="QCheckBox" name="locale_six_eye">
-                <property name="text">
-                 <string>Six-Eye Reef</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="3">
-               <widget class="QCheckBox" name="locale_northern_triangle">
-                <property name="text">
-                 <string>Northern Triangle</string>
-                </property>
-               </widget>
-              </item>
               <item row="3" column="1">
                <widget class="QCheckBox" name="locale_greatfish">
                 <property name="text">
@@ -1764,59 +1569,10 @@
                 </property>
                </widget>
               </item>
-              <item row="0" column="2">
-               <widget class="QCheckBox" name="locale_northern_fairy">
+              <item row="2" column="3">
+               <widget class="QCheckBox" name="locale_northern_triangle">
                 <property name="text">
-                 <string>Northern Fairy</string>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="4">
-               <widget class="QCheckBox" name="locale_private_oasis">
-                <property name="text">
-                 <string>Private Oasis</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="6">
-               <widget class="QCheckBox" name="locale_thorned_fairy">
-                <property name="text">
-                 <string>Thorned Fairy</string>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="1">
-               <widget class="QCheckBox" name="locale_drc">
-                <property name="text">
-                 <string>DRC</string>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="1">
-               <widget class="QCheckBox" name="locale_islet">
-                <property name="text">
-                 <string>Islet of Steel</string>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="3">
-               <widget class="QCheckBox" name="locale_totg">
-                <property name="text">
-                 <string>TotG</string>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="6">
-               <widget class="QCheckBox" name="locale_cliff_plateau">
-                <property name="text">
-                 <string>Cliff Plateau Isles</string>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="1">
-               <widget class="QCheckBox" name="locale_outset">
-                <property name="text">
-                 <string>Outset Island</string>
+                 <string>Northern Triangle</string>
                 </property>
                </widget>
               </item>
@@ -1834,10 +1590,272 @@
                 </property>
                </widget>
               </item>
+              <item row="7" column="5">
+               <widget class="QCheckBox" name="locale_savage">
+                <property name="text">
+                 <string>Savage Labyrinth</string>
+                </property>
+                <property name="checked">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QCheckBox" name="locale_rock_spire">
+                <property name="text">
+                 <string>Rock Spire Isle</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="6">
+               <widget class="QCheckBox" name="locale_star_belt">
+                <property name="text">
+                 <string>Star Belt</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="5">
+               <widget class="QCheckBox" name="locale_dragon_roost_island">
+                <property name="text">
+                 <string>Dragon Roost</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QCheckBox" name="locale_mother_child">
+                <property name="text">
+                 <string>Mother and Child</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="3">
+               <widget class="QCheckBox" name="locale_windfall">
+                <property name="text">
+                 <string>Windfall Island</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="4">
+               <widget class="QCheckBox" name="locale_pawprint">
+                <property name="text">
+                 <string>Pawprint Isle</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="4">
+               <widget class="QCheckBox" name="locale_ice_ring">
+                <property name="text">
+                 <string>Ice Ring Isle</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="6">
+               <widget class="QCheckBox" name="locale_birds_peak">
+                <property name="text">
+                 <string>Bird's Peak Rock</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="6">
+               <widget class="QCheckBox" name="locale_flight_control">
+                <property name="text">
+                 <string>Flight Control</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="2">
+               <widget class="QCheckBox" name="locale_cyclops">
+                <property name="text">
+                 <string>Cyclops Reef</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="3">
+               <widget class="QCheckBox" name="locale_southern_fairy">
+                <property name="text">
+                 <string>Southern Fairy</string>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="2">
+               <widget class="QCheckBox" name="locale_headstone">
+                <property name="text">
+                 <string>Headstone Island</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="5">
+               <widget class="QCheckBox" name="locale_eastern_triangle">
+                <property name="text">
+                 <string>Eastern Triangle</string>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="1">
+               <widget class="QCheckBox" name="locale_outset">
+                <property name="text">
+                 <string>Outset Island</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="6">
+               <widget class="QCheckBox" name="locale_thorned_fairy">
+                <property name="text">
+                 <string>Thorned Fairy</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <widget class="QCheckBox" name="locale_northern_fairy">
+                <property name="text">
+                 <string>Northern Fairy</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="1">
+               <widget class="QCheckBox" name="locale_islet">
+                <property name="text">
+                 <string>Islet of Steel</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QCheckBox" name="locale_three_eye">
+                <property name="text">
+                 <string>Three-Eye Reef</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="6">
+               <widget class="QCheckBox" name="locale_cliff_plateau">
+                <property name="text">
+                 <string>Cliff Plateau Isles</string>
+                </property>
+               </widget>
+              </item>
               <item row="7" column="2">
+               <widget class="QCheckBox" name="locale_mail">
+                <property name="text">
+                 <string>Mail</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="0">
+               <widget class="QCheckBox" name="locale_needle_rock">
+                <property name="text">
+                 <string>Needle Rock Isle</string>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="0">
+               <widget class="QCheckBox" name="locale_horseshoe">
+                <property name="text">
+                 <string>Horseshoe Island</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="0">
+               <widget class="QCheckBox" name="locale_diamond_steppe">
+                <property name="text">
+                 <string>Diamond Steppe</string>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="4">
+               <widget class="QCheckBox" name="locale_battlesquid">
+                <property name="text">
+                 <string>Battlequids</string>
+                </property>
+                <property name="checked">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QGridLayout" name="grid_for_locales">
+              <item row="1" column="4">
+               <widget class="QCheckBox" name="locale_deep_et">
+                <property name="text">
+                 <string>Deep ET</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="4">
+               <widget class="QCheckBox" name="locale_et">
+                <property name="text">
+                 <string>ET</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="5">
+               <widget class="QCheckBox" name="locale_wt">
+                <property name="text">
+                 <string>WT</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QCheckBox" name="locale_drc">
+                <property name="text">
+                 <string>DRC</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="3">
+               <widget class="QCheckBox" name="locale_totg">
+                <property name="text">
+                 <string>TotG</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2">
                <widget class="QCheckBox" name="locale_fw">
                 <property name="text">
                  <string>FW</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QCheckBox" name="locale_under_great_sea">
+                <property name="text">
+                 <string>Under Great Sea</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QCheckBox" name="locale_great_sea">
+                <property name="text">
+                 <string>Great Sea</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QCheckBox" name="locale_deep_drc">
+                <property name="text">
+                 <string>Deep DRC</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="2">
+               <widget class="QCheckBox" name="locale_deep_fw">
+                <property name="text">
+                 <string>Deep FW</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="3">
+               <widget class="QCheckBox" name="locale_deep_totg">
+                <property name="text">
+                 <string>Deep TotG</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="5">
+               <widget class="QCheckBox" name="locale_deep_wt">
+                <property name="text">
+                 <string>Deep WT</string>
                 </property>
                </widget>
               </item>
@@ -1865,7 +1883,7 @@
            <attribute name="title">
             <string>Player Customization</string>
            </attribute>
-           <layout class="QVBoxLayout" name="verticalLayout_3">
+           <layout class="QVBoxLayout" name="layout_for_customization">
             <item>
              <layout class="QGridLayout" name="grid_for_model_general_options">
               <item row="0" column="0">

@@ -526,3 +526,20 @@
   Stage:
   Locale Setting: locale_mail
   Neighbors:
+
+106:
+  Long Name: dv_im
+  Short Name: dv_im
+  Abbreviation: dv
+  Hint: the strange branch
+  Stage:
+  Locale Setting: locale_dvim
+  Neighbors:
+107:
+  Long Name: Picto Box
+  Short Name: Picto
+  Abbreviation: PB
+  Hint: the light box
+  Stage:
+  Locale Setting: locale_picto
+  Neighbors:

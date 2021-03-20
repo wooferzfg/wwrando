@@ -368,6 +368,14 @@ OPTIONS = OrderedDict([
     "locale_mail",
     "Disables all item locations in the mailbox.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
   ),
+  (
+    "locale_picto",
+    "Disables all item locations that require Picto Box usage.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+  ),
+  (
+    "locale_dvim",
+    "Disables all item locations added in dv_im.<br><u>If this is checked, they will still be randomized</u>, but will only contain optional items you don't need to beat the game."
+  ),
 
 
   (

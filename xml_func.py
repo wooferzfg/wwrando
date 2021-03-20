@@ -4,6 +4,8 @@ import os
 import glob
 from collections import OrderedDict
 from class_ms import * # Remember to correct this later, Zach
+import re
+import yaml
 #from logic.logic import Logic
 
 file_ext = [".dv_im",".yaml",".xml"]
@@ -72,6 +74,7 @@ def parseYAML(file):
     reads = yaml.load(f, YamlOrderedDictLoader)
   try:
     del reads["Injection"]
+    del reads["Change UI"]
   except:
     pass
   return reads
@@ -148,7 +151,19 @@ def getXML(logic_path):
     data['Checksum'] = 'Unknown'
     type = (filename.split("."))[0]
     pass
-  return data, type
+  try:
+    hold = OrderedDict()
+    changeUI = (inject.getElementsByTagName('changeUI'))[0]
+    try:
+      attrUIList = changeUI.attributes
+      for i in range(attrUIList.attributes.length):
+        attr = attrUIList.attributes.item(i)
+        hold[attr.name] = attr.value
+    except:
+      hold = OrderedDict()
+  except:
+    pass
+  return data, type, hold
 
 def getYAML(logic_path):
   data = OrderedDict()
@@ -172,14 +187,16 @@ def getYAML(logic_path):
     except:
       #print("Interal file name,{}, does not match external,{}.").format((file+file_ext),filename)
       desc = desc+" FAILED FILESUM."
+      print(filename)
       file = filename
       pass
     if(1):
       try:
-        totl = len(raw_inject)-1
+        totl = len(raw_inject)-2
         assert(totl==chan)
       except:
         desc = desc+" FAILED CHANGESUM."
+        print(totl)
         chan = totl
         pass
     try:
@@ -193,6 +210,7 @@ def getYAML(logic_path):
           assert(sum==int(chec))
         except:
           desc = desc+" FAILED CHECKSUM."
+          print(sum)
           chec = sum
           pass
     except:
@@ -213,7 +231,20 @@ def getYAML(logic_path):
     data['Checksum'] = 'Unknown'
     type = (filename.split("."))[0]
     pass
-  return data, type
+  try:
+    hold = OrderedDict()
+    changeUI = raw_inject["Change UI"]
+    try:
+      for key in changeUI:
+        value = changeUI[key]
+        name = key.lower()
+        setting = "progression_" + re.sub(" ","_",name)
+        hold[setting] = value
+    except:
+      hold = OrderedDict()
+  except:
+    pass
+  return data, type, hold
 
 def get_all_custom_logic(*args):
   custom_logic_names = OrderedDict()
@@ -222,15 +253,20 @@ def get_all_custom_logic(*args):
     for file in (glob.glob("{}*{}".format(file_path,ext))):
       custom_logic_paths.append(file)
   for logic_path in custom_logic_paths:
+    typeDict = OrderedDict()
     #print(logic_path)
     if(logic_path in extempt_files):
       continue
     if(logic_path[-4:]==".dv_im"[-4:] or logic_path[-4:]==".xml"[-4:]):
-      data, type = getXML(logic_path)
-      custom_logic_names[type] = data
+      data, type, hold = getXML(logic_path)
+      typeDict["Data"] = data
+      typeDict["Change UI"] = hold
+      custom_logic_names[type] = typeDict
     elif(logic_path[-4:]==".yaml"[-4:]):
-      data, type = getYAML(logic_path)
-      custom_logic_names[type] = data
+      data, type, hold = getYAML(logic_path)
+      typeDict["Data"] = data
+      typeDict["Change UI"] = hold
+      custom_logic_names[type] = typeDict
     else:
       print("\n\n\n\nHow?\n\n\n\n")
   return custom_logic_names

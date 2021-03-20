@@ -63,7 +63,7 @@ Outset Island - Orca - Hit 500 Times:
   Need: Can Sword Fight with Orca
   Original item: Piece of Heart
   Types: Long Minigame, Long Combat Trial
-  Locale: Outset Island
+  Locale: Outset Island, dv_im
   Paths:
     - rels/d_a_npc_ji1.rel@42F7
 #Outset Island - Orca - Hit 999 Times:
@@ -151,7 +151,7 @@ Outset Island - Savage Labyrinth - Floor 30:
   # * Floor 27 (2x Green Bokoblins, 1x Darknut)
   Original item: Triforce Chart 6
   Types: Combat Secret Cave, Long Combat Trial
-  Locale: Outset Island
+  Locale: Outset Island, Savage Labyrinth
   Paths:
     - Cave09/Room20.arc/Chest000
 Outset Island - Savage Labyrinth - Floor 50:
@@ -180,7 +180,7 @@ Outset Island - Savage Labyrinth - Floor 50:
   # * Floor 47 (3x Moblins, 2x Darknuts)
   Original item: Piece of Heart
   Types: Combat Secret Cave, Long Combat Trial
-  Locale: Outset Island
+  Locale: Outset Island, Savage Labyrinth
   Paths:
     - Cave10/Room20.arc/Chest000
 
@@ -360,7 +360,7 @@ Windfall Island - Lenzo's House - Become Lenzo's Assistant:
     & Can Travel to Windfall Island
   Original item: Joy Pendant
   Types: Long Sidequest
-  Locale: Windfall Island
+  Locale: Windfall Island, Picto Box
   Paths:
     - rels/d_a_npc_photo.rel@1C13
 Windfall Island - Lenzo's House - Bring Forest Firefly:
@@ -371,7 +371,7 @@ Windfall Island - Lenzo's House - Bring Forest Firefly:
     & Can Travel to Windfall Island
   Original item: Deluxe Picto Box
   Types: Long Sidequest
-  Locale: Windfall Island
+  Locale: Windfall Island, Picto Box
   Paths:
     - rels/d_a_npc_photo.rel@1C37
     - rels/d_a_npc_photo.rel@3BE3
@@ -556,7 +556,7 @@ Windfall Island - Kane - Place Shop Guru Statue on Gate:
     & Can Travel to Child Isle
   Original item: Purple Rupee
   Types: No progression # Too obscure to randomize
-  Locale: Windfall Island
+  Locale: Windfall Island, dv_im
   Paths:
     - rels/d_a_npc_people.rel@C21B
 Windfall Island - Kane - Place Postman Statue on Gate:
@@ -569,7 +569,7 @@ Windfall Island - Kane - Place Postman Statue on Gate:
     & Can Travel to Child Isle
   Original item: Purple Rupee
   Types: No progression # Too obscure to randomize
-  Locale: Windfall Island
+  Locale: Windfall Island, dv_im
   Paths:
     - rels/d_a_npc_people.rel@C21F
 Windfall Island - Kane - Place Six Flags on Gate:
@@ -583,7 +583,7 @@ Windfall Island - Kane - Place Six Flags on Gate:
     & Can Travel to Child Isle
   Original item: Red Rupee
   Types: No progression # Too obscure to randomize
-  Locale: Windfall Island
+  Locale: Windfall Island, dv_im
   Paths:
     - rels/d_a_npc_people.rel@C223
 Windfall Island - Kane - Place Six Idols on Gate:
@@ -596,7 +596,7 @@ Windfall Island - Kane - Place Six Idols on Gate:
     & Can Travel to Child Isle
   Original item: Red Rupee
   Types: No progression # Too obscure to randomize
-  Locale: Windfall Island
+  Locale: Windfall Island, dv_im
   Paths:
     - rels/d_a_npc_people.rel@C227
 Windfall Island - Mila - Follow the Thief:
@@ -666,7 +666,7 @@ Windfall Island - Pompie and Vera - Secret Meeting Photo:
     & Can Travel to Windfall Island
   Original item: Treasure Chart 24
   Types: Short Sidequest
-  Locale: Windfall Island
+  Locale: Windfall Island, Picto Box
   Paths:
     - rels/d_a_npc_people.rel@C54F
 Windfall Island - Kamo - Full Moon Photo:
@@ -676,14 +676,14 @@ Windfall Island - Kamo - Full Moon Photo:
     & Can Travel to Windfall Island
   Original item: Treasure Chart 31
   Types: Long Sidequest
-  Locale: Windfall Island
+  Locale: Windfall Island, Picto Box
   Paths:
     - rels/d_a_npc_people.rel@C55F
 Windfall Island - Minenco - Miss Windfall Photo:
   Need: Deluxe Picto Box & Can Travel to Windfall Island
   Original item: Treasure Chart 33
   Types: Short Sidequest
-  Locale: Windfall Island
+  Locale: Windfall Island, Picto Box
   Paths:
     - rels/d_a_npc_people.rel@C553
 Windfall Island - Linda and Anton:
@@ -696,7 +696,7 @@ Windfall Island - Linda and Anton:
   # Then wait an additional two days, and Linda and Anton will be in the cafe.
   Original item: Piece of Heart
   Types: Long Sidequest
-  Locale: Windfall Island
+  Locale: Windfall Island, Picto Box
   Paths:
     - rels/d_a_npc_people.rel@C557
 
@@ -1500,7 +1500,6 @@ Tower of the Gods - Second Chest Guarded by Armos Knights:
 Tower of the Gods - Floating Platforms Room:
   Need:
     Can Access Tower of the Gods
-    & Can Play Wind's Requiem
     & (Grappling Hook | Deku Leaf)
     & Can Play Command Melody
     & (
@@ -1527,7 +1526,6 @@ Tower of the Gods - Floating Platforms Room:
 Tower of the Gods - Top of Floating Platforms Room:
   Need:
     Can Access Tower of the Gods
-    & Can Play Wind's Requiem
     & (Grappling Hook | Deku Leaf)
     & Can Play Command Melody
     & (
@@ -1554,7 +1552,6 @@ Tower of the Gods - Top of Floating Platforms Room:
 Tower of the Gods - Big Key Chest:
   Need:
     Can Access Tower of the Gods
-    & Can Play Wind's Requiem
     & (Grappling Hook | Deku Leaf)
     & (
     Can Play Command Melody
@@ -1592,7 +1589,6 @@ Tower of the Gods - Big Key Chest:
 Tower of the Gods - Gohdan Heart Container:
   Need:
     Can Access Tower of the Gods
-    & Can Play Wind's Requiem
     & (Grappling Hook | Deku Leaf)
     & (
     Can Play Command Melody
@@ -1851,7 +1847,7 @@ Earth Temple - Behind Curtain In Warp Pot Room:
     & (Boomerang | Hookshot)
   Original item: Joy Pendant
   Types: Tingle Chest, Dungeon
-  Locale: Earth Temple
+  Locale: Earth Temple, dv_im
   Paths:
     - M_Dai/Room2.arc/Actor010
 Earth Temple - Transparent Chest in First Crypt:
@@ -1984,7 +1980,7 @@ Earth Temple - Behind Curtain Next to Hammer Button:
     & (Boomerang | Hookshot | (Deku Leaf & Complex Logic))
   Original item: Joy Pendant
   Types: Tingle Chest, Dungeon
-  Locale: Earth Temple
+  Locale: Earth Temple, dv_im
   Paths:
     - M_Dai/Room13.arc/Actor01A
 Earth Temple - Chest in Third Crypt:

@@ -1,4 +1,5 @@
 <inject Creator="LagoLunatic" Type="Standard" Description="The regular TWW Logic" Change="305" File="standard" Chechsum="4">
+  <changeUI progression_misc="Hello there"/>
   <check Name="Outset Island - Underneath Link's House" Mode="o" Need="Nothing" Types="Other Chest"/>
   <check Name="Outset Island - Mesa the Grasscutter's House" Mode="o" Need="Nothing" Types="Other Chest"/>
   <check Name="Outset Island - Orca - Give 10 Knight's Crests" Mode="o" Need="Spoils Bag AND Can Farm Knight's Crests AND Can Sword Fight with Orca" Types="Spoils Trading"/>

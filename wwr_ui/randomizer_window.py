@@ -552,8 +552,14 @@ class WWRandomizerWindow(QMainWindow):
 
   def preserve_default_settings(self):
     self.default_settings = OrderedDict()
+    self.default_names = OrderedDict()
     for option_name in OPTIONS:
+      widget = getattr(self.ui, option_name)
       self.default_settings[option_name] = self.get_option_value(option_name)
+      if isinstance(widget, QCheckBox) or isinstance(widget, QRadioButton):
+        self.default_names[option_name] = self.get_option_text(option_name)
+      else:
+        self.default_names[option_name] = None
 
   def reset_settings_to_default(self):
     any_setting_changed = False
@@ -901,6 +907,16 @@ class WWRandomizerWindow(QMainWindow):
     else:
       print("Option widget is invalid: %s" % option_name)
 
+  def get_option_text(self, option_name):
+    widget = getattr(self.ui, option_name)
+    if isinstance(widget, QCheckBox) or isinstance(widget, QRadioButton):
+      return widget.text()
+    elif isinstance(widget, QComboBox) or isinstance(widget, QSpinBox) or isinstance(widget, QListView):
+      spacer = getattr(self.ui, "label_for_"+option_name)
+      return spacer.text()
+    else:
+      print("Option widget is invalid: %s" % option_name)
+
   def set_option_value(self, option_name, new_value):
     widget = getattr(self.ui, option_name)
     if isinstance(widget, QCheckBox) or isinstance(widget, QRadioButton):
@@ -967,15 +983,33 @@ class WWRandomizerWindow(QMainWindow):
           desc="Things are potentially impossible.\nNo Logic runs with as little logic as possible."
       self.ui.logic_desc.setText(desc)
       self.ui.logic_desc.setStyleSheet("color: grey;")
+      self.set_option_text(False)
     elif(logic_cat=="Custom"):
       custom_logic_names = self.logic_types
       logic_name = logic[9:]
-      desc = custom_logic_names[logic_name]["Description"]
+      desc = custom_logic_names[logic_name]["Data"]["Description"]
+      self.set_option_text(custom_logic_names[logic_name]["Change UI"])
       self.ui.logic_desc.setText(desc)
       self.ui.logic_desc.setStyleSheet("color: grey;")
     else:
       self.ui.logic_desc.setText("")
       self.ui.logic_desc.setStyleSheet("")
+      self.set_option_text(False)
+
+  def set_option_text(self,input):
+    if input:
+      for setting in input:
+        widget = getattr(self.ui, setting)
+        new_value = input[setting]
+        if isinstance(widget, QCheckBox) or isinstance(widget, QRadioButton):
+          widget.setText(new_value)
+        else:
+          print("Option widget is invalid: %s" % option_name)
+    else:
+      for opt in self.default_settings:
+        widget = getattr(self.ui, opt)
+        if isinstance(widget, QCheckBox) or isinstance(widget, QRadioButton):
+          widget.setText(self.default_names[opt])
 
   def initialize_custom_logic_type_list(self):
     custom_logic_names = xfx.get_all_custom_logic()
