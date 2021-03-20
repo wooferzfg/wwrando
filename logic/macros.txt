@@ -1049,10 +1049,12 @@ Can Sail:
 
 Can Travel to any Island:
   (
-    Can Play Ballad of Gales
+    ( 
+      Can Play Ballad of Gales 
+      | Complex Logic 
+    )
     & Can Sail
-  ) | Complex Logic
-
+  )
 Can Travel to Mother Isle:
   Can Play Ballad of Gales
 
