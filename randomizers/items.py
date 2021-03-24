@@ -39,10 +39,10 @@ def randomize_items(self):
 
   print("Randomizing items...")
 
-  if(self.options.get("race_mode")!="Default"):
+  if self.options.get("race_mode")!="Default":
     randomize_boss_rewards(self)
 
-  if not self.options.get("keylunacy"):
+  if self.options.get("keymode") != "Standard":
     randomize_dungeon_items(self)
 
   randomize_progression_items(self)
@@ -327,7 +327,7 @@ def randomize_dungeon_items(self):
   small_keys_to_place = [
     item_name for item_name in (self.logic.unplaced_progress_items + self.logic.unplaced_nonprogress_items)
     if item_name.endswith(" Small Key")
-  ] #  + self.logic.unplaced_nonprogress_items
+  ]
   try:
     assert len(small_keys_to_place) > 0
   except:
@@ -340,7 +340,7 @@ def randomize_dungeon_items(self):
   big_keys_to_place = [
     item_name for item_name in (self.logic.unplaced_progress_items + self.logic.unplaced_nonprogress_items)
     if item_name.endswith(" Big Key")
-  ] # + self.logic.unplaced_nonprogress_items
+  ]
   try:
     assert len(big_keys_to_place) > 0
   except:
@@ -348,18 +348,6 @@ def randomize_dungeon_items(self):
   for item_name in big_keys_to_place:
     place_dungeon_item(self, item_name)
     self.logic.add_owned_item(item_name) # Temporarily add big keys to the player's inventory while placing them.
-
-  '''np_keys_to_place = [
-    item_name for item_name in (self.logic.unplaced_nonprogress_items)
-    if( item_name.endswith(" Small Key") or item_name.endswith(" Big Key"))
-  ]
-  try:
-    assert len(np_keys_to_place) > 0
-  except:
-    print("Non-progressive key minor error. If this happens more than once, panic.")
-  for item_name in np_keys_to_place:
-    place_dungeon_item(self, item_name)
-    self.logic.add_owned_item(item_name) # Temporarily add small keys to the player's inventory while placing them.'''
 
   # Randomize dungeon maps and compasses.
   if(self.options.get("compass_map_pool_with_keys")):
@@ -371,17 +359,6 @@ def randomize_dungeon_items(self):
       if (len(other_dungeon_items_to_place) > 0):
         for item_name in other_dungeon_items_to_place:
           place_dungeon_item(self, item_name)
-  else:
-    pass
-    '''
-    other_dungeon_items_to_place = [
-      item_name for item_name in (self.logic.unplaced_progress_items + self.logic.unplaced_nonprogress_items)
-      if item_name.endswith(" Compass")
-      or item_name.endswith(" Dungeon Map")
-    ]
-    if (len(other_dungeon_items_to_place) > 0):
-      pass
-    '''
 
   # Remove the items we temporarily added.
   for item_name in items_to_temporarily_add:

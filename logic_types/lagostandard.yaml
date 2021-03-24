@@ -448,11 +448,10 @@ Dragon Roost Island - Chest on Top of Boulder:
 
 Dragon Roost Island - Fly Across Platforms Around Island:
   Need:
-    (
-      Can Fly With Deku Leaf Outdoors
-      & ( Can Play Wind's Requiem | Magic Meter Upgrade)
-      & Can Refill Magic
-      & Can Travel to Dragon Roost Island
+    Can Fly With Deku Leaf Outdoors
+    & ( Can Play Wind's Requiem | Magic Meter Upgrade )
+    & Can Refill Magic
+    & Can Travel to Dragon Roost Island
   Mode: o
   Types: Island Puzzle
 

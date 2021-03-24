@@ -95,8 +95,8 @@ OPTIONS = OrderedDict([
 
 
   (
-    "keylunacy",
-    "Allows dungeon keys to appear anywhere in the game, not just in the dungeon they're for."
+    "keymode",
+    "Sets where dungeon keys can appear in the game."
   ),
   (
     "randomize_entrances",

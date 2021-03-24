@@ -614,11 +614,16 @@ class Logic:
 
   def check_item_valid_in_location(self, item_name, location_name):
     # Don't allow dungeon items to appear outside their proper dungeon when Key-Lunacy is off.
-    if self.is_dungeon_item(item_name) and not self.rando.options.get("keylunacy"):
-      short_dungeon_name = item_name.split(" ")[0]
-      dungeon_name = self.DUNGEON_NAMES[short_dungeon_name]
-      if not self.is_dungeon_location(location_name, dungeon_name_to_match=dungeon_name):
-        return False
+    if self.is_dungeon_item(item_name):
+      if self.rando.options.get("keymode") == "Standard":
+        short_dungeon_name = item_name.split(" ")[0]
+        dungeon_name = self.DUNGEON_NAMES[short_dungeon_name]
+        if not self.is_dungeon_location(location_name, dungeon_name_to_match=dungeon_name):
+          return False
+      elif self.rando.options.get("keymode") == "Cross Dungeon":
+        zone_name, specific_location_name = self.split_location_name_by_zone(location_name)
+        if not self.is_dungeon_location(location_name, dungeon_name_to_match=zone_name):
+          return False
 
     # Beedle's shop does not work properly if the same item is in multiple slots of the same shop.
     # Ban the Bait Bag slot from having bait.
@@ -750,11 +755,15 @@ class Logic:
       logic_name = logic[9:]
       data = custom_logic_names[logic_name]["Data"]
       file_name = data["File"]
-      modify_locations = xfx.parseXML(file_name)
+      file_extension = (file_name.split(".")[-1]).upper()
+      modify_locations = xfx.parseFile(file_name)
       for modification_name in modify_locations:
-        modify_locations[modification_name]['Need'] = Logic.parse_logic_expression(modify_locations[modification_name]['Need'])
-        modify_data = modify_logic_data(argument=item_locations[modification_name],definition=modify_locations[modification_name],run="XML")
+        req_string = modify_locations[modification_name]['Need']
+        modify_locations[modification_name]['Need'] = Logic.parse_logic_expression(req_string)
+        print(item_locations[modification_name],"\n")
+        modify_data = modify_logic_data(argument=(item_locations[modification_name]).copy(),definition=modify_locations[modification_name],run=file_extension)
         item_locations[modification_name] = modify_data
+        print(item_locations[modification_name],"\n\n\n\n\n")
 
     return item_locations
 
@@ -997,7 +1006,7 @@ class Logic:
       raise Exception("Unknown requirement name: " + req_name)
 
   def check_logical_expression_req(self, logical_expression):
-    #print(str(logical_expression))
+    print(logical_expression)
     expression_type = None
     subexpression_results = []
     tokens = list(logical_expression).copy()

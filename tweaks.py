@@ -1050,7 +1050,7 @@ def randomize_and_update_hints(self):
     item_name = self.logic.done_item_locations[location_name]
     if item_name not in self.logic.all_progress_items:
       continue
-    if self.logic.is_dungeon_item(item_name) and not self.options.get("keylunacy"):
+    if self.logic.is_dungeon_item(item_name) and self.options.get("keymode") != "Key-Lunacy":
       continue
 
     item_name = get_hint_item_name(item_name)
@@ -1063,9 +1063,10 @@ def randomize_and_update_hints(self):
     zone_name, specific_location_name = self.logic.split_location_name_by_zone(location_name)
     is_dungeon = "Dungeon" in self.logic.item_locations[location_name]["Types"]
     is_puzzle_cave = "Puzzle Secret Cave" in self.logic.item_locations[location_name]["Types"]
+    is_mixed_cave = "Mixed Secret Cave" in self.logic.item_locations[location_name]["Types"]
     is_combat_cave = "Combat Secret Cave" in self.logic.item_locations[location_name]["Types"]
     is_savage = "Savage Labyrinth" in self.logic.item_locations[location_name]["Types"]
-    if zone_name in self.dungeon_and_cave_island_locations and (is_dungeon or is_puzzle_cave or is_combat_cave or is_savage):
+    if zone_name in self.dungeon_and_cave_island_locations and (is_dungeon or is_puzzle_cave or is_combat_cave or is_mixed_cave or is_savage):
       # If the location is in a dungeon or cave, use the hint for whatever island the dungeon/cave is located on.
       island_name = self.dungeon_and_cave_island_locations[zone_name]
       island_hint_name = self.island_name_hints[island_name]
@@ -1864,11 +1865,12 @@ def show_seed_hash_on_name_entry_screen(self):
   name_1, name_2 = temp_rng.sample(valid_names, 2)
   name_1 = upper_first_letter(name_1)
   name_2 = upper_first_letter(name_2)
+  self.seed_hash = name_1 + " " + name_2
 
   # Since actually adding new text to the UI would be very difficult, instead hijack the "Name Entry" text, and put the seed hash after several linebreaks.
   # (The three linebreaks we insert before "Name Entry" are so it's still in the correct spot after vertical centering happens.)
   msg = self.bmg.messages_by_id[40]
-  msg.string = "\n\n\n" + msg.string + "\n\n" + "Seed hash:" + "\n" + name_1 + " " + name_2
+  msg.string = "\n\n\n" + msg.string + "\n\n" + "Seed hash:" + "\n" + self.seed_hash
 
 def fix_ghost_ship_chest_crash(self):
   # There's a vanilla crash that happens if you jump attack on top of the chest in the Ghost Ship.

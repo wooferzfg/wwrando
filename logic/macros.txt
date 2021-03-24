@@ -12,8 +12,8 @@ Can Play Earth God's Lyric:
 Can Play Wind God's Aria:
   Wind Waker & Wind God's Aria
 Can Play Song of Passing:
-  ( 
-    Wind Waker 
+  (
+    Wind Waker
     & Song of Passing
   ) |
   Complex Logic
@@ -963,6 +963,12 @@ No Logic:
 Complex Logic:
   Option "logic_mod" Is "Glitched – No Logic"
   | Option "logic_mod" Is "Glitched – Lunatic"
+Merciful Complex Logic:
+  Complex Logic
+  & Convenient On
+Merciless Complex Logic:
+  Complex Logic
+  & Convenient Off
 Glitched Logic:
   Option "logic_mod" Is "Glitched – No Logic"
   | Option "logic_mod" Is "Glitched – Lunatic"
@@ -974,7 +980,8 @@ Tricked Logic:
   | Option "logic_mod" Is "Glitched – Trivial"
 
 Convenient On:
-  (Option "convenience_option" Is "Convenient" | Option "convenience_option" Is "Plentiful and Convenient")
+  Option "convenience_option" Is "Convenient"
+  | Option "convenience_option" Is "Plentiful and Convenient"
 
 Convenient Off:
   Option "convenience_option" Is "Default"
@@ -1053,9 +1060,9 @@ Can Sail:
 
 Can Travel to any Island:
   (
-    ( 
-      Can Play Ballad of Gales 
-      | Complex Logic 
+    (
+      Can Play Ballad of Gales
+      | Complex Logic
     )
     & Can Sail
   )

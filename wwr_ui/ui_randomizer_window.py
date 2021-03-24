@@ -118,12 +118,12 @@ class Ui_MainWindow(object):
 
         self.grid_for_logic.addItem(self.right_spacer, 0, 5, 1, 1)
 
-        self.label_for_logic = QLabel(self.tab_for_settings)
-        self.label_for_logic.setObjectName(u"label_for_logic")
-        self.label_for_logic.setEnabled(True)
-        self.label_for_logic.setMaximumSize(QSize(489, 16777215))
+        self.label_for_logic_mod = QLabel(self.tab_for_settings)
+        self.label_for_logic_mod.setObjectName(u"label_for_logic_mod")
+        self.label_for_logic_mod.setEnabled(True)
+        self.label_for_logic_mod.setMaximumSize(QSize(489, 16777215))
 
-        self.grid_for_logic.addWidget(self.label_for_logic, 0, 2, 1, 1)
+        self.grid_for_logic.addWidget(self.label_for_logic_mod, 0, 2, 1, 1)
 
         self.left_spacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
@@ -267,6 +267,31 @@ class Ui_MainWindow(object):
         self.group_for_settings_secondary.setObjectName(u"group_for_settings_secondary")
         self.grid_for_settings_secondary = QGridLayout(self.group_for_settings_secondary)
         self.grid_for_settings_secondary.setObjectName(u"grid_for_settings_secondary")
+        self.layout_for_keymode = QHBoxLayout()
+        self.layout_for_keymode.setObjectName(u"layout_for_keymode")
+        self.label_for_keymode = QLabel(self.group_for_settings_secondary)
+        self.label_for_keymode.setObjectName(u"label_for_keymode")
+
+        self.layout_for_keymode.addWidget(self.label_for_keymode)
+
+        self.spacer_for_keymode = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.layout_for_keymode.addItem(self.spacer_for_keymode)
+
+        self.keymode = QComboBox(self.group_for_settings_secondary)
+        self.keymode.addItem("")
+        self.keymode.addItem("")
+        self.keymode.addItem("")
+        self.keymode.setObjectName(u"keymode")
+
+        self.layout_for_keymode.addWidget(self.keymode)
+
+        self.layout_for_keymode.setStretch(0, 2)
+        self.layout_for_keymode.setStretch(1, 1)
+        self.layout_for_keymode.setStretch(2, 2)
+
+        self.grid_for_settings_secondary.addLayout(self.layout_for_keymode, 1, 0, 1, 1)
+
         self.layout_for_race_mode = QHBoxLayout()
         self.layout_for_race_mode.setObjectName(u"layout_for_race_mode")
         self.label_for_race_mode = QLabel(self.group_for_settings_secondary)
@@ -326,6 +351,21 @@ class Ui_MainWindow(object):
 
         self.grid_for_settings_secondary.addLayout(self.layout_for_num_dungeon_race_mode, 2, 4, 1, 1)
 
+        self.add_shortcut_warps_between_dungeons = QCheckBox(self.group_for_settings_secondary)
+        self.add_shortcut_warps_between_dungeons.setObjectName(u"add_shortcut_warps_between_dungeons")
+        self.add_shortcut_warps_between_dungeons.setChecked(True)
+
+        self.grid_for_settings_secondary.addWidget(self.add_shortcut_warps_between_dungeons, 1, 2, 1, 1)
+
+        self.horizontalSpacer_17 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.grid_for_settings_secondary.addItem(self.horizontalSpacer_17, 1, 3, 1, 1)
+
+        self.compass_map_pool_with_keys = QCheckBox(self.group_for_settings_secondary)
+        self.compass_map_pool_with_keys.setObjectName(u"compass_map_pool_with_keys")
+
+        self.grid_for_settings_secondary.addWidget(self.compass_map_pool_with_keys, 2, 0, 1, 1)
+
         self.layout_for_starting_triforce_shards = QHBoxLayout()
         self.layout_for_starting_triforce_shards.setObjectName(u"layout_for_starting_triforce_shards")
         self.label_for_num_starting_triforce_shards = QLabel(self.group_for_settings_secondary)
@@ -364,32 +404,9 @@ class Ui_MainWindow(object):
 
         self.grid_for_settings_secondary.addLayout(self.layout_for_starting_triforce_shards, 1, 4, 1, 1)
 
-        self.layout_for_sword = QHBoxLayout()
-        self.layout_for_sword.setObjectName(u"layout_for_sword")
-        self.label_for_sword_mode = QLabel(self.group_for_settings_secondary)
-        self.label_for_sword_mode.setObjectName(u"label_for_sword_mode")
+        self.horizontalSpacer_16 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.layout_for_sword.addWidget(self.label_for_sword_mode)
-
-        self.spacer_for_sword_mode = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.layout_for_sword.addItem(self.spacer_for_sword_mode)
-
-        self.sword_mode = QComboBox(self.group_for_settings_secondary)
-        self.sword_mode.addItem("")
-        self.sword_mode.addItem("")
-        self.sword_mode.addItem("")
-        self.sword_mode.setObjectName(u"sword_mode")
-
-        self.layout_for_sword.addWidget(self.sword_mode)
-
-
-        self.grid_for_settings_secondary.addLayout(self.layout_for_sword, 0, 0, 1, 1)
-
-        self.compass_map_pool_with_keys = QCheckBox(self.group_for_settings_secondary)
-        self.compass_map_pool_with_keys.setObjectName(u"compass_map_pool_with_keys")
-
-        self.grid_for_settings_secondary.addWidget(self.compass_map_pool_with_keys, 2, 0, 1, 1)
+        self.grid_for_settings_secondary.addItem(self.horizontalSpacer_16, 1, 1, 1, 1)
 
         self.layout_for_randomize_entrances = QHBoxLayout()
         self.layout_for_randomize_entrances.setObjectName(u"layout_for_randomize_entrances")
@@ -412,32 +429,35 @@ class Ui_MainWindow(object):
 
         self.layout_for_randomize_entrances.addWidget(self.randomize_entrances)
 
-        self.widget_2 = QWidget(self.group_for_settings_secondary)
-        self.widget_2.setObjectName(u"widget_2")
-
-        self.layout_for_randomize_entrances.addWidget(self.widget_2)
-
+        self.layout_for_randomize_entrances.setStretch(0, 2)
+        self.layout_for_randomize_entrances.setStretch(1, 1)
+        self.layout_for_randomize_entrances.setStretch(2, 2)
 
         self.grid_for_settings_secondary.addLayout(self.layout_for_randomize_entrances, 0, 2, 1, 3)
 
-        self.horizontalSpacer_16 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.layout_for_sword = QHBoxLayout()
+        self.layout_for_sword.setObjectName(u"layout_for_sword")
+        self.label_for_sword_mode = QLabel(self.group_for_settings_secondary)
+        self.label_for_sword_mode.setObjectName(u"label_for_sword_mode")
 
-        self.grid_for_settings_secondary.addItem(self.horizontalSpacer_16, 1, 1, 1, 1)
+        self.layout_for_sword.addWidget(self.label_for_sword_mode)
 
-        self.keylunacy = QCheckBox(self.group_for_settings_secondary)
-        self.keylunacy.setObjectName(u"keylunacy")
+        self.spacer_for_sword_mode = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.grid_for_settings_secondary.addWidget(self.keylunacy, 1, 0, 1, 1)
+        self.layout_for_sword.addItem(self.spacer_for_sword_mode)
 
-        self.horizontalSpacer_17 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.sword_mode = QComboBox(self.group_for_settings_secondary)
+        self.sword_mode.addItem("")
+        self.sword_mode.addItem("")
+        self.sword_mode.addItem("")
+        self.sword_mode.setObjectName(u"sword_mode")
 
-        self.grid_for_settings_secondary.addItem(self.horizontalSpacer_17, 1, 3, 1, 1)
+        self.layout_for_sword.addWidget(self.sword_mode)
 
-        self.add_shortcut_warps_between_dungeons = QCheckBox(self.group_for_settings_secondary)
-        self.add_shortcut_warps_between_dungeons.setObjectName(u"add_shortcut_warps_between_dungeons")
-        self.add_shortcut_warps_between_dungeons.setChecked(True)
+        self.layout_for_sword.setStretch(0, 1)
+        self.layout_for_sword.setStretch(2, 1)
 
-        self.grid_for_settings_secondary.addWidget(self.add_shortcut_warps_between_dungeons, 1, 2, 1, 1)
+        self.grid_for_settings_secondary.addLayout(self.layout_for_sword, 0, 0, 1, 1)
 
 
         self.layout_for_paths.addWidget(self.group_for_settings_secondary)
@@ -703,10 +723,10 @@ class Ui_MainWindow(object):
 
         self.layout_for_starting_health = QHBoxLayout()
         self.layout_for_starting_health.setObjectName(u"layout_for_starting_health")
-        self.label_for_base_health = QLabel(self.tab_for_starting_items)
-        self.label_for_base_health.setObjectName(u"label_for_base_health")
+        self.label_for_starting_bh = QLabel(self.tab_for_starting_items)
+        self.label_for_starting_bh.setObjectName(u"label_for_starting_bh")
 
-        self.layout_for_starting_health.addWidget(self.label_for_base_health)
+        self.layout_for_starting_health.addWidget(self.label_for_starting_bh)
 
         self.starting_bh = QSpinBox(self.tab_for_starting_items)
         self.starting_bh.setObjectName(u"starting_bh")
@@ -716,10 +736,10 @@ class Ui_MainWindow(object):
 
         self.layout_for_starting_health.addWidget(self.starting_bh)
 
-        self.label_for_heart_container = QLabel(self.tab_for_starting_items)
-        self.label_for_heart_container.setObjectName(u"label_for_heart_container")
+        self.label_for_starting_hcs = QLabel(self.tab_for_starting_items)
+        self.label_for_starting_hcs.setObjectName(u"label_for_starting_hcs")
 
-        self.layout_for_starting_health.addWidget(self.label_for_heart_container)
+        self.layout_for_starting_health.addWidget(self.label_for_starting_hcs)
 
         self.starting_hcs = QSpinBox(self.tab_for_starting_items)
         self.starting_hcs.setObjectName(u"starting_hcs")
@@ -732,12 +752,12 @@ class Ui_MainWindow(object):
 
         self.layout_for_starting_health.addWidget(self.starting_hcs)
 
-        self.label_for_heart_piece = QLabel(self.tab_for_starting_items)
-        self.label_for_heart_piece.setObjectName(u"label_for_heart_piece")
-        sizePolicy.setHeightForWidth(self.label_for_heart_piece.sizePolicy().hasHeightForWidth())
-        self.label_for_heart_piece.setSizePolicy(sizePolicy)
+        self.label_for_starting_pohs = QLabel(self.tab_for_starting_items)
+        self.label_for_starting_pohs.setObjectName(u"label_for_starting_pohs")
+        sizePolicy.setHeightForWidth(self.label_for_starting_pohs.sizePolicy().hasHeightForWidth())
+        self.label_for_starting_pohs.setSizePolicy(sizePolicy)
 
-        self.layout_for_starting_health.addWidget(self.label_for_heart_piece)
+        self.layout_for_starting_health.addWidget(self.label_for_starting_pohs)
 
         self.starting_pohs = QSpinBox(self.tab_for_starting_items)
         self.starting_pohs.setObjectName(u"starting_pohs")
@@ -1376,7 +1396,7 @@ class Ui_MainWindow(object):
         self.logic_mod.setItemText(5, QCoreApplication.translate("MainWindow", u"Glitched \u2013 No Logic", None))
 
         self.logic_mod.setCurrentText(QCoreApplication.translate("MainWindow", u"Glitchless \u2013 Standard", None))
-        self.label_for_logic.setText(QCoreApplication.translate("MainWindow", u"Logic Type", None))
+        self.label_for_logic_mod.setText(QCoreApplication.translate("MainWindow", u"Logic Type", None))
         self.logic_desc.setText("")
         self.group_for_locations.setTitle(QCoreApplication.translate("MainWindow", u"Where Should Progress Items Appear?", None))
         self.progression_dungeons.setText(QCoreApplication.translate("MainWindow", u"Dungeons", None))
@@ -1402,6 +1422,11 @@ class Ui_MainWindow(object):
         self.progression_great_fairies.setText(QCoreApplication.translate("MainWindow", u"Great Fairies", None))
         self.progression_long_minigames.setText(QCoreApplication.translate("MainWindow", u"Long Minigames", None))
         self.group_for_settings_secondary.setTitle(QCoreApplication.translate("MainWindow", u"Dungeon Randomization Options", None))
+        self.label_for_keymode.setText(QCoreApplication.translate("MainWindow", u"Key Placement", None))
+        self.keymode.setItemText(0, QCoreApplication.translate("MainWindow", u"Standard", None))
+        self.keymode.setItemText(1, QCoreApplication.translate("MainWindow", u"Cross Dungeon", None))
+        self.keymode.setItemText(2, QCoreApplication.translate("MainWindow", u"Key-Lunacy", None))
+
         self.label_for_race_mode.setText(QCoreApplication.translate("MainWindow", u"Dungeon Mode", None))
         self.race_mode.setItemText(0, QCoreApplication.translate("MainWindow", u"Default", None))
         self.race_mode.setItemText(1, QCoreApplication.translate("MainWindow", u"Mixed", None))
@@ -1417,6 +1442,8 @@ class Ui_MainWindow(object):
         self.num_dungeon_race_mode.setItemText(6, QCoreApplication.translate("MainWindow", u"Random", None))
 
         self.num_dungeon_race_mode.setCurrentText(QCoreApplication.translate("MainWindow", u"1", None))
+        self.add_shortcut_warps_between_dungeons.setText(QCoreApplication.translate("MainWindow", u"Add Shortcuts Between Dungeons", None))
+        self.compass_map_pool_with_keys.setText(QCoreApplication.translate("MainWindow", u"Pool Dungeon Items with Keys", None))
         self.label_for_num_starting_triforce_shards.setText(QCoreApplication.translate("MainWindow", u"Starting Triforce Shards", None))
         self.num_starting_triforce_shards.setItemText(0, QCoreApplication.translate("MainWindow", u"0", None))
         self.num_starting_triforce_shards.setItemText(1, QCoreApplication.translate("MainWindow", u"1", None))
@@ -1431,12 +1458,6 @@ class Ui_MainWindow(object):
         self.num_starting_triforce_shards.setItemText(10, QCoreApplication.translate("MainWindow", u"Mirror Dungeon Number", None))
 
         self.num_starting_triforce_shards.setCurrentText(QCoreApplication.translate("MainWindow", u"0", None))
-        self.label_for_sword_mode.setText(QCoreApplication.translate("MainWindow", u"Sword Mode", None))
-        self.sword_mode.setItemText(0, QCoreApplication.translate("MainWindow", u"Start with Hero's Sword", None))
-        self.sword_mode.setItemText(1, QCoreApplication.translate("MainWindow", u"No Starting Sword", None))
-        self.sword_mode.setItemText(2, QCoreApplication.translate("MainWindow", u"Swordless", None))
-
-        self.compass_map_pool_with_keys.setText(QCoreApplication.translate("MainWindow", u"Pool Dungeon Items with Keys", None))
         self.label_for_randomize_entrances.setText(QCoreApplication.translate("MainWindow", u"Randomize Entrances", None))
         self.randomize_entrances.setItemText(0, QCoreApplication.translate("MainWindow", u"Disabled", None))
         self.randomize_entrances.setItemText(1, QCoreApplication.translate("MainWindow", u"Dungeons", None))
@@ -1444,8 +1465,11 @@ class Ui_MainWindow(object):
         self.randomize_entrances.setItemText(3, QCoreApplication.translate("MainWindow", u"Dungeons & Secret Caves (Separately)", None))
         self.randomize_entrances.setItemText(4, QCoreApplication.translate("MainWindow", u"Dungeons & Secret Caves (Together)", None))
 
-        self.keylunacy.setText(QCoreApplication.translate("MainWindow", u"Key-Lunacy", None))
-        self.add_shortcut_warps_between_dungeons.setText(QCoreApplication.translate("MainWindow", u"Add Shortcuts Between Dungeons", None))
+        self.label_for_sword_mode.setText(QCoreApplication.translate("MainWindow", u"Sword Mode", None))
+        self.sword_mode.setItemText(0, QCoreApplication.translate("MainWindow", u"Start with Hero's Sword", None))
+        self.sword_mode.setItemText(1, QCoreApplication.translate("MainWindow", u"No Starting Sword", None))
+        self.sword_mode.setItemText(2, QCoreApplication.translate("MainWindow", u"Swordless", None))
+
         self.group_for_convenience.setTitle(QCoreApplication.translate("MainWindow", u"Additional Options", None))
         self.randomize_starting_island.setText(QCoreApplication.translate("MainWindow", u"Randomize Starting Island", None))
         self.swift_sail.setText(QCoreApplication.translate("MainWindow", u"Use Swift Sail", None))
@@ -1478,9 +1502,9 @@ class Ui_MainWindow(object):
         self.remove_gear.setText(QCoreApplication.translate("MainWindow", u"<-", None))
         self.add_gear.setText(QCoreApplication.translate("MainWindow", u"->", None))
         self.label_for_starting_gear.setText(QCoreApplication.translate("MainWindow", u"Starting Gear", None))
-        self.label_for_base_health.setText(QCoreApplication.translate("MainWindow", u"Base Health", None))
-        self.label_for_heart_container.setText(QCoreApplication.translate("MainWindow", u"Heart Containers", None))
-        self.label_for_heart_piece.setText(QCoreApplication.translate("MainWindow", u"Heart Pieces", None))
+        self.label_for_starting_bh.setText(QCoreApplication.translate("MainWindow", u"Base Health", None))
+        self.label_for_starting_hcs.setText(QCoreApplication.translate("MainWindow", u"Heart Containers", None))
+        self.label_for_starting_pohs.setText(QCoreApplication.translate("MainWindow", u"Heart Pieces", None))
         self.current_health.setText(QCoreApplication.translate("MainWindow", u"Current Starting Health: 3 hearts", None))
         self.no_heart_in_pool.setText(QCoreApplication.translate("MainWindow", u"No Additional Health in Pool", None))
         self.tab_for_main.setTabText(self.tab_for_main.indexOf(self.tab_for_starting_items), QCoreApplication.translate("MainWindow", u"Starting Items", None))

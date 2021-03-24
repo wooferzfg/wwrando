@@ -70,20 +70,22 @@ def parseXML(file):
   return locations
 
 def parseYAML(file):
-  with open(logic_path) as f:
+  with open(os.path.join(TYPE_PATH, file)) as f:
     reads = yaml.load(f, YamlOrderedDictLoader)
   try:
     del reads["Injection"]
     del reads["Change UI"]
   except:
     pass
+  for key in list(reads.keys()):
+    reads[key]["Types"] = (reads[key]["Types"]).split(", ")
   return reads
 
 def parseFile(file):
-  if(logic_path[-4:]==".dv_im"[-4:] or logic_path[-4:]==".xml"[-4:]):
-    parseXML(file)
-  elif(logic_path[-4:]==".yaml"[-4:]):
-    parseYAML(file)
+  if(file[-4:]==".yaml"[-4:]):
+    return parseYAML(file)
+  elif(file[-4:]==".dv_im"[-4:] or file[-3:]==".xml"[-3:]):
+    return parseXML(file)
   else:
     print("\n\n\n\nHow?\n\n\n\n")
 

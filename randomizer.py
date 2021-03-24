@@ -80,6 +80,7 @@ class Randomizer:
     self.seed = seed
     self.permalink = permalink
     self.logic_mod = self.options.get("logic_mod")
+    self.seed_hash = None
 
     self.dry_run = ("-dry" in cmd_line_args)
     self.disassemble = ("-disassemble" in cmd_line_args)
@@ -944,7 +945,7 @@ class Randomizer:
           raise Exception("Failed to calculate progression spheres: {}".format(progression_spheres))
 
 
-      if not self.options.get("keylunacy"):
+      if self.options.get("keymode") == "Standard":
         # If the player gained access to any small keys, we need to give them the keys without counting that as a new sphere.
         newly_accessible_predetermined_item_locations = [
           loc for loc in locations_in_this_sphere
@@ -1008,6 +1009,9 @@ class Randomizer:
 
     if self.permalink:
       header += "Permalink: %s\n" % self.permalink
+
+    if self.seed_hash:
+      header += "Seed Hash: %s\n" % self.seed_hash
 
     header += "Seed: %s\n" % self.seed
 

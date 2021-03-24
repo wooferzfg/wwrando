@@ -272,8 +272,10 @@ class WWRandomizerWindow(QMainWindow):
         mode = self.get_option_value("race_mode")
         if mode != "Default":
           mode="{} {}".format(self.get_option_value("num_dungeon_race_mode"),mode)
-        if self.get_option_value("keylunacy"):
-          settings+=mode+" Keylunacy Dungeons"
+        if self.get_option_value("keymode") == "Key-Lunacy":
+          settings+=mode+" Key-Lunacy Dungeons"
+        elif self.get_option_value("keymode") == "Cross Dungeon":
+          settings+=mode+" Cross-key Dungeons"
         else:
           settings+=mode+" Dungeons"
         if self.get_option_value("progression_tingle_chests"):
@@ -806,6 +808,7 @@ class WWRandomizerWindow(QMainWindow):
         # Reset model with only the regular items
         self.randomized_gear_model.setStringList(STNDRD_ITEMS.copy())
         self.starting_gear_model.setStringList([])
+        self.filtered_rgear.setFilterStrings([])
         for i in range(len(STNDRD_ITEMS)):
           starting = bitsreader.read(1)
           if starting == 1:
