@@ -852,17 +852,53 @@
                <string>Additional Options</string>
               </property>
               <layout class="QGridLayout" name="grid_for_convenience">
-               <item row="2" column="0">
-                <widget class="QCheckBox" name="randomize_starting_island">
-                 <property name="text">
-                  <string>Randomize Starting Island</string>
-                 </property>
-                </widget>
+               <item row="2" column="4">
+                <layout class="QHBoxLayout" name="layout_for_can_chain_charts" stretch="2,1,2">
+                 <item>
+                  <widget class="QLabel" name="label_for_can_chain_charts">
+                   <property name="text">
+                    <string>Allow Charts in Sunken Treasure</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="spacer_for_can_chain_charts">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <widget class="QComboBox" name="can_chain_charts">
+                   <item>
+                    <property name="text">
+                     <string>Never</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Sometimes</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Always</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                </layout>
                </item>
-               <item row="1" column="0">
-                <widget class="QCheckBox" name="swift_sail">
+               <item row="2" column="0">
+                <widget class="QCheckBox" name="reveal_full_sea_chart">
                  <property name="text">
-                  <string>Use Swift Sail</string>
+                  <string>Reveal Full Sea Chart</string>
                  </property>
                  <property name="checked">
                   <bool>true</bool>
@@ -876,7 +912,24 @@
                  </property>
                 </widget>
                </item>
-               <item row="1" column="4">
+               <item row="1" column="0">
+                <widget class="QCheckBox" name="randomize_starting_island">
+                 <property name="text">
+                  <string>Randomize Starting Island</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <widget class="QCheckBox" name="swift_sail">
+                 <property name="text">
+                  <string>Use Swift Sail</string>
+                 </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="2">
                 <widget class="QCheckBox" name="instant_text_boxes">
                  <property name="text">
                   <string>Instant Text Boxes</string>
@@ -886,7 +939,7 @@
                  </property>
                 </widget>
                </item>
-               <item row="1" column="6">
+               <item row="0" column="4">
                 <widget class="QCheckBox" name="skip_rematch_bosses">
                  <property name="text">
                   <string>Skip Boss Rematches</string>
@@ -897,16 +950,6 @@
                 </widget>
                </item>
                <item row="1" column="2">
-                <widget class="QCheckBox" name="reveal_full_sea_chart">
-                 <property name="text">
-                  <string>Reveal Full Sea Chart</string>
-                 </property>
-                 <property name="checked">
-                  <bool>true</bool>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="4">
                 <widget class="QCheckBox" name="remove_title_and_ending_videos">
                  <property name="text">
                   <string>Remove Title and Ending Videos</string>
@@ -916,20 +959,7 @@
                  </property>
                 </widget>
                </item>
-               <item row="1" column="3">
-                <spacer name="horizontalSpacer_14">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item row="1" column="5">
+               <item row="0" column="3">
                 <spacer name="horizontalSpacer_15">
                  <property name="orientation">
                   <enum>Qt::Horizontal</enum>
@@ -942,7 +972,7 @@
                  </property>
                 </spacer>
                </item>
-               <item row="1" column="1">
+               <item row="0" column="1">
                 <spacer name="horizontalSpacer_13">
                  <property name="orientation">
                   <enum>Qt::Horizontal</enum>
@@ -955,8 +985,8 @@
                  </property>
                 </spacer>
                </item>
-               <item row="2" column="6">
-                <layout class="QHBoxLayout" name="layout_for_convenience_option">
+               <item row="1" column="4">
+                <layout class="QHBoxLayout" name="layout_for_convenience_option" stretch="2,1,2">
                  <item>
                   <widget class="QLabel" name="convenience_option_label">
                    <property name="text">

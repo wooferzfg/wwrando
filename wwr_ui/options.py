@@ -444,6 +444,8 @@ OPTIONS = OrderedDict([
     "chart_spoiler_log",
     "Generates a list of chart locations as part of the spoiler log.<br/><u>Highly recommended even if use is not intended</u>, in case of self-locking."
   ),
+
+
   (
     "logic_mod",
     "Changes logic to reflect skill level by introducing tricks.\nFor further details, look in './logic_types/About Logic Types.txt'."
@@ -452,6 +454,8 @@ OPTIONS = OrderedDict([
     "convenience_option",
     "Adds extra items to the pool.\nConvenience includes Quiver, Hurricane Spin, etc. Plentiful adds an extra of each progressive item."
   ),
+
+
   (
     "randomize_music",
     "Shuffles around all the music in the game. This affects background music, combat music, fanfares, etc.<br>At this time, this may cause issues that could serverely impact player enjoyment.",
@@ -467,6 +471,10 @@ OPTIONS = OrderedDict([
   (
     "remove_title_and_ending_videos",
     "Removes the two prerendered videos that play if you wait on the title screen and after you beat the game. (Decreases randomized ISO's filesize by about 600MB.)\nIf you keep these videos in, they won't reflect your custom player model or colors.",
+  ),
+  (
+    "can_chain_charts",
+    "Allow Treasure Charts to appear in Sunken Treasure.\nThis may produce chains of Treasure Charts."
   ),
 
 

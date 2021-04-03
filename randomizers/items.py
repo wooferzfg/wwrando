@@ -446,11 +446,21 @@ def randomize_progression_items(self):
 
       continue # Redo this loop iteration with the predetermined item locations no longer being considered 'remaining'.
 
+    new_locations = []
     for location in accessible_undone_locations:
       if location not in location_weights:
-        location_weights[location] = current_weight
+        new_locations.append(location)
       elif location_weights[location] > 1:
         location_weights[location] -= 1
+    if len(new_locations) > 1:
+      for location in new_locations:
+        location_weights[location] = current_weight
+    else:
+      for location in new_locations:
+        if current_weight > 1:
+          location_weights[location] = current_weight - 1
+        else:
+          location_weights[location] = current_weight
     current_weight += 1
 
     possible_items = self.logic.unplaced_progress_items.copy()
@@ -471,6 +481,8 @@ def randomize_progression_items(self):
 
     # Filter out items that are not valid in any of the locations we might use.
     possible_items = self.logic.filter_items_by_any_valid_location(possible_items, accessible_undone_locations)
+    print(possible_items)
+    print()
 
     if len(possible_items) == 0:
       raise Exception("No valid locations left for any of the unplaced progress items!")
@@ -478,7 +490,7 @@ def randomize_progression_items(self):
     # Remove duplicates from the list so items like swords and bows aren't so likely to show up early.
     unique_possible_items = []
     for item_name in possible_items:
-      if item_name not in unique_possible_items:
+      if item_name not in unique_possible_items or item_name.endswith("Key"):
         unique_possible_items.append(item_name)
     possible_items = unique_possible_items
 
@@ -558,12 +570,19 @@ def randomize_progression_items(self):
       # Try to prevent chains of charts that lead to sunken treasures with more charts in them.
       # If the only locations we have available are sunken treasures we don't have much choice though, so still allow it then.
       if item_name.startswith("Treasure Chart") or item_name.startswith("Triforce Chart"):
-        possible_locations_without_sunken_treasures = [
-          loc for loc in possible_locations
-          if not "Sunken Treasure" in self.logic.item_locations[loc]["Types"]
-        ]
-        if possible_locations_without_sunken_treasures:
-          possible_locations = possible_locations_without_sunken_treasures
+        if self.can_chain_charts != "Always":
+          if self.can_chain_charts == "Never":
+            possible_locations_without_sunken_treasures = [
+              loc for loc in possible_locations
+              if not "Sunken Treasure" in self.logic.item_locations[loc]["Types"]
+            ]
+          elif self.can_chain_charts == "Sometimes":
+            possible_locations_without_sunken_treasures = [
+              loc for loc in possible_locations
+              if ( not "Sunken Treasure" in self.logic.item_locations[loc]["Types"] or self.rng.randint(0,self.chart_chain_odds) )
+            ]
+          if possible_locations_without_sunken_treasures:
+            possible_locations = possible_locations_without_sunken_treasures
 
       # We weight it so newly accessible locations are more likely to be chosen.
       # This way there is still a good chance it will not choose a new location.
@@ -573,6 +592,11 @@ def randomize_progression_items(self):
         possible_locations_with_weighting += [location_name]*weight
 
       location_name = self.rng.choice(possible_locations_with_weighting)
+      if self.logic.general_dungeon_location(location_name):
+        zone_name, _ = self.logic.split_location_name_by_zone(location_name)
+        dngn_locs, dngn_itms = self.logic.scan_remaining_dungeon_locations_and_items(zone_name)
+        if not (self.logic.is_dungeon_item(item_name) or (dngn_locs-2) > dngn_itms):
+          continue
       self.logic.set_location_to_item(location_name, item_name)
 
   # Make sure locations that should have predetermined items in them have them properly placed, even if the above logic missed them for some reason.
@@ -615,7 +639,18 @@ def change_item(self, path, item_name):
     change_hardcoded_item_in_dol(self, address, item_id)
   elif custom_symbol_match:
     custom_symbol = custom_symbol_match.group(1)
-    if custom_symbol not in self.main_custom_symbols:
+    found_custom_symbol = False
+    for file_path, custom_symbols_for_file in self.custom_symbols.items():
+      if custom_symbol in custom_symbols_for_file:
+        found_custom_symbol = True
+        if file_path == "sys/main.dol":
+          address = custom_symbols_for_file[custom_symbol]
+          change_hardcoded_item_in_dol(self, address, item_id)
+        else:
+          offset = custom_symbols_for_file[custom_symbol]
+          change_hardcoded_item_in_rel(self, file_path, offset, item_id)
+        break
+    if not found_custom_symbol:
       raise Exception("Invalid custom symbol: %s" % custom_symbol)
     address = self.main_custom_symbols[custom_symbol]
     change_hardcoded_item_in_dol(self, address, item_id)

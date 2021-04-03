@@ -466,57 +466,78 @@ class Ui_MainWindow(object):
         self.group_for_convenience.setObjectName(u"group_for_convenience")
         self.grid_for_convenience = QGridLayout(self.group_for_convenience)
         self.grid_for_convenience.setObjectName(u"grid_for_convenience")
-        self.randomize_starting_island = QCheckBox(self.group_for_convenience)
-        self.randomize_starting_island.setObjectName(u"randomize_starting_island")
+        self.layout_for_can_chain_charts = QHBoxLayout()
+        self.layout_for_can_chain_charts.setObjectName(u"layout_for_can_chain_charts")
+        self.label_for_can_chain_charts = QLabel(self.group_for_convenience)
+        self.label_for_can_chain_charts.setObjectName(u"label_for_can_chain_charts")
 
-        self.grid_for_convenience.addWidget(self.randomize_starting_island, 2, 0, 1, 1)
+        self.layout_for_can_chain_charts.addWidget(self.label_for_can_chain_charts)
 
-        self.swift_sail = QCheckBox(self.group_for_convenience)
-        self.swift_sail.setObjectName(u"swift_sail")
-        self.swift_sail.setChecked(True)
+        self.spacer_for_can_chain_charts = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.grid_for_convenience.addWidget(self.swift_sail, 1, 0, 1, 1)
+        self.layout_for_can_chain_charts.addItem(self.spacer_for_can_chain_charts)
+
+        self.can_chain_charts = QComboBox(self.group_for_convenience)
+        self.can_chain_charts.addItem("")
+        self.can_chain_charts.addItem("")
+        self.can_chain_charts.addItem("")
+        self.can_chain_charts.setObjectName(u"can_chain_charts")
+
+        self.layout_for_can_chain_charts.addWidget(self.can_chain_charts)
+
+        self.layout_for_can_chain_charts.setStretch(0, 2)
+        self.layout_for_can_chain_charts.setStretch(1, 1)
+        self.layout_for_can_chain_charts.setStretch(2, 2)
+
+        self.grid_for_convenience.addLayout(self.layout_for_can_chain_charts, 2, 4, 1, 1)
+
+        self.reveal_full_sea_chart = QCheckBox(self.group_for_convenience)
+        self.reveal_full_sea_chart.setObjectName(u"reveal_full_sea_chart")
+        self.reveal_full_sea_chart.setChecked(True)
+
+        self.grid_for_convenience.addWidget(self.reveal_full_sea_chart, 2, 0, 1, 1)
 
         self.randomize_charts = QCheckBox(self.group_for_convenience)
         self.randomize_charts.setObjectName(u"randomize_charts")
 
         self.grid_for_convenience.addWidget(self.randomize_charts, 2, 2, 1, 1)
 
+        self.randomize_starting_island = QCheckBox(self.group_for_convenience)
+        self.randomize_starting_island.setObjectName(u"randomize_starting_island")
+
+        self.grid_for_convenience.addWidget(self.randomize_starting_island, 1, 0, 1, 1)
+
+        self.swift_sail = QCheckBox(self.group_for_convenience)
+        self.swift_sail.setObjectName(u"swift_sail")
+        self.swift_sail.setChecked(True)
+
+        self.grid_for_convenience.addWidget(self.swift_sail, 0, 0, 1, 1)
+
         self.instant_text_boxes = QCheckBox(self.group_for_convenience)
         self.instant_text_boxes.setObjectName(u"instant_text_boxes")
         self.instant_text_boxes.setChecked(True)
 
-        self.grid_for_convenience.addWidget(self.instant_text_boxes, 1, 4, 1, 1)
+        self.grid_for_convenience.addWidget(self.instant_text_boxes, 0, 2, 1, 1)
 
         self.skip_rematch_bosses = QCheckBox(self.group_for_convenience)
         self.skip_rematch_bosses.setObjectName(u"skip_rematch_bosses")
         self.skip_rematch_bosses.setChecked(True)
 
-        self.grid_for_convenience.addWidget(self.skip_rematch_bosses, 1, 6, 1, 1)
-
-        self.reveal_full_sea_chart = QCheckBox(self.group_for_convenience)
-        self.reveal_full_sea_chart.setObjectName(u"reveal_full_sea_chart")
-        self.reveal_full_sea_chart.setChecked(True)
-
-        self.grid_for_convenience.addWidget(self.reveal_full_sea_chart, 1, 2, 1, 1)
+        self.grid_for_convenience.addWidget(self.skip_rematch_bosses, 0, 4, 1, 1)
 
         self.remove_title_and_ending_videos = QCheckBox(self.group_for_convenience)
         self.remove_title_and_ending_videos.setObjectName(u"remove_title_and_ending_videos")
         self.remove_title_and_ending_videos.setChecked(True)
 
-        self.grid_for_convenience.addWidget(self.remove_title_and_ending_videos, 2, 4, 1, 1)
-
-        self.horizontalSpacer_14 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.grid_for_convenience.addItem(self.horizontalSpacer_14, 1, 3, 1, 1)
+        self.grid_for_convenience.addWidget(self.remove_title_and_ending_videos, 1, 2, 1, 1)
 
         self.horizontalSpacer_15 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.grid_for_convenience.addItem(self.horizontalSpacer_15, 1, 5, 1, 1)
+        self.grid_for_convenience.addItem(self.horizontalSpacer_15, 0, 3, 1, 1)
 
         self.horizontalSpacer_13 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.grid_for_convenience.addItem(self.horizontalSpacer_13, 1, 1, 1, 1)
+        self.grid_for_convenience.addItem(self.horizontalSpacer_13, 0, 1, 1, 1)
 
         self.layout_for_convenience_option = QHBoxLayout()
         self.layout_for_convenience_option.setObjectName(u"layout_for_convenience_option")
@@ -538,8 +559,11 @@ class Ui_MainWindow(object):
 
         self.layout_for_convenience_option.addWidget(self.convenience_option)
 
+        self.layout_for_convenience_option.setStretch(0, 2)
+        self.layout_for_convenience_option.setStretch(1, 1)
+        self.layout_for_convenience_option.setStretch(2, 2)
 
-        self.grid_for_convenience.addLayout(self.layout_for_convenience_option, 2, 6, 1, 1)
+        self.grid_for_convenience.addLayout(self.layout_for_convenience_option, 1, 4, 1, 1)
 
 
         self.layout_for_paths.addWidget(self.group_for_convenience)
@@ -1471,12 +1495,17 @@ class Ui_MainWindow(object):
         self.sword_mode.setItemText(2, QCoreApplication.translate("MainWindow", u"Swordless", None))
 
         self.group_for_convenience.setTitle(QCoreApplication.translate("MainWindow", u"Additional Options", None))
+        self.label_for_can_chain_charts.setText(QCoreApplication.translate("MainWindow", u"Allow Charts in Sunken Treasure", None))
+        self.can_chain_charts.setItemText(0, QCoreApplication.translate("MainWindow", u"Never", None))
+        self.can_chain_charts.setItemText(1, QCoreApplication.translate("MainWindow", u"Sometimes", None))
+        self.can_chain_charts.setItemText(2, QCoreApplication.translate("MainWindow", u"Always", None))
+
+        self.reveal_full_sea_chart.setText(QCoreApplication.translate("MainWindow", u"Reveal Full Sea Chart", None))
+        self.randomize_charts.setText(QCoreApplication.translate("MainWindow", u"Randomize Charts", None))
         self.randomize_starting_island.setText(QCoreApplication.translate("MainWindow", u"Randomize Starting Island", None))
         self.swift_sail.setText(QCoreApplication.translate("MainWindow", u"Use Swift Sail", None))
-        self.randomize_charts.setText(QCoreApplication.translate("MainWindow", u"Randomize Charts", None))
         self.instant_text_boxes.setText(QCoreApplication.translate("MainWindow", u"Instant Text Boxes", None))
         self.skip_rematch_bosses.setText(QCoreApplication.translate("MainWindow", u"Skip Boss Rematches", None))
-        self.reveal_full_sea_chart.setText(QCoreApplication.translate("MainWindow", u"Reveal Full Sea Chart", None))
         self.remove_title_and_ending_videos.setText(QCoreApplication.translate("MainWindow", u"Remove Title and Ending Videos", None))
         self.convenience_option_label.setText(QCoreApplication.translate("MainWindow", u"Item Pool", None))
         self.convenience_option.setItemText(0, QCoreApplication.translate("MainWindow", u"Default", None))

@@ -951,6 +951,27 @@ class Logic:
       return False
     return True
 
+  def general_dungeon_location(self, location_name):
+    zone_name, specific_location_name = self.split_location_name_by_zone(location_name)
+    if zone_name not in self.DUNGEON_NAME_TO_SHORT_DUNGEON_NAME:
+      # Not a dungeon.
+      return False
+    return True
+
+  def scan_remaining_dungeon_locations_and_items(self,dungeon_name):
+    if dungeon_name not in self.DUNGEON_NAME_TO_SHORT_DUNGEON_NAME:
+      dungeon_name = self.DUNGEON_NAMES[dungeon_name]
+    assert dungeon_name in self.DUNGEON_NAME_TO_SHORT_DUNGEON_NAME
+    i = 0
+    for location in self.remaining_item_locations:
+      if self.is_dungeon_location(location, dungeon_name_to_match=dungeon_name):
+        i+=1
+    j = 0
+    for item in self.unplaced_progress_items:
+      if self.is_dungeon_item(item) and item.startswith(self.DUNGEON_NAME_TO_SHORT_DUNGEON_NAME[dungeon_name]):
+        j+=1
+    return i, j
+
   @staticmethod
   def parse_logic_expression(string):
     tokens = [str.strip() for str in re.split("([&|()])", string)]
@@ -1006,7 +1027,6 @@ class Logic:
       raise Exception("Unknown requirement name: " + req_name)
 
   def check_logical_expression_req(self, logical_expression):
-    print(logical_expression)
     expression_type = None
     subexpression_results = []
     tokens = list(logical_expression).copy()

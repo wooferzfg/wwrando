@@ -334,6 +334,11 @@ class Randomizer:
       self.options.get("locale_savage"),
     ]
 
+    self.can_chain_charts = self.options.get("can_chain_charts")
+    # Options: Always, Sometimes, Never
+    self.chart_chain_odds = 2-1
+    # Future Proofing if we want to split option "Sometimes" to "Likely" and "Unlikely"
+
 
     self.logic = Logic(self)
 
