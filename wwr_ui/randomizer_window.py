@@ -90,6 +90,9 @@ class WWRandomizerWindow(QMainWindow):
     self.starting_gear_model = QStringListModel()
     self.ui.starting_gear.setModel(self.starting_gear_model)
 
+    self.ui.additional_starting_min.valueChanged.connect(self.update_additional_spins_min)
+    self.ui.additional_starting_max.valueChanged.connect(self.update_additional_spins_max)
+
     self.preserve_default_settings()
 
     logic_mod = self.get_option_value("logic_mod")
@@ -217,12 +220,58 @@ class WWRandomizerWindow(QMainWindow):
   def add_to_starting_gear(self):
     self.move_selected_rows(self.ui.randomized_gear, self.ui.starting_gear)
     self.ui.starting_gear.model().sort(0,key=lambda x:SORT_KEY.index(x))
+    self.update_additional_spins(direction="None")
     self.update_settings()
 
   def remove_from_starting_gear(self):
     self.move_selected_rows(self.ui.starting_gear, self.ui.randomized_gear)
     self.ui.randomized_gear.model().sourceModel().sort(0,key=lambda x:SORT_KEY.index(x))
+    self.update_additional_spins(direction="None")
     self.update_settings()
+
+  def update_additional_spins_max(self):
+    self.update_additional_spins(direction="max")
+    self.update_settings()
+
+  def update_additional_spins_min(self):
+    self.update_additional_spins(direction="min")
+    self.update_settings()
+
+  def update_additional_spins(self,direction="max"):
+    # Get necessary values for updating things
+    max_item = self.ui.additional_starting_max.value()
+    min_item = self.ui.additional_starting_min.value()
+    kno_item = len(self.get_option_value("starting_gear"))
+    rem_item = MAXIMUM_ADDITIONAL_STARTING_ITEMS - kno_item
+    # See if we need to update value to be less than max starting item limit
+    if rem_item < 0:
+      rem_item = 0
+    if max_item > rem_item:
+      self.ui.additional_starting_max.setValue(rem_item)
+      max_item = rem_item
+    if min_item > rem_item:
+      self.ui.additional_starting_min.setValue(rem_item)
+      min_item = rem_item
+    self.ui.additional_starting_min.setMaximum(rem_item)
+    self.ui.additional_starting_max.setMaximum(rem_item)
+    # Force update on specific totals within direction limits
+    if direction == "max" and max_item < min_item:
+      self.ui.additional_starting_min.setValue(max_item)
+    if direction == "min" and max_item < min_item:
+      self.ui.additional_starting_max.setValue(min_item)
+    self.update_total_starting()
+
+  def update_total_starting(self):
+    min_item = self.ui.additional_starting_min.value()
+    max_item = self.ui.additional_starting_max.value()
+    kno_item = len(self.get_option_value("starting_gear"))
+    tot_item = min_item + len(self.get_option_value("starting_gear"))
+    if min_item == max_item:
+      self.ui.text_for_total_starting_min.setText("")
+    else:
+      self.ui.text_for_total_starting_min.setText("at least")
+    self.ui.label_for_total_starting.setText(str(tot_item))
+
 
   def update_health_label(self):
     pohs = self.ui.starting_pohs.value()

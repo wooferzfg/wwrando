@@ -760,10 +760,8 @@ class Logic:
       for modification_name in modify_locations:
         req_string = modify_locations[modification_name]['Need']
         modify_locations[modification_name]['Need'] = Logic.parse_logic_expression(req_string)
-        print(item_locations[modification_name],"\n")
         modify_data = modify_logic_data(argument=(item_locations[modification_name]).copy(),definition=modify_locations[modification_name],run=file_extension)
         item_locations[modification_name] = modify_data
-        print(item_locations[modification_name],"\n\n\n\n\n")
 
     return item_locations
 
@@ -953,10 +951,7 @@ class Logic:
 
   def general_dungeon_location(self, location_name):
     zone_name, specific_location_name = self.split_location_name_by_zone(location_name)
-    if zone_name not in self.DUNGEON_NAME_TO_SHORT_DUNGEON_NAME:
-      # Not a dungeon.
-      return False
-    return True
+    return zone_name in self.DUNGEON_NAME_TO_SHORT_DUNGEON_NAME
 
   def scan_remaining_dungeon_locations_and_items(self,dungeon_name):
     if dungeon_name not in self.DUNGEON_NAME_TO_SHORT_DUNGEON_NAME:

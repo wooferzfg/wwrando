@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>947</width>
-    <height>991</height>
+    <width>1000</width>
+    <height>973</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -28,8 +28,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>943</width>
-         <height>818</height>
+         <width>976</width>
+         <height>849</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="layout_for_main_scroll">
@@ -57,7 +57,7 @@
            </sizepolicy>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="tab_for_settings">
            <attribute name="title">
@@ -121,7 +121,69 @@
             </item>
             <item>
              <layout class="QGridLayout" name="grid_for_logic">
+              <item row="1" column="1" colspan="3">
+               <widget class="QLabel" name="logic_desc">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <spacer name="left_spacer">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="0" column="1">
+               <widget class="QLabel" name="label_for_logic_mod">
+                <property name="enabled">
+                 <bool>true</bool>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>489</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>Logic Type</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="4">
+               <spacer name="right_spacer">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>5</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
               <item row="0" column="3">
+               <spacer name="logic_spacer">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>5</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="0" column="2">
                <widget class="QComboBox" name="logic_mod">
                 <property name="minimumSize">
                  <size>
@@ -173,68 +235,6 @@
                 </item>
                </widget>
               </item>
-              <item row="0" column="4">
-               <spacer name="logic_spacer">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>5</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item row="0" column="5">
-               <spacer name="right_spacer">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>5</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item row="0" column="2">
-               <widget class="QLabel" name="label_for_logic_mod">
-                <property name="enabled">
-                 <bool>true</bool>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>489</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>Logic Type</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="1">
-               <spacer name="left_spacer">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item row="1" column="2" colspan="3">
-               <widget class="QLabel" name="logic_desc">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
              </layout>
             </item>
             <item>
@@ -243,85 +243,90 @@
                <string>Where Should Progress Items Appear?</string>
               </property>
               <layout class="QGridLayout" name="grid_for_locations">
+               <item row="1" column="2">
+                <widget class="QCheckBox" name="progression_island_puzzles">
+                 <property name="text">
+                  <string>Island Puzzles</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="3">
+                <widget class="QCheckBox" name="progression_long_combat_trials">
+                 <property name="text">
+                  <string>Long Combat Trials</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="2">
+                <widget class="QCheckBox" name="progression_mixed_secret_caves">
+                 <property name="text">
+                  <string>Mixed Secret Caves</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="3">
+                <widget class="QCheckBox" name="progression_combat_secret_caves">
+                 <property name="text">
+                  <string>Combat Secret Caves</string>
+                 </property>
+                </widget>
+               </item>
                <item row="1" column="0">
-                <widget class="QCheckBox" name="progression_dungeons">
+                <widget class="QCheckBox" name="progression_tingle_chests">
                  <property name="text">
-                  <string>Dungeons</string>
+                  <string>Odd Dungeon Checks</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="3">
+                <widget class="QCheckBox" name="progression_big_octos_gunboats">
+                 <property name="text">
+                  <string>Big Octos and Gunboats</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="2" colspan="2">
+                <widget class="QCheckBox" name="progression_treasure_charts">
+                 <property name="text">
+                  <string>Sunken Treasure (From Treasure Charts)</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="0">
+                <widget class="QCheckBox" name="progression_submarines">
+                 <property name="text">
+                  <string>Submarines</string>
                  </property>
                  <property name="checked">
-                  <bool>true</bool>
+                  <bool>false</bool>
                  </property>
                 </widget>
                </item>
-               <item row="8" column="0">
-                <widget class="QCheckBox" name="progression_short_minigames">
+               <item row="2" column="3">
+                <widget class="QCheckBox" name="progression_platforms_rafts">
                  <property name="text">
-                  <string>Short Minigames</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="9" column="2">
-                <widget class="QCheckBox" name="progression_free_gifts">
-                 <property name="text">
-                  <string>Free Gifts</string>
-                 </property>
-                 <property name="checked">
-                  <bool>true</bool>
-                 </property>
-                </widget>
-               </item>
-               <item row="6" column="1">
-                <widget class="QCheckBox" name="progression_long_sidequests">
-                 <property name="text">
-                  <string>Long Sidequests</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="6" column="0">
-                <widget class="QCheckBox" name="progression_short_sidequests">
-                 <property name="text">
-                  <string>Short Sidequests</string>
-                 </property>
-                 <property name="checked">
-                  <bool>true</bool>
-                 </property>
-                </widget>
-               </item>
-               <item row="8" column="2">
-                <widget class="QCheckBox" name="progression_expensive_purchases">
-                 <property name="text">
-                  <string>Expensive Purchases</string>
-                 </property>
-                 <property name="checked">
-                  <bool>true</bool>
-                 </property>
-                </widget>
-               </item>
-               <item row="11" column="0" colspan="2">
-                <widget class="QCheckBox" name="progression_triforce_charts">
-                 <property name="text">
-                  <string>Sunken Treasure (From Triforce Charts)</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="6" column="2">
-                <widget class="QCheckBox" name="progression_spoils_trading">
-                 <property name="text">
-                  <string>Spoils Trading</string>
+                  <string>Lookout Platforms and Rafts</string>
                  </property>
                 </widget>
                </item>
                <item row="1" column="1">
-                <widget class="QCheckBox" name="progression_puzzle_secret_caves">
+                <widget class="QCheckBox" name="progression_great_fairies">
                  <property name="text">
-                  <string>Puzzle Secret Caves</string>
+                  <string>Great Fairies</string>
                  </property>
                  <property name="checked">
                   <bool>true</bool>
                  </property>
                 </widget>
                </item>
-               <item row="9" column="3">
+               <item row="4" column="1">
+                <widget class="QCheckBox" name="progression_eye_reef_chests">
+                 <property name="text">
+                  <string>Eye Reef Chests</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="3">
                 <widget class="QCheckBox" name="progression_misc">
                  <property name="text">
                   <string>Miscellaneous</string>
@@ -334,90 +339,85 @@
                  </property>
                 </widget>
                </item>
-               <item row="11" column="2" colspan="2">
-                <widget class="QCheckBox" name="progression_treasure_charts">
+               <item row="0" column="1">
+                <widget class="QCheckBox" name="progression_puzzle_secret_caves">
                  <property name="text">
-                  <string>Sunken Treasure (From Treasure Charts)</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="9" column="1">
-                <widget class="QCheckBox" name="progression_eye_reef_chests">
-                 <property name="text">
-                  <string>Eye Reef Chests</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="8" column="3">
-                <widget class="QCheckBox" name="progression_big_octos_gunboats">
-                 <property name="text">
-                  <string>Big Octos and Gunboats</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="3">
-                <widget class="QCheckBox" name="progression_combat_secret_caves">
-                 <property name="text">
-                  <string>Combat Secret Caves</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="0">
-                <widget class="QCheckBox" name="progression_tingle_chests">
-                 <property name="text">
-                  <string>Odd Dungeon Checks</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="3">
-                <widget class="QCheckBox" name="progression_long_combat_trials">
-                 <property name="text">
-                  <string>Long Combat Trials</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="6" column="3">
-                <widget class="QCheckBox" name="progression_platforms_rafts">
-                 <property name="text">
-                  <string>Lookout Platforms and Rafts</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="2">
-                <widget class="QCheckBox" name="progression_mixed_secret_caves">
-                 <property name="text">
-                  <string>Mixed Secret Caves</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="9" column="0">
-                <widget class="QCheckBox" name="progression_submarines">
-                 <property name="text">
-                  <string>Submarines</string>
-                 </property>
-                 <property name="checked">
-                  <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="2">
-                <widget class="QCheckBox" name="progression_island_puzzles">
-                 <property name="text">
-                  <string>Island Puzzles</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="1">
-                <widget class="QCheckBox" name="progression_great_fairies">
-                 <property name="text">
-                  <string>Great Fairies</string>
+                  <string>Puzzle Secret Caves</string>
                  </property>
                  <property name="checked">
                   <bool>true</bool>
                  </property>
                 </widget>
                </item>
-               <item row="8" column="1">
+               <item row="2" column="2">
+                <widget class="QCheckBox" name="progression_spoils_trading">
+                 <property name="text">
+                  <string>Spoils Trading</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="0" colspan="2">
+                <widget class="QCheckBox" name="progression_triforce_charts">
+                 <property name="text">
+                  <string>Sunken Treasure (From Triforce Charts)</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="2">
+                <widget class="QCheckBox" name="progression_expensive_purchases">
+                 <property name="text">
+                  <string>Expensive Purchases</string>
+                 </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QCheckBox" name="progression_short_sidequests">
+                 <property name="text">
+                  <string>Short Sidequests</string>
+                 </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <widget class="QCheckBox" name="progression_long_sidequests">
+                 <property name="text">
+                  <string>Long Sidequests</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="2">
+                <widget class="QCheckBox" name="progression_free_gifts">
+                 <property name="text">
+                  <string>Free Gifts</string>
+                 </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0">
+                <widget class="QCheckBox" name="progression_short_minigames">
+                 <property name="text">
+                  <string>Short Minigames</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <widget class="QCheckBox" name="progression_dungeons">
+                 <property name="text">
+                  <string>Dungeons</string>
+                 </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="1">
                 <widget class="QCheckBox" name="progression_long_minigames">
                  <property name="text">
                   <string>Long Minigames</string>
@@ -1101,36 +1101,26 @@
                <string>Advanced Options</string>
               </property>
               <layout class="QGridLayout" name="grid_for_advanced">
-               <item row="0" column="3">
-                <spacer name="horizontalSpacer_12">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
+               <item row="0" column="6">
+                <widget class="QWidget" name="widget_4" native="true"/>
                </item>
-               <item row="0" column="1">
-                <spacer name="horizontalSpacer_11">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
+               <item row="0" column="5">
+                <widget class="QWidget" name="widget_3" native="true"/>
                </item>
-               <item row="0" column="0">
-                <widget class="QCheckBox" name="remove_music">
+               <item row="0" column="4">
+                <widget class="QCheckBox" name="invert_camera_x_axis">
                  <property name="text">
-                  <string>Remove Music</string>
+                  <string>Invert Camera X-Axis</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="2">
+                <widget class="QCheckBox" name="randomize_enemies">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                 <property name="text">
+                  <string>Randomize Enemy Locations</string>
                  </property>
                 </widget>
                </item>
@@ -1157,22 +1147,18 @@
                  </property>
                 </widget>
                </item>
-               <item row="1" column="2">
-                <widget class="QCheckBox" name="randomize_enemies">
-                 <property name="enabled">
-                  <bool>false</bool>
+               <item row="0" column="1">
+                <spacer name="horizontalSpacer_11">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
                  </property>
-                 <property name="text">
-                  <string>Randomize Enemy Locations</string>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
                  </property>
-                </widget>
-               </item>
-               <item row="0" column="4">
-                <widget class="QCheckBox" name="invert_camera_x_axis">
-                 <property name="text">
-                  <string>Invert Camera X-Axis</string>
-                 </property>
-                </widget>
+                </spacer>
                </item>
                <item row="1" column="0">
                 <widget class="QCheckBox" name="randomize_music">
@@ -1184,11 +1170,25 @@
                  </property>
                 </widget>
                </item>
-               <item row="0" column="7">
-                <widget class="QWidget" name="widget_4" native="true"/>
+               <item row="0" column="0">
+                <widget class="QCheckBox" name="remove_music">
+                 <property name="text">
+                  <string>Remove Music</string>
+                 </property>
+                </widget>
                </item>
-               <item row="0" column="6">
-                <widget class="QWidget" name="widget_3" native="true"/>
+               <item row="0" column="3">
+                <spacer name="horizontalSpacer_12">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
                </item>
               </layout>
              </widget>
@@ -1202,7 +1202,7 @@
            <attribute name="title">
             <string>Starting Items</string>
            </attribute>
-           <layout class="QVBoxLayout" name="layout_for_items_selection" stretch="20,5,1">
+           <layout class="QVBoxLayout" name="layout_for_items_selection" stretch="20,0,0,1">
             <item>
              <layout class="QHBoxLayout" name="layout_for_starting_items">
               <item>
@@ -1324,6 +1324,85 @@
              </layout>
             </item>
             <item>
+             <layout class="QHBoxLayout" name="layout_for_additional_starting">
+              <item>
+               <widget class="QLabel" name="label_for_additional_starting_min">
+                <property name="text">
+                 <string>Additional Starting Items: between</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSpinBox" name="additional_starting_min">
+                <property name="maximum">
+                 <number>47</number>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_for_additional_starting_max">
+                <property name="text">
+                 <string>and</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSpinBox" name="additional_starting_max">
+                <property name="maximum">
+                 <number>47</number>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_for_additional_starting">
+                <property name="text">
+                 <string>items.</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="spacer_for_additional_starting">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QLabel" name="text_for_total_starting_min">
+                <property name="text">
+                 <string>at least</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_for_total_starting">
+                <property name="font">
+                 <font>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>0</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="text_for_total_starting_max">
+                <property name="text">
+                 <string>starting items</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
              <layout class="QHBoxLayout" name="layout_for_starting_health">
               <item>
                <widget class="QLabel" name="label_for_starting_bh">
@@ -1402,6 +1481,19 @@
                  <number>10</number>
                 </property>
                </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
               </item>
               <item>
                <widget class="QLabel" name="current_health">
@@ -2007,21 +2099,21 @@
                 </item>
                </layout>
               </item>
-              <item row="0" column="3">
+              <item row="0" column="2">
                <widget class="QCheckBox" name="disable_custom_player_items">
                 <property name="text">
                  <string>Disable Custom Items</string>
                 </property>
                </widget>
               </item>
-              <item row="1" column="3">
+              <item row="1" column="2">
                <widget class="QCheckBox" name="disable_custom_player_voice">
                 <property name="text">
                  <string>Disable Custom Voice</string>
                 </property>
                </widget>
               </item>
-              <item row="0" column="2">
+              <item row="0" column="1">
                <widget class="QCheckBox" name="player_in_casual_clothes">
                 <property name="text">
                  <string>Casual Clothes</string>
@@ -2046,14 +2138,14 @@
                 </item>
                </layout>
               </item>
-              <item row="2" column="3">
+              <item row="2" column="2">
                <widget class="QCheckBox" name="disable_custom_boat">
                 <property name="text">
                  <string>Disable Custom Boat</string>
                 </property>
                </widget>
               </item>
-              <item row="1" column="2" rowspan="2">
+              <item row="1" column="1" rowspan="2">
                <widget class="QLabel" name="custom_model_comment">
                 <property name="maximumSize">
                  <size>
@@ -2069,7 +2161,7 @@
                 </property>
                </widget>
               </item>
-              <item row="3" column="2">
+              <item row="3" column="1">
                <layout class="QHBoxLayout" name="layout_for_custom_bck_entry">
                 <item>
                  <widget class="QLabel" name="label_for_custom_bck_entry">

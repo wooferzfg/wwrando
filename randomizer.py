@@ -178,6 +178,8 @@ class Randomizer:
     for i in range(starting_hcs):
       self.starting_items.append("Heart Container")
 
+    self.starting_items_extra = [self.options.get("additional_starting_min"), self.options.get("additional_starting_max")]
+
     self.island_number = 44
 
     # Default entrances connections to be used if the entrance randomizer is not on.
@@ -379,6 +381,18 @@ class Randomizer:
     yield("Modifying game code...", options_completed)
 
     customizer.decide_on_link_model(self)
+
+    self.get_new_rng()
+    add_items = self.rng.randint(*self.starting_items_extra)
+    rand_gear = self.options.get("randomized_gear", [])
+    self.rng.shuffle(rand_gear)
+    for i in range(add_items):
+      test_item = rand_gear.pop()
+      if test_item in self.starting_items and not self.rng.randint(0,2) :
+        rand_gear.append(test_item)
+        test_item = rand_gear.pop()
+        # We want to reduce the chance the player starts with extra progressive items
+      self.starting_items.append(test_item)
 
     if not self.dry_run:
       self.apply_necessary_tweaks()
@@ -1023,7 +1037,7 @@ class Randomizer:
     header += "Options selected:\n  "
     non_disabled_options = [
       name for name in self.options
-      if self.options[name] not in [False, [], {}, OrderedDict()]
+      if self.options[name] not in [False, [], {}, OrderedDict(), 0]
       and name != "randomized_gear" # Just takes up space
     ]
     option_strings = []
@@ -1123,12 +1137,20 @@ class Randomizer:
       spoiler_log += "Playthrough:\n"
       progression_spheres = self.calculate_playthrough_progression_spheres()
       req_dungeons = self.race_mode_required_dungeons
+      starting_items = self.starting_items
+      if starting_items:
+        spoiler_log += "  Starting Inventory:\n"
+        starting_items.sort()
+        for starting_item in starting_items:
+          spoiler_log += "    {}\n".format(starting_item)
+        spoiler_log += "\n"
       if req_dungeons:
-        spoiler_log += "Required Dungeons:\n"
+        spoiler_log += "  Required Dungeons:\n"
         for dungeon in req_dungeons:
-          spoiler_log += "  {}\n".format(dungeon)
-        for i in range(42-len(req_dungeons)):
+          spoiler_log += "    {}\n".format(dungeon)
+        for i in range(44-(len(req_dungeons)+len(starting_items))):
           spoiler_log += "\n"
+        spoiler_log += "\n"
       all_progression_sphere_locations = [loc for locs in progression_spheres for loc in locs]
       zones, max_location_name_length = self.get_zones_and_max_location_name_len(all_progression_sphere_locations)
       format_string = "      %-" + str(max_location_name_length+1) + "s %s\n"

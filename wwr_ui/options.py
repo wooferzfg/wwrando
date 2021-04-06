@@ -519,6 +519,14 @@ OPTIONS = OrderedDict([
     "Items that will be in Link's inventory at the start of a new game."
   ),
   (
+    "additional_starting_min",
+    "The minimum random items that will be in Link's inventory at the start of a new game."
+  ),
+  (
+    "additional_starting_max",
+    "The maximum random items that will be in Link's inventory at the start of a new game."
+  ),
+  (
     "starting_pohs",
     "Amount of extra pieces of heart that you start with."
   ),
