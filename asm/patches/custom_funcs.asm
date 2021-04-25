@@ -104,14 +104,14 @@ bl onEventBit__11dSv_event_cFUs
 ; bl onEventBit__11dSv_event_cFUs
 ; li r4, 0x1620 ; Medli is in dungeon mode and can be lifted/called
 ; bl onEventBit__11dSv_event_cFUs
-; li r4, 0x3304 ; Saw event where Medli calls to you from within jail
-; bl onEventBit__11dSv_event_cFUs
+li r4, 0x3304 ; Saw event where Medli calls to you from within jail
+bl onEventBit__11dSv_event_cFUs
 ; li r4, 0x2910 ; MAKAR_IN_WIND_TEMPLE
 ; bl onEventBit__11dSv_event_cFUs
 ; li r4, 0x1610 ; Makar is in dungeon mode and can be lifted/called
 ; bl onEventBit__11dSv_event_cFUs
-; li r4, 0x3440 ; Saw event where Makar calls to you from within jail
-; bl onEventBit__11dSv_event_cFUs
+li r4, 0x3440 ; Saw event where Makar calls to you from within jail
+bl onEventBit__11dSv_event_cFUs
 ; li r4, 0x3A20 ; Fishman and KoRL talked about Forsaken Fortress after you beat Molgera
 ; bl onEventBit__11dSv_event_cFUs
 ; li r4, 0x2D08 ; HYRULE_3_WARP_CUTSCENE
@@ -195,13 +195,13 @@ addi r3, r3, 0x803C5060@l
 li r4, 0x0400
 stw r4, 8 (r3)
 
-; ; Set a switch (12) for having seen the camera moving around event when you first enter Hyrule.
-; ; Also set a switch (6) for having completed the Triforce pushable blocks puzzle.
-; lis r3, 0x803C50CC@ha ; Hyrule stage info.
-; addi r3, r3, 0x803C50CC@l
-; lis r4, 0x0004
-; addi r4, r4, 0x0040
-; stw r4, 4 (r3)
+; Set a switch (12) for having seen the camera moving around event when you first enter Hyrule.
+; Also set a switch (6) for having completed the Triforce pushable blocks puzzle.
+lis r3, 0x803C50CC@ha ; Hyrule stage info.
+addi r3, r3, 0x803C50CC@l
+lis r4, 0x0004
+addi r4, r4, 0x0040
+stw r4, 4 (r3)
 
 ; Set a switch (0D) for having seen the camera panning around when you first enter Ganon's Tower.
 ; Also set a switch (1C) for having seen the camera panning around looking at the 4 lights in the room where you can drop down to the maze.
@@ -251,12 +251,12 @@ bl generic_on_dungeon_bit
 ; stb r4, 0 (r3) ; Max magic meter
 ; stb r4, 1 (r3) ; Current magic meter
 
-; ; Make the game think the player has previously owned every type of spoil and bait so they don't get the item get animation the first time they pick each type up.
-; lis r3, 0x803C4C9C@ha
-; addi r3, r3, 0x803C4C9C@l
-; li r4, 0xFF
-; stb r4, 0 (r3) ; 803C4C9C, bitfield of what spoils bag items you've ever owned
-; stb r4, 1 (r3) ; 803C4C9D, bitfield of what bait bag items you've ever owned
+; Make the game think the player has previously owned every type of spoil and bait so they don't get the item get animation the first time they pick each type up.
+lis r3, 0x803C4C9C@ha
+addi r3, r3, 0x803C4C9C@l
+li r4, 0xFF
+stb r4, 0 (r3) ; 803C4C9C, bitfield of what spoils bag items you've ever owned
+stb r4, 1 (r3) ; 803C4C9D, bitfield of what bait bag items you've ever owned
 
 ; Give the player the number of Triforce Shards they want to start with.
 lis r5, num_triforce_shards_to_start_with@ha
