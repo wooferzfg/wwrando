@@ -64,8 +64,8 @@ addi r3, r3, 0x803C522C@l
 ; bl onEventBit__11dSv_event_cFUs
 ; li r4, 0x0902 ; SAW_DRAGON_ROOST_ISLAND_INTRO
 ; bl onEventBit__11dSv_event_cFUs
-; li r4, 0x1F40 ; SAW_QUILL_CUTSCENE_ON_DRI
-; bl onEventBit__11dSv_event_cFUs
+li r4, 0x1F40 ; SAW_QUILL_CUTSCENE_ON_DRI
+bl onEventBit__11dSv_event_cFUs
 ; li r4, 0x0A80 ; KORL_DINS_PEARL_TEXT_ALLOWING_YOU_TO_ENTER_HIM
 ; bl onEventBit__11dSv_event_cFUs
 li r4, 0x0901 ; TRIGGERED_MAP_FISH
