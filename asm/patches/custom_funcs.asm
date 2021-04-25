@@ -46,8 +46,8 @@ bl init__10dSv_save_cFv ; To call this custom func we overwrote a call to init__
 ; bl item_func_pirates_omamori__Fv ; Pirate's Charm
 
 
-; lis r3, 0x803C522C@ha
-; addi r3, r3, 0x803C522C@l
+lis r3, 0x803C522C@ha
+addi r3, r3, 0x803C522C@l
 ; li r4, 0x3510 ; HAS_SEEN_INTRO
 ; bl onEventBit__11dSv_event_cFUs
 ; li r4, 0x0280 ; SAW_TETRA_IN_FOREST_OF_FAIRIES
@@ -68,8 +68,8 @@ bl init__10dSv_save_cFv ; To call this custom func we overwrote a call to init__
 ; bl onEventBit__11dSv_event_cFUs
 ; li r4, 0x0A80 ; KORL_DINS_PEARL_TEXT_ALLOWING_YOU_TO_ENTER_HIM
 ; bl onEventBit__11dSv_event_cFUs
-; li r4, 0x0901 ; TRIGGERED_MAP_FISH
-; bl onEventBit__11dSv_event_cFUs
+li r4, 0x0901 ; TRIGGERED_MAP_FISH
+bl onEventBit__11dSv_event_cFUs
 ; li r4, 0x0A20 ; WATCHED_FOREST_HAVEN_INTRO_CUTSCENE
 ; bl onEventBit__11dSv_event_cFUs
 ; li r4, 0x1801 ; WATCHED_DEKU_TREE_CUTSCENE
@@ -118,10 +118,10 @@ bl init__10dSv_save_cFv ; To call this custom func we overwrote a call to init__
 ; bl onEventBit__11dSv_event_cFUs
 ; li r4, 0x3980 ; HYRULE_3_ELECTRICAL_BARRIER_CUTSCENE_1
 ; bl onEventBit__11dSv_event_cFUs
-; li r4, 0x3B02 ; Saw cutscene before Puppet Ganon fight
-; bl onEventBit__11dSv_event_cFUs
-; li r4, 0x4002 ; Saw cutscene before Ganondorf fight
-; bl onEventBit__11dSv_event_cFUs
+li r4, 0x3B02 ; Saw cutscene before Puppet Ganon fight
+bl onEventBit__11dSv_event_cFUs
+li r4, 0x4002 ; Saw cutscene before Ganondorf fight
+bl onEventBit__11dSv_event_cFUs
 
 ; lis r3, 0x803C5D60@ha
 ; addi r3, r3, 0x803C5D60@l
@@ -162,38 +162,38 @@ bl init__10dSv_save_cFv ; To call this custom func we overwrote a call to init__
 ; lis r4, 0x0101
 ; stw r4, 0xC (r3)
 
-; ; Set a switch (21) for having seen the gossip stone event in DRC where KoRL tells you about giving bait to rats.
-; ; Also set a switch (09) for having seen the event where the camera pans up to Valoo when you go outside.
-; ; Also set a switch (46) for having seen the event where the camera pans around when you first enter DRC.
-; lis r3, 0x803C4FF4@ha ; Dragon Roost Cavern stage info.
-; addi r3, r3, 0x803C4FF4@l
-; li r4, 0x0200
-; stw r4, 4 (r3)
-; li r4, 0x0002
-; stw r4, 8 (r3)
-; li r4, 0x0040
-; stw r4, 0xC (r3)
+; Set a switch (21) for having seen the gossip stone event in DRC where KoRL tells you about giving bait to rats.
+; Also set a switch (09) for having seen the event where the camera pans up to Valoo when you go outside.
+; Also set a switch (46) for having seen the event where the camera pans around when you first enter DRC.
+lis r3, 0x803C4FF4@ha ; Dragon Roost Cavern stage info.
+addi r3, r3, 0x803C4FF4@l
+li r4, 0x0200
+stw r4, 4 (r3)
+li r4, 0x0002
+stw r4, 8 (r3)
+li r4, 0x0040
+stw r4, 0xC (r3)
 
-; ; Set a switch (36) for having seen the event where the camera pans around the first room when you first enter FW.
-; lis r3, 0x803C5018@ha ; Forbidden Woods stage info.
-; addi r3, r3, 0x803C5018@l
-; lis r4, 0x0040
-; stw r4, 8 (r3)
+; Set a switch (36) for having seen the event where the camera pans around the first room when you first enter FW.
+lis r3, 0x803C5018@ha ; Forbidden Woods stage info.
+addi r3, r3, 0x803C5018@l
+lis r4, 0x0040
+stw r4, 8 (r3)
 
-; ; Set a switch (2D) for having seen the event where the camera pans around when you go outside at the top of TotG.
-; ; Also set a switch (63) for having seen the event where the camera pans around the first room when you first enter TotG.
-; lis r3, 0x803C503C@ha ; Tower of the Gods stage info.
-; addi r3, r3, 0x803C503C@l
-; li r4, 0x2000
-; stw r4, 8 (r3)
-; li r4, 0x0008
-; stw r4, 0x10 (r3)
+; Set a switch (2D) for having seen the event where the camera pans around when you go outside at the top of TotG.
+; Also set a switch (63) for having seen the event where the camera pans around the first room when you first enter TotG.
+lis r3, 0x803C503C@ha ; Tower of the Gods stage info.
+addi r3, r3, 0x803C503C@l
+li r4, 0x2000
+stw r4, 8 (r3)
+li r4, 0x0008
+stw r4, 0x10 (r3)
 
-; ; Set a switch (2A) for having seen the gossip stone event where KoRL tells you Medli shows up on the compass.
-; lis r3, 0x803C5060@ha ; Earth Temple stage info.
-; addi r3, r3, 0x803C5060@l
-; li r4, 0x0400
-; stw r4, 8 (r3)
+; Set a switch (2A) for having seen the gossip stone event where KoRL tells you Medli shows up on the compass.
+lis r3, 0x803C5060@ha ; Earth Temple stage info.
+addi r3, r3, 0x803C5060@l
+li r4, 0x0400
+stw r4, 8 (r3)
 
 ; ; Set a switch (12) for having seen the camera moving around event when you first enter Hyrule.
 ; ; Also set a switch (6) for having completed the Triforce pushable blocks puzzle.
@@ -203,34 +203,34 @@ bl init__10dSv_save_cFv ; To call this custom func we overwrote a call to init__
 ; addi r4, r4, 0x0040
 ; stw r4, 4 (r3)
 
-; ; Set a switch (0D) for having seen the camera panning around when you first enter Ganon's Tower.
-; ; Also set a switch (1C) for having seen the camera panning around looking at the 4 lights in the room where you can drop down to the maze.
-; ; Also set a switch (1D) for having seen the camera panning around looking at the 4 boomerang switches in the room with the warp up to Forsaken Fortress.
-; ; Also set a switch (1E) for having seen the cutscene before the Puppet Ganon fight.
-; ; Also set a switch (12) for having seen the cutscene after the Puppet Ganon fight.
-; ; Also set a switch (1F) for having seen the cutscene before the Ganondorf fight.
-; lis r3, 0x803C50A8@ha ; Ganon's Tower stage info.
-; addi r3, r3, 0x803C50A8@l
-; lis r4, 0xF004
-; addi r4, r4, 0x2000
-; stw r4, 4 (r3)
+; Set a switch (0D) for having seen the camera panning around when you first enter Ganon's Tower.
+; Also set a switch (1C) for having seen the camera panning around looking at the 4 lights in the room where you can drop down to the maze.
+; Also set a switch (1D) for having seen the camera panning around looking at the 4 boomerang switches in the room with the warp up to Forsaken Fortress.
+; Also set a switch (1E) for having seen the cutscene before the Puppet Ganon fight.
+; Also set a switch (12) for having seen the cutscene after the Puppet Ganon fight.
+; Also set a switch (1F) for having seen the cutscene before the Ganondorf fight.
+lis r3, 0x803C50A8@ha ; Ganon's Tower stage info.
+addi r3, r3, 0x803C50A8@l
+lis r4, 0xF004
+addi r4, r4, 0x2000
+stw r4, 4 (r3)
 
 
-; li r3, 3 ; DRC stage ID
-; li r4, 5 ; Seen the boss intro bit index
-; bl generic_on_dungeon_bit
-; li r3, 4 ; FW stage ID
-; li r4, 5 ; Seen the boss intro bit index
-; bl generic_on_dungeon_bit
-; li r3, 5 ; TotG stage ID
-; li r4, 5 ; Seen the boss intro bit index
-; bl generic_on_dungeon_bit
-; li r3, 6 ; ET stage ID
-; li r4, 5 ; Seen the boss intro bit index
-; bl generic_on_dungeon_bit
-; li r3, 7 ; WT stage ID
-; li r4, 5 ; Seen the boss intro bit index
-; bl generic_on_dungeon_bit
+li r3, 3 ; DRC stage ID
+li r4, 5 ; Seen the boss intro bit index
+bl generic_on_dungeon_bit
+li r3, 4 ; FW stage ID
+li r4, 5 ; Seen the boss intro bit index
+bl generic_on_dungeon_bit
+li r3, 5 ; TotG stage ID
+li r4, 5 ; Seen the boss intro bit index
+bl generic_on_dungeon_bit
+li r3, 6 ; ET stage ID
+li r4, 5 ; Seen the boss intro bit index
+bl generic_on_dungeon_bit
+li r3, 7 ; WT stage ID
+li r4, 5 ; Seen the boss intro bit index
+bl generic_on_dungeon_bit
 
 
 ; ; Start the player with 30 bombs and arrows. (But not the ability to actually use them.)
