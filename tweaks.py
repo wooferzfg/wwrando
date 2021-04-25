@@ -1497,6 +1497,9 @@ def increase_misc_animations(self):
   # Increase speed Links ends climbing a ladder/vine (0.9 -> 1.4)
   self.dol.write_data(write_float, 0x8035DB20, 1.4)
   
+  # Increase Link's sidle animation speed (1.6 -> 2.0)
+  self.dol.write_data(write_float, 0x8035D6AC, 2.0)
+  
   # Half the number of frames camera takes to focus on an npc for a conversation (from 20 to 10)
   self.dol.write_data(write_u32, 0x8016DA2C, 0x3800000A) # li r0,10
   
