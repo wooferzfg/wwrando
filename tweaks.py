@@ -2036,3 +2036,23 @@ def remove_phantom_ganon_requirement_from_eye_reefs(self):
       if (gunboat.auxilary_param & 0xFF) == 0x2A: # Switch 2A is Phantom Ganon being dead.
         gunboat.auxilary_param = (gunboat.auxilary_param & 0xFF00) | 0xFF
         gunboat.save_changes()
+
+def remove_minor_panning_cutscenes(self):
+  panning_cutscenes = [
+    ("M_NewD2", "Room2", 4),
+    ("kindan", "Stage", 2),
+    ("Siren", "Room18", 2),
+    ("M_Dai", "Room3", 7),
+  ]
+  
+  for stage_name, arc_name, evnt_index in panning_cutscenes:
+    arc = self.get_arc("files/res/Stage/%s/%s.arc" % (stage_name, arc_name))
+    if arc_name == "Stage":
+      dzx = arc.get_file("stage.dzs")
+    else:
+      dzx = arc.get_file("room.dzr")
+    
+    tagevs = [x for x in dzx.entries_by_type("SCOB") if x.name == "TagEv"]
+    for tagev in tagevs:
+      if tagev.evnt_index == evnt_index:
+        dzx.remove_entity(tagev, "SCOB")

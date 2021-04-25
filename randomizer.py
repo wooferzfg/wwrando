@@ -352,6 +352,7 @@ class Randomizer:
 	  
       tweaks.update_skip_rematch_bosses_game_variable(self)
       tweaks.shorten_zephos_event(self)
+      tweaks.remove_minor_panning_cutscenes(self)
       
       if self.options.get("instant_text_boxes"):
         tweaks.make_all_text_instant(self)
