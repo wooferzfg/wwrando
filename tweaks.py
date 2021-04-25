@@ -447,8 +447,8 @@ def make_sail_behave_like_swift_sail(self):
   
   # Double the speed.
   ship_rel = self.get_rel("files/rels/d_a_ship.rel")
-  ship_rel.write_data(write_float, 0xDBE8, 55.0*2) # Sailing speed
-  ship_rel.write_data(write_float, 0xDBC0, 80.0*2) # Initial speed
+  ship_rel.write_data(write_float, 0xDBE8, 55.0*1.3) # Sailing speed
+  ship_rel.write_data(write_float, 0xDBC0, 80.0*1.3) # Initial speed
   
   # Update the pause menu name for the sail.
   msg = self.bmg.messages_by_id[463]
@@ -497,8 +497,8 @@ def make_sail_behave_like_swift_sail2(self):
   
   # Double the speed.
   ship_rel = self.get_rel("files/rels/d_a_ship.rel")
-  ship_rel.write_data(write_float, 0xDBE8, 55.0*2) # Sailing speed
-  ship_rel.write_data(write_float, 0xDBC0, 80.0*2) # Initial speed
+  ship_rel.write_data(write_float, 0xDBE8, 55.0*1.3) # Sailing speed
+  ship_rel.write_data(write_float, 0xDBC0, 80.0*1.3) # Initial speed
   
   # Update the pause menu name for the sail.
   msg = self.bmg.messages_by_id[463]
