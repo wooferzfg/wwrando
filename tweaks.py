@@ -179,6 +179,7 @@ def skip_wakeup_intro_and_start_at_dock(self):
   # When the player starts a new game they usually start at spawn ID 206, which plays the wakeup event and puts the player on Aryll's lookout.
   # We change the starting spawn ID to 0, which does not play the wakeup event and puts the player on the dock next to the ship.
   set_new_game_starting_spawn_id(self, 0)
+  set_new_game_starting_room_index(self, 13)
 
 def start_ship_at_outset(self):
   # Change the King of Red Lion's default position so that he appears on Outset at the start of the game.

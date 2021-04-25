@@ -48,8 +48,8 @@ bl init__10dSv_save_cFv ; To call this custom func we overwrote a call to init__
 
 lis r3, 0x803C522C@ha
 addi r3, r3, 0x803C522C@l
-; li r4, 0x3510 ; HAS_SEEN_INTRO
-; bl onEventBit__11dSv_event_cFUs
+li r4, 0x3510 ; HAS_SEEN_INTRO
+bl onEventBit__11dSv_event_cFUs
 ; li r4, 0x0280 ; SAW_TETRA_IN_FOREST_OF_FAIRIES
 ; bl onEventBit__11dSv_event_cFUs
 ; li r4, 0x0520 ; GOSSIP_STONE_AT_FF1 (Causes Aryll and the pirates to disappear from Outset)

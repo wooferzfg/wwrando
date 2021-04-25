@@ -472,7 +472,7 @@ class Randomizer:
 														
 												 
 													
-    #tweaks.skip_wakeup_intro_and_start_at_dock(self)
+    tweaks.skip_wakeup_intro_and_start_at_dock(self)
     #tweaks.add_inter_dungeon_warp_pots(self)
 									 
     # tweaks.make_all_text_instant(self)
