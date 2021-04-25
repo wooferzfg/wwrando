@@ -188,7 +188,7 @@ def start_ship_at_outset(self):
 def make_all_text_instant(self):
   for msg in self.bmg.messages:
     # Prevent fast KoRL text during double storage
-    if msg.message_id in [1517, 1526, 1527, 1543, 1572]:
+    if msg.message_id in [1517, 1526, 1527]:
       continue
 
     msg.initial_draw_type = 1 # Instant initial draw type
