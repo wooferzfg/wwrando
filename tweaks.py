@@ -1555,12 +1555,8 @@ def disable_invisible_walls(self):
   invisible_wall.save_changes()
 
 def update_skip_rematch_bosses_game_variable(self):
-  skip_rematch_bosses_address = self.custom_symbols["skip_rematch_bosses"]
-  dol_data = self.get_raw_file("sys/main.dol")
-  if self.options.get("skip_rematch_bosses"):
-    write_u8(dol_data, address_to_offset(skip_rematch_bosses_address), 1)
-  else:
-    write_u8(dol_data, address_to_offset(skip_rematch_bosses_address), 0)
+  skip_rematch_bosses_address = self.main_custom_symbols["skip_rematch_bosses"]
+  self.dol.write_data(write_u8, skip_rematch_bosses_address, 0)
 
 def update_sword_mode_game_variable(self):
   sword_mode_address = self.custom_symbols["sword_mode"]

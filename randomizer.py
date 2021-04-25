@@ -350,7 +350,7 @@ class Randomizer:
       self.apply_necessary_tweaks()
       
 	  
-										
+      tweaks.update_skip_rematch_bosses_game_variable(self)
       if self.options.get("instant_text_boxes"):
         tweaks.make_all_text_instant(self)
       if self.options.get("reveal_full_sea_chart"):
@@ -411,8 +411,6 @@ class Randomizer:
 													 
       if self.options.get("swift_sail2"):
         tweaks.make_sail_behave_like_swift_sail2(self)
-		
-		
 
 
     
