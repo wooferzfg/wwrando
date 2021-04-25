@@ -3,6 +3,7 @@ import os
 import re
 
 from fs_helpers import *
+from logic.logic import Logic
 import tweaks
 
 def randomize_items(self):
@@ -431,9 +432,10 @@ def randomize_progression_items(self):
 
 
 
-def write_changed_items(self):
-  for location_name, item_name in self.logic.done_item_locations.items():
-    paths = self.logic.item_locations[location_name]["Paths"]
+def write_changed_items(self, locations):
+  all_item_locations = Logic.load_and_parse_item_locations()
+  for location_name, item_name in locations.items():
+    paths = all_item_locations[location_name]["Paths"]
     for path in paths:
       change_item(self, path, item_name)
 
@@ -441,7 +443,7 @@ def change_item(self, path, item_name):
   item_id = self.item_name_to_id[item_name]
   
   rel_match = re.search(r"^(rels/[^.]+\.rel)@([0-9A-F]{4})$", path)
-  main_dol_match = re.search(r"^main.dol@([0-9A-F]{6})$", path)
+  main_dol_match = re.search(r"^main.dol@(8[0-9A-F]{7})$", path)
   custom_symbol_match = re.search(r"^CustomSymbol:(.+)$", path)
   chest_match = re.search(r"^([^/]+/[^/]+\.arc)(?:/Layer([0-9a-b]))?/Chest([0-9A-F]{3})$", path)
   event_match = re.search(r"^([^/]+/[^/]+\.arc)/Event([0-9A-F]{3}):[^/]+/Actor([0-9A-F]{3})/Action([0-9A-F]{3})$", path)
@@ -452,19 +454,25 @@ def change_item(self, path, item_name):
     rel_path = rel_match.group(1)
     offset = int(rel_match.group(2), 16)
     path = os.path.join("files", rel_path)
-    change_hardcoded_item(self, path, offset, item_id)
+    change_hardcoded_item_in_rel(self, path, offset, item_id)
   elif main_dol_match:
-    offset = int(main_dol_match.group(1), 16)
-    path = os.path.join("sys", "main.dol")
-    change_hardcoded_item(self, path, offset, item_id)
+    address = int(main_dol_match.group(1), 16)
+    change_hardcoded_item_in_dol(self, address, item_id)
   elif custom_symbol_match:
     custom_symbol = custom_symbol_match.group(1)
-    if custom_symbol not in self.custom_symbols:
+    found_custom_symbol = False
+    for file_path, custom_symbols_for_file in self.custom_symbols.items():
+      if custom_symbol in custom_symbols_for_file:
+        found_custom_symbol = True
+        if file_path == "sys/main.dol":
+          address = custom_symbols_for_file[custom_symbol]
+          change_hardcoded_item_in_dol(self, address, item_id)
+        else:
+          offset = custom_symbols_for_file[custom_symbol]
+          change_hardcoded_item_in_rel(self, file_path, offset, item_id)
+        break
+    if not found_custom_symbol:
       raise Exception("Invalid custom symbol: %s" % custom_symbol)
-    address = self.custom_symbols[custom_symbol]
-    offset = address - tweaks.ORIGINAL_FREE_SPACE_RAM_ADDRESS + tweaks.ORIGINAL_DOL_SIZE
-    path = os.path.join("sys", "main.dol")
-    change_hardcoded_item(self, path, offset, item_id)
   elif chest_match:
     arc_path = "files/res/Stage/" + chest_match.group(1)
     if chest_match.group(2):
@@ -498,9 +506,12 @@ def change_item(self, path, item_name):
   else:
     raise Exception("Invalid item path: " + path)
 
-def change_hardcoded_item(self, path, offset, item_id):
-  data = self.get_raw_file(path)
-  write_u8(data, offset, item_id)
+def change_hardcoded_item_in_dol(self, address, item_id):
+  self.dol.write_data(write_u8, address, item_id)
+
+def change_hardcoded_item_in_rel(self, path, offset, item_id):
+  rel = self.get_rel(path)
+  rel.write_data(write_u8, offset, item_id)
 
 def change_chest_item(self, arc_path, chest_index, layer, item_id):
   if arc_path.endswith("Stage.arc"):
@@ -528,11 +539,8 @@ def change_scob_item(self, arc_path, scob_index, layer, item_id):
   else:
     dzx = self.get_arc(arc_path).get_file("room.dzr")
   scob = dzx.entries_by_type_and_layer("SCOB", layer)[scob_index]
-  if scob.is_salvage():
-    scob.salvage_item_id = item_id
-    scob.save_changes()
-  elif scob.is_buried_pig_item():
-    scob.buried_pig_item_id = item_id
+  if scob.actor_class_name in ["d_a_salvage", "d_a_tag_kb_item"]:
+    scob.item_id = item_id
     scob.save_changes()
   else:
     raise Exception("%s/SCOB%03X is an unknown type of SCOB" % (arc_path, scob_index))
@@ -543,10 +551,8 @@ def change_actor_item(self, arc_path, actor_index, layer, item_id):
   else:
     dzx = self.get_arc(arc_path).get_file("room.dzr")
   actr = dzx.entries_by_type_and_layer("ACTR", layer)[actor_index]
-  if actr.is_item():
+  if actr.actor_class_name in ["d_a_item", "d_a_boss_item"]:
     actr.item_id = item_id
-  elif actr.is_boss_item():
-    actr.boss_item_id = item_id
   else:
     raise Exception("%s/ACTR%03X is not an item" % (arc_path, actor_index))
   

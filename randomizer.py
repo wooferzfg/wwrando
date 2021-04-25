@@ -423,7 +423,17 @@ class Randomizer:
     options_completed += 1
     yield("Patching...", options_completed)
     
-	
+    item_locations = OrderedDict()
+    item_locations["Islet of Steel - Interior"] = "Triforce Shard 1"
+    item_locations["Private Oasis - Cabana Labyrinth - Second Chest"] = "Triforce Shard 2"
+    item_locations["Bird's Peak Rock - Cave"] = "Triforce Shard 3"
+    item_locations["The Great Sea - Ghost Ship"] = "Triforce Shard 4"
+    item_locations["Needle Rock Isle - Golden Gunboat"] = "Triforce Shard 5"
+    item_locations["Outset Island - Savage Labyrinth - Floor 30"] = "Triforce Shard 6"
+    item_locations["Stone Watcher Island - Cave"] = "Triforce Shard 7"
+    item_locations["Overlook Island - Cave"] = "Triforce Shard 8"
+
+    items.write_changed_items(self, item_locations)
 																																				
 											 
 																
