@@ -266,8 +266,16 @@ Can Access Secret Cave Entrance on Rock Spire Isle:
 Can Access Secret Cave Entrance on Shark Island:
   # Iron Boots and Skull Hammer are necessary to hit the two big buttons.
   # The diamond switch does not require Boomerang or any ranged weapon - you can just hit it with your sword or hammer.
-  Iron Boots
-  & Skull Hammer
+  # Early with Chest Storage is not in Lunatic due to the policy against Chest Storage only Strats
+  (
+    Iron Boots
+    & Skull Hammer
+  ) |
+  ( 
+    Complex Logic 
+    & Bombs
+    & Can Jumpslash
+  )
   & Can Travel to Shark Island
 Can Access Secret Cave Entrance on Cliff Plateau Isles:
   Can Travel to Cliff Plateau Isles
