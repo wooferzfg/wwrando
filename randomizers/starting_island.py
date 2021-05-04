@@ -41,14 +41,15 @@ def randomize_starting_island(self):
       continue
 
   if not self.dry_run:
-    tweaks.set_new_game_starting_room_index(self, starting_island_room_index)
+    tweaks.set_new_game_starting_room_index(self, self.starting_island_index)
     tweaks.change_ship_starting_island(self, starting_island_room_index)
 
   self.starting_island_index = starting_island_room_index
   #print(str(starting_island_room_index))
   return starting_island_room_index
 
-def get_starting_island(self,starting_island_room_index):
+def get_starting_island(self):
+  starting_island_room_index = self.rando.starting_island_index
   if True:
     bad_index = OrderedDict()
     bad_index[9] = "Child Isle"
@@ -56,8 +57,11 @@ def get_starting_island(self,starting_island_room_index):
   with open(os.path.join(DATA_PATH, "island_data.txt")) as f:
     island_data = yaml.load(f, YamlOrderedDictLoader)
 
-  starting_island_name = island_data[starting_island_room_index]["Long Name"]
   neighbor_index = (island_data[starting_island_room_index]["Neighbors"]).split(", ")
+  if starting_island_room_index in bad_index:
+    starting_island_name = bad_index[starting_island_room_index]
+  else:
+    starting_island_name = island_data[starting_island_room_index]["Long Name"]
   island_macro = "Can Travel to {}".format(starting_island_name)
   req_string = "Nothing"
   self.set_macro(island_macro, req_string)

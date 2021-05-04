@@ -1924,6 +1924,14 @@ Earth Temple - Stalfos Mini-Boss Room:
         Deku Leaf
         & ET Small Key x2
         & Complex Logic
+      ) | (
+        Not "Can Access Other Location "Earth Temple - Chest in Third Crypt""
+        & ET Small Key x2
+      ) | (
+        Not "Can Access Other Location "Earth Temple - Chest in Third Crypt""
+        & ET Small Key x1
+        & Complex Logic
+        & Deku Leaf
       )
     ) & (
       Fire Arrows
@@ -1943,7 +1951,11 @@ Earth Temple - Stalfos Mini-Boss Room:
 Earth Temple - Tingle Statue Chest:
   Need:
     Can Get into Earth Temple
-    & ((Can Aim Mirror Shield & Can Play Command Melody) | Deku Leaf)
+    & (
+      (Can Aim Mirror Shield & Can Play Command Melody)
+      | (Deku Leaf & Complex Logic)
+      | (Deku Leaf & Glitched Logic & Wind Waker)
+    )
     & Tingle Tuner Bombs
   Original item: Earth Tingle Statue
   Types: Tingle Chest, Dungeon
@@ -2261,8 +2273,14 @@ Wind Temple - Spike Wall Room - Destroy All Cracked Floors:
 Wind Temple - Wizzrobe Mini-Boss Room:
   Need:
     Can Access Wind Temple Basement
-    & (WT Small Key x2 | Complex Logic)
-    & Can Defeat Darknuts
+    & (
+      WT Small Key x2
+      | Complex Logic
+      | (
+        Not "Can Access Other Location "Wind Temple - Kill All Enemies in Tall Basement Room""
+        & WT Small Key x1
+      )
+    ) & Can Defeat Darknuts
     & Can Remove Peahat Armor
     # Besides Darknuts, there are Wizzrobes, Peahats, Moblins, Keese, and Kargarocs. But if you can defeat a Darknut you can steal its sword to defeat the other enemies.
     # Unfortunately you can't do the same in reverse by stealing a Moblin's spear to kill a Darknut - the Moblin never spawns until the Darknut is defeated.

@@ -180,8 +180,6 @@ class Randomizer:
 
     self.starting_items_extra = [self.options.get("additional_starting_min"), self.options.get("additional_starting_max")]
 
-    self.island_number = 44
-
     # Default entrances connections to be used if the entrance randomizer is not on.
     self.entrance_connections = OrderedDict([
       ("Dungeon Entrance On Dragon Roost Island", "Dragon Roost Cavern"),
@@ -441,10 +439,9 @@ class Randomizer:
 
     if self.options.get("randomize_starting_island"):
       self.reset_rng()
-      self.island_number = starting_island.randomize_starting_island(self)
+      starting_island.randomize_starting_island(self)
     else:
       self.reset_rng()
-      self.island_number = 44
 
     options_completed += 1
     yield("Randomizing...", options_completed)

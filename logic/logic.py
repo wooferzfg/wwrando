@@ -72,7 +72,7 @@ class Logic:
     # Initialize location related attributes.
     self.item_locations = Logic.load_and_parse_item_locations(logic=logic_mod)
     self.load_and_parse_macros()
-    starting_island.get_starting_island(self,rando.island_number)
+    starting_island.get_starting_island(self)
 
     self.locations_by_zone_name = OrderedDict()
     for location_name in self.item_locations:
@@ -837,7 +837,7 @@ class Logic:
       chart_item_name = self.rando.island_number_to_chart_name[island_number]
 
       if "Triforce Chart" in chart_item_name:
-        req_string = "%s & Any Wallet Upgrade" % chart_item_name
+        req_string = "%s & Any Wallet Upgrade & Can Travel to Tingle Island" % chart_item_name
       else:
         req_string = chart_item_name
 
@@ -1009,6 +1009,8 @@ class Logic:
       return self.check_other_location_requirement(req_name)
     elif req_name.startswith("Option \""):
       return self.check_option_enabled_requirement(req_name)
+    elif req_name.startswith("Not \""):
+      return self.check_not_logic_requirement(req_name)
     elif req_name in self.all_cleaned_item_names:
       return req_name in self.currently_owned_items
     elif req_name in self.macros:
@@ -1089,6 +1091,8 @@ class Logic:
         items_needed[item_name] = max(num_required, items_needed.setdefault(item_name, 0))
     elif req_name.startswith("Option \""):
       pass
+    elif req_name.startswith("Not \""):
+      pass
     elif req_name in self.all_cleaned_item_names:
       items_needed[req_name] = max(1, items_needed.setdefault(req_name, 0))
     elif req_name in self.macros:
@@ -1158,6 +1162,12 @@ class Logic:
 
     requirement_expression = self.item_locations[other_location_name]["Need"]
     return self.check_logical_expression_req(requirement_expression)
+
+  def check_not_logic_requirement(self, req_name):
+    get_name_of_req = req_name.split('"')
+    if get_name_of_req:
+      req_name_new = '"'.join(get_name_of_req[1:-1])
+      return not self.check_requirement_met(req_name_new)
 
   def check_option_enabled_requirement(self, req_name):
     positive_boolean_match = re.search(r"^Option \"([^\"]+)\" Enabled$", req_name)
