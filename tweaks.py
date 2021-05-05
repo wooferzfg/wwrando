@@ -884,21 +884,21 @@ def update_shop_item_descriptions(self):
   msg = self.bmg.messages_by_id[12106]
   msg.string = "\\{1A 06 FF 00 00 01}%s  %d Rupees\n\\{1A 06 FF 00 00 00}This is my last one." % (item_name, cost)
   msg = self.bmg.messages_by_id[12109]
-  msg.string = "This \\{1A 06 FF 00 00 01}%s\\{1A 06 FF 00 00 00} is a mere \\{1A 06 FF 00 00 01}%d Rupees\\{1A 06 FF 00 00 00}!\nBuy it! Buy it! Buy buy buy!\n\\{1A 05 00 00 08}I'll buy it\nNo thanks" % (item_name, cost)
+  msg.string = word_wrap_string("This \\{1A 06 FF 00 00 01}%s\\{1A 06 FF 00 00 00} is a mere \\{1A 06 FF 00 00 01}%d Rupees\\{1A 06 FF 00 00 00}!\nBuy it! Buy it! Buy buy buy!\n\\{1A 05 00 00 08}I'll buy it\nNo thanks" % (item_name, cost), max_line_length=43)
 
   item_name = self.logic.done_item_locations["Rock Spire Isle - Beedle's Special Shop Ship - 950 Rupee Item"]
   cost = 950
   msg = self.bmg.messages_by_id[12107]
   msg.string = "\\{1A 06 FF 00 00 01}%s  %d Rupees\n\\{1A 06 FF 00 00 00}This is my last one of these, too." % (item_name, cost)
   msg = self.bmg.messages_by_id[12110]
-  msg.string = "This \\{1A 06 FF 00 00 01}%s\\{1A 06 FF 00 00 00} is only \\{1A 06 FF 00 00 01}%d Rupees\\{1A 06 FF 00 00 00}!\nBuy it! Buy it! Buy buy buy!\n\\{1A 05 00 00 08}I'll buy it\nNo thanks" % (item_name, cost)
+  msg.string = word_wrap_string("This \\{1A 06 FF 00 00 01}%s\\{1A 06 FF 00 00 00} is only \\{1A 06 FF 00 00 01}%d Rupees\\{1A 06 FF 00 00 00}!\nBuy it! Buy it! Buy buy buy!\n\\{1A 05 00 00 08}I'll buy it\nNo thanks" % (item_name, cost), max_line_length=43)
 
   item_name = self.logic.done_item_locations["Rock Spire Isle - Beedle's Special Shop Ship - 900 Rupee Item"]
   cost = 900
   msg = self.bmg.messages_by_id[12108]
   msg.string = "\\{1A 06 FF 00 00 01}%s  %d Rupees\n\\{1A 06 FF 00 00 00}The price may be high, but it'll pay\noff handsomely in the end!" % (item_name, cost)
   msg = self.bmg.messages_by_id[12111]
-  msg.string = "This \\{1A 06 FF 00 00 01}%s \\{1A 06 FF 00 00 00}is just \\{1A 06 FF 00 00 01}%d Rupees!\\{1A 06 FF 00 00 00}\nBuy it! Buy it! Buy buy buy!\n\\{1A 05 00 00 08}I'll buy it\nNo thanks" % (item_name, cost)
+  msg.string = word_wrap_string("This \\{1A 06 FF 00 00 01}%s \\{1A 06 FF 00 00 00}is just \\{1A 06 FF 00 00 01}%d Rupees!\\{1A 06 FF 00 00 00}\nBuy it! Buy it! Buy buy buy!\n\\{1A 05 00 00 08}I'll buy it\nNo thanks" % (item_name, cost), max_line_length=43)
 
 def update_auction_item_names(self):
   item_name = self.logic.done_item_locations["Windfall Island - 5 Rupee Auction"]
@@ -1970,6 +1970,16 @@ def prevent_fire_mountain_lava_softlock(self):
   ship_actor = next(x for x in sea_actors if x.name == "Ship")
   ship_actor.y_pos = -500000
   ship_actor.save_changes()
+
+def adjust_wind_element_in_tower_of_the_gods(self):
+  # Adjust wind to lowest speed in the first room only
+  # Does not work fully as intended, there is something else controlling the wind
+
+  totg_dzr = self.get_arc("files/res/Stage/siren/Room0.arc").get_file("room.dzr")
+  room_props = totg_dzr.entries_by_type("FILI")[0]
+  room_props.wind_type = 0 # Weakest wind (0.3 strength)
+  #room_props.unknown_1 = 1 # Unsure exactly what this does but this is on in other maps.
+  totg_dzr.save_changes()
 
 def add_chest_in_place_of_jabun_cutscene(self):
   # Add a chest on a raft to Jabun's cave to replace the cutscene item you would normally get there.

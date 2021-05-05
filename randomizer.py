@@ -575,6 +575,7 @@ class Randomizer:
     tweaks.fix_ghost_ship_chest_crash(self)
     tweaks.implement_key_bag(self)
     tweaks.add_chest_in_place_of_jabun_cutscene(self)
+    # tweaks.adjust_wind_element_in_tower_of_the_gods(self)
     tweaks.add_chest_in_place_of_master_sword(self)
     tweaks.update_beedle_spoil_selling_text(self)
     tweaks.fix_totg_warp_out_spawn_pos(self)

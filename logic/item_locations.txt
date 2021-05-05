@@ -119,6 +119,140 @@ Outset Island - Dig up Black Soil:
   Locale: Outset Island
   Paths:
     - sea/Room44.arc/ScalableObject03A
+# These don't seem to function as intended.
+# Outset Island - Dig up Black Soil Near Mesa's House:
+#   Need:
+#     Bait Bag
+#     & Power Bracelets
+#     & Can Travel to Outset Island
+#   Original item: Piece of Heart
+#   Types: Consumables only
+#   Locale: Outset Island
+#   Paths:
+#     - sea/Room44.arc/ScalableObject036
+#     - sea/Room44.arc/ScalableObject037
+#     - sea/Room44.arc/ScalableObject038
+# Outset Island - Dig up Upper Eastern Black Soil:
+#   Need:
+#     Bait Bag
+#     & Power Bracelets
+#     & Can Travel to Outset Island
+#   Original item: Piece of Heart
+#   Types: Consumables only
+#   Locale: Outset Island
+#   Paths:
+#     - sea/Room44.arc/ScalableObject030
+# Outset Island - Dig up Lower Western Black Soil:
+#   Need:
+#     Bait Bag
+#     & Power Bracelets
+#     & Can Travel to Outset Island
+#   Original item: Red Rupee
+#   Types: Consumables only
+#   Locale: Outset Island
+#   Paths:
+#     - sea/Room44.arc/ScalableObject035
+# Outset Island - Dig up Black Soil Near Link's House:
+#   Need:
+#     Bait Bag
+#     & Power Bracelets
+#     & Can Travel to Outset Island
+#   Original item: None
+#   Types: Consumables only
+#   Locale: Outset Island
+#   Paths:
+#     - sea/Room44.arc/ScalableObject031
+#     - sea/Room44.arc/ScalableObject032
+#     - sea/Room44.arc/ScalableObject033
+#     - sea/Room44.arc/ScalableObject034
+Outset Island - Freestanding High Ledge:
+  Need:
+    Bait Bag
+    & Can Travel to Outset Island
+  Original item: Green Rupee
+  Types: Consumables only
+  Locale: Outset Island
+  Paths:
+    - sea/Room44.arc/Actor0AB
+Outset Island - Above Aryll's Lookout:
+  Need:
+    Bait Bag
+    & Can Travel to Outset Island
+  Original item: Red Rupee
+  Types: Free Gift
+  Locale: Outset Island
+  Paths:
+    - sea/Room44.arc/Actor0A8
+Outset Island - On Grandma's Roof:
+  Need:
+    Bait Bag
+    & Can Travel to Outset Island
+  Original item: Red Rupee
+  Types: Free Gift
+  Locale: Outset Island
+  Paths:
+    - sea/Room44.arc/Actor0A5
+Outset Island - Above the Water Basin:
+  Need:
+    Bait Bag
+    & Can Travel to Outset Island
+  Original item: Red Rupee
+  Types: Free Gift
+  Locale: Outset Island
+  Paths:
+    - sea/Room44.arc/Actor0A6
+Outset Island - In the Trees near the Water Basin:
+  Need:
+    Can Cut Down Outset Trees
+    & Can Travel to Outset Island
+  Original item: Yellow Rupee
+  Types: Free Gift
+  Locale: Outset Island
+  Paths:
+    - sea/Room44.arc/Actor060
+Outset Island - Near Mesa's House:
+  Need:
+    Can Travel to Outset Island
+  Original item: Green Rupee
+  Types: Consumables only
+  Locale: Outset Island
+  Paths:
+    - sea/Room44.arc/Actor099
+    - sea/Room44.arc/Actor097
+Outset Island - On Mesa's Roof:
+  Need:
+    ( Bait Bag | Deku Leaf | Tricked Logic )
+    & Can Travel to Outset Island
+  Original item: Green Rupee
+  Types: Free Gift
+  Locale: Outset Island
+  Paths:
+    - sea/Room44.arc/Actor098
+Outset Island - The Path to Fairy Woods:
+  Need:
+    ( Bait Bag | Deku Leaf )
+    & Can Travel to Outset Island
+  Original item: Yellow Rupee
+  Types: Free Gift
+  Locale: Outset Island
+  Paths:
+    - sea/Room44.arc/Actor096
+Outset Island - First Platforming Across Rocks:
+  Need:
+    Can Travel to Outset Island
+  Original item: Blue Rupee
+  Types: Free Gift
+  Locale: Outset Island
+  Paths:
+    - sea/Room44.arc/Actor05E
+Outset Island - Final Platforming Across Rocks:
+  Need:
+    Can Travel to Outset Island
+  Original item: Yellow Rupee
+  Types: Free Gift
+  Locale: Outset Island
+  Paths:
+    - sea/Room44.arc/Actor05F
 Outset Island - Savage Labyrinth - Floor 30:
   Need:
     Can Access Savage Labyrinth
@@ -714,6 +848,62 @@ Dragon Roost Island - Wind Shrine:
   Paths:
     - sea/Stage.arc/Event0D8:TACT_HT/Actor001/Action005
     #- rels/d_a_npc_hr.rel@1167 # Duplicate Wind's Requiem given by Zephos, we remove this from his code so the player doesn't get this item twice.
+Dragon Roost Island - Freestanding on Drop Ledge:
+  Need: Can Travel to Dragon Roost Island
+  Original item: Blue Rupee
+  Types: Free Gift
+  Locale: Dragon Roost Island
+  Paths:
+    - sea/Room13.arc/Actor009
+Dragon Roost Island - Freestanding on Grapple Pegs:
+  Need: Can Travel to Dragon Roost Island & Grappling Hook
+  Original item: Red Rupee
+  Types: Free Gift
+  Locale: Dragon Roost Island
+  Paths:
+    - sea/Room13.arc/Actor063
+Dragon Roost Island - Freestanding in The Wading Pool:
+  Need: Can Travel to Dragon Roost Island
+  Original item: Green Rupee
+  Types: Free Gift
+  Locale: Dragon Roost Island
+  Paths:
+    - sea/Room13.arc/Actor05A
+Dragon Roost Island - Second Freestanding in The Wading Pool:
+  Need: Can Travel to Dragon Roost Island
+  Original item: Recovery Heart
+  Types: Free Gift
+  Locale: Dragon Roost Island
+  Paths:
+    - sea/Room13.arc/Actor059
+Dragon Roost Island - Third Freestanding in The Wading Pool:
+  Need: Can Travel to Dragon Roost Island
+  Original item: Green Rupee
+  Types: Free Gift
+  Locale: Dragon Roost Island
+  Paths:
+    - sea/Room13.arc/Actor057
+Dragon Roost Island - Fourth Freestanding in The Wading Pool:
+  Need: Can Travel to Dragon Roost Island
+  Original item: Green Rupee
+  Types: Free Gift
+  Locale: Dragon Roost Island
+  Paths:
+    - sea/Room13.arc/Actor05B
+Dragon Roost Island - Fifth Freestanding in The Wading Pool:
+  Need: Can Travel to Dragon Roost Island
+  Original item: Green Rupee
+  Types: Free Gift
+  Locale: Dragon Roost Island
+  Paths:
+    - sea/Room13.arc/Actor05C
+Dragon Roost Island - Sixth Freestanding in The Wading Pool:
+  Need: Can Travel to Dragon Roost Island
+  Original item: Green Rupee
+  Types: Free Gift
+  Locale: Dragon Roost Island
+  Paths:
+    - sea/Room13.arc/Actor058
 #Dragon Roost Island - Quill:
 #  Need:
 #  Original item: Delivery Bag
@@ -832,6 +1022,87 @@ Dragon Roost Cavern - Chest Across Lava Pit:
   Locale: Dragon Roost Cavern
   Paths:
     - M_NewD2/Stage.arc/Chest00A
+Dragon Roost Cavern - Rat Room Lower Path 1:
+  Need:
+    Can Access Dragon Roost Cavern
+    & DRC Small Key x2
+  Original item: Yellow Rupee
+  Types: Consumables only
+  Locale: Dragon Roost Cavern
+  Paths:
+    - M_NewD2/Room14.arc/Actor00F
+Dragon Roost Cavern - Rat Room Lower Path 2:
+  Need:
+    Can Access Dragon Roost Cavern
+    & DRC Small Key x2
+  Original item: Green Rupee
+  Types: Consumables only
+  Locale: Dragon Roost Cavern
+  Paths:
+    - M_NewD2/Room14.arc/Actor012
+Dragon Roost Cavern - Rat Room Lower Path 3:
+  Need:
+    Can Access Dragon Roost Cavern
+    & DRC Small Key x2
+  Original item: Yellow Rupee
+  Types: Consumables only
+  Locale: Dragon Roost Cavern
+  Paths:
+    - M_NewD2/Room14.arc/Actor011
+Dragon Roost Cavern - Rat Room Lower Path 4:
+  Need:
+    Can Access Dragon Roost Cavern
+    & DRC Small Key x2
+  Original item: Green Rupee
+  Types: Consumables only
+  Locale: Dragon Roost Cavern
+  Paths:
+    - M_NewD2/Room14.arc/Actor013
+Dragon Roost Cavern - Rat Room Lower Path 5:
+  Need:
+    Can Access Dragon Roost Cavern
+    & DRC Small Key x2
+  Original item: Yellow Rupee
+  Types: Consumables only
+  Locale: Dragon Roost Cavern
+  Paths:
+    - M_NewD2/Room14.arc/Actor010
+Dragon Roost Cavern - Rat Room Upper Path 1:
+  Need:
+    Can Access Dragon Roost Cavern
+    & DRC Small Key x2
+  Original item: Green Rupee
+  Types: Consumables only
+  Locale: Dragon Roost Cavern
+  Paths:
+    - M_NewD2/Room14.arc/Actor016
+Dragon Roost Cavern - Rat Room Upper Path 2:
+  Need:
+    Can Access Dragon Roost Cavern
+    & DRC Small Key x2
+  Original item: Blue Rupee
+  Types: Consumables only
+  Locale: Dragon Roost Cavern
+  Paths:
+    - M_NewD2/Room14.arc/Actor014
+Dragon Roost Cavern - Rat Room Upper Path 3:
+  Need:
+    Can Access Dragon Roost Cavern
+    & DRC Small Key x2
+  Original item: Blue Rupee
+  Types: Consumables only
+  Locale: Dragon Roost Cavern
+  Paths:
+    - M_NewD2/Room14.arc/Actor015
+Dragon Roost Cavern - Rat Room Upper Path 4:
+  Need:
+    Can Access Dragon Roost Cavern
+    & DRC Small Key x2
+  Original item: Green Rupee
+  Types: Consumables only
+  Locale: Dragon Roost Cavern
+  Paths:
+    - M_NewD2/Room14.arc/Actor00F
 Dragon Roost Cavern - Rat Room:
   Need:
     Can Access Dragon Roost Cavern
@@ -1121,6 +1392,33 @@ Forbidden Woods - Climb to Top Using Boko Baba Bulbs:
   Locale: Forbidden Woods
   Paths:
     - kindan/Stage.arc/Chest000
+Forbidden Woods - Climb to Top Upper Freestanding:
+  Need:
+    Can Access Forbidden Woods
+    & Deku Leaf
+    & Can Defeat Door Flowers
+    & Can Defeat Boko Babas
+  Original item: Blue Rupee
+  Types: Consumables only
+  Locale: Forbidden Woods
+  Paths:
+    - kindan/Room1.arc/Actor05A
+    - kindan/Room1.arc/Actor05B
+    - kindan/Room1.arc/Actor05C
+    - kindan/Room1.arc/Actor05D
+Forbidden Woods - Climb to Top Lower Freestanding:
+  Need:
+    Can Access Forbidden Woods
+    & Deku Leaf
+    & Can Defeat Door Flowers
+  Original item: Blue Rupee
+  Types: Consumables only
+  Locale: Forbidden Woods
+  Paths:
+    - kindan/Room1.arc/Actor05E
+    - kindan/Room1.arc/Actor05F
+    - kindan/Room1.arc/Actor060
+    - kindan/Room1.arc/Actor061
 Forbidden Woods - Hole in Tree:
   Need:
     Can Access Forbidden Woods
@@ -1131,6 +1429,82 @@ Forbidden Woods - Hole in Tree:
   Locale: Forbidden Woods
   Paths:
     - kindan/Stage.arc/Chest004
+Forbidden Woods - Behind Boko Baba:
+  Need:
+    Can Access Forbidden Woods
+    & Deku Leaf
+    & Can Defeat Boko Babas
+    & Can Defeat Door Flowers
+  Original item: Green Rupee
+  Types: Consumables only
+  Locale: Forbidden Woods
+  Paths:
+    - kindan/Room3.arc/Actor005
+    - kindan/Room3.arc/Actor017
+    - kindan/Room3.arc/Actor018
+    - kindan/Room3.arc/Actor019
+    - kindan/Room3.arc/Actor016
+Forbidden Woods - Tingle Bomb the Leaf Pile:
+  Need:
+    Can Access Forbidden Woods
+    & Deku Leaf
+    & Can Defeat Door Flowers
+    & Tingle Tuner Bombs
+  Original item: Purple Rupee
+  Types: Dungeon, Tingle Chest
+  Locale: Forbidden Woods
+  Paths:
+    - kindan/Room3.arc/Actor01C
+Forbidden Woods - Freestanding Center in Hub Room:
+  Need:
+    Can Access Forbidden Woods
+    & Deku Leaf
+    & Tingle Tuner Bombs
+  Original item: Purple Rupee
+  Types: Dungeon, Tingle Chest
+  Locale: Forbidden Woods
+  Paths:
+    - kindan/Room5.arc/Actor06A
+Forbidden Woods - Freestanding Southeast in Hub Room:
+  Need:
+    Can Access Forbidden Woods
+    & Deku Leaf
+    & Tingle Tuner Bombs
+  Original item: Purple Rupee
+  Types: Dungeon, Tingle Chest
+  Locale: Forbidden Woods
+  Paths:
+    - kindan/Room5.arc/Actor06B
+Forbidden Woods - Freestanding Southwest in Hub Room:
+  Need:
+    Can Access Forbidden Woods
+    & Deku Leaf
+    & Tingle Tuner Bombs
+  Original item: Purple Rupee
+  Types: Dungeon, Tingle Chest
+  Locale: Forbidden Woods
+  Paths:
+    - kindan/Room5.arc/Actor06C
+Forbidden Woods - Freestanding Northwest in Hub Room:
+  Need:
+    Can Access Forbidden Woods
+    & Deku Leaf
+    & Tingle Tuner Bombs
+  Original item: Purple Rupee
+  Types: Dungeon, Tingle Chest
+  Locale: Forbidden Woods
+  Paths:
+    - kindan/Room5.arc/Actor06D
+Forbidden Woods - Freestanding Northeast in Hub Room:
+  Need:
+    Can Access Forbidden Woods
+    & Deku Leaf
+    & Tingle Tuner Bombs
+  Original item: Purple Rupee
+  Types: Dungeon, Tingle Chest
+  Locale: Forbidden Woods
+  Paths:
+    - kindan/Room5.arc/Actor06E
 Forbidden Woods - Morth Pit:
   Need:
     Can Access Forbidden Woods
@@ -1181,7 +1555,7 @@ Forbidden Woods - Tall Room Before Mini-Boss:
   Locale: Forbidden Woods
   Paths:
     - kindan/Stage.arc/Chest009
-Forbidden Woods - Mothula Mini-Boss Room:
+Forbidden Woods - Mothula Mini-Boss Chest Room:
   Need:
     Can Access Forbidden Woods
     & Deku Leaf
@@ -1195,6 +1569,118 @@ Forbidden Woods - Mothula Mini-Boss Room:
   Locale: Forbidden Woods
   Paths:
     - kinMB/Stage.arc/Chest000
+Forbidden Woods - Mothula Mini-Boss Room North:
+  Need:
+    Can Access Forbidden Woods
+    & Deku Leaf
+    & Can Defeat Boko Babas
+    & (Grappling Hook | Complex Logic | (Glitched Logic & Hero's Bow))
+    & FW Small Key x1
+    & Can Defeat Winged Mothulas
+  # Need to escape: Can Hit Diamond Switches at Range
+  Original item: Boomerang
+  Types: Dungeon
+  Locale: Forbidden Woods
+  Paths:
+    - kinMB/Room10.arc/Actor029
+Forbidden Woods - Mothula Mini-Boss Room Northeast:
+  Need:
+    Can Access Forbidden Woods
+    & Deku Leaf
+    & Can Defeat Boko Babas
+    & (Grappling Hook | Complex Logic | (Glitched Logic & Hero's Bow))
+    & FW Small Key x1
+    & Can Defeat Winged Mothulas
+  # Need to escape: Can Hit Diamond Switches at Range
+  Original item: Boomerang
+  Types: Dungeon
+  Locale: Forbidden Woods
+  Paths:
+    - kinMB/Room10.arc/Actor02E
+Forbidden Woods - Mothula Mini-Boss Room East:
+  Need:
+    Can Access Forbidden Woods
+    & Deku Leaf
+    & Can Defeat Boko Babas
+    & (Grappling Hook | Complex Logic | (Glitched Logic & Hero's Bow))
+    & FW Small Key x1
+    & Can Defeat Winged Mothulas
+  # Need to escape: Can Hit Diamond Switches at Range
+  Original item: Boomerang
+  Types: Dungeon
+  Locale: Forbidden Woods
+  Paths:
+    - kinMB/Room10.arc/Actor027
+Forbidden Woods - Mothula Mini-Boss Room Southeast:
+  Need:
+    Can Access Forbidden Woods
+    & Deku Leaf
+    & Can Defeat Boko Babas
+    & (Grappling Hook | Complex Logic | (Glitched Logic & Hero's Bow))
+    & FW Small Key x1
+    & Can Defeat Winged Mothulas
+  # Need to escape: Can Hit Diamond Switches at Range
+  Original item: Boomerang
+  Types: Dungeon
+  Locale: Forbidden Woods
+  Paths:
+    - kinMB/Room10.arc/Actor02B
+Forbidden Woods - Mothula Mini-Boss Room South:
+  Need:
+    Can Access Forbidden Woods
+    & Deku Leaf
+    & Can Defeat Boko Babas
+    & (Grappling Hook | Complex Logic | (Glitched Logic & Hero's Bow))
+    & FW Small Key x1
+    & Can Defeat Winged Mothulas
+  # Need to escape: Can Hit Diamond Switches at Range
+  Original item: Boomerang
+  Types: Dungeon
+  Locale: Forbidden Woods
+  Paths:
+    - kinMB/Room10.arc/Actor02A
+Forbidden Woods - Mothula Mini-Boss Room Southwest:
+  Need:
+    Can Access Forbidden Woods
+    & Deku Leaf
+    & Can Defeat Boko Babas
+    & (Grappling Hook | Complex Logic | (Glitched Logic & Hero's Bow))
+    & FW Small Key x1
+    & Can Defeat Winged Mothulas
+  # Need to escape: Can Hit Diamond Switches at Range
+  Original item: Boomerang
+  Types: Dungeon
+  Locale: Forbidden Woods
+  Paths:
+    - kinMB/Room10.arc/Actor02D
+Forbidden Woods - Mothula Mini-Boss Room West:
+  Need:
+    Can Access Forbidden Woods
+    & Deku Leaf
+    & Can Defeat Boko Babas
+    & (Grappling Hook | Complex Logic | (Glitched Logic & Hero's Bow))
+    & FW Small Key x1
+    & Can Defeat Winged Mothulas
+  # Need to escape: Can Hit Diamond Switches at Range
+  Original item: Boomerang
+  Types: Dungeon
+  Locale: Forbidden Woods
+  Paths:
+    - kinMB/Room10.arc/Actor028
+Forbidden Woods - Mothula Mini-Boss Room Northwest:
+  Need:
+    Can Access Forbidden Woods
+    & Deku Leaf
+    & Can Defeat Boko Babas
+    & (Grappling Hook | Complex Logic | (Glitched Logic & Hero's Bow))
+    & FW Small Key x1
+    & Can Defeat Winged Mothulas
+  # Need to escape: Can Hit Diamond Switches at Range
+  Original item: Boomerang
+  Types: Dungeon
+  Locale: Forbidden Woods
+  Paths:
+    - kinMB/Room10.arc/Actor02C
 Forbidden Woods - Past Seeds Hanging by Vines:
   Need:
     Can Access Forbidden Woods
@@ -1839,7 +2325,18 @@ Earth Temple - Chest Behind Destructible Walls:
   Locale: Earth Temple
   Paths:
     - M_Dai/Stage.arc/Chest00A
-Earth Temple - Behind Curtain In Warp Pot Room:
+Earth Temple - Behind Left Curtain In Warp Pot Room:
+  Need:
+    Can Access Earth Temple
+    & Can Play Command Melody
+    & Fire Arrows
+    & (Boomerang | Hookshot)
+  Original item: Joy Pendant
+  Types: Consumables only
+  Locale: Earth Temple, dv_im
+  Paths:
+    - M_Dai/Room2.arc/Actor00F
+Earth Temple - Behind Right Curtain In Warp Pot Room:
   Need:
     Can Access Earth Temple
     & Can Play Command Melody
@@ -1850,6 +2347,15 @@ Earth Temple - Behind Curtain In Warp Pot Room:
   Locale: Earth Temple, dv_im
   Paths:
     - M_Dai/Room2.arc/Actor010
+Earth Temple - Behind Statue In Warp Pot Room:
+  Need:
+    Can Access Earth Temple
+    & Can Play Command Melody
+  Original item: Joy Pendant
+  Types: Consumables only
+  Locale: Earth Temple, dv_im
+  Paths:
+    - M_Dai/Room2.arc/Actor011
 Earth Temple - Transparent Chest in First Crypt:
   Need:
     Can Get into Earth Temple
@@ -1862,6 +2368,17 @@ Earth Temple - Transparent Chest in First Crypt:
   Locale: Earth Temple
   Paths:
     - M_Dai/Stage.arc/Chest001
+Earth Temple - Behind Right Curtain In Warp Pot Room:
+  Need:
+    Can Get into Earth Temple
+    & ET Small Key x2
+    & Fire Arrows
+    & (Boomerang | Hookshot | (Complex Logic & Deku Leaf))
+  Original item: Large Magic Refill
+  Types: Consumables only
+  Locale: Earth Temple, dv_im
+  Paths:
+    - M_Dai/Room5.arc/Actor015
 Earth Temple - Chest In Three Blocks Room:
   Need:
     Can Get into Earth Temple
@@ -2022,6 +2539,115 @@ Earth Temple - Chest in Third Crypt:
   Locale: Earth Temple
   Paths:
     - M_Dai/Stage.arc/Chest005
+Earth Temple - In Near Progression Coffin:
+  Need:
+    Can Access Earth Temple Basement
+    & (Can Play Command Melody | Complex Logic)
+    & Can Aim Mirror Shield
+    & (Power Bracelets | (Deku Leaf & Complex Logic))
+    & (
+      Can Play Earth God's Lyric
+      | (Deku Leaf & Bombs & Complex Logic)
+    ) & (
+      ET Small Key x3
+      | (Deku Leaf & Bombs & Glitched Logic & ET Small Key x2)
+      | (Deku Leaf & Complex Logic)
+    ) & (
+        (
+          Can Defeat Red Bubbles
+          & Skull Hammer
+        )
+        | Tricked Logic
+    )
+    # Power Bracelets necessary again to move the large mirror under the light.
+    # Note: Killing the Red Bubbles is not necessary, but reflecting light is quite annoying while they're still alive.
+  Original item: Blue Rupee
+  Types: Consumables only
+  Locale: Earth Temple
+  Paths:
+    - M_Dai/Room14.arc/Actor01A
+Earth Temple - In Far Progression Coffin:
+  Need:
+    Can Access Earth Temple Basement
+    & (Can Play Command Melody | Complex Logic)
+    & Can Aim Mirror Shield
+    & (Power Bracelets | (Deku Leaf & Complex Logic))
+    & (
+      Can Play Earth God's Lyric
+      | (Deku Leaf & Bombs & Complex Logic)
+    ) & (
+      ET Small Key x3
+      | (Deku Leaf & Bombs & Glitched Logic & ET Small Key x2)
+      | (Deku Leaf & Complex Logic)
+    ) & (
+        (
+          Can Defeat Red Bubbles
+          & Skull Hammer
+        )
+        | Tricked Logic
+    )
+    # Power Bracelets necessary again to move the large mirror under the light.
+    # Note: Killing the Red Bubbles is not necessary, but reflecting light is quite annoying while they're still alive.
+  Original item: Blue Rupee
+  Types: Consumables only
+  Locale: Earth Temple
+  Paths:
+    - M_Dai/Room14.arc/Actor015
+# Earth Temple - In Near Dead-End Coffin:
+# Removed for it's functional usage, having magic refill
+#   Need:
+#     Can Access Earth Temple Basement
+#     & (Can Play Command Melody | Complex Logic)
+#     & Can Aim Mirror Shield
+#     & (Power Bracelets | (Deku Leaf & Complex Logic))
+#     & (
+#       Can Play Earth God's Lyric
+#       | (Deku Leaf & Bombs & Complex Logic)
+#     ) & (
+#       ET Small Key x3
+#       | (Deku Leaf & Bombs & Glitched Logic & ET Small Key x2)
+#       | (Deku Leaf & Complex Logic)
+#     ) & (
+#         (
+#           Can Defeat Red Bubbles
+#           & Skull Hammer
+#         )
+#         | Tricked Logic
+#     )
+#     # Power Bracelets necessary again to move the large mirror under the light.
+#     # Note: Killing the Red Bubbles is not necessary, but reflecting light is quite annoying while they're still alive.
+#   Original item: Large Magic Refill
+#   Types: Consumables only
+#   Locale: Earth Temple
+#   Paths:
+#     - M_Dai/Room14.arc/Actor01B
+Earth Temple - In Far Dead-End Coffin:
+  Need:
+    Can Access Earth Temple Basement
+    & (Can Play Command Melody | Complex Logic)
+    & Can Aim Mirror Shield
+    & (Power Bracelets | (Deku Leaf & Complex Logic))
+    & (
+      Can Play Earth God's Lyric
+      | (Deku Leaf & Bombs & Complex Logic)
+    ) & (
+      ET Small Key x3
+      | (Deku Leaf & Bombs & Glitched Logic & ET Small Key x2)
+      | (Deku Leaf & Complex Logic)
+    ) & (
+        (
+          Can Defeat Red Bubbles
+          & Skull Hammer
+        )
+        | Tricked Logic
+    )
+    # Power Bracelets necessary again to move the large mirror under the light.
+    # Note: Killing the Red Bubbles is not necessary, but reflecting light is quite annoying while they're still alive.
+  Original item: Yellow Magic
+  Types: Consumables only
+  Locale: Earth Temple
+  Paths:
+    - M_Dai/Room14.arc/Actor00F
 Earth Temple - Many Mirrors Room Right Chest:
   Need:
     Can Access Earth Temple Basement
@@ -2196,7 +2822,6 @@ Wind Temple - Chest in Left Alcove:
     Can Access Wind Temple
     & Can Play Command Melody
     & Iron Boots
-    &
     & (
       Deku Leaf
       | (Can Spring Storage & Fire Arrows)
@@ -2206,6 +2831,48 @@ Wind Temple - Chest in Left Alcove:
   Locale: Wind Temple
   Paths:
     - kaze/Stage.arc/Chest004
+Wind Temple - Song Stone Room Panel Drop 1:
+  Need:
+    Can Access Wind Temple
+    & Can Play Command Melody
+    & Iron Boots
+    & (
+      Deku Leaf
+      | (Can Spring Storage & Fire Arrows)
+    )
+  Original item: Blue Rupee
+  Types: Dungeon, Tingle Chest
+  Locale: Wind Temple
+  Paths:
+    - kaze/Room5.arc/Actor015
+Wind Temple - Song Stone Room Panel Drop 2:
+  Need:
+    Can Access Wind Temple
+    & Can Play Command Melody
+    & Iron Boots
+    & (
+      Deku Leaf
+      | (Can Spring Storage & Fire Arrows)
+    )
+  Original item: Blue Rupee
+  Types: Dungeon
+  Locale: Wind Temple
+  Paths:
+    - kaze/Room5.arc/Actor016
+Wind Temple - Song Stone Room Panel Drop 3:
+  Need:
+    Can Access Wind Temple
+    & Can Play Command Melody
+    & Iron Boots
+    & (
+      Deku Leaf
+      | (Can Spring Storage & Fire Arrows)
+    )
+  Original item: Blue Rupee
+  Types: Dungeon
+  Locale: Wind Temple
+  Paths:
+    - kaze/Room5.arc/Actor017
 Wind Temple - Big Key Chest:
   Need:
     Can Access Wind Temple
@@ -2375,7 +3042,7 @@ Mailbox - Letter from Hoskit's Girlfriend:
     Spoils Bag
     & Can Farm Golden Feathers
     & Can Play Song of Passing
-    & Can Travel to Postbox
+    & Can Travel to Dragon Roost Island
   # Need to wait for time to pass.
   Original item: Piece of Heart (Alternate Message)
   Types: Spoils Trading
