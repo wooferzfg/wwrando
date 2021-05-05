@@ -171,7 +171,7 @@ Outset Island - Freestanding High Ledge:
     & Can Travel to Outset Island
   Original item: Green Rupee
   Types: Consumables only
-  Locale: Outset Island
+  Locale: Outset Island, dv_im
   Paths:
     - sea/Room44.arc/Actor0AB
 Outset Island - Above Aryll's Lookout:
@@ -180,7 +180,7 @@ Outset Island - Above Aryll's Lookout:
     & Can Travel to Outset Island
   Original item: Red Rupee
   Types: Free Gift
-  Locale: Outset Island
+  Locale: Outset Island, dv_im
   Paths:
     - sea/Room44.arc/Actor0A8
 Outset Island - On Grandma's Roof:
@@ -189,7 +189,7 @@ Outset Island - On Grandma's Roof:
     & Can Travel to Outset Island
   Original item: Red Rupee
   Types: Free Gift
-  Locale: Outset Island
+  Locale: Outset Island, dv_im
   Paths:
     - sea/Room44.arc/Actor0A5
 Outset Island - Above the Water Basin:
@@ -198,7 +198,7 @@ Outset Island - Above the Water Basin:
     & Can Travel to Outset Island
   Original item: Red Rupee
   Types: Free Gift
-  Locale: Outset Island
+  Locale: Outset Island, dv_im
   Paths:
     - sea/Room44.arc/Actor0A6
 Outset Island - In the Trees near the Water Basin:
@@ -207,7 +207,7 @@ Outset Island - In the Trees near the Water Basin:
     & Can Travel to Outset Island
   Original item: Yellow Rupee
   Types: Free Gift
-  Locale: Outset Island
+  Locale: Outset Island, dv_im
   Paths:
     - sea/Room44.arc/Actor060
 Outset Island - Near Mesa's House:
@@ -215,7 +215,7 @@ Outset Island - Near Mesa's House:
     Can Travel to Outset Island
   Original item: Green Rupee
   Types: Consumables only
-  Locale: Outset Island
+  Locale: Outset Island, dv_im
   Paths:
     - sea/Room44.arc/Actor099
     - sea/Room44.arc/Actor097
@@ -225,7 +225,7 @@ Outset Island - On Mesa's Roof:
     & Can Travel to Outset Island
   Original item: Green Rupee
   Types: Free Gift
-  Locale: Outset Island
+  Locale: Outset Island, dv_im
   Paths:
     - sea/Room44.arc/Actor098
 Outset Island - The Path to Fairy Woods:
@@ -234,7 +234,7 @@ Outset Island - The Path to Fairy Woods:
     & Can Travel to Outset Island
   Original item: Yellow Rupee
   Types: Free Gift
-  Locale: Outset Island
+  Locale: Outset Island, dv_im
   Paths:
     - sea/Room44.arc/Actor096
 Outset Island - First Platforming Across Rocks:
@@ -242,7 +242,7 @@ Outset Island - First Platforming Across Rocks:
     Can Travel to Outset Island
   Original item: Blue Rupee
   Types: Free Gift
-  Locale: Outset Island
+  Locale: Outset Island, dv_im
   Paths:
     - sea/Room44.arc/Actor05E
 Outset Island - Final Platforming Across Rocks:
@@ -250,7 +250,7 @@ Outset Island - Final Platforming Across Rocks:
     Can Travel to Outset Island
   Original item: Yellow Rupee
   Types: Free Gift
-  Locale: Outset Island
+  Locale: Outset Island, dv_im
   Paths:
     - sea/Room44.arc/Actor05F
 Outset Island - Savage Labyrinth - Floor 30:
@@ -852,56 +852,56 @@ Dragon Roost Island - Freestanding on Drop Ledge:
   Need: Can Travel to Dragon Roost Island
   Original item: Blue Rupee
   Types: Free Gift
-  Locale: Dragon Roost Island
+  Locale: Dragon Roost Island, dv_im
   Paths:
     - sea/Room13.arc/Actor009
 Dragon Roost Island - Freestanding on Grapple Pegs:
   Need: Can Travel to Dragon Roost Island & Grappling Hook
   Original item: Red Rupee
   Types: Free Gift
-  Locale: Dragon Roost Island
+  Locale: Dragon Roost Island, dv_im
   Paths:
     - sea/Room13.arc/Actor063
 Dragon Roost Island - Freestanding in The Wading Pool:
   Need: Can Travel to Dragon Roost Island
   Original item: Green Rupee
   Types: Free Gift
-  Locale: Dragon Roost Island
+  Locale: Dragon Roost Island, dv_im
   Paths:
     - sea/Room13.arc/Actor05A
 Dragon Roost Island - Second Freestanding in The Wading Pool:
   Need: Can Travel to Dragon Roost Island
   Original item: Recovery Heart
   Types: Free Gift
-  Locale: Dragon Roost Island
+  Locale: Dragon Roost Island, dv_im
   Paths:
     - sea/Room13.arc/Actor059
 Dragon Roost Island - Third Freestanding in The Wading Pool:
   Need: Can Travel to Dragon Roost Island
   Original item: Green Rupee
   Types: Free Gift
-  Locale: Dragon Roost Island
+  Locale: Dragon Roost Island, dv_im
   Paths:
     - sea/Room13.arc/Actor057
 Dragon Roost Island - Fourth Freestanding in The Wading Pool:
   Need: Can Travel to Dragon Roost Island
   Original item: Green Rupee
   Types: Free Gift
-  Locale: Dragon Roost Island
+  Locale: Dragon Roost Island, dv_im
   Paths:
     - sea/Room13.arc/Actor05B
 Dragon Roost Island - Fifth Freestanding in The Wading Pool:
   Need: Can Travel to Dragon Roost Island
   Original item: Green Rupee
   Types: Free Gift
-  Locale: Dragon Roost Island
+  Locale: Dragon Roost Island, dv_im
   Paths:
     - sea/Room13.arc/Actor05C
 Dragon Roost Island - Sixth Freestanding in The Wading Pool:
   Need: Can Travel to Dragon Roost Island
   Original item: Green Rupee
   Types: Free Gift
-  Locale: Dragon Roost Island
+  Locale: Dragon Roost Island, dv_im
   Paths:
     - sea/Room13.arc/Actor058
 #Dragon Roost Island - Quill:
@@ -1028,7 +1028,7 @@ Dragon Roost Cavern - Rat Room Lower Path 1:
     & DRC Small Key x2
   Original item: Yellow Rupee
   Types: Consumables only
-  Locale: Dragon Roost Cavern
+  Locale: Dragon Roost Cavern, dv_im
   Paths:
     - M_NewD2/Room14.arc/Actor00F
 Dragon Roost Cavern - Rat Room Lower Path 2:
@@ -1037,7 +1037,7 @@ Dragon Roost Cavern - Rat Room Lower Path 2:
     & DRC Small Key x2
   Original item: Green Rupee
   Types: Consumables only
-  Locale: Dragon Roost Cavern
+  Locale: Dragon Roost Cavern, dv_im
   Paths:
     - M_NewD2/Room14.arc/Actor012
 Dragon Roost Cavern - Rat Room Lower Path 3:
@@ -1046,7 +1046,7 @@ Dragon Roost Cavern - Rat Room Lower Path 3:
     & DRC Small Key x2
   Original item: Yellow Rupee
   Types: Consumables only
-  Locale: Dragon Roost Cavern
+  Locale: Dragon Roost Cavern, dv_im
   Paths:
     - M_NewD2/Room14.arc/Actor011
 Dragon Roost Cavern - Rat Room Lower Path 4:
@@ -1055,7 +1055,7 @@ Dragon Roost Cavern - Rat Room Lower Path 4:
     & DRC Small Key x2
   Original item: Green Rupee
   Types: Consumables only
-  Locale: Dragon Roost Cavern
+  Locale: Dragon Roost Cavern, dv_im
   Paths:
     - M_NewD2/Room14.arc/Actor013
 Dragon Roost Cavern - Rat Room Lower Path 5:
@@ -1064,7 +1064,7 @@ Dragon Roost Cavern - Rat Room Lower Path 5:
     & DRC Small Key x2
   Original item: Yellow Rupee
   Types: Consumables only
-  Locale: Dragon Roost Cavern
+  Locale: Dragon Roost Cavern, dv_im
   Paths:
     - M_NewD2/Room14.arc/Actor010
 Dragon Roost Cavern - Rat Room Upper Path 1:
@@ -1073,7 +1073,7 @@ Dragon Roost Cavern - Rat Room Upper Path 1:
     & DRC Small Key x2
   Original item: Green Rupee
   Types: Consumables only
-  Locale: Dragon Roost Cavern
+  Locale: Dragon Roost Cavern, dv_im
   Paths:
     - M_NewD2/Room14.arc/Actor016
 Dragon Roost Cavern - Rat Room Upper Path 2:
@@ -1082,7 +1082,7 @@ Dragon Roost Cavern - Rat Room Upper Path 2:
     & DRC Small Key x2
   Original item: Blue Rupee
   Types: Consumables only
-  Locale: Dragon Roost Cavern
+  Locale: Dragon Roost Cavern, dv_im
   Paths:
     - M_NewD2/Room14.arc/Actor014
 Dragon Roost Cavern - Rat Room Upper Path 3:
@@ -1091,7 +1091,7 @@ Dragon Roost Cavern - Rat Room Upper Path 3:
     & DRC Small Key x2
   Original item: Blue Rupee
   Types: Consumables only
-  Locale: Dragon Roost Cavern
+  Locale: Dragon Roost Cavern, dv_im
   Paths:
     - M_NewD2/Room14.arc/Actor015
 Dragon Roost Cavern - Rat Room Upper Path 4:
@@ -1100,10 +1100,10 @@ Dragon Roost Cavern - Rat Room Upper Path 4:
     & DRC Small Key x2
   Original item: Green Rupee
   Types: Consumables only
-  Locale: Dragon Roost Cavern
+  Locale: Dragon Roost Cavern, dv_im
   Paths:
     - M_NewD2/Room14.arc/Actor00F
-Dragon Roost Cavern - Rat Room:
+Dragon Roost Cavern - Rat Room Chest in the Open:
   Need:
     Can Access Dragon Roost Cavern
     & DRC Small Key x2
@@ -1400,7 +1400,7 @@ Forbidden Woods - Climb to Top Upper Freestanding:
     & Can Defeat Boko Babas
   Original item: Blue Rupee
   Types: Consumables only
-  Locale: Forbidden Woods
+  Locale: Forbidden Woods, dv_im
   Paths:
     - kindan/Room1.arc/Actor05A
     - kindan/Room1.arc/Actor05B
@@ -1413,7 +1413,7 @@ Forbidden Woods - Climb to Top Lower Freestanding:
     & Can Defeat Door Flowers
   Original item: Blue Rupee
   Types: Consumables only
-  Locale: Forbidden Woods
+  Locale: Forbidden Woods, dv_im
   Paths:
     - kindan/Room1.arc/Actor05E
     - kindan/Room1.arc/Actor05F
@@ -1437,7 +1437,7 @@ Forbidden Woods - Behind Boko Baba:
     & Can Defeat Door Flowers
   Original item: Green Rupee
   Types: Consumables only
-  Locale: Forbidden Woods
+  Locale: Forbidden Woods, dv_im
   Paths:
     - kindan/Room3.arc/Actor005
     - kindan/Room3.arc/Actor017
@@ -1452,7 +1452,7 @@ Forbidden Woods - Tingle Bomb the Leaf Pile:
     & Tingle Tuner Bombs
   Original item: Purple Rupee
   Types: Dungeon, Tingle Chest
-  Locale: Forbidden Woods
+  Locale: Forbidden Woods, dv_im
   Paths:
     - kindan/Room3.arc/Actor01C
 Forbidden Woods - Freestanding Center in Hub Room:
@@ -1462,7 +1462,7 @@ Forbidden Woods - Freestanding Center in Hub Room:
     & Tingle Tuner Bombs
   Original item: Purple Rupee
   Types: Dungeon, Tingle Chest
-  Locale: Forbidden Woods
+  Locale: Forbidden Woods, dv_im
   Paths:
     - kindan/Room5.arc/Actor06A
 Forbidden Woods - Freestanding Southeast in Hub Room:
@@ -1472,7 +1472,7 @@ Forbidden Woods - Freestanding Southeast in Hub Room:
     & Tingle Tuner Bombs
   Original item: Purple Rupee
   Types: Dungeon, Tingle Chest
-  Locale: Forbidden Woods
+  Locale: Forbidden Woods, dv_im
   Paths:
     - kindan/Room5.arc/Actor06B
 Forbidden Woods - Freestanding Southwest in Hub Room:
@@ -1482,7 +1482,7 @@ Forbidden Woods - Freestanding Southwest in Hub Room:
     & Tingle Tuner Bombs
   Original item: Purple Rupee
   Types: Dungeon, Tingle Chest
-  Locale: Forbidden Woods
+  Locale: Forbidden Woods, dv_im
   Paths:
     - kindan/Room5.arc/Actor06C
 Forbidden Woods - Freestanding Northwest in Hub Room:
@@ -1492,7 +1492,7 @@ Forbidden Woods - Freestanding Northwest in Hub Room:
     & Tingle Tuner Bombs
   Original item: Purple Rupee
   Types: Dungeon, Tingle Chest
-  Locale: Forbidden Woods
+  Locale: Forbidden Woods, dv_im
   Paths:
     - kindan/Room5.arc/Actor06D
 Forbidden Woods - Freestanding Northeast in Hub Room:
@@ -1502,7 +1502,7 @@ Forbidden Woods - Freestanding Northeast in Hub Room:
     & Tingle Tuner Bombs
   Original item: Purple Rupee
   Types: Dungeon, Tingle Chest
-  Locale: Forbidden Woods
+  Locale: Forbidden Woods, dv_im
   Paths:
     - kindan/Room5.arc/Actor06E
 Forbidden Woods - Morth Pit:
@@ -1580,7 +1580,7 @@ Forbidden Woods - Mothula Mini-Boss Room North:
   # Need to escape: Can Hit Diamond Switches at Range
   Original item: Boomerang
   Types: Dungeon
-  Locale: Forbidden Woods
+  Locale: Forbidden Woods, dv_im
   Paths:
     - kinMB/Room10.arc/Actor029
 Forbidden Woods - Mothula Mini-Boss Room Northeast:
@@ -1594,7 +1594,7 @@ Forbidden Woods - Mothula Mini-Boss Room Northeast:
   # Need to escape: Can Hit Diamond Switches at Range
   Original item: Boomerang
   Types: Dungeon
-  Locale: Forbidden Woods
+  Locale: Forbidden Woods, dv_im
   Paths:
     - kinMB/Room10.arc/Actor02E
 Forbidden Woods - Mothula Mini-Boss Room East:
@@ -1608,7 +1608,7 @@ Forbidden Woods - Mothula Mini-Boss Room East:
   # Need to escape: Can Hit Diamond Switches at Range
   Original item: Boomerang
   Types: Dungeon
-  Locale: Forbidden Woods
+  Locale: Forbidden Woods, dv_im
   Paths:
     - kinMB/Room10.arc/Actor027
 Forbidden Woods - Mothula Mini-Boss Room Southeast:
@@ -1622,7 +1622,7 @@ Forbidden Woods - Mothula Mini-Boss Room Southeast:
   # Need to escape: Can Hit Diamond Switches at Range
   Original item: Boomerang
   Types: Dungeon
-  Locale: Forbidden Woods
+  Locale: Forbidden Woods, dv_im
   Paths:
     - kinMB/Room10.arc/Actor02B
 Forbidden Woods - Mothula Mini-Boss Room South:
@@ -1636,7 +1636,7 @@ Forbidden Woods - Mothula Mini-Boss Room South:
   # Need to escape: Can Hit Diamond Switches at Range
   Original item: Boomerang
   Types: Dungeon
-  Locale: Forbidden Woods
+  Locale: Forbidden Woods, dv_im
   Paths:
     - kinMB/Room10.arc/Actor02A
 Forbidden Woods - Mothula Mini-Boss Room Southwest:
@@ -1650,7 +1650,7 @@ Forbidden Woods - Mothula Mini-Boss Room Southwest:
   # Need to escape: Can Hit Diamond Switches at Range
   Original item: Boomerang
   Types: Dungeon
-  Locale: Forbidden Woods
+  Locale: Forbidden Woods, dv_im
   Paths:
     - kinMB/Room10.arc/Actor02D
 Forbidden Woods - Mothula Mini-Boss Room West:
@@ -1664,7 +1664,7 @@ Forbidden Woods - Mothula Mini-Boss Room West:
   # Need to escape: Can Hit Diamond Switches at Range
   Original item: Boomerang
   Types: Dungeon
-  Locale: Forbidden Woods
+  Locale: Forbidden Woods, dv_im
   Paths:
     - kinMB/Room10.arc/Actor028
 Forbidden Woods - Mothula Mini-Boss Room Northwest:
@@ -1678,7 +1678,7 @@ Forbidden Woods - Mothula Mini-Boss Room Northwest:
   # Need to escape: Can Hit Diamond Switches at Range
   Original item: Boomerang
   Types: Dungeon
-  Locale: Forbidden Woods
+  Locale: Forbidden Woods, dv_im
   Paths:
     - kinMB/Room10.arc/Actor02C
 Forbidden Woods - Past Seeds Hanging by Vines:
@@ -2563,7 +2563,7 @@ Earth Temple - In Near Progression Coffin:
     # Note: Killing the Red Bubbles is not necessary, but reflecting light is quite annoying while they're still alive.
   Original item: Blue Rupee
   Types: Consumables only
-  Locale: Earth Temple
+  Locale: Earth Temple, dv_im
   Paths:
     - M_Dai/Room14.arc/Actor01A
 Earth Temple - In Far Progression Coffin:
@@ -2590,7 +2590,7 @@ Earth Temple - In Far Progression Coffin:
     # Note: Killing the Red Bubbles is not necessary, but reflecting light is quite annoying while they're still alive.
   Original item: Blue Rupee
   Types: Consumables only
-  Locale: Earth Temple
+  Locale: Earth Temple, dv_im
   Paths:
     - M_Dai/Room14.arc/Actor015
 # Earth Temple - In Near Dead-End Coffin:
@@ -2645,7 +2645,7 @@ Earth Temple - In Far Dead-End Coffin:
     # Note: Killing the Red Bubbles is not necessary, but reflecting light is quite annoying while they're still alive.
   Original item: Yellow Magic
   Types: Consumables only
-  Locale: Earth Temple
+  Locale: Earth Temple, dv_im
   Paths:
     - M_Dai/Room14.arc/Actor00F
 Earth Temple - Many Mirrors Room Right Chest:
@@ -2842,7 +2842,7 @@ Wind Temple - Song Stone Room Panel Drop 1:
     )
   Original item: Blue Rupee
   Types: Dungeon, Tingle Chest
-  Locale: Wind Temple
+  Locale: Wind Temple, dv_im
   Paths:
     - kaze/Room5.arc/Actor015
 Wind Temple - Song Stone Room Panel Drop 2:
@@ -2855,8 +2855,8 @@ Wind Temple - Song Stone Room Panel Drop 2:
       | (Can Spring Storage & Fire Arrows)
     )
   Original item: Blue Rupee
-  Types: Dungeon
-  Locale: Wind Temple
+  Types: Dungeon, Tingle Chest
+  Locale: Wind Temple, dv_im
   Paths:
     - kaze/Room5.arc/Actor016
 Wind Temple - Song Stone Room Panel Drop 3:
@@ -2869,8 +2869,8 @@ Wind Temple - Song Stone Room Panel Drop 3:
       | (Can Spring Storage & Fire Arrows)
     )
   Original item: Blue Rupee
-  Types: Dungeon
-  Locale: Wind Temple
+  Types: Dungeon, Tingle Chest
+  Locale: Wind Temple, dv_im
   Paths:
     - kaze/Room5.arc/Actor017
 Wind Temple - Big Key Chest:
