@@ -303,6 +303,11 @@ class Randomizer:
     # This list will hold all item location names that should not have any items in them in race mode.
     # If race mode is not on, this list will remain empty.
     self.race_mode_banned_locations = []
+    # If player wants Race Dungeons to be shown, future proofing.
+    # Hidden         = no quest markers
+    # Vanilla        = regular island location regardless of actual entrance
+    # With Entrances = actual entrance regardless of regular island location
+    self.race_mode_quest_marker_mode = "With Entrances"
 
     self.custom_model_name = "Link"
     self.using_custom_sail_texture = False
@@ -577,6 +582,7 @@ class Randomizer:
     tweaks.add_chest_in_place_of_jabun_cutscene(self)
     # tweaks.adjust_wind_element_in_tower_of_the_gods(self)
     tweaks.add_chest_in_place_of_master_sword(self)
+    tweaks.add_chest_in_song_stones(self)
     tweaks.update_beedle_spoil_selling_text(self)
     tweaks.fix_totg_warp_out_spawn_pos(self)
     tweaks.remove_phantom_ganon_requirement_from_eye_reefs(self)

@@ -2299,11 +2299,14 @@ Headstone Island - Submarine:
     - Abship/Room3.arc/Chest000
     - Abship/Room5.arc/Chest000
 
-#Earth Temple - Entrance:
-#  Need:
-#  Original item: Earth God's Lyric
-#  Paths:
-#    - Edaichi/Stage.arc/Event043:MKNJD_D_LESSON/Actor003/Action006
+Headstone Island - Dungeon Entrance:
+  Need: Can Access Dungeon Entrance On Headstone Island
+  Original item: Earth God's Lyric
+  Types: Misc
+  Locale: Headstone Island, dv_im
+  Paths:
+    - Edaichi/Stage.arc/Event043:MKNJD_D_LESSON/Actor003/Action006
+    - Edaichi/Room0.arc/Chest000
 Earth Temple - Transparent Chest In Warp Pot Room:
   Need:
     Can Get into Earth Temple
@@ -2781,11 +2784,14 @@ Earth Temple - Jalhalla Heart Container:
 #    - main.dol@8035BD35
 
 
-#Wind Temple - Entrance:
-#  Need:
-#  Original item: Wind God's Aria
-#  Paths:
-#    - Ekaze/Stage.arc/Event042:MKNJD_K_LESSON/Actor003/Action006
+Gale Isle - Dungeon Entrance:
+  Need: Can Access Dungeon Entrance On Gale Isle
+  Original item: Wind God's Aria
+  Types: Misc
+  Locale: Gale Isle, dv_im
+  Paths:
+    - Ekaze/Stage.arc/Event042:MKNJD_K_LESSON/Actor003/Action006
+    - Ekaze/Room0.arc/Chest000
 Wind Temple - Chest Between Two Dirt Patches:
   Need:
     Can Access Wind Temple

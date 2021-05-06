@@ -1932,6 +1932,23 @@ def show_quest_markers_on_sea_chart_for_dungeons(self, dungeon_names=[]):
   # This is done by toggling visibility on them and moving some Triangle Island ones around to repurpose them as dungeon ones.
   # When the dungeon entrance rando is on, different entrances can lead into dungeons, so the positions of the markers are updated to point to the appropriate island in that case (including secret cave entrances).
 
+  marker_mode = self.race_mode_quest_marker_mode
+
+  if marker_mode == "Hidden":
+    return
+  elif marker_mode == "With Entrances":
+    look_up_table = self.dungeon_and_cave_island_locations
+  elif marker_mode == "Vanilla":
+    look_up_table = OrderedDict([
+      ("Dragon Roost Cavern", "Dragon Roost Island"),
+      ("Forbidden Woods", "Forest Haven"),
+      ("Tower of the Gods", "Tower of the Gods"),
+      ("Earth Temple", "Headstone Island"),
+      ("Wind Temple", "Gale Isle")
+    ])
+  else:
+    look_up_table = self.dungeon_and_cave_island_locations
+
   sea_chart_ui = self.get_arc("files/res/Msg/fmapres.arc").get_file_entry("f_map.blo")
   sea_chart_ui.decompress_data_if_necessary()
   first_quest_marker_pic1_offset = 0x43B0
@@ -1947,7 +1964,7 @@ def show_quest_markers_on_sea_chart_for_dungeons(self, dungeon_names=[]):
     if dungeon_name == "Forsaken Fortress":
       island_name = "Forsaken Fortress"
     else:
-      island_name = self.dungeon_and_cave_island_locations[dungeon_name]
+      island_name = look_up_table[dungeon_name]
     island_number = self.island_name_to_number[island_name]
     sector_x = (island_number-1) % 7
     sector_y = (island_number-1) // 7
@@ -2121,6 +2138,49 @@ def add_chest_in_place_of_master_sword(self):
   spawn.z_pos = -4240.7
 
   ms_chamber_dzr.save_changes()
+
+def add_chest_in_song_stones(self):
+  # Add a chest to the entrance to the two later dungeons
+
+  ete_dzr = self.get_arc("files/res/Stage/Edaichi/Room0.arc").get_file("room.dzr")
+
+  # Add the chest.
+  egl_chest = ete_dzr.add_entity("TRES", layer=None)
+  egl_chest.name = "takara4"
+  egl_chest.params = 0xFF000000
+  egl_chest.switch_to_set = 0xFF
+  egl_chest.chest_type = 3
+  egl_chest.appear_condition_switch = 0
+  egl_chest.opened_flag = 7
+  egl_chest.behavior_type = 3
+  egl_chest.x_pos = 554.7753
+  egl_chest.y_pos = 300.0011
+  egl_chest.z_pos = 0
+  egl_chest.room_num = 0
+  egl_chest.y_rot = 0xE000
+  egl_chest.item_id = self.item_name_to_id["Earth God's Lyric"]
+
+  ete_dzr.save_changes()
+
+  wte_dzr = self.get_arc("files/res/Stage/Ekaze/Room0.arc").get_file("room.dzr")
+
+  # Add the chest.
+  wga_chest = wte_dzr.add_entity("TRES", layer=None)
+  wga_chest.name = "takara4"
+  wga_chest.params = 0xFF000000
+  wga_chest.switch_to_set = 0xFF
+  wga_chest.chest_type = 3
+  wga_chest.appear_condition_switch = 0
+  wga_chest.opened_flag = 8
+  wga_chest.behavior_type = 3
+  wga_chest.x_pos = 554.7753
+  wga_chest.y_pos = 300.0011
+  wga_chest.z_pos = 0
+  wga_chest.room_num = 0
+  wga_chest.y_rot = 0xE000
+  wga_chest.item_id = self.item_name_to_id["Wind God's Aria"]
+
+  wte_dzr.save_changes()
 
 def update_beedle_spoil_selling_text(self):
   # Update Beedle's dialogue when you try to sell something to him so he mentions he doesn't want Blue Chu Jelly.
@@ -2398,6 +2458,6 @@ def show_number_of_tingle_statues_on_quest_status_screen(self):
   # Update the treasure chart description with custom text for tingle statues.
   msg = self.bmg.messages_by_id[703]
   msg.string = word_wrap_string(
-    "Golden statues of a mysterious dashing figure. They can be traded with \\{1A 06 FF 00 00 01}Ankle\\{1A 06 FF 00 00 00} on \\{1A 06 FF 00 00 01}Tingle Island\\{1A 06 FF 00 00 00} for a reward!",
+    "Golden statues of a mysterious, dashing figure. They can be traded with \\{1A 06 FF 00 00 01}Ankle\\{1A 06 FF 00 00 00} on \\{1A 06 FF 00 00 01}Tingle Island\\{1A 06 FF 00 00 00} for a reward!",
     max_line_length=43
   )
