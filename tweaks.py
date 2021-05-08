@@ -558,6 +558,8 @@ def add_more_magic_jars(self):
   skulls = [actor for actor in actors if actor.name == "Odokuro"]
   skulls[2].item_id = self.item_name_to_id["Small Magic Jar (Pickup)"]
   skulls[2].save_changes()
+  skulls[3].item_id = self.item_name_to_id["10 Arrows (Pickup)"]
+  skulls[3].save_changes() # Players may be expected to use regular or ice arrows logically here, want to ensure they can.
   skulls[5].item_id = self.item_name_to_id["Large Magic Jar (Pickup)"]
   skulls[5].save_changes()
   drc_before_boss_room = self.get_arc("files/res/Stage/M_NewD2/Room10.arc").get_file("room.dzr")
@@ -2021,8 +2023,8 @@ def adjust_wind_element_in_tower_of_the_gods(self):
 
   totg_dzr = self.get_arc("files/res/Stage/siren/Room0.arc").get_file("room.dzr")
   room_props = totg_dzr.entries_by_type("FILI")[0]
-  room_props.wind_type = 0 # Weakest wind (0.3 strength)
-  #room_props.unknown_1 = 1 # Unsure exactly what this does but this is on in other maps.
+  room_props.wind_type = 2 # strongest wind (0.9 strength)
+  room_props.unknown_1 = 1 # Unsure exactly what this does but this is on in other maps that have functional wind.
   totg_dzr.save_changes()
 
 def add_chest_in_place_of_jabun_cutscene(self):
