@@ -488,6 +488,7 @@ class Randomizer:
     if self.randomize_items and not self.dry_run:
       self.reset_rng()
       items.write_changed_items(self)
+      tweaks.randomize_and_update_hints(self)
 
     options_completed += 1
 

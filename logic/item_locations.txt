@@ -339,6 +339,42 @@ Windfall Island - Jail - Tingle - Second Gift:
   Locale: Windfall Island
   Paths:
     - rels/d_a_npc_tc.rel@611F
+Windfall Island - Jail - Northern Freestanding in Tunnel:
+  Need: Can Travel to Windfall Island
+  Original item: Blue Rupee
+  Types: Consumables only
+  Locale: Windfall Island
+  Paths:
+    - Pnezumi/Room0.arc/Actor002
+  Flags:
+    - 14
+Windfall Island - Jail - Mid Freestanding in Tunnel:
+  Need: Can Travel to Windfall Island
+  Original item: Blue Rupee
+  Types: Consumables only
+  Locale: Windfall Island
+  Paths:
+    - Pnezumi/Room0.arc/Actor003
+  Flags:
+    - 15
+Windfall Island - Jail - Southern Freestanding in Tunnel:
+  Need: Can Travel to Windfall Island
+  Original item: Blue Rupee
+  Types: Consumables only
+  Locale: Windfall Island
+  Paths:
+    - Pnezumi/Room0.arc/Actor004
+  Flags:
+    - 16
+Windfall Island - Jail - Under Bed:
+  Need: Can Travel to Windfall Island
+  Original item: Blue Rupee
+  Types: Consumables only
+  Locale: Windfall Island
+  Paths:
+    - Pnezumi/Room0.arc/Actor024
+  Flags:
+    - 17
 Windfall Island - Jail - Maze Chest:
   Need: Can Travel to Windfall Island
   Original item: Picto Box
@@ -346,6 +382,8 @@ Windfall Island - Jail - Maze Chest:
   Locale: Windfall Island
   Paths:
     - Pnezumi/Stage.arc/Chest000
+  Flags:
+    - 0
 #Windfall Island - Chu Jelly Juice Shop - Red Potion Free Sample:
 #  Need:
 #  Original item: Red Potion

@@ -1022,7 +1022,7 @@ def randomize_and_update_hints(self):
   possible_item_locations = list(self.logic.done_item_locations.keys())
   self.rng.shuffle(possible_item_locations)
   num_fishman_hints = 15
-  desired_num_hints = 1 + num_fishman_hints
+  desired_num_hints = 1 + 2 + num_fishman_hints
   min_num_hints_needed = 1 + 1
   while True:
     if not possible_item_locations:
@@ -1065,7 +1065,7 @@ def randomize_and_update_hints(self):
     is_puzzle_cave = "Puzzle Secret Cave" in self.logic.item_locations[location_name]["Types"]
     is_mixed_cave = "Mixed Secret Cave" in self.logic.item_locations[location_name]["Types"]
     is_combat_cave = "Combat Secret Cave" in self.logic.item_locations[location_name]["Types"]
-    is_savage = "Savage Labyrinth" in self.logic.item_locations[location_name]["Types"]
+    is_savage = "Savage Labyrinth" in self.logic.item_locations[location_name]["Locale"]
     if zone_name in self.dungeon_and_cave_island_locations and (is_dungeon or is_puzzle_cave or is_combat_cave or is_mixed_cave or is_savage):
       # If the location is in a dungeon or cave, use the hint for whatever island the dungeon/cave is located on.
       island_name = self.dungeon_and_cave_island_locations[zone_name]
@@ -1088,7 +1088,11 @@ def randomize_and_update_hints(self):
     unique_items_given_hint_for.append((item_name, island_name))
 
   update_big_octo_great_fairy_item_name_hint(self, hints[0])
-  update_fishmen_hints(self, hints[1:])
+  if len(hints) > min_num_hints_needed:
+    update_tingle_stone_hints(self,hints[1:3])
+    update_fishmen_hints(self, hints[3:])
+  else:
+    update_fishmen_hints(self, hints[1:])
 
 def get_hint_item_name(item_name):
   if item_name.startswith("Triforce Chart"):
@@ -1101,6 +1105,22 @@ def get_hint_item_name(item_name):
     return "Big Key"
   return item_name
 
+def update_tingle_stone_hints(self, hints):
+  stoneIDs = [806,807]
+  item_hint_name, island_hint_name = hints[0]
+
+  stone806 = word_wrap_string("Date: Unknown\nAt last, I have succeeded in locating \\{1A 06 FF 00 00 01}%s\\{1A 06 FF 00 00 00}, such a thing a green fairy is looking for.\nSucceeded, yes... but sadly...\nDue to a slight mistake on my part, I am still imprisoned, but I do not give in easily! I refuse to tell my captors its location on \\{1A 06 FF 00 00 01}%s\\{1A 06 FF 00 00 00}! Yes! That is my plan!" % (item_hint_name, island_hint_name) ,max_line_length=41)
+
+  item_hint_name, island_hint_name = hints[1]
+  stone807 = word_wrap_string("Of course, I've also heard of something good on \\{1A 06 FF 00 00 01}%s\\{1A 06 FF 00 00 00}. Those captors have such loose lips, talking about %s \\{1A 06 FF 00 00 01}%s\\{1A 06 FF 00 00 00}.\n\n...I just wish I could get out of here..." % (island_hint_name, item_hint_name) ,max_line_length=41)
+
+  hintMSG = [stone806, stone807]
+
+  for i in [0,1]:
+    msg_id = stoneIDs[i]
+    msg = self.bmg.messages_by_id[msg_id]
+    msg.string = hintMSG[i]
+
 def update_fishmen_hints(self, hints):
   islands = list(range(1, 49+1))
   for fishman_hint_number in range(len(islands)):
@@ -1111,7 +1131,7 @@ def update_fishmen_hints(self, hints):
 
     hint_lines = []
     hint_lines.append(
-      "I've heard from my sources that \\{1A 06 FF 00 00 01}%s\\{1A 06 FF 00 00 00} is located in \\{1A 06 FF 00 00 01}%s\\{1A 06 FF 00 00 00}." % (item_hint_name, island_hint_name)
+      word_wrap_string("I've heard from my sources that \\{1A 06 FF 00 00 01}%s\\{1A 06 FF 00 00 00} is located in \\{1A 06 FF 00 00 01}%s\\{1A 06 FF 00 00 00}." % (item_hint_name, island_hint_name),max_line_length=43)
     )
     # Add a two-second wait command (delay) to prevent the player from skipping over the hint accidentally.
     hint_lines[-1] += "\\{1A 07 00 00 07 00 3C}"
@@ -1934,8 +1954,15 @@ def show_quest_markers_on_sea_chart_for_dungeons(self, dungeon_names=[]):
 
   marker_mode = self.race_mode_quest_marker_mode
 
-  if marker_mode == "Hidden":
+  if  marker_mode == "None":
     return
+  elif marker_mode == "Hidden":
+    look_up_table = OrderedDict()
+    i = 0
+    contents = ["Forsaken Fortress", "Star Island", "Northern Fairy Island", "Gale Isle", "Crescent Moon Island", "Seven-Star Isles"]
+    for dungeon_name in dungeon_names:
+      look_up_table[dungeon_name] = contents[i]
+      i+=1
   elif marker_mode == "With Entrances":
     look_up_table = self.dungeon_and_cave_island_locations
   elif marker_mode == "Vanilla":
@@ -1961,7 +1988,7 @@ def show_quest_markers_on_sea_chart_for_dungeons(self, dungeon_names=[]):
     # Make the quest marker icon be visible.
     write_u8(sea_chart_ui.data, offset+9, 1)
 
-    if dungeon_name == "Forsaken Fortress":
+    if dungeon_name == "Forsaken Fortress" and marker_mode != "Hidden":
       island_name = "Forsaken Fortress"
     else:
       island_name = look_up_table[dungeon_name]

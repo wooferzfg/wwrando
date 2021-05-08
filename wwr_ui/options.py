@@ -401,7 +401,7 @@ OPTIONS = OrderedDict([
 
   (
     "sword_mode",
-    "Controls whether you start with the Hero's Sword, without a sword, or if there is no sword in the entire game.\nSwordless and No Starting Sword are challenge modes, not recommended for your first run. FF's Phantom Ganon is vulnerable to Skull Hammer in Swordless mode only."
+    "Controls whether you start with the Hero's Sword, without a sword, or if there is no sword in the entire game.\nSwordless and No Starting Sword are challenge modes, not recommended for your first run.\nFF's Phantom Ganon is vulnerable to Skull Hammer in Swordless mode only."
   ),
   (
     "skip_rematch_bosses",
