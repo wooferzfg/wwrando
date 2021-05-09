@@ -797,7 +797,6 @@ Windfall Island - Battlesquid - Second Prize:
     - rels/d_a_npc_kg1.rel@2C29
 Windfall Island - Battlesquid - Prize 3+:
   Need: Can Travel to Windfall Island
-  Need: Nothing
   Original item: Purple Rupee
   Types: Consumables only
   Locale: Battlesquid
@@ -1617,7 +1616,7 @@ Forbidden Woods - Mothula Mini-Boss Room North:
     & Can Defeat Winged Mothulas
   # Need to escape: Can Hit Diamond Switches at Range
   Original item: Boomerang
-  Types: Dungeon
+  Types: Dungeon, Tingle Chest
   Locale: Forbidden Woods, dv_im
   Paths:
     - kinMB/Room10.arc/Actor029
@@ -1631,7 +1630,7 @@ Forbidden Woods - Mothula Mini-Boss Room Northeast:
     & Can Defeat Winged Mothulas
   # Need to escape: Can Hit Diamond Switches at Range
   Original item: Boomerang
-  Types: Dungeon
+  Types: Dungeon, Tingle Chest
   Locale: Forbidden Woods, dv_im
   Paths:
     - kinMB/Room10.arc/Actor02E
@@ -1645,7 +1644,7 @@ Forbidden Woods - Mothula Mini-Boss Room East:
     & Can Defeat Winged Mothulas
   # Need to escape: Can Hit Diamond Switches at Range
   Original item: Boomerang
-  Types: Dungeon
+  Types: Dungeon, Tingle Chest
   Locale: Forbidden Woods, dv_im
   Paths:
     - kinMB/Room10.arc/Actor027
@@ -1659,7 +1658,7 @@ Forbidden Woods - Mothula Mini-Boss Room Southeast:
     & Can Defeat Winged Mothulas
   # Need to escape: Can Hit Diamond Switches at Range
   Original item: Boomerang
-  Types: Dungeon
+  Types: Dungeon, Tingle Chest
   Locale: Forbidden Woods, dv_im
   Paths:
     - kinMB/Room10.arc/Actor02B
@@ -1673,7 +1672,7 @@ Forbidden Woods - Mothula Mini-Boss Room South:
     & Can Defeat Winged Mothulas
   # Need to escape: Can Hit Diamond Switches at Range
   Original item: Boomerang
-  Types: Dungeon
+  Types: Dungeon, Tingle Chest
   Locale: Forbidden Woods, dv_im
   Paths:
     - kinMB/Room10.arc/Actor02A
@@ -1687,7 +1686,7 @@ Forbidden Woods - Mothula Mini-Boss Room Southwest:
     & Can Defeat Winged Mothulas
   # Need to escape: Can Hit Diamond Switches at Range
   Original item: Boomerang
-  Types: Dungeon
+  Types: Dungeon, Tingle Chest
   Locale: Forbidden Woods, dv_im
   Paths:
     - kinMB/Room10.arc/Actor02D
@@ -1701,7 +1700,7 @@ Forbidden Woods - Mothula Mini-Boss Room West:
     & Can Defeat Winged Mothulas
   # Need to escape: Can Hit Diamond Switches at Range
   Original item: Boomerang
-  Types: Dungeon
+  Types: Dungeon, Tingle Chest
   Locale: Forbidden Woods, dv_im
   Paths:
     - kinMB/Room10.arc/Actor028
@@ -1715,7 +1714,7 @@ Forbidden Woods - Mothula Mini-Boss Room Northwest:
     & Can Defeat Winged Mothulas
   # Need to escape: Can Hit Diamond Switches at Range
   Original item: Boomerang
-  Types: Dungeon
+  Types: Dungeon, Tingle Chest
   Locale: Forbidden Woods, dv_im
   Paths:
     - kinMB/Room10.arc/Actor02C
