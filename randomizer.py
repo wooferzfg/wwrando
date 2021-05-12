@@ -1002,6 +1002,7 @@ class Randomizer:
         if game_beatable:
           progress_items_in_this_sphere["Ganon's Tower - Rooftop"] = "Defeat Ganondorf"
 
+      progress_items_in_this_sphere = OrderedDict(sorted(progress_items_in_this_sphere.items()))
       progression_spheres.append(progress_items_in_this_sphere)
 
       for location_name, item_name in progress_items_in_this_sphere.items():

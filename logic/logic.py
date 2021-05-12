@@ -557,6 +557,7 @@ class Logic:
       ("Mixed Secret Cave", options.get("progression_mixed_secret_caves")),
       ("Combat Secret Cave", options.get("progression_combat_secret_caves")),
       ("Tingle Chest", options.get("progression_tingle_chests")),
+      ("Odd Dungeon Check", options.get("progression_tingle_chests")),
       ("Great Fairy", options.get("progression_great_fairies")),
       ("Island Puzzle", options.get("progression_island_puzzles")),
       ("Long Combat Trial", options.get("progression_long_combat_trials")),

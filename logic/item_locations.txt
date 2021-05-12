@@ -167,7 +167,7 @@ Outset Island - Dig up Black Soil:
 #     - sea/Room44.arc/ScalableObject034
 Outset Island - Freestanding High Ledge:
   Need:
-    Bait Bag
+    ( Bait Bag | (Can Fly With Deku Leaf Outdoors & Can Cut or Slash) | (Tricked Logic & Can Cut or Slash) )
     & Can Travel to Outset Island
   Original item: Green Rupee
   Types: Consumables only
@@ -185,7 +185,7 @@ Outset Island - Above Aryll's Lookout:
     - sea/Room44.arc/Actor0A8
 Outset Island - On Grandma's Roof:
   Need:
-    Bait Bag
+    ( Bait Bag | (Can Fly With Deku Leaf Outdoors & Can Cut or Slash) )
     & Can Travel to Outset Island
   Original item: Red Rupee
   Types: Free Gift
@@ -194,7 +194,7 @@ Outset Island - On Grandma's Roof:
     - sea/Room44.arc/Actor0A5
 Outset Island - Above the Water Basin:
   Need:
-    Bait Bag
+    ( Bait Bag | Hookshot | (Can Fly With Deku Leaf Outdoors & Can Cut or Slash) )
     & Can Travel to Outset Island
   Original item: Red Rupee
   Types: Free Gift
@@ -1615,8 +1615,8 @@ Forbidden Woods - Mothula Mini-Boss Room North:
     & FW Small Key x1
     & Can Defeat Winged Mothulas
   # Need to escape: Can Hit Diamond Switches at Range
-  Original item: Boomerang
-  Types: Dungeon, Tingle Chest
+  Original item: Green Rupee
+  Types: Consumables only
   Locale: Forbidden Woods, dv_im
   Paths:
     - kinMB/Room10.arc/Actor029
@@ -1629,8 +1629,8 @@ Forbidden Woods - Mothula Mini-Boss Room Northeast:
     & FW Small Key x1
     & Can Defeat Winged Mothulas
   # Need to escape: Can Hit Diamond Switches at Range
-  Original item: Boomerang
-  Types: Dungeon, Tingle Chest
+  Original item: Green Rupee
+  Types: Consumables only
   Locale: Forbidden Woods, dv_im
   Paths:
     - kinMB/Room10.arc/Actor02E
@@ -1643,8 +1643,8 @@ Forbidden Woods - Mothula Mini-Boss Room East:
     & FW Small Key x1
     & Can Defeat Winged Mothulas
   # Need to escape: Can Hit Diamond Switches at Range
-  Original item: Boomerang
-  Types: Dungeon, Tingle Chest
+  Original item: Green Rupee
+  Types: Consumables only
   Locale: Forbidden Woods, dv_im
   Paths:
     - kinMB/Room10.arc/Actor027
@@ -1657,8 +1657,8 @@ Forbidden Woods - Mothula Mini-Boss Room Southeast:
     & FW Small Key x1
     & Can Defeat Winged Mothulas
   # Need to escape: Can Hit Diamond Switches at Range
-  Original item: Boomerang
-  Types: Dungeon, Tingle Chest
+  Original item: Green Rupee
+  Types: Consumables only
   Locale: Forbidden Woods, dv_im
   Paths:
     - kinMB/Room10.arc/Actor02B
@@ -1671,8 +1671,8 @@ Forbidden Woods - Mothula Mini-Boss Room South:
     & FW Small Key x1
     & Can Defeat Winged Mothulas
   # Need to escape: Can Hit Diamond Switches at Range
-  Original item: Boomerang
-  Types: Dungeon, Tingle Chest
+  Original item: Green Rupee
+  Types: Consumables only
   Locale: Forbidden Woods, dv_im
   Paths:
     - kinMB/Room10.arc/Actor02A
@@ -1685,8 +1685,8 @@ Forbidden Woods - Mothula Mini-Boss Room Southwest:
     & FW Small Key x1
     & Can Defeat Winged Mothulas
   # Need to escape: Can Hit Diamond Switches at Range
-  Original item: Boomerang
-  Types: Dungeon, Tingle Chest
+  Original item: Green Rupee
+  Types: Consumables only
   Locale: Forbidden Woods, dv_im
   Paths:
     - kinMB/Room10.arc/Actor02D
@@ -1699,8 +1699,8 @@ Forbidden Woods - Mothula Mini-Boss Room West:
     & FW Small Key x1
     & Can Defeat Winged Mothulas
   # Need to escape: Can Hit Diamond Switches at Range
-  Original item: Boomerang
-  Types: Dungeon, Tingle Chest
+  Original item: Green Rupee
+  Types: Consumables only
   Locale: Forbidden Woods, dv_im
   Paths:
     - kinMB/Room10.arc/Actor028
@@ -1713,8 +1713,8 @@ Forbidden Woods - Mothula Mini-Boss Room Northwest:
     & FW Small Key x1
     & Can Defeat Winged Mothulas
   # Need to escape: Can Hit Diamond Switches at Range
-  Original item: Boomerang
-  Types: Dungeon, Tingle Chest
+  Original item: Green Rupee
+  Types: Consumables only
   Locale: Forbidden Woods, dv_im
   Paths:
     - kinMB/Room10.arc/Actor02C
@@ -2336,10 +2336,10 @@ Headstone Island - Submarine:
     - Abship/Room3.arc/Chest000
     - Abship/Room5.arc/Chest000
 
-Headstone Island - Dungeon Entrance:
+Headstone Island - Inside:
   Need: Can Access Dungeon Entrance On Headstone Island
   Original item: Earth God's Lyric
-  Types: Misc
+  Types: Island Puzzle
   Locale: Headstone Island, dv_im
   Paths:
     - Edaichi/Stage.arc/Event043:MKNJD_D_LESSON/Actor003/Action006
@@ -2821,10 +2821,10 @@ Earth Temple - Jalhalla Heart Container:
 #    - main.dol@8035BD35
 
 
-Gale Isle - Dungeon Entrance:
+Gale Isle - Inside Island:
   Need: Can Access Dungeon Entrance On Gale Isle
   Original item: Wind God's Aria
-  Types: Misc
+  Types: Island Puzzle
   Locale: Gale Isle, dv_im
   Paths:
     - Ekaze/Stage.arc/Event042:MKNJD_K_LESSON/Actor003/Action006

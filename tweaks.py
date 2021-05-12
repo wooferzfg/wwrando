@@ -1114,7 +1114,7 @@ def update_tingle_stone_hints(self, hints):
   stone806 = word_wrap_string("Date: Unknown\nAt last, I have succeeded in locating \\{1A 06 FF 00 00 01}%s\\{1A 06 FF 00 00 00}, such a thing a green fairy is looking for.\nSucceeded, yes... but sadly...\nDue to a slight mistake on my part, I am still imprisoned, but I do not give in easily! I refuse to tell my captors its location on \\{1A 06 FF 00 00 01}%s\\{1A 06 FF 00 00 00}! Yes! That is my plan!" % (item_hint_name, island_hint_name) ,max_line_length=41)
 
   item_hint_name, island_hint_name = hints[1]
-  stone807 = word_wrap_string("Of course, I've also heard of something good on \\{1A 06 FF 00 00 01}%s\\{1A 06 FF 00 00 00}. Those captors have such loose lips, talking about %s \\{1A 06 FF 00 00 01}%s\\{1A 06 FF 00 00 00}.\n\n...I just wish I could get out of here..." % (island_hint_name, item_hint_name) ,max_line_length=41)
+  stone807 = word_wrap_string("Of course, I've also heard of something good on \\{1A 06 FF 00 00 01}%s\\{1A 06 FF 00 00 00}. Those captors have such loose lips, talking about \\{1A 06 FF 00 00 01}%s\\{1A 06 FF 00 00 00}.\n\n...I just wish I could get out of here..." % (island_hint_name, item_hint_name) ,max_line_length=41)
 
   hintMSG = [stone806, stone807]
 

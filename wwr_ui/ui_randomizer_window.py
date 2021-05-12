@@ -1453,7 +1453,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tab_for_main.setCurrentIndex(1)
+        self.tab_for_main.setCurrentIndex(0)
         self.logic_mod.setCurrentIndex(1)
         self.race_mode.setCurrentIndex(0)
         self.custom_bck_entry.setCurrentIndex(1)
