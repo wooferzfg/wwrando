@@ -2336,7 +2336,7 @@ Headstone Island - Submarine:
     - Abship/Room3.arc/Chest000
     - Abship/Room5.arc/Chest000
 
-Headstone Island - Inside:
+Headstone Island - Inside Island:
   Need: Can Access Dungeon Entrance On Headstone Island
   Original item: Earth God's Lyric
   Types: Island Puzzle
