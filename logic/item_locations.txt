@@ -899,7 +899,7 @@ Dragon Roost Island - Freestanding on Grapple Pegs:
   Locale: Dragon Roost Island, dv_im
   Paths:
     - sea/Room13.arc/Actor063
-Dragon Roost Island - Freestanding in The Wading Pool:
+Dragon Roost Island - First Freestanding in The Wading Pool:
   Need: Can Travel to Dragon Roost Island
   Original item: Green Rupee
   Types: Free Gift
@@ -1592,7 +1592,7 @@ Forbidden Woods - Tall Room Before Mini-Boss:
   Locale: Forbidden Woods
   Paths:
     - kindan/Stage.arc/Chest009
-Forbidden Woods - Mothula Mini-Boss Chest Room:
+Forbidden Woods - Mothula Mini-Boss Room Chest:
   Need:
     Can Access Forbidden Woods
     & Deku Leaf

@@ -502,7 +502,7 @@ Dragon Roost Cavern - Chest Across Lava Pit:
   Mode: o
   Types: Dungeon
 
-Dragon Roost Cavern - Rat Room:
+Dragon Roost Cavern - Rat Room Chest in the Open:
   Need:
     Can Access Dragon Roost Cavern
     & DRC Small Key x2
@@ -708,7 +708,7 @@ Forbidden Woods - Tall Room Before Mini-Boss:
   Mode: o
   Types: Dungeon
 
-Forbidden Woods - Mothula Mini-Boss Room:
+Forbidden Woods - Mothula Mini-Boss Room Chest:
   Need:
     Can Access Forbidden Woods
     & Deku Leaf
@@ -2572,3 +2572,120 @@ Five-Star Isles - Sunken Treasure:
   Need: Can Salvage Treasure & Chart for Island 49 & Can Travel to Five-Star Isles
   Mode: o
   Types: Sunken Treasure
+
+Outset Island - Freestanding High Ledge:
+  Need: Nothing
+  Mode: o
+  Types: Consumables only
+Outset Island - Above Aryll's Lookout:
+  Need: Nothing
+  Mode: o
+  Types: Consumables only
+Outset Island - On Grandma's Roof:
+  Need: Nothing
+  Mode: o
+  Types: Consumables only
+Outset Island - Above the Water Basin:
+  Need: Nothing
+  Mode: o
+  Types: Consumables only
+Outset Island - In the Trees near the Water Basin:
+  Need: Nothing
+  Mode: o
+  Types: Consumables only
+Outset Island - Near Mesa's House:
+  Need: Nothing
+  Mode: o
+  Types: Consumables only
+Outset Island - On Mesa's Roof:
+  Need: Nothing
+  Mode: o
+  Types: Consumables only
+Outset Island - The Path to Fairy Woods:
+  Need: Nothing
+  Mode: o
+  Types: Consumables only
+Outset Island - First Platforming Across Rocks:
+  Need: Nothing
+  Mode: o
+  Types: Consumables only
+Outset Island - Final Platforming Across Rocks:
+  Need: Nothing
+  Mode: o
+  Types: Consumables only
+Dragon Roost Island - Freestanding on Drop Ledge:
+  Need: Nothing
+  Mode: o
+  Types: Consumables only
+Dragon Roost Island - Freestanding on Grapple Pegs:
+  Need: Nothing
+  Mode: o
+  Types: Consumables only
+Dragon Roost Island - First Freestanding in The Wading Pool:
+  Need: Nothing
+  Mode: o
+  Types: Consumables only
+Dragon Roost Island - Second Freestanding in The Wading Pool:
+  Need: Nothing
+  Mode: o
+  Types: Consumables only
+Dragon Roost Island - Third Freestanding in The Wading Pool:
+  Need: Nothing
+  Mode: o
+  Types: Consumables only
+Dragon Roost Island - Fourth Freestanding in The Wading Pool:
+  Need: Nothing
+  Mode: o
+  Types: Consumables only
+Dragon Roost Island - Fifth Freestanding in The Wading Pool:
+  Need: Nothing
+  Mode: o
+  Types: Consumables only
+Dragon Roost Island - Sixth Freestanding in The Wading Pool:
+  Need: Nothing
+  Mode: o
+  Types: Consumables only
+Forbidden Woods - Tingle Bomb the Leaf Pile:
+  Need: Nothing
+  Mode: o
+  Types: Consumables only
+Forbidden Woods - Freestanding Center in Hub Room:
+  Need: Nothing
+  Mode: o
+  Types: Consumables only
+Forbidden Woods - Freestanding Southeast in Hub Room:
+  Need: Nothing
+  Mode: o
+  Types: Consumables only
+Forbidden Woods - Freestanding Southwest in Hub Room:
+  Need: Nothing
+  Mode: o
+  Types: Consumables only
+Forbidden Woods - Freestanding Northwest in Hub Room:
+  Need: Nothing
+  Mode: o
+  Types: Consumables only
+Forbidden Woods - Freestanding Northeast in Hub Room:
+  Need: Nothing
+  Mode: o
+  Types: Consumables only
+Headstone Island - Inside Island:
+  Need: Nothing
+  Mode: o
+  Types: Consumables only
+Gale Isle - Inside Island:
+  Need: Nothing
+  Mode: o
+  Types: Consumables only
+Wind Temple - Song Stone Room Panel Drop 1:
+  Need: Nothing
+  Mode: o
+  Types: Consumables only
+Wind Temple - Song Stone Room Panel Drop 2:
+  Need: Nothing
+  Mode: o
+  Types: Consumables only
+Wind Temple - Song Stone Room Panel Drop 3:
+  Need: Nothing
+  Mode: o
+  Types: Consumables only
