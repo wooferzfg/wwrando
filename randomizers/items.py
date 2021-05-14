@@ -541,12 +541,13 @@ def randomize_progression_items(self):
       item_name = self.rng.choice(possible_items_when_not_placing_useful)
 
     if(self.options.get("race_mode")=="Race"):
-      locations_filtered = [
-        loc for loc in accessible_undone_locations
-        if loc not in self.race_mode_banned_locations
-      ]
+      locations_filtered = accessible_undone_locations.copy()
       if item_name in self.logic.progress_item_groups:
         num_locs_needed = len(self.logic.progress_item_groups[item_name])
+        locations_filtered = [
+          loc for loc in accessible_undone_locations
+          if loc not in self.race_mode_banned_locations
+        ]
       else:
         num_locs_needed = 1
       if len(locations_filtered) >= num_locs_needed:
