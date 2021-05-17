@@ -39,6 +39,12 @@ import customizer
 from logic.logic import Logic
 from wwlib import texture_utils
 
+locale_data = OrderedDict()
+with open(os.path.join(DATA_PATH, "island_data.txt")) as f:
+  island_data = yaml.load(f, YamlOrderedDictLoader)
+for island in island_data:
+  locale_data[island_data[island]["Locale Setting"]] = island_data[island]["Long Name"]
+
 '''
 def sortItems(inputList=[],keyList=SORT_KEY):
   orderList = []
@@ -724,9 +730,12 @@ class WWRandomizerWindow(QMainWindow):
 
   def update_total_progress_locations(self):
     options = OrderedDict()
+    banned_locales = OrderedDict()
     for option_name in OPTIONS:
       options[option_name] = self.get_option_value(option_name)
-    num_progress_locations = Logic.get_num_progression_locations_static(self.cached_item_locations, options)
+      if option_name.startswith("locale_"):
+        banned_locales[locale_data[option_name]] = self.get_option_value(option_name)
+    num_progress_locations = Logic.get_num_progression_locations_static(self.cached_item_locations, options, banned_locales)
     if(self.get_option_value("race_mode")=="Race"):
       try:
         num_remove = 84 - int(self.get_option_value("num_dungeon_race_mode"))*14

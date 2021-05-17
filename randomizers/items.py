@@ -9,34 +9,6 @@ import tweaks
 
 def randomize_items(self):
 
-
-  self.banned_island_locales = [
-    self.options.get("locale_ff"), self.options.get("locale_star"), self.options.get("locale_northern_fairy"), self.options.get("locale_gale"), self.options.get("locale_crescent"), self.options.get("locale_seven_star"), self.options.get("locale_overlook"),
-    self.options.get("locale_four_eye"), self.options.get("locale_mother_child"), self.options.get("locale_spectacle"), self.options.get("locale_windfall"), self.options.get("locale_pawprint"), self.options.get("locale_dragon_roost_island"), self.options.get("locale_flight_control"),
-    self.options.get("locale_western_fairy"), self.options.get("locale_rock_spire"), self.options.get("locale_tingle"), self.options.get("locale_northern_triangle"), self.options.get("locale_eastern_fairy"), self.options.get("locale_fire_mountain"), self.options.get("locale_star_belt"),
-    self.options.get("locale_three_eye"), self.options.get("locale_greatfish"), self.options.get("locale_cyclops"), self.options.get("locale_six_eye"), self.options.get("locale_totg"), self.options.get("locale_eastern_triangle"), self.options.get("locale_thorned_fairy"),
-    self.options.get("locale_needle_rock"), self.options.get("locale_islet"), self.options.get("locale_stone_watcher"), self.options.get("locale_southern_triangle"), self.options.get("locale_private_oasis"), self.options.get("locale_bomb"), self.options.get("locale_birds_peak"),
-    self.options.get("locale_diamond_steppe"), self.options.get("locale_five_eye"), self.options.get("locale_shark"), self.options.get("locale_southern_fairy"), self.options.get("locale_ice_ring"), self.options.get("locale_forest_haven"), self.options.get("locale_cliff_plateau"),
-    self.options.get("locale_horseshoe"), self.options.get("locale_outset"), self.options.get("locale_headstone"), self.options.get("locale_two_eye"), self.options.get("locale_angular"), self.options.get("locale_boating_course"), self.options.get("locale_five_star")
-  ]
-
-  self.banned_dungeon_locales = [
-    self.options.get("locale_drc"),  self.options.get("locale_deep_drc"),
-    self.options.get("locale_fw"),   self.options.get("locale_deep_fw"),
-    self.options.get("locale_totg"), self.options.get("locale_deep_totg"),
-    self.options.get("locale_ff"),   False,
-    self.options.get("locale_et"),   self.options.get("locale_deep_et"),
-    self.options.get("locale_wt"),   self.options.get("locale_deep_wt")
-  ]
-
-  self.banned_misc_locales = [
-    self.options.get("locale_great_sea"),
-    self.options.get("locale_battlesquid"),
-    self.options.get("locale_mail"),
-    self.options.get("locale_under_great_sea"),
-    self.options.get("locale_savage"),
-  ]
-
   print("Randomizing items...")
 
   if self.options.get("race_mode")!="Default":
@@ -226,6 +198,11 @@ def try_randomize_boss_rewards(self):
     for boss_location_name in possible_boss_locations:
       dungeon_name, _ = self.logic.split_location_name_by_zone(boss_location_name)
       banned_dungeons.append(dungeon_name)
+      # Let's also mark banned dungeons as banned locales
+      self.banned_dungeon_locales[dungeon_name] = True
+      deep_name = "Deep "+dungeon_name
+      if deep_name in self.banned_dungeon_locales:
+        self.banned_dungeon_locales[deep_name] = True
 
   for location_name in self.logic.item_locations:
     zone_name, _ = self.logic.split_location_name_by_zone(location_name)
@@ -369,11 +346,7 @@ def randomize_dungeon_items(self):
     self.logic.remove_owned_item(item_name)
 
 def place_dungeon_item(self, item_name):
-  quick_dungeon_list = ["Dragon Roost Cavern","","Forbidden Woods","","Tower of the Gods","","Forsaken Fortress","","Earth Temple","","Wind Temple"]
-  short_dungeon_name = item_name.split(" ")[0]
-  item_dungeon_name = self.logic.DUNGEON_NAMES[short_dungeon_name]
-  num = quick_dungeon_list.index(item_dungeon_name)
-  banned_regular = self.banned_dungeon_locales[num]
+  banned_regular = self.banned_dungeon_locales[item_dungeon_name]
   if (banned_regular):
     possible_locations = []
     for loc in self.logic.item_locations:
@@ -540,20 +513,26 @@ def randomize_progression_items(self):
     else:
       item_name = self.rng.choice(possible_items_when_not_placing_useful)
 
-    if(self.options.get("race_mode")=="Race"):
-      locations_filtered = accessible_undone_locations.copy()
-      if item_name in self.logic.progress_item_groups:
-        num_locs_needed = len(self.logic.progress_item_groups[item_name])
+    if self.options.get("race_mode")=="Race" and item_name in self.logic.all_progress_items:
+      test_state = True
+      if self.logic.is_dungeon_item(item_name):
+        short_dungeon_name = item_name.split(" ")[0]
+        dungeon_name = self.logic.DUNGEON_NAMES[short_dungeon_name]
+        if dungeon_name not in self.race_mode_required_dungeons:
+          test_state = False
+      if test_state:
         locations_filtered = [
           loc for loc in accessible_undone_locations
           if loc not in self.race_mode_banned_locations
         ]
-      else:
-        num_locs_needed = 1
-      if len(locations_filtered) >= num_locs_needed:
-        accessible_undone_locations = locations_filtered
-      else:
-        raise Exception("Failed to prevent progress items from appearing in unchosen dungeons for race mode.")
+        if item_name in self.logic.progress_item_groups:
+          num_locs_needed = len(self.logic.progress_item_groups[item_name])
+        else:
+          num_locs_needed = 1
+        if len(locations_filtered) >= num_locs_needed:
+          accessible_undone_locations = locations_filtered
+        else:
+          raise Exception("Failed to prevent progress items from appearing in unchosen dungeons for race mode.")
 
     if item_name in self.logic.progress_item_groups:
       # If we're placing an entire item group, we use different logic for deciding the location.

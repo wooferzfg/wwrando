@@ -128,12 +128,12 @@ class Logic:
 
     if self.rando.options.get("sword_mode") == "Swordless":
       self.all_progress_items = [
-        item_name for item_name in (self.all_nonprogress_items + self.all_progress_items)
-        if item_name != "Progressive Sword"
+        item_name for item_name in self.all_progress_items
+        if ( item_name != "Progressive Sword" or item_name != "Hurricane Spin" )
       ]
       self.all_nonprogress_items = [
-        item_name for item_name in (self.all_nonprogress_items + self.all_progress_items)
-        if item_name != "Hurricane Spin"
+        item_name for item_name in self.all_nonprogress_items
+        if ( item_name != "Progressive Sword" or item_name != "Hurricane Spin" )
       ]
 
     if self.rando.options.get("progression_triforce_charts"):
@@ -150,10 +150,8 @@ class Logic:
     dungeon_progress = DUNGEON_PROGRESS_ITEMS.copy()
     non_dungeon_progress = DUNGEON_NONPROGRESS_ITEMS.copy()
     if self.rando.options.get("progression_dungeons"):
-      quick_dungeon_list = ["Dragon Roost Cavern","","Forbidden Woods","","Tower of the Gods","","Forsaken Fortress","","Earth Temple","","Wind Temple"]
       for dungeon in possible_dungeon_items:
-        num = quick_dungeon_list.index(dungeon)
-        banned_regular = self.rando.banned_dungeon_locales[num]
+        banned_regular = self.rando.banned_dungeon_locales[dungeon]
         if(banned_regular):
           non_dungeon_progress += possible_dungeon_items[dungeon]
         else:
@@ -267,14 +265,15 @@ class Logic:
     return num_progress_items
 
   def get_num_progression_locations(self):
-    return Logic.get_num_progression_locations_static(self.item_locations, self.rando.options)
+    return Logic.get_num_progression_locations_static(self.item_locations, self.rando.options, self.rando.banned_locales)
 
   @staticmethod
-  def get_num_progression_locations_static(item_locations, options):
+  def get_num_progression_locations_static(item_locations, options, banned_locales):
     progress_locations = Logic.filter_locations_for_progression_static(
       item_locations.keys(),
       item_locations,
       options,
+      banned_locales,
       filter_sunken_treasure=True
     )
     num_progress_locations = len(progress_locations)
@@ -543,11 +542,12 @@ class Logic:
       locations_to_filter,
       self.item_locations,
       self.rando.options,
+      self.rando.banned_locales,
       filter_sunken_treasure=filter_sunken_treasure
     )
 
   @staticmethod
-  def filter_locations_for_progression_static(locations_to_filter, item_locations, options, filter_sunken_treasure=False):
+  def filter_locations_for_progression_static(locations_to_filter, item_locations, options, banned_locales, filter_sunken_treasure=False):
     filtered_locations = []
     typeDict = OrderedDict([
       ("No progression", False),
@@ -579,12 +579,6 @@ class Logic:
       ("Sunken Treasure", not filter_sunken_treasure)
     ])
 
-    islandDict = OrderedDict()
-    with open(os.path.join(DATA_PATH, "island_data.txt")) as f:
-      island_data = yaml.load(f, YamlOrderedDictLoader)
-    for island in island_data:
-      islandDict[island_data[island]["Long Name"]] = island_data[island]["Locale Setting"]
-
     for location_name in locations_to_filter:
       types = item_locations[location_name]["Types"]
       locales = item_locations[location_name]["Locale"]
@@ -597,7 +591,7 @@ class Logic:
       if( changed == True ):
         continue
       for locale in locales:
-        if( options.get(islandDict[locale]) ):
+        if( banned_locales[locale] ):
           changed = True
           break
         continue
@@ -863,6 +857,7 @@ class Logic:
       self.item_locations.keys(),
       self.item_locations,
       self.rando.options,
+      self.rando.banned_locales,
       filter_sunken_treasure=filter_sunken_treasure
     )
 
@@ -885,11 +880,8 @@ class Logic:
       if self.is_dungeon_item(item_name):
         short_dungeon_name = item_name.split(" ")[0]
         dungeon_name = self.DUNGEON_NAMES[short_dungeon_name]
-        quick_dungeon_list = ["Dragon Roost Cavern","","Forbidden Woods","","Tower of the Gods","","Forsaken Fortress","","Earth Temple","","Wind Temple"]
-        num = quick_dungeon_list.index(dungeon_name)
-        banned_regular = self.rando.banned_dungeon_locales[num]
-        banned_deep = self.rando.banned_dungeon_locales[num+1]
-        if(banned_regular or banned_deep):
+        banned_regular = self.rando.banned_dungeon_locales[dungeon_name]
+        if(banned_regular):
           continue
         if not self.rando.options.get("progression_dungeons"):
           continue
@@ -935,7 +927,7 @@ class Logic:
     return zone_name, specific_location_name
 
   def is_dungeon_item(self, item_name):
-    return (item_name in POSSIBLE_DUNGEON_PROGRESS_ITEMS_LIST or item_name in DUNGEON_NONPROGRESS_ITEMS)
+    return (item_name in POSSIBLE_DUNGEON_PROGRESS_ITEMS_LIST or (item_name in DUNGEON_NONPROGRESS_ITEMS and self.rando.options.get("compass_map_pool_with_keys")))
 
   def is_dungeon_location(self, location_name, dungeon_name_to_match=None):
     zone_name, specific_location_name = self.split_location_name_by_zone(location_name)

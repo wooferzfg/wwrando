@@ -24,6 +24,7 @@ from paths import DATA_PATH, ASM_PATH, RANDO_ROOT_PATH, IS_RUNNING_FROM_SOURCE
 import customizer
 from wwlib import stage_searcher
 from asm import disassemble
+from class_ms import *
 
 try:
   from keys.seed_key import SEED_KEY
@@ -312,32 +313,21 @@ class Randomizer:
     self.custom_model_name = "Link"
     self.using_custom_sail_texture = False
 
-    self.banned_island_locales = [
-      self.options.get("locale_ff"), self.options.get("locale_star"), self.options.get("locale_northern_fairy"), self.options.get("locale_gale"), self.options.get("locale_crescent"), self.options.get("locale_seven_star"), self.options.get("locale_overlook"),
-      self.options.get("locale_four_eye"), self.options.get("locale_mother_child"), self.options.get("locale_spectacle"), self.options.get("locale_windfall"), self.options.get("locale_pawprint"), self.options.get("locale_dragon_roost_island"), self.options.get("locale_flight_control"),
-      self.options.get("locale_western_fairy"), self.options.get("locale_rock_spire"), self.options.get("locale_tingle"), self.options.get("locale_northern_triangle"), self.options.get("locale_eastern_fairy"), self.options.get("locale_fire_mountain"), self.options.get("locale_star_belt"),
-      self.options.get("locale_three_eye"), self.options.get("locale_greatfish"), self.options.get("locale_cyclops"), self.options.get("locale_six_eye"), self.options.get("locale_totg"), self.options.get("locale_eastern_triangle"), self.options.get("locale_thorned_fairy"),
-      self.options.get("locale_needle_rock"), self.options.get("locale_islet"), self.options.get("locale_stone_watcher"), self.options.get("locale_southern_triangle"), self.options.get("locale_private_oasis"), self.options.get("locale_bomb"), self.options.get("locale_birds_peak"),
-      self.options.get("locale_diamond_steppe"), self.options.get("locale_five_eye"), self.options.get("locale_shark"), self.options.get("locale_southern_fairy"), self.options.get("locale_ice_ring"), self.options.get("locale_forest_haven"), self.options.get("locale_cliff_plateau"),
-      self.options.get("locale_horseshoe"), self.options.get("locale_outset"), self.options.get("locale_headstone"), self.options.get("locale_two_eye"), self.options.get("locale_angular"), self.options.get("locale_boating_course"), self.options.get("locale_five_star")
-    ]
-
-    self.banned_dungeon_locales = [
-      self.options.get("locale_drc"),  self.options.get("locale_deep_drc"),
-      self.options.get("locale_fw"),   self.options.get("locale_deep_fw"),
-      self.options.get("locale_totg"), self.options.get("locale_deep_totg"),
-      self.options.get("locale_ff"),   False,
-      self.options.get("locale_et"),   self.options.get("locale_deep_et"),
-      self.options.get("locale_wt"),   self.options.get("locale_deep_wt")
-    ]
-
-    self.banned_misc_locales = [
-      self.options.get("locale_great_sea"),
-      self.options.get("locale_battlesquid"),
-      self.options.get("locale_mail"),
-      self.options.get("locale_under_great_sea"),
-      self.options.get("locale_savage"),
-    ]
+    # Before we created a giant array that need to be indexed prior to usage
+    # However, if we create a mostly globally callable dictionary, we can reference that instead
+    islandDict = OrderedDict()
+    dungeonDict = OrderedDict()
+    with open(os.path.join(DATA_PATH, "island_data.txt")) as f:
+      island_data = yaml.load(f, YamlOrderedDictLoader)
+    for island in island_data:
+      islandDict[island_data[island]["Long Name"]] = self.options.get(island_data[island]["Locale Setting"])
+      if island in [101,110,111,120,121,130,131,140,141,150,151]:
+        dungeonDict[island_data[island]["Long Name"]] = self.options.get(island_data[island]["Locale Setting"])
+    self.banned_locales = islandDict.copy()
+    self.banned_dungeon_locales = dungeonDict.copy()
+    del islandDict
+    del dungeonDict
+    del island_data
 
     self.can_chain_charts = self.options.get("can_chain_charts")
     # Options: Always, Sometimes, Never

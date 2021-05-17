@@ -937,7 +937,7 @@ Dragon Roost Island - Fifth Freestanding in The Wading Pool:
 Dragon Roost Island - Sixth Freestanding in The Wading Pool:
   Need: Can Travel to Dragon Roost Island
   Original item: Green Rupee
-  Types: Free Gift
+  Types: Consumables only
   Locale: Dragon Roost Island, dv_im
   Paths:
     - sea/Room13.arc/Actor058
