@@ -5,6 +5,7 @@ from random import Random
 from collections import OrderedDict
 import hashlib
 import yaml
+from datetime import datetime
 
 from fs_helpers import *
 from wwlib.yaz0 import Yaz0
@@ -34,6 +35,8 @@ from randomizers import music
 from randomizers import enemies
 from randomizers import palettes
 
+with open(os.path.join(RANDO_ROOT_PATH, "plando_version.txt"), "r") as f:
+  PLANDO_VERSION = f.read().strip()
 with open(os.path.join(RANDO_ROOT_PATH, "version.txt"), "r") as f:
   VERSION = f.read().strip()
 
@@ -58,8 +61,6 @@ if IS_RUNNING_FROM_SOURCE:
     elif re.search(r"^[0-9a-f]{40}$", head_file_contents):
       # Detached head, commit hash directly in the HEAD file
       version_suffix = "_" + head_file_contents[:7]
-  
-  VERSION += version_suffix
 
 CLEAN_WIND_WAKER_ISO_MD5 = 0xd8e4d45af2032a081a0f446384e9261b
 
@@ -87,12 +88,13 @@ class InvalidCleanISOError(Exception):
   pass
 
 class Randomizer:
-  def __init__(self, seed, clean_iso_path, randomized_output_folder, options, permalink=None, cmd_line_args=OrderedDict()):
+  def __init__(self, seed, clean_iso_path, randomized_output_folder, options, plando_file, permalink=None, cmd_line_args=OrderedDict()):
     self.randomized_output_folder = randomized_output_folder
     self.options = options
     self.seed = seed
     self.permalink = permalink
     self.seed_hash = self.get_seed_hash()
+    self.plando = plando_file
     
     self.dry_run = ("-dry" in cmd_line_args)
     self.disassemble = ("-disassemble" in cmd_line_args)
@@ -317,7 +319,7 @@ class Randomizer:
     self.custom_model_name = self.options.get("custom_player_model", "Link")
     self.using_custom_sail_texture = False
     
-    self.logic = Logic(self)
+    self.logic = Logic(self, self.plando)
     
     num_progress_locations = self.logic.get_num_progression_locations()
     max_race_mode_banned_locations = self.logic.get_max_race_mode_banned_locations()
@@ -886,7 +888,7 @@ class Randomizer:
   def calculate_playthrough_progression_spheres(self):
     progression_spheres = []
     
-    logic = Logic(self)
+    logic = Logic(self, self.plando)
     previously_accessible_locations = []
     game_beatable = False
     while logic.unplaced_progress_items:
@@ -898,7 +900,7 @@ class Randomizer:
         if loc not in previously_accessible_locations
       ]
       if not locations_in_this_sphere:
-        raise Exception("Failed to calculate progression spheres")
+        break
       
       
       if not self.options.get("keylunacy"):
@@ -987,6 +989,7 @@ class Randomizer:
     header = ""
     
     header += "Wind Waker Randomizer Version %s\n" % VERSION
+    header += "Plandomizer Version %s\n" % PLANDO_VERSION
     
     if self.permalink:
       header += "Permalink: %s\n" % self.permalink

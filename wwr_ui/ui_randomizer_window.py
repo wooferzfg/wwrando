@@ -26,7 +26,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(950, 690)
+        MainWindow.resize(950, 750)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout = QVBoxLayout(self.centralwidget)
@@ -95,6 +95,21 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.clean_iso_path_browse_button, 0, 2, 1, 1)
 
+        self.plando_text_label = QLabel(self.tab_randomizer_settings)
+        self.plando_text_label.setObjectName("plando_text_label")
+        self.gridLayout.addWidget(self.plando_text_label, 3, 0, 1, 1)
+        self.plando_text_path = QLineEdit(self.tab_randomizer_settings)
+        self.plando_text_path.setObjectName("plando_text_path")
+        self.gridLayout.addWidget(self.plando_text_path, 3, 1, 1, 1)
+        self.plando_text_browse_button = QPushButton(self.tab_randomizer_settings)
+        self.plando_text_browse_button.setObjectName("plando_text_browse_button")
+        self.gridLayout.addWidget(self.plando_text_browse_button, 3, 2, 1, 1)
+        self.plando_test_path_spacer1 = QSpacerItem(20, 50, QSizePolicy.Minimum, QSizePolicy.Maximum)
+        self.plando_test_path_spacer2 = QSpacerItem(20, 50, QSizePolicy.Minimum, QSizePolicy.Maximum)
+        self.plando_test_path_spacer3 = QSpacerItem(20, 50, QSizePolicy.Minimum, QSizePolicy.Maximum)
+        self.gridLayout.addItem(self.plando_test_path_spacer1, 3, 0, 1, 1)
+        self.gridLayout.addItem(self.plando_test_path_spacer2, 3, 1, 1, 1)
+        self.gridLayout.addItem(self.plando_test_path_spacer3, 3, 2, 1, 1)
 
         self.verticalLayout_3.addLayout(self.gridLayout)
 
@@ -404,7 +419,6 @@ class Ui_MainWindow(object):
         self.invert_sea_compass_x_axis.setObjectName(u"invert_sea_compass_x_axis")
 
         self.gridLayout_4.addWidget(self.invert_sea_compass_x_axis, 2, 0, 1, 1)
-
 
         self.verticalLayout_3.addWidget(self.groupBox_3)
 
@@ -731,6 +745,11 @@ class Ui_MainWindow(object):
         self.widget_12.setObjectName(u"widget_12")
 
         self.gridLayout_8.addWidget(self.widget_12, 0, 4, 1, 1)
+
+        self.plando_race = QCheckBox(self.groupBox_6)
+        self.plando_race.setObjectName(u"plando_race")
+
+        self.gridLayout_8.addWidget(self.plando_race, 0, 2, 1, 1)
 
 
         self.verticalLayout_8.addWidget(self.groupBox_6)
@@ -1116,6 +1135,7 @@ class Ui_MainWindow(object):
         self.label_for_num_path_hints.setText(QCoreApplication.translate("MainWindow", u"Path Hints", None))
         self.groupBox_6.setTitle(QCoreApplication.translate("MainWindow", u"Additional Advanced Options", None))
         self.do_not_generate_spoiler_log.setText(QCoreApplication.translate("MainWindow", u"Do Not Generate Spoiler Log", None))
+        self.plando_race.setText(QCoreApplication.translate("MainWindow", u"Plandomizer Race", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("MainWindow", u"Advanced Options", None))
         self.label_for_custom_color_preset.setText(QCoreApplication.translate("MainWindow", u"Color Preset", None))
         self.randomize_all_custom_colors_together.setText(QCoreApplication.translate("MainWindow", u"Randomize Colors Orderly", None))
@@ -1134,5 +1154,7 @@ class Ui_MainWindow(object):
         self.about_button.setText(QCoreApplication.translate("MainWindow", u"About", None))
         self.reset_settings_to_default.setText(QCoreApplication.translate("MainWindow", u"Reset All Settings to Default", None))
         self.randomize_button.setText(QCoreApplication.translate("MainWindow", u"Randomize", None))
+        self.plando_text_label.setText(QApplication.translate("MainWindow", "Plando File", None))
+        self.plando_text_browse_button.setText(QApplication.translate("MainWindow", "Browse", None))
     # retranslateUi
 

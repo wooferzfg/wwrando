@@ -876,7 +876,8 @@ def randomize_and_update_hints(self):
   
   # Give the Big Octo Great Fairy a unique item hint
   octo_fairy_hint = hint_manager.generate_octo_fairy_hint()
-  update_big_octo_great_fairy_item_name_hint(self, octo_fairy_hint)
+  if octo_fairy_hint is not None:
+    update_big_octo_great_fairy_item_name_hint(self, octo_fairy_hint)
   
   # Identify where the user wishes hints to be located
   variable_hint_placement_options = ("fishmen_hints", "hoho_hints", "korl_hints")
@@ -891,6 +892,9 @@ def randomize_and_update_hints(self):
   
   # Generate the hints that will be distributed over the hint placement options
   hints = hint_manager.generate_hints()
+
+  if not hints:
+    return
   
   # If there are less hints than placement options, duplicate the hints so that all selected placement options have at
   # least one hint.

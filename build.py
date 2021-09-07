@@ -4,9 +4,9 @@ import os
 import platform
 import shutil
 
-from randomizer import VERSION_WITHOUT_COMMIT
+from randomizer import PLANDO_VERSION
 
-base_name = "Wind Waker Randomizer"
+base_name = "Wind Waker Plandomizer"
 
 import struct
 if (struct.calcsize("P") * 8) == 64:

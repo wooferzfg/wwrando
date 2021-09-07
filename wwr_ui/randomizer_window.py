@@ -23,11 +23,16 @@ import time
 import zipfile
 import shutil
 
-from randomizer import Randomizer, VERSION, TooFewProgressionLocationsError, InvalidCleanISOError
+from randomizer import Randomizer, VERSION, PLANDO_VERSION, TooFewProgressionLocationsError, InvalidCleanISOError
 from wwrando_paths import SETTINGS_PATH, ASSETS_PATH, SEEDGEN_PATH, IS_RUNNING_FROM_SOURCE, CUSTOM_MODELS_PATH
 import customizer
 from logic.logic import Logic
 from wwlib import texture_utils
+
+from aes.aes_iv import AES_IV
+from aes.aes_key import AES_KEY
+
+import pyaes, binascii
 
 class WWRandomizerWindow(QMainWindow):
   VALID_SEED_CHARACTERS = "-_'%%.%s%s" % (string.ascii_letters, string.digits)
@@ -89,6 +94,11 @@ class WWRandomizerWindow(QMainWindow):
     self.ui.randomize_all_custom_colors_together.clicked.connect(self.randomize_all_custom_colors_together)
     self.ui.randomize_all_custom_colors_separately.clicked.connect(self.randomize_all_custom_colors_separately)
     self.ui.custom_color_preset.currentIndexChanged.connect(self.color_preset_changed)
+
+    self.ui.plando_text_path.editingFinished.connect(self.update_settings)
+    self.ui.plando_text_browse_button.clicked.connect(self.browse_for_plando_text)
+
+    self.ui.plando_race.stateChanged.connect(self.toggle_seed_text)
     
     for option_name in OPTIONS:
       widget = getattr(self.ui, option_name)
@@ -102,6 +112,14 @@ class WWRandomizerWindow(QMainWindow):
         widget.valueChanged.connect(self.update_settings)
       else:
         raise Exception("Option widget is invalid: %s" % option_name)
+
+        # Hide certain options from the GUI (still accessible via settings.txt and permalinks).
+    for option_name in HIDDEN_OPTIONS:
+      widget = getattr(self.ui, option_name)
+      if self.get_option_value(option_name):
+        widget.show()
+      else:
+        widget.hide()
     
     self.ui.generate_seed_button.clicked.connect(self.generate_seed)
     
@@ -119,7 +137,7 @@ class WWRandomizerWindow(QMainWindow):
     
     self.update_settings()
     
-    self.setWindowTitle("Wind Waker Randomizer %s" % VERSION)
+    self.setWindowTitle("Wind Waker Plandomizer %s" % PLANDO_VERSION)
     
     icon_path = os.path.join(ASSETS_PATH, "icon.ico")
     self.setWindowIcon(QIcon(icon_path))
@@ -219,10 +237,13 @@ class WWRandomizerWindow(QMainWindow):
   def randomize(self):
     clean_iso_path = self.settings["clean_iso_path"].strip()
     output_folder = self.settings["output_folder"].strip()
+    plando_text_path = self.settings["plando_text_path"].strip()
     self.settings["clean_iso_path"] = clean_iso_path
     self.settings["output_folder"] = output_folder
+    self.settings["plando_text_path"] = plando_text_path
     self.ui.clean_iso_path.setText(clean_iso_path)
     self.ui.output_folder.setText(output_folder)
+    self.ui.plando_text_path.setText(plando_text_path)
     
     if not self.dry_run and not os.path.isfile(clean_iso_path):
       QMessageBox.warning(self, "Clean ISO path not specified", "Must specify path to your clean Wind Waker ISO (USA).")
@@ -230,7 +251,43 @@ class WWRandomizerWindow(QMainWindow):
     if not os.path.isdir(output_folder):
       QMessageBox.warning(self, "No output folder specified", "Must specify a valid output folder for the randomized files.")
       return
-    
+    if not os.path.isfile(plando_text_path) and not self.ui.plando_race.isChecked():
+      QMessageBox.warning(self, "Plando text file not specified", "Must specify path to your plando text file.")
+
+    plando_file = ""
+
+    if self.ui.plando_race.isChecked():
+      try:
+        encrypted_plando_file = open(plando_text_path).read()
+
+        aes = pyaes.AESModeOfOperationCTR(AES_KEY, pyaes.Counter(AES_IV))
+        plando_file_text = aes.decrypt(binascii.unhexlify(encrypted_plando_file)).decode("utf-8")
+        plando_file = yaml.safe_load(plando_file_text)
+      except Exception as e:
+        stack_trace = traceback.format_exc()
+        error_message = "Failed to parse plando file:\n" + str(e) + "\n\n" + stack_trace
+        print(error_message)
+        QMessageBox.critical(
+          self, "Plandomizer failed to load",
+          "The plandomizer file failed to load."
+        )
+        return
+    else:
+      try:
+        with open(plando_text_path, "r") as f:
+          plando_file = yaml.safe_load(f)
+      except Exception as e:
+        stack_trace = traceback.format_exc()
+        error_message = "Failed to load plandomize file:\n" + str(e) + "\n\n" + stack_trace
+        print(error_message)
+        QMessageBox.critical(
+          self, "Plandomizer failed to load",
+          "The plandomizer file failed to load."
+        )
+        return
+
+    self.update_permalink_from_plando(plando_file)
+
     seed = self.settings["seed"]
     seed = self.sanitize_seed(seed)
     
@@ -283,7 +340,7 @@ class WWRandomizerWindow(QMainWindow):
         print("%d/%d seeds failed" % (failures_done, total_done))
     
     try:
-      rando = Randomizer(seed, clean_iso_path, output_folder, options, permalink=permalink, cmd_line_args=self.cmd_line_args)
+      rando = Randomizer(seed, clean_iso_path, output_folder, options, plando_file, permalink=permalink, cmd_line_args=self.cmd_line_args)
     except (TooFewProgressionLocationsError, InvalidCleanISOError) as e:
       error_message = str(e)
       self.randomization_failed(error_message)
@@ -347,7 +404,7 @@ class WWRandomizerWindow(QMainWindow):
   
   def show_update_check_results(self, new_version):
     if not new_version:
-      self.ui.update_checker_label.setText("No new updates to the randomizer are available.")
+      self.ui.update_checker_label.setText("")
     elif new_version == "error":
       self.ui.update_checker_label.setText("There was an error checking for updates.")
     else:
@@ -397,6 +454,8 @@ class WWRandomizerWindow(QMainWindow):
       self.ui.output_folder.setText(self.settings["output_folder"])
     if "seed" in self.settings:
       self.ui.seed.setText(self.settings["seed"])
+    if "plando_text_path" in self.settings:
+      self.ui.plando_text_path.setText(self.settings["plando_text_path"])
     
     for option_name in OPTIONS:
       if option_name in self.settings:
@@ -404,6 +463,8 @@ class WWRandomizerWindow(QMainWindow):
           # Color presets not loaded yet, handle this later
           continue
         self.set_option_value(option_name, self.settings[option_name])
+
+    self.toggle_seed_text()
     
     self.reload_custom_model(update_preview=False)
     if "custom_colors" in self.settings:
@@ -436,6 +497,7 @@ class WWRandomizerWindow(QMainWindow):
     self.settings["clean_iso_path"] = self.ui.clean_iso_path.text()
     self.settings["output_folder"] = self.ui.output_folder.text()
     self.settings["seed"] = self.ui.seed.text()
+    self.settings["plando_text_path"] = self.ui.plando_text_path.text()
     
     self.ensure_valid_combination_of_options()
     self.disable_invalid_cosmetic_options()
@@ -449,12 +511,20 @@ class WWRandomizerWindow(QMainWindow):
     self.encode_permalink()
     
     self.update_total_progress_locations()
+
+  def update_permalink_from_plando(self, plando_file):
+    try:
+      permalink = plando_file["Permalink"]
+    except:
+      return
+
+    self.decode_permalink(permalink)
   
   def update_total_progress_locations(self):
     options = OrderedDict()
     for option_name in OPTIONS:
       options[option_name] = self.get_option_value(option_name)
-    num_progress_locations = Logic.get_num_progression_locations_static(self.cached_item_locations, options)
+    num_progress_locations = Logic.get_num_progression_locations_static(self.cached_item_locations, {}, options)
     
     text = "Where Should Progress Items Appear? (Selected: %d Possible Progression Locations)" % num_progress_locations
     self.ui.groupBox.setTitle(text)
@@ -555,7 +625,7 @@ class WWRandomizerWindow(QMainWindow):
       else:
         QMessageBox.critical(
           self, "Invalid permalink",
-          "The permalink you pasted is for version %s of the randomizer, it cannot be used with the version you are currently using (%s)." % (given_version_num, VERSION)
+          "The permalink you pasted is not compatible with this version of the plandomizer. Please use a permalink generated by version %s of the plandomizer or version %s of the randomizer." % (PLANDO_VERSION, VERSION)
         )
         return
     
@@ -636,6 +706,32 @@ class WWRandomizerWindow(QMainWindow):
     if not output_folder_path:
       return
     self.ui.output_folder.setText(output_folder_path)
+    self.update_settings()
+
+  def browse_for_plando_text(self):
+    if self.settings["plando_text_path"] and os.path.isfile(self.settings["plando_text_path"]):
+      default_dir = os.path.dirname(self.settings["plando_text_path"])
+    else:
+      default_dir = None
+
+    plando_text_path, selected_filter = QFileDialog.getOpenFileName(self, "Select plain text plando file", default_dir, "Plain text (*.txt)")
+    if not plando_text_path:
+      return
+
+    self.ui.plando_text_path.setText(plando_text_path)
+    try:
+      with open(plando_text_path, "r") as f:
+        plando_file = yaml.safe_load(f)
+    except Exception as e:
+      stack_trace = traceback.format_exc()
+      error_message = "Failed to load plando file %s.\nError:\n" % (plando_text_path) + str(e) + "\n\n" + stack_trace
+      print(error_message)
+      QMessageBox.critical(
+        self, "Failed to load plando file",
+        error_message
+      )
+      return
+    self.update_permalink_from_plando(plando_file)
     self.update_settings()
   
   def eventFilter(self, target, event):
@@ -957,6 +1053,17 @@ class WWRandomizerWindow(QMainWindow):
       self.update_model_preview()
     
     return any_color_changed
+
+  def toggle_seed_text(self):
+    if self.ui.plando_race.isChecked():
+      self.ui.label_for_seed.setEnabled(False)
+      self.ui.seed.setEnabled(False)
+      self.ui.generate_seed_button.setEnabled(False)
+    else:
+      self.ui.label_for_seed.setEnabled(True)
+      self.ui.seed.setEnabled(True)
+      self.ui.generate_seed_button.setEnabled(True)
+
   
   def ensure_valid_combination_of_options(self):
     items_to_filter_out = []
@@ -1021,9 +1128,13 @@ class WWRandomizerWindow(QMainWindow):
       widget = getattr(self.ui, option_name)
       label_for_option = getattr(self.ui, "label_for_" + option_name, None)
       if should_enable_options[option_name]:
-        widget.setEnabled(True)
-        if label_for_option:
-          label_for_option.setEnabled(True)
+        if not self.ui.plando_race.isChecked():
+          widget.setEnabled(True)
+          if label_for_option:
+            label_for_option.setEnabled(True)
+        else:
+          if option_name not in NON_PERMALINK_OPTIONS and option_name != "randomize_enemy_palettes":
+            widget.setEnabled(False)
       else:
         widget.setEnabled(False)
         if isinstance(widget, QAbstractButton):
@@ -1037,14 +1148,6 @@ class WWRandomizerWindow(QMainWindow):
         if self.get_option_value(option_name):
           self.set_option_value(option_name, False)
           self.update_settings()
-    
-    # Hide certain options from the GUI (still accessible via settings.txt and permalinks).
-    for option_name in HIDDEN_OPTIONS:
-      widget = getattr(self.ui, option_name)
-      if self.get_option_value(option_name):
-        widget.show()
-      else:
-        widget.hide()
   
   def disable_invalid_cosmetic_options(self):
     custom_model_name = self.get_option_value("custom_player_model")
@@ -1389,8 +1492,8 @@ class WWRandomizerWindow(QMainWindow):
   def open_about(self):
     text = """Wind Waker Randomizer Version %s<br><br>
       Created by LagoLunatic<br><br>
-      Report issues here:<br><a href=\"https://github.com/LagoLunatic/wwrando/issues\">https://github.com/LagoLunatic/wwrando/issues</a><br><br>
-      Source code:<br><a href=\"https://github.com/LagoLunatic/wwrando\">https://github.com/LagoLunatic/wwrando</a>""" % VERSION
+      Plandomizer created by Andirigible, updated by JarheadHME and wooferzfg<br><br>
+      Source code:<br><a href=\"https://github.com/wooferzfg/wwrando/tree/plando\">https://github.com/wooferzfg/wwrando/tree/plando</a><br>""" % VERSION
     
     self.about_dialog = QMessageBox()
     self.about_dialog.setTextFormat(Qt.TextFormat.RichText)

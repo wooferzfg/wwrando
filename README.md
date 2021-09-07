@@ -1,65 +1,88 @@
+### About
 
-## About Wind Waker Randomizer
+This is a modified version of the randomizer for The Legend of Zelda: The Wind Waker, where all item locations are planned in advance.
 
-This is a randomizer for The Legend of Zelda: The Wind Waker.  
-It randomizes all the items in the game so that each playthrough is unique and you never know where a particular item will be.  
-It also makes the game completely open world from the start, removes most cutscenes from the game, and increases sailing speed and text speed.
+**You can download the plandomizer here: https://github.com/wooferzfg/wwrando/releases/latest**
 
-**You can download the randomizer here: https://github.com/LagoLunatic/wwrando/releases/latest**
+### Plando File Example
+```
+Permalink: MC4xLjUAd29vZmVycGxhbmRvNQD//z8Cf5DAAwAAQAAAAWsA
+
+Locations:
+    Dragon Roost Cavern - Boarded Up Chest: Command Melody
+    Dragon Roost Cavern - Chest Across Lava Pit: Grappling Hook
+    Dragon Roost Cavern - Dark Room: Power Bracelets
+    Dragon Roost Cavern - Pot Room Chest: DRC Small Key
+    Dragon Roost Cavern - Mini-Boss: DRC Small Key
+    Dragon Roost Cavern - Big Key Chest: Hookshot
+    Tower of the Gods - Stone Tablet: Skull Hammer
+    Tower of the Gods - Skulls Room Chest: TotG Small Key
+    Tower of the Gods - Big Key Chest: TotG Small Key
+    Forsaken Fortress - Chest Guarded By Bokoblin: Din's Pearl
+    Earth Temple - Transparent Chest In Warp Pot Room: ET Small Key
+    Earth Temple - Chest In Three Blocks Room: Progressive Bow
+    Earth Temple - Chest Behind Statues: Progressive Bow
+    Earth Temple - Stalfos Mini-Boss Room: Triforce Shard 8
+    Earth Temple - Many Mirrors Room Right Chest: ET Small Key
+    Earth Temple - Many Mirrors Room Left Chest: ET Small Key
+    Earth Temple - Jalhalla Heart Container: Earth God's Lyric
+    Wind Temple - Chest Between Two Dirt Patches: Hero's Charm
+    Wind Temple - Chest Behind Stone Head: WT Small Key
+    Wind Temple - Chest at Top of Hub Room: WT Small Key
+    Wind Temple - Molgera Heart Container: Wind God's Aria
+    Ganon's Tower - Maze Chest: Progressive Bow
+    Dragon Roost Island - Chest on Top of Boulder: Iron Boots
+    Rock Spire Isle - Cave: Farore's Pearl
+    Bird's Peak Rock - Cave: Nayru's Pearl
+
+# Optional - only required when Randomize Starting Island is enabled
+Starting Island: Spectacle Island
+
+# Optional - only required when Race Mode is enabled
+Race Mode Dungeons:
+    - Dragon Roost Cavern
+    - Tower of the Gods
+
+# Optional - only required when entrances are randomized
+Entrances:
+    Dungeon Entrance On Dragon Roost Island: Fire Mountain Secret Cave
+    Dungeon Entrance In Forest Haven Sector: Dragon Roost Island Secret Cave
+    Dungeon Entrance In Tower of the Gods Sector: Ice Ring Isle Secret Cave
+    Dungeon Entrance On Headstone Island: Stone Watcher Island Secret Cave
+    Dungeon Entrance On Gale Isle: Tower of the Gods
+    Secret Cave Entrance on Outset Island: Cliff Plateau Isles Secret Cave
+    Secret Cave Entrance on Dragon Roost Island: Pawprint Isle Chuchu Cave
+    Secret Cave Entrance on Fire Mountain: Bomb Island Secret Cave
+    Secret Cave Entrance on Ice Ring Isle: Overlook Island Secret Cave
+    Secret Cave Entrance on Private Oasis: Bird's Peak Rock Secret Cave
+    Secret Cave Entrance on Needle Rock Isle: Star Island Secret Cave
+    Secret Cave Entrance on Angular Isles: Diamond Steppe Island Warp Maze Cave
+    Secret Cave Entrance on Boating Course: Wind Temple
+    Secret Cave Entrance on Stone Watcher Island: Needle Rock Isle Secret Cave
+    Secret Cave Entrance on Overlook Island: Earth Temple
+    Secret Cave Entrance on Bird's Peak Rock: Horseshoe Island Secret Cave
+    Secret Cave Entrance on Pawprint Isle: Angular Isles Secret Cave
+    Secret Cave Entrance on Pawprint Isle Side Isle: Pawprint Isle Wizzrobe Cave
+    Secret Cave Entrance on Diamond Steppe Island: Rock Spire Isle Secret Cave
+    Secret Cave Entrance on Bomb Island: Dragon Roost Cavern
+    Secret Cave Entrance on Rock Spire Isle: Cabana Labyrinth
+    Secret Cave Entrance on Shark Island: Shark Island Secret Cave
+    Secret Cave Entrance on Cliff Plateau Isles: Boating Course Secret Cave
+    Secret Cave Entrance on Horseshoe Island: Forbidden Woods
+    Secret Cave Entrance on Star Island: Savage Labyrinth
+```
 
 ## Information
 
-The randomizer only supports the North American GameCube version of Wind Waker. (MD5: d8e4d45af2032a081a0f446384e9261b)  
+The plandomizer only supports the North American GameCube version of Wind Waker. (MD5: d8e4d45af2032a081a0f446384e9261b)  
 The European and Japanese versions of Wind Waker won't work, and neither will Wind Waker HD.
 
-The randomizer guarantees that every playthrough will be completable, and that you don't need to use any glitches or tricks to beat it.
+If you're going to play on emulator, you should use the latest development version of Dolphin which can be found at the top of this page: https://dolphin-emu.org/download/  
+Note that the GameCube boot up animation in Dolphin doesn't work with the plandomizer and will cause the game to crash before reaching the main menu. If you have previously set Dolphin up to play that animation you will need to disable it before launching the randomized game by going to Config -> GameCube in Dolphin and checking "Skip Main Menu".  
 
-All items are randomized, but because Wind Waker is such a large game, a single run of it would take a very long time if you had to check every single location. Therefore the randomizer has options to limit where progress items can appear based on the type of the location.  
-For example, you can limit progress items to appearing in dungeons and secret caves only, or secret caves sidequests and mail, or any other combination you want.  
-Location types that you don't select will only have unimportant items that you don't need to beat the game - like rupees, heart pieces, bomb bag upgrades, etc. So you can skip checking them entirely, unless you want some of those optional items.
+### Running the plandomizer from source
 
-### Randomizer won't launch?
-
-If the randomizer gives an error saying "Failed to execute script wwrando", or if the executable disappears before you can launch it, then your antivirus software may be incorrectly detecting the randomizer as malware. You should add an exception/exclusion for the randomizer into your antivirus software so that it will ignore the randomizer if this happens.
-
-### Got stuck in a seed?
-
-If you seem to be stuck and can't find anywhere to progress, you should first consult the spoiler log. The spoiler log is generated at the same time as the randomized ISO, and is put in the same folder. It contains information on everything that was randomized in this seed, and lists the order you can get progress items in as well.
-
-If you've consulted the spoiler log and you're still stuck, it's possible you've encountered a bug in the randomizer.  
-Please report bugs like that here: https://github.com/LagoLunatic/wwrando/issues  
-In the bug report be sure to include the permalink for the seed you encountered the bug on.
-
-### Playing on emulator
-
-If you're going to play on emulator, you should use a recent beta or development version of Dolphin, which can be found on this page: https://dolphin-emu.org/download/  
-RetroArch is not recommended and you may experience crashes if you use it.  
-Note that the GameCube boot up animation in Dolphin doesn't work with the randomizer and will cause the game to crash before reaching the main menu. If you have previously set Dolphin up to play that animation you will need to disable it before launching the randomized game by going to Config -> GameCube in Dolphin and checking "Skip Main Menu".  
-
-## Discord Server
-
-If you have any questions or are looking for people to play/race with, why not join the official Wind Waker Randomizer Discord server?  
-https://discord.gg/r2963mt
-
-## Credits
-
-The randomizer was created and programmed by LagoLunatic, with help from:  
-CryZe (event flag documentation)  
-EthanArmbrust (Mac and Linux support)  
-Fig (additional programming)  
-Gamma / SageOfMirrors (custom model conversion, file format documentation)  
-Hypatia (textures)  
-JarheadHME (additional programming)  
-LordNed (file format documentation)  
-MelonSpeedruns (game design suggestions, graphic design)  
-nbouteme (starting items programming)  
-tanjo3 (CTMC and hint programming)  
-TrogWW (additional programming)  
-wooferzfg (additional programming)  
-
-## Running the randomizer from source
-
-If you want to run the latest development/beta version of the randomizer from source, follow the instructions below.
+If you want to run the latest development/beta version of the plandomizer from source, follow the instructions below.
 
 Download and install git from here: https://git-scm.com/downloads  
 Then clone this repository with git by running this in a command prompt:  
@@ -74,10 +97,10 @@ Open the wwrando folder in a command prompt and install dependencies by running:
 `python3 -m pip install -r requirements.txt` (on Mac)  
 `python3 -m pip install $(cat requirements.txt) --user` (on Linux)  
 
-Then run the randomizer with:  
+Then run the plandomizer with:    
 `py wwrando.py` (on Windows)  
 `python3 wwrando.py` (on Mac)  
 `python3 wwrando.py` (on Linux)  
 
 Optionally, you can also install `requirements_full.txt` with the same process you used for `requirements.txt` above.  
-`requirements_full.txt` will install additional libraries that speed up texture recoloring, as well as for building a distributable version of the randomizer. You can still run the randomizer from source without these.  
+`requirements_full.txt` will install additional libraries that speed up texture recoloring, as well as for building a distributable version of the plandomizer. You can still run the plandomizer from source without these.  
