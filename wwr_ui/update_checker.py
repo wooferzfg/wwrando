@@ -10,6 +10,7 @@ LATEST_RELEASE_DOWNLOAD_PAGE_URL = "https://github.com/LagoLunatic/wwrando/relea
 LATEST_RELEASE_API_URL = "https://api.github.com/repos/lagolunatic/wwrando/releases/latest"
 
 def check_for_updates():
+  return None
   try:
     with urllib.request.urlopen(LATEST_RELEASE_API_URL) as page:
       data = json.loads(page.read().decode())

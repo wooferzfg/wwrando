@@ -8,6 +8,7 @@ from random import Random
 from collections import OrderedDict
 import hashlib
 import yaml
+from datetime import datetime
 
 from fs_helpers import *
 from wwlib.yaz0 import Yaz0
@@ -39,6 +40,8 @@ from randomizers import palettes
 
 with open(os.path.join(RANDO_ROOT_PATH, "version.txt"), "r") as f:
   VERSION = f.read().strip()
+with open(os.path.join(RANDO_ROOT_PATH, "rando_version.txt"), "r") as f:
+  RANDO_VERSION = f.read().strip()
 
 VERSION_WITHOUT_COMMIT = VERSION
 
@@ -61,8 +64,6 @@ if IS_RUNNING_FROM_SOURCE:
     elif re.search(r"^[0-9a-f]{40}$", head_file_contents):
       # Detached head, commit hash directly in the HEAD file
       version_suffix = "_" + head_file_contents[:7]
-  
-  VERSION += version_suffix
 
 CLEAN_WIND_WAKER_ISO_MD5 = 0xd8e4d45af2032a081a0f446384e9261b
 
@@ -73,11 +74,12 @@ class InvalidCleanISOError(Exception):
   pass
 
 class Randomizer:
-  def __init__(self, seed, clean_iso_path, randomized_output_folder, options, permalink=None, cmd_line_args=OrderedDict()):
+  def __init__(self, seed, clean_iso_path, randomized_output_folder, options, plando_file, permalink=None, cmd_line_args=OrderedDict()):
     self.randomized_output_folder = randomized_output_folder
     self.options = options
     self.seed = seed
     self.permalink = permalink
+    self.plando = plando_file
     
     self.dry_run = ("-dry" in cmd_line_args)
     self.disassemble = ("-disassemble" in cmd_line_args)
@@ -303,7 +305,7 @@ class Randomizer:
     self.custom_model_name = "Link"
     self.using_custom_sail_texture = False
     
-    self.logic = Logic(self)
+    self.logic = Logic(self, self.plando)
     
     num_progress_locations = self.logic.get_num_progression_locations()
     max_race_mode_banned_locations = self.logic.get_max_race_mode_banned_locations()
@@ -417,7 +419,7 @@ class Randomizer:
     yield("Randomizing items...", options_completed)
     if self.randomize_items:
       self.reset_rng()
-      items.randomize_items(self)
+      items.randomize_items(self, self.plando)
     
     options_completed += 2
     
@@ -850,7 +852,7 @@ class Randomizer:
   def calculate_playthrough_progression_spheres(self):
     progression_spheres = []
     
-    logic = Logic(self)
+    logic = Logic(self, self.plando)
     previously_accessible_locations = []
     game_beatable = False
     while logic.unplaced_progress_items:
@@ -926,7 +928,8 @@ class Randomizer:
   def get_log_header(self):
     header = ""
     
-    header += "Wind Waker Randomizer Version %s\n" % VERSION
+    header += "Wind Waker Randomizer Version %s\n" % RANDO_VERSION
+    header += "Plandomizer Version %s\n" % VERSION
     
     if self.permalink:
       header += "Permalink: %s\n" % self.permalink

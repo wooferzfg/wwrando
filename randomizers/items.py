@@ -6,14 +6,34 @@ from collections import OrderedDict
 from fs_helpers import *
 import tweaks
 
-def randomize_items(self):
+def randomize_items(self, plando_file):
   print("Randomizing items...")
-  
+
+  self.plando = plando_file
+  self.plando_items = [x.split(":", 1)[1].strip() for x in self.plando.splitlines() if "Permalink" not in x and "Race Mode" not in x and ":" in x]
+
+  # If the plando placed items in every location, then we skip all this
+  if not self.logic.remaining_item_locations or not self.logic.unplaced_progress_items:
+    return
+
   if self.options.get("race_mode"):
-    randomize_boss_rewards(self)
-  
+    planned_race_mode = False
+    for line in plando_file.splitlines():
+      if line.startswith("Race Mode"):
+        planned_race_mode = True
+        planned_race_dungeons = [x.strip() for x in line.split(":", 1)[1].split(",")]
+        if len(planned_race_dungeons) != 4:
+          raise Exception("There needs to be 4 race mode dungeons selected!")
+    if planned_race_mode:
+      plan_boss_rewards(self, planned_race_dungeons)
+    else:
+      randomize_boss_rewards(self)
+
   if not self.options.get("keylunacy"):
     randomize_dungeon_items(self)
+
+  if not self.logic.remaining_item_locations or not self.logic.unplaced_nonprogress_items:
+    return
   
   randomize_progression_items(self)
   
@@ -38,6 +58,9 @@ def randomize_items(self):
     for location_name in inaccessible_locations:
       print(location_name)
   
+  if not self.logic.remaining_item_locations or not self.logic.unplaced_fixed_consumable_items:
+    return
+
   # Fill remaining unused locations with consumables (Rupees, spoils, and bait).
   locations_to_place_consumables_at = self.logic.remaining_item_locations.copy()
   for location_name in locations_to_place_consumables_at:
@@ -245,6 +268,141 @@ def validate_boss_reward_locations(self, boss_reward_locations):
   
   return locations_valid
 
+def plan_boss_rewards(self, dungeons):
+  if not self.options.get("progression_dungeons"):
+    raise Exception("Cannot randomize boss rewards when progress items are not allowed in dungeons.")
+  
+  req_dungeons = []
+  dungeon_names = {"DRC": "Dragon Roost Cavern", "FW": "Forbidden Woods", "TotG": "Tower of the Gods", "FF": "Forsaken Fortress", "ET": "Earth Temple", "WT": "Wind Temple"}
+  for key in dungeon_names:
+    if key in dungeons:
+      req_dungeons.append(dungeon_names[key])
+      self.race_mode_required_dungeons.append(dungeon_names[key])
+
+  valid_boss_locations = [loc for loc in self.logic.item_locations if self.logic.item_locations[loc]["Original item"] == "Heart Container"]
+
+  required_bosses = []
+
+  for boss in valid_boss_locations:
+    for dungeon in req_dungeons:
+      if boss.startswith(dungeon):
+        required_bosses.append(boss)
+
+  banned_dungeons = [x for x in dungeon_names.values() if x not in req_dungeons]
+
+  done_boss_locations = 0
+  for line in self.plando.splitlines():
+    loc = line.split(":", 1)[0].strip()
+    if loc not in self.logic.item_locations:
+      continue
+    if self.logic.item_locations[loc]["Original item"] == "Heart Container" and loc in required_bosses:
+      self.race_mode_required_locations.append(loc)
+      required_bosses.remove(loc)
+      done_boss_locations += 1
+
+  boss_reward_items = []
+  total_num_rewards = 4 - done_boss_locations
+
+  if total_num_rewards:
+    
+    unplaced_progress_items_degrouped = []
+    for item_name in self.logic.unplaced_progress_items:
+      if item_name in self.logic.progress_item_groups:
+        unplaced_progress_items_degrouped += self.logic.progress_item_groups[item_name]
+      else:
+        unplaced_progress_items_degrouped.append(item_name)
+
+    # Try to make all the rewards be Triforce Shards.
+    # May not be possible if the player chose to start with too many shards.
+    num_additional_rewards_needed = total_num_rewards
+    triforce_shards = [
+      item_name for item_name in unplaced_progress_items_degrouped
+      if item_name.startswith("Triforce Shard ")
+    ]
+    self.rng.shuffle(triforce_shards)
+    boss_reward_items += triforce_shards[0:num_additional_rewards_needed]
+    
+    # If we still need more rewards, use sword upgrades.
+    # May still not fill up all 4 slots if the player starts with 8 shards and a sword.
+    num_additional_rewards_needed = total_num_rewards - len(boss_reward_items)
+    if num_additional_rewards_needed > 0:
+      sword_upgrades = [
+        item_name for item_name in unplaced_progress_items_degrouped
+        if item_name == "Progressive Sword"
+      ]
+      boss_reward_items += sword_upgrades[0:num_additional_rewards_needed]
+    
+    # If we still need more rewards, use bow upgrades.
+    # May still not fill up all 4 slots if the player starts with 8 shards and is in swordless mode.
+    num_additional_rewards_needed = total_num_rewards - len(boss_reward_items)
+    if num_additional_rewards_needed > 0:
+      bow_upgrades = [
+        item_name for item_name in unplaced_progress_items_degrouped
+        if item_name == "Progressive Bow"
+      ]
+      boss_reward_items += bow_upgrades[0:num_additional_rewards_needed]
+    
+    self.rng.shuffle(boss_reward_items)
+    
+    # If we STILL need more rewards, use the hookshot.
+    num_additional_rewards_needed = total_num_rewards - len(boss_reward_items)
+    if num_additional_rewards_needed > 0:
+      if "Hookshot" in unplaced_progress_items_degrouped:
+        # Need to make sure hookshot is at the start of the list since it's more picky about which bosses can drop it.
+        boss_reward_items.insert(0, "Hookshot")
+    
+    if len(boss_reward_items) != total_num_rewards:
+      raise Exception("Number of boss reward items is incorrect: " + ", ".join(boss_reward_items))
+    
+    # Remove any Triforce Shards we're about to use from the progress item group, and add them as ungrouped progress items instead.
+    for group_name, group_item_names in self.logic.progress_item_groups.items():
+      items_to_remove_from_group = [
+        item_name for item_name in group_item_names
+        if item_name in boss_reward_items
+      ]
+      for item_name in items_to_remove_from_group:
+        self.logic.progress_item_groups[group_name].remove(item_name)
+      if group_name in self.logic.unplaced_progress_items:
+        for item_name in items_to_remove_from_group:
+          self.logic.unplaced_progress_items.append(item_name)
+      
+      if len(self.logic.progress_item_groups[group_name]) == 0:
+        if group_name in self.logic.unplaced_progress_items:
+          self.logic.unplaced_progress_items.remove(group_name)
+
+    possible_boss_locations = required_bosses.copy()
+
+    for item_name in boss_reward_items:
+      possible_boss_locations_for_this_item = possible_boss_locations.copy()
+      if item_name == "Hookshot":
+        possible_boss_locations_for_this_item = [
+          loc for loc in possible_boss_locations_for_this_item
+          if loc not in ["Wind Temple - Molgera Heart Container"]
+        ]
+      
+      if self.dungeons_only_start and "Dragon Roost Cavern - Gohma Heart Container" in possible_boss_locations_for_this_item:
+        location_name = "Dragon Roost Cavern - Gohma Heart Container"
+      elif self.dungeons_only_start and "Forbidden Woods - Kalle Demos Heart Container" in possible_boss_locations_for_this_item:
+        location_name = "Forbidden Woods - Kalle Demos Heart Container"
+      else:
+        location_name = self.rng.choice(possible_boss_locations_for_this_item)
+      possible_boss_locations.remove(location_name)
+      self.logic.set_prerandomization_item_location(location_name, item_name)
+      self.race_mode_required_locations.append(location_name)
+  
+  for location_name in self.logic.item_locations:
+    zone_name, _ = self.logic.split_location_name_by_zone(location_name)
+    if self.logic.is_dungeon_location(location_name) and zone_name in banned_dungeons:
+      self.race_mode_banned_locations.append(location_name)
+    elif location_name == "Mailbox - Letter from Orca" and "Forbidden Woods" in banned_dungeons:
+      self.race_mode_banned_locations.append(location_name)
+    elif location_name == "Mailbox - Letter from Baito" and "Earth Temple" in banned_dungeons:
+      self.race_mode_banned_locations.append(location_name)
+    elif location_name == "Mailbox - Letter from Aryll" and "Forsaken Fortress" in banned_dungeons:
+      self.race_mode_banned_locations.append(location_name)
+    elif location_name == "Mailbox - Letter from Tingle" and "Forsaken Fortress" in banned_dungeons:
+      self.race_mode_banned_locations.append(location_name)
+
 def randomize_dungeon_items(self):
   # Places dungeon-specific items first so all the dungeon locations don't get used up by other items.
   
@@ -309,6 +467,10 @@ def randomize_dungeon_items(self):
 
 def place_dungeon_item(self, item_name):
   accessible_undone_locations = self.logic.get_accessible_remaining_locations()
+
+  if not accessible_undone_locations:
+    raise Exception("No locations left to place progress items! Please select more progression categories or put more key items in your plando file.")
+
   accessible_undone_locations = [
     loc for loc in accessible_undone_locations
     if loc not in self.logic.prerandomization_item_locations
@@ -410,7 +572,7 @@ def randomize_progression_items(self):
       # If we're on the last accessible location but not the last item we HAVE to place an item that unlocks new locations.
       # (Otherwise we will still try to place a useful item, but failing will not result in an error.)
       must_place_useful_item = True
-    elif len(accessible_undone_locations) >= 17:
+    elif len(accessible_undone_locations) >= 5:
       # If we have a lot of locations open, we don't need to be so strict with prioritizing currently useful items.
       # This can give the randomizer a chance to place things like Delivery Bag or small keys for dungeons that need x2 to do anything.
       should_place_useful_item = False
@@ -425,7 +587,7 @@ def randomize_progression_items(self):
     if len(possible_items_when_not_placing_useful) == 0 and len(possible_items) > 0:
       possible_items_when_not_placing_useful = possible_items
     
-    if must_place_useful_item or should_place_useful_item:
+    if must_place_useful_item:
       shuffled_list = possible_items.copy()
       self.rng.shuffle(shuffled_list)
       item_name = self.logic.get_first_useful_item(shuffled_list)

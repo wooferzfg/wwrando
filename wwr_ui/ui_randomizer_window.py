@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'randomizer_window.ui'
 ##
-## Created by: Qt User Interface Compiler version 5.15.2
+## Created by: Qt User Interface Compiler version 5.14.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -11,13 +11,14 @@
 from PySide2.QtCore import *
 from PySide2.QtGui import *
 from PySide2.QtWidgets import *
+from PySide2 import QtCore, QtWidgets
 
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(943, 671)
+        MainWindow.resize(943, 700)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout = QVBoxLayout(self.centralwidget)
@@ -86,6 +87,21 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.clean_iso_path_browse_button, 0, 2, 1, 1)
 
+        self.plando_text_label = QtWidgets.QLabel(self.tab)
+        self.plando_text_label.setObjectName("plando_text_label")
+        self.gridLayout.addWidget(self.plando_text_label, 3, 0, 1, 1)
+        self.plando_text_path = QtWidgets.QLineEdit(self.tab)
+        self.plando_text_path.setObjectName("plando_text_path")
+        self.gridLayout.addWidget(self.plando_text_path, 3, 1, 1, 1)
+        self.plando_text_browse_button = QtWidgets.QPushButton(self.tab)
+        self.plando_text_browse_button.setObjectName("plando_text_browse_button")
+        self.gridLayout.addWidget(self.plando_text_browse_button, 3, 2, 1, 1)
+        self.plando_test_path_spacer1 = QSpacerItem(20, 50, QSizePolicy.Minimum, QSizePolicy.Maximum)
+        self.plando_test_path_spacer2 = QSpacerItem(20, 50, QSizePolicy.Minimum, QSizePolicy.Maximum)
+        self.plando_test_path_spacer3 = QSpacerItem(20, 50, QSizePolicy.Minimum, QSizePolicy.Maximum)
+        self.gridLayout.addItem(self.plando_test_path_spacer1, 3, 0, 1, 1)
+        self.gridLayout.addItem(self.plando_test_path_spacer2, 3, 1, 1, 1)
+        self.gridLayout.addItem(self.plando_test_path_spacer3, 3, 2, 1, 1)
 
         self.verticalLayout_2.addLayout(self.gridLayout)
 
@@ -359,7 +375,6 @@ class Ui_MainWindow(object):
 
         self.gridLayout_3.addWidget(self.randomize_enemies, 0, 3, 1, 1)
 
-
         self.verticalLayout_2.addWidget(self.groupBox_3)
 
         self.groupBox_2 = QGroupBox(self.tab)
@@ -427,6 +442,11 @@ class Ui_MainWindow(object):
         self.do_not_generate_spoiler_log.setObjectName(u"do_not_generate_spoiler_log")
 
         self.gridLayout_6.addWidget(self.do_not_generate_spoiler_log, 0, 0, 1, 1)
+
+        self.plando_race = QCheckBox(self.groupBox_4)
+        self.plando_race.setObjectName(u"plando_race")
+
+        self.gridLayout_6.addWidget(self.plando_race, 0, 1, 1, 1)
 
         self.widget_3 = QWidget(self.groupBox_4)
         self.widget_3.setObjectName(u"widget_3")
@@ -825,6 +845,7 @@ class Ui_MainWindow(object):
         self.groupBox_4.setTitle(QCoreApplication.translate("MainWindow", u"Advanced Options", None))
         self.disable_tingle_chests_with_tingle_bombs.setText(QCoreApplication.translate("MainWindow", u"Tingle Bombs Don't Open Tingle Chests", None))
         self.do_not_generate_spoiler_log.setText(QCoreApplication.translate("MainWindow", u"Do Not Generate Spoiler Log", None))
+        self.plando_race.setText(QCoreApplication.translate("MainWindow", u"Plandomizer Race", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("MainWindow", u"Randomizer Settings", None))
         self.label_for_randomized_gear.setText(QCoreApplication.translate("MainWindow", u"Randomized Gear", None))
         self.remove_gear.setText(QCoreApplication.translate("MainWindow", u"<-", None))
@@ -850,5 +871,7 @@ class Ui_MainWindow(object):
         self.about_button.setText(QCoreApplication.translate("MainWindow", u"About", None))
         self.reset_settings_to_default.setText(QCoreApplication.translate("MainWindow", u"Reset All Settings to Default", None))
         self.randomize_button.setText(QCoreApplication.translate("MainWindow", u"Randomize", None))
+        self.plando_text_label.setText(QtWidgets.QApplication.translate("MainWindow", "Plando File", None))
+        self.plando_text_browse_button.setText(QtWidgets.QApplication.translate("MainWindow", "Browse", None))
     # retranslateUi
 

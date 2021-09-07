@@ -135,6 +135,10 @@ OPTIONS = OrderedDict([
     "This options prevents the randomizer from generating a text file listing out the location of every single item for this seed. (This being checked also changes where items are placed in this seed.)<br><u>Generating a spoiler log is highly recommended even if you don't intend to use it</u>, just in case you get completely stuck."
   ),
   (
+    "plando_race",
+    "Use this option when you're doing a plandomizer race."
+  ),
+  (
     "sword_mode",
     "Controls whether you start with the Hero's Sword, the Hero's Sword is randomized, or if there are no swords in the entire game.\nSwordless and No Starting Sword are challenge modes, not recommended for your first run. Also, FF's Phantom Ganon is vulnerable to Skull Hammer in Swordless mode only."
   ),
@@ -226,6 +230,7 @@ NON_PERMALINK_OPTIONS = [
   "disable_custom_player_items",
   "custom_color_preset",
   "remove_title_and_ending_videos",
+  "plando_race",
   # Note: Options that affect music must be included in the permalink because music duration affects gameplay in some cases, like not being allowed to close the item get textbox until the item get jingle has finished playing.
   # Note: randomize_enemy_palettes has special logic to be in the permalink when enemy rando is on, but otherwise just have an unused placeholder in the permalink.
 ]

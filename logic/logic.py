@@ -10,6 +10,8 @@ from logic.item_types import PROGRESS_ITEMS, NONPROGRESS_ITEMS, CONSUMABLE_ITEMS
 from paths import LOGIC_PATH
 from randomizers import entrances
 
+from random import Random
+
 class Logic:
   DUNGEON_NAMES = OrderedDict([
     ("DRC",  "Dragon Roost Cavern"),
@@ -46,8 +48,9 @@ class Logic:
     ]),
   ])
   
-  def __init__(self, rando):
+  def __init__(self, rando, plando_file):
     self.rando = rando
+    self.plando_file = plando_file
     
     
     # Initialize location related attributes.
@@ -164,8 +167,18 @@ class Logic:
       if len(self.progress_item_groups[group_name]) == 0:
         if group_name in self.unplaced_progress_items:
           self.unplaced_progress_items.remove(group_name)
+
+    # Load the plando and make sure it's all valid
+    self.plando = self.load_plando()
+    self.place_plando_items()
+    # self.unplaced_plando_items = list(self.plando.values())
     
     self.cached_enemies_tested_for_req_string = OrderedDict()
+
+  def place_plando_items(self):
+    for location, item in self.plando.items():
+      #print("Setting %s to %s" % (location, item))
+      self.set_location_to_item(location, item)
   
   def set_location_to_item(self, location_name, item_name):
     #print("Setting %s to %s" % (location_name, item_name))
@@ -180,6 +193,20 @@ class Logic:
   
   def set_multiple_locations_to_group(self, available_locations, group_name):
     items_in_group = self.progress_item_groups[group_name]
+    
+    plando_items = list(self.plando.values())
+    plando_keys = list(self.plando.keys())
+
+    # Make sure that any items in the group aren't already placed by the plando, as if they are they would be doubled
+    for item in items_in_group.copy():
+      if item in plando_items:
+        loc = plando_keys[plando_items.index(item)]
+        if loc in self.item_locations:
+          items_in_group.remove(item)
+
+    if not items_in_group:
+      self.unplaced_progress_items.remove(group_name)
+      return
     
     if len(available_locations) < len(items_in_group):
       raise Exception("Not enough locations to place all items in group %s" % group_name)
@@ -212,13 +239,14 @@ class Logic:
     return num_progress_items
   
   def get_num_progression_locations(self):
-    return Logic.get_num_progression_locations_static(self.item_locations, self.rando.options)
+    return Logic.get_num_progression_locations_static(self.item_locations, self.plando, self.rando.options)
   
   @staticmethod
-  def get_num_progression_locations_static(item_locations, options):
+  def get_num_progression_locations_static(item_locations, plando, options):
     progress_locations = Logic.filter_locations_for_progression_static(
       item_locations.keys(),
       item_locations,
+      plando,
       options,
       filter_sunken_treasure=True
     )
@@ -500,12 +528,13 @@ class Logic:
     return Logic.filter_locations_for_progression_static(
       locations_to_filter,
       self.item_locations,
+      self.plando,
       self.rando.options,
       filter_sunken_treasure=filter_sunken_treasure
     )
   
   @staticmethod
-  def filter_locations_for_progression_static(locations_to_filter, item_locations, options, filter_sunken_treasure=False):
+  def filter_locations_for_progression_static(locations_to_filter, item_locations, plando, options, filter_sunken_treasure=False):
     filtered_locations = []
     for location_name in locations_to_filter:
       types = item_locations[location_name]["Types"]
@@ -732,7 +761,7 @@ class Logic:
   
   def clean_item_name(self, item_name):
     # Remove parentheses from any item names that may have them. (Formerly Master Swords, though that's not an issue anymore.)
-    return item_name.replace("(", "").replace(")", "")
+    return item_name.strip().replace("(", "").replace(")", "")
   
   def make_useless_progress_items_nonprogress(self):
     # Detect which progress items don't actually help access any locations with the user's current settings, and move those over to the nonprogress item list instead.
@@ -748,6 +777,7 @@ class Logic:
     progress_locations = Logic.filter_locations_for_progression_static(
       self.item_locations.keys(),
       self.item_locations,
+      {},
       self.rando.options,
       filter_sunken_treasure=filter_sunken_treasure
     )
@@ -1060,7 +1090,29 @@ class Logic:
     
     return chart_name
   
-  
+  def load_plando(self):
+    plandic = {}
+    errors = []
+    for line in self.plando_file.splitlines():
+      if ":" not in line:
+        continue
+      if line.strip():
+        location, item = line.split(":", 1)
+        location = location.strip()
+        item = item.strip()
+        if location == "Permalink" or location == "Race Mode" or not location or not item:
+          continue
+        if location not in self.item_locations:
+          errors.append("Location not found: " + location)
+          continue
+        if self.clean_item_name(item) not in self.all_cleaned_item_names:
+          errors.append("Item not found: " + item)
+          continue
+        if errors:
+          self.rando.write_error_log("\n".join(errors))
+        plandic[location] = item
+    return plandic
+
   @staticmethod
   def load_and_parse_enemy_locations():
     with open(os.path.join(LOGIC_PATH, "enemy_locations.txt")) as f:
