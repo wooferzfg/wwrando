@@ -864,7 +864,7 @@ class Randomizer:
         if loc not in previously_accessible_locations
       ]
       if not locations_in_this_sphere:
-        raise Exception("Failed to calculate progression spheres")
+        break
       
       
       if not self.options.get("keylunacy"):
