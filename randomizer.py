@@ -419,7 +419,7 @@ class Randomizer:
     yield("Randomizing items...", options_completed)
     if self.randomize_items:
       self.reset_rng()
-      items.randomize_items(self, self.plando)
+      items.randomize_items(self)
     
     options_completed += 2
     

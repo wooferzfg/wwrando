@@ -258,7 +258,8 @@ class WWRandomizerWindow(QMainWindow):
         encrypted_plando_file = open(plando_text_path).read()
 
         aes = pyaes.AESModeOfOperationCTR(AES_KEY, pyaes.Counter(AES_IV))
-        plando_file = aes.decrypt(binascii.unhexlify(encrypted_plando_file)).decode("utf-8")
+        plando_file_text = aes.decrypt(binascii.unhexlify(encrypted_plando_file)).decode("utf-8")
+        plando_file = yaml.safe_load(plando_file_text)
       except Exception as e:
         stack_trace = traceback.format_exc()
         error_message = "Failed to parse plando file:\n" + str(e) + "\n\n" + stack_trace
@@ -270,7 +271,8 @@ class WWRandomizerWindow(QMainWindow):
         return
     else:
       try:
-        plando_file = open(plando_text_path).read()
+        with open(plando_text_path, "r") as f:
+          plando_file = yaml.safe_load(f)
       except Exception as e:
         stack_trace = traceback.format_exc()
         error_message = "Failed to load plandomize file:\n" + str(e) + "\n\n" + stack_trace
@@ -502,14 +504,9 @@ class WWRandomizerWindow(QMainWindow):
     
     self.update_total_progress_locations()
 
-  def update_permalink_from_plando(self, f):
-    for line in f.splitlines():
-      if line.startswith("Permalink"):
-        permalink = line.split(":")[1].strip()
-        if not permalink:
-          continue
-        self.decode_permalink(permalink)
-        break
+  def update_permalink_from_plando(self, plando_file):
+    permalink = plando_file["Permalink"]
+    self.decode_permalink(permalink)
   
   def update_total_progress_locations(self):
     options = OrderedDict()
@@ -699,7 +696,8 @@ class WWRandomizerWindow(QMainWindow):
 
     self.ui.plando_text_path.setText(plando_text_path)
     try:
-      plando_file = open(plando_text_path).read()
+      with open(plando_text_path, "r") as f:
+        plando_file = yaml.safe_load(f)
     except Exception as e:
       stack_trace = traceback.format_exc()
       error_message = "Failed to load plando file %s.\nError:\n" % (plando_text_path) + str(e) + "\n\n" + stack_trace

@@ -6,20 +6,15 @@ from collections import OrderedDict
 from fs_helpers import *
 import tweaks
 
-def randomize_items(self, plando_file):
+def randomize_items(self):
   print("Randomizing items...")
-
-  self.plando = plando_file
-  self.plando_items = [x.split(":", 1)[1].strip() for x in self.plando.splitlines() if "Permalink" not in x and "Race Mode" not in x and ":" in x]
 
   # If the plando placed items in every location, then we skip all this
   if not self.logic.remaining_item_locations or not self.logic.unplaced_progress_items:
     return
 
   if self.options.get("race_mode"):
-    for line in plando_file.splitlines():
-      if line.startswith("Race Mode"):
-        self.race_mode_required_dungeons = [x.strip() for x in line.split(":", 1)[1].split(",")]
+    self.race_mode_required_dungeons = self.plando["Race Mode Dungeons"]
 
   if not self.logic.remaining_item_locations or not self.logic.unplaced_nonprogress_items:
     return

@@ -1091,27 +1091,25 @@ class Logic:
     return chart_name
   
   def load_plando(self):
-    plandic = {}
+    plando_dictionary = {}
     errors = []
-    for line in self.plando_file.splitlines():
-      if ":" not in line:
+
+    for location_name, item_name in self.plando_file["Locations"].items():
+      location_name = location_name.strip()
+      item_name = item_name.strip()
+
+      if location_name not in self.item_locations:
+        errors.append("Location not found: " + location_name)
         continue
-      if line.strip():
-        location, item = line.split(":", 1)
-        location = location.strip()
-        item = item.strip()
-        if location == "Permalink" or location == "Race Mode" or not location or not item:
-          continue
-        if location not in self.item_locations:
-          errors.append("Location not found: " + location)
-          continue
-        if self.clean_item_name(item) not in self.all_cleaned_item_names:
-          errors.append("Item not found: " + item)
-          continue
-        if errors:
-          self.rando.write_error_log("\n".join(errors))
-        plandic[location] = item
-    return plandic
+      if self.clean_item_name(item_name) not in self.all_cleaned_item_names:
+        errors.append("Item not found: " + item_name)
+        continue
+      if errors:
+        self.rando.write_error_log("\n".join(errors))
+
+      plando_dictionary[location_name] = item_name
+
+    return plando_dictionary
 
   @staticmethod
   def load_and_parse_enemy_locations():
