@@ -19,20 +19,6 @@ def randomize_items(self):
   if not self.logic.remaining_item_locations or not self.logic.unplaced_nonprogress_items:
     return
   
-  # Place unique non-progress items.
-  while self.logic.unplaced_nonprogress_items:
-    accessible_undone_locations = self.logic.remaining_item_locations
-    
-    item_name = self.rng.choice(self.logic.unplaced_nonprogress_items)
-    
-    possible_locations = self.logic.filter_locations_valid_for_item(accessible_undone_locations, item_name)
-    
-    if not possible_locations:
-      raise Exception("No valid locations left to place non-progress items!")
-    
-    location_name = self.rng.choice(possible_locations)
-    self.logic.set_location_to_item(location_name, item_name)
-  
   accessible_undone_locations = self.logic.remaining_item_locations
   inaccessible_locations = [loc for loc in self.logic.remaining_item_locations if loc not in accessible_undone_locations]
   if inaccessible_locations:
