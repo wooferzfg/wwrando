@@ -891,7 +891,7 @@ def randomize_and_update_hints(self):
         hints = hints[:min_num_hints_needed]
         break
       else:
-        raise Exception("No valid items to give hints for")
+        break
     
     location_name = possible_item_locations.pop()
     if location_name in self.race_mode_required_locations:
@@ -939,9 +939,10 @@ def randomize_and_update_hints(self):
     hints.append((item_hint_name, island_hint_name))
     
     unique_items_given_hint_for.append((item_name, island_name))
-    
-  update_big_octo_great_fairy_item_name_hint(self, hints[0])
-  update_fishmen_hints(self, hints[1:])
+
+  if len(hints) > 0:  
+    update_big_octo_great_fairy_item_name_hint(self, hints[0])
+    update_fishmen_hints(self, hints[1:])
 
 def get_hint_item_name(item_name):
   if item_name.startswith("Triforce Chart"):
