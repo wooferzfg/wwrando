@@ -1104,10 +1104,11 @@ class Logic:
       if self.clean_item_name(item_name) not in self.all_cleaned_item_names:
         errors.append("Item not found: " + item_name)
         continue
-      if errors:
-        self.rando.write_error_log("\n".join(errors))
 
       plando_dictionary[location_name] = item_name
+
+    if errors:
+      raise Exception("\n".join(errors))
 
     return plando_dictionary
 
