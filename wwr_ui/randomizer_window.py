@@ -505,9 +505,6 @@ class WWRandomizerWindow(QMainWindow):
     self.update_total_progress_locations()
 
   def update_permalink_from_plando(self, plando_file):
-    if self.ui.plando_race.isChecked():
-      return
-
     try:
       permalink = plando_file["Permalink"]
     except:
