@@ -5,7 +5,7 @@ with open("./keys/build_key.txt") as f:
 
 block_cipher = pyi_crypto.PyiBlockCipher(key=cipher_key)
 
-with open("./version.txt") as f:
+with open("./plando_version.txt") as f:
   randomizer_version = f.read().strip()
 
 import struct
@@ -43,7 +43,7 @@ a = Analysis(['wwrando.py'],
                'logic/*.txt',
                'seedgen/*.txt',
                'version.txt',
-               'rando_version.txt',
+               'plando_version.txt',
              ]),
              hiddenimports=[],
              hookspath=[],

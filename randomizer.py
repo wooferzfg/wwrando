@@ -38,10 +38,10 @@ from randomizers import music
 from randomizers import enemies
 from randomizers import palettes
 
+with open(os.path.join(RANDO_ROOT_PATH, "plando_version.txt"), "r") as f:
+  PLANDO_VERSION = f.read().strip()
 with open(os.path.join(RANDO_ROOT_PATH, "version.txt"), "r") as f:
   VERSION = f.read().strip()
-with open(os.path.join(RANDO_ROOT_PATH, "rando_version.txt"), "r") as f:
-  RANDO_VERSION = f.read().strip()
 
 VERSION_WITHOUT_COMMIT = VERSION
 
@@ -928,8 +928,8 @@ class Randomizer:
   def get_log_header(self):
     header = ""
     
-    header += "Wind Waker Randomizer Version %s\n" % RANDO_VERSION
-    header += "Plandomizer Version %s\n" % VERSION
+    header += "Wind Waker Randomizer Version %s\n" % VERSION
+    header += "Plandomizer Version %s\n" % PLANDO_VERSION
     
     if self.permalink:
       header += "Permalink: %s\n" % self.permalink
