@@ -23,3 +23,4 @@ encrypted_input = open(output_path, "r")
 
 aes2 = pyaes.AESModeOfOperationCTR(AES_KEY, pyaes.Counter(AES_IV))
 decrypted = aes2.decrypt(binascii.unhexlify(encrypted_input.read()))
+print(decrypted)
