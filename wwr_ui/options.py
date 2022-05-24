@@ -112,6 +112,54 @@ OPTIONS = OrderedDict([
     "chest_type_matches_contents",
     "Changes the chest type to reflect its contents. A metal chest has a progress item, a key chest has a dungeon key, and a wooden chest has a non-progress item or a consumable.\nKey chests are dark wood chests that use a custom texture based on Big Key chests. Keys for non-required dungeons in race mode will be in wooden chests."
   ),
+  (
+    "keep_duplicates_in_logic",
+    "When this option is selected, all duplicates of certain progressive items will be placed in progress locations when at least one is considered a progress item.\nThese progressive items are Empty Bottles, Progressive Quivers, and Progressive Wallets."
+  ),
+  (
+    "fishmen_hints",
+    "Places hints on the fishmen. There is one fishman at each of the 49 islands of the Great Sea. The fishmen must be fed All-Purpose Bait before getting a hint.",
+  ),
+  (
+    "hoho_hints",
+    "Places hints on Old Man Ho Ho. Old Man Ho Ho appears at 10 different places in the game. Simply talk to Old Man Ho Ho to get hints.",
+  ),
+  (
+    "korl_hints",
+    "Places hints on the King of Red Lions. Talking to the King of Red Lions gives you all the hints.",
+  ),
+  (
+    "stone_tablet_hints",
+    "Places hints on stone tablets. 30 stone tablets have been placed in the world and reading one gives you a hint.",
+  ),
+  (
+    "num_path_hints",
+    "Determines the number of path hints that will be placed in the game, distributed using the selected hint placement options.\nIf multiple hint placement options are selected, the hint count will be split evenly among the placement options.",
+  ),
+  (
+    "num_barren_hints",
+    "Determines the number of barren hints that will be placed in the game, distributed using the selected hint placement options.\nIf multiple hint placement options are selected, the hint count will be split evenly among the placement options.",
+  ),
+  (
+    "num_location_hints",
+    "Determines the number of location hints that will be placed in the game, distributed using the selected hint placement options.\nIf multiple hint placement options are selected, the hint count will be split evenly among the placement options.",
+  ),
+  (
+    "num_item_hints",
+    "Determines the number of item hints that will be placed in the game, distributed using the selected hint placement options.\nIf multiple hint placement options are selected, the hint count will be split evenly among the placement options.",
+  ),
+  (
+    "only_use_ganondorf_paths",
+    "Only use paths to Ganondorf for path hints, even when race mode is on.\nOtherwise, when race mode is on, paths to each race mode dungeon boss will be considered in the pool for path hints.",
+  ),
+  (
+    "clearer_hints",
+    "When this option is selected, location and item hints will use the standard check or item name, instead of using cryptic hints.",
+  ),
+  (
+    "use_always_hints",
+    "When the number of location hints is nonzero, certain locations that will always be hinted at will take precedence over normal location hints.",
+  ),
   
   
   (
@@ -217,6 +265,14 @@ OPTIONS = OrderedDict([
     "Amount of extra heart containers that you start with."
   ),
   (
+    "tricks_not_in_logic",
+    "Tricks and glitches that are not in consideration in the seed's logic."
+  ),
+  (
+    "tricks_in_logic",
+    "Tricks and glitches that are in consideration in the seed's logic."
+  ),
+  (
     "remove_music",
     "Mutes all ingame music."
   ),
@@ -237,6 +293,23 @@ NON_PERMALINK_OPTIONS = [
   "remove_title_and_ending_videos",
   # Note: Options that affect music must be included in the permalink because music duration affects gameplay in some cases, like not being allowed to close the item get textbox until the item get jingle has finished playing.
   # Note: randomize_enemy_palettes has special logic to be in the permalink when enemy rando is on, but otherwise just have an unused placeholder in the permalink.
+]
+
+# Some options change the permalink, but do not affect how entrances, charts, items, etc. are randomized.
+# In some cases, we want such options to still affect the randomization of the seed.
+RNG_CHANGING_OPTIONS = [
+  "fishmen_hints",
+  "hoho_hints",
+  "korl_hints",
+  "stone_tablet_hints",
+  "num_path_hints",
+  "num_barren_hints",
+  "num_location_hints",
+  "num_item_hints",
+  "only_use_ganondorf_paths",
+  "clearer_hints",
+  "use_always_hints",
+  "do_not_generate_spoiler_log",
 ]
 
 HIDDEN_OPTIONS = [

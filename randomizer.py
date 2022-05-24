@@ -63,6 +63,25 @@ if IS_RUNNING_FROM_SOURCE:
 
 CLEAN_WIND_WAKER_ISO_MD5 = 0xd8e4d45af2032a081a0f446384e9261b
 
+# The below are options that could be used to cheat in races.
+# They do not naturally change algorithmic item distribution, but do change the availability of information on item distribution.
+# To prevent this possibility, we change the RNG seed itself for each one of these options that is selected.
+# This ensures that item distribution is different between people with the same seed but different hints, for example.
+RNG_CHANGING_OPTIONS = [
+  "fishmen_hints",
+  "hoho_hints",
+  "korl_hints",
+  "stone_tablet_hints",
+  "num_path_hints",
+  "num_barren_hints",
+  "num_location_hints",
+  "num_item_hints",
+  "only_use_ganondorf_paths",
+  "clearer_hints",
+  "use_always_hints",
+  "do_not_generate_spoiler_log",
+]
+
 class TooFewProgressionLocationsError(Exception):
   pass
 
@@ -437,11 +456,17 @@ class Randomizer:
     yield("Saving items...", options_completed)
     if self.randomize_items and not self.dry_run:
       items.write_changed_items(self)
-      tweaks.randomize_and_update_hints(self)
+      options_completed += 1
+      
+      if self.randomize_items and not self.dry_run:
+        yield("Generating hints...", options_completed)
+        self.reset_rng()
+        tweaks.randomize_and_update_hints(self)
+      options_completed += 5
     
     if not self.dry_run:
       self.apply_necessary_post_randomization_tweaks()
-    options_completed += 7
+    options_completed += 1
     
     yield("Saving randomized ISO...", options_completed)
     if not self.dry_run:
@@ -537,7 +562,6 @@ class Randomizer:
       tweaks.update_auction_item_names(self)
       tweaks.update_battlesquid_item_names(self)
       tweaks.update_item_names_in_letter_advertising_rock_spire_shop(self)
-      tweaks.update_savage_labyrinth_hint_tablet(self)
     tweaks.show_quest_markers_on_sea_chart_for_dungeons(self, dungeon_names=self.race_mode_required_dungeons)
     tweaks.prevent_fire_mountain_lava_softlock(self)
   
@@ -632,11 +656,8 @@ class Randomizer:
     with open(os.path.join(ASM_PATH, "free_space_start_offsets.txt"), "r") as f:
       self.free_space_start_offsets = yaml.safe_load(f)
     
-    with open(os.path.join(DATA_PATH, "progress_item_hints.txt"), "r") as f:
-      self.progress_item_hints = yaml.safe_load(f)
-    
-    with open(os.path.join(DATA_PATH, "island_name_hints.txt"), "r") as f:
-      self.island_name_hints = yaml.safe_load(f)
+    with open(os.path.join(DATA_PATH, "hint_stone_tablets.txt"), "r") as f:
+      self.hint_stone_tablets = yaml.safe_load(f)
     
     with open(os.path.join(DATA_PATH, "enemy_types.txt"), "r") as f:
       self.enemy_types = yaml.safe_load(f)
@@ -855,9 +876,13 @@ class Randomizer:
   def get_new_rng(self):
     rng = Random()
     rng.seed(self.integer_seed)
-    if self.options.get("do_not_generate_spoiler_log"):
-      for i in range(1, 100):
-        rng.getrandbits(i)
+    
+    # Further change the RNG based on which RNG-changing options are enabled
+    for i, option in enumerate(RNG_CHANGING_OPTIONS):
+      value = self.options.get(option)
+      for j in range(1, 100 + i):
+        rng.getrandbits(value + 20 * i + j)
+    
     return rng
   
   def reset_rng(self):

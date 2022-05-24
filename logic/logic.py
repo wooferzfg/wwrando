@@ -48,6 +48,7 @@ class Logic:
   
   def __init__(self, rando):
     self.rando = rando
+    self.requirement_met_cache = {}
     
     
     # Initialize location related attributes.
@@ -166,6 +167,15 @@ class Logic:
           self.unplaced_progress_items.remove(group_name)
     
     self.cached_enemies_tested_for_reqs_tuple = OrderedDict()
+  
+  def is_dungeon_or_cave(self, location_name):
+    # Look up the setting that the location name is under
+    is_dungeon = "Dungeon" in self.item_locations[location_name]["Types"]
+    is_puzzle_cave = "Puzzle Secret Cave" in self.item_locations[location_name]["Types"]
+    is_combat_cave = "Combat Secret Cave" in self.item_locations[location_name]["Types"]
+    is_savage = "Savage Labyrinth" in self.item_locations[location_name]["Types"]
+    
+    return (is_dungeon or is_puzzle_cave or is_combat_cave or is_savage)
   
   def set_location_to_item(self, location_name, item_name):
     #print("Setting %s to %s" % (location_name, item_name))
@@ -310,6 +320,8 @@ class Logic:
     elif item_name in self.unplaced_fixed_consumable_items:
       self.unplaced_fixed_consumable_items.remove(item_name)
   
+    self.requirement_met_cache.clear()
+  
   def remove_owned_item(self, item_name):
     cleaned_item_name = self.clean_item_name(item_name)
     if cleaned_item_name not in self.all_cleaned_item_names:
@@ -325,11 +337,14 @@ class Logic:
       # Removing consumable items doesn't work because we don't know if the item is from the fixed list or the duplicatable list
       raise Exception("Cannot remove item from simulated inventory: %s" % item_name)
   
+    self.requirement_met_cache.clear()
+  
   def add_owned_item_or_item_group(self, item_name):
     if item_name in self.progress_item_groups:
       group_name = item_name
       for item_name in self.progress_item_groups[group_name]:
         self.currently_owned_items.append(item_name)
+      self.requirement_met_cache.clear()
     else:
       self.add_owned_item(item_name)
   
@@ -338,6 +353,7 @@ class Logic:
       group_name = item_name
       for item_name in self.progress_item_groups[group_name]:
         self.currently_owned_items.remove(item_name)
+      self.requirement_met_cache.clear()
     else:
       self.remove_owned_item(item_name)
   
@@ -663,6 +679,7 @@ class Logic:
   
   def set_macro(self, macro_name, req_string):
     self.macros[macro_name] = Logic.parse_logic_expression(req_string)
+    self.requirement_met_cache.clear()
   
   def update_entrance_connection_macros(self):
     # Update all the macros to take randomized entrances into account.
@@ -764,6 +781,15 @@ class Logic:
     for item_name, num_required in sub_items_needed.items():
       items_needed[item_name] = max(num_required, items_needed.setdefault(item_name, 0))
     
+    # Force duplicates of certain progressive items to all be considered in logic
+    if self.rando.options.get("keep_duplicates_in_logic"):
+      if "Empty Bottle" in items_needed:
+        items_needed["Empty Bottle"] = 4
+      if "Progressive Quiver" in items_needed:
+        items_needed["Progressive Quiver"] = 2
+      if "Progressive Wallet" in items_needed:
+        items_needed["Progressive Wallet"] = 2
+    
     useful_items = self.flatten_items_needed_to_item_names(items_needed)
     
     all_progress_items_filtered = []
@@ -862,25 +888,33 @@ class Logic:
     return stack
   
   def check_requirement_met(self, req_name):
+    if req_name in self.requirement_met_cache:
+      return self.requirement_met_cache[req_name]
+    
     if req_name.startswith("Progressive "):
-      return self.check_progressive_item_req(req_name)
+      result = self.check_progressive_item_req(req_name)
     elif " Small Key x" in req_name:
-      return self.check_small_key_req(req_name)
+      result = self.check_small_key_req(req_name)
     elif req_name.startswith("Can Access Other Location \""):
-      return self.check_other_location_requirement(req_name)
+      result = self.check_other_location_requirement(req_name)
     elif req_name.startswith("Option \""):
-      return self.check_option_enabled_requirement(req_name)
+      result = self.check_option_enabled_requirement(req_name)
+    elif req_name.startswith("Trick \""):
+      result = self.check_trick_enabled_requirement(req_name)
     elif req_name in self.all_cleaned_item_names:
-      return req_name in self.currently_owned_items
+      result = req_name in self.currently_owned_items
     elif req_name in self.macros:
       logical_expression = self.macros[req_name]
-      return self.check_logical_expression_req(logical_expression)
+      result = self.check_logical_expression_req(logical_expression)
     elif req_name == "Nothing":
-      return True
+      result = True
     elif req_name == "Impossible":
-      return False
+      result = False
     else:
       raise Exception("Unknown requirement name: " + req_name)
+    
+    self.requirement_met_cache[req_name] = result
+    return result
   
   def check_logical_expression_req(self, logical_expression):
     expression_type = None
@@ -949,6 +983,8 @@ class Logic:
       for item_name, num_required in sub_items_needed.items():
         items_needed[item_name] = max(num_required, items_needed.setdefault(item_name, 0))
     elif req_name.startswith("Option \""):
+      pass
+    elif req_name.startswith("Trick \""):
       pass
     elif req_name in self.all_cleaned_item_names:
       items_needed[req_name] = max(1, items_needed.setdefault(req_name, 0))
@@ -1051,6 +1087,12 @@ class Logic:
       return value not in self.rando.options.get(option_name, [])
     else:
       raise Exception("Invalid option check requirement: %s" % req_name)
+  
+  def check_trick_enabled_requirement(self, req_name):
+    match = re.search(r"^Trick \"([^\"]+)\"$", req_name)
+    trick_name = match.group(1)
+    
+    return trick_name in self.rando.options.get("tricks_in_logic", [])
   
   def chart_name_for_location(self, location_name):
     reqs = self.item_locations[location_name]["Need"]

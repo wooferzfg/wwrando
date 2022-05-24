@@ -6,6 +6,7 @@ from wwr_ui.ui_randomizer_window import Ui_MainWindow
 from wwr_ui.options import OPTIONS, NON_PERMALINK_OPTIONS, HIDDEN_OPTIONS, POTENTIALLY_UNBEATABLE_OPTIONS
 from wwr_ui.update_checker import check_for_updates, LATEST_RELEASE_DOWNLOAD_PAGE_URL
 from wwr_ui.inventory import INVENTORY_ITEMS, REGULAR_ITEMS, PROGRESSIVE_ITEMS, DEFAULT_STARTING_ITEMS, DEFAULT_RANDOMIZED_ITEMS
+from wwr_ui.tricks import LOGICAL_TRICKS, TRICK_NAME_TO_SORTED_INDEX, DEFAULT_TRICKS_IN_LOGIC, DEFAULT_TRICKS_NOT_IN_LOGIC
 from wwr_ui.packedbits import PackedBitsReader, PackedBitsWriter
 
 import random
@@ -26,6 +27,7 @@ import shutil
 from randomizer import Randomizer, VERSION, TooFewProgressionLocationsError, InvalidCleanISOError
 from wwrando_paths import SETTINGS_PATH, ASSETS_PATH, SEEDGEN_PATH, IS_RUNNING_FROM_SOURCE, CUSTOM_MODELS_PATH
 import customizer
+from randomizers.settings import randomize_settings
 from logic.logic import Logic
 from wwlib import texture_utils
 
@@ -66,6 +68,21 @@ class WWRandomizerWindow(QMainWindow):
     self.starting_gear_model.setStringList(DEFAULT_STARTING_ITEMS.copy())
     self.ui.starting_gear.setModel(self.starting_gear_model)
     
+    self.ui.add_trick.clicked.connect(self.add_trick_to_logic)
+    self.tricks_not_in_logic_model = QStringListModel()
+    self.tricks_not_in_logic_model.setStringList(DEFAULT_TRICKS_NOT_IN_LOGIC.copy())
+    
+    self.sorted_ntricks = ModelSortTricks()
+    self.sorted_ntricks.setSourceModel(self.tricks_not_in_logic_model)
+    
+    self.ui.tricks_not_in_logic.setModel(self.sorted_ntricks)
+    self.ui.remove_trick.clicked.connect(self.remove_trick_from_logic)
+    self.tricks_in_logic_model = QStringListModel()
+    self.tricks_in_logic_model.setStringList(DEFAULT_TRICKS_IN_LOGIC.copy())
+    self.sorted_ltricks = ModelSortTricks()
+    self.sorted_ltricks.setSourceModel(self.tricks_in_logic_model)
+    self.ui.tricks_in_logic.setModel(self.sorted_ltricks)
+    
     self.preserve_default_settings()
     
     self.cached_item_locations = Logic.load_and_parse_item_locations()
@@ -81,7 +98,9 @@ class WWRandomizerWindow(QMainWindow):
     self.ui.clean_iso_path_browse_button.clicked.connect(self.browse_for_clean_iso)
     self.ui.output_folder_browse_button.clicked.connect(self.browse_for_output_folder)
     self.ui.permalink.textEdited.connect(self.permalink_modified)
-
+    
+    self.ui.randomize_settings_and_iso.clicked.connect(self.randomize_for_random_settings)
+    
     self.ui.install_custom_model.clicked.connect(self.install_custom_model_zip)
     self.ui.custom_player_model.currentIndexChanged.connect(self.custom_model_changed)
     self.ui.player_in_casual_clothes.toggled.connect(self.in_casual_clothes_changed)
@@ -133,9 +152,10 @@ class WWRandomizerWindow(QMainWindow):
     self.show()
     
     if not IS_RUNNING_FROM_SOURCE:
-      self.update_checker_thread = UpdateCheckerThread()
-      self.update_checker_thread.finished_checking_for_updates.connect(self.show_update_check_results)
-      self.update_checker_thread.start()
+      # self.update_checker_thread = UpdateCheckerThread()
+      # self.update_checker_thread.finished_checking_for_updates.connect(self.show_update_check_results)
+      # self.update_checker_thread.start()
+      self.ui.update_checker_label.setText("<b>This is a developmental build.</b> For updates, please join the WWR Racing Discord server. For questions and bug reports, please contact tanjo3#5077 on Discord.")
     else:
       self.ui.update_checker_label.setText("(Running from source, skipping release update check.)")
   
@@ -214,6 +234,16 @@ class WWRandomizerWindow(QMainWindow):
         text += " and %d pieces" % pieces
     
     self.ui.current_health.setText(text)
+  
+  def add_trick_to_logic(self):
+    self.move_selected_rows(self.ui.tricks_not_in_logic, self.ui.tricks_in_logic)
+    self.ui.tricks_in_logic.model().sort(0)
+    self.update_settings()
+  
+  def remove_trick_from_logic(self):
+    self.move_selected_rows(self.ui.tricks_in_logic, self.ui.tricks_not_in_logic)
+    self.ui.tricks_not_in_logic.model().sourceModel().sort(0)
+    self.update_settings()
   
   def randomize(self):
     clean_iso_path = self.settings["clean_iso_path"].strip()
@@ -440,6 +470,7 @@ class WWRandomizerWindow(QMainWindow):
     self.save_settings()
     
     self.encode_permalink()
+    self.encode_legacy_permalink()
     
     self.update_total_progress_locations()
   
@@ -466,6 +497,7 @@ class WWRandomizerWindow(QMainWindow):
       )
     
     self.encode_permalink()
+    self.encode_legacy_permalink()
   
   def encode_permalink(self):
     seed = self.settings["seed"]
@@ -515,6 +547,11 @@ class WWRandomizerWindow(QMainWindow):
           # No Progressive Sword and there's no more than
           # 3 of any other Progressive item so two bits per item
           bitswriter.write(value.count(item), 2)
+      elif widget == self.ui.tricks_in_logic:
+        # tricks_not_in_logic is a complement of tricks_in_logic
+        for i in range(len(LOGICAL_TRICKS)):
+          bit = LOGICAL_TRICKS[i] in value
+          bitswriter.write(bit, 1)
     
     bitswriter.flush()
     
@@ -522,6 +559,105 @@ class WWRandomizerWindow(QMainWindow):
       permalink += struct.pack(">B", byte)
     base64_encoded_permalink = base64.b64encode(permalink).decode("ascii")
     self.ui.permalink.setText(base64_encoded_permalink)
+  
+
+  def encode_legacy_permalink(self):
+    LEGACY_REGULAR_ITEMS = [
+      "Telescope",
+      "Magic Armor",
+      "Hero's Charm",
+      "Tingle Tuner",
+      "Grappling Hook",
+      "Power Bracelets",
+      "Iron Boots",
+      "Boomerang",
+      "Hookshot",
+      "Bombs",
+      "Skull Hammer",
+      "Deku Leaf",
+      "Hurricane Spin",
+      "Din's Pearl",
+      "Farore's Pearl",
+      "Nayru's Pearl",
+      "Command Melody",
+      "Earth God's Lyric",
+      "Wind God's Aria",
+      "Spoils Bag",
+      "Bait Bag",
+      "Delivery Bag",
+      "Note to Mom",
+      "Maggie's Letter",
+      "Moblin's Letter",
+      "Cabana Deed",
+      "Ghost Ship Chart",
+      "Empty Bottle",
+      "Magic Meter Upgrade",
+    ]
+    LEGACY_REGULAR_ITEMS.sort()
+    
+    seed = self.settings["seed"]
+    seed = self.sanitize_seed(seed)
+    if not seed:
+      self.ui.legacy_permalink.setText("")
+      return
+    
+    permalink = b""
+    permalink += "1.9.0".encode("ascii")
+    permalink += b"\0"
+    permalink += "A".encode("ascii")
+    permalink += b"\0"
+    
+    bitswriter = PackedBitsWriter()
+    for option_name in OPTIONS:
+      if option_name in NON_PERMALINK_OPTIONS:
+        continue
+      if option_name in [
+        "chest_type_matches_contents",
+        "keep_duplicates_in_logic",
+        "fishmen_hints", "hoho_hints", "korl_hints", "stone_tablet_hints",
+        "num_path_hints", "num_barren_hints", "num_location_hints", "num_item_hints",
+        "only_use_ganondorf_paths", "clearer_hints", "use_always_hints",
+        "tricks_not_in_logic", "tricks_in_logic",
+      ]:
+        continue
+      
+      value = self.settings[option_name]
+      
+      if option_name == "randomize_enemy_palettes" and not self.get_option_value("randomize_enemies"):
+        # Enemy palette randomizer doesn't need to be in the permalink when enemy rando is off.
+        # So just put a 0 bit as a placeholder.
+        value = False
+      
+      widget = getattr(self.ui, option_name)
+      if isinstance(widget, QAbstractButton):
+        bitswriter.write(int(value), 1)
+      elif isinstance(widget, QComboBox):
+        value = widget.currentIndex()
+        assert 0 <= value <= 255
+        bitswriter.write(value, 8)
+      elif isinstance(widget, QSpinBox):
+        box_length = (widget.maximum() - widget.minimum()).bit_length()
+        value = widget.value() - widget.minimum()
+        assert 0 <= value < (2 ** box_length)
+        bitswriter.write(value, box_length)
+      elif widget == self.ui.starting_gear:
+        # randomized_gear is a complement of starting_gear
+        for i in range(len(LEGACY_REGULAR_ITEMS)):
+          bit = LEGACY_REGULAR_ITEMS[i] in value
+          bitswriter.write(bit, 1)
+        unique_progressive_items = list(set(PROGRESSIVE_ITEMS))
+        unique_progressive_items.sort()
+        for item in unique_progressive_items:
+          # No Progressive Sword and there's no more than
+          # 3 of any other Progressive item so two bits per item
+          bitswriter.write(value.count(item), 2)
+    
+    bitswriter.flush()
+    
+    for byte in bitswriter.bytes:
+      permalink += struct.pack(">B", byte)
+    base64_encoded_permalink = base64.b64encode(permalink).decode("ascii")
+    self.ui.legacy_permalink.setText(base64_encoded_permalink)
   
   def decode_permalink(self, base64_encoded_permalink):
     base64_encoded_permalink = base64_encoded_permalink.strip()
@@ -587,6 +723,16 @@ class WWRandomizerWindow(QMainWindow):
             self.append_row(self.starting_gear_model, item)
           for i in range(randamount):
             self.append_row(self.randomized_gear_model, item)
+      elif widget == self.ui.tricks_in_logic:
+        # Reset model with only the logical tricks
+        self.tricks_not_in_logic_model.setStringList(LOGICAL_TRICKS.copy())
+        self.tricks_in_logic_model.setStringList([])
+        # tricks_not_in_logic is a complement of tricks_in_logic
+        for i in range(len(LOGICAL_TRICKS)):
+          logical = bitsreader.read(1)
+          if logical == 1:
+            self.ui.tricks_not_in_logic.selectionModel().select(self.tricks_not_in_logic_model.index(i), QItemSelectionModel.Select)
+        self.move_selected_rows(self.ui.tricks_not_in_logic, self.ui.tricks_in_logic)
     
     if not self.get_option_value("randomize_enemies"):
       # If a permalink with enemy rando off was pasted, we don't want to change enemy palette rando to match the permalink.
@@ -665,7 +811,13 @@ class WWRandomizerWindow(QMainWindow):
       model = widget.model();
       if isinstance(model, ModelFilterOut):
         model = model.sourceModel()
-      model.sort(0)
+        model.sort(0)
+      elif isinstance(model, ModelSortTricks):
+        model.sort(0)
+        model = model.sourceModel()
+        model.sort(0)
+      else:
+        model.sort(0)
       return [model.data(model.index(i)) for i in range(model.rowCount())]
     else:
       print("Option widget is invalid: %s" % option_name)
@@ -713,6 +865,62 @@ class WWRandomizerWindow(QMainWindow):
     else:
       self.ui.option_description.setText(new_description)
       self.ui.option_description.setStyleSheet("")
+  
+  def randomize_for_random_settings(self):
+      clean_iso_path = self.settings["clean_iso_path"].strip()
+      output_folder = self.settings["output_folder"].strip()
+      self.settings["clean_iso_path"] = clean_iso_path
+      self.settings["output_folder"] = output_folder
+      self.ui.clean_iso_path.setText(clean_iso_path)
+      self.ui.output_folder.setText(output_folder)
+      
+      if not os.path.isfile(clean_iso_path):
+        QMessageBox.warning(self, "Clean ISO path not specified", "Must specify path to your clean Wind Waker ISO (USA).")
+        return
+      if not os.path.isdir(output_folder):
+        QMessageBox.warning(self, "No output folder specified", "Must specify a valid output folder for the randomized files.")
+        return
+      
+      seed = self.settings["seed"]
+      seed = self.sanitize_seed(seed)
+      
+      if not seed:
+        self.generate_seed()
+        seed = self.settings["seed"]
+      
+      self.settings["seed"] = seed
+      self.ui.seed.setText(seed)
+      self.update_settings()
+      
+      seed = "RSL_1.9.8_dev_" + seed
+      
+      options = randomize_settings(seed=seed)
+      for option_name in NON_PERMALINK_OPTIONS:
+        options[option_name] = self.get_option_value(option_name)
+      
+      colors = OrderedDict()
+      for color_name in self.get_default_custom_colors_for_current_model():
+        colors[color_name] = self.get_color(color_name)
+      options["custom_colors"] = colors
+      
+      max_progress_val = 20
+      if options.get("randomize_enemy_palettes"):
+        max_progress_val += 10
+      self.progress_dialog = RandomizerProgressDialog("Randomizing", "Initializing...", max_progress_val)
+      
+      try:
+        cmd_line_args = self.cmd_line_args.copy()
+        cmd_line_args["-nologs"] = None
+        rando = Randomizer(seed, clean_iso_path, output_folder, options, permalink=seed, cmd_line_args=cmd_line_args)
+      except Exception as e:
+        self.randomization_failed("Randomization failed. Try a different seed.")
+        return
+      
+      self.randomizer_thread = RandomizerThread(rando, profiling=self.profiling)
+      self.randomizer_thread.update_progress.connect(self.update_progress_dialog)
+      self.randomizer_thread.randomization_complete.connect(self.randomization_complete)
+      self.randomizer_thread.randomization_failed.connect(self.randomization_failed)
+      self.randomizer_thread.start()
   
   def initialize_custom_player_model_list(self):
     self.ui.custom_player_model.addItem("Link")
@@ -832,29 +1040,29 @@ class WWRandomizerWindow(QMainWindow):
     for custom_color_name, default_color in custom_colors.items():
       option_name = "custom_color_" + custom_color_name
       hlayout = QHBoxLayout()
-      label_for_color_selector = QLabel(self.ui.tab_2)
+      label_for_color_selector = QLabel(self.ui.tab_player_customization)
       label_for_color_selector.setText("%s Color" % custom_color_name)
       hlayout.addWidget(label_for_color_selector)
       
-      color_hex_code_input = QLineEdit(self.ui.tab_2)
+      color_hex_code_input = QLineEdit(self.ui.tab_player_customization)
       color_hex_code_input.setText("")
       color_hex_code_input.setObjectName(option_name + "_hex_code_input")
       color_hex_code_input.setFixedWidth(QFontMetrics(QFont()).horizontalAdvance("CCCCCC")+5)
       color_hex_code_input.setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
       hlayout.addWidget(color_hex_code_input)
       
-      color_randomize_button = QPushButton(self.ui.tab_2)
+      color_randomize_button = QPushButton(self.ui.tab_player_customization)
       color_randomize_button.setText("Random")
       color_randomize_button.setObjectName(option_name + "_randomize_color")
       color_randomize_button.setFixedWidth(QFontMetrics(QFont()).horizontalAdvance("Random")+11)
       hlayout.addWidget(color_randomize_button)
       
-      color_selector_button = QPushButton(self.ui.tab_2)
+      color_selector_button = QPushButton(self.ui.tab_player_customization)
       color_selector_button.setText("Click to set color")
       color_selector_button.setObjectName(option_name)
       hlayout.addWidget(color_selector_button)
       
-      color_reset_button = QPushButton(self.ui.tab_2)
+      color_reset_button = QPushButton(self.ui.tab_player_customization)
       color_reset_button.setText("X")
       color_reset_button.setObjectName(option_name + "_reset_color")
       color_reset_button.setFixedWidth(QFontMetrics(QFont()).horizontalAdvance("X")+11)
@@ -993,6 +1201,13 @@ class WWRandomizerWindow(QMainWindow):
     if not compare(all_gear, INVENTORY_ITEMS):
       print("Gear list invalid, resetting")
       for opt in ["randomized_gear", "starting_gear"]:
+        self.set_option_value(opt, self.default_settings[opt])
+    
+    all_tricks = self.get_option_value("tricks_in_logic") + self.get_option_value("tricks_not_in_logic")
+    
+    if not compare(all_tricks, LOGICAL_TRICKS):
+      print("Trick list invalid, resetting")
+      for opt in ["tricks_not_in_logic", "tricks_in_logic"]:
         self.set_option_value(opt, self.default_settings[opt])
     
     for option_name in OPTIONS:
@@ -1365,10 +1580,12 @@ class WWRandomizerWindow(QMainWindow):
       )
 
   def open_about(self):
-    text = """Wind Waker Randomizer Version %s<br><br>
-      Created by LagoLunatic<br><br>
-      Report issues here:<br><a href=\"https://github.com/LagoLunatic/wwrando/issues\">https://github.com/LagoLunatic/wwrando/issues</a><br><br>
-      Source code:<br><a href=\"https://github.com/LagoLunatic/wwrando\">https://github.com/LagoLunatic/wwrando</a>""" % VERSION
+    text = """Wind Waker Randomizer Version %s<br>
+      <b>This is an unofficial developmental build!</b><br><br>
+      Official released created by LagoLunatic<br>
+      Developmental build maintained by tanjo3<br><br>
+      Report issues with the developmental build to tanjo3#5077 on Discord.<br>
+      Source code:<br><a href=\"https://github.com/tanjo3/wwrando/tree/dev-build\">https://github.com/tanjo3/wwrando/tree/dev-build</a>""" % VERSION
     
     self.about_dialog = QMessageBox()
     self.about_dialog.setTextFormat(Qt.TextFormat.RichText)
@@ -1407,6 +1624,17 @@ class ModelFilterOut(QSortFilterProxyModel):
       if cur_data == data:
         num_occurrences -= 1
     return num_occurrences <= 0
+
+class ModelSortTricks(QSortFilterProxyModel):
+  def __init__(self):
+    super(ModelSortTricks, self).__init__()
+  
+  def lessThan(self, sourceLeft, sourceRight):
+    dataLeft = self.sourceModel().data(sourceLeft)
+    dataRight = self.sourceModel().data(sourceRight)
+    if dataLeft not in TRICK_NAME_TO_SORTED_INDEX or dataRight not in TRICK_NAME_TO_SORTED_INDEX:
+      return False
+    return TRICK_NAME_TO_SORTED_INDEX[dataLeft] < TRICK_NAME_TO_SORTED_INDEX[dataRight]
 
 class RandomizerProgressDialog(QProgressDialog):
   def __init__(self, title, description, max_val):
