@@ -693,6 +693,11 @@ class Hints:
     # The remaining locations are potential sometimes hints
     hintable_locations = list(filter(lambda loc: self.location_hints[loc]["Type"] == "Sometimes", hintable_locations))
     
+    # If we're not using always hints, consider them as sometimes hints instead
+    if not self.USE_ALWAYS_HINTS:
+      hintable_locations += always_hintable_locations
+      always_hintable_locations = []
+    
     # Remove locations in race-mode banned dungeons
     race_mode_banned_dungeons = set(self.logic.DUNGEON_NAMES.values()) - set(self.rando.race_mode_required_dungeons)
     hintable_locations = list(filter(lambda loc: self.logic.split_location_name_by_zone(loc)[0] not in race_mode_banned_dungeons, hintable_locations))
@@ -906,11 +911,6 @@ class Hints:
     always_hintable_locations, sometimes_hintable_locations = self.get_legal_location_hints(progress_locations, hinted_barren_zones, previously_hinted_locations)
     hinted_locations = []
     remaining_hints_desired = self.TOTAL_NUM_HINTS - len(hinted_path_zones) - len(hinted_barren_zones) - len(hinted_item_locations)
-    
-    # If we're not using always hints, consider them as sometimes hints instead
-    if not self.USE_ALWAYS_HINTS:
-      sometimes_hintable_locations += always_hintable_locations
-      always_hintable_locations = []
     
     # Start by exhausting the list of always hints
     while len(always_hintable_locations) > 0 and remaining_hints_desired > 0:
