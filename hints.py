@@ -34,8 +34,8 @@ class Hint:
     if isinstance(other, self.__class__):
       return (
         (self.type == other.type)
-        and (self.item == other.item)
-        and (self.location == other.location)
+        and (self.info1 == other.info1)
+        and (self.info2 == other.info2)
       )
     else:
       return False
@@ -810,6 +810,12 @@ class Hints:
     # small keys). Basically, we remove the item from that location and see if the path goal is still achievable. If
     # not, then we consider the item as required.
     required_locations_for_paths = self.get_required_locations_for_paths(self.WOTH_ONLY)
+    if self.DEBUG_HINTS:
+      for x, y in required_locations_for_paths.items():
+        print(x+":")
+        for a,b,c,d in y:
+          print("  "+a+" - "+c+" => "+d)
+      print()
     
     # Generate path hints
     # We hint at max `self.MAX_PATH_HINTS` zones at random. We start by hinted each of the race mode dungeons once.
@@ -860,6 +866,7 @@ class Hints:
       print("PATH HINTS:")
       for path_hint in hinted_path_zones:
         print(path_hint)
+      print(previously_hinted_locations)
       print()
     
     # Generate barren hints
