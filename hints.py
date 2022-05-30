@@ -675,11 +675,11 @@ class Hints:
     
     item_name = self.logic.done_item_locations[location_name]
     entrance_zone = self.get_entrance_zone(location_name)
-
+    
     # Simplify entrance zone name
     if entrance_zone == "Tower of the Gods Sector":
       entrance_zone = "Tower of the Gods"
-
+    
     return Hint(HintType.ITEM, item_name, entrance_zone), location_name
   
   
