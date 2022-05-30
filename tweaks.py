@@ -1013,9 +1013,9 @@ def update_korl_hints(self, hints):
     hint_line = pad_string_to_next_4_lines(hint_line)
     hint += hint_line
   
-  korl_message_id = 3446 if self.options.get("sword_mode") == "Swordless" else 3443
-  msg = self.bmg.messages_by_id[korl_message_id]
-  msg.string = hint
+  for korl_message_id in [3443, 3444, 3445, 3446, 3447, 3448]:
+    msg = self.bmg.messages_by_id[korl_message_id]
+    msg.string = hint
 
 def update_stone_tablet_hints(self, hints):
   base_new_message_id = 14510 # earliest empty message id when creating new message in Winditor
