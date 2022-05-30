@@ -680,7 +680,7 @@ class Hints:
     if entrance_zone == "Tower of the Gods Sector":
       entrance_zone = "Tower of the Gods"
 
-    return Hint(HintType.ITEM, item_name, entrance_zone)
+    return Hint(HintType.ITEM, item_name, entrance_zone), location_name
   
   
   def get_legal_location_hints(self, progress_locations, hinted_barren_zones, previously_hinted_locations):
@@ -896,15 +896,15 @@ class Hints:
     # Fill out the remaining hint slots with sometimes hints
     hinted_item_locations = []
     while len(hintable_locations) > 0 and len(hinted_item_locations) < self.MAX_ITEM_HINTS:
-      location_hint = self.get_item_hint(hintable_locations)
+      item_hint, location_name = self.get_item_hint(hintable_locations)
       
       # Apply cryptic text, if the option is selected
       if not self.CLEARER_HINTS:
-        location_hint.info1 = self.progress_item_hints[Hints.get_hint_item_name_static(location_hint.info1)]
-        location_hint.info2 = self.island_name_hints[location_hint.info2]
+        item_hint.info1 = self.progress_item_hints[Hints.get_hint_item_name_static(item_hint.info1)]
+        item_hint.info2 = self.island_name_hints[item_hint.info2]
       
-      hinted_item_locations.append(location_hint)
-      previously_hinted_locations.append(location_hint.info2)
+      hinted_item_locations.append(item_hint)
+      previously_hinted_locations.append(location_name)
     
     if self.DEBUG_HINTS:
       print("ITEM HINTS:")
