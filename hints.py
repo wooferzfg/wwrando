@@ -194,7 +194,7 @@ class Hints:
     zone_name, specific_location_name = self.logic.split_location_name_by_zone(location_name)
     
     # Distinguish between the two Pawprint Isle entrances
-    if location_name == "Pawprint Isle - Wizzrobe Cave":
+    if self.options.get("randomize_entrances") not in ["Disabled", "Dungeons", None] and location_name == "Pawprint Isle - Wizzrobe Cave":
       zone_name = "Pawprint Isle Side Isle"
     
     if zone_name in self.rando.dungeon_and_cave_island_locations and self.logic.is_dungeon_or_cave(location_name):
