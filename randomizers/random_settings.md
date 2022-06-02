@@ -7,9 +7,9 @@ Below are the weights for the randomized settings. If only one weight is listed,
 |                **Dungeons**                	|                                                               80%                                                               	|
 |           **Puzzle Secret Caves**          	|                                                               50%                                                               	|
 |           **Combat Secret Caves**          	|                                                               50%                                                               	|
-|            **Savage Labyrinth**            	|                                                               40%                                                               	|
+|            **Savage Labyrinth**            	|                                                               35%                                                               	|
 |              **Great Fairies**             	|                                                               50%                                                               	|
-|               **Free Gifts**               	|                                                               50%                                                               	|
+|               **Free Gifts**               	|                                                               80%                                                               	|
 |              **Miscellaneous**             	|                                                               50%                                                               	|
 |              **Tingle Chests**             	|                                                               50%                                                               	|
 |            **Short Sidequests**            	|                                                               50%                                                               	|
@@ -24,12 +24,12 @@ Below are the weights for the randomized settings. If only one weight is listed,
 |               **Submarines**               	|                                                               50%                                                               	|
 |         **Big Octos and Gunboats**         	|                                                               50%                                                               	|
 |             **Eye Reef Chests**            	|                                                               50%                                                               	|
-| **Sunken Treasure (From Triforce Charts)** 	|                                                               30%                                                               	|
-| **Sunken Treasure (From Treasure Charts)** 	|                                                               10%                                                               	|
+| **Sunken Treasure (From Triforce Charts)** 	|                                                               20%                                                               	|
+| **Sunken Treasure (From Treasure Charts)** 	|                                                                5%                                                               	|
 |                                            	|                                                                                                                                 	|
-|               **Sword Mode**               	|                                 50% Start with Hero's Sword, 45% No Starting Sword, 5% Swordless                                	|
+|               **Sword Mode**               	|                                 60% Start with Hero's Sword, 35% No Starting Sword, 5% Swordless                                	|
 |           **Randomize Entrances**          	| 20% Disabled, 20%, Dungeons, 20% Secret Caves, 20% Dungeons & Secret Caves (Separately), 20% Dungeons & Secret Caves (Together) 	|
-|               **Key-Lunacy**               	|                                                               50%                                                               	|
+|               **Key-Lunacy**               	|                                                               40%                                                               	|
 |                **Race Mode**               	|                                                               90%                                                               	|
 |      **Number of Race Mode Dungeons**      	|                                             5% 1, 15% 2, 25% 3, 30% 4, 15% 5, 10% 6                                             	|
 |      **Triforce Shards to Start With**     	|                                      60% 0, 9% 1, 8% 2, 8% 3, 5% 4, 5% 5, 2% 6, 2% 7, 1% 8                                      	|
@@ -38,27 +38,27 @@ Below are the weights for the randomized settings. If only one weight is listed,
 |       **Chest Type Matches Contents**      	|                                                               100%                                                              	|
 |        **Keep Duplicates in Logic**        	|                                                               50%                                                               	|
 |                                            	|                                                                                                                                 	|
-|             **Hint Placement**             	|                                       5% Fishmen, 40% Old Man Ho Ho, 55% King of Red Lions                                      	|
+|             **Hint Placement**             	|                                    80% King of Red Lions, 15% Stone Tablets, 5% Old Man Ho Ho                                   	|
 |            **Hint Distribution**           	|                                      100% 6 Path Hints + 6 Barren Hints + 8 Location Hints                                      	|
 |        **Only Use Ganondorf Paths**        	|                                                               25%                                                               	|
-|              **Clearer Hints**             	|                                                               25%                                                               	|
+|              **Clearer Hints**             	|                                                               100%                                                              	|
 |            **Use Always Hints**            	|                                                               100%                                                              	|
 |                                            	|                                                                                                                                 	|
 |               **Swift Sail**               	|                                                               100%                                                              	|
 |           **Instant Text Boxes**           	|                                                               100%                                                              	|
 |          **Reveal Full Sea Chart**         	|                                                               100%                                                              	|
-|           **Skip Boss Rematches**          	|                                                               95%                                                               	|
-|   **Add Shortcut Warps Between Dungeons**  	|                                                               50%                                                               	|
+|           **Skip Boss Rematches**          	|                                                               99%                                                               	|
+|   **Add Shortcut Warps Between Dungeons**  	|                                                               80%                                                               	|
 |              **Remove Music**              	|                                                                0%                                                               	|
 |                                            	|                                                                                                                                 	|
-|        **Number of Starting Items**        	|                                             30% 0, 40% 1, 20% 2, 10% 3 [_see below_]                                            	|
+|        **Number of Starting Items**        	|                                             25% 0, 40% 1, 25% 2, 10% 3 [_see below_]                                            	|
 |      **Start With Maps And Compasses**     	|                                                               80%                                                               	|
 |     **Starting Extra Heart Containers**    	|                                                              100% 0                                                             	|
 |       **Starting Extra Heart Pieces**      	|                                                              100% 0                                                             	|
 |      **Glitches and Tricks in Logic**      	|                                                            100% None                                                            	|
 
 ## Additional Starting Items
-For starting items, you will always start with the Telescope. Depending on the value of _Number of Starting Items_, additional weighted pulls (without replacement) from the following table with be made.
+For starting items, you will always start with the Telescope. Depending on the value of _Number of Starting Items_, additional weighted pulls (without replacement) from the following table with be made. Note that starting items do not tell you anything about which settings are enabled.
 
 |              **Starting Item(s)**              	| **Weight** 	|
 |:----------------------------------------------:	|:----------:	|
