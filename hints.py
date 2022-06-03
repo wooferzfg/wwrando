@@ -811,10 +811,10 @@ class Hints:
     # not, then we consider the item as required.
     required_locations_for_paths = self.get_required_locations_for_paths(self.WOTH_ONLY)
     if self.DEBUG_HINTS:
-      for x, y in required_locations_for_paths.items():
-        print(x+":")
-        for a,b,c,d in y:
-          print("  "+a+" - "+c+" => "+d)
+      for path_goal, path_items in required_locations_for_paths.items():
+        print("%s:" % path_goal)
+        for zone_name, entrance_zone, specific_location_name, item_name in path_items:
+          print("  %s - %s => %s" % (zone_name, specific_location_name, item_name))
       print()
     
     # Generate path hints
