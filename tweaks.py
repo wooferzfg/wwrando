@@ -1001,11 +1001,8 @@ def update_hoho_hints(self, hints):
 def update_korl_hints(self, hints):
   hint_lines = []
   for i, hint in enumerate(hints):
-    hint_lines.append(Hints.get_formatted_hint_text_static(hint, delay=15))
-    
-    if self.options.get("instant_text_boxes") and i > 0:
-      # If instant text mode is on, we need to reset the text speed to instant after the wait command messed it up.
-      hint_lines[-1] = "\\{1A 05 00 00 01}" + hint_lines[-1]
+    # Have no delay with KoRL text since he potentially has a lot of textboxes
+    hint_lines.append(Hints.get_formatted_hint_text_static(hint, delay=0))
   
   hint = ""
   for hint_line in hint_lines:
