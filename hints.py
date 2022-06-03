@@ -151,12 +151,12 @@ class Hints:
   def get_formatted_hint_text_static(hint, prefix="They say that ", suffix=".", delay=30):
     if hint.type == HintType.PATH:
       hint_string = (
-        "%s\\{1A 06 FF 00 00 05}%s\\{1A 06 FF 00 00 00} is on the path to \\{1A 06 FF 00 00 01}%s\\{1A 06 FF 00 00 00}%s"
+        "%san item found at \\{1A 06 FF 00 00 05}%s\\{1A 06 FF 00 00 00} is on the path to \\{1A 06 FF 00 00 01}%s\\{1A 06 FF 00 00 00}%s"
         % (prefix, hint.info1, hint.info2, suffix)
       )
     elif hint.type == HintType.BARREN:
       hint_string = (
-        "%splundering \\{1A 06 FF 00 00 03}%s\\{1A 06 FF 00 00 00} is a foolish choice%s"
+        "%svisiting \\{1A 06 FF 00 00 03}%s\\{1A 06 FF 00 00 00} is a foolish choice%s"
         % (prefix, hint.info1, suffix)
       )
     elif hint.type == HintType.LOCATION:
