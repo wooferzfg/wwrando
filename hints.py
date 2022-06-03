@@ -322,7 +322,7 @@ class Hints:
       # Build a list of required locations, along with the item at that location
       item_name = self.logic.done_item_locations[location_name]
       if (
-        location_name not in self.rando.race_mode_required_locations                  # Ignore boss Heart Containers in race mode, even if it's required
+        location_name not in self.rando.race_mode_required_locations            # Ignore boss Heart Containers in race mode, even if it's required
         and (self.options.get("keylunacy") or not item_name.endswith(" Key"))   # Keys are only considered in key-lunacy
         and item_name in self.logic.all_progress_items                          # Required locations always contain progress items (by definition)
       ):
