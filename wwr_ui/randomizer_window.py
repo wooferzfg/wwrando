@@ -18,6 +18,7 @@ import yaml
 import traceback
 import string
 import struct
+import zlib
 import base64
 import colorsys
 import time
@@ -557,7 +558,8 @@ class WWRandomizerWindow(QMainWindow):
     
     for byte in bitswriter.bytes:
       permalink += struct.pack(">B", byte)
-    base64_encoded_permalink = base64.b64encode(permalink).decode("ascii")
+    compressed_permalink = zlib.compress(permalink)
+    base64_encoded_permalink = base64.b64encode(compressed_permalink).decode("ascii")
     self.ui.permalink.setText(base64_encoded_permalink)
   
 
@@ -665,7 +667,8 @@ class WWRandomizerWindow(QMainWindow):
       # Empty
       return
     
-    permalink = base64.b64decode(base64_encoded_permalink)
+    compressed_permalink = base64.b64decode(base64_encoded_permalink)
+    permalink =  zlib.decompress(compressed_permalink)
     given_version_num, seed, options_bytes = permalink.split(b"\0", 2)
     given_version_num = given_version_num.decode("ascii")
     seed = seed.decode("ascii")
