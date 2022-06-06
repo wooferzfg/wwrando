@@ -848,7 +848,6 @@ class Hints:
             hinted_path_zones.append(path_hint)
             previously_hinted_locations.append(location_name)
     
-    num_dungeons_hinted = 0
     while len(required_locations_for_paths) > 0 and len(hinted_path_zones) < self.MAX_PATH_HINTS:
       path_name = self.rando.rng.choice(list(required_locations_for_paths.keys()))
       path_hint, location_name = self.get_path_hint(required_locations_for_paths[path_name], previously_hinted_locations, path_name)
