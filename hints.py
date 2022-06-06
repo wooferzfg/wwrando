@@ -809,13 +809,15 @@ class Hints:
     # Items are implicitly referred to by their location to handle duplicate item names (i.e., progressive items and
     # small keys). Basically, we remove the item from that location and see if the path goal is still achievable. If
     # not, then we consider the item as required.
-    required_locations_for_paths = self.get_required_locations_for_paths(self.WOTH_ONLY)
-    if self.DEBUG_HINTS:
-      for path_goal, path_items in required_locations_for_paths.items():
-        print("%s:" % path_goal)
-        for zone_name, entrance_zone, specific_location_name, item_name in path_items:
-          print("  %s - %s => %s" % (zone_name, specific_location_name, item_name))
-      print()
+    required_locations_for_paths = []
+    if self.MAX_PATH_HINTS > 0:
+      required_locations_for_paths = self.get_required_locations_for_paths(self.WOTH_ONLY)
+      if self.DEBUG_HINTS:
+        for path_goal, path_items in required_locations_for_paths.items():
+          print("%s:" % path_goal)
+          for zone_name, entrance_zone, specific_location_name, item_name in path_items:
+            print("  %s - %s => %s" % (zone_name, specific_location_name, item_name))
+        print()
     
     # Generate path hints
     # We hint at max `self.MAX_PATH_HINTS` zones at random. We start by hinted each of the race mode dungeons once.
