@@ -228,19 +228,30 @@ class Logic:
   
   @staticmethod
   def get_num_progression_locations_static(item_locations, options):
-    progress_locations = Logic.filter_locations_for_progression_static(
+    all_progress_locations = Logic.filter_locations_for_progression_static(
       item_locations.keys(),
       item_locations,
-      options,
-      filter_sunken_treasure=True
+      options
     )
-    num_progress_locations = len(progress_locations)
-    if options.get("progression_triforce_charts"):
-      num_progress_locations += 8
-    if options.get("progression_treasure_charts"):
-      num_progress_locations += 41
     
-    return num_progress_locations
+    progress_locations = []
+    sunken_treasure_locations = []
+    for location_name in all_progress_locations:
+      if location_name not in options.get("excluded_locations"):
+        if location_name.endswith(" - Sunken Treasure"):
+          sunken_treasure_locations.append(location_name)
+        else:
+          progress_locations.append(location_name)
+    num_progress_locations = len(progress_locations)
+    
+    max_sunken_treaure_locations = 0
+    if options.get("progression_triforce_charts"):
+      max_sunken_treaure_locations += 8
+    if options.get("progression_treasure_charts"):
+      max_sunken_treaure_locations += 41
+    num_sunken_treaure_locations = min(max_sunken_treaure_locations, len(sunken_treasure_locations))
+    
+    return num_progress_locations + num_sunken_treaure_locations
 
   def get_max_race_mode_banned_locations(self):
     if not self.rando.options.get("race_mode"):

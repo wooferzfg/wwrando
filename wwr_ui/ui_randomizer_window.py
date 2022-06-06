@@ -723,166 +723,225 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.addLayout(self.horizontalLayout_10)
 
         self.tabWidget.addTab(self.tab_starting_items, "")
-        self.tab_glitched_logic = QWidget()
-        self.tab_glitched_logic.setObjectName(u"tab_glitched_logic")
-        self.verticalLayout_8 = QVBoxLayout(self.tab_glitched_logic)
-        self.verticalLayout_8.setObjectName(u"verticalLayout_8")
-        self.horizontalLayout_11 = QHBoxLayout()
+        self.tab_excluded_locations = QWidget()
+        self.tab_excluded_locations.setObjectName(u"tab_excluded_locations")
+        self.horizontalLayout_11 = QHBoxLayout(self.tab_excluded_locations)
         self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
+        self.verticalLayout_8 = QVBoxLayout()
+        self.verticalLayout_8.setObjectName(u"verticalLayout_8")
+        self.label_for_included_locations = QLabel(self.tab_excluded_locations)
+        self.label_for_included_locations.setObjectName(u"label_for_included_locations")
+
+        self.verticalLayout_8.addWidget(self.label_for_included_locations)
+
+        self.included_locations = QListView(self.tab_excluded_locations)
+        self.included_locations.setObjectName(u"included_locations")
+        self.included_locations.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.included_locations.setSelectionMode(QAbstractItemView.ExtendedSelection)
+
+        self.verticalLayout_8.addWidget(self.included_locations)
+
+
+        self.horizontalLayout_11.addLayout(self.verticalLayout_8)
+
         self.verticalLayout_9 = QVBoxLayout()
         self.verticalLayout_9.setObjectName(u"verticalLayout_9")
-        self.label_for_tricks_not_in_logic = QLabel(self.tab_glitched_logic)
-        self.label_for_tricks_not_in_logic.setObjectName(u"label_for_tricks_not_in_logic")
+        self.verticalSpacer_3 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.verticalLayout_9.addWidget(self.label_for_tricks_not_in_logic)
+        self.verticalLayout_9.addItem(self.verticalSpacer_3)
 
-        self.tricks_not_in_logic = QListView(self.tab_glitched_logic)
-        self.tricks_not_in_logic.setObjectName(u"tricks_not_in_logic")
-        self.tricks_not_in_logic.setEditTriggers(QAbstractItemView.NoEditTriggers)
-        self.tricks_not_in_logic.setSelectionMode(QAbstractItemView.ExtendedSelection)
+        self.include_location = QPushButton(self.tab_excluded_locations)
+        self.include_location.setObjectName(u"include_location")
+        self.include_location.setMinimumSize(QSize(0, 80))
 
-        self.verticalLayout_9.addWidget(self.tricks_not_in_logic)
+        self.verticalLayout_9.addWidget(self.include_location)
+
+        self.exclude_location = QPushButton(self.tab_excluded_locations)
+        self.exclude_location.setObjectName(u"exclude_location")
+        self.exclude_location.setMinimumSize(QSize(0, 80))
+
+        self.verticalLayout_9.addWidget(self.exclude_location)
+
+        self.verticalSpacer_4 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_9.addItem(self.verticalSpacer_4)
 
 
         self.horizontalLayout_11.addLayout(self.verticalLayout_9)
 
         self.verticalLayout_10 = QVBoxLayout()
         self.verticalLayout_10.setObjectName(u"verticalLayout_10")
-        self.verticalSpacer_3 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.label_for_excluded_locations = QLabel(self.tab_excluded_locations)
+        self.label_for_excluded_locations.setObjectName(u"label_for_excluded_locations")
 
-        self.verticalLayout_10.addItem(self.verticalSpacer_3)
+        self.verticalLayout_10.addWidget(self.label_for_excluded_locations)
+
+        self.excluded_locations = QListView(self.tab_excluded_locations)
+        self.excluded_locations.setObjectName(u"excluded_locations")
+        self.excluded_locations.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.excluded_locations.setSelectionMode(QAbstractItemView.ExtendedSelection)
+
+        self.verticalLayout_10.addWidget(self.excluded_locations)
+
+
+        self.horizontalLayout_11.addLayout(self.verticalLayout_10)
+
+        self.tabWidget.addTab(self.tab_excluded_locations, "")
+        self.tab_glitched_logic = QWidget()
+        self.tab_glitched_logic.setObjectName(u"tab_glitched_logic")
+        self.horizontalLayout_12 = QHBoxLayout(self.tab_glitched_logic)
+        self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
+        self.verticalLayout_11 = QVBoxLayout()
+        self.verticalLayout_11.setObjectName(u"verticalLayout_11")
+        self.label_for_tricks_not_in_logic = QLabel(self.tab_glitched_logic)
+        self.label_for_tricks_not_in_logic.setObjectName(u"label_for_tricks_not_in_logic")
+
+        self.verticalLayout_11.addWidget(self.label_for_tricks_not_in_logic)
+
+        self.tricks_not_in_logic = QListView(self.tab_glitched_logic)
+        self.tricks_not_in_logic.setObjectName(u"tricks_not_in_logic")
+        self.tricks_not_in_logic.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.tricks_not_in_logic.setSelectionMode(QAbstractItemView.ExtendedSelection)
+
+        self.verticalLayout_11.addWidget(self.tricks_not_in_logic)
+
+
+        self.horizontalLayout_12.addLayout(self.verticalLayout_11)
+
+        self.verticalLayout_12 = QVBoxLayout()
+        self.verticalLayout_12.setObjectName(u"verticalLayout_12")
+        self.verticalSpacer_5 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_12.addItem(self.verticalSpacer_5)
 
         self.remove_trick = QPushButton(self.tab_glitched_logic)
         self.remove_trick.setObjectName(u"remove_trick")
         self.remove_trick.setMinimumSize(QSize(0, 80))
 
-        self.verticalLayout_10.addWidget(self.remove_trick)
+        self.verticalLayout_12.addWidget(self.remove_trick)
 
         self.add_trick = QPushButton(self.tab_glitched_logic)
         self.add_trick.setObjectName(u"add_trick")
         self.add_trick.setMinimumSize(QSize(0, 80))
 
-        self.verticalLayout_10.addWidget(self.add_trick)
+        self.verticalLayout_12.addWidget(self.add_trick)
 
-        self.verticalSpacer_4 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.verticalSpacer_6 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.verticalLayout_10.addItem(self.verticalSpacer_4)
+        self.verticalLayout_12.addItem(self.verticalSpacer_6)
 
 
-        self.horizontalLayout_11.addLayout(self.verticalLayout_10)
+        self.horizontalLayout_12.addLayout(self.verticalLayout_12)
 
-        self.verticalLayout_11 = QVBoxLayout()
-        self.verticalLayout_11.setObjectName(u"verticalLayout_11")
+        self.verticalLayout_13 = QVBoxLayout()
+        self.verticalLayout_13.setObjectName(u"verticalLayout_13")
         self.label_for_tricks_in_logic = QLabel(self.tab_glitched_logic)
         self.label_for_tricks_in_logic.setObjectName(u"label_for_tricks_in_logic")
 
-        self.verticalLayout_11.addWidget(self.label_for_tricks_in_logic)
+        self.verticalLayout_13.addWidget(self.label_for_tricks_in_logic)
 
         self.tricks_in_logic = QListView(self.tab_glitched_logic)
         self.tricks_in_logic.setObjectName(u"tricks_in_logic")
         self.tricks_in_logic.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.tricks_in_logic.setSelectionMode(QAbstractItemView.ExtendedSelection)
 
-        self.verticalLayout_11.addWidget(self.tricks_in_logic)
+        self.verticalLayout_13.addWidget(self.tricks_in_logic)
 
 
-        self.horizontalLayout_11.addLayout(self.verticalLayout_11)
-
-
-        self.verticalLayout_8.addLayout(self.horizontalLayout_11)
+        self.horizontalLayout_12.addLayout(self.verticalLayout_13)
 
         self.tabWidget.addTab(self.tab_glitched_logic, "")
         self.tab_random_settings = QWidget()
         self.tab_random_settings.setObjectName(u"tab_random_settings")
-        self.verticalLayout_15 = QVBoxLayout(self.tab_random_settings)
-        self.verticalLayout_15.setObjectName(u"verticalLayout_15")
+        self.verticalLayout_14 = QVBoxLayout(self.tab_random_settings)
+        self.verticalLayout_14.setObjectName(u"verticalLayout_14")
         self.random_settings_explanation = QTextBrowser(self.tab_random_settings)
         self.random_settings_explanation.setObjectName(u"random_settings_explanation")
         self.random_settings_explanation.setFrameShape(QFrame.NoFrame)
         self.random_settings_explanation.setOpenExternalLinks(True)
 
-        self.verticalLayout_15.addWidget(self.random_settings_explanation)
+        self.verticalLayout_14.addWidget(self.random_settings_explanation)
 
         self.randomize_settings_and_iso = QPushButton(self.tab_random_settings)
         self.randomize_settings_and_iso.setObjectName(u"randomize_settings_and_iso")
 
-        self.verticalLayout_15.addWidget(self.randomize_settings_and_iso)
+        self.verticalLayout_14.addWidget(self.randomize_settings_and_iso)
 
         self.verticalSpacer_7 = QSpacerItem(20, 400, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.verticalLayout_15.addItem(self.verticalSpacer_7)
+        self.verticalLayout_14.addItem(self.verticalSpacer_7)
 
         self.tabWidget.addTab(self.tab_random_settings, "")
         self.tab_player_customization = QWidget()
         self.tab_player_customization.setObjectName(u"tab_player_customization")
-        self.verticalLayout_12 = QVBoxLayout(self.tab_player_customization)
-        self.verticalLayout_12.setObjectName(u"verticalLayout_12")
+        self.verticalLayout_15 = QVBoxLayout(self.tab_player_customization)
+        self.verticalLayout_15.setObjectName(u"verticalLayout_15")
         self.gridLayout_5 = QGridLayout()
         self.gridLayout_5.setObjectName(u"gridLayout_5")
-        self.horizontalLayout_12 = QHBoxLayout()
-        self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
+        self.horizontalLayout_13 = QHBoxLayout()
+        self.horizontalLayout_13.setObjectName(u"horizontalLayout_13")
         self.label_for_custom_color_preset = QLabel(self.tab_player_customization)
         self.label_for_custom_color_preset.setObjectName(u"label_for_custom_color_preset")
 
-        self.horizontalLayout_12.addWidget(self.label_for_custom_color_preset)
+        self.horizontalLayout_13.addWidget(self.label_for_custom_color_preset)
 
         self.custom_color_preset = QComboBox(self.tab_player_customization)
         self.custom_color_preset.setObjectName(u"custom_color_preset")
 
-        self.horizontalLayout_12.addWidget(self.custom_color_preset)
+        self.horizontalLayout_13.addWidget(self.custom_color_preset)
 
 
-        self.gridLayout_5.addLayout(self.horizontalLayout_12, 2, 0, 1, 1)
+        self.gridLayout_5.addLayout(self.horizontalLayout_13, 2, 0, 1, 1)
 
-        self.horizontalLayout_13 = QHBoxLayout()
-        self.horizontalLayout_13.setObjectName(u"horizontalLayout_13")
+        self.horizontalLayout_14 = QHBoxLayout()
+        self.horizontalLayout_14.setObjectName(u"horizontalLayout_14")
         self.randomize_all_custom_colors_together = QPushButton(self.tab_player_customization)
         self.randomize_all_custom_colors_together.setObjectName(u"randomize_all_custom_colors_together")
 
-        self.horizontalLayout_13.addWidget(self.randomize_all_custom_colors_together)
+        self.horizontalLayout_14.addWidget(self.randomize_all_custom_colors_together)
 
         self.randomize_all_custom_colors_separately = QPushButton(self.tab_player_customization)
         self.randomize_all_custom_colors_separately.setObjectName(u"randomize_all_custom_colors_separately")
 
-        self.horizontalLayout_13.addWidget(self.randomize_all_custom_colors_separately)
+        self.horizontalLayout_14.addWidget(self.randomize_all_custom_colors_separately)
 
 
-        self.gridLayout_5.addLayout(self.horizontalLayout_13, 2, 1, 1, 1)
+        self.gridLayout_5.addLayout(self.horizontalLayout_14, 2, 1, 1, 1)
 
-        self.horizontalLayout_14 = QHBoxLayout()
-        self.horizontalLayout_14.setObjectName(u"horizontalLayout_14")
+        self.horizontalLayout_15 = QHBoxLayout()
+        self.horizontalLayout_15.setObjectName(u"horizontalLayout_15")
         self.label_for_custom_player_model = QLabel(self.tab_player_customization)
         self.label_for_custom_player_model.setObjectName(u"label_for_custom_player_model")
 
-        self.horizontalLayout_14.addWidget(self.label_for_custom_player_model)
+        self.horizontalLayout_15.addWidget(self.label_for_custom_player_model)
 
         self.custom_player_model = QComboBox(self.tab_player_customization)
         self.custom_player_model.setObjectName(u"custom_player_model")
 
-        self.horizontalLayout_14.addWidget(self.custom_player_model)
+        self.horizontalLayout_15.addWidget(self.custom_player_model)
 
 
-        self.gridLayout_5.addLayout(self.horizontalLayout_14, 1, 0, 1, 1)
+        self.gridLayout_5.addLayout(self.horizontalLayout_15, 1, 0, 1, 1)
 
-        self.horizontalLayout_15 = QHBoxLayout()
-        self.horizontalLayout_15.setObjectName(u"horizontalLayout_15")
+        self.horizontalLayout_16 = QHBoxLayout()
+        self.horizontalLayout_16.setObjectName(u"horizontalLayout_16")
         self.player_in_casual_clothes = QCheckBox(self.tab_player_customization)
         self.player_in_casual_clothes.setObjectName(u"player_in_casual_clothes")
 
-        self.horizontalLayout_15.addWidget(self.player_in_casual_clothes)
+        self.horizontalLayout_16.addWidget(self.player_in_casual_clothes)
 
         self.disable_custom_player_voice = QCheckBox(self.tab_player_customization)
         self.disable_custom_player_voice.setObjectName(u"disable_custom_player_voice")
 
-        self.horizontalLayout_15.addWidget(self.disable_custom_player_voice)
+        self.horizontalLayout_16.addWidget(self.disable_custom_player_voice)
 
         self.disable_custom_player_items = QCheckBox(self.tab_player_customization)
         self.disable_custom_player_items.setObjectName(u"disable_custom_player_items")
 
-        self.horizontalLayout_15.addWidget(self.disable_custom_player_items)
+        self.horizontalLayout_16.addWidget(self.disable_custom_player_items)
 
 
-        self.gridLayout_5.addLayout(self.horizontalLayout_15, 1, 1, 1, 1)
+        self.gridLayout_5.addLayout(self.horizontalLayout_16, 1, 1, 1, 1)
 
         self.install_custom_model = QPushButton(self.tab_player_customization)
         self.install_custom_model.setObjectName(u"install_custom_model")
@@ -890,47 +949,47 @@ class Ui_MainWindow(object):
         self.gridLayout_5.addWidget(self.install_custom_model, 0, 0, 1, 2)
 
 
-        self.verticalLayout_12.addLayout(self.gridLayout_5)
+        self.verticalLayout_15.addLayout(self.gridLayout_5)
 
         self.custom_model_comment = QLabel(self.tab_player_customization)
         self.custom_model_comment.setObjectName(u"custom_model_comment")
         self.custom_model_comment.setMaximumSize(QSize(810, 16777215))
         self.custom_model_comment.setWordWrap(True)
 
-        self.verticalLayout_12.addWidget(self.custom_model_comment)
+        self.verticalLayout_15.addWidget(self.custom_model_comment)
 
-        self.horizontalLayout_16 = QHBoxLayout()
-        self.horizontalLayout_16.setObjectName(u"horizontalLayout_16")
-        self.verticalLayout_13 = QVBoxLayout()
-        self.verticalLayout_13.setObjectName(u"verticalLayout_13")
+        self.horizontalLayout_17 = QHBoxLayout()
+        self.horizontalLayout_17.setObjectName(u"horizontalLayout_17")
+        self.verticalLayout_16 = QVBoxLayout()
+        self.verticalLayout_16.setObjectName(u"verticalLayout_16")
         self.custom_colors_layout = QVBoxLayout()
         self.custom_colors_layout.setObjectName(u"custom_colors_layout")
 
-        self.verticalLayout_13.addLayout(self.custom_colors_layout)
+        self.verticalLayout_16.addLayout(self.custom_colors_layout)
 
-        self.verticalSpacer_5 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.verticalSpacer_8 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.verticalLayout_13.addItem(self.verticalSpacer_5)
+        self.verticalLayout_16.addItem(self.verticalSpacer_8)
 
 
-        self.horizontalLayout_16.addLayout(self.verticalLayout_13)
+        self.horizontalLayout_17.addLayout(self.verticalLayout_16)
 
-        self.verticalLayout_14 = QVBoxLayout()
-        self.verticalLayout_14.setObjectName(u"verticalLayout_14")
+        self.verticalLayout_17 = QVBoxLayout()
+        self.verticalLayout_17.setObjectName(u"verticalLayout_17")
         self.custom_model_preview_label = QLabel(self.tab_player_customization)
         self.custom_model_preview_label.setObjectName(u"custom_model_preview_label")
 
-        self.verticalLayout_14.addWidget(self.custom_model_preview_label)
+        self.verticalLayout_17.addWidget(self.custom_model_preview_label)
 
-        self.verticalSpacer_6 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.verticalSpacer_9 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.verticalLayout_14.addItem(self.verticalSpacer_6)
-
-
-        self.horizontalLayout_16.addLayout(self.verticalLayout_14)
+        self.verticalLayout_17.addItem(self.verticalSpacer_9)
 
 
-        self.verticalLayout_12.addLayout(self.horizontalLayout_16)
+        self.horizontalLayout_17.addLayout(self.verticalLayout_17)
+
+
+        self.verticalLayout_15.addLayout(self.horizontalLayout_17)
 
         self.tabWidget.addTab(self.tab_player_customization, "")
 
@@ -947,36 +1006,36 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addWidget(self.option_description)
 
-        self.horizontalLayout1 = QHBoxLayout()
-        self.horizontalLayout1.setObjectName(u"horizontalLayout1")
+        self.horizontalLayout_18 = QHBoxLayout()
+        self.horizontalLayout_18.setObjectName(u"horizontalLayout_18")
         self.label_for_permalink = QLabel(self.centralwidget)
         self.label_for_permalink.setObjectName(u"label_for_permalink")
 
-        self.horizontalLayout1.addWidget(self.label_for_permalink)
+        self.horizontalLayout_18.addWidget(self.label_for_permalink)
 
         self.permalink = QLineEdit(self.centralwidget)
         self.permalink.setObjectName(u"permalink")
 
-        self.horizontalLayout1.addWidget(self.permalink)
+        self.horizontalLayout_18.addWidget(self.permalink)
 
 
-        self.verticalLayout.addLayout(self.horizontalLayout1)
+        self.verticalLayout.addLayout(self.horizontalLayout_18)
 
-        self.horizontalLayout_17 = QHBoxLayout()
-        self.horizontalLayout_17.setObjectName(u"horizontalLayout_17")
+        self.horizontalLayout_19 = QHBoxLayout()
+        self.horizontalLayout_19.setObjectName(u"horizontalLayout_19")
         self.label_for_legacy_permalink = QLabel(self.centralwidget)
         self.label_for_legacy_permalink.setObjectName(u"label_for_legacy_permalink")
 
-        self.horizontalLayout_17.addWidget(self.label_for_legacy_permalink)
+        self.horizontalLayout_19.addWidget(self.label_for_legacy_permalink)
 
         self.legacy_permalink = QLineEdit(self.centralwidget)
         self.legacy_permalink.setObjectName(u"legacy_permalink")
         self.legacy_permalink.setReadOnly(True)
 
-        self.horizontalLayout_17.addWidget(self.legacy_permalink)
+        self.horizontalLayout_19.addWidget(self.legacy_permalink)
 
 
-        self.verticalLayout.addLayout(self.horizontalLayout_17)
+        self.verticalLayout.addLayout(self.horizontalLayout_19)
 
         self.update_checker_label = QLabel(self.centralwidget)
         self.update_checker_label.setObjectName(u"update_checker_label")
@@ -984,34 +1043,34 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addWidget(self.update_checker_label)
 
-        self.horizontalLayout_18 = QHBoxLayout()
-        self.horizontalLayout_18.setObjectName(u"horizontalLayout_18")
+        self.horizontalLayout_20 = QHBoxLayout()
+        self.horizontalLayout_20.setObjectName(u"horizontalLayout_20")
         self.about_button = QPushButton(self.centralwidget)
         self.about_button.setObjectName(u"about_button")
 
-        self.horizontalLayout_18.addWidget(self.about_button)
+        self.horizontalLayout_20.addWidget(self.about_button)
 
         self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.horizontalLayout_18.addItem(self.horizontalSpacer_2)
+        self.horizontalLayout_20.addItem(self.horizontalSpacer_2)
 
         self.reset_settings_to_default = QPushButton(self.centralwidget)
         self.reset_settings_to_default.setObjectName(u"reset_settings_to_default")
         self.reset_settings_to_default.setMinimumSize(QSize(180, 0))
 
-        self.horizontalLayout_18.addWidget(self.reset_settings_to_default)
+        self.horizontalLayout_20.addWidget(self.reset_settings_to_default)
 
         self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.horizontalLayout_18.addItem(self.horizontalSpacer_3)
+        self.horizontalLayout_20.addItem(self.horizontalSpacer_3)
 
         self.randomize_button = QPushButton(self.centralwidget)
         self.randomize_button.setObjectName(u"randomize_button")
 
-        self.horizontalLayout_18.addWidget(self.randomize_button)
+        self.horizontalLayout_20.addWidget(self.randomize_button)
 
 
-        self.verticalLayout.addLayout(self.horizontalLayout_18)
+        self.verticalLayout.addLayout(self.horizontalLayout_20)
 
         MainWindow.setCentralWidget(self.centralwidget)
 
@@ -1130,6 +1189,11 @@ class Ui_MainWindow(object):
         self.label_for_starting_pohs.setText(QCoreApplication.translate("MainWindow", u"Heart Pieces", None))
         self.current_health.setText(QCoreApplication.translate("MainWindow", u"Current Starting Health: 3 hearts", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_starting_items), QCoreApplication.translate("MainWindow", u"Starting Items", None))
+        self.label_for_included_locations.setText(QCoreApplication.translate("MainWindow", u"Possible Locations in Logic", None))
+        self.include_location.setText(QCoreApplication.translate("MainWindow", u"<-", None))
+        self.exclude_location.setText(QCoreApplication.translate("MainWindow", u"->", None))
+        self.label_for_excluded_locations.setText(QCoreApplication.translate("MainWindow", u"Excluded Locations", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_excluded_locations), QCoreApplication.translate("MainWindow", u"Excluded Locations", None))
         self.label_for_tricks_not_in_logic.setText(QCoreApplication.translate("MainWindow", u"Glitches and Tricks Not in Logic", None))
         self.remove_trick.setText(QCoreApplication.translate("MainWindow", u"<-", None))
         self.add_trick.setText(QCoreApplication.translate("MainWindow", u"->", None))

@@ -322,6 +322,10 @@ class Randomizer:
     
     self.logic = Logic(self)
     
+    # This list will hold all the progress locations that the user has excluded from having progress items.
+    progress_locations = self.logic.filter_locations_for_progression(self.logic.item_locations.keys())
+    self.excluded_locations = list(filter(lambda x: x in self.options.get("excluded_locations"), progress_locations))
+    
     num_progress_locations = self.logic.get_num_progression_locations()
     max_race_mode_banned_locations = self.logic.get_max_race_mode_banned_locations()
     num_progress_items = self.logic.get_num_progression_items()

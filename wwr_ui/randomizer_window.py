@@ -6,6 +6,7 @@ from wwr_ui.ui_randomizer_window import Ui_MainWindow
 from wwr_ui.options import OPTIONS, NON_PERMALINK_OPTIONS, HIDDEN_OPTIONS, POTENTIALLY_UNBEATABLE_OPTIONS
 from wwr_ui.update_checker import check_for_updates, LATEST_RELEASE_DOWNLOAD_PAGE_URL
 from wwr_ui.inventory import INVENTORY_ITEMS, REGULAR_ITEMS, PROGRESSIVE_ITEMS, DEFAULT_STARTING_ITEMS, DEFAULT_RANDOMIZED_ITEMS
+from wwr_ui.locations import ITEM_LOCATIONS, DEFAULT_EXCLUDED_LOCATIONS, DEFAULT_INCLUDED_LOCATIONS
 from wwr_ui.tricks import LOGICAL_TRICKS, TRICK_NAME_TO_SORTED_INDEX, DEFAULT_TRICKS_IN_LOGIC, DEFAULT_TRICKS_NOT_IN_LOGIC
 from wwr_ui.packedbits import PackedBitsReader, PackedBitsWriter
 
@@ -68,6 +69,19 @@ class WWRandomizerWindow(QMainWindow):
     self.starting_gear_model = QStringListModel()
     self.starting_gear_model.setStringList(DEFAULT_STARTING_ITEMS.copy())
     self.ui.starting_gear.setModel(self.starting_gear_model)
+    
+    self.ui.include_location.clicked.connect(self.include_location)
+    self.included_locations_model = QStringListModel()
+    self.included_locations_model.setStringList(DEFAULT_INCLUDED_LOCATIONS.copy())
+    
+    self.filtered_ilocations = ModelFilterOut()
+    self.filtered_ilocations.setSourceModel(self.included_locations_model)
+    
+    self.ui.included_locations.setModel(self.filtered_ilocations)
+    self.ui.exclude_location.clicked.connect(self.exclude_location)
+    self.excluded_locations_model = QStringListModel()
+    self.excluded_locations_model.setStringList(DEFAULT_EXCLUDED_LOCATIONS.copy())
+    self.ui.excluded_locations.setModel(self.excluded_locations_model)
     
     self.ui.add_trick.clicked.connect(self.add_trick_to_logic)
     self.tricks_not_in_logic_model = QStringListModel()
@@ -235,6 +249,16 @@ class WWRandomizerWindow(QMainWindow):
         text += " and %d pieces" % pieces
     
     self.ui.current_health.setText(text)
+  
+  def exclude_location(self):
+    self.move_selected_rows(self.ui.included_locations, self.ui.excluded_locations)
+    self.ui.excluded_locations.model().sort(0)
+    self.update_settings()
+  
+  def include_location(self):
+    self.move_selected_rows(self.ui.excluded_locations, self.ui.included_locations)
+    self.ui.included_locations.model().sourceModel().sort(0)
+    self.update_settings()
   
   def add_trick_to_logic(self):
     self.move_selected_rows(self.ui.tricks_not_in_logic, self.ui.tricks_in_logic)
@@ -548,6 +572,11 @@ class WWRandomizerWindow(QMainWindow):
           # No Progressive Sword and there's no more than
           # 3 of any other Progressive item so two bits per item
           bitswriter.write(value.count(item), 2)
+      elif widget == self.ui.excluded_locations:
+        # included_locations is a complement of excluded_locations
+        for i in range(len(ITEM_LOCATIONS)):
+          bit = ITEM_LOCATIONS[i] in value
+          bitswriter.write(bit, 1)
       elif widget == self.ui.tricks_in_logic:
         # tricks_not_in_logic is a complement of tricks_in_logic
         for i in range(len(LOGICAL_TRICKS)):
@@ -562,7 +591,6 @@ class WWRandomizerWindow(QMainWindow):
     base64_encoded_permalink = base64.b64encode(compressed_permalink).decode("ascii")
     self.ui.permalink.setText(base64_encoded_permalink)
   
-
   def encode_legacy_permalink(self):
     LEGACY_REGULAR_ITEMS = [
       "Telescope",
@@ -619,6 +647,7 @@ class WWRandomizerWindow(QMainWindow):
         "fishmen_hints", "hoho_hints", "korl_hints", "stone_tablet_hints",
         "num_path_hints", "num_barren_hints", "num_location_hints", "num_item_hints",
         "only_use_ganondorf_paths", "clearer_hints", "use_always_hints",
+        "included_locations", "excluded_locations",
         "tricks_not_in_logic", "tricks_in_logic",
       ]:
         continue
@@ -738,6 +767,16 @@ class WWRandomizerWindow(QMainWindow):
             self.append_row(self.starting_gear_model, item)
           for i in range(randamount):
             self.append_row(self.randomized_gear_model, item)
+      elif widget == self.ui.excluded_locations:
+        # Reset model with all locations included
+        self.included_locations_model.setStringList(ITEM_LOCATIONS.copy())
+        self.excluded_locations_model.setStringList([])
+        self.filtered_ilocations.setFilterStrings([])
+        for i in range(len(ITEM_LOCATIONS)):
+          location = bitsreader.read(1)
+          if location == 1:
+            self.ui.included_locations.selectionModel().select(self.included_locations_model.index(i), QItemSelectionModel.Select)
+        self.move_selected_rows(self.ui.included_locations, self.ui.excluded_locations)
       elif widget == self.ui.tricks_in_logic:
         # Reset model with only the logical tricks
         self.tricks_not_in_logic_model.setStringList(LOGICAL_TRICKS.copy())
@@ -1164,6 +1203,7 @@ class WWRandomizerWindow(QMainWindow):
   
   def ensure_valid_combination_of_options(self):
     items_to_filter_out = []
+    locations_to_filter_out = []
     should_enable_options = {}
     for option_name in OPTIONS:
       should_enable_options[option_name] = True
@@ -1216,6 +1256,44 @@ class WWRandomizerWindow(QMainWindow):
     if not compare(all_gear, INVENTORY_ITEMS):
       print("Gear list invalid, resetting")
       for opt in ["randomized_gear", "starting_gear"]:
+        self.set_option_value(opt, self.default_settings[opt])
+    
+    options = OrderedDict()
+    for option_name in OPTIONS:
+      options[option_name] = self.get_option_value(option_name)
+    progress_locations = Logic.filter_locations_for_progression_static(
+      self.cached_item_locations.keys(),
+      self.cached_item_locations,
+      options,
+      filter_sunken_treasure=True
+    )
+    
+    for location_name in self.cached_item_locations.keys():
+      if location_name.endswith(" - Sunken Treasure") and (self.get_option_value("progression_triforce_charts") or self.get_option_value("progression_treasure_charts")):
+        continue
+      if location_name not in progress_locations:
+        locations_to_filter_out.append(location_name)
+      if self.get_option_value("race_mode") and location_name.endswith(" Heart Container"):
+        locations_to_filter_out.append(location_name)
+    self.filtered_ilocations.setFilterStrings(locations_to_filter_out)
+    
+    excluded_locations = self.get_option_value("excluded_locations")
+    included_locations = self.get_option_value("included_locations")
+    
+    for location in locations_to_filter_out:
+      if location in included_locations:
+        included_locations.remove(location)
+      elif location in excluded_locations:
+        excluded_locations.remove(location)
+    included_locations += locations_to_filter_out
+    
+    self.set_option_value("excluded_locations", excluded_locations)
+    self.set_option_value("included_locations", included_locations)
+    
+    all_locations = self.get_option_value("excluded_locations") + self.get_option_value("included_locations")
+    if not compare(all_locations, ITEM_LOCATIONS):
+      print("Locations list invalid, resetting")
+      for opt in ["included_locations", "excluded_locations"]:
         self.set_option_value(opt, self.default_settings[opt])
     
     all_tricks = self.get_option_value("tricks_in_logic") + self.get_option_value("tricks_not_in_logic")

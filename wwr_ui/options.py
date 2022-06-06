@@ -265,6 +265,14 @@ OPTIONS = OrderedDict([
     "Amount of extra heart containers that you start with."
   ),
   (
+    "included_locations",
+    "Locations which will may or may not contain progress items, depending on the seed's settings."
+  ),
+  (
+    "excluded_locations",
+    "Locations which will be guaranteed to not contain progress items."
+  ),
+  (
     "tricks_not_in_logic",
     "Tricks and glitches that are not in consideration in the seed's logic."
   ),
