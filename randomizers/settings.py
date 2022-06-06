@@ -30,6 +30,8 @@ DEFAULT_WEIGHTS = {
   "randomize_starting_island": [(True, 100), (False, 0)],
   "chest_type_matches_contents": [(True, 100), (False, 0)],
   "keep_duplicates_in_logic": [(True, 50), (False, 50)],
+  "num_triforce_charts_in_logic": [(8, 100)],
+  "num_treasure_charts_in_logic": [(41, 100)],
   
   "num_path_hints": [(6, 100)],
   "num_barren_hints": [(6, 100)],
@@ -102,7 +104,8 @@ def randomize_settings(seed=None):
   settings_dict = {
     "random_starting_item": False,
     "starting_gear": [],
-    "excluded_locations": []
+    "excluded_locations": [],
+    "tricks_in_logic": []
   }
   for option_name, option_values in DEFAULT_WEIGHTS.items():
     values, weights = zip(*option_values)
