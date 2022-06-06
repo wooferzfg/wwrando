@@ -985,7 +985,9 @@ class Randomizer:
     non_disabled_options = [
       name for name in self.options
       if self.options[name] not in [False, [], {}, OrderedDict()]
-      and name != "randomized_gear" # Just takes up space
+      and name != "randomized_gear"     # Just takes up space
+      and name != "included_locations"  # Just takes up space
+      and name != "tricks_not_in_logic" # Just takes up space
     ]
     option_strings = []
     for option_name in non_disabled_options:
