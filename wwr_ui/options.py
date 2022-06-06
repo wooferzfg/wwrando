@@ -117,6 +117,14 @@ OPTIONS = OrderedDict([
     "When this option is selected, all duplicates of certain progressive items will be placed in progress locations when at least one is considered a progress item.\nThese progressive items are Empty Bottles, Progressive Quivers, and Progressive Wallets."
   ),
   (
+    "num_triforce_charts_in_logic",
+    "Sets the number of Triforce charts in logic.\nFor example, when the option is set to 3, Triforce charts 1-3 will be progress items, and Triforce charts 4-8 will be non-progress items."
+  ),
+  (
+    "num_treasure_charts_in_logic",
+    "Sets the number of treasure charts in logic.\nFor example, when the option is set to 12, treasure charts 1-12 will be progress items, and treasure charts 13-41 will be non-progress items."
+  ),
+  (
     "fishmen_hints",
     "Places hints on the fishmen. There is one fishman at each of the 49 islands of the Great Sea. The fishmen must be fed All-Purpose Bait before getting a hint.",
   ),

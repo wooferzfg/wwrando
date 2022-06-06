@@ -644,6 +644,7 @@ class WWRandomizerWindow(QMainWindow):
       if option_name in [
         "chest_type_matches_contents",
         "keep_duplicates_in_logic",
+        "num_triforce_charts_in_logic", "num_treasure_charts_in_logic",
         "fishmen_hints", "hoho_hints", "korl_hints", "stone_tablet_hints",
         "num_path_hints", "num_barren_hints", "num_location_hints", "num_item_hints",
         "only_use_ganondorf_paths", "clearer_hints", "use_always_hints",
@@ -1211,6 +1212,11 @@ class WWRandomizerWindow(QMainWindow):
     if not self.get_option_value("progression_dungeons"):
       # Race mode places required items on dungeon bosses.
       should_enable_options["race_mode"] = False
+    
+    if not self.get_option_value("progression_triforce_charts"):
+      should_enable_options["num_triforce_charts_in_logic"] = False
+    if not self.get_option_value("progression_treasure_charts"):
+      should_enable_options["num_treasure_charts_in_logic"] = False
     
     sword_mode = self.get_option_value("sword_mode")
     if sword_mode == "Swordless":
