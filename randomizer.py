@@ -15,6 +15,7 @@ from wwlib.gcm import GCM
 from wwlib.jpc import JPC
 import tweaks
 from asm import patcher
+from hints import Hints
 from logic.logic import Logic
 from wwrando_paths import DATA_PATH, ASM_PATH, RANDO_ROOT_PATH, IS_RUNNING_FROM_SOURCE
 import customizer
@@ -475,6 +476,7 @@ class Randomizer:
     options_completed += 2
     
     yield("Saving items...", options_completed)
+    hints_manager = None
     if self.randomize_items and not self.dry_run:
       items.write_changed_items(self)
       options_completed += 1
@@ -482,7 +484,8 @@ class Randomizer:
       if self.randomize_items and not self.dry_run:
         yield("Generating hints...", options_completed)
         self.reset_rng()
-        tweaks.randomize_and_update_hints(self)
+        hints_manager = Hints(self)
+        tweaks.randomize_and_update_hints(self, hints_manager)
       options_completed += 5
     
     if not self.dry_run:
@@ -504,7 +507,7 @@ class Randomizer:
     
     if self.randomize_items:
       if not self.options.get("do_not_generate_spoiler_log"):
-        self.write_spoiler_log()
+        self.write_spoiler_log(hints_manager)
       self.write_non_spoiler_log()
     
     yield("Done", -1)
@@ -1090,7 +1093,7 @@ class Randomizer:
     with open(nonspoiler_log_output_path, "w") as f:
       f.write(log_str)
   
-  def write_spoiler_log(self):
+  def write_spoiler_log(self, hints_manager):
     if self.no_logs:
       # We still calculate progression spheres even if we're not going to write them anywhere to catch more errors in testing.
       self.calculate_playthrough_progression_spheres()
@@ -1121,7 +1124,37 @@ class Randomizer:
             else:
               item_name = self.logic.done_item_locations[location_name]
             spoiler_log += format_string % (specific_location_name + ":", item_name)
+    
+    spoiler_log += "\n\n\n"
+    
+    if hints_manager is not None:
+      spoiler_log += "Paths and Path Items:\n"
+      for path_goal, path_items in hints_manager.cached_required_locations_for_paths.items():
+        spoiler_log += "%s:\n" % path_goal
+        for zone_name, entrance_zone, specific_location_name, item_name in path_items:
+          spoiler_log += "  %s - %s => %s\n" % (zone_name, specific_location_name, item_name)
+      spoiler_log += "\n"
       
+      spoiler_log += "Path Hints:\n"
+      for path_hint, (item_name, location_name) in zip(hints_manager.cached_hinted_path_zones, hints_manager.cached_hinted_path_items):
+        spoiler_log += "They say that an item found at #%s# is on the path to #%s#.\n" % (path_hint.info1, path_hint.info2)
+        spoiler_log += "  |-> points to %s on %s\n" % (item_name, location_name)
+      spoiler_log += "\n"
+      
+      spoiler_log += "Barren Hints:\n"
+      for barren_hint in hints_manager.cached_hinted_barren_zones:
+        spoiler_log += "They say that visiting #%s# is a foolish choice.\n" % barren_hint.info1
+      spoiler_log += "\n"
+      
+      spoiler_log += "Item Hints:\n"
+      for item_hint in hints_manager.cached_hinted_item_locations:
+        spoiler_log += "They say that #%s# is located in #%s#.\n" % (item_hint.info1, item_hint.info2)
+      spoiler_log += "\n"
+
+      spoiler_log += "Location Hints:\n"
+      for location_hint in hints_manager.cached_hinted_locations:
+        spoiler_log += "They say that #%s# rewards #%s#.\n" % (location_hint.info1, location_hint.info2)
+    
     spoiler_log += "\n\n\n"
     
     # Write item locations.

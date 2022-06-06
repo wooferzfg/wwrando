@@ -1,6 +1,7 @@
 import os
 from collections import Counter
 from collections import OrderedDict
+import copy
 from enum import Enum
 from math import sqrt
 
@@ -117,7 +118,6 @@ class Hints:
     self.WOTH_ONLY = self.options.get("only_use_ganondorf_paths")
     self.CLEARER_HINTS = self.options.get("clearer_hints")
     self.USE_ALWAYS_HINTS = self.options.get("use_always_hints")
-    self.DEBUG_HINTS = False
     
     # Import dictionaries used to build hints from files
     with open(os.path.join(DATA_PATH, "progress_item_hints.txt"), "r") as f:
@@ -133,7 +133,13 @@ class Hints:
     # considered junk.
     self.chart_name_to_sunken_treasure = {}
     self.build_sunken_treasure_mapping()
-  
+    
+    self.cached_required_locations_for_paths = []
+    self.cached_hinted_path_zones = []
+    self.cached_hinted_path_items = []
+    self.cached_hinted_barren_zones = []
+    self.cached_hinted_item_locations = []
+    self.cached_hinted_locations = []
   
   @staticmethod
   def get_hint_item_name_static(item_name):
@@ -742,7 +748,7 @@ class Hints:
     # Apply cryptic text to the location name, if the option is selected
     item_name = self.logic.done_item_locations[location_name]
     if not self.CLEARER_HINTS:
-      location_name = self.location_hints[location_name]["Text"]    
+      location_name = self.location_hints[location_name]["Text"]
     
     return Hint(HintType.LOCATION, location_name, item_name)
   
@@ -789,6 +795,14 @@ class Hints:
     return floor_30_hint, floor_50_hint
   
   def generate_hints(self):
+    # Reset cached lists
+    self.cached_required_locations_for_paths = []
+    self.cached_hinted_path_zones = []
+    self.cached_hinted_path_items = []
+    self.cached_hinted_barren_zones = []
+    self.cached_hinted_item_locations = []
+    self.cached_hinted_locations = []
+
     # Create a mapping for chart name -> sunken treasure
     self.build_sunken_treasure_mapping()
     
@@ -812,12 +826,7 @@ class Hints:
     required_locations_for_paths = []
     if self.MAX_PATH_HINTS > 0:
       required_locations_for_paths = self.get_required_locations_for_paths(self.WOTH_ONLY)
-      if self.DEBUG_HINTS:
-        for path_goal, path_items in required_locations_for_paths.items():
-          print("%s:" % path_goal)
-          for zone_name, entrance_zone, specific_location_name, item_name in path_items:
-            print("  %s - %s => %s" % (zone_name, specific_location_name, item_name))
-        print()
+      self.cached_required_locations_for_paths = copy.deepcopy(required_locations_for_paths)
     
     # Generate path hints
     # We hint at max `self.MAX_PATH_HINTS` zones at random. We start by hinted each of the race mode dungeons once.
@@ -849,6 +858,7 @@ class Hints:
           if not self.USE_ALWAYS_HINTS or (location_name not in self.location_hints or self.location_hints[location_name]["Type"] != "Always"):
             hinted_path_zones.append(path_hint)
             previously_hinted_locations.append(location_name)
+            self.cached_hinted_path_items.append((self.logic.done_item_locations[location_name], location_name))
     
     while len(required_locations_for_paths) > 0 and len(hinted_path_zones) < self.MAX_PATH_HINTS:
       path_name = self.rando.rng.choice(list(required_locations_for_paths.keys()))
@@ -862,13 +872,9 @@ class Hints:
         if not self.USE_ALWAYS_HINTS or (location_name not in self.location_hints or self.location_hints[location_name]["Type"] != "Always"):
           hinted_path_zones.append(path_hint)
           previously_hinted_locations.append(location_name)
+          self.cached_hinted_path_items.append((self.logic.done_item_locations[location_name], location_name))
     
-    if self.DEBUG_HINTS:
-      print("PATH HINTS:")
-      for path_hint in hinted_path_zones:
-        print(path_hint)
-      print(previously_hinted_locations)
-      print()
+    self.cached_hinted_path_zones = copy.deepcopy(hinted_path_zones)
     
     # Generate barren hints
     # We select at most `self.MAX_BARREN_HINTS` zones at random to hint as barren. Barren zones are weighted by the
@@ -883,11 +889,7 @@ class Hints:
       if barren_hint is not None:
         hinted_barren_zones.append(barren_hint)
     
-    if self.DEBUG_HINTS:
-      print("BARREN HINTS:")
-      for barren_hint in hinted_barren_zones:
-        print(barren_hint)
-      print()
+    self.cached_hinted_barren_zones = copy.deepcopy(hinted_barren_zones)
     
     # Generate item hints
     # We select at most `self.MAX_ITEM_HINTS` items at random to hint at. We do not want to hint at items already
@@ -907,11 +909,7 @@ class Hints:
       hinted_item_locations.append(item_hint)
       previously_hinted_locations.append(location_name)
     
-    if self.DEBUG_HINTS:
-      print("ITEM HINTS:")
-      for item_hint in hinted_item_locations:
-        print(item_hint)
-      print()
+    self.cached_hinted_item_locations = copy.deepcopy(hinted_item_locations)
     
     # Generate location hints
     # We try to generate location hints until we get to `self.TOTAL_NUM_HINTS` total hints, but if there are not enough
@@ -932,10 +930,6 @@ class Hints:
       location_hint = self.get_location_hint(sometimes_hintable_locations)
       hinted_locations.append(location_hint)
     
-    if self.DEBUG_HINTS:
-      print("LOCATION HINTS:")
-      for location_hint in hinted_locations:
-        print(location_hint)
-      print()
+    self.cached_hinted_locations = copy.deepcopy(hinted_locations)
     
     return hinted_path_zones + hinted_barren_zones + hinted_item_locations + hinted_locations

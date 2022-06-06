@@ -864,9 +864,7 @@ def update_savage_labyrinth_hint_tablet(self, floor_30_hint, floor_50_hint):
     max_line_length=43
   )
 
-def randomize_and_update_hints(self):
-  hints_manager = Hints(self)
-  
+def randomize_and_update_hints(self, hints_manager):
   # Give the Big Octo Great Fairy a unique item hint
   octo_fairy_hint = hints_manager.generate_octo_fairy_hint()
   update_big_octo_great_fairy_item_name_hint(self, octo_fairy_hint)
