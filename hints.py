@@ -134,7 +134,7 @@ class Hints:
     self.chart_name_to_sunken_treasure = {}
     self.build_sunken_treasure_mapping()
     
-    self.cached_required_locations_for_paths = []
+    self.cached_required_locations_for_paths = {}
     self.cached_hinted_path_zones = []
     self.cached_hinted_path_items = []
     self.cached_hinted_barren_zones = []
@@ -796,7 +796,7 @@ class Hints:
   
   def generate_hints(self):
     # Reset cached lists
-    self.cached_required_locations_for_paths = []
+    self.cached_required_locations_for_paths = {}
     self.cached_hinted_path_zones = []
     self.cached_hinted_path_items = []
     self.cached_hinted_barren_zones = []
