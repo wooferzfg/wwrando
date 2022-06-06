@@ -185,6 +185,23 @@ class Randomizer:
     for i in range(num_starting_triforce_shards):
       self.starting_items.append("Triforce Shard %d" % (i+1))
     
+    # Random starting item
+    if self.options.get("random_starting_item"):
+      random_starting_items = ["Bait Bag", "Bombs", "Boomerang", "Deku Leaf", "Grappling Hook", "Hookshot", "Power Bracelets", "Progressive Bow", "Skull Hammer"]
+      while random_starting_items:
+        item_name = self.rng.choice(random_starting_items)
+        random_starting_items.remove(item_name)
+        
+        if item_name == "Progressive Bow":
+          bow_count = self.starting_items.count(item_name)
+          if bow_count < 3:
+            self.starting_items.append(item_name)
+            break
+        else:
+          if item_name not in self.starting_items:
+            self.starting_items.append(item_name)
+            break
+    
     starting_pohs = self.options.get("starting_pohs")
     for i in range(starting_pohs):
       self.starting_items.append("Piece of Heart")

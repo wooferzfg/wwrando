@@ -642,6 +642,7 @@ class WWRandomizerWindow(QMainWindow):
       if option_name in NON_PERMALINK_OPTIONS:
         continue
       if option_name in [
+        "random_starting_item",
         "chest_type_matches_contents",
         "keep_duplicates_in_logic",
         "num_triforce_charts_in_logic", "num_treasure_charts_in_logic",

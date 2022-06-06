@@ -276,11 +276,6 @@ class Ui_MainWindow(object):
 
         self.gridLayout_3.addLayout(self.horizontalLayout_2, 0, 1, 1, 2)
 
-        self.randomize_enemies = QCheckBox(self.groupBox_2)
-        self.randomize_enemies.setObjectName(u"randomize_enemies")
-
-        self.gridLayout_3.addWidget(self.randomize_enemies, 0, 3, 1, 1)
-
         self.keylunacy = QCheckBox(self.groupBox_2)
         self.keylunacy.setObjectName(u"keylunacy")
 
@@ -425,15 +420,20 @@ class Ui_MainWindow(object):
 
         self.gridLayout_3.addWidget(self.randomize_starting_island, 3, 1, 1, 1)
 
-        self.randomize_enemy_palettes = QCheckBox(self.groupBox_2)
-        self.randomize_enemy_palettes.setObjectName(u"randomize_enemy_palettes")
-
-        self.gridLayout_3.addWidget(self.randomize_enemy_palettes, 3, 2, 1, 1)
-
         self.randomize_music = QCheckBox(self.groupBox_2)
         self.randomize_music.setObjectName(u"randomize_music")
 
-        self.gridLayout_3.addWidget(self.randomize_music, 3, 3, 1, 1)
+        self.gridLayout_3.addWidget(self.randomize_music, 0, 3, 1, 1)
+
+        self.randomize_enemy_palettes = QCheckBox(self.groupBox_2)
+        self.randomize_enemy_palettes.setObjectName(u"randomize_enemy_palettes")
+
+        self.gridLayout_3.addWidget(self.randomize_enemy_palettes, 3, 3, 1, 1)
+
+        self.random_starting_item = QCheckBox(self.groupBox_2)
+        self.random_starting_item.setObjectName(u"random_starting_item")
+
+        self.gridLayout_3.addWidget(self.random_starting_item, 3, 2, 1, 1)
 
 
         self.verticalLayout_3.addWidget(self.groupBox_2)
@@ -639,20 +639,20 @@ class Ui_MainWindow(object):
 
         self.gridLayout_6.addWidget(self.widget_10, 0, 3, 1, 1)
 
-        self.disable_tingle_chests_with_tingle_bombs = QCheckBox(self.groupBox_4)
-        self.disable_tingle_chests_with_tingle_bombs.setObjectName(u"disable_tingle_chests_with_tingle_bombs")
-
-        self.gridLayout_6.addWidget(self.disable_tingle_chests_with_tingle_bombs, 0, 1, 1, 1)
-
         self.do_not_generate_spoiler_log = QCheckBox(self.groupBox_4)
         self.do_not_generate_spoiler_log.setObjectName(u"do_not_generate_spoiler_log")
 
         self.gridLayout_6.addWidget(self.do_not_generate_spoiler_log, 0, 0, 1, 1)
 
-        self.widget_11 = QWidget(self.groupBox_4)
-        self.widget_11.setObjectName(u"widget_11")
+        self.disable_tingle_chests_with_tingle_bombs = QCheckBox(self.groupBox_4)
+        self.disable_tingle_chests_with_tingle_bombs.setObjectName(u"disable_tingle_chests_with_tingle_bombs")
 
-        self.gridLayout_6.addWidget(self.widget_11, 0, 2, 1, 1)
+        self.gridLayout_6.addWidget(self.disable_tingle_chests_with_tingle_bombs, 0, 1, 1, 1)
+
+        self.randomize_enemies = QCheckBox(self.groupBox_4)
+        self.randomize_enemies.setObjectName(u"randomize_enemies")
+
+        self.gridLayout_6.addWidget(self.randomize_enemies, 0, 2, 1, 1)
 
 
         self.verticalLayout_3.addWidget(self.groupBox_4)
@@ -1173,7 +1173,6 @@ class Ui_MainWindow(object):
         self.randomize_entrances.setItemText(3, QCoreApplication.translate("MainWindow", u"Dungeons & Secret Caves (Separately)", None))
         self.randomize_entrances.setItemText(4, QCoreApplication.translate("MainWindow", u"Dungeons & Secret Caves (Together)", None))
 
-        self.randomize_enemies.setText(QCoreApplication.translate("MainWindow", u"Randomize Enemy Locations", None))
         self.keylunacy.setText(QCoreApplication.translate("MainWindow", u"Key-Lunacy", None))
         self.race_mode.setText(QCoreApplication.translate("MainWindow", u"Race Mode", None))
         self.label_for_num_race_mode_dungeons.setText(QCoreApplication.translate("MainWindow", u"Race Mode Required Dungeons", None))
@@ -1201,8 +1200,9 @@ class Ui_MainWindow(object):
         self.label_for_num_treasure_charts_in_logic.setText(QCoreApplication.translate("MainWindow", u"Treasure Charts in Logic", None))
         self.randomize_charts.setText(QCoreApplication.translate("MainWindow", u"Randomize Charts", None))
         self.randomize_starting_island.setText(QCoreApplication.translate("MainWindow", u"Randomize Starting Island", None))
-        self.randomize_enemy_palettes.setText(QCoreApplication.translate("MainWindow", u"Randomize Enemy Palettes", None))
         self.randomize_music.setText(QCoreApplication.translate("MainWindow", u"Randomize Music", None))
+        self.randomize_enemy_palettes.setText(QCoreApplication.translate("MainWindow", u"Randomize Enemy Palettes", None))
+        self.random_starting_item.setText(QCoreApplication.translate("MainWindow", u"Random Starting Item", None))
         self.groupBox_3.setTitle(QCoreApplication.translate("MainWindow", u"Hint Options", None))
         self.fishmen_hints.setText(QCoreApplication.translate("MainWindow", u"Place Hints on Fishmen", None))
         self.korl_hints.setText(QCoreApplication.translate("MainWindow", u"Place Hints on King of Red Lions", None))
@@ -1226,8 +1226,9 @@ class Ui_MainWindow(object):
         self.skip_rematch_bosses.setText(QCoreApplication.translate("MainWindow", u"Skip Boss Rematches", None))
         self.invert_sea_compass_x_axis.setText(QCoreApplication.translate("MainWindow", u"Invert Sea Compass X-Axis", None))
         self.groupBox_4.setTitle(QCoreApplication.translate("MainWindow", u"Advanced Options", None))
-        self.disable_tingle_chests_with_tingle_bombs.setText(QCoreApplication.translate("MainWindow", u"Tingle Bombs Don't Open Tingle Chests", None))
         self.do_not_generate_spoiler_log.setText(QCoreApplication.translate("MainWindow", u"Do Not Generate Spoiler Log", None))
+        self.disable_tingle_chests_with_tingle_bombs.setText(QCoreApplication.translate("MainWindow", u"Tingle Bombs Don't Open Tingle Chests", None))
+        self.randomize_enemies.setText(QCoreApplication.translate("MainWindow", u"Randomize Enemy Locations", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_randomizer_settings), QCoreApplication.translate("MainWindow", u"Randomizer Settings", None))
         self.label_for_randomized_gear.setText(QCoreApplication.translate("MainWindow", u"Randomized Gear", None))
         self.remove_gear.setText(QCoreApplication.translate("MainWindow", u"<-", None))
@@ -1262,7 +1263,7 @@ class Ui_MainWindow(object):
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">The settings are randomly determined using the seed. If there's no seed, then a random seed will be used. If you wish to share/race a seed, the seed name is all that needs to be shared. Do not use the permalink since that does not affect the random settings. In rare cases, certain combinations of settings will fail to generate. Often, this is because not enough progress locations end up being selected. For races, it is recommended to ensure that a seed results in a successful generation before sharing it.</p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
 "<"
-                        "p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">The random setting weights can be found here: <a href=\"https://github.com/tanjo3/wwrando/blob/1.9.9_dev/randomizers/random_settings.md\"><span style=\" text-decoration: underline; color:#0000ff;\">https://github.com/tanjo3/wwrando/blob/dev-build/randomizers/random_settings.md</span></a></p></body></html>", None))
+                        "p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">The random setting weights can be found here: <a href=\"https://github.com/tanjo3/wwrando/blob/dev-build/randomizers/random_settings.md\"><span style=\" text-decoration: underline; color:#0000ff;\">https://github.com/tanjo3/wwrando/blob/1.9.9_dev/randomizers/random_settings.md</span></a></p></body></html>", None))
         self.randomize_settings_and_iso.setText(QCoreApplication.translate("MainWindow", u"Randomize Settings and ISO", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_random_settings), QCoreApplication.translate("MainWindow", u"Random Settings", None))
         self.label_for_custom_color_preset.setText(QCoreApplication.translate("MainWindow", u"Color Preset", None))

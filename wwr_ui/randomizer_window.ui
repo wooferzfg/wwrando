@@ -388,13 +388,6 @@
                  </item>
                 </layout>
                </item>
-               <item row="0" column="3">
-                <widget class="QCheckBox" name="randomize_enemies">
-                 <property name="text">
-                  <string>Randomize Enemy Locations</string>
-                 </property>
-                </widget>
-               </item>
                <item row="1" column="0">
                 <widget class="QCheckBox" name="keylunacy">
                  <property name="text">
@@ -641,17 +634,24 @@
                  </property>
                 </widget>
                </item>
-               <item row="3" column="2">
+               <item row="0" column="3">
+                <widget class="QCheckBox" name="randomize_music">
+                 <property name="text">
+                  <string>Randomize Music</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="3">
                 <widget class="QCheckBox" name="randomize_enemy_palettes">
                  <property name="text">
                   <string>Randomize Enemy Palettes</string>
                  </property>
                 </widget>
                </item>
-               <item row="3" column="3">
-                <widget class="QCheckBox" name="randomize_music">
+               <item row="3" column="2">
+                <widget class="QCheckBox" name="random_starting_item">
                  <property name="text">
-                  <string>Randomize Music</string>
+                  <string>Random Starting Item</string>
                  </property>
                 </widget>
                </item>
@@ -923,13 +923,6 @@
                <item row="0" column="3">
                 <widget class="QWidget" name="widget_10" native="true"/>
                </item>
-               <item row="0" column="1">
-                <widget class="QCheckBox" name="disable_tingle_chests_with_tingle_bombs">
-                 <property name="text">
-                  <string>Tingle Bombs Don't Open Tingle Chests</string>
-                 </property>
-                </widget>
-               </item>
                <item row="0" column="0">
                 <widget class="QCheckBox" name="do_not_generate_spoiler_log">
                  <property name="text">
@@ -937,8 +930,19 @@
                  </property>
                 </widget>
                </item>
+               <item row="0" column="1">
+                <widget class="QCheckBox" name="disable_tingle_chests_with_tingle_bombs">
+                 <property name="text">
+                  <string>Tingle Bombs Don't Open Tingle Chests</string>
+                 </property>
+                </widget>
+               </item>
                <item row="0" column="2">
-                <widget class="QWidget" name="widget_11" native="true"/>
+                <widget class="QCheckBox" name="randomize_enemies">
+                 <property name="text">
+                  <string>Randomize Enemy Locations</string>
+                 </property>
+                </widget>
                </item>
               </layout>
              </widget>
@@ -1357,7 +1361,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;The settings are randomly determined using the seed. If there's no seed, then a random seed will be used. If you wish to share/race a seed, the seed name is all that needs to be shared. Do not use the permalink since that does not affect the random settings. In rare cases, certain combinations of settings will fail to generate. Often, this is because not enough progress locations end up being selected. For races, it is recommended to ensure that a seed results in a successful generation before sharing it.&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;The random setting weights can be found here: &lt;a href=&quot;https://github.com/tanjo3/wwrando/blob/dev-build/randomizers/random_settings.md&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://github.com/tanjo3/wwrando/blob/dev-build/randomizers/random_settings.md&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;The random setting weights can be found here: &lt;a href=&quot;https://github.com/tanjo3/wwrando/blob/dev-build/randomizers/random_settings.md&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://github.com/tanjo3/wwrando/blob/1.9.9_dev/randomizers/random_settings.md&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="openExternalLinks">
                <bool>true</bool>
