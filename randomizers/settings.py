@@ -100,7 +100,9 @@ def randomize_settings(seed=None):
   num_starting_items = random.choices(values, weights=weights)[0]
   
   settings_dict = {
-    "starting_gear": []
+    "random_starting_item": False,
+    "starting_gear": [],
+    "excluded_locations": []
   }
   for option_name, option_values in DEFAULT_WEIGHTS.items():
     values, weights = zip(*option_values)

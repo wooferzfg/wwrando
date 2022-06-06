@@ -948,7 +948,7 @@ class WWRandomizerWindow(QMainWindow):
       self.ui.seed.setText(seed)
       self.update_settings()
       
-      seed = "RSL_1.9.8_dev_" + seed
+      seed = "RS_" + VERSION + "_" + seed
       
       options = randomize_settings(seed=seed)
       for option_name in NON_PERMALINK_OPTIONS:
