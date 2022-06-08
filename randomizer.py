@@ -196,10 +196,12 @@ class Randomizer:
         if item_name == "Progressive Bow":
           bow_count = self.starting_items.count(item_name)
           if bow_count < 3:
+            self.options["starting_gear"].append(item_name)
             self.starting_items.append(item_name)
             break
         else:
           if item_name not in self.starting_items:
+            self.options["starting_gear"].append(item_name)
             self.starting_items.append(item_name)
             break
     
