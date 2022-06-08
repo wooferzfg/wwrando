@@ -204,6 +204,7 @@ class Randomizer:
             self.options["starting_gear"].append(item_name)
             self.starting_items.append(item_name)
             break
+      self.options["starting_gear"].sort()
     
     starting_pohs = self.options.get("starting_pohs")
     for i in range(starting_pohs):
