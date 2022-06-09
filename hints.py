@@ -304,10 +304,10 @@ class Hints:
     
     return {path_name: not logic.check_requirement_met(self.DUNGEON_NAME_TO_REQUIREMENT_NAME[path_name]) for path_name in paths_to_check}
   
-  def get_required_locations_for_paths(self, woth_only):
-    # If `woth_only` is True, then the only path in the game is for Ganon's Tower. Otherwise, add all race-mode dungeons
-    # as paths, in addition to Ganon's Tower.
-    if woth_only:
+  def get_required_locations_for_paths(self):
+    # If `self.WOTH_ONLY` is True, then the only path in the game is for Ganon's Tower. Otherwise, add all race-mode
+    # dungeons as paths, in addition to Ganon's Tower.
+    if self.WOTH_ONLY:
       dungeon_paths = []
       required_locations_for_paths = {"Ganon's Tower": []}
     else:
@@ -834,7 +834,7 @@ class Hints:
     # not, then we consider the item as required.
     required_locations_for_paths = []
     if self.MAX_PATH_HINTS > 0:
-      required_locations_for_paths = self.get_required_locations_for_paths(self.WOTH_ONLY)
+      required_locations_for_paths = self.get_required_locations_for_paths()
       self.cached_required_locations_for_paths = copy.deepcopy(required_locations_for_paths)
     
     # Generate path hints
