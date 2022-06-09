@@ -807,6 +807,9 @@ class Hints:
     # Build of list of progress locations for this seed
     progress_locations, non_progress_locations = self.logic.get_progress_and_non_progress_locations()
     
+    # Ignore sunken treasure for now
+    progress_locations = list(filter(lambda location_name: not location_name.endswith(" - Sunken Treasure"), progress_locations))
+    
     # Remove user-excluded locations from consideration
     excluded_locations = []
     for location_name in self.options.get("excluded_locations"):
@@ -815,6 +818,14 @@ class Hints:
       if self.options.get("keylunacy") or not item_name.endswith(" Key"):
         excluded_locations.append(location_name)
     progress_locations = list(filter(lambda location_name: location_name not in excluded_locations, progress_locations))
+    
+    # Add back sunken treasure for charts that are in logic
+    if self.options.get("progression_triforce_charts"):
+      for chart_number in range(1, 1+self.rando.options.get("num_triforce_charts_in_logic", 0)):
+        progress_locations.append(self.chart_name_to_sunken_treasure["Triforce Chart %d" % chart_number])
+    if self.options.get("progression_treasure_charts"):
+      for chart_number in range(1, 1+self.rando.options.get("num_treasure_charts_in_logic", 0)):
+        progress_locations.append(self.chart_name_to_sunken_treasure["Treasure Chart %d" % chart_number])
     
     # Get all entrance zones for progress locations in this seed
     all_world_areas = []
