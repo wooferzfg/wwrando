@@ -196,7 +196,7 @@ class Hints:
     # As a special case, if the entrance zone is Tower of the Gods or the location name is "Tower of the Gods - Sunken
     # Treasure", the entrance zone name is "Tower of the Gods Sector" to differentiate between the dungeon and the
     # entrance.
-
+    
     zone_name, specific_location_name = self.logic.split_location_name_by_zone(location_name)
     
     # Distinguish between the two Pawprint Isle entrances
@@ -475,7 +475,7 @@ class Hints:
         
     return junk_items
   
-  def get_barren_zones(self):
+  def get_barren_zones(self, progress_locations):
     # Helper function to build a list of barren zones in this seed.
     # The list includes only zones which are allowed to be hinted at as barren.
     
@@ -485,8 +485,6 @@ class Hints:
     # paths as barren (since one particular path is not strictly required).
     # Technically, this is an overestimate (a superset) of actual barren locations, but it should suffice.
     junk_items = self.determine_junk_items()
-    
-    progress_locations, non_progress_locations = self.logic.get_progress_and_non_progress_locations()
     
     # We don't want to have barren/always hints overlap if hints are on.
     # For instance, consider a Ganon's Tower always hint. If you get that hint and a barren hint for Ganon's Tower, it's
@@ -802,13 +800,24 @@ class Hints:
     self.cached_hinted_barren_zones = []
     self.cached_hinted_item_locations = []
     self.cached_hinted_locations = []
-
+    
     # Create a mapping for chart name -> sunken treasure
     self.build_sunken_treasure_mapping()
     
+    # Build of list of progress locations for this seed
+    progress_locations, non_progress_locations = self.logic.get_progress_and_non_progress_locations()
+    
+    # Remove user-excluded locations from consideration
+    excluded_locations = []
+    for location_name in self.options.get("excluded_locations"):
+      # Leave locations that have dungeon keys in, so we can possibly hint at them for location hints
+      item_name = self.logic.done_item_locations[location_name]
+      if self.options.get("keylunacy") or not item_name.endswith(" Key"):
+        excluded_locations.append(location_name)
+    progress_locations = list(filter(lambda location_name: location_name not in excluded_locations, progress_locations))
+    
     # Get all entrance zones for progress locations in this seed
     all_world_areas = []
-    progress_locations, non_progress_locations = self.logic.get_progress_and_non_progress_locations()
     for location_name in progress_locations:
       if self.logic.is_dungeon_location(location_name):
         zone_name, specific_location_name = self.logic.split_location_name_by_zone(location_name)
@@ -879,7 +888,7 @@ class Hints:
     # Generate barren hints
     # We select at most `self.MAX_BARREN_HINTS` zones at random to hint as barren. Barren zones are weighted by the
     # square root of the number of locations at that zone.
-    unhinted_barren_zones = self.get_barren_zones()
+    unhinted_barren_zones = self.get_barren_zones(progress_locations)
     hinted_barren_zones = []
     while len(unhinted_barren_zones) > 0 and len(hinted_barren_zones) < self.MAX_BARREN_HINTS:
       # Weigh each barren zone by the square root of the number of locations there
