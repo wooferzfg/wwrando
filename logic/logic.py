@@ -103,13 +103,13 @@ class Logic:
       ]
     
     if self.rando.options.get("progression_triforce_charts"):
-      num_triforce_charts_in_logic = self.rando.options.get("num_triforce_charts_in_logic")
+      num_triforce_charts_in_logic = self.rando.options.get("num_triforce_charts_in_logic", 0)
       self.all_progress_items += self.triforce_chart_names[:num_triforce_charts_in_logic]
       self.all_nonprogress_items += self.triforce_chart_names[num_triforce_charts_in_logic:]
     else:
       self.all_nonprogress_items += self.triforce_chart_names
     if self.rando.options.get("progression_treasure_charts"):
-      num_treasure_charts_in_logic = self.rando.options.get("num_treasure_charts_in_logic")
+      num_treasure_charts_in_logic = self.rando.options.get("num_treasure_charts_in_logic", 0)
       self.all_progress_items += self.treasure_chart_names[:num_treasure_charts_in_logic]
       self.all_nonprogress_items += self.treasure_chart_names[num_treasure_charts_in_logic:]
     else:
@@ -250,9 +250,9 @@ class Logic:
     
     max_sunken_treaure_locations = 0
     if options.get("progression_triforce_charts"):
-      max_sunken_treaure_locations += options.get("num_triforce_charts_in_logic")
+      max_sunken_treaure_locations += options.get("num_triforce_charts_in_logic", 0)
     if options.get("progression_treasure_charts"):
-      max_sunken_treaure_locations += options.get("num_treasure_charts_in_logic")
+      max_sunken_treaure_locations += options.get("num_treasure_charts_in_logic", 0)
     num_sunken_treaure_locations = min(max_sunken_treaure_locations, len(sunken_treasure_locations))
     
     return num_progress_locations + num_sunken_treaure_locations
