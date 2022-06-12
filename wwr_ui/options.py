@@ -172,6 +172,10 @@ OPTIONS = OrderedDict([
     "use_always_hints",
     "When the number of location hints is nonzero, certain locations that will always be hinted at will take precedence over normal location hints.",
   ),
+  (
+    "item_hint_priority",
+    "Specifies the priority on hintable items used when generating item hints.\nNone means no priority. Ice Rods means that swords and shards will be hinted first. No D Paths means that items not found in dungeon paths will be hinted first.",
+  ),
   
   
   (

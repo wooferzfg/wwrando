@@ -648,7 +648,7 @@ class WWRandomizerWindow(QMainWindow):
         "num_triforce_charts_in_logic", "num_treasure_charts_in_logic",
         "fishmen_hints", "hoho_hints", "korl_hints", "stone_tablet_hints",
         "num_path_hints", "num_barren_hints", "num_location_hints", "num_item_hints",
-        "only_use_ganondorf_paths", "clearer_hints", "use_always_hints",
+        "only_use_ganondorf_paths", "clearer_hints", "use_always_hints", "item_hint_priority",
         "included_locations", "excluded_locations",
         "tricks_not_in_logic", "tricks_in_logic",
       ]:

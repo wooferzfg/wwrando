@@ -19,6 +19,12 @@ class HintType(Enum):
   LOCATION = 3
 
 
+class ItemHintPriority(Enum):
+  NONE = 0
+  ICE_RODS = 1
+  NO_DUNGEON_PATHS = 2
+
+
 class Hint:
   def __init__(self, type: HintType, info1, info2=None):
     self.type = type
@@ -118,6 +124,14 @@ class Hints:
     self.WOTH_ONLY = self.options.get("only_use_ganondorf_paths")
     self.CLEARER_HINTS = self.options.get("clearer_hints")
     self.USE_ALWAYS_HINTS = self.options.get("use_always_hints")
+    
+    self.ITEM_HINT_PRIORITY = self.options.get("item_hint_priority")
+    if self.ITEM_HINT_PRIORITY == "Ice Rods":
+      self.ITEM_HINT_PRIORITY = ItemHintPriority.ICE_RODS
+    elif self.ITEM_HINT_PRIORITY == "No D Paths":
+      self.ITEM_HINT_PRIORITY = ItemHintPriority.NO_DUNGEON_PATHS
+    else:
+      self.ITEM_HINT_PRIORITY = ItemHintPriority.NONE
     
     # Import dictionaries used to build hints from files
     with open(os.path.join(DATA_PATH, "progress_item_hints.txt"), "r") as f:
@@ -603,7 +617,7 @@ class Hints:
     return Hint(HintType.BARREN, zone_name)
   
   
-  def filter_legal_item_hint(self, location_name, previously_hinted_locations):
+  def filter_legal_item_hint(self, location_name, progress_locations, previously_hinted_locations):
     race_mode_banned_dungeons = set(self.logic.DUNGEON_NAMES.values()) - set(self.rando.race_mode_required_dungeons)
 
     # Some location like the Great Sea or dungeons are invalid for item hints
@@ -614,6 +628,9 @@ class Hints:
     return (
       # Don't hint at non-progress items
       self.logic.done_item_locations[location_name] in self.logic.all_progress_items and
+      
+      # Don't hint at item in non-progress locations
+      location_name in progress_locations and
       
       # Don't hint at dungeon maps and compasses, and don't hint at dungeon keys when key-lunacy is not enabled
       (self.options.get("keylunacy") or not self.logic.is_dungeon_item(self.logic.done_item_locations[location_name])) and
@@ -634,15 +651,16 @@ class Hints:
       location_name not in previously_hinted_locations
     )
   
-  def get_legal_item_hints(self, hinted_barren_zones, previously_hinted_locations):
+  def get_legal_item_hints(self, progress_locations, hinted_barren_zones, previously_hinted_locations):
     # Helper function to build a list of locations which may be hinted as item hints in this seed.
     
     hintable_locations = list(self.logic.done_item_locations.keys())
     race_mode_banned_dungeons = set(self.logic.DUNGEON_NAMES.values()) - set(self.rando.race_mode_required_dungeons)
 
     # Filter out locations which are invalid to be hinted at for item hints
-    hintable_locations = list(filter(lambda location_name: self.filter_legal_item_hint(location_name, previously_hinted_locations), hintable_locations))
-    
+    hintable_locations = list(filter(lambda location_name: self.filter_legal_item_hint(
+      location_name, progress_locations, previously_hinted_locations), hintable_locations))
+
     # Remove locations in hinted barren areas
     new_hintable_locations = []
     barrens = [hint.info1 for hint in hinted_barren_zones]
@@ -668,14 +686,18 @@ class Hints:
     
     return new_hintable_locations
   
-  def get_item_hint(self, hintable_locations):
+  def get_item_hint(self, hintable_locations, priority=[]):
     # If there are no hintable locations, return `None`
-    if len(hintable_locations) == 0:
+    if len(hintable_locations) == 0 and len(priority) == 0:
       return None
     
     # Pick a location at which to hint at random
-    location_name = self.rando.rng.choice(hintable_locations)
-    hintable_locations.remove(location_name)
+    if len(priority) > 0:
+      location_name = self.rando.rng.choice(priority)
+      priority.remove(location_name)
+    else:
+      location_name = self.rando.rng.choice(hintable_locations)
+      hintable_locations.remove(location_name)
     
     item_name = self.logic.done_item_locations[location_name]
     entrance_zone = self.get_entrance_zone(location_name)
@@ -754,7 +776,7 @@ class Hints:
   def generate_octo_fairy_hint(self):
     # Get an item hint for a random progress item
     # Note that this hint is completely independant of all other hints
-    hintable_locations = self.get_legal_item_hints([], [])
+    hintable_locations = self.get_legal_item_hints(self.logic.done_item_locations, [], [])
     
     item_hint, location_name = self.get_item_hint(hintable_locations)
     # We don't want this Great Fairy to hint at her own item.
@@ -914,12 +936,40 @@ class Hints:
     # Generate item hints
     # We select at most `self.MAX_ITEM_HINTS` items at random to hint at. We do not want to hint at items already
     # covered by the path hints, nor do we want to hint at items in barren-hinted locations.
-    hintable_locations = self.get_legal_item_hints(hinted_barren_zones, previously_hinted_locations)
+    hintable_locations = self.get_legal_item_hints(progress_locations, hinted_barren_zones, previously_hinted_locations)
     
-    # Fill out the remaining hint slots with sometimes hints
+    # For `NO_DUNGEON_PATHS` hint priority, generate a set of items that are on dungeon paths
+    items_on_dungeon_paths = set()
+    if self.ITEM_HINT_PRIORITY == ItemHintPriority.NO_DUNGEON_PATHS:
+      for path_name, path_locations in required_locations_for_paths.items():
+        if path_name == "Ganon's Tower":
+          continue
+        for zone_name, entrance_zone, specific_location_name, item_name in path_locations:
+          items_on_dungeon_paths.add((item_name, "%s - %s" % (zone_name, specific_location_name)))
+    
+    # Determine which locations are prioritized when generating item hints
+    prioritized_hintable_locations = []
+    remaining_hintable_locations = []
+    if self.ITEM_HINT_PRIORITY == ItemHintPriority.NONE:
+      remaining_hintable_locations = hintable_locations
+    else:
+      for location_name in hintable_locations:
+        item_name = self.logic.done_item_locations[location_name]
+        
+        if self.ITEM_HINT_PRIORITY == ItemHintPriority.ICE_RODS:
+          if item_name == "Progressive Sword" or item_name.startswith("Triforce Shard "):
+            prioritized_hintable_locations.append(location_name)
+          else:
+            remaining_hintable_locations.append(location_name)
+        if self.ITEM_HINT_PRIORITY == ItemHintPriority.NO_DUNGEON_PATHS:
+          if (item_name, location_name) in items_on_dungeon_paths:
+            remaining_hintable_locations.append(location_name)
+          else:
+            prioritized_hintable_locations.append(location_name)
+    
     hinted_item_locations = []
     while len(hintable_locations) > 0 and len(hinted_item_locations) < self.MAX_ITEM_HINTS:
-      item_hint, location_name = self.get_item_hint(hintable_locations)
+      item_hint, location_name = self.get_item_hint(remaining_hintable_locations, priority=prioritized_hintable_locations)
       
       # Apply cryptic text, if the option is selected
       if not self.CLEARER_HINTS:
