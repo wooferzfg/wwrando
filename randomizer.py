@@ -188,7 +188,7 @@ class Randomizer:
     
     # Random starting item
     if self.options.get("random_starting_item"):
-      random_starting_items = ["Bait Bag", "Bombs", "Boomerang", "Deku Leaf", "Grappling Hook", "Hookshot", "Power Bracelets", "Progressive Bow", "Skull Hammer"]
+      random_starting_items = ["Bait Bag", "Bombs", "Boomerang", "Deku Leaf", "Delivery Bag", "Grappling Hook", "Hookshot", "Power Bracelets", "Progressive Bow", "Progressive Picto Box", "Skull Hammer"]
       while random_starting_items:
         item_name = self.rng.choice(random_starting_items)
         random_starting_items.remove(item_name)
