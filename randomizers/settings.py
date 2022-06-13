@@ -40,6 +40,7 @@ DEFAULT_WEIGHTS = {
   "only_use_ganondorf_paths": [(True, 25), (False, 75)],
   "clearer_hints": [(True, 100), (False, 0)],
   "use_always_hints": [(True, 100), (False, 0)],
+  "item_hint_priority": [("None", 100), ("Ice Rods", 0), ("No D Paths", 0)],
   
   "swift_sail": [(True, 100), (False, 0)],
   "instant_text_boxes": [(True, 100), (False, 0)],
