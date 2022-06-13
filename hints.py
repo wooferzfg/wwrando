@@ -781,7 +781,7 @@ class Hints:
     item_hint, location_name = self.get_item_hint(hintable_locations)
     # We don't want this Great Fairy to hint at her own item.
     if location_name == "Two-Eye Reef - Big Octo Great Fairy":
-      item_hint = self.get_item_hint(hintable_locations)
+      item_hint, location_name = self.get_item_hint(hintable_locations)
     
     # Always use cryptic text for the octo fairy hint
     item_hint.info1 = self.progress_item_hints[Hints.get_hint_item_name_static(item_hint.info1)]
