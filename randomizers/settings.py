@@ -96,6 +96,22 @@ DUNGEON_NONPROGRESS_ITEMS = \
   ["WT Dungeon Map", "WT Compass"]
 
 
+def weighted_sample_without_replacement(population, weights, k=1):
+  # Perform a weighted sample of `k`` elements from `population` without replacement.
+  # Taken from: https://stackoverflow.com/a/43649323
+  weights = list(weights)
+  positions = range(len(population))
+  indices = []
+  while True:
+    needed = k - len(indices)
+    if not needed:
+      break
+    for i in random.choices(positions, weights, k=needed):
+      if weights[i]:
+        weights[i] = 0.0
+        indices.append(i)
+  return [population[i] for i in indices]
+
 def randomize_settings(seed=None):
   random.seed(seed)
   
@@ -121,7 +137,7 @@ def randomize_settings(seed=None):
         settings_dict["starting_gear"] += DUNGEON_NONPROGRESS_ITEMS
     elif option_name == "starting_gear":
       settings_dict["starting_gear"].append("Telescope")
-      for items in random.choices(values, weights=weights, k=num_starting_items):
+      for items in weighted_sample_without_replacement(values, weights, k=num_starting_items):
         settings_dict["starting_gear"] += items
     elif option_name == "num_starting_items":
       continue
