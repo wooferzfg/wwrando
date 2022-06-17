@@ -519,7 +519,6 @@ class Randomizer:
       seed_hash_output_path = os.path.join(self.randomized_output_folder, "seed_hash_%s.txt" % self.seed)
       with open(seed_hash_output_path, "w") as f:
         f.write(self.get_seed_hash())
-      self.write_non_spoiler_log()
     
     yield("Done", -1)
   
