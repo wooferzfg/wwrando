@@ -578,34 +578,83 @@ class Ui_MainWindow(object):
 
         self.groupBox_5 = QGroupBox(self.tab)
         self.groupBox_5.setObjectName(u"groupBox_5")
-        self.gridLayout_9 = QGridLayout(self.groupBox_5)
-        self.gridLayout_9.setObjectName(u"gridLayout_9")
-        self.fishmen_hints = QCheckBox(self.groupBox_5)
-        self.fishmen_hints.setObjectName(u"fishmen_hints")
-        self.fishmen_hints.setChecked(True)
+        self.gridLayout_7 = QGridLayout(self.groupBox_5)
+        self.gridLayout_7.setObjectName(u"gridLayout_7")
+        self.horizontalLayout_12 = QHBoxLayout()
+        self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
+        self.label_for_num_item_hints = QLabel(self.groupBox_5)
+        self.label_for_num_item_hints.setObjectName(u"label_for_num_item_hints")
 
-        self.gridLayout_9.addWidget(self.fishmen_hints, 0, 0, 1, 1)
+        self.horizontalLayout_12.addWidget(self.label_for_num_item_hints)
+
+        self.num_item_hints = QSpinBox(self.groupBox_5)
+        self.num_item_hints.setObjectName(u"num_item_hints")
+        self.num_item_hints.setMinimum(0)
+        self.num_item_hints.setMaximum(15)
+        self.num_item_hints.setValue(15)
+
+        self.horizontalLayout_12.addWidget(self.num_item_hints)
+
+        self.widget_10 = QWidget(self.groupBox_5)
+        self.widget_10.setObjectName(u"widget_10")
+
+        self.horizontalLayout_12.addWidget(self.widget_10)
+
+
+        self.gridLayout_7.addLayout(self.horizontalLayout_12, 2, 4, 1, 1)
 
         self.hoho_hints = QCheckBox(self.groupBox_5)
         self.hoho_hints.setObjectName(u"hoho_hints")
         self.hoho_hints.setChecked(True)
 
-        self.gridLayout_9.addWidget(self.hoho_hints, 0, 1, 1, 1)
+        self.gridLayout_7.addWidget(self.hoho_hints, 1, 2, 1, 1)
+
+        self.korl_hints = QCheckBox(self.groupBox_5)
+        self.korl_hints.setObjectName(u"korl_hints")
+
+        self.gridLayout_7.addWidget(self.korl_hints, 1, 3, 1, 1)
+
+        self.fishmen_hints = QCheckBox(self.groupBox_5)
+        self.fishmen_hints.setObjectName(u"fishmen_hints")
+        self.fishmen_hints.setChecked(True)
+
+        self.gridLayout_7.addWidget(self.fishmen_hints, 1, 1, 1, 1)
+
+        self.horizontalLayout_10 = QHBoxLayout()
+        self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
+        self.label_for_num_barren_hints = QLabel(self.groupBox_5)
+        self.label_for_num_barren_hints.setObjectName(u"label_for_num_barren_hints")
+
+        self.horizontalLayout_10.addWidget(self.label_for_num_barren_hints)
+
+        self.num_barren_hints = QSpinBox(self.groupBox_5)
+        self.num_barren_hints.setObjectName(u"num_barren_hints")
+        self.num_barren_hints.setMinimum(0)
+        self.num_barren_hints.setMaximum(15)
+
+        self.horizontalLayout_10.addWidget(self.num_barren_hints)
+
+        self.widget_7 = QWidget(self.groupBox_5)
+        self.widget_7.setObjectName(u"widget_7")
+
+        self.horizontalLayout_10.addWidget(self.widget_7)
+
+
+        self.gridLayout_7.addLayout(self.horizontalLayout_10, 2, 2, 1, 1)
 
         self.horizontalLayout_9 = QHBoxLayout()
         self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
-        self.label_for_num_hints = QLabel(self.groupBox_5)
-        self.label_for_num_hints.setObjectName(u"label_for_num_hints")
+        self.label_for_num_path_hints = QLabel(self.groupBox_5)
+        self.label_for_num_path_hints.setObjectName(u"label_for_num_path_hints")
 
-        self.horizontalLayout_9.addWidget(self.label_for_num_hints)
+        self.horizontalLayout_9.addWidget(self.label_for_num_path_hints)
 
-        self.num_hints = QSpinBox(self.groupBox_5)
-        self.num_hints.setObjectName(u"num_hints")
-        self.num_hints.setMinimum(1)
-        self.num_hints.setMaximum(32)
-        self.num_hints.setValue(20)
+        self.num_path_hints = QSpinBox(self.groupBox_5)
+        self.num_path_hints.setObjectName(u"num_path_hints")
+        self.num_path_hints.setMinimum(0)
+        self.num_path_hints.setMaximum(15)
 
-        self.horizontalLayout_9.addWidget(self.num_hints)
+        self.horizontalLayout_9.addWidget(self.num_path_hints)
 
         self.widget_6 = QWidget(self.groupBox_5)
         self.widget_6.setObjectName(u"widget_6")
@@ -613,12 +662,39 @@ class Ui_MainWindow(object):
         self.horizontalLayout_9.addWidget(self.widget_6)
 
 
-        self.gridLayout_9.addLayout(self.horizontalLayout_9, 0, 3, 1, 1)
+        self.gridLayout_7.addLayout(self.horizontalLayout_9, 2, 1, 1, 1)
 
-        self.korl_hints = QCheckBox(self.groupBox_5)
-        self.korl_hints.setObjectName(u"korl_hints")
+        self.horizontalLayout_11 = QHBoxLayout()
+        self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
+        self.label_for_num_location_hints = QLabel(self.groupBox_5)
+        self.label_for_num_location_hints.setObjectName(u"label_for_num_location_hints")
 
-        self.gridLayout_9.addWidget(self.korl_hints, 0, 2, 1, 1)
+        self.horizontalLayout_11.addWidget(self.label_for_num_location_hints)
+
+        self.num_location_hints = QSpinBox(self.groupBox_5)
+        self.num_location_hints.setObjectName(u"num_location_hints")
+        self.num_location_hints.setMinimum(0)
+        self.num_location_hints.setMaximum(15)
+
+        self.horizontalLayout_11.addWidget(self.num_location_hints)
+
+        self.widget_8 = QWidget(self.groupBox_5)
+        self.widget_8.setObjectName(u"widget_8")
+
+        self.horizontalLayout_11.addWidget(self.widget_8)
+
+
+        self.gridLayout_7.addLayout(self.horizontalLayout_11, 2, 3, 1, 1)
+
+        self.clearer_hints = QCheckBox(self.groupBox_5)
+        self.clearer_hints.setObjectName(u"clearer_hints")
+
+        self.gridLayout_7.addWidget(self.clearer_hints, 3, 1, 1, 1)
+
+        self.use_always_hints = QCheckBox(self.groupBox_5)
+        self.use_always_hints.setObjectName(u"use_always_hints")
+
+        self.gridLayout_7.addWidget(self.use_always_hints, 3, 2, 1, 1)
 
 
         self.verticalLayout_8.addWidget(self.groupBox_5)
@@ -627,25 +703,25 @@ class Ui_MainWindow(object):
         self.groupBox_6.setObjectName(u"groupBox_6")
         self.gridLayout_8 = QGridLayout(self.groupBox_6)
         self.gridLayout_8.setObjectName(u"gridLayout_8")
-        self.widget_7 = QWidget(self.groupBox_6)
-        self.widget_7.setObjectName(u"widget_7")
+        self.widget_12 = QWidget(self.groupBox_6)
+        self.widget_12.setObjectName(u"widget_12")
 
-        self.gridLayout_8.addWidget(self.widget_7, 0, 3, 1, 1)
+        self.gridLayout_8.addWidget(self.widget_12, 0, 3, 1, 1)
 
         self.do_not_generate_spoiler_log = QCheckBox(self.groupBox_6)
         self.do_not_generate_spoiler_log.setObjectName(u"do_not_generate_spoiler_log")
 
         self.gridLayout_8.addWidget(self.do_not_generate_spoiler_log, 0, 0, 1, 1)
 
-        self.widget_8 = QWidget(self.groupBox_6)
-        self.widget_8.setObjectName(u"widget_8")
+        self.widget_11 = QWidget(self.groupBox_6)
+        self.widget_11.setObjectName(u"widget_11")
 
-        self.gridLayout_8.addWidget(self.widget_8, 0, 2, 1, 1)
+        self.gridLayout_8.addWidget(self.widget_11, 0, 2, 1, 1)
 
-        self.widget_9 = QWidget(self.groupBox_6)
-        self.widget_9.setObjectName(u"widget_9")
+        self.widget_13 = QWidget(self.groupBox_6)
+        self.widget_13.setObjectName(u"widget_13")
 
-        self.gridLayout_8.addWidget(self.widget_9, 0, 4, 1, 1)
+        self.gridLayout_8.addWidget(self.widget_13, 0, 4, 1, 1)
 
 
         self.verticalLayout_8.addWidget(self.groupBox_6)
@@ -661,70 +737,70 @@ class Ui_MainWindow(object):
         self.verticalLayout_9.setObjectName(u"verticalLayout_9")
         self.gridLayout_5 = QGridLayout()
         self.gridLayout_5.setObjectName(u"gridLayout_5")
-        self.horizontalLayout_10 = QHBoxLayout()
-        self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
+        self.horizontalLayout_15 = QHBoxLayout()
+        self.horizontalLayout_15.setObjectName(u"horizontalLayout_15")
         self.label_for_custom_color_preset = QLabel(self.tab_player_customization)
         self.label_for_custom_color_preset.setObjectName(u"label_for_custom_color_preset")
 
-        self.horizontalLayout_10.addWidget(self.label_for_custom_color_preset)
+        self.horizontalLayout_15.addWidget(self.label_for_custom_color_preset)
 
         self.custom_color_preset = QComboBox(self.tab_player_customization)
         self.custom_color_preset.setObjectName(u"custom_color_preset")
 
-        self.horizontalLayout_10.addWidget(self.custom_color_preset)
+        self.horizontalLayout_15.addWidget(self.custom_color_preset)
 
 
-        self.gridLayout_5.addLayout(self.horizontalLayout_10, 2, 0, 1, 1)
+        self.gridLayout_5.addLayout(self.horizontalLayout_15, 2, 0, 1, 1)
 
-        self.horizontalLayout_11 = QHBoxLayout()
-        self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
+        self.horizontalLayout_16 = QHBoxLayout()
+        self.horizontalLayout_16.setObjectName(u"horizontalLayout_16")
         self.randomize_all_custom_colors_together = QPushButton(self.tab_player_customization)
         self.randomize_all_custom_colors_together.setObjectName(u"randomize_all_custom_colors_together")
 
-        self.horizontalLayout_11.addWidget(self.randomize_all_custom_colors_together)
+        self.horizontalLayout_16.addWidget(self.randomize_all_custom_colors_together)
 
         self.randomize_all_custom_colors_separately = QPushButton(self.tab_player_customization)
         self.randomize_all_custom_colors_separately.setObjectName(u"randomize_all_custom_colors_separately")
 
-        self.horizontalLayout_11.addWidget(self.randomize_all_custom_colors_separately)
+        self.horizontalLayout_16.addWidget(self.randomize_all_custom_colors_separately)
 
 
-        self.gridLayout_5.addLayout(self.horizontalLayout_11, 2, 1, 1, 1)
+        self.gridLayout_5.addLayout(self.horizontalLayout_16, 2, 1, 1, 1)
 
-        self.horizontalLayout_12 = QHBoxLayout()
-        self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
+        self.horizontalLayout_13 = QHBoxLayout()
+        self.horizontalLayout_13.setObjectName(u"horizontalLayout_13")
         self.label_for_custom_player_model = QLabel(self.tab_player_customization)
         self.label_for_custom_player_model.setObjectName(u"label_for_custom_player_model")
 
-        self.horizontalLayout_12.addWidget(self.label_for_custom_player_model)
+        self.horizontalLayout_13.addWidget(self.label_for_custom_player_model)
 
         self.custom_player_model = QComboBox(self.tab_player_customization)
         self.custom_player_model.setObjectName(u"custom_player_model")
 
-        self.horizontalLayout_12.addWidget(self.custom_player_model)
+        self.horizontalLayout_13.addWidget(self.custom_player_model)
 
 
-        self.gridLayout_5.addLayout(self.horizontalLayout_12, 1, 0, 1, 1)
+        self.gridLayout_5.addLayout(self.horizontalLayout_13, 1, 0, 1, 1)
 
-        self.horizontalLayout_13 = QHBoxLayout()
-        self.horizontalLayout_13.setObjectName(u"horizontalLayout_13")
+        self.horizontalLayout_14 = QHBoxLayout()
+        self.horizontalLayout_14.setObjectName(u"horizontalLayout_14")
         self.player_in_casual_clothes = QCheckBox(self.tab_player_customization)
         self.player_in_casual_clothes.setObjectName(u"player_in_casual_clothes")
 
-        self.horizontalLayout_13.addWidget(self.player_in_casual_clothes)
+        self.horizontalLayout_14.addWidget(self.player_in_casual_clothes)
 
         self.disable_custom_player_voice = QCheckBox(self.tab_player_customization)
         self.disable_custom_player_voice.setObjectName(u"disable_custom_player_voice")
 
-        self.horizontalLayout_13.addWidget(self.disable_custom_player_voice)
+        self.horizontalLayout_14.addWidget(self.disable_custom_player_voice)
 
         self.disable_custom_player_items = QCheckBox(self.tab_player_customization)
         self.disable_custom_player_items.setObjectName(u"disable_custom_player_items")
 
-        self.horizontalLayout_13.addWidget(self.disable_custom_player_items)
+        self.horizontalLayout_14.addWidget(self.disable_custom_player_items)
 
 
-        self.gridLayout_5.addLayout(self.horizontalLayout_13, 1, 1, 1, 1)
+        self.gridLayout_5.addLayout(self.horizontalLayout_14, 1, 1, 1, 1)
 
         self.install_custom_model = QPushButton(self.tab_player_customization)
         self.install_custom_model.setObjectName(u"install_custom_model")
@@ -741,8 +817,8 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_9.addWidget(self.custom_model_comment)
 
-        self.horizontalLayout_14 = QHBoxLayout()
-        self.horizontalLayout_14.setObjectName(u"horizontalLayout_14")
+        self.horizontalLayout_17 = QHBoxLayout()
+        self.horizontalLayout_17.setObjectName(u"horizontalLayout_17")
         self.verticalLayout_10 = QVBoxLayout()
         self.verticalLayout_10.setObjectName(u"verticalLayout_10")
         self.custom_colors_layout = QVBoxLayout()
@@ -755,7 +831,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_10.addItem(self.verticalSpacer_4)
 
 
-        self.horizontalLayout_14.addLayout(self.verticalLayout_10)
+        self.horizontalLayout_17.addLayout(self.verticalLayout_10)
 
         self.verticalLayout_11 = QVBoxLayout()
         self.verticalLayout_11.setObjectName(u"verticalLayout_11")
@@ -769,10 +845,10 @@ class Ui_MainWindow(object):
         self.verticalLayout_11.addItem(self.verticalSpacer_5)
 
 
-        self.horizontalLayout_14.addLayout(self.verticalLayout_11)
+        self.horizontalLayout_17.addLayout(self.verticalLayout_11)
 
 
-        self.verticalLayout_9.addLayout(self.horizontalLayout_14)
+        self.verticalLayout_9.addLayout(self.horizontalLayout_17)
 
         self.tabWidget.addTab(self.tab_player_customization, "")
 
@@ -942,10 +1018,15 @@ class Ui_MainWindow(object):
         self.num_race_mode_dungeons.setItemText(5, QCoreApplication.translate("MainWindow", u"6", None))
 
         self.groupBox_5.setTitle(QCoreApplication.translate("MainWindow", u"Hint Options", None))
-        self.fishmen_hints.setText(QCoreApplication.translate("MainWindow", u"Place Hints on Fishmen", None))
+        self.label_for_num_item_hints.setText(QCoreApplication.translate("MainWindow", u"Item Hints", None))
         self.hoho_hints.setText(QCoreApplication.translate("MainWindow", u"Place Hints on Old Man Ho Ho", None))
-        self.label_for_num_hints.setText(QCoreApplication.translate("MainWindow", u"Hint Count", None))
         self.korl_hints.setText(QCoreApplication.translate("MainWindow", u"Place Hints on King of Red Lions", None))
+        self.fishmen_hints.setText(QCoreApplication.translate("MainWindow", u"Place Hints on Fishmen", None))
+        self.label_for_num_barren_hints.setText(QCoreApplication.translate("MainWindow", u"Barren Hints", None))
+        self.label_for_num_path_hints.setText(QCoreApplication.translate("MainWindow", u"Path Hints", None))
+        self.label_for_num_location_hints.setText(QCoreApplication.translate("MainWindow", u"Location Hints", None))
+        self.clearer_hints.setText(QCoreApplication.translate("MainWindow", u"Clearer Hints", None))
+        self.use_always_hints.setText(QCoreApplication.translate("MainWindow", u"Use Always Hints", None))
         self.groupBox_6.setTitle(QCoreApplication.translate("MainWindow", u"Additional Advanced Options", None))
         self.do_not_generate_spoiler_log.setText(QCoreApplication.translate("MainWindow", u"Do Not Generate Spoiler Log", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("MainWindow", u"Advanced Options", None))

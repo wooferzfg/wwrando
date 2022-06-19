@@ -881,18 +881,35 @@
               <property name="title">
                <string>Hint Options</string>
               </property>
-              <layout class="QGridLayout" name="gridLayout_9">
-               <item row="0" column="0">
-                <widget class="QCheckBox" name="fishmen_hints">
-                 <property name="text">
-                  <string>Place Hints on Fishmen</string>
-                 </property>
-                 <property name="checked">
-                  <bool>true</bool>
-                 </property>
-                </widget>
+              <layout class="QGridLayout" name="gridLayout_7">
+               <item row="2" column="4">
+                <layout class="QHBoxLayout" name="horizontalLayout_12">
+                 <item>
+                  <widget class="QLabel" name="label_for_num_item_hints">
+                   <property name="text">
+                    <string>Item Hints</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QSpinBox" name="num_item_hints">
+                   <property name="minimum">
+                    <number>0</number>
+                   </property>
+                   <property name="maximum">
+                    <number>15</number>
+                   </property>
+                   <property name="value">
+                    <number>15</number>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QWidget" name="widget_10" native="true"/>
+                 </item>
+                </layout>
                </item>
-               <item row="0" column="1">
+               <item row="1" column="2">
                 <widget class="QCheckBox" name="hoho_hints">
                  <property name="text">
                   <string>Place Hints on Old Man Ho Ho</string>
@@ -902,25 +919,63 @@
                  </property>
                 </widget>
                </item>
-               <item row="0" column="3">
-                <layout class="QHBoxLayout" name="horizontalLayout_9">
+               <item row="1" column="3">
+                <widget class="QCheckBox" name="korl_hints">
+                 <property name="text">
+                  <string>Place Hints on King of Red Lions</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QCheckBox" name="fishmen_hints">
+                 <property name="text">
+                  <string>Place Hints on Fishmen</string>
+                 </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="2">
+                <layout class="QHBoxLayout" name="horizontalLayout_10">
                  <item>
-                  <widget class="QLabel" name="label_for_num_hints">
+                  <widget class="QLabel" name="label_for_num_barren_hints">
                    <property name="text">
-                    <string>Hint Count</string>
+                    <string>Barren Hints</string>
                    </property>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QSpinBox" name="num_hints">
+                  <widget class="QSpinBox" name="num_barren_hints">
                    <property name="minimum">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <property name="maximum">
-                    <number>32</number>
+                    <number>15</number>
                    </property>
-                   <property name="value">
-                    <number>20</number>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QWidget" name="widget_7" native="true"/>
+                 </item>
+                </layout>
+               </item>
+               <item row="2" column="1">
+                <layout class="QHBoxLayout" name="horizontalLayout_9">
+                 <item>
+                  <widget class="QLabel" name="label_for_num_path_hints">
+                   <property name="text">
+                    <string>Path Hints</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QSpinBox" name="num_path_hints">
+                   <property name="minimum">
+                    <number>0</number>
+                   </property>
+                   <property name="maximum">
+                    <number>15</number>
                    </property>
                   </widget>
                  </item>
@@ -929,10 +984,41 @@
                  </item>
                 </layout>
                </item>
-               <item row="0" column="2">
-                <widget class="QCheckBox" name="korl_hints">
+               <item row="2" column="3">
+                <layout class="QHBoxLayout" name="horizontalLayout_11">
+                 <item>
+                  <widget class="QLabel" name="label_for_num_location_hints">
+                   <property name="text">
+                    <string>Location Hints</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QSpinBox" name="num_location_hints">
+                   <property name="minimum">
+                    <number>0</number>
+                   </property>
+                   <property name="maximum">
+                    <number>15</number>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QWidget" name="widget_8" native="true"/>
+                 </item>
+                </layout>
+               </item>
+               <item row="3" column="1">
+                <widget class="QCheckBox" name="clearer_hints">
                  <property name="text">
-                  <string>Place Hints on King of Red Lions</string>
+                  <string>Clearer Hints</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="2">
+                <widget class="QCheckBox" name="use_always_hints">
+                 <property name="text">
+                  <string>Use Always Hints</string>
                  </property>
                 </widget>
                </item>
@@ -946,7 +1032,7 @@
               </property>
               <layout class="QGridLayout" name="gridLayout_8">
                <item row="0" column="3">
-                <widget class="QWidget" name="widget_7" native="true"/>
+                <widget class="QWidget" name="widget_12" native="true"/>
                </item>
                <item row="0" column="0">
                 <widget class="QCheckBox" name="do_not_generate_spoiler_log">
@@ -956,10 +1042,10 @@
                 </widget>
                </item>
                <item row="0" column="2">
-                <widget class="QWidget" name="widget_8" native="true"/>
+                <widget class="QWidget" name="widget_11" native="true"/>
                </item>
                <item row="0" column="4">
-                <widget class="QWidget" name="widget_9" native="true"/>
+                <widget class="QWidget" name="widget_13" native="true"/>
                </item>
               </layout>
              </widget>
@@ -987,7 +1073,7 @@
             <item>
              <layout class="QGridLayout" name="gridLayout_5">
               <item row="2" column="0">
-               <layout class="QHBoxLayout" name="horizontalLayout_10">
+               <layout class="QHBoxLayout" name="horizontalLayout_15">
                 <item>
                  <widget class="QLabel" name="label_for_custom_color_preset">
                   <property name="text">
@@ -1001,7 +1087,7 @@
                </layout>
               </item>
               <item row="2" column="1">
-               <layout class="QHBoxLayout" name="horizontalLayout_11">
+               <layout class="QHBoxLayout" name="horizontalLayout_16">
                 <item>
                  <widget class="QPushButton" name="randomize_all_custom_colors_together">
                   <property name="text">
@@ -1019,7 +1105,7 @@
                </layout>
               </item>
               <item row="1" column="0">
-               <layout class="QHBoxLayout" name="horizontalLayout_12">
+               <layout class="QHBoxLayout" name="horizontalLayout_13">
                 <item>
                  <widget class="QLabel" name="label_for_custom_player_model">
                   <property name="text">
@@ -1033,7 +1119,7 @@
                </layout>
               </item>
               <item row="1" column="1">
-               <layout class="QHBoxLayout" name="horizontalLayout_13">
+               <layout class="QHBoxLayout" name="horizontalLayout_14">
                 <item>
                  <widget class="QCheckBox" name="player_in_casual_clothes">
                   <property name="text">
@@ -1083,7 +1169,7 @@
              </widget>
             </item>
             <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_14">
+             <layout class="QHBoxLayout" name="horizontalLayout_17">
               <item>
                <layout class="QVBoxLayout" name="verticalLayout_10">
                 <item>
