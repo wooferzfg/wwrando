@@ -440,6 +440,7 @@ class WWRandomizerWindow(QMainWindow):
     self.save_settings()
     
     self.encode_permalink()
+    self.encode_legacy_permalink()
     
     self.update_total_progress_locations()
   
@@ -466,6 +467,7 @@ class WWRandomizerWindow(QMainWindow):
       )
     
     self.encode_permalink()
+    self.encode_legacy_permalink()
   
   def encode_permalink(self):
     seed = self.settings["seed"]
@@ -522,6 +524,106 @@ class WWRandomizerWindow(QMainWindow):
       permalink += struct.pack(">B", byte)
     base64_encoded_permalink = base64.b64encode(permalink).decode("ascii")
     self.ui.permalink.setText(base64_encoded_permalink)
+  
+  def encode_legacy_permalink(self):
+    LEGACY_REGULAR_ITEMS = [
+      "Telescope",
+      "Magic Armor",
+      "Hero's Charm",
+      "Tingle Tuner",
+      "Grappling Hook",
+      "Power Bracelets",
+      "Iron Boots",
+      "Boomerang",
+      "Hookshot",
+      "Bombs",
+      "Skull Hammer",
+      "Deku Leaf",
+      "Hurricane Spin",
+      "Din's Pearl",
+      "Farore's Pearl",
+      "Nayru's Pearl",
+      "Command Melody",
+      "Earth God's Lyric",
+      "Wind God's Aria",
+      "Spoils Bag",
+      "Bait Bag",
+      "Delivery Bag",
+      "Note to Mom",
+      "Maggie's Letter",
+      "Moblin's Letter",
+      "Cabana Deed",
+      "Ghost Ship Chart",
+      "Empty Bottle",
+      "Magic Meter Upgrade",
+    ]
+    LEGACY_REGULAR_ITEMS.sort()
+    
+    seed = self.settings["seed"]
+    seed = self.sanitize_seed(seed)
+    if not seed:
+      self.ui.legacy_permalink.setText("")
+      return
+    
+    permalink = b""
+    permalink += "1.9.0".encode("ascii")
+    permalink += b"\0"
+    permalink += "A".encode("ascii")
+    permalink += b"\0"
+    
+    bitswriter = PackedBitsWriter()
+    for option_name in OPTIONS:
+      if option_name in NON_PERMALINK_OPTIONS:
+        continue
+      if option_name in [
+        "chest_type_matches_contents",
+        "fishmen_hints", "hoho_hints", "korl_hints",
+        "num_path_hints", "num_barren_hints", "num_location_hints", "num_item_hints",
+        "clearer_hints", "use_always_hints",
+        "random_starting_item",
+      ]:
+        continue
+      
+      value = self.settings[option_name]
+      
+      if option_name == "randomize_enemy_palettes":
+        # Push an extra bit here before this option to account for the removed `disable_tingle_chests_with_tingle_bombs` option.
+        bitswriter.write(int(value), 1)
+        if not self.get_option_value("randomize_enemies"):
+          # Enemy palette randomizer doesn't need to be in the permalink when enemy rando is off.
+          # So just put a 0 bit as a placeholder.
+          value = False
+      
+      widget = getattr(self.ui, option_name)
+      if isinstance(widget, QAbstractButton):
+        bitswriter.write(int(value), 1)
+      elif isinstance(widget, QComboBox):
+        value = widget.currentIndex()
+        assert 0 <= value <= 255
+        bitswriter.write(value, 8)
+      elif isinstance(widget, QSpinBox):
+        box_length = (widget.maximum() - widget.minimum()).bit_length()
+        value = widget.value() - widget.minimum()
+        assert 0 <= value < (2 ** box_length)
+        bitswriter.write(value, box_length)
+      elif widget == self.ui.starting_gear:
+        # randomized_gear is a complement of starting_gear
+        for i in range(len(LEGACY_REGULAR_ITEMS)):
+          bit = LEGACY_REGULAR_ITEMS[i] in value
+          bitswriter.write(bit, 1)
+        unique_progressive_items = list(set(PROGRESSIVE_ITEMS))
+        unique_progressive_items.sort()
+        for item in unique_progressive_items:
+          # No Progressive Sword and there's no more than
+          # 3 of any other Progressive item so two bits per item
+          bitswriter.write(value.count(item), 2)
+    
+    bitswriter.flush()
+    
+    for byte in bitswriter.bytes:
+      permalink += struct.pack(">B", byte)
+    base64_encoded_permalink = base64.b64encode(permalink).decode("ascii")
+    self.ui.legacy_permalink.setText(base64_encoded_permalink)
   
   def decode_permalink(self, base64_encoded_permalink):
     base64_encoded_permalink = base64_encoded_permalink.strip()

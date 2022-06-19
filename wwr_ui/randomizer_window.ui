@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>950</width>
-    <height>690</height>
+    <height>720</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -1255,6 +1255,24 @@
       </item>
       <item>
        <widget class="QLineEdit" name="permalink"/>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_18">
+      <item>
+       <widget class="QLabel" name="label_for_legacy_permalink">
+        <property name="text">
+         <string>1.9.0 Legacy Permalink (copy into tracker):</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="legacy_permalink">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>

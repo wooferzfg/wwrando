@@ -25,7 +25,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(950, 690)
+        MainWindow.resize(950, 720)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout = QVBoxLayout(self.centralwidget)
@@ -880,6 +880,22 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addLayout(self.horizontalLayout)
 
+        self.horizontalLayout_18 = QHBoxLayout()
+        self.horizontalLayout_18.setObjectName(u"horizontalLayout_18")
+        self.label_for_legacy_permalink = QLabel(self.centralwidget)
+        self.label_for_legacy_permalink.setObjectName(u"label_for_legacy_permalink")
+
+        self.horizontalLayout_18.addWidget(self.label_for_legacy_permalink)
+
+        self.legacy_permalink = QLineEdit(self.centralwidget)
+        self.legacy_permalink.setObjectName(u"legacy_permalink")
+        self.legacy_permalink.setReadOnly(True)
+
+        self.horizontalLayout_18.addWidget(self.legacy_permalink)
+
+
+        self.verticalLayout.addLayout(self.horizontalLayout_18)
+
         self.update_checker_label = QLabel(self.centralwidget)
         self.update_checker_label.setObjectName(u"update_checker_label")
         self.update_checker_label.setOpenExternalLinks(True)
@@ -1044,6 +1060,7 @@ class Ui_MainWindow(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_player_customization), QCoreApplication.translate("MainWindow", u"Player Customization", None))
         self.option_description.setText("")
         self.label_for_permalink.setText(QCoreApplication.translate("MainWindow", u"Permalink (copy paste to share your settings):", None))
+        self.label_for_legacy_permalink.setText(QCoreApplication.translate("MainWindow", u"1.9.0 Legacy Permalink (copy into tracker):", None))
         self.update_checker_label.setText(QCoreApplication.translate("MainWindow", u"Checking for updates to the randomizer...", None))
         self.about_button.setText(QCoreApplication.translate("MainWindow", u"About", None))
         self.reset_settings_to_default.setText(QCoreApplication.translate("MainWindow", u"Reset All Settings to Default", None))
