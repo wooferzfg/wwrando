@@ -1031,6 +1031,9 @@
                <string>Additional Advanced Options</string>
               </property>
               <layout class="QGridLayout" name="gridLayout_8">
+               <item row="0" column="2">
+                <widget class="QWidget" name="widget_11" native="true"/>
+               </item>
                <item row="0" column="3">
                 <widget class="QWidget" name="widget_12" native="true"/>
                </item>
@@ -1041,11 +1044,12 @@
                  </property>
                 </widget>
                </item>
-               <item row="0" column="2">
-                <widget class="QWidget" name="widget_11" native="true"/>
-               </item>
-               <item row="0" column="4">
-                <widget class="QWidget" name="widget_13" native="true"/>
+               <item row="0" column="1">
+                <widget class="QCheckBox" name="random_starting_item">
+                 <property name="text">
+                  <string>Random Starting Item</string>
+                 </property>
+                </widget>
                </item>
               </layout>
              </widget>

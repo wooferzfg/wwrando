@@ -703,6 +703,11 @@ class Ui_MainWindow(object):
         self.groupBox_6.setObjectName(u"groupBox_6")
         self.gridLayout_8 = QGridLayout(self.groupBox_6)
         self.gridLayout_8.setObjectName(u"gridLayout_8")
+        self.widget_11 = QWidget(self.groupBox_6)
+        self.widget_11.setObjectName(u"widget_11")
+
+        self.gridLayout_8.addWidget(self.widget_11, 0, 2, 1, 1)
+
         self.widget_12 = QWidget(self.groupBox_6)
         self.widget_12.setObjectName(u"widget_12")
 
@@ -713,15 +718,10 @@ class Ui_MainWindow(object):
 
         self.gridLayout_8.addWidget(self.do_not_generate_spoiler_log, 0, 0, 1, 1)
 
-        self.widget_11 = QWidget(self.groupBox_6)
-        self.widget_11.setObjectName(u"widget_11")
+        self.random_starting_item = QCheckBox(self.groupBox_6)
+        self.random_starting_item.setObjectName(u"random_starting_item")
 
-        self.gridLayout_8.addWidget(self.widget_11, 0, 2, 1, 1)
-
-        self.widget_13 = QWidget(self.groupBox_6)
-        self.widget_13.setObjectName(u"widget_13")
-
-        self.gridLayout_8.addWidget(self.widget_13, 0, 4, 1, 1)
+        self.gridLayout_8.addWidget(self.random_starting_item, 0, 1, 1, 1)
 
 
         self.verticalLayout_8.addWidget(self.groupBox_6)
@@ -1029,6 +1029,7 @@ class Ui_MainWindow(object):
         self.use_always_hints.setText(QCoreApplication.translate("MainWindow", u"Use Always Hints", None))
         self.groupBox_6.setTitle(QCoreApplication.translate("MainWindow", u"Additional Advanced Options", None))
         self.do_not_generate_spoiler_log.setText(QCoreApplication.translate("MainWindow", u"Do Not Generate Spoiler Log", None))
+        self.random_starting_item.setText(QCoreApplication.translate("MainWindow", u"Random Starting Item", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("MainWindow", u"Advanced Options", None))
         self.label_for_custom_color_preset.setText(QCoreApplication.translate("MainWindow", u"Color Preset", None))
         self.randomize_all_custom_colors_together.setText(QCoreApplication.translate("MainWindow", u"Randomize Colors Orderly", None))
