@@ -139,6 +139,9 @@
                  <property name="text">
                   <string>Short Sidequests</string>
                  </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
                 </widget>
                </item>
                <item row="9" column="1">
@@ -198,18 +201,12 @@
                  <property name="text">
                   <string>Expensive Purchases</string>
                  </property>
-                 <property name="checked">
-                  <bool>true</bool>
-                 </property>
                 </widget>
                </item>
                <item row="1" column="0">
                 <widget class="QCheckBox" name="progression_great_fairies">
                  <property name="text">
                   <string>Great Fairies</string>
-                 </property>
-                 <property name="checked">
-                  <bool>true</bool>
                  </property>
                 </widget>
                </item>
@@ -269,6 +266,9 @@
                  <property name="text">
                   <string>Mail</string>
                  </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
                 </widget>
                </item>
                <item row="1" column="3">
@@ -282,6 +282,9 @@
                 <widget class="QCheckBox" name="progression_island_puzzles">
                  <property name="text">
                   <string>Island Puzzles</string>
+                 </property>
+                 <property name="checked">
+                  <bool>true</bool>
                  </property>
                 </widget>
                </item>
@@ -390,6 +393,9 @@
                 <widget class="QCheckBox" name="chest_type_matches_contents">
                  <property name="text">
                   <string>Chest Type Matches Contents</string>
+                 </property>
+                 <property name="checked">
+                  <bool>true</bool>
                  </property>
                 </widget>
                </item>
@@ -500,6 +506,9 @@
                  <property name="text">
                   <string>Randomize Starting Island</string>
                  </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
                 </widget>
                </item>
                <item row="1" column="3">
@@ -586,6 +595,9 @@
                 <widget class="QCheckBox" name="add_shortcut_warps_between_dungeons">
                  <property name="text">
                   <string>Add Shortcut Warps Between Dungeons</string>
+                 </property>
+                 <property name="checked">
+                  <bool>true</bool>
                  </property>
                 </widget>
                </item>
@@ -799,6 +811,9 @@
                  <property name="text">
                   <string>Race Mode</string>
                  </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
                 </widget>
                </item>
                <item row="0" column="1">
@@ -831,7 +846,7 @@
                     </size>
                    </property>
                    <property name="currentIndex">
-                    <number>3</number>
+                    <number>2</number>
                    </property>
                    <item>
                     <property name="text">
@@ -897,10 +912,7 @@
                     <number>0</number>
                    </property>
                    <property name="maximum">
-                    <number>15</number>
-                   </property>
-                   <property name="value">
-                    <number>15</number>
+                    <number>7</number>
                    </property>
                   </widget>
                  </item>
@@ -914,9 +926,6 @@
                  <property name="text">
                   <string>Place Hints on Old Man Ho Ho</string>
                  </property>
-                 <property name="checked">
-                  <bool>true</bool>
-                 </property>
                 </widget>
                </item>
                <item row="1" column="3">
@@ -924,15 +933,15 @@
                  <property name="text">
                   <string>Place Hints on King of Red Lions</string>
                  </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
                 </widget>
                </item>
                <item row="1" column="1">
                 <widget class="QCheckBox" name="fishmen_hints">
                  <property name="text">
                   <string>Place Hints on Fishmen</string>
-                 </property>
-                 <property name="checked">
-                  <bool>true</bool>
                  </property>
                 </widget>
                </item>
@@ -951,7 +960,10 @@
                     <number>0</number>
                    </property>
                    <property name="maximum">
-                    <number>15</number>
+                    <number>7</number>
+                   </property>
+                   <property name="value">
+                    <number>4</number>
                    </property>
                   </widget>
                  </item>
@@ -975,7 +987,10 @@
                     <number>0</number>
                    </property>
                    <property name="maximum">
-                    <number>15</number>
+                    <number>7</number>
+                   </property>
+                   <property name="value">
+                    <number>4</number>
                    </property>
                   </widget>
                  </item>
@@ -999,7 +1014,10 @@
                     <number>0</number>
                    </property>
                    <property name="maximum">
-                    <number>15</number>
+                    <number>7</number>
+                   </property>
+                   <property name="value">
+                    <number>7</number>
                    </property>
                   </widget>
                  </item>
@@ -1013,12 +1031,18 @@
                  <property name="text">
                   <string>Clearer Hints</string>
                  </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
                 </widget>
                </item>
                <item row="3" column="2">
                 <widget class="QCheckBox" name="use_always_hints">
                  <property name="text">
                   <string>Use Always Hints</string>
+                 </property>
+                 <property name="checked">
+                  <bool>true</bool>
                  </property>
                 </widget>
                </item>
@@ -1042,12 +1066,18 @@
                  <property name="text">
                   <string>Do Not Generate Spoiler Log</string>
                  </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
                 </widget>
                </item>
                <item row="0" column="1">
                 <widget class="QCheckBox" name="random_starting_item">
                  <property name="text">
                   <string>Random Starting Item</string>
+                 </property>
+                 <property name="checked">
+                  <bool>true</bool>
                  </property>
                 </widget>
                </item>

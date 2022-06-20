@@ -119,6 +119,7 @@ class Ui_MainWindow(object):
 
         self.progression_short_sidequests = QCheckBox(self.groupBox)
         self.progression_short_sidequests.setObjectName(u"progression_short_sidequests")
+        self.progression_short_sidequests.setChecked(True)
 
         self.gridLayout_2.addWidget(self.progression_short_sidequests, 4, 0, 1, 1)
 
@@ -160,13 +161,11 @@ class Ui_MainWindow(object):
 
         self.progression_expensive_purchases = QCheckBox(self.groupBox)
         self.progression_expensive_purchases.setObjectName(u"progression_expensive_purchases")
-        self.progression_expensive_purchases.setChecked(True)
 
         self.gridLayout_2.addWidget(self.progression_expensive_purchases, 6, 2, 1, 1)
 
         self.progression_great_fairies = QCheckBox(self.groupBox)
         self.progression_great_fairies.setObjectName(u"progression_great_fairies")
-        self.progression_great_fairies.setChecked(True)
 
         self.gridLayout_2.addWidget(self.progression_great_fairies, 1, 0, 1, 1)
 
@@ -205,6 +204,7 @@ class Ui_MainWindow(object):
 
         self.progression_mail = QCheckBox(self.groupBox)
         self.progression_mail.setObjectName(u"progression_mail")
+        self.progression_mail.setChecked(True)
 
         self.gridLayout_2.addWidget(self.progression_mail, 4, 3, 1, 1)
 
@@ -215,6 +215,7 @@ class Ui_MainWindow(object):
 
         self.progression_island_puzzles = QCheckBox(self.groupBox)
         self.progression_island_puzzles.setObjectName(u"progression_island_puzzles")
+        self.progression_island_puzzles.setChecked(True)
 
         self.gridLayout_2.addWidget(self.progression_island_puzzles, 6, 3, 1, 1)
 
@@ -282,6 +283,7 @@ class Ui_MainWindow(object):
 
         self.chest_type_matches_contents = QCheckBox(self.groupBox_2)
         self.chest_type_matches_contents.setObjectName(u"chest_type_matches_contents")
+        self.chest_type_matches_contents.setChecked(True)
 
         self.gridLayout_3.addWidget(self.chest_type_matches_contents, 2, 0, 1, 1)
 
@@ -339,6 +341,7 @@ class Ui_MainWindow(object):
 
         self.randomize_starting_island = QCheckBox(self.groupBox_2)
         self.randomize_starting_island.setObjectName(u"randomize_starting_island")
+        self.randomize_starting_island.setChecked(True)
 
         self.gridLayout_3.addWidget(self.randomize_starting_island, 1, 2, 1, 1)
 
@@ -396,6 +399,7 @@ class Ui_MainWindow(object):
 
         self.add_shortcut_warps_between_dungeons = QCheckBox(self.groupBox_3)
         self.add_shortcut_warps_between_dungeons.setObjectName(u"add_shortcut_warps_between_dungeons")
+        self.add_shortcut_warps_between_dungeons.setChecked(True)
 
         self.gridLayout_4.addWidget(self.add_shortcut_warps_between_dungeons, 1, 1, 1, 1)
 
@@ -534,6 +538,7 @@ class Ui_MainWindow(object):
 
         self.race_mode = QCheckBox(self.groupBox_4)
         self.race_mode.setObjectName(u"race_mode")
+        self.race_mode.setChecked(True)
 
         self.gridLayout_6.addWidget(self.race_mode, 0, 0, 1, 1)
 
@@ -590,8 +595,7 @@ class Ui_MainWindow(object):
         self.num_item_hints = QSpinBox(self.groupBox_5)
         self.num_item_hints.setObjectName(u"num_item_hints")
         self.num_item_hints.setMinimum(0)
-        self.num_item_hints.setMaximum(15)
-        self.num_item_hints.setValue(15)
+        self.num_item_hints.setMaximum(7)
 
         self.horizontalLayout_12.addWidget(self.num_item_hints)
 
@@ -605,18 +609,17 @@ class Ui_MainWindow(object):
 
         self.hoho_hints = QCheckBox(self.groupBox_5)
         self.hoho_hints.setObjectName(u"hoho_hints")
-        self.hoho_hints.setChecked(True)
 
         self.gridLayout_7.addWidget(self.hoho_hints, 1, 2, 1, 1)
 
         self.korl_hints = QCheckBox(self.groupBox_5)
         self.korl_hints.setObjectName(u"korl_hints")
+        self.korl_hints.setChecked(True)
 
         self.gridLayout_7.addWidget(self.korl_hints, 1, 3, 1, 1)
 
         self.fishmen_hints = QCheckBox(self.groupBox_5)
         self.fishmen_hints.setObjectName(u"fishmen_hints")
-        self.fishmen_hints.setChecked(True)
 
         self.gridLayout_7.addWidget(self.fishmen_hints, 1, 1, 1, 1)
 
@@ -630,7 +633,8 @@ class Ui_MainWindow(object):
         self.num_barren_hints = QSpinBox(self.groupBox_5)
         self.num_barren_hints.setObjectName(u"num_barren_hints")
         self.num_barren_hints.setMinimum(0)
-        self.num_barren_hints.setMaximum(15)
+        self.num_barren_hints.setMaximum(7)
+        self.num_barren_hints.setValue(4)
 
         self.horizontalLayout_10.addWidget(self.num_barren_hints)
 
@@ -652,7 +656,8 @@ class Ui_MainWindow(object):
         self.num_path_hints = QSpinBox(self.groupBox_5)
         self.num_path_hints.setObjectName(u"num_path_hints")
         self.num_path_hints.setMinimum(0)
-        self.num_path_hints.setMaximum(15)
+        self.num_path_hints.setMaximum(7)
+        self.num_path_hints.setValue(4)
 
         self.horizontalLayout_9.addWidget(self.num_path_hints)
 
@@ -674,7 +679,8 @@ class Ui_MainWindow(object):
         self.num_location_hints = QSpinBox(self.groupBox_5)
         self.num_location_hints.setObjectName(u"num_location_hints")
         self.num_location_hints.setMinimum(0)
-        self.num_location_hints.setMaximum(15)
+        self.num_location_hints.setMaximum(7)
+        self.num_location_hints.setValue(7)
 
         self.horizontalLayout_11.addWidget(self.num_location_hints)
 
@@ -688,11 +694,13 @@ class Ui_MainWindow(object):
 
         self.clearer_hints = QCheckBox(self.groupBox_5)
         self.clearer_hints.setObjectName(u"clearer_hints")
+        self.clearer_hints.setChecked(True)
 
         self.gridLayout_7.addWidget(self.clearer_hints, 3, 1, 1, 1)
 
         self.use_always_hints = QCheckBox(self.groupBox_5)
         self.use_always_hints.setObjectName(u"use_always_hints")
+        self.use_always_hints.setChecked(True)
 
         self.gridLayout_7.addWidget(self.use_always_hints, 3, 2, 1, 1)
 
@@ -715,11 +723,13 @@ class Ui_MainWindow(object):
 
         self.do_not_generate_spoiler_log = QCheckBox(self.groupBox_6)
         self.do_not_generate_spoiler_log.setObjectName(u"do_not_generate_spoiler_log")
+        self.do_not_generate_spoiler_log.setChecked(True)
 
         self.gridLayout_8.addWidget(self.do_not_generate_spoiler_log, 0, 0, 1, 1)
 
         self.random_starting_item = QCheckBox(self.groupBox_6)
         self.random_starting_item.setObjectName(u"random_starting_item")
+        self.random_starting_item.setChecked(True)
 
         self.gridLayout_8.addWidget(self.random_starting_item, 0, 1, 1, 1)
 
@@ -936,7 +946,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         self.tabWidget.setCurrentIndex(0)
-        self.num_race_mode_dungeons.setCurrentIndex(3)
+        self.num_race_mode_dungeons.setCurrentIndex(2)
 
 
         QMetaObject.connectSlotsByName(MainWindow)

@@ -185,7 +185,7 @@ class Randomizer:
     
     # Start the player with an extra item, pulled uniformly at random from the list below.
     if self.options.get("random_starting_item"):
-      random_starting_items = ["Bombs", "Boomerang", "Deku Leaf", "Grappling Hook", "Hookshot", "Power Bracelets", "Progressive Bow", "Skull Hammer"]
+      random_starting_items = ["Bombs", "Boomerang", "Deku Leaf", "Grappling Hook", "Hookshot", "Power Bracelets", "Progressive Bow", "Skull Hammer", "Bait Bag", "Delivery Bag", "Progressive Picto Box"]
       while random_starting_items:
         item_name = self.rng.choice(random_starting_items)
         random_starting_items.remove(item_name)
