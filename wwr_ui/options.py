@@ -110,7 +110,7 @@ OPTIONS = OrderedDict([
   ),
   (
     "random_starting_item",
-    "Randomly start with one extra item, selected uniformly at random from the item pool below.\nItem Pool: Bombs, Boomerang, Bow, Deku Leaf, Grappling Hook, Hookshot, Power Bracelets, and Skull Hammer"
+    "Randomly start with one extra item, selected uniformly at random from the item pool below.\nItem Pool: Bait Bag, Bombs, Boomerang, Bow, Deku Leaf, Delivery Bag, Grappling Hook, Hookshot, Picto Box, Power Bracelets, and Skull Hammer"
   ),
   (
     "chest_type_matches_contents",
