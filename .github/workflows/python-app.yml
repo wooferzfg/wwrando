@@ -57,7 +57,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: wwrando-${{ steps.vars.outputs.full_version }}-windows-${{ matrix.architecture }}
-          path: dist/release_archive_${{ steps.vars.outputs.full_version }}_${{ matrix.architecture }}/*
+          path: dist/release_archive_${{ github.event.inputs.version }}_${{ matrix.architecture }}/*
 
   macos:
     runs-on: macos-latest
@@ -112,7 +112,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: wwrando-${{ steps.vars.outputs.full_version }}-macos-${{ matrix.architecture }}
-          path: dist/release_archive_${{ steps.vars.outputs.full_version }}_${{ matrix.architecture }}.zip
+          path: dist/release_archive_${{ github.event.inputs.version }}_${{ matrix.architecture }}.zip
 
   linux:
     runs-on: ubuntu-latest
@@ -158,4 +158,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: wwrando-${{ steps.vars.outputs.full_version }}-linux-${{ matrix.architecture }}
-          path: dist/release_archive_${{ steps.vars.outputs.full_version }}_${{ matrix.architecture }}/*
+          path: dist/release_archive_${{ github.event.inputs.version }}_${{ matrix.architecture }}/*
