@@ -49,10 +49,6 @@ jobs:
           GIT_SHA_SHORT=$(git rev-parse --short=7 ${{ github.sha }})
           echo "full_version=${USER_INPUT_VERSION:-$TXT_VERSION-$GIT_SHA_SHORT}" >> $GITHUB_OUTPUT
         shell: bash
-      - name: Set version
-        id: version
-        run: |
-          echo "${{ steps.vars.outputs.full_version }}" > version.txt
       - name: Build Windows App
         run: python -m PyInstaller --log-level=WARN wwrando.spec
       - name: Bundle Windows App
@@ -106,10 +102,6 @@ jobs:
           TXT_VERSION=$(cat version.txt)
           GIT_SHA_SHORT=$(git rev-parse --short=7 ${{ github.sha }})
           echo "full_version=${USER_INPUT_VERSION:-$TXT_VERSION-$GIT_SHA_SHORT}" >> $GITHUB_OUTPUT
-      - name: Set version
-        id: version
-        run: |
-          echo "${{ steps.vars.outputs.full_version }}" > version.txt
       - name: Build MacOS App
         run: python3 -m PyInstaller --log-level=WARN wwrando.spec
         shell: bash -l {0}
@@ -158,10 +150,6 @@ jobs:
           TXT_VERSION=$(cat version.txt)
           GIT_SHA_SHORT=$(git rev-parse --short=7 ${{ github.sha }})
           echo "full_version=${USER_INPUT_VERSION:-$TXT_VERSION-$GIT_SHA_SHORT}" >> $GITHUB_OUTPUT
-      - name: Set version
-        id: version
-        run: |
-          echo "${{ steps.vars.outputs.full_version }}" > version.txt
       - name: Build Linux App
         run: python -m PyInstaller --log-level=WARN wwrando.spec
       - name: Bundle Linux App
