@@ -214,8 +214,10 @@ OPTIONS = OrderedDict([
     "remove_title_and_ending_videos",
     "Removes the two prerendered videos that play if you wait on the title screen and after you beat the game. (Decreases randomized ISO's filesize by about 600MB.)\nIf you keep these videos in, they won't reflect your custom player model or colors.",
   ),
-  
-  
+  (
+    "instant_ko",
+    "Link becomes easily killable, by many things."
+  ),
   (
     "custom_player_model",
     "Replaces Link's model with a custom player model.\nThese are loaded from the /models folder."
@@ -271,6 +273,7 @@ NON_PERMALINK_OPTIONS = [
   "disable_custom_player_items",
   "custom_color_preset",
   "remove_title_and_ending_videos",
+  "instant_ko"
   "plando_race",
   # Note: Options that affect music must be included in the permalink because music duration affects gameplay in some cases, like not being allowed to close the item get textbox until the item get jingle has finished playing.
   # Note: randomize_enemy_palettes has special logic to be in the permalink when enemy rando is on, but otherwise just have an unused placeholder in the permalink.
