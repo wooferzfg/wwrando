@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>950</width>
-    <height>690</height>
+    <width>999</width>
+    <height>707</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -28,8 +28,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>915</width>
-         <height>558</height>
+         <width>981</width>
+         <height>568</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -517,86 +517,151 @@
               <property name="title">
                <string>Convenience Tweaks</string>
               </property>
-              <layout class="QGridLayout" name="gridLayout_4">
-               <item row="0" column="3">
-                <widget class="QCheckBox" name="invert_camera_x_axis">
-                 <property name="text">
-                  <string>Invert Camera X-Axis</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="0">
-                <widget class="QCheckBox" name="swift_sail">
-                 <property name="text">
-                  <string>Swift Sail</string>
-                 </property>
-                 <property name="checked">
-                  <bool>true</bool>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="3">
-                <widget class="QCheckBox" name="remove_music">
-                 <property name="text">
-                  <string>Remove Music</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="2">
-                <widget class="QCheckBox" name="reveal_full_sea_chart">
-                 <property name="text">
-                  <string>Reveal Full Sea Chart</string>
-                 </property>
-                 <property name="checked">
-                  <bool>true</bool>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="1">
-                <widget class="QCheckBox" name="instant_text_boxes">
-                 <property name="text">
-                  <string>Instant Text Boxes</string>
-                 </property>
-                 <property name="checked">
-                  <bool>true</bool>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="2">
-                <widget class="QCheckBox" name="remove_title_and_ending_videos">
-                 <property name="text">
-                  <string>Remove Title and Ending Videos</string>
-                 </property>
-                 <property name="checked">
-                  <bool>true</bool>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="0">
-                <widget class="QCheckBox" name="skip_rematch_bosses">
-                 <property name="text">
-                  <string>Skip Boss Rematches</string>
-                 </property>
-                 <property name="checked">
-                  <bool>true</bool>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="1">
-                <widget class="QCheckBox" name="add_shortcut_warps_between_dungeons">
-                 <property name="text">
-                  <string>Add Shortcut Warps Between Dungeons</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="0">
-                <widget class="QCheckBox" name="invert_sea_compass_x_axis">
-                 <property name="text">
-                  <string>Invert Sea Compass X-Axis</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
+              <widget class="QCheckBox" name="invert_camera_x_axis">
+               <property name="geometry">
+                <rect>
+                 <x>719</x>
+                 <y>26</y>
+                 <width>134</width>
+                 <height>20</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Invert Camera X-Axis</string>
+               </property>
+              </widget>
+              <widget class="QCheckBox" name="swift_sail">
+               <property name="geometry">
+                <rect>
+                 <x>10</x>
+                 <y>26</y>
+                 <width>71</width>
+                 <height>20</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Swift Sail</string>
+               </property>
+               <property name="checked">
+                <bool>true</bool>
+               </property>
+              </widget>
+              <widget class="QCheckBox" name="remove_music">
+               <property name="geometry">
+                <rect>
+                 <x>719</x>
+                 <y>52</y>
+                 <width>100</width>
+                 <height>20</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Remove Music</string>
+               </property>
+              </widget>
+              <widget class="QCheckBox" name="reveal_full_sea_chart">
+               <property name="geometry">
+                <rect>
+                 <x>486</x>
+                 <y>26</y>
+                 <width>133</width>
+                 <height>20</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Reveal Full Sea Chart</string>
+               </property>
+               <property name="checked">
+                <bool>true</bool>
+               </property>
+              </widget>
+              <widget class="QCheckBox" name="instant_text_boxes">
+               <property name="geometry">
+                <rect>
+                 <x>244</x>
+                 <y>26</y>
+                 <width>118</width>
+                 <height>20</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Instant Text Boxes</string>
+               </property>
+               <property name="checked">
+                <bool>true</bool>
+               </property>
+              </widget>
+              <widget class="QCheckBox" name="remove_title_and_ending_videos">
+               <property name="geometry">
+                <rect>
+                 <x>486</x>
+                 <y>52</y>
+                 <width>194</width>
+                 <height>20</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Remove Title and Ending Videos</string>
+               </property>
+               <property name="checked">
+                <bool>true</bool>
+               </property>
+              </widget>
+              <widget class="QCheckBox" name="skip_rematch_bosses">
+               <property name="geometry">
+                <rect>
+                 <x>10</x>
+                 <y>52</y>
+                 <width>134</width>
+                 <height>20</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Skip Boss Rematches</string>
+               </property>
+               <property name="checked">
+                <bool>true</bool>
+               </property>
+              </widget>
+              <widget class="QCheckBox" name="add_shortcut_warps_between_dungeons">
+               <property name="geometry">
+                <rect>
+                 <x>244</x>
+                 <y>52</y>
+                 <width>236</width>
+                 <height>20</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Add Shortcut Warps Between Dungeons</string>
+               </property>
+              </widget>
+              <widget class="QCheckBox" name="invert_sea_compass_x_axis">
+               <property name="geometry">
+                <rect>
+                 <x>10</x>
+                 <y>78</y>
+                 <width>163</width>
+                 <height>20</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Invert Sea Compass X-Axis</string>
+               </property>
+              </widget>
+              <widget class="QCheckBox" name="instant_ko">
+               <property name="geometry">
+                <rect>
+                 <x>244</x>
+                 <y>78</y>
+                 <width>241</width>
+                 <height>20</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Instant Ko</string>
+               </property>
+              </widget>
              </widget>
             </item>
            </layout>

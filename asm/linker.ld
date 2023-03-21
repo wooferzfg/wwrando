@@ -31,6 +31,8 @@ item_func_boss_key__Fv = 0x800c3fc8;
 item_func_map__Fv = 0x800c3f68;
 item_func_compass__Fv = 0x800c3f98;
 
+gameInfo_mPlay_mCurrHP = 0x803C4C0A;
+
 onEventBit__11dSv_event_cFUs = 0x8005cb04;
 isEventBit__11dSv_event_cFUs = 0x8005cb34;
 getEventReg__11dSv_event_cFUs = 0x8005cb7c;
