@@ -2,9 +2,9 @@ name: Build
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, plando ]
   pull_request:
-    branches: [ master ]
+    branches: [ master, plando ]
   workflow_dispatch:
     inputs:
       version:
