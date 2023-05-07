@@ -62,13 +62,13 @@ exe = EXE(pyz,
           icon="assets/icon.ico" )
 
 app = BUNDLE(exe,
-          name='Wind Waker Randomizer.app',
+          name='Wind Waker Plandomizer.app',
           icon="assets/icon.icns",
           bundle_identifier=None,
           info_plist={
               "LSBackgroundOnly": False,
-              "CFBundleDisplayName": "Wind Waker Randomizer",
-              "CFBundleName": "WW Randomizer", # 15 character maximum
+              "CFBundleDisplayName": "Wind Waker Plandomizer",
+              "CFBundleName": "WW Plandomizer", # 15 character maximum
               "CFBundleShortVersionString": randomizer_version,
           }
           )
