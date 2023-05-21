@@ -51,7 +51,7 @@ class Logic:
   initial_item_locations = None
   initial_macros = None
   
-  def __init__(self, rando):
+  def __init__(self, rando, plando_file):
     self.rando = rando
     self.requirement_met_cache = {}
     self.plando_file = plando_file

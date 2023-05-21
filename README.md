@@ -6,7 +6,7 @@ This is a modified version of the randomizer for The Legend of Zelda: The Wind W
 
 ### Plando File Example
 ```
-Permalink: MC4xLjUAd29vZmVycGxhbmRvNQD//z8Cf5DAAwAAQAAAAWsA
+Permalink: MS4xMC4wAEEAFQMiApPowAMEsACCcQ8AAMkHAQAA
 
 Locations:
     Dragon Roost Cavern - Boarded Up Chest: Command Melody

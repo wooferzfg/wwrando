@@ -98,8 +98,9 @@ class HintManager:
     self.rando = rando
     self.logic = rando.logic
     self.options = rando.options
+    self.plando = rando.plando
     
-    self.path_logic = Logic(self.rando)
+    self.path_logic = Logic(self.rando, self.plando)
     self.path_logic_initial_state = self.path_logic.save_simulated_playthrough_state()
     
     # Define instance variable shortcuts for hint distribution options.
