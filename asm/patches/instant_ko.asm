@@ -1,3 +1,4 @@
+.open "sys/main.dol"
 .org @NextFreeSpace
 .global kill_link_on_crash
   kill_link_on_crash:
