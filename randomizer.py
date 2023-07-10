@@ -395,6 +395,8 @@ class Randomizer:
         tweaks.enable_developer_mode(self)
       if self.heap_display:
         tweaks.enable_heap_display(self)
+      if self.options.get("instant_ko"):
+        patcher.apply_patch(self, "instant_ko")
       
       if self.test_room_args is not None:
         tweaks.test_room(self)
@@ -405,6 +407,7 @@ class Randomizer:
     if self.options.get("randomize_charts"):
       self.reset_rng()
       charts.randomize_charts(self)
+
     
     if self.options.get("randomize_starting_island"):
       self.reset_rng()

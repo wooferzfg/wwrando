@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'randomizer_window.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.4.0
+## Created by: Qt User Interface Compiler version 6.2.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -26,7 +26,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(950, 750)
+        MainWindow.resize(999, 750)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout = QVBoxLayout(self.centralwidget)
@@ -37,7 +37,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 915, 558))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 981, 568))
         self.verticalLayout_2 = QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
@@ -94,6 +94,22 @@ class Ui_MainWindow(object):
         self.clean_iso_path_browse_button.setObjectName(u"clean_iso_path_browse_button")
 
         self.gridLayout.addWidget(self.clean_iso_path_browse_button, 0, 2, 1, 1)
+
+        self.plando_text_label = QLabel(self.tab_randomizer_settings)
+        self.plando_text_label.setObjectName("plando_text_label")
+        self.gridLayout.addWidget(self.plando_text_label, 3, 0, 1, 1)
+        self.plando_text_path = QLineEdit(self.tab_randomizer_settings)
+        self.plando_text_path.setObjectName("plando_text_path")
+        self.gridLayout.addWidget(self.plando_text_path, 3, 1, 1, 1)
+        self.plando_text_browse_button = QPushButton(self.tab_randomizer_settings)
+        self.plando_text_browse_button.setObjectName("plando_text_browse_button")
+        self.gridLayout.addWidget(self.plando_text_browse_button, 3, 2, 1, 1)
+        self.plando_test_path_spacer1 = QSpacerItem(20, 50, QSizePolicy.Minimum, QSizePolicy.Maximum)
+        self.plando_test_path_spacer2 = QSpacerItem(20, 50, QSizePolicy.Minimum, QSizePolicy.Maximum)
+        self.plando_test_path_spacer3 = QSpacerItem(20, 50, QSizePolicy.Minimum, QSizePolicy.Maximum)
+        self.gridLayout.addItem(self.plando_test_path_spacer1, 3, 0, 1, 1)
+        self.gridLayout.addItem(self.plando_test_path_spacer2, 3, 1, 1, 1)
+        self.gridLayout.addItem(self.plando_test_path_spacer3, 3, 2, 1, 1)
 
         self.plando_text_label = QLabel(self.tab_randomizer_settings)
         self.plando_text_label.setObjectName("plando_text_label")
@@ -368,57 +384,41 @@ class Ui_MainWindow(object):
 
         self.groupBox_3 = QGroupBox(self.tab_randomizer_settings)
         self.groupBox_3.setObjectName(u"groupBox_3")
-        self.gridLayout_4 = QGridLayout(self.groupBox_3)
-        self.gridLayout_4.setObjectName(u"gridLayout_4")
         self.invert_camera_x_axis = QCheckBox(self.groupBox_3)
         self.invert_camera_x_axis.setObjectName(u"invert_camera_x_axis")
-
-        self.gridLayout_4.addWidget(self.invert_camera_x_axis, 0, 3, 1, 1)
-
+        self.invert_camera_x_axis.setGeometry(QRect(719, 26, 134, 20))
         self.swift_sail = QCheckBox(self.groupBox_3)
         self.swift_sail.setObjectName(u"swift_sail")
+        self.swift_sail.setGeometry(QRect(10, 26, 71, 20))
         self.swift_sail.setChecked(True)
-
-        self.gridLayout_4.addWidget(self.swift_sail, 0, 0, 1, 1)
-
         self.remove_music = QCheckBox(self.groupBox_3)
         self.remove_music.setObjectName(u"remove_music")
-
-        self.gridLayout_4.addWidget(self.remove_music, 1, 3, 1, 1)
-
+        self.remove_music.setGeometry(QRect(719, 52, 100, 20))
         self.reveal_full_sea_chart = QCheckBox(self.groupBox_3)
         self.reveal_full_sea_chart.setObjectName(u"reveal_full_sea_chart")
+        self.reveal_full_sea_chart.setGeometry(QRect(486, 26, 133, 20))
         self.reveal_full_sea_chart.setChecked(True)
-
-        self.gridLayout_4.addWidget(self.reveal_full_sea_chart, 0, 2, 1, 1)
-
         self.instant_text_boxes = QCheckBox(self.groupBox_3)
         self.instant_text_boxes.setObjectName(u"instant_text_boxes")
+        self.instant_text_boxes.setGeometry(QRect(244, 26, 118, 20))
         self.instant_text_boxes.setChecked(True)
-
-        self.gridLayout_4.addWidget(self.instant_text_boxes, 0, 1, 1, 1)
-
         self.remove_title_and_ending_videos = QCheckBox(self.groupBox_3)
         self.remove_title_and_ending_videos.setObjectName(u"remove_title_and_ending_videos")
+        self.remove_title_and_ending_videos.setGeometry(QRect(486, 52, 194, 20))
         self.remove_title_and_ending_videos.setChecked(True)
-
-        self.gridLayout_4.addWidget(self.remove_title_and_ending_videos, 1, 2, 1, 1)
-
         self.skip_rematch_bosses = QCheckBox(self.groupBox_3)
         self.skip_rematch_bosses.setObjectName(u"skip_rematch_bosses")
+        self.skip_rematch_bosses.setGeometry(QRect(10, 52, 134, 20))
         self.skip_rematch_bosses.setChecked(True)
-
-        self.gridLayout_4.addWidget(self.skip_rematch_bosses, 1, 0, 1, 1)
-
         self.add_shortcut_warps_between_dungeons = QCheckBox(self.groupBox_3)
         self.add_shortcut_warps_between_dungeons.setObjectName(u"add_shortcut_warps_between_dungeons")
-
-        self.gridLayout_4.addWidget(self.add_shortcut_warps_between_dungeons, 1, 1, 1, 1)
-
+        self.add_shortcut_warps_between_dungeons.setGeometry(QRect(244, 52, 236, 20))
         self.invert_sea_compass_x_axis = QCheckBox(self.groupBox_3)
         self.invert_sea_compass_x_axis.setObjectName(u"invert_sea_compass_x_axis")
-
-        self.gridLayout_4.addWidget(self.invert_sea_compass_x_axis, 2, 0, 1, 1)
+        self.invert_sea_compass_x_axis.setGeometry(QRect(10, 78, 163, 20))
+        self.instant_ko = QCheckBox(self.groupBox_3)
+        self.instant_ko.setObjectName(u"instant_ko")
+        self.instant_ko.setGeometry(QRect(244, 78, 241, 20))
 
         self.verticalLayout_3.addWidget(self.groupBox_3)
 
@@ -1104,6 +1104,7 @@ class Ui_MainWindow(object):
         self.skip_rematch_bosses.setText(QCoreApplication.translate("MainWindow", u"Skip Boss Rematches", None))
         self.add_shortcut_warps_between_dungeons.setText(QCoreApplication.translate("MainWindow", u"Add Shortcut Warps Between Dungeons", None))
         self.invert_sea_compass_x_axis.setText(QCoreApplication.translate("MainWindow", u"Invert Sea Compass X-Axis", None))
+        self.instant_ko.setText(QCoreApplication.translate("MainWindow", u"Instant KO", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_randomizer_settings), QCoreApplication.translate("MainWindow", u"Randomizer Settings", None))
         self.label_for_randomized_gear.setText(QCoreApplication.translate("MainWindow", u"Randomized Gear", None))
         self.remove_gear.setText(QCoreApplication.translate("MainWindow", u"<-", None))
