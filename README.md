@@ -1,63 +1,157 @@
+### About
 
-# Wind Waker Randomizer
+This is a modified version of the randomizer for The Legend of Zelda: The Wind Waker, where all item locations are planned in advance.
 
-This is a randomizer for The Legend of Zelda: The Wind Waker.  
-It randomizes all the items in the game so that each playthrough is unique and you never know where a particular item will be.  
-It also makes the game completely open world from the start, removes most cutscenes from the game, and increases sailing speed and text speed.
+**You can download the plandomizer here: https://github.com/wooferzfg/wwrando/releases/latest**
 
-If you're new here, check out the official website for details on how to get started playing: https://lagolunatic.github.io/wwrando/
+### Plando File Example
+```
+Permalink: MS4xMC4wXzVmMWJhZTYAQQBJEFAYAAD7AugSAAAAAAgABAEAAA==
 
-Or you can download the randomizer here: https://github.com/LagoLunatic/wwrando/releases/latest
+Locations:
+    Dragon Roost Cavern - Boarded Up Chest: Command Melody
+    Dragon Roost Cavern - Chest Across Lava Pit: Grappling Hook
+    Dragon Roost Cavern - Dark Room: Power Bracelets
+    Dragon Roost Cavern - Pot Room Chest: DRC Small Key
+    Dragon Roost Cavern - Miniboss: DRC Small Key
+    Dragon Roost Cavern - Big Key Chest: Hookshot
+    Tower of the Gods - Stone Tablet: Skull Hammer
+    Tower of the Gods - Skulls Room Chest: TotG Small Key
+    Tower of the Gods - Big Key Chest: TotG Small Key
+    Forsaken Fortress - Chest Guarded By Bokoblin: Din's Pearl
+    Earth Temple - Transparent Chest In Warp Pot Room: ET Small Key
+    Earth Temple - Chest In Three Blocks Room: Progressive Bow
+    Earth Temple - Chest Behind Statues: Progressive Bow
+    Earth Temple - Stalfos Miniboss Room: Triforce Shard 8
+    Earth Temple - Many Mirrors Room Right Chest: ET Small Key
+    Earth Temple - Many Mirrors Room Left Chest: ET Small Key
+    Earth Temple - Jalhalla Heart Container: Earth God's Lyric
+    Wind Temple - Chest Between Two Dirt Patches: Hero's Charm
+    Wind Temple - Chest Behind Stone Head: WT Small Key
+    Wind Temple - Chest at Top of Hub Room: WT Small Key
+    Wind Temple - Molgera Heart Container: Wind God's Aria
+    Ganon's Tower - Maze Chest: Progressive Bow
+    Dragon Roost Island - Chest on Top of Boulder: Iron Boots
+    Rock Spire Isle - Cave: Farore's Pearl
+    Bird's Peak Rock - Cave: Nayru's Pearl
+
+# Optional - only required if you want to customize starting island
+Starting Island: Spectacle Island
+
+# Optional - only required if you want Required Bosses Mode to be enabled
+Required Bosses Mode Dungeons:
+    - Dragon Roost Cavern
+    - Tower of the Gods
+
+# Optional - only required if you want to customize entrances
+Entrances:
+    Dungeon Entrance on Dragon Roost Island: Dragon Roost Cavern
+    Dungeon Entrance in Forest Haven Sector: Forbidden Woods
+    Dungeon Entrance in Tower of the Gods Sector: Tower of the Gods
+    Dungeon Entrance on Headstone Island: Earth Temple
+    Dungeon Entrance on Gale Isle: Wind Temple
+    Miniboss Entrance in Forbidden Woods: Forbidden Woods Miniboss Arena
+    Miniboss Entrance in Tower of the Gods: Tower of the Gods Miniboss Arena
+    Miniboss Entrance in Earth Temple: Earth Temple Miniboss Arena
+    Miniboss Entrance in Wind Temple: Wind Temple Miniboss Arena
+    Miniboss Entrance in Hyrule Castle: Master Sword Chamber
+    Boss Entrance in Dragon Roost Cavern: Gohma Boss Arena
+    Boss Entrance in Forbidden Woods: Kalle Demos Boss Arena
+    Boss Entrance in Tower of the Gods: Gohdan Boss Arena
+    Boss Entrance in Forsaken Fortress: Helmaroc King Boss Arena
+    Boss Entrance in Earth Temple: Jalhalla Boss Arena
+    Boss Entrance in Wind Temple: Molgera Boss Arena
+    Secret Cave Entrance on Outset Island: Savage Labyrinth
+    Secret Cave Entrance on Dragon Roost Island: Dragon Roost Island Secret Cave
+    Secret Cave Entrance on Fire Mountain: Fire Mountain Secret Cave
+    Secret Cave Entrance on Ice Ring Isle: Ice Ring Isle Secret Cave
+    Secret Cave Entrance on Private Oasis: Cabana Labyrinth
+    Secret Cave Entrance on Needle Rock Isle: Needle Rock Isle Secret Cave
+    Secret Cave Entrance on Angular Isles: Angular Isles Secret Cave
+    Secret Cave Entrance on Boating Course: Boating Course Secret Cave
+    Secret Cave Entrance on Stone Watcher Island: Stone Watcher Island Secret Cave
+    Secret Cave Entrance on Overlook Island: Overlook Island Secret Cave
+    Secret Cave Entrance on Bird's Peak Rock: Bird's Peak Rock Secret Cave
+    Secret Cave Entrance on Pawprint Isle: Pawprint Isle Chuchu Cave
+    Secret Cave Entrance on Pawprint Isle Side Isle: Pawprint Isle Wizzrobe Cave
+    Secret Cave Entrance on Diamond Steppe Island: Diamond Steppe Island Warp Maze Cave
+    Secret Cave Entrance on Bomb Island: Bomb Island Secret Cave
+    Secret Cave Entrance on Rock Spire Isle: Rock Spire Isle Secret Cave
+    Secret Cave Entrance on Shark Island: Shark Island Secret Cave
+    Secret Cave Entrance on Cliff Plateau Isles: Cliff Plateau Isles Secret Cave
+    Secret Cave Entrance on Horseshoe Island: Horseshoe Island Secret Cave
+    Secret Cave Entrance on Star Island: Star Island Secret Cave
+    Inner Entrance in Ice Ring Isle Secret Cave: Ice Ring Isle Inner Cave
+    Inner Entrance in Cliff Plateau Isles Secret Cave: Cliff Plateau Isles Inner Cave
+    Fairy Fountain Entrance on Outset Island: Outset Fairy Fountain
+    Fairy Fountain Entrance on Thorned Fairy Island: Thorned Fairy Fountain
+    Fairy Fountain Entrance on Eastern Fairy Island: Eastern Fairy Fountain
+    Fairy Fountain Entrance on Western Fairy Island: Western Fairy Fountain
+    Fairy Fountain Entrance on Southern Fairy Island: Southern Fairy Fountain
+    Fairy Fountain Entrance on Northern Fairy Island: Northern Fairy Fountain
+
+# Optional - only required if you want to customize charts
+Charts:
+    Forsaken Fortress Sector: Treasure Chart 25
+    Star Island: Treasure Chart 7
+    Northern Fairy Island: Treasure Chart 24
+    Gale Isle: Triforce Chart 2
+    Crescent Moon Island: Treasure Chart 11
+    Seven-Star Isles: Triforce Chart 7
+    Overlook Island: Treasure Chart 13
+    Four-Eye Reef: Treasure Chart 41
+    Mother and Child Isles: Treasure Chart 29
+    Spectacle Island: Treasure Chart 22
+    Windfall Island: Treasure Chart 18
+    Pawprint Isle: Treasure Chart 30
+    Dragon Roost Island: Treasure Chart 39
+    Flight Control Platform: Treasure Chart 19
+    Western Fairy Island: Treasure Chart 8
+    Rock Spire Isle: Treasure Chart 2
+    Tingle Island: Treasure Chart 10
+    Northern Triangle Island: Treasure Chart 26
+    Eastern Fairy Island: Treasure Chart 3
+    Fire Mountain: Treasure Chart 37
+    Star Belt Archipelago: Treasure Chart 27
+    Three-Eye Reef: Treasure Chart 38
+    Greatfish Isle: Triforce Chart 1
+    Cyclops Reef: Treasure Chart 21
+    Six-Eye Reef: Treasure Chart 6
+    Tower of the Gods Sector: Treasure Chart 14
+    Eastern Triangle Island: Treasure Chart 34
+    Thorned Fairy Island: Treasure Chart 5
+    Needle Rock Isle: Treasure Chart 28
+    Islet of Steel: Treasure Chart 35
+    Stone Watcher Island: Triforce Chart 3
+    Southern Triangle Island: Triforce Chart 6
+    Private Oasis: Treasure Chart 1
+    Bomb Island: Treasure Chart 20
+    Bird's Peak Rock: Treasure Chart 36
+    Diamond Steppe Island: Treasure Chart 23
+    Five-Eye Reef: Treasure Chart 12
+    Shark Island: Treasure Chart 16
+    Southern Fairy Island: Treasure Chart 4
+    Ice Ring Isle: Treasure Chart 17
+    Forest Haven: Treasure Chart 31
+    Cliff Plateau Isles: Triforce Chart 5
+    Horseshoe Island: Treasure Chart 9
+    Outset Island: Triforce Chart 4
+    Headstone Island: Treasure Chart 40
+    Two-Eye Reef: Triforce Chart 8
+    Angular Isles: Treasure Chart 15
+    Boating Course: Treasure Chart 32
+    Five-Star Isles: Treasure Chart 33
+```
 
 ## Information
 
-The randomizer only supports the North American GameCube version of Wind Waker. (MD5: d8e4d45af2032a081a0f446384e9261b)  
+The plandomizer only supports the North American GameCube version of Wind Waker. (MD5: d8e4d45af2032a081a0f446384e9261b)  
 The European and Japanese versions of Wind Waker won't work, and neither will Wind Waker HD.
 
-The randomizer guarantees that every playthrough will be completable, and that you don't need to use any glitches or tricks to beat it.
+### Running the plandomizer from source
 
-All items are randomized, but because Wind Waker is such a large game, a single run of it would take a very long time if you had to check every single location. Therefore the randomizer has options to limit where progress items can appear based on the type of the location.  
-For example, you can limit progress items to appearing in dungeons and secret caves only, or secret caves sidequests and mail, or any other combination you want.  
-Location types that you don't select will only have unimportant items that you don't need to beat the game - like rupees, heart pieces, bomb bag upgrades, etc. So you can skip checking them entirely, unless you want some of those optional items.
-
-### Randomizer won't launch?
-
-If the randomizer gives an error saying "Failed to execute script wwrando", or if the executable disappears before you can launch it, then your antivirus software may be incorrectly detecting the randomizer as malware. You should add an exception/exclusion for the randomizer into your antivirus software so that it will ignore the randomizer if this happens.
-
-### Got stuck in a seed?
-
-If you seem to be stuck and can't find anywhere to progress, you should first read the Frequently Asked Questions page on the official website: https://lagolunatic.github.io/wwrando/faq/  
-
-If you've read the FAQ and consulted the spoiler log but you're still stuck, it's possible you've encountered a bug in the randomizer.  
-Please report bugs like that here: https://github.com/LagoLunatic/wwrando/issues  
-In the bug report be sure to include the permalink for the seed you encountered the bug on.  
-
-## Discord Server
-
-If you have any questions or are looking for people to play/race with, why not join the official Wind Waker Randomizer Discord server?  
-https://discord.gg/r2963mt
-
-## Credits
-
-The randomizer was created and programmed by LagoLunatic, with help from:  
-Aelire (additional programming)  
-CryZe (event flag documentation)  
-EthanArmbrust (Mac and Linux support)  
-Fig (additional programming)  
-Gamma / SageOfMirrors (custom model conversion, file format documentation, additional programming)  
-Hypatia (textures)  
-JarheadHME (additional programming)  
-LordNed (file format documentation)  
-MelonSpeedruns (game design suggestions, graphic design)  
-nbouteme (starting items programming)  
-tanjo3 (CTMC and hint programming)  
-TrogWW (additional programming)  
-wooferzfg (additional programming)  
-
-## Running the randomizer from source
-
-If you want to run the latest development version of the randomizer from source, follow the instructions below.  
-Note that this is only recommended for advanced users or those interested in helping develop the randomizer.  
+If you want to run the latest development version of the plandomizer from source, follow the instructions below.  
+Note that this is only recommended for advanced users or those interested in helping develop the plandomizer.  
 
 Download and install git from here: https://git-scm.com/downloads  
 Then clone this repository with git by running this in a command prompt:  
@@ -72,10 +166,10 @@ Open the wwrando folder in a command prompt and install dependencies by running:
 `python3 -m pip install -r requirements.txt` (on Mac)  
 `python3 -m pip install $(cat requirements.txt) --user` (on Linux)  
 
-Then run the randomizer with:  
+Then run the plandomizer with:    
 `py wwrando.py` (on Windows)  
 `python3 wwrando.py` (on Mac)  
 `python3 wwrando.py` (on Linux)  
 
 Optionally, you can also install `requirements_full.txt` with the same process you used for `requirements.txt` above.  
-`requirements_full.txt` will install additional libraries that speed up texture recoloring, as well as for building a distributable version of the randomizer. You can still run the randomizer from source without these.  
+`requirements_full.txt` will install additional libraries that speed up texture recoloring, as well as for building a distributable version of the plandomizer. You can still run the plandomizer from source without these.  

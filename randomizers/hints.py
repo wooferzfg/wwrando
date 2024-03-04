@@ -918,7 +918,7 @@ class HintsRandomizer(BaseRandomizer):
       # We don't want this Great Fairy to hint at her own item.
       hintable_locations.remove("Two-Eye Reef - Big Octo Great Fairy")
     if len(hintable_locations) == 0:
-      raise Exception("No valid items to give hints for")
+      return None
     
     item_hint, location_name = self.get_item_hint(hintable_locations)
     

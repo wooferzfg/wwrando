@@ -42,9 +42,10 @@ class RequiredBossesRandomizer(BaseRandomizer):
     self.banned_dungeons = []
     # The bosses that are guaranteed to not have anything important in required bosses mode.
     self.banned_bosses = []
+    self.required_bosses_mode_plando = self.rando.plando.get("Required Bosses Mode Dungeons")
   
   def is_enabled(self) -> bool:
-    return self.options.required_bosses
+    return self.required_bosses_mode_plando is not None
   
   def _randomize(self):
     self.randomize_required_bosses()
@@ -72,11 +73,6 @@ class RequiredBossesRandomizer(BaseRandomizer):
   
 
   def randomize_required_bosses(self):
-    if not self.options.progression_dungeons:
-      raise Exception("Cannot make bosses required when progression dungeons are disabled.")
-    
-    num_required_bosses = self.options.num_required_bosses
-    
     possible_boss_item_locations = [
       loc for loc in self.logic.item_locations.keys()
       if "Boss" in self.logic.item_locations[loc]["Types"]
@@ -84,10 +80,6 @@ class RequiredBossesRandomizer(BaseRandomizer):
     
     if len(possible_boss_item_locations) != 6:
       raise Exception("Number of boss item locations is incorrect: " + ", ".join(possible_boss_item_locations))
-    if num_required_bosses > 6 or num_required_bosses < 1:
-      raise Exception(f"Number of required bosses is invalid: {len(num_required_bosses)}")
-    
-    self.required_boss_item_locations = self.rng.sample(possible_boss_item_locations, num_required_bosses)
     
     for location_name in possible_boss_item_locations:
       assert "Boss" in self.logic.item_locations[location_name]["Types"]
@@ -95,7 +87,7 @@ class RequiredBossesRandomizer(BaseRandomizer):
       assert specific_location_name.endswith(" Heart Container")
       boss_name = specific_location_name.removesuffix(" Heart Container")
       
-      if location_name in self.required_boss_item_locations:
+      if dungeon_name in self.required_bosses_mode_plando:
         self.required_dungeons.append(dungeon_name)
         self.required_bosses.append(boss_name)
       else:

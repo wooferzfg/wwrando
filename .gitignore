@@ -13,3 +13,5 @@ profileresults*.prof
 /.venv
 /site
 .coverage
+aes_iv.py
+aes_key.py

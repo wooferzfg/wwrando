@@ -14,10 +14,15 @@ from collections import Counter
 
 from options.wwrando_options import Options, SwordMode
 from randomizer import WWRandomizer, TooFewProgressionLocationsError, InvalidCleanISOError, PermalinkWrongVersionError, PermalinkWrongCommitError
-from version import VERSION
+from version import PLANDO_VERSION, VERSION
 from wwrando_paths import SETTINGS_PATH, ASSETS_PATH, IS_RUNNING_FROM_SOURCE
 from seedgen import seedgen
 from logic.logic import Logic
+
+from aes.aes_iv import AES_IV
+from aes.aes_key import AES_KEY
+
+import pyaes, binascii
 
 from typing import TYPE_CHECKING, Type
 import typing
@@ -77,6 +82,11 @@ class WWRandomizerWindow(QMainWindow):
     self.ui.permalink.textEdited.connect(self.permalink_modified)
     
     self.ui.label_for_clean_iso_path.linkActivated.connect(self.show_clean_iso_explanation)
+
+    self.ui.plando_text_path.editingFinished.connect(self.update_settings)
+    self.ui.plando_text_browse_button.clicked.connect(self.browse_for_plando_text)
+
+    self.ui.plando_race.stateChanged.connect(self.toggle_seed_text)
     
     for option in Options.all:
       if option.name == "custom_colors":
@@ -113,7 +123,7 @@ class WWRandomizerWindow(QMainWindow):
     
     self.update_settings()
     
-    self.setWindowTitle("Wind Waker Randomizer %s" % VERSION)
+    self.setWindowTitle("Wind Waker Plandomizer %s" % PLANDO_VERSION)
     
     icon_path = os.path.join(ASSETS_PATH, "icon.ico")
     self.setWindowIcon(QIcon(icon_path))
@@ -189,10 +199,13 @@ class WWRandomizerWindow(QMainWindow):
   def randomize(self):
     clean_iso_path = self.settings["clean_iso_path"].strip()
     output_folder = self.settings["output_folder"].strip()
+    plando_text_path = self.settings["plando_text_path"].strip()
     self.settings["clean_iso_path"] = clean_iso_path
     self.settings["output_folder"] = output_folder
+    self.settings["plando_text_path"] = plando_text_path
     self.ui.clean_iso_path.setText(clean_iso_path)
     self.ui.output_folder.setText(output_folder)
+    self.ui.plando_text_path.setText(plando_text_path)
     
     if not self.settings["dry_run"] and not os.path.isfile(clean_iso_path):
       QMessageBox.warning(self, "Vanilla ISO path not specified", "Must specify path to your vanilla Wind Waker ISO (North American version).")
@@ -200,6 +213,42 @@ class WWRandomizerWindow(QMainWindow):
     if not os.path.isdir(output_folder):
       QMessageBox.warning(self, "No output folder specified", "Must specify a valid output folder for the randomized files.")
       return
+    if not os.path.isfile(plando_text_path) and not self.ui.plando_race.isChecked():
+      QMessageBox.warning(self, "Plando text file not specified", "Must specify path to your plando text file.")
+
+    plando_file = ""
+
+    if self.ui.plando_race.isChecked():
+      try:
+        encrypted_plando_file = open(plando_text_path).read()
+
+        aes = pyaes.AESModeOfOperationCTR(AES_KEY, pyaes.Counter(AES_IV))
+        plando_file_text = aes.decrypt(binascii.unhexlify(encrypted_plando_file)).decode("utf-8")
+        plando_file = yaml.safe_load(plando_file_text)
+      except Exception as e:
+        stack_trace = traceback.format_exc()
+        error_message = "Failed to parse plando file:\n" + str(e) + "\n\n" + stack_trace
+        print(error_message)
+        QMessageBox.critical(
+          self, "Plandomizer failed to load",
+          "The plandomizer file failed to load."
+        )
+        return
+    else:
+      try:
+        with open(plando_text_path, "r") as f:
+          plando_file = yaml.safe_load(f)
+      except Exception as e:
+        stack_trace = traceback.format_exc()
+        error_message = "Failed to load plandomize file:\n" + str(e) + "\n\n" + stack_trace
+        print(error_message)
+        QMessageBox.critical(
+          self, "Plandomizer failed to load",
+          "The plandomizer file failed to load."
+        )
+        return
+
+    self.update_permalink_from_plando(plando_file)
     
     seed = self.settings["seed"]
     seed = WWRandomizer.sanitize_seed(seed)
@@ -219,7 +268,7 @@ class WWRandomizerWindow(QMainWindow):
     self.progress_dialog = RandomizerProgressDialog(self, "Randomizing", "Initializing...")
     
     try:
-      rando = WWRandomizer(seed, clean_iso_path, output_folder, options, cmd_line_args=self.cmd_line_args)
+      rando = WWRandomizer(seed, clean_iso_path, output_folder, options, plando_file, cmd_line_args=self.cmd_line_args)
     except (TooFewProgressionLocationsError, InvalidCleanISOError) as e:
       error_message = str(e)
       self.randomization_failed(error_message)
@@ -287,7 +336,7 @@ class WWRandomizerWindow(QMainWindow):
   
   def show_update_check_results(self, new_version):
     if not new_version:
-      self.ui.update_checker_label.setText("No new updates to the randomizer are available.")
+      self.ui.update_checker_label.setText("")
     elif new_version == "error":
       self.ui.update_checker_label.setText("There was an error checking for updates.")
     else:
@@ -367,6 +416,8 @@ class WWRandomizerWindow(QMainWindow):
       self.ui.output_folder.setText(self.settings["output_folder"])
     if "seed" in self.settings:
       self.ui.seed.setText(self.settings["seed"])
+    if "plando_text_path" in self.settings:
+      self.ui.plando_text_path.setText(self.settings["plando_text_path"])
     
     for option in Options.all:
       if option.name in self.settings:
@@ -374,7 +425,9 @@ class WWRandomizerWindow(QMainWindow):
           # Colors and color presents not loaded yet, handle this later
           continue
         self.set_option_value(option.name, self.settings[option.name])
-    
+
+    self.toggle_seed_text()
+
     self.ui.tab_player_customization.load_custom_colors_from_settings()
   
   def save_settings(self):
@@ -385,6 +438,7 @@ class WWRandomizerWindow(QMainWindow):
     self.settings["clean_iso_path"] = self.ui.clean_iso_path.text()
     self.settings["output_folder"] = self.ui.output_folder.text()
     self.settings["seed"] = self.ui.seed.text()
+    self.settings["plando_text_path"] = self.ui.plando_text_path.text()
     
     self.ensure_valid_combination_of_options()
     self.ui.tab_player_customization.disable_invalid_cosmetic_options()
@@ -397,6 +451,14 @@ class WWRandomizerWindow(QMainWindow):
     self.encode_permalink()
     
     self.update_total_progress_locations()
+
+  def update_permalink_from_plando(self, plando_file):
+    try:
+      permalink = plando_file["Permalink"]
+    except:
+      return
+
+    self.decode_permalink(permalink)
   
   def update_total_progress_locations(self):
     options = self.get_all_options_from_widget_values()
@@ -500,6 +562,42 @@ class WWRandomizerWindow(QMainWindow):
       return
     self.ui.output_folder.setText(output_folder_path)
     self.update_settings()
+
+  def browse_for_plando_text(self):
+    if self.settings["plando_text_path"] and os.path.isfile(self.settings["plando_text_path"]):
+      default_dir = os.path.dirname(self.settings["plando_text_path"])
+    else:
+      default_dir = None
+
+    plando_text_path, selected_filter = QFileDialog.getOpenFileName(self, "Select plain text plando file", default_dir, "Plain text (*.txt)")
+    if not plando_text_path:
+      return
+
+    self.ui.plando_text_path.setText(plando_text_path)
+    try:
+      with open(plando_text_path, "r") as f:
+        plando_file = yaml.safe_load(f)
+    except Exception as e:
+      stack_trace = traceback.format_exc()
+      error_message = "Failed to load plando file %s.\nError:\n" % (plando_text_path) + str(e) + "\n\n" + stack_trace
+      print(error_message)
+      QMessageBox.critical(
+        self, "Failed to load plando file",
+        error_message
+      )
+      return
+    self.update_permalink_from_plando(plando_file)
+    self.update_settings()
+
+  def toggle_seed_text(self):
+    if self.ui.plando_race.isChecked():
+      self.ui.label_for_seed.setEnabled(False)
+      self.ui.seed.setEnabled(False)
+      self.ui.generate_seed_button.setEnabled(False)
+    else:
+      self.ui.label_for_seed.setEnabled(True)
+      self.ui.seed.setEnabled(True)
+      self.ui.generate_seed_button.setEnabled(True)
   
   def get_option_from_widget(self, widget: QObject):
     option_name = widget.objectName().removeprefix("label_for_")
@@ -693,9 +791,13 @@ class WWRandomizerWindow(QMainWindow):
       widget = self.findChild(QWidget, option.name)
       label_for_option = self.findChild(QLabel, "label_for_" + option.name)
       if should_enable_options[option.name]:
-        widget.setEnabled(True)
-        if label_for_option:
-          label_for_option.setEnabled(True)
+        if not self.ui.plando_race.isChecked():
+          widget.setEnabled(True)
+          if label_for_option:
+            label_for_option.setEnabled(True)
+        else:
+          if option.permalink and option.name not in ["randomize_enemy_palettes", "plando_race"]:
+            widget.setEnabled(False)
       else:
         widget.setEnabled(False)
         if isinstance(widget, QAbstractButton):
@@ -717,14 +819,14 @@ class WWRandomizerWindow(QMainWindow):
           widget.hide()
   
   def open_about(self):
-    text = """Wind Waker Randomizer Version %s<br><br>
+    text = """Wind Waker Plandomizer Version %s<br><br>
       Created by LagoLunatic<br><br>
-      Report issues here:<br><a href=\"https://github.com/LagoLunatic/wwrando/issues\">https://github.com/LagoLunatic/wwrando/issues</a><br><br>
-      Source code:<br><a href=\"https://github.com/LagoLunatic/wwrando\">https://github.com/LagoLunatic/wwrando</a>""" % VERSION
+      Plandomizer created by Andirigible, updated by JarheadHME and wooferzfg<br><br>
+      Source code:<br><a href=\"https://github.com/wooferzfg/wwrando/tree/plando\">https://github.com/wooferzfg/wwrando/tree/plando</a><br>""" % PLANDO_VERSION
     
     self.about_dialog = QMessageBox()
     self.about_dialog.setTextFormat(Qt.TextFormat.RichText)
-    self.about_dialog.setWindowTitle("Wind Waker Randomizer")
+    self.about_dialog.setWindowTitle("Wind Waker Plandomizer")
     self.about_dialog.setText(text)
     self.about_dialog.setWindowIcon(self.windowIcon())
     self.about_dialog.show()

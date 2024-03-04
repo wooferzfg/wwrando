@@ -8,18 +8,13 @@ class StartingIslandRandomizer(BaseRandomizer):
     
     # Default starting island (Outset Island) if the starting island randomizer is not on.
     self.room_number = 44
+    self.starting_island_plando = self.rando.plando.get("Starting Island")
   
   def is_enabled(self) -> bool:
-    return self.options.randomize_starting_island
+    return self.starting_island_plando is not None
   
   def _randomize(self):
-    possible_starting_islands = list(range(1, 49+1))
-    
-    # Don't allow Forsaken Fortress to be the starting island.
-    # It wouldn't really cause problems, but it would be weird because you normally need bombs to get in, and you would need to use Ballad of Gales to get out.
-    possible_starting_islands.remove(1)
-    
-    self.room_number = self.rng.choice(possible_starting_islands)
+    self.room_number = self.rando.island_name_to_number[self.starting_island_plando]
   
   def _save(self):
     tweaks.set_new_game_starting_spawn_id(self.rando, 0)

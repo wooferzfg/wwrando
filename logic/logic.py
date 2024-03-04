@@ -864,7 +864,7 @@ class Logic:
   
   def clean_item_name(self, item_name):
     # Remove parentheses from any item names that may have them. (Formerly Master Swords, though that's not an issue anymore.)
-    return item_name.replace("(", "").replace(")", "")
+    return item_name.strip().replace("(", "").replace(")", "")
   
   def make_useless_progress_items_nonprogress(self):
     # Detect which progress items don't actually help access any locations with the user's current settings, and move

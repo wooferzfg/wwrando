@@ -446,4 +446,9 @@ class Options(BaseOptions):
     description="If this option is selected, <u>no playable ISO will be generated</u>, but the log files will still be created.<br>"
       "This can be useful if you want to generate a spoiler log on a computer where you do not have a vanilla Wind Waker ISO.",
   )
+  plando_race: bool = option(
+    default=False,
+    permalink=False,
+    description="Use this option when you're doing a plandomizer race and the plando text file is encrypted."
+  )
   #endregion

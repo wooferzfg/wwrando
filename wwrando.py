@@ -257,7 +257,7 @@ def try_fix_taskbar_icon():
   
   # Setting the app user model ID is necessary for Windows to display a custom taskbar icon when running the randomizer from source.
   import ctypes
-  app_id = "LagoLunatic.WindWakerRandomizer"
+  app_id = "wooferzfg.WindWakerPlandomizer"
   try:
     ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(app_id)
   except AttributeError:

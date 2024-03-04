@@ -54,7 +54,7 @@ from randomizers.hints import HintsRandomizer
 from randomizers.pigs import PigsRandomizer
 from randomizers.extra_starting_items import ExtraStartingItemsRandomizer
 
-from version import VERSION, VERSION_WITHOUT_COMMIT
+from version import PLANDO_VERSION, VERSION, VERSION_WITHOUT_COMMIT
 
 # The below are options that could be used to cheat in races.
 # They do not naturally change algorithmic item distribution, but do change the availability of information on item distribution.
@@ -85,7 +85,7 @@ class WWRandomizer:
   VALID_SEED_CHARACTERS = "-_'%%.%s%s" % (string.ascii_letters, string.digits)
   MAX_SEED_LENGTH = 42 # Limited by maximum length of game name in banner
   
-  def __init__(self, seed, clean_iso_path, randomized_output_folder, options: Options, cmd_line_args=None):
+  def __init__(self, seed, clean_iso_path, randomized_output_folder, options: Options, plando_file, cmd_line_args=None):
     self.fully_initialized = False
     
     options.validate()
@@ -96,6 +96,7 @@ class WWRandomizer:
     self.seed = self.sanitize_seed(seed)
     self.permalink = self.encode_permalink(self.seed, self.options)
     self.seed_hash = self.get_seed_hash()
+    self.plando = plando_file
     
     if cmd_line_args is None:
       cmd_line_args = {}
@@ -232,17 +233,7 @@ class WWRandomizer:
     
     self.logic.initialize_from_randomizer_state()
     
-    num_progress_locations = self.logic.get_num_progression_locations()
-    max_required_bosses_banned_locations = self.logic.get_max_required_bosses_banned_locations()
     self.all_randomized_progress_items = self.logic.get_flattened_unplaced_progression_items()
-    if num_progress_locations - max_required_bosses_banned_locations < len(self.all_randomized_progress_items):
-      error_message = "Not enough progress locations to place all progress items.\n\n"
-      error_message += "Total progress items: %d\n" % len(self.all_randomized_progress_items)
-      error_message += "Progress locations with current options: %d\n" % num_progress_locations
-      if max_required_bosses_banned_locations > 0:
-        error_message += "Maximum Required Bosses Mode banned locations: %d\n" % max_required_bosses_banned_locations
-      error_message += "\nYou need to check more of the progress location options in order to give the randomizer enough space to place all the items."
-      raise TooFewProgressionLocationsError(error_message)
     
     # We need to determine if the user's selected options result in a dungeons-only-start.
     # Dungeons-only-start meaning that the only locations accessible at the start of the run are dungeon locations.
@@ -998,6 +989,7 @@ class WWRandomizer:
     header = ""
     
     header += "Wind Waker Randomizer Version %s\n" % VERSION
+    header += "Plandomizer Version %s\n" % PLANDO_VERSION
     
     if self.permalink:
       header += "Permalink: %s\n" % self.permalink

@@ -62,21 +62,15 @@ class ChartRandomizer(BaseRandomizer):
       48: "Treasure Chart 32",
       49: "Treasure Chart 33",
     }
+    self.charts_plando = self.rando.plando.get("Charts")
   
   def is_enabled(self) -> bool:
-    return self.options.randomize_charts
+    return self.charts_plando is not None
   
   def _randomize(self):
-    original_item_names = list(self.island_number_to_chart_name.values())
-    
-    # Shuffles the list of island numbers.
-    # The shuffled island numbers determine which sector each chart points to.
-    shuffled_island_numbers = list(self.island_number_to_chart_name.keys())
-    self.rng.shuffle(shuffled_island_numbers)
-    
-    for original_item_name in original_item_names:
-      shuffled_island_number = shuffled_island_numbers.pop()
-      self.island_number_to_chart_name[shuffled_island_number] = original_item_name
+    for island_name, chart_name in self.charts_plando.items():
+      island_number = self.rando.island_name_to_number[island_name]
+      self.island_number_to_chart_name[island_number] = chart_name
     
     self.logic.update_chart_macros()
   

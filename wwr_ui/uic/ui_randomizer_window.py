@@ -100,6 +100,15 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.clean_iso_path_browse_button, 0, 2, 1, 1)
 
+        self.plando_text_label = QLabel(self.tab_randomizer_settings)
+        self.plando_text_label.setObjectName("plando_text_label")
+        self.gridLayout.addWidget(self.plando_text_label, 3, 0, 1, 1)
+        self.plando_text_path = QLineEdit(self.tab_randomizer_settings)
+        self.plando_text_path.setObjectName("plando_text_path")
+        self.gridLayout.addWidget(self.plando_text_path, 3, 1, 1, 1)
+        self.plando_text_browse_button = QPushButton(self.tab_randomizer_settings)
+        self.plando_text_browse_button.setObjectName("plando_text_browse_button")
+        self.gridLayout.addWidget(self.plando_text_browse_button, 3, 2, 1, 1)
 
         self.verticalLayout_3.addLayout(self.gridLayout)
 
@@ -829,6 +838,11 @@ class Ui_MainWindow(object):
 
         self.gridLayout_8.addWidget(self.do_not_generate_spoiler_log, 0, 0, 1, 1)
 
+        self.plando_race = QCheckBox(self.groupBox_6)
+        self.plando_race.setObjectName(u"plando_race")
+
+        self.gridLayout_8.addWidget(self.plando_race, 0, 2, 1, 1)
+
         self.widget_11 = QWidget(self.groupBox_6)
         self.widget_11.setObjectName(u"widget_11")
 
@@ -1074,6 +1088,7 @@ class Ui_MainWindow(object):
         self.label_for_num_path_hints.setText(QCoreApplication.translate("MainWindow", u"Path Hints", None))
         self.groupBox_6.setTitle(QCoreApplication.translate("MainWindow", u"Additional Advanced Options", None))
         self.do_not_generate_spoiler_log.setText(QCoreApplication.translate("MainWindow", u"Do Not Generate Spoiler Log", None))
+        self.plando_race.setText(QCoreApplication.translate("MainWindow", u"Plandomizer Race", None))
         self.dry_run.setText(QCoreApplication.translate("MainWindow", u"Dry Run", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_advanced), QCoreApplication.translate("MainWindow", u"Advanced Options", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_player_customization), QCoreApplication.translate("MainWindow", u"Player Customization", None))
@@ -1083,5 +1098,7 @@ class Ui_MainWindow(object):
         self.about_button.setText(QCoreApplication.translate("MainWindow", u"About", None))
         self.reset_settings_to_default.setText(QCoreApplication.translate("MainWindow", u"Reset All Settings to Default", None))
         self.randomize_button.setText(QCoreApplication.translate("MainWindow", u"Randomize", None))
+        self.plando_text_label.setText(QApplication.translate("MainWindow", "Plando File", None))
+        self.plando_text_browse_button.setText(QApplication.translate("MainWindow", "Browse", None))
     # retranslateUi
 
