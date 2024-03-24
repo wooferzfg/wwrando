@@ -843,11 +843,6 @@ class Ui_MainWindow(object):
 
         self.gridLayout_8.addWidget(self.plando_race, 0, 2, 1, 1)
 
-        self.widget_11 = QWidget(self.groupBox_6)
-        self.widget_11.setObjectName(u"widget_11")
-
-        self.gridLayout_8.addWidget(self.widget_11, 0, 2, 1, 1)
-
         self.widget_12 = QWidget(self.groupBox_6)
         self.widget_12.setObjectName(u"widget_12")
 
